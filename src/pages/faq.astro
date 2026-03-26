@@ -48,26 +48,35 @@ const jsonLd = {
             <span>{q.question}</span>
             <span class="inline-flex group-open:rotate-180 transition-transform duration-short4 ease-standard flex-shrink-0 ml-4"><Icon name="expand_more" class="w-6 h-6 text-ink-muted" /></span>
           </summary>
-          <p class="text-body-medium text-ink-muted leading-relaxed px-6 pb-6">{q.answer}</p>
+          <p class="text-body-medium text-ink-muted leading-relaxed px-6 pb-6 cursor-pointer" data-faq-close>{q.answer}</p>
         </details>
       ))}
     </div>
   </div>
 
   <script>
-    function initFaqAccordion(): void {
+    document.addEventListener('astro:page-load', () => {
       const container = document.querySelector('[data-faq-accordion]') as HTMLElement | null;
       if (!container) return;
-      const items = container.querySelectorAll('details') as NodeListOf<HTMLDetailsElement>;
-      items.forEach((item: HTMLDetailsElement) => {
-        item.addEventListener('toggle', () => {
-          if (item.open) {
-            items.forEach((other: HTMLDetailsElement) => { if (other !== item) other.open = false; });
-          }
-        });
+      container.addEventListener('click', (e: Event) => {
+        const target = e.target as HTMLElement;
+        const details = target.closest('details') as HTMLDetailsElement | null;
+        if (!details) return;
+
+        const summary = target.closest('summary');
+        if (summary) {
+          const items = container.querySelectorAll('details') as NodeListOf<HTMLDetailsElement>;
+          items.forEach((item: HTMLDetailsElement) => {
+            if (item !== details && item.open) item.open = false;
+          });
+          return;
+        }
+
+        if (details.open) {
+          details.open = false;
+        }
       });
-    }
-    document.addEventListener('astro:page-load', initFaqAccordion);
+    });
   </script>
 
 </Layout>

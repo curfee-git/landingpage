@@ -3,12 +3,8 @@ import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
 import { getLangFromUrl } from '@/i18n/utils';
 import { getTranslations } from '@/i18n/translations';
-import { localizedRoutes } from '@/configurations/routes';
-
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
-const routes = localizedRoutes(lang);
-const linkClass = "text-brand-primary hover:underline transition-colors duration-short4 ease-standard";
 ---
 
 <Layout
@@ -51,34 +47,59 @@ const linkClass = "text-brand-primary hover:underline transition-colors duration
 
       <section>
         <h2 class="text-headline-small text-ink-primary mb-6">{t['cookies.list.heading']}</h2>
-        <div class="rounded-xl bg-surface-raised border border-stroke-outlineVariant p-6 space-y-6">
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 pb-4 border-b border-stroke-outlineVariant">
+        <!-- Desktop: Grid-Tabelle -->
+        <div class="hidden sm:block rounded-md bg-surface-raised border border-stroke-outlineVariant p-6 space-y-6">
+          <div class="grid grid-cols-5 gap-4 pb-4 border-b border-stroke-outlineVariant">
             <span class="text-label-medium text-ink-primary">{t['cookies.list.name']}</span>
             <span class="text-label-medium text-ink-primary">{t['cookies.list.provider']}</span>
-            <span class="text-label-medium text-ink-primary hidden sm:block">{t['cookies.list.purpose']}</span>
-            <span class="text-label-medium text-ink-primary hidden sm:block">{t['cookies.list.duration']}</span>
-            <span class="text-label-medium text-ink-primary hidden sm:block">{t['cookies.list.type']}</span>
+            <span class="text-label-medium text-ink-primary">{t['cookies.list.purpose']}</span>
+            <span class="text-label-medium text-ink-primary">{t['cookies.list.duration']}</span>
+            <span class="text-label-medium text-ink-primary">{t['cookies.list.type']}</span>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 pb-4 border-b border-stroke-outlineVariant">
+          <div class="grid grid-cols-5 gap-4 pb-4 border-b border-stroke-outlineVariant">
             <span class="text-body-large text-ink-muted font-mono">_ga</span>
             <span class="text-body-large text-ink-muted">Google Analytics</span>
-            <span class="text-body-large text-ink-muted hidden sm:block">{t['cookies.list.ga.purpose']}</span>
-            <span class="text-body-large text-ink-muted hidden sm:block">{t['cookies.list.ga.duration']}</span>
-            <span class="text-body-large text-ink-muted hidden sm:block">{t['cookies.list.ga.type']}</span>
+            <span class="text-body-large text-ink-muted">{t['cookies.list.ga.purpose']}</span>
+            <span class="text-body-large text-ink-muted">{t['cookies.list.ga.duration']}</span>
+            <span class="text-body-large text-ink-muted">{t['cookies.list.ga.type']}</span>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-4 pb-4 border-b border-stroke-outlineVariant">
+          <div class="grid grid-cols-5 gap-4 pb-4 border-b border-stroke-outlineVariant">
             <span class="text-body-large text-ink-muted font-mono">{t['cookies.list.gastar.name']}</span>
             <span class="text-body-large text-ink-muted">Google Analytics</span>
-            <span class="text-body-large text-ink-muted hidden sm:block">{t['cookies.list.gastar.purpose']}</span>
-            <span class="text-body-large text-ink-muted hidden sm:block">{t['cookies.list.gastar.duration']}</span>
-            <span class="text-body-large text-ink-muted hidden sm:block">{t['cookies.list.gastar.type']}</span>
+            <span class="text-body-large text-ink-muted">{t['cookies.list.gastar.purpose']}</span>
+            <span class="text-body-large text-ink-muted">{t['cookies.list.gastar.duration']}</span>
+            <span class="text-body-large text-ink-muted">{t['cookies.list.gastar.type']}</span>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+          <div class="grid grid-cols-5 gap-4">
             <span class="text-body-large text-ink-muted font-mono">curfee-consent</span>
-            <span class="text-body-large text-ink-muted">Curfee</span>
-            <span class="text-body-large text-ink-muted hidden sm:block">{t['cookies.list.consent.purpose']}</span>
-            <span class="text-body-large text-ink-muted hidden sm:block">{t['cookies.list.consent.duration']}</span>
-            <span class="text-body-large text-ink-muted hidden sm:block">{t['cookies.list.consent.type']}</span>
+            <span class="text-body-large text-ink-muted">Curfee e.U.</span>
+            <span class="text-body-large text-ink-muted">{t['cookies.list.consent.purpose']}</span>
+            <span class="text-body-large text-ink-muted">{t['cookies.list.consent.duration']}</span>
+            <span class="text-body-large text-ink-muted">{t['cookies.list.consent.type']}</span>
+          </div>
+        </div>
+        <!-- Mobile: gestapelte Cards -->
+        <div class="sm:hidden space-y-4">
+          <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-4 space-y-2">
+            <span class="text-label-medium text-ink-primary font-mono block">_ga</span>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.provider']}:</span> Google Analytics</div>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.purpose']}:</span> {t['cookies.list.ga.purpose']}</div>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.duration']}:</span> {t['cookies.list.ga.duration']}</div>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.type']}:</span> {t['cookies.list.ga.type']}</div>
+          </div>
+          <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-4 space-y-2">
+            <span class="text-label-medium text-ink-primary font-mono block">{t['cookies.list.gastar.name']}</span>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.provider']}:</span> Google Analytics</div>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.purpose']}:</span> {t['cookies.list.gastar.purpose']}</div>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.duration']}:</span> {t['cookies.list.gastar.duration']}</div>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.type']}:</span> {t['cookies.list.gastar.type']}</div>
+          </div>
+          <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-4 space-y-2">
+            <span class="text-label-medium text-ink-primary font-mono block">curfee-consent</span>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.provider']}:</span> Curfee e.U.</div>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.purpose']}:</span> {t['cookies.list.consent.purpose']}</div>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.duration']}:</span> {t['cookies.list.consent.duration']}</div>
+            <div class="text-body-medium text-ink-muted"><span class="text-label-medium text-ink-primary">{t['cookies.list.type']}:</span> {t['cookies.list.consent.type']}</div>
           </div>
         </div>
       </section>

@@ -272,6 +272,18 @@
   }
 }
 
+/* M3 Animation — Slide Down */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 20rem;
+  }
+}
+
 /* M3 Accessibility — Focus Visible (M3 uses secondary for focus indicators) */
 :focus-visible {
   outline: 3px solid rgb(var(--brand-secondary));

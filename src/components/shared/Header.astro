@@ -64,13 +64,18 @@ const menuItemClass = "flex items-center gap-3 w-full px-4 py-3 rounded-sm hover
   <div id={menuId} aria-hidden="true" data-mobile-menu class="md:hidden border-b border-stroke-subtle backdrop-blur-[12px] backdrop-saturate-[120%] transition-[max-height,opacity] duration-medium2 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden w-full">
     <div class="max-w-6xl mx-auto px-4 pb-4 space-y-2">
       <nav class="flex flex-col gap-1" aria-label="Mobile navigation">
-        <span class:list={["flex items-center px-4 py-3 text-label-large", isServicePage ? 'text-brand-primary font-medium' : 'text-ink-muted']}>{t['navigation.services']}</span>
-        <div class="flex flex-col gap-1 pl-4">
-          <a href={routes.diagnosis} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.diagnosis) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="search" class="w-5 h-5 text-ink-muted" />{t['services.diagnosis.title']}</a>
-          <a href={routes.design} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.design) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="route" class="w-5 h-5 text-ink-muted" />{t['services.design.title']}</a>
-          <a href={routes.advisory} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.advisory) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="handshake" class="w-5 h-5 text-ink-muted" />{t['services.advisory.title']}</a>
-          <a href={routes.handson} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.handson) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="code" class="w-5 h-5 text-ink-muted" />{t['services.handson.title']}</a>
-        </div>
+        <details class="group [&>summary]:list-none [&>summary::-webkit-details-marker]:hidden" data-mobile-services>
+          <summary class:list={["flex items-center justify-between px-4 py-3 text-label-large cursor-pointer hover:bg-ink-primary/[0.08] rounded-full transition-all duration-short4 ease-standard", isServicePage ? 'text-brand-primary font-medium' : 'text-ink-muted']}>
+            <span>{t['navigation.services']}</span>
+            <span class="inline-flex group-open:rotate-180 transition-transform duration-short4 ease-standard"><Icon name="expand_more" class="w-5 h-5 text-ink-muted" /></span>
+          </summary>
+          <div class="flex flex-col gap-1 pl-4 overflow-hidden animate-[slideDown_200ms_ease-standard]">
+            <a href={routes.diagnosis} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.diagnosis) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="search" class="w-5 h-5 text-ink-muted" />{t['services.diagnosis.title']}</a>
+            <a href={routes.design} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.design) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="route" class="w-5 h-5 text-ink-muted" />{t['services.design.title']}</a>
+            <a href={routes.advisory} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.advisory) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="handshake" class="w-5 h-5 text-ink-muted" />{t['services.advisory.title']}</a>
+            <a href={routes.handson} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.handson) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="code" class="w-5 h-5 text-ink-muted" />{t['services.handson.title']}</a>
+          </div>
+        </details>
         <a href={routes.about} class:list={["flex items-center px-4 py-3 rounded-full text-label-large hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.about) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close>{t['navigation.about']}</a>
         <a href={routes.faq} class:list={["flex items-center px-4 py-3 rounded-full text-label-large hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.faq) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close>{t['navigation.faq']}</a>
       </nav>
