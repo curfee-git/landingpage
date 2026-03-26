@@ -139,7 +139,7 @@
   "faq.question3": "Arbeitest du in agilen Frameworks?",
   "faq.answer3": "Nein. Architekturarbeit erfordert konzentrierte, zusammenhängende Analyse. Meine Arbeitsweise ist darauf ausgelegt — asynchron, in meinem eigenen Rhythmus, mit dem Freiraum, der diese Art des Denkens ermöglicht.",
   "faq.question4": "Machst du auch Frontend-Implementierung?",
-  "faq.answer4": "Mein Fokus liegt auf Backend-Architektur — im Spring Ökosystem, mit Domain Driven Design und hexagonaler Architektur. Frontend-Implementierung gehört nicht zu meinem Leistungsumfang.",
+  "faq.answer4": "Mein Fokus liegt im Backend — im Spring Ökosystem, mit Domain Driven Design und hexagonaler Architektur. Frontend-Implementierung gehört nicht zu meinem Leistungsumfang.",
   "faq.question5": "Machst du auch Bugfixing oder Debugging?",
   "faq.answer5": "Mein Fokus liegt auf der Architektur. Wenn ein Bug auf ein strukturelles Thema hinweist, ist das Teil der Diagnose — isoliertes Bugfixing biete ich nicht an.",
   "consent.message": "Diese Website verwendet Cookies zur Analyse der Nutzung.",
