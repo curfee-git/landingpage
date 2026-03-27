@@ -12,27 +12,15 @@ import { getTranslations } from '@/i18n/translations';
 const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Curfee",
-    "url": "https://curfee.com",
-    "logo": "https://curfee.com/assets/og-image.png",
-    "description": "Software architecture: examining systems, designing architectures, anchoring decisions. Diagnosis, Design, Advisory.",
-    "founder": { "@type": "Person", "name": "Philipp Höllinger" },
-    "address": { "@type": "PostalAddress", "addressLocality": "Salzburg", "addressCountry": "AT" },
-    "sameAs": ["https://www.linkedin.com/in/phoellinger"]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Curfee",
-    "url": "https://curfee.com",
-    "description": "Structure that unlocks potential. Software architecture by Philipp Höllinger.",
-    "inLanguage": ["en", "de"]
-  }
-];
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Curfee",
+  "url": "https://curfee.com",
+  "description": "Structure that unlocks potential. Software architecture by Philipp Höllinger.",
+  "inLanguage": ["en", "de"],
+  "publisher": { "@id": "https://curfee.com/#organization" }
+};
 ---
 
 <Layout
@@ -41,6 +29,7 @@ const jsonLd = [
   canonicalPath="/"
   jsonLd={jsonLd}
   lang={lang}
+  dateModified="2026-03-27"
 >
   <HeroSection translations={t} />
   <ResultSection translations={t} />

@@ -13,7 +13,7 @@ interface Props {
 const { lang, translations: t } = Astro.props;
 const routes = localizedRoutes(lang);
 const year = new Date().getFullYear();
-const linkClass = "text-body-medium text-ink-onSurfaceVariant px-3 py-2 rounded-sm hover:bg-ink-primary/[0.08] active:bg-ink-primary/[0.12] transition-all duration-short4 ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary/40 -ml-3";
+const linkClass = "text-body-medium text-ink-onSurfaceVariant px-3 py-2 rounded-sm hover:bg-ink-primary/[0.08] active:bg-ink-primary/[0.12] transition-all duration-short4 ease-standard -ml-3";
 
 // Language toggle: link to the other language version
 const currentPath = Astro.url.pathname;
@@ -73,11 +73,11 @@ if (lang === 'de') {
     <div class="pt-6 border-t border-stroke-subtle flex items-center justify-between">
       <span class="text-body-small text-ink-muted">&copy; {year} {BRAND.name} · {t['footer.copyright']}</span>
       <div class="flex items-center gap-4">
-        <a href={BRAND.linkedin} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-body-small text-ink-onSurfaceVariant hover:text-ink-primary px-3 py-2 rounded-sm hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary/40" aria-label="LinkedIn">
+        <a href={BRAND.linkedin} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-body-small text-ink-onSurfaceVariant hover:text-ink-primary px-3 py-2 rounded-sm hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard" aria-label="LinkedIn">
           <Icon name="linkedin" class="w-5 h-5" />
           LinkedIn
         </a>
-        <a href={otherLangPath} class="flex items-center gap-2 text-body-small text-ink-onSurfaceVariant hover:text-ink-primary px-3 py-2 rounded-sm hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary/40" aria-label="Switch language">
+        <a href={otherLangPath} class="flex items-center gap-2 text-body-small text-ink-onSurfaceVariant hover:text-ink-primary px-3 py-2 rounded-sm hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard" aria-label="Switch language">
           <Icon name="language" class="w-5 h-5" />
           {otherLangLabel}
         </a>

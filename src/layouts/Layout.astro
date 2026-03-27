@@ -16,6 +16,7 @@ interface Props {
   canonicalPath?: string;
   jsonLd?: object | object[];
   lang?: Lang;
+  dateModified?: string;
 }
 
 const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
@@ -28,6 +29,7 @@ const {
     : 'CURFEE – Software architecture: examining systems, designing architectures, anchoring decisions. Diagnosis, Design, Advisory.',
   canonicalPath = '',
   jsonLd,
+  dateModified,
 } = Astro.props;
 
 const siteUrl = 'https://curfee.com';
@@ -36,6 +38,52 @@ const ogImage = `${siteUrl}/assets/og-image.png`;
 const alternate = getAlternateUrl(Astro.url, siteUrl);
 const ogLocale = lang === 'de' ? 'de_DE' : 'en_US';
 const ogLocaleAlt = lang === 'de' ? 'en_US' : 'de_DE';
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
+  "name": "Curfee",
+  "legalName": "Curfee e.U.",
+  "url": siteUrl,
+  "logo": {
+    "@type": "ImageObject",
+    "url": `${siteUrl}/assets/og-image.png`,
+    "width": 1200,
+    "height": 630
+  },
+  "description": lang === 'de'
+    ? "Software-Architektur: Systeme untersuchen, Architekturen entwerfen, Entscheidungen verankern."
+    : "Software architecture: examining systems, designing architectures, anchoring decisions.",
+  "founder": {
+    "@type": "Person",
+    "@id": `${siteUrl}/#founder`,
+    "name": "Philipp Höllinger",
+    "jobTitle": "Software Architect"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Salzburg",
+    "addressCountry": "AT"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "office@curfee.com",
+    "contactType": "customer service"
+  },
+  "sameAs": ["https://www.linkedin.com/in/phoellinger"]
+};
+
+const speakableLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": title,
+  "url": canonicalUrl,
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["[aria-labelledby] h1, [aria-labelledby] h2, main > :first-child h1, main > :first-child p:first-of-type"]
+  }
+};
 ---
 
 <!doctype html>
@@ -52,6 +100,7 @@ const ogLocaleAlt = lang === 'de' ? 'en_US' : 'de_DE';
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    {dateModified && <meta name="article:modified_time" content={dateModified} />}
 
     <!-- Preload critical fonts -->
     <link rel="preload" href="/assets/fonts/google_sans/google_sans_regular.woff2" as="font" type="font/woff2" crossorigin />
@@ -94,7 +143,10 @@ const ogLocaleAlt = lang === 'de' ? 'en_US' : 'de_DE';
     <link rel="manifest" href="/assets/favicons/site.webmanifest" />
     <meta name="theme-color" content="#003366" />
 
-    <!-- Structured Data -->
+    <!-- Structured Data — Sitewide Organization + Speakable -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(speakableLd)} />
+    <!-- Structured Data — Page-specific -->
     {jsonLd && (
       Array.isArray(jsonLd)
         ? jsonLd.map((ld) => (

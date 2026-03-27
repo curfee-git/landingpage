@@ -15,10 +15,10 @@ const menuId = 'mobile-menu';
 const currentPath = Astro.url.pathname;
 const isActive = (path: string) => currentPath === path || currentPath === path + '/';
 const isServicePage = currentPath.startsWith(lang === 'de' ? '/de/services' : '/services');
-const navClass = "px-4 py-2 rounded-full text-label-large whitespace-nowrap hover:text-ink-primary hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary/40";
+const navClass = "px-4 py-2 rounded-full text-label-large whitespace-nowrap hover:text-ink-primary hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard";
 const activeClass = "bg-ink-primary/[0.12] text-brand-primary font-medium";
 const inactiveClass = "text-ink-muted";
-const menuItemClass = "flex items-center gap-3 w-full px-4 py-3 rounded-sm hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary/40";
+const menuItemClass = "flex items-center gap-3 w-full px-4 py-3 rounded-sm hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard";
 ---
 
 <header class="fixed top-0 left-0 right-0 z-20 border-b border-stroke-subtle backdrop-blur-[12px] backdrop-saturate-[120%]" role="banner" data-header>
@@ -52,10 +52,10 @@ const menuItemClass = "flex items-center gap-3 w-full px-4 py-3 rounded-sm hover
       <a href={routes.faq} aria-current={isActive(routes.faq) ? 'page' : undefined} class:list={[navClass, isActive(routes.faq) ? activeClass : inactiveClass]}>{t['navigation.faq']}</a>
     </nav>
     <div class="flex items-center gap-1 ml-auto flex-shrink-0 z-10">
-      <a href={EXTERNAL.email} class="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary px-6 py-3 rounded-full text-label-large font-medium whitespace-nowrap shadow-elevation-0 hover:shadow-elevation-1 active:shadow-elevation-0 transition-all duration-short4 ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary/40">
+      <a href={EXTERNAL.email} class="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary px-6 py-3 rounded-full text-label-large font-medium whitespace-nowrap shadow-elevation-0 hover:shadow-elevation-1 active:shadow-elevation-0 transition-all duration-short4 ease-standard">
         <span>{t['navigation.calltoaction']}</span>
       </a>
-      <button type="button" class="md:hidden inline-flex h-12 w-12 items-center justify-center rounded-full text-ink-primary hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary/40" aria-label="Toggle navigation" aria-expanded="false" aria-controls={menuId} data-menu-toggle>
+      <button type="button" class="md:hidden inline-flex h-12 w-12 items-center justify-center rounded-full text-ink-primary hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard" aria-label="Toggle navigation" aria-expanded="false" aria-controls={menuId} data-menu-toggle>
         <span data-menu-icon="closed"><Icon name="menu" class="w-6 h-6" /></span>
         <span data-menu-icon="open" style="display:none"><Icon name="close" class="w-6 h-6" /></span>
       </button>

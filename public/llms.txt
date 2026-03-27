@@ -1,0 +1,37 @@
+# Curfee — Software Architecture Consulting
+
+> Software architecture from Salzburg, Austria. Examining systems, designing architectures, anchoring decisions.
+
+Curfee is a software architecture consultancy founded by Philipp Höllinger, based in Salzburg, Austria. The company provides independent, vendor-neutral consulting for organizations that need clarity about their software systems.
+
+## Services
+
+- [Diagnosis](/services/diagnosis): Systematic examination of existing software systems. Produces an architecture assessment with findings, risk map, and prioritized recommendations. Duration: 2-4 weeks.
+- [Design](/services/design): Architecture design for new systems or major restructuring. Produces an architecture playbook with decisions, component design, and migration path. Duration: 4-8 weeks.
+- [Advisory](/services/advisory): Ongoing architecture guidance embedded in your team. Regular architecture reviews, decision support, and knowledge transfer. Duration: 3-6 months.
+- [Hands-on Architecture](/services/handson): Implementation of architecture in the Spring ecosystem with Domain Driven Design and hexagonal architecture.
+
+## About
+
+Philipp Höllinger is a software architect with deep expertise in system analysis, architecture design, and technology consulting. Based in Salzburg, Austria.
+
+- Website: https://curfee.com
+- LinkedIn: https://www.linkedin.com/in/phoellinger
+- Email: office@curfee.com
+
+## Pages
+
+- [Home](https://curfee.com/)
+- [About](https://curfee.com/about)
+- [FAQ](https://curfee.com/faq)
+- [Diagnosis Service](https://curfee.com/services/diagnosis)
+- [Design Service](https://curfee.com/services/design)
+- [Advisory Service](https://curfee.com/services/advisory)
+- [Hands-on Architecture](https://curfee.com/services/handson)
+- [Legal Notice](https://curfee.com/imprint)
+- [Privacy Policy](https://curfee.com/privacy)
+- [Cookie Policy](https://curfee.com/cookies)
+
+## Languages
+
+Available in English (default) and German (/de/).

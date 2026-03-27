@@ -9,6 +9,15 @@ const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 const routes = localizedRoutes(lang);
 const linkClass = "text-brand-primary hover:underline transition-colors duration-short4 ease-standard";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://curfee.com/de/" },
+    { "@type": "ListItem", "position": 2, "name": t['footer.legal.privacy'], "item": "https://curfee.com/de/privacy" }
+  ]
+};
 ---
 
 <Layout
@@ -16,6 +25,7 @@ const linkClass = "text-brand-primary hover:underline transition-colors duration
   description="Datenschutzerklärung für Curfee e.U., Unternehmensberatung im Bereich Informationstechnologie von Philipp Höllinger, Salzburg, Österreich."
   lang={lang}
   canonicalPath="/de/privacy"
+  jsonLd={jsonLd}
 >
   <div class="max-w-3xl mx-auto">
     <div class="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center mb-6">
@@ -27,7 +37,7 @@ const linkClass = "text-brand-primary hover:underline transition-colors duration
     <!-- Controller + Contact Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
       <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-6">
-        <h2 class="text-label-large text-ink-primary tracking-wider uppercase mb-4">{t['privacy.controller.heading']}</h2>
+        <h2 class="text-label-large text-ink-primary mb-4">{t['privacy.controller.heading']}</h2>
         <div class="text-body-large text-ink-muted">
           <p class="text-title-medium text-ink-primary">{t['imprint.company']}</p>
           <p class="mt-1">{t['imprint.name']}</p>
@@ -39,7 +49,7 @@ const linkClass = "text-brand-primary hover:underline transition-colors duration
         </div>
       </div>
       <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-6">
-        <h2 class="text-label-large text-ink-primary tracking-wider uppercase mb-4">{t['imprint.contact']}</h2>
+        <h2 class="text-label-large text-ink-primary mb-4">{t['imprint.contact']}</h2>
         <div class="space-y-4">
           <div>
             <span class="text-label-large font-medium text-ink-muted">E-Mail</span>

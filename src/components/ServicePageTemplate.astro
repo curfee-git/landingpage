@@ -80,6 +80,7 @@ const jsonLd = [
   lang={lang}
   canonicalPath={canonicalPath}
   jsonLd={jsonLd}
+  dateModified="2026-03-27"
 >
   <div class="max-w-3xl mx-auto">
     <!-- Hero -->
@@ -111,7 +112,7 @@ const jsonLd = [
       {processSteps.map((step, i) => (
         <div class={`relative ${i < processSteps.length - 1 ? 'pb-10' : ''}`}>
           {i < processSteps.length - 1 && (
-            <div class="absolute -left-8 top-8 bottom-0 w-0.5 bg-brand-primary/[0.12]"></div>
+            <div class="absolute -left-8 top-8 bottom-0 w-0.5 bg-brand-primary/[0.12]" aria-hidden="true"></div>
           )}
           <div class="absolute -left-12 top-0 w-8 h-8 rounded-full bg-brand-primary text-brand-onPrimary flex items-center justify-center text-label-large font-medium z-10">
             {i + 1}

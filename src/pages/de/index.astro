@@ -11,27 +11,15 @@ import { getTranslations } from '@/i18n/translations';
 const lang = 'de' as const;
 const t = getTranslations(lang);
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Curfee",
-    "url": "https://curfee.com",
-    "logo": "https://curfee.com/assets/og-image.png",
-    "description": "Software-Architektur: Systeme untersuchen, Architekturen entwerfen, Entscheidungen verankern. Diagnose, Design, Advisory.",
-    "founder": { "@type": "Person", "name": "Philipp Höllinger" },
-    "address": { "@type": "PostalAddress", "addressLocality": "Salzburg", "addressCountry": "AT" },
-    "sameAs": ["https://www.linkedin.com/in/phoellinger"]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Curfee",
-    "url": "https://curfee.com",
-    "description": "Struktur, die Potenzial freisetzt. Software-Architektur von Philipp Höllinger.",
-    "inLanguage": ["en", "de"]
-  }
-];
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Curfee",
+  "url": "https://curfee.com",
+  "description": "Struktur, die Potenzial freisetzt. Software-Architektur von Philipp Höllinger.",
+  "inLanguage": ["en", "de"],
+  "publisher": { "@id": "https://curfee.com/#organization" }
+};
 ---
 
 <Layout
@@ -40,6 +28,7 @@ const jsonLd = [
   canonicalPath="/de/"
   jsonLd={jsonLd}
   lang={lang}
+  dateModified="2026-03-27"
 >
   <HeroSection translations={t} />
   <ResultSection translations={t} />

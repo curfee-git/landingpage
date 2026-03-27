@@ -287,8 +287,8 @@
 /* M3 Accessibility — Focus Visible (M3 uses secondary for focus indicators) */
 :focus-visible {
   outline: 3px solid rgb(var(--brand-secondary));
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline-offset: 3px;
+  border-radius: inherit;
 }
 
 /* M3 Accessibility — Reduced Motion */
@@ -300,5 +300,58 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* M3 Accessibility — Medium/High Contrast Mode */
+@media (prefers-contrast: more) {
+  :root {
+    --brand-primary: 0 40 82;
+    --on-brand-primary: 255 255 255;
+    --brand-secondary: 100 15 42;
+    --on-brand-secondary: 255 255 255;
+    --brand-tertiary: 90 78 48;
+    --on-brand-tertiary: 255 255 255;
+
+    --ink-primary: 0 0 0;
+    --ink-muted: 40 40 48;
+    --ink-on-surface-variant: 36 36 44;
+
+    --surface-base: 255 255 255;
+    --surface-soft: 248 246 242;
+    --surface-raised: 255 255 255;
+
+    --stroke-subtle: 160 156 148;
+    --outline-variant: 120 116 108;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --brand-primary: 180 215 248;
+      --on-brand-primary: 0 24 56;
+      --brand-secondary: 255 195 210;
+      --on-brand-secondary: 55 0 22;
+      --brand-tertiary: 225 210 180;
+      --on-brand-tertiary: 40 32 10;
+
+      --ink-primary: 255 255 255;
+      --ink-muted: 210 208 204;
+      --ink-on-surface-variant: 220 216 210;
+
+      --surface-base: 10 10 12;
+      --surface-soft: 20 20 22;
+      --surface-raised: 28 28 30;
+
+      --stroke-subtle: 90 86 80;
+      --outline-variant: 130 126 118;
+    }
+  }
+}
+
+/* M3 Accessibility — Forced Colors (Windows High Contrast) */
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 3px solid LinkText;
+    outline-offset: 3px;
   }
 }

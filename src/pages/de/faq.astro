@@ -12,17 +12,28 @@ const questions = [
   { question: t['faq.question3'], answer: t['faq.answer3'] },
   { question: t['faq.question4'], answer: t['faq.answer4'] },
   { question: t['faq.question5'], answer: t['faq.answer5'] },
+  { question: t['faq.question6'], answer: t['faq.answer6'] },
 ];
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": questions.map(q => ({
-    "@type": "Question",
-    "name": q.question,
-    "acceptedAnswer": { "@type": "Answer", "text": q.answer }
-  }))
-};
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": questions.map(q => ({
+      "@type": "Question",
+      "name": q.question,
+      "acceptedAnswer": { "@type": "Answer", "text": q.answer }
+    }))
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://curfee.com/de/" },
+      { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://curfee.com/de/faq" }
+    ]
+  }
+];
 ---
 
 <Layout
@@ -31,6 +42,7 @@ const jsonLd = {
   canonicalPath="/de/faq"
   jsonLd={jsonLd}
   lang={lang}
+  dateModified="2026-03-27"
 >
 
   <div class="max-w-3xl mx-auto mb-10">
