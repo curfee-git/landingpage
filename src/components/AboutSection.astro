@@ -7,29 +7,28 @@ const { translations: t } = Astro.props;
 
 <section id="about" class="py-20 md:py-28" aria-labelledby="about-heading">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-  <div class="max-w-3xl mx-auto">
-    <h2 id="about-heading" class="text-headline-large md:text-display-small text-ink-primary mb-8">
-      {t['about.heading']}
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-8 items-start">
-      <div class="w-[140px] h-[175px] rounded-md bg-surface-soft border border-stroke-outlineVariant flex items-center justify-center text-label-medium text-ink-muted">
-        Foto folgt
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 id="about-heading" class="text-headline-large md:text-display-small text-ink-primary mb-8">
+          {t['about.heading']}
+        </h2>
+        <picture>
+          <source srcset="/assets/profile.webp" type="image/webp" />
+          <img src="/assets/profile.png" alt="Philipp Höllinger" class="w-[160px] h-[200px] object-cover object-top rounded-md mx-auto" loading="lazy" />
+        </picture>
       </div>
-      <div>
-        <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
-          <p>{t['about.1']}</p>
-          <p>{t['about.2']}</p>
-        </div>
-        <div class="flex flex-wrap gap-2 mt-6">
-          <span class="text-label-medium text-ink-muted bg-surface-soft border border-stroke-outlineVariant px-3 py-1.5 rounded-xs">{t['about.3']}</span>
-          <span class="text-label-medium text-ink-muted bg-surface-soft border border-stroke-outlineVariant px-3 py-1.5 rounded-xs">{t['about.4']}</span>
-          <span class="text-label-medium text-ink-muted bg-surface-soft border border-stroke-outlineVariant px-3 py-1.5 rounded-xs">{t['about.5']}</span>
-          <span class="text-label-medium text-ink-muted bg-surface-soft border border-stroke-outlineVariant px-3 py-1.5 rounded-xs">{t['about.6']}</span>
-          <span class="text-label-medium text-ink-muted bg-surface-soft border border-stroke-outlineVariant px-3 py-1.5 rounded-xs">{t['about.7']}</span>
-          <span class="text-label-medium text-ink-muted bg-surface-soft border border-stroke-outlineVariant px-3 py-1.5 rounded-xs">{t['about.8']}</span>
-        </div>
+      <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
+        <p>{t['about.text.1']}</p>
+        <p>{t['about.text.2']}</p>
+        <p>{t['about.text.3']}</p>
+        <p>{t['about.text.4']}</p>
+        <p class="text-ink-primary font-medium">{t['about.text.5']}</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 mt-8">
+        <span class="text-label-large text-brand-primary bg-brand-primary/[0.08] px-4 py-2 rounded-full">{t['about.tag.1']}</span>
+        <span class="text-label-large text-brand-primary bg-brand-primary/[0.08] px-4 py-2 rounded-full">{t['about.tag.2']}</span>
+        <span class="text-label-large text-brand-primary bg-brand-primary/[0.08] px-4 py-2 rounded-full">{t['about.tag.3']}</span>
       </div>
     </div>
-  </div>
   </div>
 </section>

@@ -1,6 +1,5 @@
 ---
 import { EXTERNAL } from '@/configurations/routes';
-import { BRAND } from '@/configurations/brand';
 
 interface Props {
   translations: Record<string, string>;
@@ -10,22 +9,15 @@ const { translations: t } = Astro.props;
 
 <section id="contact" class="py-20 md:py-28" aria-labelledby="contact-heading">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-  <div class="rounded-md bg-brand-primary p-10 md:p-20 text-center max-w-5xl mx-auto">
-    <h2 id="contact-heading" class="text-headline-large md:text-display-small text-brand-onPrimary">
+  <div class="text-center max-w-3xl mx-auto">
+    <h2 id="contact-heading" class="text-headline-large md:text-display-small text-ink-primary">
       {t['calltoaction.heading']}
     </h2>
-    <p class="text-body-large text-brand-onPrimary/70 mt-4 max-w-2xl mx-auto leading-relaxed">
-      {t['hero.subtitle']}
-    </p>
     <a
       href={EXTERNAL.email}
-      class="inline-flex items-center gap-2 bg-brand-onPrimary text-brand-primary px-8 py-4 rounded-md text-label-large font-medium shadow-elevation-1 hover:shadow-elevation-2 transition-all duration-medium2 ease-standard mt-10"
+      class="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary px-8 py-4 rounded-full text-label-large font-medium shadow-elevation-0 hover:shadow-elevation-1 active:shadow-elevation-0 transition-all duration-medium2 ease-standard mt-8"
     >
       {t['calltoaction.button']}
-      <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-    </a>
-    <a href={EXTERNAL.email} class="block text-body-medium text-brand-onPrimary/50 mt-4 hover:text-brand-onPrimary/80 transition-colors duration-medium2">
-      {BRAND.email}
     </a>
   </div>
   </div>

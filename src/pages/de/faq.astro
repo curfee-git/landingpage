@@ -7,15 +7,12 @@ const lang = 'de' as const;
 const t = getTranslations(lang);
 
 const questions = [
-  { question: t['faq.question1'], answer: t['faq.answer1'] },
-  { question: t['faq.question2'], answer: t['faq.answer2'] },
-  { question: t['faq.question3'], answer: t['faq.answer3'] },
-  { question: t['faq.question4'], answer: t['faq.answer4'] },
-  { question: t['faq.question5'], answer: t['faq.answer5'] },
-  { question: t['faq.question6'], answer: t['faq.answer6'] },
-  { question: t['faq.question7'], answer: t['faq.answer7'] },
-  { question: t['faq.question8'], answer: t['faq.answer8'] },
-  { question: t['faq.question9'], answer: t['faq.answer9'] },
+  { question: t['faq.1.question'], answer: t['faq.1.answer'] },
+  { question: t['faq.2.question'], answer: t['faq.2.answer'] },
+  { question: t['faq.3.question'], answer: t['faq.3.answer'] },
+  { question: t['faq.4.question'], answer: t['faq.4.answer'] },
+  { question: t['faq.5.question'], answer: t['faq.5.answer'] },
+  { question: t['faq.6.question'], answer: t['faq.6.answer'] },
 ];
 
 const jsonLd = [
@@ -40,12 +37,12 @@ const jsonLd = [
 ---
 
 <Layout
-  title="FAQ — Curfee | Häufige Fragen zur Technologieberatung"
-  description="Antworten auf häufige Fragen zu Curfees Beratungsleistungen: Umfang, Preise, Zeitrahmen und wie Diagnose, Design und Advisory funktionieren."
+  title="FAQ — Curfee | Häufige Fragen"
+  description="Antworten auf häufige Fragen zu Curfees Beratungsleistungen: Umfang, Preise, Zeitrahmen und wie Diagnose, Begleitung und Sparring funktionieren."
   canonicalPath="/de/faq"
   jsonLd={jsonLd}
   lang={lang}
-  dateModified="2026-03-27"
+  dateModified="2026-03-30"
 >
 
   <div class="max-w-3xl mx-auto mb-10">

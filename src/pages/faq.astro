@@ -8,9 +8,12 @@ const lang = getLangFromUrl(Astro.url);
 const t = getTranslations(lang);
 
 const questions = [
-  { question: t['faq.question1'], answer: t['faq.answer1'] },
-  { question: t['faq.question2'], answer: t['faq.answer2'] },
-  { question: t['faq.question3'], answer: t['faq.answer3'] },
+  { question: t['faq.1.question'], answer: t['faq.1.answer'] },
+  { question: t['faq.2.question'], answer: t['faq.2.answer'] },
+  { question: t['faq.3.question'], answer: t['faq.3.answer'] },
+  { question: t['faq.4.question'], answer: t['faq.4.answer'] },
+  { question: t['faq.5.question'], answer: t['faq.5.answer'] },
+  { question: t['faq.6.question'], answer: t['faq.6.answer'] },
 ];
 
 const jsonLd = [
@@ -35,12 +38,12 @@ const jsonLd = [
 ---
 
 <Layout
-  title="FAQ — Curfee | Frequently Asked Questions About Technology Consulting"
-  description="Answers to common questions about Curfee's consulting services: scope, pricing, timeline, and how Diagnosis, Design, and Advisory work."
+  title="FAQ — Curfee | Frequently Asked Questions"
+  description="Answers to common questions about Curfee's consulting services: scope, pricing, timeline, and how Diagnosis, Guidance, and Sparring work."
   canonicalPath="/faq"
   jsonLd={jsonLd}
   lang={lang}
-  dateModified="2026-03-27"
+  dateModified="2026-03-30"
 >
 
   <div class="max-w-3xl mx-auto mb-10">

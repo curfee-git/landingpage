@@ -17,8 +17,8 @@ class ScrollToTopButton {
   }
 
   private updateVisibility(): void {
-    const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-    const isVisible = scrollPercent > LAYOUT.fabScrollThreshold;
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const isVisible = scrollableHeight > 0 && window.scrollY / scrollableHeight > LAYOUT.fabScrollThreshold;
 
     for (const cls of this.hiddenClasses) this.button.classList.toggle(cls, !isVisible);
     for (const cls of this.visibleClasses) this.button.classList.toggle(cls, isVisible);
