@@ -159,8 +159,6 @@ const speakableLd = {
     <ClientRouter />
   </head>
   <body>
-    <Header lang={lang} translations={translations} />
-
     <div class="relative min-h-screen overflow-hidden">
       <div class="pointer-events-none absolute inset-0" aria-hidden="true">
         <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/25 via-brand-tertiary/16 to-brand-secondary/20 mask-radial" />
@@ -168,7 +166,8 @@ const speakableLd = {
       </div>
 
       <div class="relative z-10">
-        <main class="pt-24 md:pt-28">
+        <Header lang={lang} translations={translations} />
+        <main>
           <slot />
         </main>
       </div>

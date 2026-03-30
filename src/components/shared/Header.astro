@@ -21,7 +21,7 @@ const inactiveClass = "text-ink-muted";
 const menuItemClass = "flex items-center gap-3 w-full px-4 py-3 rounded-sm hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard";
 ---
 
-<header class="fixed top-0 left-0 right-0 z-20 border-b border-stroke-subtle backdrop-blur-[12px] backdrop-saturate-[120%]" role="banner" data-header>
+<header class="z-20 border-b border-stroke-subtle backdrop-blur-[12px] backdrop-saturate-[120%]" role="banner" data-header>
   <div class="mx-auto max-w-7xl flex items-center gap-3 w-full relative h-20 px-6 md:px-12 lg:px-20" data-header-shell>
     <Logo size="md" lang={lang} />
     <nav class="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2" aria-label="Primary navigation">
@@ -120,6 +120,7 @@ const menuItemClass = "flex items-center gap-3 w-full px-4 py-3 rounded-sm hover
     }
 
     initDropdowns();
+
   }
 
   document.addEventListener('astro:page-load', () => {

@@ -59,6 +59,13 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   /* Light Mode (default) — #003366 Navy, #7B1B38 Bordeaux, #D4C4A8 Beige, #1C1C20 Charcoal */
   :root {
     --brand-primary: 0 51 102;
@@ -167,6 +174,8 @@
 
   body {
     @apply bg-surface-base text-ink-primary font-body antialiased;
+    text-rendering: geometricPrecision;
+    font-synthesis: none;
     overflow-anchor: none;
   }
 }
