@@ -57,7 +57,7 @@ const menuItemClass = "flex items-center gap-3 w-full px-4 py-3 rounded-sm hover
       </button>
     </div>
   </div>
-  <div id={menuId} aria-hidden="true" data-mobile-menu class="md:hidden border-b border-stroke-subtle backdrop-blur-[12px] backdrop-saturate-[120%] transition-[max-height,opacity] duration-medium2 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden w-full">
+  <div id={menuId} inert data-mobile-menu class="md:hidden border-b border-stroke-subtle backdrop-blur-[12px] backdrop-saturate-[120%] transition-[max-height,opacity] duration-medium2 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden w-full">
     <div class="max-w-7xl mx-auto px-6 md:px-12 pb-4 space-y-2">
       <nav class="flex flex-col gap-1" aria-label="Mobile navigation">
         <details class="group [&>summary]:list-none [&>summary::-webkit-details-marker]:hidden" data-mobile-services>
@@ -97,7 +97,7 @@ const menuItemClass = "flex items-center gap-3 w-full px-4 py-3 rounded-sm hover
       menu.style.maxHeight = open ? '30rem' : '0px';
       menu.style.opacity = open ? '1' : '0';
       menu.style.pointerEvents = open ? 'auto' : 'none';
-      menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+      menu.inert = !open;
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       if (iconOpen && iconClosed) {
         (iconOpen as HTMLElement).style.display = open ? 'inline-block' : 'none';
