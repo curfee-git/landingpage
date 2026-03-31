@@ -1,6 +1,5 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Icon from '@/components/shared/Icon.astro';
 import { getTranslations } from '@/i18n/translations';
 
 const lang = 'de' as const;
@@ -80,55 +79,25 @@ const jsonLd = [
 
   <!-- Fünf Prinzipien -->
   <section class="mb-20 max-w-3xl mx-auto px-6">
-    <h2 class="text-headline-large md:text-display-small text-ink-primary mb-8">{t['principles.heading']}</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-      <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
-            <Icon name="visibility" class="w-6 h-6 text-brand-primary" />
+    <h2 class="text-headline-large md:text-display-small text-ink-primary mb-12">{t['principles.heading']}</h2>
+    <div class="space-y-8">
+      {[1, 2, 3, 4, 5].map(i => {
+        const title = t[`principles.${i}.title`];
+        const firstLetter = title.charAt(0);
+        const rest = title.slice(1);
+        const isLast = i === 5;
+        return (
+          <div class="flex items-start gap-6 min-h-[3.5rem]">
+            <span class="text-display-small text-brand-primary font-display leading-none pt-1 w-12 flex-shrink-0 text-center">{isLast ? 'EE' : firstLetter}</span>
+            <div>
+              <h3 class="text-title-large text-ink-primary mb-1">
+                <span class="text-brand-primary">{firstLetter}</span>{rest}
+              </h3>
+              <p class="text-body-large text-ink-muted">{t[`principles.${i}.description`]}</p>
+            </div>
           </div>
-          <h3 class="text-title-medium text-ink-primary">{t['principles.1.title']}</h3>
-        </div>
-        <p class="text-body-medium text-ink-muted">{t['principles.1.description']}</p>
-      </div>
-      <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
-            <Icon name="layers" class="w-6 h-6 text-brand-primary" />
-          </div>
-          <h3 class="text-title-medium text-ink-primary">{t['principles.2.title']}</h3>
-        </div>
-        <p class="text-body-medium text-ink-muted">{t['principles.2.description']}</p>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-full bg-brand-secondary/10 flex items-center justify-center flex-shrink-0">
-            <Icon name="360" class="w-6 h-6 text-brand-secondary" />
-          </div>
-          <h3 class="text-title-medium text-ink-primary">{t['principles.3.title']}</h3>
-        </div>
-        <p class="text-body-medium text-ink-muted">{t['principles.3.description']}</p>
-      </div>
-      <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-full bg-brand-tertiary/10 flex items-center justify-center flex-shrink-0">
-            <Icon name="trending_up" class="w-6 h-6 text-brand-tertiary" />
-          </div>
-          <h3 class="text-title-medium text-ink-primary">{t['principles.4.title']}</h3>
-        </div>
-        <p class="text-body-medium text-ink-muted">{t['principles.4.description']}</p>
-      </div>
-      <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-6">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-full bg-brand-tertiary/10 flex items-center justify-center flex-shrink-0">
-            <Icon name="filter_alt" class="w-6 h-6 text-brand-tertiary" />
-          </div>
-          <h3 class="text-title-medium text-ink-primary">{t['principles.5.title']}</h3>
-        </div>
-        <p class="text-body-medium text-ink-muted">{t['principles.5.description']}</p>
-      </div>
+        );
+      })}
     </div>
   </section>
 
