@@ -113,8 +113,6 @@
 
     --scrim: 0 0 0;
     --shadow-color: 0 0 0;
-    --state-hover: 0.08;
-    --state-pressed: 0.12;
     color-scheme: light;
   }
 
@@ -166,8 +164,6 @@
 
       --scrim: 0 0 0;
       --shadow-color: 0 0 0;
-      --state-hover: 0.08;
-      --state-pressed: 0.12;
       color-scheme: dark;
     }
   }
@@ -212,13 +208,6 @@
     letter-spacing: 0;
     font-weight: 600;
   }
-  .text-headline-medium {
-    font-family: "Quicksand", ui-sans-serif, system-ui, sans-serif;
-    font-size: 1.75rem;
-    line-height: 2.25rem;
-    letter-spacing: 0;
-    font-weight: 600;
-  }
   .text-headline-small {
     font-family: "Quicksand", ui-sans-serif, system-ui, sans-serif;
     font-size: 1.5rem;
@@ -239,12 +228,6 @@
     font-size: 1rem;
     line-height: 1.5rem;
     letter-spacing: 0.009375rem;
-    font-weight: 500;
-  }
-  .text-title-small {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    letter-spacing: 0.00625rem;
     font-weight: 500;
   }
 
@@ -277,12 +260,6 @@
   }
   .text-label-medium {
     font-size: 0.75rem;
-    line-height: 1rem;
-    letter-spacing: 0.03125rem;
-    font-weight: 500;
-  }
-  .text-label-small {
-    font-size: 0.6875rem;
     line-height: 1rem;
     letter-spacing: 0.03125rem;
     font-weight: 500;

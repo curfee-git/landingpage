@@ -34,11 +34,11 @@ const menuItemClass = "flex items-center gap-3 w-full px-4 py-3 rounded-sm hover
             <Icon name="search" class="w-5 h-5 text-ink-muted" />
             <span class="text-label-large">{t['services.diagnosis.title']}</span>
           </a>
-          <a href={routes.design} role="menuitem" tabindex="-1" class:list={[menuItemClass, isActive(routes.design) ? 'text-brand-primary font-medium' : 'text-ink-primary']}>
+          <a href={routes.guidance} role="menuitem" tabindex="-1" class:list={[menuItemClass, isActive(routes.guidance) ? 'text-brand-primary font-medium' : 'text-ink-primary']}>
             <Icon name="group_work" class="w-5 h-5 text-ink-muted" />
             <span class="text-label-large">{t['services.guidance.title']}</span>
           </a>
-          <a href={routes.advisory} role="menuitem" tabindex="-1" class:list={[menuItemClass, isActive(routes.advisory) ? 'text-brand-primary font-medium' : 'text-ink-primary']}>
+          <a href={routes.sparring} role="menuitem" tabindex="-1" class:list={[menuItemClass, isActive(routes.sparring) ? 'text-brand-primary font-medium' : 'text-ink-primary']}>
             <Icon name="handshake" class="w-5 h-5 text-ink-muted" />
             <span class="text-label-large">{t['services.sparring.title']}</span>
           </a>
@@ -67,8 +67,8 @@ const menuItemClass = "flex items-center gap-3 w-full px-4 py-3 rounded-sm hover
           </summary>
           <div class="flex flex-col gap-1 pl-4 overflow-hidden animate-[slideDown_200ms_ease-standard]">
             <a href={routes.diagnosis} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.diagnosis) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="search" class="w-5 h-5 text-ink-muted" />{t['services.diagnosis.title']}</a>
-            <a href={routes.design} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.design) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="group_work" class="w-5 h-5 text-ink-muted" />{t['services.guidance.title']}</a>
-            <a href={routes.advisory} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.advisory) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="handshake" class="w-5 h-5 text-ink-muted" />{t['services.sparring.title']}</a>
+            <a href={routes.guidance} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.guidance) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="group_work" class="w-5 h-5 text-ink-muted" />{t['services.guidance.title']}</a>
+            <a href={routes.sparring} class:list={["flex items-center gap-3 px-4 py-3 rounded-full text-body-medium hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.sparring) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close><Icon name="handshake" class="w-5 h-5 text-ink-muted" />{t['services.sparring.title']}</a>
           </div>
         </details>
         <a href={routes.about} class:list={["flex items-center px-4 py-3 rounded-full text-label-large hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard", isActive(routes.about) ? 'text-brand-primary font-medium' : 'text-ink-primary']} data-menu-close>{t['navigation.about']}</a>

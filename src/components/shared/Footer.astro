@@ -23,11 +23,11 @@ if (lang === 'de') {
   // Strip /de prefix to get EN path
   const basePath = currentPath.replace(/^\/de\/?/, '/') || '/';
   otherLangPath = basePath;
-  otherLangLabel = 'Deutsch';
+  otherLangLabel = 'English';
 } else {
   // Add /de prefix for DE path
   otherLangPath = currentPath === '/' ? '/de/' : `/de${currentPath}`;
-  otherLangLabel = 'English';
+  otherLangLabel = 'Deutsch';
 }
 ---
 

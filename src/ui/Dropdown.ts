@@ -34,8 +34,6 @@ class Dropdown {
     menu.style.pointerEvents = 'auto';
     menu.style.transform = 'scale(1)';
     trigger.setAttribute('aria-expanded', 'true');
-    const chevron = trigger.querySelector('[data-dropdown-chevron]') as HTMLElement | null;
-    if (chevron) chevron.style.transform = 'rotate(180deg)';
     this.isOpen = true;
   }
 
@@ -46,8 +44,6 @@ class Dropdown {
     menu.style.pointerEvents = 'none';
     menu.style.transform = 'scale(0.92)';
     trigger.setAttribute('aria-expanded', 'false');
-    const chevron = trigger.querySelector('[data-dropdown-chevron]') as HTMLElement | null;
-    if (chevron) chevron.style.transform = 'rotate(0deg)';
     this.isOpen = false;
     this.focusIndex = -1;
   }
