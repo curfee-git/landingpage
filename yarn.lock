@@ -7,12 +7,12 @@
   resolved "https://registry.npmjs.org/@alloc/quick-lru/-/quick-lru-5.2.0.tgz"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
-"@astrojs/check@^0.9.7":
-  version "0.9.7"
-  resolved "https://registry.npmjs.org/@astrojs/check/-/check-0.9.7.tgz"
-  integrity sha512-dA7U5/OFg8/xaMUb2vUOOJuuJXnMpHy6F0BM8ZhL7WT5OkTBwJ0GoW38n4fC4CXt+lT9mLWL0y8Pa74tFByBpQ==
+"@astrojs/check@^0.9.8":
+  version "0.9.8"
+  resolved "https://registry.yarnpkg.com/@astrojs/check/-/check-0.9.8.tgz#d70dcab429a91cc830ded9bfadc716ec0ebd6983"
+  integrity sha512-LDng8446QLS5ToKjRHd3bgUdirvemVVExV7nRyJfW2wV36xuv7vDxwy5NWN9zqeSEDgg0Tv84sP+T3yEq+Zlkw==
   dependencies:
-    "@astrojs/language-server" "^2.16.1"
+    "@astrojs/language-server" "^2.16.5"
     chokidar "^4.0.3"
     kleur "^4.1.5"
     yargs "^17.7.2"
@@ -27,10 +27,10 @@
   resolved "https://registry.npmjs.org/@astrojs/internal-helpers/-/internal-helpers-0.7.6.tgz"
   integrity sha512-GOle7smBWKfMSP8osUIGOlB5kaHdQLV3foCsf+5Q9Wsuu+C6Fs3Ez/ttXmhjZ1HkSgsogcM1RXSjjOVieHq16Q==
 
-"@astrojs/language-server@^2.16.1":
-  version "2.16.4"
-  resolved "https://registry.npmjs.org/@astrojs/language-server/-/language-server-2.16.4.tgz"
-  integrity sha512-42oqz9uX+hU1/rFniJvtYW9FbfZJ6syM2fYZFi7Ub71/kOvF1GSeMS8sA3Ogs3iOeNUWefk/ImwBiiHeNmJfSA==
+"@astrojs/language-server@^2.16.5":
+  version "2.16.6"
+  resolved "https://registry.yarnpkg.com/@astrojs/language-server/-/language-server-2.16.6.tgz#ce7b101178e65509f79486a27d970f0808b457d7"
+  integrity sha512-N990lu+HSFiG57owR0XBkr02BYMgiLCshLf+4QG4v6jjSWkBeQGnzqi+E1L08xFPPJ7eEeXnxPXGLaVv5pa4Ug==
   dependencies:
     "@astrojs/compiler" "^2.13.1"
     "@astrojs/yaml2ts" "^0.2.3"
@@ -41,14 +41,14 @@
     "@volar/language-service" "~2.4.28"
     muggle-string "^0.4.1"
     tinyglobby "^0.2.15"
-    volar-service-css "0.0.68"
-    volar-service-emmet "0.0.68"
-    volar-service-html "0.0.68"
-    volar-service-prettier "0.0.68"
-    volar-service-typescript "0.0.68"
-    volar-service-typescript-twoslash-queries "0.0.68"
-    volar-service-yaml "0.0.68"
-    vscode-html-languageservice "^5.6.1"
+    volar-service-css "0.0.70"
+    volar-service-emmet "0.0.70"
+    volar-service-html "0.0.70"
+    volar-service-prettier "0.0.70"
+    volar-service-typescript "0.0.70"
+    volar-service-typescript-twoslash-queries "0.0.70"
+    volar-service-yaml "0.0.70"
+    vscode-html-languageservice "^5.6.2"
     vscode-uri "^3.1.0"
 
 "@astrojs/markdown-remark@6.3.11":
@@ -85,18 +85,18 @@
   dependencies:
     prismjs "^1.30.0"
 
-"@astrojs/sitemap@^3.7.1":
-  version "3.7.1"
-  resolved "https://registry.npmjs.org/@astrojs/sitemap/-/sitemap-3.7.1.tgz"
-  integrity sha512-IzQqdTeskaMX+QDZCzMuJIp8A8C1vgzMBp/NmHNnadepHYNHcxQdGLQZYfkbd2EbRXUfOS+UDIKx8sKg0oWVdw==
+"@astrojs/sitemap@^3.7.2":
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/@astrojs/sitemap/-/sitemap-3.7.2.tgz#6647a3f42f75435970abf72d456e1e9d8360dcdc"
+  integrity sha512-PqkzkcZTb5ICiyIR8VoKbIAP/laNRXi5tw616N1Ckk+40oNB8Can1AzVV56lrbC5GKSZFCyJYUVYqVivMisvpA==
   dependencies:
     sitemap "^9.0.0"
     stream-replace-string "^2.0.0"
     zod "^4.3.6"
 
-"@astrojs/tailwind@^5.1.1":
+"@astrojs/tailwind@^5.1.5":
   version "5.1.5"
-  resolved "https://registry.npmjs.org/@astrojs/tailwind/-/tailwind-5.1.5.tgz"
+  resolved "https://registry.yarnpkg.com/@astrojs/tailwind/-/tailwind-5.1.5.tgz#d2e0bb18d5df661853772fb1aae288df1bb3d6f9"
   integrity sha512-1diguZEau7FZ9vIjzE4BwavGdhD3+JkdS8zmibl1ene+EHgIU5hI0NMgRYG3yea+Niaf7cyMwjeWeLvzq/maxg==
   dependencies:
     autoprefixer "^10.4.20"
@@ -1070,9 +1070,9 @@ array-iterate@^2.0.0:
   resolved "https://registry.npmjs.org/array-iterate/-/array-iterate-2.0.1.tgz"
   integrity sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==
 
-astro@^5.16.6:
+astro@^5.18.1:
   version "5.18.1"
-  resolved "https://registry.npmjs.org/astro/-/astro-5.18.1.tgz"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-5.18.1.tgz#7ab7f37ab14b8e6cf03cef706658029e7f96a0c2"
   integrity sha512-m4VWilWZ+Xt6NPoYzC4CgGZim/zQUO7WFL0RHCH0AiEavF1153iC3+me2atDvXpf/yX4PyGUeD8wZLq1cirT3g==
   dependencies:
     "@astrojs/compiler" "^2.13.0"
@@ -1141,7 +1141,7 @@ astro@^5.16.6:
   optionalDependencies:
     sharp "^0.34.0"
 
-autoprefixer@^10.4.20:
+autoprefixer@^10.4.20, autoprefixer@^10.4.27:
   version "10.4.27"
   resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.27.tgz"
   integrity sha512-NP9APE+tO+LuJGn7/9+cohklunJsXWiaWEfV3si4Gi/XHDwVNgkwr1J3RQYFIvPy76GmJ9/bW8vyoU1LcxwKHA==
@@ -2016,11 +2016,6 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.2.4.tgz"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-lodash@4.17.21:
-  version "4.17.21"
-  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
-  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
-
 longest-streak@^3.0.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/longest-streak/-/longest-streak-3.1.0.tgz"
@@ -2685,17 +2680,17 @@ pirates@^4.0.1:
   resolved "https://registry.npmjs.org/pirates/-/pirates-4.0.7.tgz"
   integrity sha512-TfySrs/5nm8fQJDcBDuUng3VOUKsd7S+zqvbOTiGXHfxX4wK31ard+hoNuvkicM/2YFzlpDgABOevKSsB4G/FA==
 
-playwright-core@1.58.2:
-  version "1.58.2"
-  resolved "https://registry.npmjs.org/playwright-core/-/playwright-core-1.58.2.tgz"
-  integrity sha512-yZkEtftgwS8CsfYo7nm0KE8jsvm6i/PTgVtB8DL726wNf6H2IMsDuxCpJj59KDaxCtSnrWan2AeDqM7JBaultg==
+playwright-core@1.59.1:
+  version "1.59.1"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.59.1.tgz#d8a2b28bcb8f2bd08ef3df93b02ae83c813244b2"
+  integrity sha512-HBV/RJg81z5BiiZ9yPzIiClYV/QMsDCKUyogwH9p3MCP6IYjUFu/MActgYAvK0oWyV9NlwM3GLBjADyWgydVyg==
 
-playwright@^1.58.2:
-  version "1.58.2"
-  resolved "https://registry.npmjs.org/playwright/-/playwright-1.58.2.tgz"
-  integrity sha512-vA30H8Nvkq/cPBnNw4Q8TWz1EJyqgpuinBcHET0YVJVFldr8JDNiU9LaWAE1KqSkRYazuaBhTpB5ZzShOezQ6A==
+playwright@^1.59.1:
+  version "1.59.1"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.59.1.tgz#f7b0ca61637ae25264cec370df671bbe1f368a4a"
+  integrity sha512-C8oWjPR3F81yljW9o5OxcWzfh6avkVwDD2VYdwIGqTkl+OGFISgypqzfu7dOe4QNLL2aqcWBmI3PMtLIK233lw==
   dependencies:
-    playwright-core "1.58.2"
+    playwright-core "1.59.1"
   optionalDependencies:
     fsevents "2.3.2"
 
@@ -2750,7 +2745,7 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.2.0:
   resolved "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@^8.4.47, postcss@^8.5.1, postcss@^8.5.3:
+postcss@^8.4.47, postcss@^8.5.1, postcss@^8.5.3, postcss@^8.5.8:
   version "8.5.8"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.5.8.tgz"
   integrity sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg==
@@ -3200,9 +3195,9 @@ svgo@^4.0.0:
     picocolors "^1.1.1"
     sax "^1.5.0"
 
-tailwindcss@^3.4.13:
+tailwindcss@^3.4.19:
   version "3.4.19"
-  resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.4.19.tgz"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.4.19.tgz#af2a0a4ae302d52ebe078b6775e799e132500ee2"
   integrity sha512-3ofp+LL8E+pK/JuPLPggVAIaEuhvIz4qNcf3nA1Xn2o/7fb7s/TYpHhwGDv1ZU3PkBluUVaF8PyCHcm48cKLWQ==
   dependencies:
     "@alloc/quick-lru" "^5.2.0"
@@ -3495,52 +3490,52 @@ vitefu@^1.1.1:
   resolved "https://registry.npmjs.org/vitefu/-/vitefu-1.1.2.tgz"
   integrity sha512-zpKATdUbzbsycPFBN71nS2uzBUQiVnFoOrr2rvqv34S1lcAgMKKkjWleLGeiJlZ8lwCXvtWaRn7R3ZC16SYRuw==
 
-volar-service-css@0.0.68:
-  version "0.0.68"
-  resolved "https://registry.npmjs.org/volar-service-css/-/volar-service-css-0.0.68.tgz"
-  integrity sha512-lJSMh6f3QzZ1tdLOZOzovLX0xzAadPhx8EKwraDLPxBndLCYfoTvnNuiFFV8FARrpAlW5C0WkH+TstPaCxr00Q==
+volar-service-css@0.0.70:
+  version "0.0.70"
+  resolved "https://registry.yarnpkg.com/volar-service-css/-/volar-service-css-0.0.70.tgz#17018501b018247e260edefd5239ca893f63335e"
+  integrity sha512-K1qyOvBpE3rzdAv3e4/6Rv5yizrYPy5R/ne3IWCAzLBuMO4qBMV3kSqWzj6KUVe6S0AnN6wxF7cRkiaKfYMYJw==
   dependencies:
     vscode-css-languageservice "^6.3.0"
     vscode-languageserver-textdocument "^1.0.11"
     vscode-uri "^3.0.8"
 
-volar-service-emmet@0.0.68:
-  version "0.0.68"
-  resolved "https://registry.npmjs.org/volar-service-emmet/-/volar-service-emmet-0.0.68.tgz"
-  integrity sha512-nHvixrRQ83EzkQ4G/jFxu9Y4eSsXS/X2cltEPDM+K9qZmIv+Ey1w0tg1+6caSe8TU5Hgw4oSTwNMf/6cQb3LzQ==
+volar-service-emmet@0.0.70:
+  version "0.0.70"
+  resolved "https://registry.yarnpkg.com/volar-service-emmet/-/volar-service-emmet-0.0.70.tgz#1d3c507c0c69ef0169415d1dfcd760d82a9ce618"
+  integrity sha512-xi5bC4m/VyE3zy/n2CXspKeDZs3qA41tHLTw275/7dNWM/RqE2z3BnDICQybHIVp/6G1iOQj5c1qXMgQC08TNg==
   dependencies:
     "@emmetio/css-parser" "^0.4.1"
     "@emmetio/html-matcher" "^1.3.0"
     "@vscode/emmet-helper" "^2.9.3"
     vscode-uri "^3.0.8"
 
-volar-service-html@0.0.68:
-  version "0.0.68"
-  resolved "https://registry.npmjs.org/volar-service-html/-/volar-service-html-0.0.68.tgz"
-  integrity sha512-fru9gsLJxy33xAltXOh4TEdi312HP80hpuKhpYQD4O5hDnkNPEBdcQkpB+gcX0oK0VxRv1UOzcGQEUzWCVHLfA==
+volar-service-html@0.0.70:
+  version "0.0.70"
+  resolved "https://registry.yarnpkg.com/volar-service-html/-/volar-service-html-0.0.70.tgz#4719ee378ad21022b8bf03531f56b8877c0f7079"
+  integrity sha512-eR6vCgMdmYAo4n+gcT7DSyBQbwB8S3HZZvSagTf0sxNaD4WppMCFfpqWnkrlGStPKMZvMiejRRVmqsX9dYcTvQ==
   dependencies:
     vscode-html-languageservice "^5.3.0"
     vscode-languageserver-textdocument "^1.0.11"
     vscode-uri "^3.0.8"
 
-volar-service-prettier@0.0.68:
-  version "0.0.68"
-  resolved "https://registry.npmjs.org/volar-service-prettier/-/volar-service-prettier-0.0.68.tgz"
-  integrity sha512-grUmWHkHlebMOd6V8vXs2eNQUw/bJGJMjekh/EPf/p2ZNTK0Uyz7hoBRngcvGfJHMsSXZH8w/dZTForIW/4ihw==
+volar-service-prettier@0.0.70:
+  version "0.0.70"
+  resolved "https://registry.yarnpkg.com/volar-service-prettier/-/volar-service-prettier-0.0.70.tgz#a7a9a18262ae8cde6abec684e35d5803409c7103"
+  integrity sha512-Z6BCFSpGVCd8BPAsZ785Kce1BGlWd5ODqmqZGVuB14MJvrR4+CYz6cDy4F+igmE1gMifqfvMhdgT8Aud4M5ngg==
   dependencies:
     vscode-uri "^3.0.8"
 
-volar-service-typescript-twoslash-queries@0.0.68:
-  version "0.0.68"
-  resolved "https://registry.npmjs.org/volar-service-typescript-twoslash-queries/-/volar-service-typescript-twoslash-queries-0.0.68.tgz"
-  integrity sha512-NugzXcM0iwuZFLCJg47vI93su5YhTIweQuLmZxvz5ZPTaman16JCvmDZexx2rd5T/75SNuvvZmrTOTNYUsfe5w==
+volar-service-typescript-twoslash-queries@0.0.70:
+  version "0.0.70"
+  resolved "https://registry.yarnpkg.com/volar-service-typescript-twoslash-queries/-/volar-service-typescript-twoslash-queries-0.0.70.tgz#83f41ed09fd4bcd23ad6523b8f1f2d55a2e72287"
+  integrity sha512-IdD13Z9N2Bu8EM6CM0fDV1E69olEYGHDU25X51YXmq8Y0CmJ2LNj6gOiBJgpS5JGUqFzECVhMNBW7R0sPdRTMQ==
   dependencies:
     vscode-uri "^3.0.8"
 
-volar-service-typescript@0.0.68:
-  version "0.0.68"
-  resolved "https://registry.npmjs.org/volar-service-typescript/-/volar-service-typescript-0.0.68.tgz"
-  integrity sha512-z7B/7CnJ0+TWWFp/gh2r5/QwMObHNDiQiv4C9pTBNI2Wxuwymd4bjEORzrJ/hJ5Yd5+OzeYK+nFCKevoGEEeKw==
+volar-service-typescript@0.0.70:
+  version "0.0.70"
+  resolved "https://registry.yarnpkg.com/volar-service-typescript/-/volar-service-typescript-0.0.70.tgz#261500d4c713252dd561513e8755225452e0b31e"
+  integrity sha512-l46Bx4cokkUedTd74ojO5H/zqHZJ8SUuyZ0IB8JN4jfRqUM3bQFBHoOwlZCyZmOeO0A3RQNkMnFclxO4c++gsg==
   dependencies:
     path-browserify "^1.0.1"
     semver "^7.6.2"
@@ -3549,13 +3544,13 @@ volar-service-typescript@0.0.68:
     vscode-nls "^5.2.0"
     vscode-uri "^3.0.8"
 
-volar-service-yaml@0.0.68:
-  version "0.0.68"
-  resolved "https://registry.npmjs.org/volar-service-yaml/-/volar-service-yaml-0.0.68.tgz"
-  integrity sha512-84XgE02LV0OvTcwfqhcSwVg4of3MLNUWPMArO6Aj8YXqyEVnPu8xTEMY2btKSq37mVAPuaEVASI4e3ptObmqcA==
+volar-service-yaml@0.0.70:
+  version "0.0.70"
+  resolved "https://registry.yarnpkg.com/volar-service-yaml/-/volar-service-yaml-0.0.70.tgz#71bcad5d324dc4edece424958c70ab3c52f720a9"
+  integrity sha512-0c8bXDBeoATF9F6iPIlOuYTuZAC4c+yi0siQo920u7eiBJk8oQmUmg9cDUbR4+Gl++bvGP4plj3fErbJuPqdcQ==
   dependencies:
     vscode-uri "^3.0.8"
-    yaml-language-server "~1.19.2"
+    yaml-language-server "~1.20.0"
 
 vscode-css-languageservice@^6.3.0:
   version "6.3.10"
@@ -3567,9 +3562,9 @@ vscode-css-languageservice@^6.3.0:
     vscode-languageserver-types "3.17.5"
     vscode-uri "^3.1.0"
 
-vscode-html-languageservice@^5.3.0, vscode-html-languageservice@^5.6.1:
+vscode-html-languageservice@^5.3.0, vscode-html-languageservice@^5.6.2:
   version "5.6.2"
-  resolved "https://registry.npmjs.org/vscode-html-languageservice/-/vscode-html-languageservice-5.6.2.tgz"
+  resolved "https://registry.yarnpkg.com/vscode-html-languageservice/-/vscode-html-languageservice-5.6.2.tgz#32f53261da5d0fad4f69c85dc00de6649e210bd1"
   integrity sha512-ulCrSnFnfQ16YzvwnYUgEbUEl/ZG7u2eV27YhvLObSHKkb8fw1Z9cgsnUwjTEeDIdJDoTDTDpxuhQwoenoLNMg==
   dependencies:
     "@vscode/l10n" "^0.0.18"
@@ -3673,15 +3668,14 @@ y18n@^5.0.5:
   resolved "https://registry.npmjs.org/y18n/-/y18n-5.0.8.tgz"
   integrity sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==
 
-yaml-language-server@~1.19.2:
-  version "1.19.2"
-  resolved "https://registry.npmjs.org/yaml-language-server/-/yaml-language-server-1.19.2.tgz"
-  integrity sha512-9F3myNmJzUN/679jycdMxqtydPSDRAarSj3wPiF7pchEPnO9Dg07Oc+gIYLqXR4L+g+FSEVXXv2+mr54StLFOg==
+yaml-language-server@~1.20.0:
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/yaml-language-server/-/yaml-language-server-1.20.0.tgz#c2ebc4058a41eb4d93f4ed60ab0e0635025f8740"
+  integrity sha512-qhjK/bzSRZ6HtTvgeFvjNPJGWdZ0+x5NREV/9XZWFjIGezew2b4r5JPy66IfOhd5OA7KeFwk1JfmEbnTvev0cA==
   dependencies:
     "@vscode/l10n" "^0.0.18"
     ajv "^8.17.1"
     ajv-draft-04 "^1.0.0"
-    lodash "4.17.21"
     prettier "^3.5.0"
     request-light "^0.5.7"
     vscode-json-languageservice "4.1.8"
