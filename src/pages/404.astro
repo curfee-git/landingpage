@@ -1,24 +1,46 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
+
+const isEN = Astro.url.pathname.startsWith('/en');
+const lang = isEN ? 'en' : 'de';
+
+const content = isEN ? {
+  title: "No system behind this page.",
+  description: "This page doesn't exist — but the home page does.",
+  cta: "Take me home",
+  home: "/en/",
+} : {
+  title: "Kein System hinter dieser Seite.",
+  description: "Diese Seite existiert nicht – die Startseite schon.",
+  cta: "Zur Startseite",
+  home: "/",
+};
+
+const ui = isEN ? {
+  nav: { services: "Services", about: "About", faq: "FAQ", cta: "Contact" },
+  serviceNames: { diagnosis: "Diagnosis", guidance: "Guidance", sparring: "Sparring" },
+  footer: { notice: "Legal Notice", privacy: "Privacy Policy", cookies: "Cookie Policy", copyright: "All rights reserved." },
+  consent: { message: "This website uses cookies for usage analysis.", learnMore: "Learn more", accept: "Accept", decline: "Decline" },
+  meta: { defaultDescription: "Philipp Höllinger, software architect from Salzburg. I help organizations build lasting structure in their systems. Diagnosis, Guidance, Sparring.", orgDescription: "Building lasting structure in systems. Diagnosis, Guidance, Sparring.", jobTitle: "Software Architect" },
+} : {
+  nav: { services: "Services", about: "Über mich", faq: "FAQ", cta: "Kontakt" },
+  serviceNames: { diagnosis: "Diagnose", guidance: "Begleitung", sparring: "Sparring" },
+  footer: { notice: "Impressum", privacy: "Datenschutz", cookies: "Cookie-Richtlinie", copyright: "Alle Rechte vorbehalten." },
+  consent: { message: "Diese Website verwendet Cookies zur Analyse der Nutzung.", learnMore: "Mehr erfahren", accept: "Akzeptieren", decline: "Ablehnen" },
+  meta: { defaultDescription: "Philipp Höllinger, Softwarearchitekt aus Salzburg. Ich begleite Organisationen dabei, Struktur in ihren Systemen aufzubauen, die Bestand hat. Diagnose, Begleitung, Sparring.", orgDescription: "Struktur in Systemen aufbauen, die Bestand hat. Diagnose, Begleitung, Sparring.", jobTitle: "Softwarearchitekt" },
+};
 ---
 
-<Layout title="Kein System hinter dieser Seite."
-  ui={{
-    nav: { services: "Services", about: "Über mich", faq: "FAQ", cta: "Kontakt" },
-    serviceNames: { diagnosis: "Diagnose", guidance: "Begleitung", sparring: "Sparring" },
-    footer: { notice: "Impressum", privacy: "Datenschutz", cookies: "Cookie-Richtlinie", copyright: "Alle Rechte vorbehalten." },
-    consent: { message: "Diese Website verwendet Cookies zur Analyse der Nutzung.", learnMore: "Mehr erfahren", accept: "Akzeptieren", decline: "Ablehnen" },
-    meta: { defaultDescription: "Philipp Höllinger, Softwarearchitekt aus Salzburg. Ich begleite Organisationen dabei, Struktur in ihren Systemen aufzubauen, die Bestand hat. Diagnose, Begleitung, Sparring.", orgDescription: "Struktur in Systemen aufbauen, die Bestand hat. Diagnose, Begleitung, Sparring.", jobTitle: "Softwarearchitekt" },
-  }}>
+<Layout title={content.title} ui={ui} lang={lang}>
   <main class="min-h-[75vh] flex items-center justify-center px-6">
     <div class="text-center max-w-lg">
       <span class="text-display-large text-brand-primary/15 block mb-2 select-none">404</span>
-      <h1 class="text-headline-large text-ink-primary mb-3">Kein System hinter dieser Seite.</h1>
-      <p class="text-body-large text-ink-muted mb-12">Diese Seite existiert nicht – die Startseite schon.</p>
-      <a href="/" class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-brand-primary text-brand-onPrimary text-label-large font-medium shadow-elevation-0 hover:shadow-elevation-1 active:shadow-elevation-0 transition-all duration-medium2 ease-standard">
+      <h1 class="text-headline-large text-ink-primary mb-3">{content.title}</h1>
+      <p class="text-body-large text-ink-muted mb-12">{content.description}</p>
+      <a href={content.home} class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-brand-primary text-brand-onPrimary text-label-large font-medium shadow-elevation-0 hover:shadow-elevation-1 active:shadow-elevation-0 transition-all duration-medium2 ease-standard">
         <Icon name="arrow_back" class="w-5 h-5" />
-        Zur Startseite
+        {content.cta}
       </a>
     </div>
   </main>
