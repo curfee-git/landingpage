@@ -1,23 +1,4 @@
-/* Quicksand — Headings (600, 700) */
-@font-face {
-  font-family: "Quicksand";
-  src: url("/assets/fonts/quicksand/quicksand_latin.woff2") format("woff2");
-  font-weight: 600 700;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: "Quicksand";
-  src: url("/assets/fonts/quicksand/quicksand_latin_ext.woff2") format("woff2");
-  font-weight: 600 700;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-/* Google Sans — Body (400, 500, 600, 700) */
+/* Google Sans — Body & Headings (400, 500, 600, 700) */
 @font-face {
   font-family: "Google Sans";
   src: url("/assets/fonts/google_sans/google_sans_regular.woff2") format("woff2");
@@ -177,39 +158,39 @@
 }
 
 @layer utilities {
-  /* M3 Type Scale — Display (Quicksand) */
+  /* M3 Type Scale — Display (Google Sans) */
   .text-display-large {
-    font-family: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
     font-size: 3.5625rem;
     line-height: 4rem;
     letter-spacing: -0.015625rem;
     font-weight: 700;
   }
   .text-display-medium {
-    font-family: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
     font-size: 2.8125rem;
     line-height: 3.25rem;
     letter-spacing: 0;
     font-weight: 700;
   }
   .text-display-small {
-    font-family: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
     font-size: 2.25rem;
     line-height: 2.75rem;
     letter-spacing: 0;
     font-weight: 700;
   }
 
-  /* M3 Type Scale — Headline (Quicksand) */
+  /* M3 Type Scale — Headline (Google Sans) */
   .text-headline-large {
-    font-family: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
     font-size: 2rem;
     line-height: 2.5rem;
     letter-spacing: 0;
     font-weight: 600;
   }
   .text-headline-small {
-    font-family: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
     font-size: 1.5rem;
     line-height: 2rem;
     letter-spacing: 0;
@@ -218,7 +199,7 @@
 
   /* M3 Type Scale — Title */
   .text-title-large {
-    font-family: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
     font-size: 1.375rem;
     line-height: 1.75rem;
     letter-spacing: 0;

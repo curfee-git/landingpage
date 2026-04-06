@@ -1,10 +1,12 @@
 ---
 import Icon from '@/components/shared/Icon.astro';
-import Layout from '@/layouts/Layout.astro';
-import { getTranslations } from '@/i18n/translations';
+import type { Translations } from '@/i18n/translations';
 
-const lang = 'de' as const;
-const t = getTranslations(lang);
+interface Props {
+  translations: Translations;
+}
+
+const { translations: t } = Astro.props;
 
 const questions = [
   { question: t['faq.9.question'], answer: t['faq.9.answer'] },
@@ -17,43 +19,12 @@ const questions = [
   { question: t['faq.7.question'], answer: t['faq.7.answer'] },
   { question: t['faq.8.question'], answer: t['faq.8.answer'] },
 ];
-
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": questions.map(q => ({
-      "@type": "Question",
-      "name": q.question,
-      "acceptedAnswer": { "@type": "Answer", "text": q.answer }
-    }))
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": t['breadcrumb.home'], "item": "https://curfee.com/" },
-      { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://curfee.com/faq" }
-    ]
-  }
-];
 ---
 
-<Layout
-  title={t['meta.faq.title']}
-  description={t['meta.faq.description']}
-  canonicalPath="/faq"
-  jsonLd={jsonLd}
-  lang={lang}
-  dateModified="2026-03-30"
->
-
-  <section class="py-20 md:py-28 max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-    <div class="w-12 h-12 rounded-full bg-brand-primary/[0.08] flex items-center justify-center mb-6">
-      <Icon name="help" class="w-6 h-6 text-brand-primary" />
-    </div>
-    <h1 class="text-display-small md:text-display-medium text-ink-primary mb-2">{t['faq.heading']}</h1>
-    <p class="text-title-medium text-brand-primary font-medium mb-12">{t['faq.subtitle']}</p>
+<section class="py-20 md:py-28" aria-labelledby="faq-heading">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+    <h2 id="faq-heading" class="text-display-small md:text-display-medium text-ink-primary mb-2">{t['faq.heading']}</h2>
+    <p class="text-title-medium text-brand-primary/70 font-medium mb-12">{t['faq.subtitle']}</p>
 
     <!-- Desktop: two-column layout -->
     <div class="hidden md:grid md:grid-cols-[1fr_1.5fr] md:gap-10 md:items-start">
@@ -72,7 +43,7 @@ const jsonLd = [
         ))}
       </div>
       <div data-faq-answer class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-8 min-h-[200px]">
-        <h2 class="text-title-large text-ink-primary mb-4" data-faq-answer-title>{questions[0].question}</h2>
+        <h3 class="text-title-large text-ink-primary mb-4" data-faq-answer-title>{questions[0].question}</h3>
         <p class="text-body-large text-ink-muted leading-relaxed" data-faq-answer-text>{questions[0].answer}</p>
       </div>
     </div>
@@ -80,7 +51,7 @@ const jsonLd = [
     <!-- Mobile: stacked details -->
     <div class="md:hidden divide-y divide-stroke-subtle">
       {questions.map(q => (
-        <details class="group faq-details">
+        <details class="group faq-details" name="faq-accordion">
           <summary class="flex items-center justify-between cursor-pointer py-6 text-title-medium text-ink-primary hover:text-brand-primary transition-colors duration-short4 ease-standard text-left list-none [&::-webkit-details-marker]:hidden">
             <span>{q.question}</span>
             <span class="flex-shrink-0 ml-4 text-ink-muted transition-transform duration-150 ease-standard group-open:rotate-180">
@@ -93,23 +64,25 @@ const jsonLd = [
         </details>
       ))}
     </div>
-  </section>
+  </div>
+</section>
 
-  <style>
-    .faq-content {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 150ms ease;
-    }
-    .faq-content > p {
-      overflow: hidden;
-    }
-    .faq-details[open] > .faq-content {
-      grid-template-rows: 1fr;
-    }
-  </style>
+<style>
+  .faq-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 150ms ease;
+  }
+  .faq-content > p {
+    overflow: hidden;
+  }
+  .faq-details[open] > .faq-content {
+    grid-template-rows: 1fr;
+  }
+</style>
 
-  <script>
+<script>
+  function initFaqSection() {
     const questions = document.querySelectorAll('[data-faq-select]');
     const title = document.querySelector('[data-faq-answer-title]');
     const text = document.querySelector('[data-faq-answer-text]');
@@ -120,7 +93,6 @@ const jsonLd = [
         const q = btn.textContent?.trim() ?? '';
         data[i] = { q, a: '' };
       });
-      // Extract answers from mobile details as source of truth
       const mobileDetails = document.querySelectorAll('.faq-details');
       mobileDetails.forEach((d, i) => {
         const p = d.querySelector('.faq-content p');
@@ -138,6 +110,9 @@ const jsonLd = [
         });
       });
     }
-  </script>
+  }
 
-</Layout>
+  document.addEventListener('astro:page-load', () => {
+    initFaqSection();
+  });
+</script>

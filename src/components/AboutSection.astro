@@ -5,32 +5,125 @@ interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
+
+const examples = [
+  { heading: t['about.done.example.1.heading'], text: t['about.done.example.1.text'] },
+  { heading: t['about.done.example.2.heading'], text: t['about.done.example.2.text'] },
+  { heading: t['about.done.example.3.heading'], text: t['about.done.example.3.text'] },
+];
+
+const stands = [
+  { title: t['about.stand.1.title'], description: t['about.stand.1.description'] },
+  { title: t['about.stand.2.title'], description: t['about.stand.2.description'] },
+  { title: t['about.stand.3.title'], description: t['about.stand.3.description'] },
+];
+
+const principles = [
+  { title: t['principles.1.title'], description: t['principles.1.description'] },
+  { title: t['principles.2.title'], description: t['principles.2.description'] },
+  { title: t['principles.3.title'], description: t['principles.3.description'] },
+  { title: t['principles.4.title'], description: t['principles.4.description'] },
+  { title: t['principles.5.title'], description: t['principles.5.description'] },
+];
 ---
 
 <section id="about" class="py-20 md:py-28" aria-labelledby="about-heading">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-12 md:mb-16">
-        <h2 id="about-heading" class="text-headline-large md:text-display-small text-ink-primary mb-8">
-          {t['about.heading']}
-        </h2>
+
+    <!-- Intro: Foto + Wer ich bin -->
+    <div class="grid md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-start mb-20 md:mb-28">
+      <div class="flex flex-col items-center md:items-start gap-4">
         <picture>
           <source srcset="/assets/profile.webp" type="image/webp" />
-          <img src="/assets/profile.png" alt="Philipp Höllinger" class="w-[160px] h-[200px] object-cover object-top rounded-md mx-auto" loading="lazy" />
+          <img src="/assets/profile.png" alt="Philipp Höllinger" class="w-[160px] h-[200px] object-cover object-top rounded-md" loading="lazy" />
         </picture>
+        <div class="flex flex-wrap justify-center md:justify-start gap-2">
+          <span class="text-label-large text-brand-primary/70 bg-brand-primary/[0.06] px-3 py-1 rounded-full">{t['about.tag.1']}</span>
+          <span class="text-label-large text-brand-primary/70 bg-brand-primary/[0.06] px-3 py-1 rounded-full">{t['about.tag.2']}</span>
+          <span class="text-label-large text-brand-primary/70 bg-brand-primary/[0.06] px-3 py-1 rounded-full">{t['about.tag.3']}</span>
+        </div>
       </div>
-      <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
-        <p>{t['about.text.1']}</p>
-        <p>{t['about.text.2']}</p>
-        <p>{t['about.text.3']}</p>
-        <p>{t['about.text.4']}</p>
-        <p class="text-ink-primary font-medium">{t['about.text.5']}</p>
-      </div>
-      <div class="flex flex-wrap justify-center gap-3 mt-8">
-        <span class="text-label-large text-brand-primary bg-brand-primary/[0.08] px-4 py-2 rounded-full">{t['about.tag.1']}</span>
-        <span class="text-label-large text-brand-primary bg-brand-primary/[0.08] px-4 py-2 rounded-full">{t['about.tag.2']}</span>
-        <span class="text-label-large text-brand-primary bg-brand-primary/[0.08] px-4 py-2 rounded-full">{t['about.tag.3']}</span>
+      <div>
+        <h2 id="about-heading" class="text-headline-large md:text-display-small text-ink-primary mb-2">
+          {t['about.heading']}
+        </h2>
+        <p class="text-title-medium text-brand-primary/70 font-medium mb-6">{t['about.who.heading']}</p>
+        <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
+          <p>{t['about.who.1']}</p>
+          <p>{t['about.who.2']}</p>
+          <p>{t['about.who.3']}</p>
+          <p>{t['about.who.4']}</p>
+        </div>
       </div>
     </div>
+
+    <!-- Was ich gemacht habe: drei Karten -->
+    <div class="mb-20 md:mb-28">
+      <h3 class="text-headline-large md:text-display-small text-ink-primary mb-10">
+        {t['about.done.heading']}
+      </h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        {examples.map(ex => (
+          <div class="rounded-md bg-surface-raised border border-stroke-outlineVariant p-6">
+            <h4 class="text-title-large text-ink-primary mb-3">{ex.heading}</h4>
+            <p class="text-body-medium text-ink-muted leading-relaxed">{ex.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Wofür ich stehe: drei Spalten -->
+    <div class="mb-20 md:mb-28">
+      <h3 class="text-headline-large md:text-display-small text-ink-primary mb-10">
+        {t['about.stand.heading']}
+      </h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        {stands.map((item, i) => (
+          <div>
+            <span class="text-display-small text-brand-primary/30 font-display leading-none select-none">{i + 1}</span>
+            <h4 class="text-title-large text-ink-primary mt-2 mb-2">{item.title}</h4>
+            <p class="text-body-large text-ink-muted leading-relaxed">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Wie ich arbeite: kompakt -->
+    <div class="max-w-3xl mb-20 md:mb-28">
+      <h3 class="text-headline-large md:text-display-small text-ink-primary mb-8">
+        {t['about.work.heading']}
+      </h3>
+      <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
+        <p>{t['about.work.1']}</p>
+        <p>{t['about.work.2']}</p>
+        <p>{t['about.work.3']}</p>
+        <p>{t['about.work.4']}</p>
+        <p>{t['about.work.5']}</p>
+      </div>
+    </div>
+
+    <!-- Fünf Prinzipien: Grid -->
+    <div>
+      <h3 class="text-headline-large md:text-display-small text-ink-primary mb-10">
+        {t['principles.heading']}
+      </h3>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+        {principles.map((p, i) => {
+          const firstLetter = p.title.charAt(0);
+          const rest = p.title.slice(1);
+          const isLast = i === 4;
+          return (
+            <div class:list={[i === 4 ? "col-span-2 md:col-span-1" : ""]}>
+              <span class="text-display-medium text-brand-primary font-display leading-none">{isLast ? 'EE' : firstLetter}</span>
+              <h4 class="text-title-medium text-ink-primary mt-2 mb-1">
+                <span class="text-brand-primary">{firstLetter}</span>{rest}
+              </h4>
+              <p class="text-body-medium text-ink-muted leading-relaxed">{p.description}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
   </div>
 </section>

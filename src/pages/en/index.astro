@@ -7,6 +7,7 @@ import ProcessSection from '@/components/ProcessSection.astro';
 import ServicesSection from '@/components/ServicesSection.astro';
 import CaseStudySection from '@/components/CaseStudySection.astro';
 import AboutSection from '@/components/AboutSection.astro';
+import FaqSection from '@/components/FaqSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
 import { getTranslations } from '@/i18n/translations';
 
@@ -34,11 +35,12 @@ const jsonLd = {
   dateModified="2026-03-30"
 >
   <HeroSection translations={t} />
+  <AboutSection translations={t} />
   <ObservationsSection translations={t} />
   <VisionSection translations={t} />
   <ServicesSection translations={t} />
   <ProcessSection translations={t} />
-  <AboutSection translations={t} />
   <CaseStudySection translations={t} />
+  <FaqSection translations={t} />
   <ContactSection translations={t} />
 </Layout>
