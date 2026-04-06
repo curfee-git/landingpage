@@ -24,6 +24,15 @@ Disallow: /
 User-agent: anthropic-ai
 Disallow: /
 
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
 # Allow AI retrieval crawlers (enable citation in AI search results)
 User-agent: ChatGPT-User
 Allow: /
@@ -47,6 +56,21 @@ User-agent: Amazonbot
 Allow: /
 
 User-agent: YouBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: cohere-ai
 Allow: /
 
 Sitemap: https://curfee.com/sitemap-index.xml

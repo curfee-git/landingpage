@@ -1,0 +1,161 @@
+# Curfee — Structure that lasts (Full Context)
+
+> Software architecture consulting from Salzburg, Austria. Independent, vendor-neutral consulting for organizations that need clarity about their software systems, tool landscapes, and organizational structures.
+
+## Entity
+
+Curfee e.U. is a one-person consultancy founded and operated by Philipp Höllinger. Legal form: Einzelunternehmen (sole proprietorship) registered in Austria. The company provides independent, vendor-neutral consulting for organizations that need clarity about their software systems.
+
+## Founder — Philipp Höllinger
+
+Philipp Höllinger is a software architect based in Salzburg, Austria. His career began in logistics — coordinating processes between goods, people, and procedures. From there he moved into software development and finally into architecture, working across the automotive industry, public sector, and software consulting.
+
+What he observed along the way: the more people, tools, and AI come into play, the more important it becomes that decisions once made actually last. He founded Curfee to establish the structure that ensures exactly that.
+
+His approach follows three principles:
+- Root cause over symptom — every finding traces back to an exact point in the system
+- Structure over discipline — standards are embedded in the structure, not reliant on individual compliance
+- Lasting solutions over workarounds — what is built is designed to outlast projects, people, and technologies
+
+## Core Principle
+
+Decisions anchored in structure outlast people, technologies, and projects. Structure replaces individual discipline with systemic guarantees. Standards, conventions, and guidelines are embedded directly in the structure so they apply automatically to everyone and everything — regardless of who comes and goes.
+
+## What Curfee Observes in Organizations
+
+- Key person dependencies: knowledge and decisions that rest with individuals and walk out the door when they leave
+- Shadow IT: teams adopting their own tools and processes without a shared standard
+- Governance and guidelines that exist on paper but never take hold because they rely on discipline rather than structural anchoring
+- Systems that keep getting added to rather than properly structured, even though changes have long been a risk
+- Software architectures, system and tool landscapes that have outgrown everyone's understanding, where dependencies and connections are no longer fully visible
+
+## What Is Possible
+
+- Shared alignment: people with different interests aligned by a shared foundation
+- Seamless tool integration: new tools and systems that integrate into the existing landscape because the structure defines the boundaries
+- Resilient foundation: requirements and priorities that shift, supported by a structure designed to handle it
+- Lasting decisions: decisions that outlast people and technologies, embedded in the structure
+- Compound improvements: improvements that build on the last and strengthen the foundation for the next
+- Transparent traceability: dependencies and connections that are visible, and decisions anyone can trace
+
+## Services
+
+### Diagnosis — Straight to the root cause
+
+You have a specific concern and want certainty. Philipp works through your system until the full picture is clear — supported by concrete evidence from your system.
+
+**Process:**
+1. Initial conversation — discuss your concern
+2. Scope and access — define what to examine, gain access to the relevant system parts
+3. Examination — systematic investigation until the full scope is covered
+4. Result — summary of findings: root cause, impact, and recommended next steps
+5. Final review — walk through results together
+
+**Deliverables:**
+- Concise assessment of your system
+- Identified root causes with concrete evidence from your system
+- Clear classification by urgency and impact
+- Recommended next steps
+
+**Your situation (ideal client):**
+- You work with a system and tool landscape that has grown organically and no longer know where the real risks and dependencies lie
+- Every change to tools, processes, or systems has unintended consequences because dependencies are not traceable
+- You want certainty before making decisions, based on concrete findings rather than gut feeling
+
+**The standard:** Every finding points to an exact location in your system. The path from symptom to root cause is traceable step by step and independently verifiable. Results can be used immediately as a decision-making basis.
+
+**Not included:** Isolated fixes without structural context, implementation of changes, technology evaluation or vendor comparison, team coaching or training.
+
+**Duration:** From 2 weeks. **Investment:** From EUR 10,000.
+
+### Guidance — From root cause to solution
+
+The root cause is known or you find it together. You want a solution that holds structurally, and someone who guides its implementation.
+
+**Process:**
+1. Initial conversation — discuss what you need
+2. Root cause analysis — identify and verify the root cause (if not already known)
+3. Solution design — design the structural solution
+4. Implementation guidance — guide the implementation from start to finish
+5. Handover — transfer knowledge and verify the structure holds
+
+**Deliverables:**
+- Root cause identified and resolved
+- Standards, conventions, and guidelines embedded in the structure
+- Implementation guidance from start to finish
+
+**Your situation (ideal client):**
+- The root cause is known, but you lack the structural approach to resolve it sustainably
+- You need someone who designs the solution and stays through implementation — not just an advisor who leaves before execution
+
+**The standard:** What is built has lasting impact — beyond the project, beyond individual people, and beyond specific technologies. Standards, conventions, and guidelines are embedded directly in the structure so they apply automatically.
+
+**Not included:** Implementation itself (your team handles that), isolated fixes, technology procurement.
+
+**Duration:** Project-dependent. **Investment:** From EUR 30,000.
+
+### Sparring — Alignment that grows with you
+
+Your system evolves. You want someone who knows the full context and stays oriented.
+
+**Deliverables:**
+- Concrete feedback on structural decisions
+- Ongoing alignment that grows with your system
+- A dedicated partner who knows your system
+
+**Your situation (ideal client):**
+- Your system evolves continuously and you need someone who evaluates decisions in the full context, not in isolation
+- You want a trusted counterpart who provides well-founded feedback before decisions take effect
+
+**The standard:** Every decision is evaluated in the context of the entire system. No isolated assessments.
+
+**Duration:** Ongoing. **Investment:** On request.
+
+## Process Overview
+
+Every engagement follows these steps:
+1. First call — informal conversation to understand the concern
+2. Approach — define how to address it
+3. Scope — define what is included
+4. Execution — the actual work
+5. Result — deliverables and handover
+
+## Frequently Asked Questions
+
+**Who is this relevant for?**
+For anyone working with software architectures, system and tool landscapes, or processes that have grown organically — who wants clarity about dependencies, connections, and the anchoring of decisions.
+
+**How does the initial conversation work?**
+Informal. You share what concerns you, Philipp listens. Afterward, both sides know whether and how he can help.
+
+**Do you implement yourself?**
+No. Philipp designs the solution and guides the team through implementation. The implementation itself is handled by those who have expertise in the respective systems, tools, or processes.
+
+**What happens after the diagnosis?**
+You decide. The diagnosis stands on its own — you can continue independently. If you want, Philipp accompanies you in the next step.
+
+**Do you work remotely or on-site?**
+Both — depends on the scenario. Most work happens remotely. On-site when it makes sense.
+
+**Can the services be combined?**
+Yes. A typical path starts with Diagnosis, continues into Guidance, and evolves into Sparring. Each service stands alone, but they build on each other.
+
+**What exactly do you anchor in the structure?**
+Standards, guidelines, and conventions across software, tools, and organizations. Embedded directly in the structure so they apply automatically to everyone and everything, without relying on individual discipline. They apply regardless of who comes and goes.
+
+**How long does a typical engagement take?**
+That depends on the scope of the systems and structures being examined. The scope is defined together in the initial conversation.
+
+**Do you work in agile frameworks?**
+No. The work requires focused, uninterrupted analysis and the space that enables deep thinking. Philipp adapts to the team's rhythm, but the analysis itself requires depth and concentration.
+
+## Contact
+
+- Website: https://curfee.com
+- Email: office@curfee.com
+- LinkedIn: https://www.linkedin.com/in/phoellinger
+- Location: Salzburg, Austria
+
+## Languages
+
+Available in German (default, curfee.com) and English (curfee.com/en/).

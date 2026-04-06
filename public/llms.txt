@@ -1,35 +1,48 @@
 # Curfee — Structure that lasts
 
-> Software architecture consulting from Salzburg, Austria. Examining systems, establishing structure, anchoring decisions.
+> Software architecture consulting from Salzburg, Austria. Independent, vendor-neutral consulting for organizations that need clarity about their software systems, tool landscapes, and organizational structures.
 
-Curfee is a software architecture consultancy founded by Philipp Höllinger, based in Salzburg, Austria. The company provides independent, vendor-neutral consulting for organizations that need clarity about their software systems.
+## Entity
+
+Curfee e.U. is a one-person consultancy founded and operated by Philipp Höllinger. Philipp is a software architect based in Salzburg, Austria. He works with organizations to uncover root causes in complex systems and establish lasting structural decisions.
+
+## Core Principle
+
+Decisions anchored in structure outlast people, technologies, and projects. Structure replaces individual discipline with systemic guarantees.
 
 ## Services
 
-- [Diagnosis](/services/diagnosis): Straight to the root cause. I start with what brought you here — and trace it to its root cause, layer by layer through your system. Concise assessment with root cause, impact, and recommended next steps. Duration: from 2 weeks. Investment: from €10,000.
-- [Guidance](/services/guidance): From root cause to solution. I find the root cause, design the solution, and guide the execution — until the structure stands. Duration: project-dependent. Investment: from €30,000.
-- [Sparring](/services/sparring): Alignment that grows with you. Your system evolves — I evaluate decisions and provide well-founded feedback before they take effect. Duration: ongoing. Investment: on request.
+- **Diagnosis** — Straight to the root cause. Systematic examination of software architectures, tool landscapes, and organizational structures. Delivers a concise assessment with identified root causes, impact classification, and recommended next steps. Duration: from 2 weeks. Investment: from EUR 10,000.
+- **Guidance** — From root cause to solution. Designs the structural solution and guides its implementation from start to finish. Standards, conventions, and guidelines are embedded directly in the structure. Duration: project-dependent. Investment: from EUR 30,000.
+- **Sparring** — Alignment that grows with you. Ongoing evaluation of structural decisions in the context of the full system. A dedicated partner who knows the system and provides well-founded feedback before decisions take effect. Duration: ongoing. Investment: on request.
 
-## About
+## Expertise
 
-Philipp Höllinger is a software architect with deep expertise in system analysis, architecture design, and structural consulting. Based in Salzburg, Austria.
+Software architecture, system analysis, tool landscape assessment, organizational structure, dependency mapping, governance anchoring, standards and conventions design.
+
+## Contact
 
 - Website: https://curfee.com
-- LinkedIn: https://www.linkedin.com/in/phoellinger
 - Email: office@curfee.com
+- LinkedIn: https://www.linkedin.com/in/phoellinger
+- Location: Salzburg, Austria
 
 ## Pages
 
-- [Home](https://curfee.com/)
-- [About](https://curfee.com/about)
-- [FAQ](https://curfee.com/faq)
-- [Diagnosis](https://curfee.com/services/diagnosis)
-- [Guidance](https://curfee.com/services/guidance)
-- [Sparring](https://curfee.com/services/sparring)
+- [Home](https://curfee.com/) — Overview of services, process, and vision
+- [About](https://curfee.com/about) — Biography and professional background
+- [FAQ](https://curfee.com/faq) — Answers to common questions about engagements
+- [Diagnosis](https://curfee.com/services/diagnosis) — Service details for system diagnosis
+- [Guidance](https://curfee.com/services/guidance) — Service details for structural guidance
+- [Sparring](https://curfee.com/services/sparring) — Service details for ongoing sparring
 - [Legal Notice](https://curfee.com/imprint)
 - [Privacy Policy](https://curfee.com/privacy)
 - [Cookie Policy](https://curfee.com/cookies)
 
 ## Languages
 
-Available in German (default) and English (/en/).
+Available in German (default, curfee.com) and English (curfee.com/en/).
+
+## Extended information
+
+See [llms-full.txt](https://curfee.com/llms-full.txt) for detailed service descriptions, FAQ content, and founder biography.

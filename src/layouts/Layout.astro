@@ -61,23 +61,38 @@ const organizationLd = {
     "width": 1200,
     "height": 630
   },
+  "image": `${siteUrl}/assets/og-image.png`,
   "description": ui.meta.orgDescription,
   "founder": {
     "@type": "Person",
     "@id": `${siteUrl}/#founder`,
     "name": "Philipp Höllinger",
-    "jobTitle": ui.meta.jobTitle
+    "jobTitle": ui.meta.jobTitle,
+    "knowsAbout": ["Software Architecture", "System Analysis", "Organizational Structure"],
+    "worksFor": { "@id": `${siteUrl}/#organization` }
   },
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Salzburg",
+    "addressRegion": "Salzburg",
     "addressCountry": "AT"
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 47.8095,
+      "longitude": 13.0550
+    },
+    "geoRadius": "500 km"
   },
   "contactPoint": {
     "@type": "ContactPoint",
     "email": "office@curfee.com",
-    "contactType": "customer service"
+    "contactType": "customer service",
+    "availableLanguage": ["de", "en"]
   },
+  "knowsLanguage": ["de", "en"],
   "sameAs": ["https://www.linkedin.com/in/phoellinger"]
 };
 
@@ -107,12 +122,23 @@ const speakableLd = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Philipp Höllinger" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     {dateModified && <meta name="article:modified_time" content={dateModified} />}
 
-    <!-- Preload critical fonts -->
+    <!-- Geo Meta Tags — Local SEO (Salzburg, Austria) -->
+    <meta name="geo.region" content="AT-5" />
+    <meta name="geo.placename" content="Salzburg" />
+    <meta name="geo.position" content="47.8095;13.0550" />
+    <meta name="ICBM" content="47.8095, 13.0550" />
+
+    <!-- DNS Prefetch for third-party domains -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+    <!-- Preload critical fonts (only above-the-fold fonts) -->
     <link rel="preload" href="/assets/fonts/quicksand/quicksand_latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/google_sans/google_sans_regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/assets/fonts/google_sans/google_sans_medium.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
@@ -165,12 +191,12 @@ const speakableLd = {
   </head>
   <body>
     <div class="relative min-h-screen overflow-hidden">
-      <div class="pointer-events-none absolute -inset-32" style="filter: blur(80px);" aria-hidden="true">
+      <div class="pointer-events-none absolute -inset-32" style="filter: blur(80px); contain: strict; will-change: transform;" aria-hidden="true">
         <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/35 via-brand-tertiary/16 to-brand-secondary/20 mask-radial" />
         <div class="absolute inset-0 bg-gradient-to-tr from-brand-secondary/22 via-brand-tertiary/18 to-brand-primary/35 mask-radial-2" />
         <div class="absolute inset-0 bg-gradient-to-tl from-brand-tertiary/20 via-brand-primary/12 to-transparent mask-radial-3" />
       </div>
-      <div class="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-overlay" aria-hidden="true" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%225%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');" />
+      <div class="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-overlay" aria-hidden="true" style="background-image: url('/assets/noise.svg'); contain: strict;" />
 
       <div class="relative z-10">
         <Header
