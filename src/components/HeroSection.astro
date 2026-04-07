@@ -1,6 +1,5 @@
 ---
 import type { Translations } from '@/i18n/translations';
-import { EXTERNAL } from '@/configurations/routes';
 import logoIconRaw from '@/assets/logos/logo_icon.svg?raw';
 
 interface Props {
@@ -30,14 +29,6 @@ const { translations: t } = Astro.props;
         <span class="text-label-large text-brand-primary/70 bg-brand-primary/[0.06] px-4 py-1.5 rounded-full">{t['hero.badge.3']}</span>
       </div>
 
-      <div class="mt-10">
-        <a
-          href={EXTERNAL.email}
-          class="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary px-8 py-4 rounded-full text-label-large font-medium shadow-elevation-0 hover:shadow-elevation-1 active:shadow-elevation-0 hover:-translate-y-0.5 transition-all duration-medium2 ease-standard"
-        >
-          {t['hero.cta']}
-        </a>
-      </div>
     </div>
   </div>
 </section>
