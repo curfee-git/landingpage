@@ -41,7 +41,8 @@
 
 @layer base {
   html {
-    font-size: 100%;
+    /* Viewport scaling: 16px up to ~1728px, then proportional up to 32px at 4K */
+    font-size: clamp(16px, 0.926vw, 32px);
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;

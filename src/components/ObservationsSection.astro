@@ -31,11 +31,17 @@ const pairs = [
             </div>
             <h3 class="text-title-medium text-ink-primary">{pair.title}</h3>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-6 items-center">
-            <p class="text-body-medium text-ink-muted leading-relaxed">{pair.reality}</p>
+          <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-6 items-start">
+            <div>
+              <p class="text-label-medium font-bold text-ink-muted mb-1">{t['observations.column.left']}</p>
+              <p class="text-body-medium text-ink-muted leading-relaxed">{pair.reality}</p>
+            </div>
             <Icon name="arrow_downward" class="w-5 h-5 text-brand-primary/50 md:hidden mx-auto" />
-            <Icon name="arrow_right_alt" class="w-5 h-5 text-brand-primary/50 hidden md:block" />
-            <p class="text-body-medium text-brand-primary leading-relaxed">{pair.potential}</p>
+            <Icon name="arrow_right_alt" class="w-5 h-5 text-brand-primary/50 hidden md:block md:mt-6" />
+            <div>
+              <p class="text-label-medium font-bold text-brand-primary/70 mb-1">{t['observations.column.right']}</p>
+              <p class="text-body-medium text-brand-primary leading-relaxed">{pair.potential}</p>
+            </div>
           </div>
         </div>
       ))}
