@@ -282,7 +282,7 @@ const speakableLd = {
   </head>
   <body>
     <div class="relative min-h-screen" style="overflow: clip;">
-      <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background: linear-gradient(to bottom, rgba(0,51,102,0.10) 0%, rgba(0,51,102,0.04) 35%, rgba(0,0,0,0) 50%, rgba(123,27,56,0.02) 65%, rgba(123,27,56,0.04) 100%); contain: strict;" />
+      <div class="pointer-events-none absolute inset-0 page-gradient" aria-hidden="true" />
 
       <div class="relative z-10">
         <main>
@@ -296,3 +296,17 @@ const speakableLd = {
     <CookieBanner lang={lang} />
   </body>
 </html>
+
+<style>
+  .page-gradient {
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--brand-primary) / 0.10) 0%,
+      rgb(var(--brand-primary) / 0.04) 35%,
+      transparent 50%,
+      rgb(var(--brand-secondary) / 0.02) 65%,
+      rgb(var(--brand-secondary) / 0.04) 100%
+    );
+    contain: strict;
+  }
+</style>
