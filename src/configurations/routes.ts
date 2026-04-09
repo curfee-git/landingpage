@@ -1,11 +1,5 @@
-import { BRAND } from '@/configurations/brand';
-export const ROUTES = {
+const ROUTES = {
   home: '/',
-  about: '/about',
-  diagnosis: '/services/diagnosis',
-  guidance: '/services/guidance',
-  sparring: '/services/sparring',
-  faq: '/faq',
   imprint: '/imprint',
   privacy: '/privacy',
   cookies: '/cookies',
@@ -15,11 +9,6 @@ export function localizedRoutes(lang: 'de' | 'en') {
   if (lang === 'en') {
     return {
       home: '/en/',
-      about: '/en/about',
-      diagnosis: '/en/services/diagnosis',
-      guidance: '/en/services/guidance',
-      sparring: '/en/services/sparring',
-      faq: '/en/faq',
       imprint: '/en/imprint',
       privacy: '/en/privacy',
       cookies: '/en/cookies',
@@ -29,5 +18,5 @@ export function localizedRoutes(lang: 'de' | 'en') {
 }
 
 export const EXTERNAL = {
-  email: `mailto:${BRAND.email}`,
+  calendly: 'https://calendly.com/curfee/30min',
 } as const;

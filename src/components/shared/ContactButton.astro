@@ -1,0 +1,30 @@
+---
+import { EXTERNAL } from '@/configurations/routes';
+
+interface Props {
+  label: string;
+  variant?: 'filled' | 'outlined' | 'text';
+  class?: string;
+}
+
+const { label, variant = 'outlined', class: className = '' } = Astro.props;
+
+const baseClasses = 'inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-label-large font-medium transition-all duration-medium2 ease-standard';
+
+const variantClasses = {
+  filled: 'bg-brand-primary text-brand-onPrimary shadow-elevation-0 hover:shadow-elevation-1 active:shadow-elevation-0 hover:-translate-y-0.5',
+  outlined: 'border border-brand-primary text-brand-primary hover:bg-brand-primary/[0.08] active:bg-brand-primary/[0.12]',
+  text: 'text-brand-primary hover:bg-brand-primary/[0.08] active:bg-brand-primary/[0.12]',
+};
+---
+
+<a
+  href={EXTERNAL.calendly}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[baseClasses, variantClasses[variant], className]}
+  aria-label={label}
+>
+  {label}
+  <slot />
+</a>

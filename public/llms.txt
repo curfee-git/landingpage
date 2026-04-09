@@ -1,48 +1,59 @@
-# Curfee — Structure that lasts
+# Curfee — Systems Architecture Consulting
 
-> Software architecture consulting from Salzburg, Austria. Independent, vendor-neutral consulting for organizations that need clarity about their software systems, tool landscapes, and organizational structures.
+> Curfee is an independent systems architecture consultancy based in Salzburg, Austria, founded by Philipp Höllinger. Curfee works with companies whose system landscape has grown beyond clarity — finds the root causes and makes sure everything rests on a solid foundation again, independent of any single person, technology, or discipline.
 
-## Entity
+## Who
 
-Curfee e.U. is a one-person consultancy founded and operated by Philipp Höllinger. Philipp is a software architect based in Salzburg, Austria. He works with organizations to uncover root causes in complex systems and establish lasting structural decisions.
+Philipp Höllinger is a systems architect based in Salzburg, Austria. He spots patterns before they become visible — the kind that compound over time if left unaddressed. His background spans logistics, software engineering, and architecture across automotive, public sector, and software consulting. He founded Curfee to help companies anchor decisions in their structure so they do not depend on specific individuals, particular technologies, or sheer discipline.
 
-## Core Principle
+## What
 
-Decisions anchored in structure outlast people, technologies, and projects. Structure replaces individual discipline with systemic guarantees.
+Curfee works at the intersection of software architecture, tool landscapes, and organisational structure. The core problem Curfee solves: decisions that were made but never anchored in the system. Guidelines that only hold as long as someone is watching. Knowledge that lives in people's heads and walks out the door when they leave.
+
+Three principles guide every engagement:
+- **Root cause over symptom** — every finding traces back to a concrete point in the system.
+- **Structure over discipline** — standards are embedded in the system itself, not reliant on individual compliance.
+- **Foundation over workaround** — what is built outlasts specific projects, people, and technologies.
 
 ## Services
 
-- **Diagnosis** — Straight to the root cause. Systematic examination of software architectures, tool landscapes, and organizational structures. Delivers a concise assessment with identified root causes, impact classification, and recommended next steps. Duration: from 2 weeks. Investment: from EUR 10,000.
-- **Guidance** — From root cause to solution. Designs the structural solution and guides its implementation from start to finish. Standards, conventions, and guidelines are embedded directly in the structure. Duration: project-dependent. Investment: from EUR 30,000.
-- **Sparring** — Alignment that grows with you. Ongoing evaluation of structural decisions in the context of the full system. A dedicated partner who knows the system and provides well-founded feedback before decisions take effect. Duration: ongoing. Investment: on request.
+**Diagnosis** — Straight to the root cause. Systematic analysis of system landscapes to uncover what is actually happening and why. Deliverables: identified root causes with concrete evidence, classification by urgency and impact, recommendations for next steps, compact findings report (1–2 pages). Duration: from 2 weeks. Does not include: implementation, technology evaluation, team coaching.
 
-## Expertise
+**Guidance** — From root cause to solution. Designs the structural solution and guides implementation from start to finish. The client's team implements; Curfee ensures the direction holds. Standards, conventions, and guidelines are embedded in the system. Duration: from 3 months. Does not include: hands-on implementation, technology evaluation, post-project maintenance.
 
-Software architecture, system analysis, tool landscape assessment, organizational structure, dependency mapping, governance anchoring, standards and conventions design.
+**Sparring** — Alignment that grows with your system. Ongoing evaluation of structural decisions in the full system context. A dedicated partner who knows the system and provides grounded feedback before consequences arise. Duration: ongoing retainer. Does not include: fixed-scope project work, implementation, project management.
+
+Each service stands on its own. A typical path starts with Diagnosis, continues into Guidance, and evolves into Sparring.
+
+## For whom
+
+Decision-makers working with a system landscape that has outgrown its structure — who want clarity on dependencies, connections, and the root causes behind them. CTOs, engineering managers, team leads, and founders who need to make structural decisions but have too many areas of responsibility to maintain oversight across all of them.
+
+## How it works
+
+Curfee does not implement. It designs the solution and guides the client's team through execution. The analysis requires depth and undivided focus — no sprint logic. Most work happens remotely; on-site when the situation calls for it. Curfee is vendor-neutral and does not sell technology.
 
 ## Contact
 
 - Website: https://curfee.com
+- Booking: https://calendly.com/curfee/30min
 - Email: office@curfee.com
+- Phone: +43 677 630 242 28
 - LinkedIn: https://www.linkedin.com/in/phoellinger
 - Location: Salzburg, Austria
 
 ## Pages
 
-- [Home](https://curfee.com/) — Overview of services, process, and vision
-- [About](https://curfee.com/about) — Biography and professional background
-- [FAQ](https://curfee.com/faq) — Answers to common questions about engagements
-- [Diagnosis](https://curfee.com/services/diagnosis) — Service details for system diagnosis
-- [Guidance](https://curfee.com/services/guidance) — Service details for structural guidance
-- [Sparring](https://curfee.com/services/sparring) — Service details for ongoing sparring
-- [Legal Notice](https://curfee.com/imprint)
-- [Privacy Policy](https://curfee.com/privacy)
-- [Cookie Policy](https://curfee.com/cookies)
+- [Home (DE)](https://curfee.com/) — Single-page layout: observations, services, about, FAQ, contact
+- [Home (EN)](https://curfee.com/en/) — English version
+- [Legal Notice (DE)](https://curfee.com/imprint) | [EN](https://curfee.com/en/imprint)
+- [Privacy Policy (DE)](https://curfee.com/privacy) | [EN](https://curfee.com/en/privacy)
+- [Cookie Policy (DE)](https://curfee.com/cookies) | [EN](https://curfee.com/en/cookies)
 
 ## Languages
 
-Available in German (default, curfee.com) and English (curfee.com/en/).
+German (default) and English. Both versions have identical content and structure.
 
 ## Extended information
 
-See [llms-full.txt](https://curfee.com/llms-full.txt) for detailed service descriptions, FAQ content, and founder biography.
+See [llms-full.txt](https://curfee.com/llms-full.txt) for detailed service processes, FAQ content, founder biography, and observations.

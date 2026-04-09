@@ -1,5 +1,7 @@
 ---
 import type { Translations } from '@/i18n/translations';
+import logoIconRaw from '@/assets/logos/logo_icon.svg?raw';
+import ContactButton from '@/components/shared/ContactButton.astro';
 
 interface Props {
   translations: Translations;
@@ -7,18 +9,31 @@ interface Props {
 const { translations: t } = Astro.props;
 ---
 
-<section class="py-16 md:py-24" aria-labelledby="hero-heading">
+<section class="relative py-24 md:py-32 lg:py-40" aria-labelledby="hero-heading">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
     <div class="max-w-4xl mx-auto text-center">
+      <div class="flex justify-center mb-12">
+        <span class="h-20 md:h-28 lg:h-32 text-brand-primary [&>svg]:h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoIconRaw} />
+      </div>
+
       <h1 id="hero-heading" class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-tight tracking-tight">
         {t['hero.heading']}
       </h1>
-      <p class="text-body-large text-ink-muted mt-6">{t['hero.subtitle']}</p>
-      <div class="flex flex-wrap justify-center gap-3 mt-10">
-        <span class="text-label-large text-brand-primary bg-brand-primary/[0.08] px-4 py-2 rounded-full">{t['hero.badge.1']}</span>
-        <span class="text-label-large text-brand-primary bg-brand-primary/[0.08] px-4 py-2 rounded-full">{t['hero.badge.2']}</span>
-        <span class="text-label-large text-brand-primary bg-brand-primary/[0.08] px-4 py-2 rounded-full">{t['hero.badge.3']}</span>
+
+      <p class="text-body-large md:text-title-medium text-ink-muted mt-6 max-w-2xl mx-auto leading-relaxed">
+        {t['hero.subtitle']}
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-2 mt-10">
+        <span class="text-label-large text-brand-primary/70 bg-brand-primary/[0.06] px-4 py-1.5 rounded-full">{t['hero.badge.1']}</span>
+        <span class="text-label-large text-brand-primary/70 bg-brand-primary/[0.06] px-4 py-1.5 rounded-full">{t['hero.badge.2']}</span>
+        <span class="text-label-large text-brand-primary/70 bg-brand-primary/[0.06] px-4 py-1.5 rounded-full">{t['hero.badge.3']}</span>
       </div>
+
+      <div class="mt-10">
+        <ContactButton label={t['hero.cta']} variant="filled" />
+      </div>
+
     </div>
   </div>
 </section>
