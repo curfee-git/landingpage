@@ -247,29 +247,6 @@
     font-weight: 500;
   }
 
-  /* M3 Disabled States — container 12% on-surface, content 38% on-surface */
-  .state-disabled {
-    pointer-events: none;
-  }
-  .state-disabled-container {
-    background-color: rgb(var(--ink-primary) / 0.12);
-  }
-  .state-disabled-content {
-    color: rgb(var(--ink-primary) / 0.38);
-  }
-
-}
-
-/* M3 Animation — Slide Down */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    max-height: 0;
-  }
-  to {
-    opacity: 1;
-    max-height: 20rem;
-  }
 }
 
 /* View Transitions — allow clicks to pass through the transition overlay */

@@ -12,7 +12,7 @@ import { getTranslations } from '@/i18n/translations';
 const lang = 'de' as const;
 const t = getTranslations(lang);
 
-const jsonLd = {
+const webSiteLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Curfee",
@@ -20,8 +20,119 @@ const jsonLd = {
   "description": t['meta.home.jsonld.description'],
   "inLanguage": "de",
   "availableLanguage": ["de", "en"],
-  "publisher": { "@id": "https://curfee.com/#organization" }
+  "publisher": { "@id": "https://curfee.com/#organization" },
+  "about": { "@id": "https://curfee.com/#organization" },
+  "mainEntity": { "@id": "https://curfee.com/#organization" }
 };
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://curfee.com/"
+    }
+  ]
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": t['faq.1.question'], "acceptedAnswer": { "@type": "Answer", "text": t['faq.1.answer'] } },
+    { "@type": "Question", "name": t['faq.2.question'], "acceptedAnswer": { "@type": "Answer", "text": t['faq.2.answer'] } },
+    { "@type": "Question", "name": t['faq.3.question'], "acceptedAnswer": { "@type": "Answer", "text": t['faq.3.answer'] } },
+    { "@type": "Question", "name": t['faq.4.question'], "acceptedAnswer": { "@type": "Answer", "text": t['faq.4.answer'] } },
+    { "@type": "Question", "name": t['faq.5.question'], "acceptedAnswer": { "@type": "Answer", "text": t['faq.5.answer'] } },
+    { "@type": "Question", "name": t['faq.6.question'], "acceptedAnswer": { "@type": "Answer", "text": t['faq.6.answer'] } },
+  ]
+};
+
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://curfee.com/#services",
+  "name": "Systems Architecture Consulting",
+  "provider": { "@id": "https://curfee.com/#organization" },
+  "serviceType": "Systems Architecture Consulting",
+  "category": "IT Consulting",
+  "areaServed": [
+    { "@type": "Country", "name": "Austria" },
+    { "@type": "Country", "name": "Germany" },
+    { "@type": "Country", "name": "Switzerland" }
+  ],
+  "serviceOutput": "Structural analysis, root cause identification, architectural standards, governance frameworks, implementation guidance",
+  "termsOfService": "https://curfee.com/privacy",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": t['services.heading'],
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://curfee.com/#diagnosis",
+          "name": t['services.diagnosis.title'],
+          "description": t['services.diagnosis.problem'],
+          "slogan": t['services.diagnosis.subtitle'],
+          "provider": { "@id": "https://curfee.com/#organization" },
+          "serviceType": "System Diagnosis",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "10000",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "10000",
+              "priceCurrency": "EUR",
+              "unitText": "starting price"
+            }
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://curfee.com/#guidance",
+          "name": t['services.guidance.title'],
+          "description": t['services.guidance.problem'],
+          "slogan": t['services.guidance.subtitle'],
+          "provider": { "@id": "https://curfee.com/#organization" },
+          "serviceType": "Architecture Guidance",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "EUR",
+            "price": "30000",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "30000",
+              "priceCurrency": "EUR",
+              "unitText": "starting price"
+            }
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://curfee.com/#sparring",
+          "name": t['services.sparring.title'],
+          "description": t['services.sparring.problem'],
+          "slogan": t['services.sparring.subtitle'],
+          "provider": { "@id": "https://curfee.com/#organization" },
+          "serviceType": "Architecture Sparring"
+        }
+      },
+    ]
+  }
+};
+
+const jsonLd = [webSiteLd, breadcrumbLd, faqLd, serviceLd];
 ---
 
 <Layout

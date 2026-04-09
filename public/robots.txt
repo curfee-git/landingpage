@@ -33,6 +33,12 @@ Disallow: /
 User-agent: Timpibot
 Disallow: /
 
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: img2dataset
+Disallow: /
+
 # Allow AI retrieval crawlers (enable citation in AI search results)
 User-agent: ChatGPT-User
 Allow: /
@@ -71,6 +77,12 @@ User-agent: Applebot
 Allow: /
 
 User-agent: cohere-ai
+Allow: /
+
+User-agent: PhindBot
+Allow: /
+
+User-agent: Meta-ExternalFetcher
 Allow: /
 
 Sitemap: https://curfee.com/sitemap-index.xml

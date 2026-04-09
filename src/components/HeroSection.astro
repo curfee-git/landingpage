@@ -13,7 +13,7 @@ const { translations: t } = Astro.props;
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
     <div class="max-w-4xl mx-auto text-center">
       <div class="flex justify-center mb-12">
-        <span class="h-20 md:h-28 lg:h-32 text-brand-primary [&>svg]:h-full [&>svg]:w-auto" set:html={logoIconRaw} />
+        <span class="h-20 md:h-28 lg:h-32 text-brand-primary [&>svg]:h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoIconRaw} />
       </div>
 
       <h1 id="hero-heading" class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-tight tracking-tight">

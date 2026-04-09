@@ -33,15 +33,68 @@ const siteUrl = 'https://curfee.com';
 const canonicalUrl = `${siteUrl}${canonicalPath}`;
 const ogImage = `${siteUrl}/assets/og-image.png`;
 const alternate = getAlternateUrl(Astro.url, siteUrl);
-const ogLocale = lang === 'de' ? 'de_DE' : 'en_US';
-const ogLocaleAlt = lang === 'de' ? 'en_US' : 'de_DE';
+const ogLocale = lang === 'de' ? 'de_AT' : 'en_US';
+const ogLocaleAlt = lang === 'de' ? 'en_US' : 'de_AT';
+const htmlLang = lang === 'de' ? 'de-AT' : 'en';
+
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${siteUrl}/#founder`,
+  "name": "Philipp Höllinger",
+  "givenName": "Philipp",
+  "familyName": "Höllinger",
+  "jobTitle": t['meta.about.jobTitle'],
+  "description": lang === 'de'
+    ? "Systemarchitekt in Salzburg, Österreich. Gründer von Curfee. Beratung für Systemarchitektur, Root-Cause-Analyse und strukturelle Verankerung von Entscheidungen in Systemlandschaften."
+    : "Systems architect based in Salzburg, Austria. Founder of Curfee. Consulting for systems architecture, root cause analysis, and structural anchoring of decisions in system landscapes.",
+  "url": siteUrl,
+  "image": `${siteUrl}/assets/profile.webp`,
+  "sameAs": ["https://www.linkedin.com/in/phoellinger"],
+  "nationality": { "@type": "Country", "name": "Austria" },
+  "knowsAbout": [
+    "Systems Architecture",
+    "Software Architecture",
+    "System Analysis",
+    "IT Consulting",
+    "Organizational Structure",
+    "Root Cause Analysis",
+    "Dependency Mapping",
+    "Governance Anchoring",
+    "Standards and Conventions Design",
+    "Tool Landscape Assessment",
+    "Enterprise Architecture",
+    "Technical Debt Management",
+    "Architecture Decision Records"
+  ],
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": lang === 'de' ? "Systemarchitekt" : "Systems Architect",
+    "occupationLocation": {
+      "@type": "City",
+      "name": "Salzburg"
+    },
+    "occupationalCategory": "15-1299.00",
+    "skills": "Systems architecture, root cause analysis, dependency mapping, governance anchoring, standards design"
+  },
+  "knowsLanguage": ["de", "en"],
+  "worksFor": { "@id": `${siteUrl}/#organization` },
+  "memberOf": { "@id": `${siteUrl}/#organization` },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Salzburg",
+    "addressRegion": "Salzburg",
+    "addressCountry": "AT"
+  }
+};
 
 const organizationLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
   "@id": `${siteUrl}/#organization`,
   "name": "Curfee",
   "legalName": "Curfee e.U.",
+  "alternateName": "Curfee e.U. — Systems Architecture Consulting",
   "url": siteUrl,
   "logo": {
     "@type": "ImageObject",
@@ -51,36 +104,79 @@ const organizationLd = {
   },
   "image": `${siteUrl}/assets/og-image.png`,
   "description": t['meta.home.jsonld.description'],
-  "founder": {
-    "@type": "Person",
-    "@id": `${siteUrl}/#founder`,
-    "name": "Philipp Höllinger",
-    "jobTitle": t['meta.about.jobTitle'],
-    "knowsAbout": ["Software Architecture", "System Analysis", "Organizational Structure"],
-    "worksFor": { "@id": `${siteUrl}/#organization` }
+  "slogan": lang === 'de'
+    ? "Entscheidungen in der Struktur verankern – unabhängig von Personen, Technologien und Disziplin."
+    : "Anchoring decisions in structure — independent of people, technologies, and discipline.",
+  "founder": { "@id": `${siteUrl}/#founder` },
+  "employee": { "@id": `${siteUrl}/#founder` },
+  "numberOfEmployees": { "@type": "QuantitativeValue", "value": 1 },
+  "foundingDate": "2025",
+  "foundingLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Salzburg",
+      "addressCountry": "AT"
+    }
   },
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Lieferinger Hauptstraße 49A",
+    "postalCode": "5020",
     "addressLocality": "Salzburg",
     "addressRegion": "Salzburg",
     "addressCountry": "AT"
   },
-  "areaServed": {
-    "@type": "GeoCircle",
-    "geoMidpoint": {
-      "@type": "GeoCoordinates",
-      "latitude": 47.8095,
-      "longitude": 13.0550
-    },
-    "geoRadius": "500 km"
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 47.8095,
+    "longitude": 13.0550
   },
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "Austria"
+    },
+    {
+      "@type": "Country",
+      "name": "Germany"
+    },
+    {
+      "@type": "Country",
+      "name": "Switzerland"
+    },
+    {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 47.8095,
+        "longitude": 13.0550
+      },
+      "geoRadius": "500 km"
+    }
+  ],
   "contactPoint": {
     "@type": "ContactPoint",
     "email": "office@curfee.com",
+    "telephone": "+4367763024228",
     "contactType": "customer service",
     "availableLanguage": ["de", "en"]
   },
   "knowsLanguage": ["de", "en"],
+  "priceRange": "$$",
+  "vatID": "ATU83146203",
+  "keywords": [
+    "systems architecture consulting",
+    "software architecture",
+    "root cause analysis",
+    "system landscape assessment",
+    "dependency mapping",
+    "governance anchoring",
+    "structural consulting",
+    "IT consulting Austria",
+    "Systemarchitektur Beratung",
+    "Systemarchitekt Salzburg"
+  ],
   "sameAs": ["https://www.linkedin.com/in/phoellinger"]
 };
 
@@ -97,7 +193,7 @@ const speakableLd = {
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -127,6 +223,10 @@ const speakableLd = {
     <!-- Preload critical fonts (only above-the-fold fonts) -->
     <link rel="preload" href="/assets/fonts/google_sans/google_sans_regular.woff2" as="font" type="font/woff2" crossorigin />
 
+    <!-- LLM context files -->
+    <link rel="help" type="text/plain" href={`${siteUrl}/llms.txt`} title="LLM context" />
+    <link rel="help" type="text/plain" href={`${siteUrl}/llms-full.txt`} title="LLM full context" />
+
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
 
@@ -146,12 +246,14 @@ const speakableLd = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t['meta.og.image.alt']} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={t['meta.og.image.alt']} />
 
     <!-- Favicons -->
     <link rel="icon" href="/assets/favicons/favicon.ico" sizes="48x48" />
@@ -163,7 +265,8 @@ const speakableLd = {
     <meta name="theme-color" content="#003366" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)" />
 
-    <!-- Structured Data — Sitewide Organization + Speakable -->
+    <!-- Structured Data — Sitewide Person + Organization + Speakable -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personLd)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(speakableLd)} />
     <!-- Structured Data — Page-specific -->
