@@ -398,16 +398,10 @@ const speakableLd = {
     <ClientRouter />
   </head>
   <body>
-    <div class="relative min-h-screen" style="overflow: clip;">
-      <div class="pointer-events-none absolute inset-0 page-gradient" aria-hidden="true" />
-
-      <div class="relative z-10">
-        <main>
-          <slot />
-        </main>
-        <Footer lang={lang} />
-      </div>
-    </div>
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
 
     <ScrollToTop />
     <CookieBanner lang={lang} />
@@ -418,17 +412,3 @@ const speakableLd = {
     </script>
   </body>
 </html>
-
-<style>
-  .page-gradient {
-    background: linear-gradient(
-      to bottom,
-      rgb(var(--brand-primary) / 0.10) 0%,
-      rgb(var(--brand-primary) / 0.04) 35%,
-      transparent 50%,
-      rgb(var(--brand-secondary) / 0.02) 65%,
-      rgb(var(--brand-secondary) / 0.04) 100%
-    );
-    contain: strict;
-  }
-</style>

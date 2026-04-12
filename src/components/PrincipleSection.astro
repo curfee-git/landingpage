@@ -43,7 +43,7 @@ const facets = [
 
     <div class="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
       {facets.map((facet, i) => (
-        <article class="rounded-lg border border-stroke-outlineVariant bg-surface-raised p-6 md:p-8 flex flex-col">
+        <article class="rounded-lg bg-surface-base shadow-elevation-1 p-6 md:p-8 flex flex-col">
           <span class="text-label-medium text-brand-primary/60 tracking-wider">{String(i + 1).padStart(2, '0')}</span>
           <h3 class="text-title-large text-ink-primary mt-2 mb-4">{facet.name}</h3>
           <p data-speakable class="text-body-large text-ink-primary leading-relaxed mb-4">{facet.statement}</p>

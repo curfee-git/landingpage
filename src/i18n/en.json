@@ -187,7 +187,7 @@
   "about.who.4": "After studying computer science, I moved into software engineering and then into architecture — automotive, public sector, software consulting. Architecture was the natural next step. I always wanted the bigger picture because it shapes the details, and the details because they decide whether the picture holds. That's when something clicked: the reliability that's second nature in logistics is exactly what software needs most — and exactly what I set out to bring to the systems I work with.",
   "about.who.5": "The more tools, processes, and people interlock, the more it matters that the system automatically enforces the decisions. In practice, it's the opposite. Structure emerges organically, not by design — because automated checks, tool configurations, infrastructure as code, and policy as code are rarely thought about from day one. A dedicated role that keeps the overview and anchors IT governance in the system is rarely planned. So committed people step in and take it on alongside their core work — with genuine care, but without the foundation to make it last.",
   "about.who.6": "That's why I founded Curfee — to help companies make their decisions stick by design, so they hold up on their own even when nobody's watching.",
-  "observations.column.left": "Reality",
+  "observations.column.left": "Status Quo",
   "observations.column.right": "Potential",
   "observations.1.potential": "People and teams who hit the ground running — because the system guides them from day one.",
   "observations.2.potential": "People and teams moving faster — because the system carries the coordination they used to do by hand.",

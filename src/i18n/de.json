@@ -187,7 +187,7 @@
   "about.who.4": "Nach dem Informatikstudium ging es in die Softwareentwicklung und dann in die Architektur – von der Automobilindustrie über den öffentlichen Sektor bis zum Software-Consulting. Die Architektur war der logische Schritt. Ich wollte immer das große Ganze sehen, weil es die kleinen Dinge bestimmt – Top-down und Bottom-up gleichzeitig. Dabei wurde mir etwas klar, das mich seither begleitet: Die Verlässlichkeit, die in der Logistik selbstverständlich war, ist in der digitalen Welt das größte ungenutzte Potenzial. Und genau das will ich in Systeme bringen.",
   "about.who.5": "Je mehr Tools, Prozesse und Personen ineinandergreifen, desto wichtiger wird, dass das System die Entscheidungen automatisch durchsetzt. In der Praxis läuft es umgekehrt. Struktur entsteht organisch, nicht geplant – weil automatisierte Checks, Tool-Konfigurationen, Infrastructure as Code und Policy as Code von Anfang an selten mitgedacht werden. Eine eigene Rolle, die den Überblick behält und IT-Governance im System verankert, ist kaum vorgesehen. Stattdessen springen engagierte Personen ein und übernehmen das nebenbei – mit viel Einsatz, aber ohne die Basis, auf der ihre Arbeit tragen könnte.",
   "about.who.6": "Dafür habe ich Curfee gegründet – um Unternehmen dabei zu begleiten, Entscheidungen so abzusichern, dass sie automatisch greifen, ohne dass jemand nachhalten muss.",
-  "observations.column.left": "Realität",
+  "observations.column.left": "Status Quo",
   "observations.column.right": "Potenzial",
   "observations.1.potential": "Personen und Teams, die vom ersten Tag an produktiv sind – weil das System ihnen von Anfang an Feedback gibt.",
   "observations.2.potential": "Personen und Teams, die schneller vorankommen – weil das System Absprachen ersetzt.",

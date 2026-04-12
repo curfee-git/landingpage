@@ -73,7 +73,7 @@
     --surface-base: 252 251 249;
     --surface-dim: 222 219 214;
     --surface-bright: 252 251 249;
-    --surface-soft: 246 244 240;
+    --surface-soft: 253 251 245;
     --surface-raised: 255 255 255;
     --surface-variant: 232 228 222;
     --surface-container-lowest: 255 255 255;
@@ -151,7 +151,7 @@
   }
 
   body {
-    @apply bg-surface-base text-ink-primary font-body antialiased;
+    @apply bg-surface-soft text-ink-primary font-body antialiased;
     text-rendering: geometricPrecision;
     font-synthesis: none;
     overflow-anchor: none;
