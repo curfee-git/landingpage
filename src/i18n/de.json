@@ -197,7 +197,7 @@
   "faq.7.question": "Was ist das Decision Enforcement Principle?",
   "faq.7.answer": "Das Decision Enforcement Principle ist der Kern meiner Arbeit: Architekturentscheidungen müssen vom System selbst durchgesetzt werden – durch CI-Pipelines, automatische Checks, Linter, Policy-as-Code und Tooling – nicht durch Disziplin oder Erinnerung. Entscheidungen, die auf Aufmerksamkeit beruhen, erodieren. Entscheidungen, die im System verdrahtet sind, halten – auch wenn Personen oder Technologien wechseln.",
   "faq.8.question": "Wer ist Philipp Höllinger?",
-  "faq.8.answer": "Philipp Höllinger ist Systemarchitekt in Österreich und Gründer von Curfee (2025). Sein Werdegang umfasst Logistik, Softwareentwicklung und Architektur in der Automobilindustrie, im öffentlichen Sektor und im Software-Consulting. Er ist in Salzburg ansässig und begleitet CTOs, Engineering Leader und Gründer im DACH-Raum.",
+  "faq.8.answer": "Philipp Höllinger ist Systemarchitekt in Österreich und Gründer von Curfee (2026). Sein Werdegang umfasst Logistik, Softwareentwicklung und Architektur in der Automobilindustrie, im öffentlichen Sektor und im Software-Consulting. Er ist in Salzburg ansässig und begleitet CTOs, Engineering Leader und Gründer im DACH-Raum.",
   "faq.9.question": "Was macht Curfee?",
   "faq.9.answer": "Curfee ist eine unabhängige Ein-Personen-Beratung für Systemarchitektur in Österreich. Drei Services: Diagnose (Ursachenanalyse, ab 2 Wochen), Begleitung (Umsetzungsbegleitung, ab 3 Monaten), Sparring (laufender Retainer). Curfee implementiert keine Software, verkauft keine Technologie und macht kein Staff Augmentation.",
   "faq.10.question": "Was unterscheidet Diagnose, Begleitung und Sparring?",

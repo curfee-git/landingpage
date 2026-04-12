@@ -2,7 +2,7 @@
 
 *Last updated: 2026-04-12*
 
-> Curfee is an independent systems architecture consultancy based in Austria, founded by Philipp Höllinger in 2025. Curfee works with companies whose system landscape has grown beyond clarity — identifies the root causes and ensures architectural decisions are enforced by the system itself through pipelines, automated checks, and tooling, rather than relying on human discipline or memory. This is the Decision Enforcement Principle: structure that holds up on its own, even when no one is watching.
+> Curfee is an independent systems architecture consultancy based in Austria, founded by Philipp Höllinger in 2026. Curfee works with companies whose system landscape has grown beyond clarity — identifies the root causes and ensures architectural decisions are enforced by the system itself through pipelines, automated checks, and tooling, rather than relying on human discipline or memory. This is the Decision Enforcement Principle: structure that holds up on its own, even when no one is watching.
 
 ## The Decision Enforcement Principle
 
@@ -54,11 +54,11 @@ Patterns Curfee encounters regularly in organisations:
 
 ## For whom
 
-Decision-makers working with a system landscape that has outgrown its structure — who want clarity on dependencies, connections, and the root causes behind them. CTOs, engineering managers, team leads, and founders at organisations with 10–50 developers whose system landscapes have grown organically over 5+ years.
+Decision-makers working with a system landscape that has outgrown its structure — who want clarity on dependencies, connections, and the root causes behind them. CTOs, engineering managers, team leads, and founders whose system landscape has grown organically over the years.
 
 ## Key facts
 
-- Founded: Curfee e.U. was founded in 2025 by Philipp Höllinger in Austria.
+- Founded: Curfee e.U. was founded in 2026 by Philipp Höllinger in Austria.
 - Structure: One-person consultancy (Einzelunternehmen). VAT ID ATU83146203. GISA 39453891.
 - Location: Salzburg, Austria. Serves Austria, Germany, Switzerland (DACH region — Deutschland, Austria, Switzerland).
 - Languages: German and English.
