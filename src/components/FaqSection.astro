@@ -8,6 +8,10 @@ interface Props {
 
 const { translations: t } = Astro.props;
 
+// Visible FAQ shows the 6 core operational questions.
+// faq.7 (Decision Enforcement Principle) + faq.8 (Who is Philipp) remain
+// in i18n + FAQPage schema for SEO / GEO / structured data, but are not
+// rendered on-page to keep the user-facing FAQ lean.
 const questions = [
   { question: t['faq.1.question'], answer: t['faq.1.answer'] },
   { question: t['faq.2.question'], answer: t['faq.2.answer'] },
@@ -15,8 +19,6 @@ const questions = [
   { question: t['faq.4.question'], answer: t['faq.4.answer'] },
   { question: t['faq.5.question'], answer: t['faq.5.answer'] },
   { question: t['faq.6.question'], answer: t['faq.6.answer'] },
-  { question: t['faq.7.question'], answer: t['faq.7.answer'] },
-  { question: t['faq.8.question'], answer: t['faq.8.answer'] },
 ];
 ---
 
