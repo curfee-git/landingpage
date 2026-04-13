@@ -285,7 +285,11 @@ const speakableLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Philipp Höllinger" />
+    <meta name="publisher" content="Curfee e.U." />
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    <meta name="googlebot" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    <meta name="bingbot" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    <meta name="format-detection" content="telephone=no" />
     {dateModified && <meta property="article:modified_time" content={dateModified} />}
 
     <!-- Geo Meta Tags — Local SEO (Salzburg, Austria) -->
@@ -299,7 +303,8 @@ const speakableLd = {
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
     <!-- Preload critical fonts (only above-the-fold fonts) -->
-    <link rel="preload" href="/assets/fonts/google_sans/google_sans_regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/inter/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/inter-tight/inter-tight-variable.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- LLM context files -->
     <link rel="help" type="text/plain" href={`${siteUrl}/llms.txt`} title="LLM context" />
@@ -322,6 +327,8 @@ const speakableLd = {
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:locale:alternate" content={ogLocaleAlt} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={t['meta.og.image.alt']} />

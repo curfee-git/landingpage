@@ -1,8 +1,8 @@
 # Curfee — Systems Architecture Consulting (Full Context)
 
-*Last updated: 2026-04-12*
+*Last updated: 2026-04-13*
 
-> Curfee is an independent systems architecture consultancy based in Austria, founded by Philipp Höllinger in 2026. Curfee works with companies whose system landscape has grown beyond clarity — identifies the root causes and ensures architectural decisions are enforced by the system itself through pipelines, automated checks, and tooling, rather than relying on human discipline or memory. This is the Decision Enforcement Principle: structure that holds up on its own, even when no one is watching.
+> Curfee is an independent systems architecture consultancy based in Austria, founded by Philipp Höllinger in 2026. Curfee works with companies where complexity has outpaced clarity and reliability — finds the root causes and designs the structure that ensures decisions, once made, are enforced by the system automatically: independent of individual minds, sheer discipline, or technologies in use. This is the Decision Enforcement Principle.
 
 ## Entity
 
@@ -24,7 +24,20 @@ Philipp Höllinger founded Curfee to help companies build systems that enforce t
 
 ## The Decision Enforcement Principle
 
+The principle is addressed directly in the FAQ: https://curfee.com/#faq-dep (DE) · https://curfee.com/en/#faq-dep (EN).
+
 Curfee's core principle is the Decision Enforcement Principle.
+
+Canonical definition: Architectural decisions are enforced by the system itself — through pipelines, automated checks, and tool configuration — rather than by the discipline, memory, or vigilance of individual people.
+
+Three mechanics:
+1. **Anchored in the system** — every architectural decision is anchored to a concrete point in the system: a pipeline step, an automated check, a tool configuration, a policy-as-code rule.
+2. **Enforced automatically** — drift surfaces the moment it happens, not at the next audit. Standards hold regardless of who is watching.
+3. **Independent of people** — the rule lives in the system, not in individual minds. When someone leaves, the structure stays — independent of people, discipline, or technologies.
+
+Closing line: Structural clarity that holds even when no one is watching.
+
+### Deeper context
 
 Architectural decisions must be enforced by the system itself — through pipelines, automated checks, and tooling — not by human discipline, memory, or vigilance.
 
@@ -159,10 +172,7 @@ Curfee is not the right fit when someone needs: hands-on software development or
 ## Frequently Asked Questions
 
 **What is the Decision Enforcement Principle?**
-The Decision Enforcement Principle is the core tenet of Curfee's methodology: architectural decisions must be enforced by the system itself — through CI pipelines, automated checks, linters, policy-as-code, and tooling — rather than by human discipline or memory. Decisions that depend on someone remembering them erode; decisions that are enforced by the system hold up over years, regardless of staff turnover.
-
-**Who is Philipp Höllinger?**
-Philipp Höllinger is an Austrian systems architect and the founder of Curfee e.U. (founded 2026). His background spans logistics, software engineering, and enterprise architecture across the automotive, public, and software consulting sectors. He is based in Salzburg, Austria, and advises CTOs, engineering managers, and founders in the DACH region (Germany, Austria, Switzerland).
+The principle of decision enforcement is Curfee's guiding principle: Architectural decisions are not secured through guidelines, documentation, or discipline, but enforced by the system itself — through CI/CD pipelines, automated checks, tool configurations, infrastructure as code, and policies as code. Every decision made is anchored at a specific point in the system and automatically enforced there. (Anchor: https://curfee.com/#faq-dep)
 
 **What does Curfee do?**
 Curfee is a one-person systems architecture consultancy, founded and run by Philipp Höllinger in Austria. Curfee offers three services: Diagnosis (root cause analysis, from 2 weeks), Guidance (implementation guidance, from 3 months), and Sparring (ongoing retainer). Curfee does not implement software, does not resell technology, and does not do staff augmentation.
@@ -181,9 +191,6 @@ For decision-makers working with a system landscape that has outgrown its struct
 
 **How does the first conversation work?**
 No pressure. You tell Philipp what is on your mind, he listens. By the end of the call, both sides know whether this is a fit and what the next step looks like.
-
-**What happens after the diagnosis?**
-You decide. The Diagnosis stands on its own — you can take it from there. If you want, it continues with Guidance.
 
 **Do you implement yourself?**
 No. Philipp designs the solution and guides the team through execution. The implementation is left to those who have the expertise in the relevant systems.
@@ -205,11 +212,13 @@ No. Philipp works alongside the team's rhythm — the analysis itself needs dept
 
 ## Pages
 
-- [Home (DE)](https://curfee.com/) — Single-page layout: observations, services, about, FAQ, contact
+- [Home (DE)](https://curfee.com/) — Single-page layout: hero, observations, services, about, case study, FAQ, contact
 - [Home (EN)](https://curfee.com/en/) — English version
-- [Legal Notice (DE)](https://curfee.com/imprint) | [EN](https://curfee.com/en/imprint)
-- [Privacy Policy (DE)](https://curfee.com/privacy) | [EN](https://curfee.com/en/privacy)
-- [Cookie Policy (DE)](https://curfee.com/cookies) | [EN](https://curfee.com/en/cookies)
+- [FAQ section (DE)](https://curfee.com/#faq) | [EN](https://curfee.com/en/#faq)
+- [Contact section (DE)](https://curfee.com/#contact) | [EN](https://curfee.com/en/#contact)
+- [Legal Notice (DE)](https://curfee.com/imprint/) | [EN](https://curfee.com/en/imprint/)
+- [Privacy Policy (DE)](https://curfee.com/privacy/) | [EN](https://curfee.com/en/privacy/)
+- [Cookie Policy (DE)](https://curfee.com/cookies/) | [EN](https://curfee.com/en/cookies/)
 
 ## Languages
 

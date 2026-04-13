@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Google Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
-        body: ['"Google Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ['"Inter Tight"', "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ['"Inter"', "ui-sans-serif", "system-ui", "sans-serif"],
       },
       colors: {
         brand: {

@@ -1,38 +1,35 @@
-/* Google Sans — Body & Headings (400, 500, 600, 700) */
+/* Inter Tight — Display (variable, 100–900) */
 @font-face {
-  font-family: "Google Sans";
-  src: url("/assets/fonts/google_sans/google_sans_regular.woff2") format("woff2");
-  font-weight: 400;
+  font-family: "Inter Tight";
+  src: url("/assets/fonts/inter-tight/inter-tight-variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0100-024F, U+0250-02AF, U+1E00-1EFF, U+2000-206F, U+20A0-20CF;
 }
 
 @font-face {
-  font-family: "Google Sans";
-  src: url("/assets/fonts/google_sans/google_sans_medium.woff2") format("woff2");
-  font-weight: 500;
+  font-family: "Inter Tight";
+  src: url("/assets/fonts/inter-tight/inter-tight-variable-italic.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Inter — Body (variable, 100–900) */
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter/inter-variable.woff2") format("woff2-variations");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0100-024F, U+0250-02AF, U+1E00-1EFF, U+2000-206F, U+20A0-20CF;
 }
 
 @font-face {
-  font-family: "Google Sans";
-  src: url("/assets/fonts/google_sans/google_sans_semibold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
+  font-family: "Inter";
+  src: url("/assets/fonts/inter/inter-variable-italic.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: italic;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0100-024F, U+0250-02AF, U+1E00-1EFF, U+2000-206F, U+20A0-20CF;
-}
-
-@font-face {
-  font-family: "Google Sans";
-  src: url("/assets/fonts/google_sans/google_sans_bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0100-024F, U+0250-02AF, U+1E00-1EFF, U+2000-206F, U+20A0-20CF;
 }
 
 @tailwind base;
@@ -159,39 +156,39 @@
 }
 
 @layer utilities {
-  /* M3 Type Scale — Display (Google Sans) */
+  /* M3 Type Scale — Display (Inter Tight) */
   .text-display-large {
-    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
     font-size: 3.5625rem;
     line-height: 4rem;
-    letter-spacing: -0.015625rem;
-    font-weight: 700;
+    letter-spacing: -0.03125rem;
+    font-weight: 600;
   }
   .text-display-medium {
-    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
     font-size: 2.8125rem;
     line-height: 3.25rem;
-    letter-spacing: 0;
-    font-weight: 700;
+    letter-spacing: -0.025rem;
+    font-weight: 600;
   }
   .text-display-small {
-    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
     font-size: 2.25rem;
     line-height: 2.75rem;
-    letter-spacing: 0;
-    font-weight: 700;
+    letter-spacing: -0.015625rem;
+    font-weight: 600;
   }
 
-  /* M3 Type Scale — Headline (Google Sans) */
+  /* M3 Type Scale — Headline (Inter) */
   .text-headline-large {
-    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
     font-size: 2rem;
     line-height: 2.5rem;
     letter-spacing: 0;
     font-weight: 600;
   }
   .text-headline-small {
-    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
     font-size: 1.5rem;
     line-height: 2rem;
     letter-spacing: 0;
@@ -200,7 +197,7 @@
 
   /* M3 Type Scale — Title */
   .text-title-large {
-    font-family: "Google Sans", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
     font-size: 1.375rem;
     line-height: 1.75rem;
     letter-spacing: 0;

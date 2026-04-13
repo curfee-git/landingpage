@@ -12,11 +12,11 @@ const hasAnyContent = hasHeading || hasSubtitle || hasPlaceholder;
 ---
 
 {hasAnyContent && (
-  <section id="casestudy" class="py-20 md:py-28" aria-labelledby="casestudy-heading">
+  <section id="casestudy" class="py-32 md:py-48" aria-labelledby="casestudy-heading">
     <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
       <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
         {hasHeading && (
-          <h2 id="casestudy-heading" class="text-headline-large md:text-display-small text-ink-primary mb-2">
+          <h2 id="casestudy-heading" class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">
             {t['casestudy.heading']}
           </h2>
         )}

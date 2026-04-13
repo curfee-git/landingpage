@@ -16,11 +16,15 @@ export function getAlternateUrl(url: URL, siteUrl: string): { en: string; de: st
     basePath = pathname;
   }
 
-  const normalizedBase = basePath === '/' ? '/' : basePath.replace(/\/$/, '');
+  // Normalize DE path to always end with a trailing slash so canonical +
+  // hreflang match the served URLs (GitHub Pages serves directories with
+  // trailing slashes, and the generated sitemap uses trailing slashes too).
+  const normalizedBase =
+    basePath === '/' ? '/' : basePath.replace(/\/?$/, '/');
   const enPath = normalizedBase === '/' ? '/en/' : `/en${normalizedBase}`;
 
   return {
-    de: `${siteUrl}${normalizedBase === '/' ? '/' : normalizedBase}`,
+    de: `${siteUrl}${normalizedBase}`,
     en: `${siteUrl}${enPath}`,
   };
 }

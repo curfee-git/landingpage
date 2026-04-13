@@ -30,24 +30,24 @@ if (lang === 'en') {
 }
 ---
 
-<footer class="pt-12 pb-10" style="padding-bottom: max(2.5rem, env(safe-area-inset-bottom, 2.5rem));" role="contentinfo">
+<footer class="pt-24 md:pt-32 pb-12" style="padding-bottom: max(3rem, env(safe-area-inset-bottom, 3rem));" role="contentinfo">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
 
-    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-10 md:gap-16 mb-10">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-10 md:gap-20 mb-16">
 
-      <!-- Left: Logo + Tagline -->
-      <div>
+      <!-- Left: Logo + Tagline (link to home) -->
+      <a href={routes.home} class="block no-underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/40 rounded-sm" aria-label={t['back.home']}>
         <div class="mb-4">
           <span class="block h-7 text-brand-primary [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
         </div>
         <p class="text-body-medium text-ink-muted/60 max-w-xs leading-relaxed italic">{t['footer.tagline']}</p>
-      </div>
+      </a>
 
       <!-- Right columns: Legal + Contact (side by side on mobile too) -->
       <div class="col-span-1 md:contents grid grid-cols-2 gap-10">
         <div>
           <p class="text-label-large text-ink-primary mb-4">{t['footer.column.legal']}</p>
-          <nav class="flex flex-col gap-2" aria-label="Legal navigation">
+          <nav class="flex flex-col gap-3" aria-label="Legal navigation">
             <a href={routes.imprint} class={linkClass}>{t['footer.legal.notice']}</a>
             <a href={routes.privacy} class={linkClass}>{t['footer.legal.privacy']}</a>
             <a href={routes.cookies} class={linkClass}>{t['footer.legal.cookies']}</a>
@@ -56,7 +56,7 @@ if (lang === 'en') {
 
         <div>
           <p class="text-label-large text-ink-primary mb-4">{t['footer.column.contact']}</p>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-3">
             <a href={`mailto:${t['contact.email']}`} class={linkClass}>{t['contact.email']}</a>
             <a href={`tel:${t['contact.phone'].replace(/\s/g, '')}`} class={linkClass}>{t['contact.phone']}</a>
             <a href={BRAND.linkedin} target="_blank" rel="noopener noreferrer" class={`flex items-center gap-2 ${linkClass}`}>

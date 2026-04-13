@@ -1,5 +1,4 @@
 ---
-import Icon from '@/components/shared/Icon.astro';
 import { localizedRoutes } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 import type { Lang } from '@/configurations/i18n';
@@ -16,22 +15,17 @@ const routes = localizedRoutes(lang);
 <div
   data-cookie-banner
   transition:persist
-  class="fixed bottom-0 left-0 right-0 z-40 bg-surface-raised border-t border-stroke-outlineVariant shadow-elevation-1 px-6 py-3 transition-all duration-medium2 ease-standard opacity-0 translate-y-4 pointer-events-none"
+  class="fixed bottom-0 left-0 right-0 z-40 px-4 pb-4 md:pb-6 flex justify-center transition-all duration-medium2 ease-standard opacity-0 translate-y-4 pointer-events-none"
   role="dialog"
   aria-label="Cookie consent"
   aria-live="polite"
 >
-  <div class="max-w-7xl mx-auto flex items-center gap-4 flex-wrap justify-between">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-full bg-brand-primary/[0.08] flex items-center justify-center flex-shrink-0">
-        <Icon name="cookie" class="w-4 h-4 text-brand-primary" />
-      </div>
-      <p class="text-body-medium text-ink-primary">
-        {t['consent.message']}
-        <a href={routes.cookies} class="text-brand-primary hover:underline transition-colors duration-short4 ease-standard ml-1">{t['consent.learnmore']}</a>
-      </p>
-    </div>
-    <div class="flex items-center gap-3">
+  <div class="w-full md:w-auto md:max-w-2xl bg-surface-raised shadow-elevation-3 rounded-2xl px-5 py-4 md:px-6 md:py-5 flex items-center gap-4 flex-wrap md:flex-nowrap justify-between">
+    <p class="text-body-medium text-ink-primary flex-1 min-w-0">
+      {t['consent.message']}
+      <a href={routes.cookies} class="text-brand-primary hover:underline transition-colors duration-short4 ease-standard ml-1">{t['consent.learnmore']}</a>
+    </p>
+    <div class="flex items-center gap-2 flex-shrink-0">
       <button type="button" data-consent="decline" class="px-4 py-2 rounded-full text-label-large text-ink-primary hover:bg-ink-primary/[0.08] active:bg-ink-primary/[0.12] disabled:text-ink-primary/[0.38] disabled:pointer-events-none transition-all duration-short4 ease-standard">
         {t['consent.decline']}
       </button>

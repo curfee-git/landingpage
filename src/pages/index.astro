@@ -1,10 +1,11 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import HeroSection from '@/components/HeroSection.astro';
+import HeroSection from '@/components/TestHeroSection.astro';
 import ObservationsSection from '@/components/ObservationsSection.astro';
-import ServicesSection from '@/components/ServicesSection.astro';
+import ServicesSection from '@/components/TestServicesSection.astro';
 import CaseStudySection from '@/components/CaseStudySection.astro';
 import AboutSection from '@/components/AboutSection.astro';
+// import CaseStudySection from '@/components/CaseStudySection.astro'; // disabled — component kept for future
 import FaqSection from '@/components/FaqSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
 import { getTranslations } from '@/i18n/translations';
@@ -31,7 +32,18 @@ const webSiteLd = {
   }
 };
 
-const faqQuestions = [1, 2, 3, 4, 5, 6, 8] as const;
+const faqEntries = [
+  {
+    id: "https://curfee.com/#faq-dep",
+    name: t['faq.dep.question'],
+    text: t['faq.dep.answer'],
+  },
+  ...([1, 2, 4, 5, 6] as const).map((n) => ({
+    id: `https://curfee.com/#faq-${n}`,
+    name: t[`faq.${n}.question` as keyof typeof t],
+    text: t[`faq.${n}.answer` as keyof typeof t],
+  })),
+];
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -40,16 +52,16 @@ const faqLd = {
   "about": { "@id": "https://curfee.com/#organization" },
   "author": { "@id": "https://curfee.com/#founder" },
   "publisher": { "@id": "https://curfee.com/#organization" },
-  "dateModified": "2026-04-12",
-  "mainEntity": faqQuestions.map((n) => ({
+  "dateModified": "2026-04-13",
+  "mainEntity": faqEntries.map((q) => ({
     "@type": "Question",
-    "@id": `https://curfee.com/#faq-${n}`,
-    "name": t[`faq.${n}.question` as keyof typeof t],
+    "@id": q.id,
+    "name": q.name,
     "author": { "@id": "https://curfee.com/#founder" },
     "acceptedAnswer": {
       "@type": "Answer",
       "author": { "@id": "https://curfee.com/#founder" },
-      "text": t[`faq.${n}.answer` as keyof typeof t]
+      "text": q.text
     }
   }))
 };
@@ -165,13 +177,12 @@ const jsonLd = [webSiteLd, faqLd, serviceLd, aboutPageLd];
   canonicalPath="/"
   jsonLd={jsonLd}
   lang={lang}
-  dateModified="2026-04-12"
+  dateModified="2026-04-13"
 >
   <HeroSection translations={t} />
   <ObservationsSection translations={t} />
   <ServicesSection translations={t} />
   <AboutSection translations={t} />
-  <CaseStudySection translations={t} />
   <FaqSection translations={t} />
   <ContactSection translations={t} />
 </Layout>

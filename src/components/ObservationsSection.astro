@@ -17,10 +17,10 @@ const pairs = [
 ];
 ---
 
-<section id="observations" class="py-20 md:py-28" style="background: linear-gradient(to bottom, rgb(var(--brand-secondary) / 0) 0%, rgb(var(--brand-secondary) / 0.10) 15%, rgb(var(--brand-secondary) / 0.10) 80%, rgb(var(--brand-secondary) / 0.05) 92%, rgb(var(--brand-secondary) / 0) 100%);" aria-labelledby="observations-heading">
+<section id="observations" class="py-32 md:py-48" style="background: linear-gradient(to bottom, rgb(var(--brand-secondary) / 0) 0%, rgb(var(--brand-secondary) / 0.10) 15%, rgb(var(--brand-secondary) / 0.10) 80%, rgb(var(--brand-secondary) / 0.05) 92%, rgb(var(--brand-secondary) / 0) 100%);" aria-labelledby="observations-heading">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
     <div class="max-w-4xl mx-auto">
-    <h2 id="observations-heading" class="text-headline-large md:text-display-small text-ink-primary mb-2">
+    <h2 id="observations-heading" class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">
       <span class="grid">
         <span data-speakable class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard" data-observations-heading="reality">{t['observations.heading.status_quo']}</span>
         <span class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-heading="potential" aria-hidden="true">{t['observations.heading.potential']}</span>
@@ -57,7 +57,7 @@ const pairs = [
         <li class="rounded-lg bg-surface-base shadow-elevation-1 px-4 py-3 md:px-5 md:py-4 flex items-start gap-3">
           <Icon name={pair.icon} class="w-5 h-5 text-brand-secondary flex-shrink-0 mt-[3px] md:mt-1" />
           <div class="flex-1 min-w-0">
-            <h3 class="text-title-medium text-ink-primary mb-1">{pair.title}</h3>
+            <h3 class="text-[1.125rem] leading-7 font-semibold text-ink-primary mb-1">{pair.title}</h3>
             <div class="grid">
               <p class="col-start-1 row-start-1 text-body-medium text-ink-muted leading-relaxed transition-opacity duration-medium2 ease-standard" data-observations-text="reality">{pair.reality}</p>
               <p class="col-start-1 row-start-1 text-body-medium text-brand-secondary leading-relaxed transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-text="potential" aria-hidden="true">{pair.potential}</p>
