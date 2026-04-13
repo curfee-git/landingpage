@@ -60,7 +60,7 @@
     --brand-secondary-container: 255 218 225;
     --on-brand-secondary-container: 65 5 25;
 
-    --brand-tertiary: 120 105 72;
+    --brand-tertiary: 90 78 48;
     --on-brand-tertiary: 255 255 255;
     --brand-tertiary-container: 240 232 212;
     --on-brand-tertiary-container: 48 38 15;
@@ -73,7 +73,7 @@
     --surface-base: 252 251 249;
     --surface-dim: 222 219 214;
     --surface-bright: 252 251 249;
-    --surface-soft: 253 251 245;
+    --surface-soft: 255 255 255;
     --surface-raised: 255 255 255;
     --surface-variant: 232 228 222;
     --surface-container-lowest: 255 255 255;

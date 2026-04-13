@@ -17,10 +17,11 @@ const pairs = [
 ];
 ---
 
-<section id="observations" class="py-20 md:py-24" aria-labelledby="observations-heading">
-  <div class="max-w-4xl mx-auto px-6 md:px-12">
+<section id="observations" class="py-20 md:py-28 bg-brand-secondary/[0.04]" aria-labelledby="observations-heading">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+    <div class="max-w-4xl mx-auto">
     <h2 id="observations-heading" data-speakable class="text-headline-large md:text-display-small text-ink-primary mb-2">{t['observations.heading']}</h2>
-    <p class="text-title-medium text-brand-primary/70 font-medium mb-8">{t['observations.subtitle']}</p>
+    <p class="text-title-medium text-brand-secondary/70 font-medium mb-8">{t['observations.subtitle']}</p>
 
     <div role="radiogroup" aria-label={t['observations.heading']} class="inline-flex items-center gap-1 p-1 rounded-full bg-surface-base shadow-elevation-1 mb-6" data-observations-toggle-group>
       <button
@@ -37,7 +38,7 @@ const pairs = [
         role="radio"
         aria-checked="false"
         data-view="potential"
-        class="px-5 py-2 rounded-full text-label-large text-ink-muted hover:text-ink-primary transition-all duration-medium2 ease-standard"
+        class="px-5 py-2 rounded-full text-label-large text-ink-onSurfaceVariant hover:text-ink-primary transition-all duration-medium2 ease-standard"
       >
         {t['observations.column.right']}
       </button>
@@ -45,18 +46,19 @@ const pairs = [
 
     <ol class="space-y-2" data-observations-toggle-list>
       {pairs.map((pair) => (
-        <li class="rounded-lg bg-surface-base shadow-elevation-1 px-4 py-3 md:px-5 md:py-4 flex items-start gap-3 md:gap-4">
-          <div class="w-9 h-9 rounded-full bg-brand-primary/[0.12] flex items-center justify-center flex-shrink-0 mt-0.5">
-            <Icon name={pair.icon} class="w-4 h-4 text-brand-primary" />
-          </div>
+        <li class="rounded-lg bg-surface-base shadow-elevation-1 px-4 py-3 md:px-5 md:py-4 flex items-start gap-3">
+          <Icon name={pair.icon} class="w-5 h-5 text-brand-secondary flex-shrink-0 mt-[3px] md:mt-1" />
           <div class="flex-1 min-w-0">
             <h3 class="text-title-medium text-ink-primary mb-1">{pair.title}</h3>
-            <p class="text-body-medium text-ink-muted leading-relaxed transition-opacity duration-medium2 ease-standard" data-observations-text="reality">{pair.reality}</p>
-            <p class="text-body-medium text-brand-primary leading-relaxed transition-opacity duration-medium2 ease-standard" data-observations-text="potential" hidden>{pair.potential}</p>
+            <div class="grid">
+              <p class="col-start-1 row-start-1 text-body-medium text-ink-muted leading-relaxed transition-opacity duration-medium2 ease-standard" data-observations-text="reality">{pair.reality}</p>
+              <p class="col-start-1 row-start-1 text-body-medium text-brand-secondary leading-relaxed transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-text="potential" aria-hidden="true">{pair.potential}</p>
+            </div>
           </div>
         </li>
       ))}
     </ol>
+    </div>
   </div>
 </section>
 
@@ -68,6 +70,17 @@ const pairs = [
     const buttons = toggleGroup.querySelectorAll<HTMLButtonElement>('[data-view]');
     const realityTexts = document.querySelectorAll<HTMLElement>('[data-observations-text="reality"]');
     const potentialTexts = document.querySelectorAll<HTMLElement>('[data-observations-text="potential"]');
+    const cards = document.querySelectorAll<HTMLElement>('[data-observations-toggle-list] > li');
+
+    // Equalize all cards to the tallest one so the whole list has uniform row height
+    const equalize = () => {
+      cards.forEach((c) => { c.style.minHeight = ''; });
+      let max = 0;
+      cards.forEach((c) => { max = Math.max(max, c.offsetHeight); });
+      cards.forEach((c) => { c.style.minHeight = max + 'px'; });
+    };
+    equalize();
+    window.addEventListener('resize', equalize);
 
     buttons.forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -78,14 +91,19 @@ const pairs = [
           b.setAttribute('aria-checked', String(active));
           if (active) {
             b.classList.add('bg-ink-primary/[0.08]', 'text-ink-primary');
-            b.classList.remove('text-ink-muted');
+            b.classList.remove('text-ink-onSurfaceVariant');
           } else {
             b.classList.remove('bg-ink-primary/[0.08]', 'text-ink-primary');
-            b.classList.add('text-ink-muted');
+            b.classList.add('text-ink-onSurfaceVariant');
           }
         });
-        realityTexts.forEach((p) => (p.hidden = !showReality));
-        potentialTexts.forEach((p) => (p.hidden = showReality));
+        const toggleText = (p: HTMLElement, visible: boolean) => {
+          p.classList.toggle('opacity-0', !visible);
+          p.classList.toggle('pointer-events-none', !visible);
+          p.setAttribute('aria-hidden', String(!visible));
+        };
+        realityTexts.forEach((p) => toggleText(p, showReality));
+        potentialTexts.forEach((p) => toggleText(p, !showReality));
       });
     });
   }

@@ -37,6 +37,7 @@ interface ServiceCard {
   colorDot: string;
   colorHoverBg: string;
   colorActiveBg: string;
+  cta: string;
 }
 
 const services: ServiceCard[] = [
@@ -81,6 +82,7 @@ const services: ServiceCard[] = [
     colorDot: 'bg-brand-primary',
     colorHoverBg: 'hover:bg-brand-primary/[0.08]',
     colorActiveBg: 'active:bg-brand-primary/[0.12]',
+    cta: t['services.diagnosis.cta'],
   },
   {
     key: 'guidance',
@@ -129,6 +131,7 @@ const services: ServiceCard[] = [
     colorDot: 'bg-brand-secondary',
     colorHoverBg: 'hover:bg-brand-secondary/[0.08]',
     colorActiveBg: 'active:bg-brand-secondary/[0.12]',
+    cta: t['services.guidance.cta'],
   },
   {
     key: 'sparring',
@@ -171,11 +174,12 @@ const services: ServiceCard[] = [
     colorDot: 'bg-brand-tertiary',
     colorHoverBg: 'hover:bg-brand-tertiary/[0.08]',
     colorActiveBg: 'active:bg-brand-tertiary/[0.12]',
+    cta: t['services.sparring.cta'],
   },
 ];
 ---
 
-<section id="services" class="py-20 md:py-24" aria-labelledby="services-heading">
+<section id="services" class="py-20 md:py-28" aria-labelledby="services-heading">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
     <div class="text-center mb-12 md:mb-16">
       <h2 id="services-heading" data-speakable class="text-headline-large md:text-display-small text-ink-primary mb-2">
@@ -212,9 +216,12 @@ const services: ServiceCard[] = [
               </div>
               <p class:list={["text-body-medium", service.colorText]}>{service.subtitle}</p>
             </div>
+            <span class="w-9 h-9 rounded-full bg-ink-primary/[0.04] flex items-center justify-center flex-shrink-0 mt-1 toggle-icon text-ink-muted transition-transform duration-medium2 ease-standard" aria-hidden="true">
+              <Icon name="expand_less" class="w-5 h-5" />
+            </span>
           </div>
 
-          <p class="px-6 pt-2 pb-5 md:px-8 text-body-medium text-ink-muted italic flex-1">
+          <p class="px-6 pt-2 pb-5 md:px-8 text-body-medium text-ink-muted flex-1">
             {service.problem}
           </p>
 
@@ -308,9 +315,9 @@ const services: ServiceCard[] = [
                   target="_blank"
                   rel="noopener noreferrer"
                   class:list={["inline-flex items-center gap-1.5 text-title-medium rounded-full px-4 py-2 transition-all duration-short4 ease-standard", service.colorText, service.colorHoverBg, service.colorActiveBg]}
-                  aria-label={`${t['hero.cta']} – ${service.title}`}
+                  aria-label={`${service.cta} – ${service.title}`}
                 >
-                  {t['hero.cta']}
+                  {service.cta}
                   <Icon name="arrow_outward" class="w-4 h-4" />
                 </a>
                 {(service.key === 'sparring' ? t['services.cta.note.sparring'] : t['services.cta.note']) && (
@@ -336,6 +343,14 @@ const services: ServiceCard[] = [
 
   .card.open .card-body {
     max-height: 2400px;
+  }
+
+  .card .toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  .card.open .toggle-icon {
+    transform: rotate(0deg);
   }
 
 </style>

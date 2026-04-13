@@ -2,7 +2,6 @@
 import Layout from '@/layouts/Layout.astro';
 import HeroSection from '@/components/HeroSection.astro';
 import ObservationsSection from '@/components/ObservationsSection.astro';
-import PrincipleSection from '@/components/PrincipleSection.astro';
 import ServicesSection from '@/components/ServicesSection.astro';
 import CaseStudySection from '@/components/CaseStudySection.astro';
 import AboutSection from '@/components/AboutSection.astro';
@@ -32,7 +31,7 @@ const webSiteLd = {
   }
 };
 
-const faqQuestions = [1, 2, 3, 4, 5, 6, 7, 8] as const;
+const faqQuestions = [1, 2, 3, 4, 5, 6, 8] as const;
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -170,7 +169,6 @@ const jsonLd = [webSiteLd, faqLd, serviceLd, aboutPageLd];
 >
   <HeroSection translations={t} />
   <ObservationsSection translations={t} />
-  <PrincipleSection translations={t} />
   <ServicesSection translations={t} />
   <AboutSection translations={t} />
   <CaseStudySection translations={t} />
