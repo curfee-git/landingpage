@@ -8,12 +8,12 @@ interface Props {
 const { translations: t } = Astro.props;
 
 const pairs = [
-  { icon: 'swap_horiz', title: t['observations.6.title'], reality: t['observations.6.reality'], potential: t['observations.6.potential'] },
-  { icon: 'check_circle', title: t['observations.3.title'], reality: t['observations.3.reality'], potential: t['observations.3.potential'] },
-  { icon: 'construction', title: t['observations.4.title'], reality: t['observations.4.reality'], potential: t['observations.4.potential'] },
-  { icon: 'person_add', title: t['observations.1.title'], reality: t['observations.1.reality'], potential: t['observations.1.potential'] },
-  { icon: 'group_work', title: t['observations.2.title'], reality: t['observations.2.reality'], potential: t['observations.2.potential'] },
-  { icon: 'psychology', title: t['observations.5.title'], reality: t['observations.5.reality'], potential: t['observations.5.potential'] },
+  { icon: 'account_tree', title: t['observations.6.title'], titlePositive: t['observations.6.title.positive'], reality: t['observations.6.reality'], potential: t['observations.6.potential'] },
+  { icon: 'visibility', title: t['observations.3.title'], titlePositive: t['observations.3.title.positive'], reality: t['observations.3.reality'], potential: t['observations.3.potential'] },
+  { icon: 'layers', title: t['observations.4.title'], titlePositive: t['observations.4.title.positive'], reality: t['observations.4.reality'], potential: t['observations.4.potential'] },
+  { icon: 'blur_on', title: t['observations.1.title'], titlePositive: t['observations.1.title.positive'], reality: t['observations.1.reality'], potential: t['observations.1.potential'] },
+  { icon: 'compare_arrows', title: t['observations.2.title'], titlePositive: t['observations.2.title.positive'], reality: t['observations.2.reality'], potential: t['observations.2.potential'] },
+  { icon: 'person', title: t['observations.5.title'], titlePositive: t['observations.5.title.positive'], reality: t['observations.5.reality'], potential: t['observations.5.potential'] },
 ];
 ---
 
@@ -57,7 +57,12 @@ const pairs = [
         <li class="rounded-lg bg-surface-base shadow-elevation-1 px-4 py-3 md:px-5 md:py-4 flex items-start gap-3">
           <Icon name={pair.icon} class="w-5 h-5 text-brand-secondary flex-shrink-0 mt-[3px] md:mt-1" />
           <div class="flex-1 min-w-0">
-            <h3 class="text-[1.125rem] leading-7 font-semibold text-ink-primary mb-1">{pair.title}</h3>
+            <h3 class="text-[1.125rem] leading-7 font-semibold text-ink-primary mb-1">
+              <span class="grid">
+                <span class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard" data-observations-card-title="reality">{pair.title}</span>
+                <span class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-card-title="potential" aria-hidden="true">{pair.titlePositive}</span>
+              </span>
+            </h3>
             <div class="grid">
               <p class="col-start-1 row-start-1 text-body-medium text-ink-muted leading-relaxed transition-opacity duration-medium2 ease-standard" data-observations-text="reality">{pair.reality}</p>
               <p class="col-start-1 row-start-1 text-body-medium text-brand-secondary leading-relaxed transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-text="potential" aria-hidden="true">{pair.potential}</p>
@@ -82,6 +87,8 @@ const pairs = [
     const potentialSubtitles = document.querySelectorAll<HTMLElement>('[data-observations-subtitle="potential"]');
     const realityHeadings = document.querySelectorAll<HTMLElement>('[data-observations-heading="reality"]');
     const potentialHeadings = document.querySelectorAll<HTMLElement>('[data-observations-heading="potential"]');
+    const realityCardTitles = document.querySelectorAll<HTMLElement>('[data-observations-card-title="reality"]');
+    const potentialCardTitles = document.querySelectorAll<HTMLElement>('[data-observations-card-title="potential"]');
     const cards = document.querySelectorAll<HTMLElement>('[data-observations-toggle-list] > li');
 
     // Equalize all cards to the tallest one so the whole list has uniform row height
@@ -120,6 +127,8 @@ const pairs = [
         potentialSubtitles.forEach((p) => toggleText(p, !showReality));
         realityHeadings.forEach((p) => toggleText(p, showReality));
         potentialHeadings.forEach((p) => toggleText(p, !showReality));
+        realityCardTitles.forEach((p) => toggleText(p, showReality));
+        potentialCardTitles.forEach((p) => toggleText(p, !showReality));
       });
     });
   }

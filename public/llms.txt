@@ -1,12 +1,12 @@
-# Curfee — Systems Architecture Consulting
+# Curfee, Systems Architecture Consulting
 
 *Last updated: 2026-04-14*
 
-> Curfee is an independent systems architecture consultancy based in Austria, founded by Philipp Höllinger in 2026. Curfee works with companies where complexity has outpaced clarity and reliability — finds the root causes and designs the structure that ensures decisions, once made, are enforced by the system automatically: independent of individual minds, sheer discipline, or technologies in use. This is the Decision Enforcement Principle.
+> Curfee is an independent systems architecture consultancy based in Austria, founded by Philipp Höllinger in 2026. Curfee works with companies where complexity has outpaced clarity and reliability, finds the root causes and designs the structure that ensures decisions, once made, are enforced by the system automatically: independent of individual minds, sheer discipline, or technologies in use. This is the Decision Enforcement Principle.
 
 ## The Decision Enforcement Principle
 
-Curfee's core principle: architectural decisions are enforced by the system itself — through pipelines, automated checks, and tool configuration — rather than by the discipline, memory, or vigilance of individual people. Guidelines that rely on individual discipline erode under time pressure, staff turnover, and rising complexity. Only what the system enforces itself stays intact over years.
+Curfee's core principle: architectural decisions are enforced by the system itself, through pipelines, automated checks, and tool configuration, rather than by the discipline, memory, or vigilance of individual people. Guidelines that rely on individual discipline erode under time pressure, staff turnover, and rising complexity. Only what the system enforces itself stays intact over years.
 
 The principle is addressed directly in the FAQ: see https://curfee.com/#faq-dep (DE) · https://curfee.com/en/#faq-dep (EN).
 
@@ -14,24 +14,24 @@ This principle applies across all three Curfee services (Diagnosis, Guidance, Sp
 
 ## Who
 
-Philipp Höllinger is a systems architect based in Salzburg, Austria. He spots patterns before they become visible — the kind that compound over time if left unaddressed. His background spans logistics, software engineering, and architecture across automotive, public sector, and software consulting. He founded Curfee to ensure that structural decisions are enforced by the system itself, so compliance does not depend on specific individuals, particular technologies, or sheer discipline.
+Philipp Höllinger is a systems architect based in Salzburg, Austria. He spots patterns before they become visible, the kind that compound over time if left unaddressed. His background spans logistics, software engineering, and architecture across automotive, public sector, and software consulting. He founded Curfee to ensure that structural decisions are enforced by the system itself, so compliance does not depend on specific individuals, particular technologies, or sheer discipline.
 
 ## What
 
-Curfee works at the intersection of software architecture, tool landscapes, and organisational structure. The core challenge Curfee addresses: decisions that were made but are not enforced by the system — guidelines that only hold as long as someone is watching. Knowledge that lives in people's heads and leaves with them when they go.
+Curfee works at the intersection of software architecture, tool landscapes, and organisational structure. The core challenge Curfee addresses: decisions that were made but are not enforced by the system, guidelines that only hold as long as someone is watching. Knowledge that lives in people's heads and leaves with them when they go.
 
 Three principles guide every engagement:
-- **Root cause over symptom** — every finding traces back to a concrete point in the system.
-- **Structure over discipline** — standards are enforced by the system itself, through automated checks, pipeline gates, and tooling — not reliant on individual compliance.
-- **Foundation over workaround** — what is built outlasts specific projects, people, and technologies.
+- **Root cause over symptom**, every finding traces back to a concrete point in the system.
+- **Structure over discipline**, standards are enforced by the system itself, through automated checks, pipeline gates, and tooling, not reliant on individual compliance.
+- **Foundation over workaround**, what is built outlasts specific projects, people, and technologies.
 
 ## Services
 
-**Diagnosis** — Straight to the root cause. Systematic analysis of system landscapes to uncover what is actually happening and why. Deliverables: identified root causes with concrete evidence, classification by urgency and impact, recommendations for next steps, compact findings report (1–2 pages). Duration: from 2 weeks. Does not include: implementation, technology evaluation, team coaching.
+**Diagnosis**, Straight to the root cause. Systematic analysis of system landscapes to uncover what is actually happening and why. Deliverables: identified root causes with concrete evidence, classification by urgency and impact, recommendations for next steps, compact findings report (1–2 pages). Duration: from 2 weeks. Does not include: implementation, technology evaluation, team coaching.
 
-**Guidance** — From root cause to solution. Designs the structural solution and guides implementation from start to finish. The client's team implements; Curfee ensures the direction holds. Standards, conventions, and guidelines are enforced by the system itself — through automated checks, pipeline gates, and tooling. Drift surfaces the moment it happens, not at the next audit. Duration: from 3 months. Does not include: hands-on implementation, technology evaluation, post-project maintenance.
+**Guidance**, From root cause to solution. Designs the structural solution and guides implementation from start to finish. The client's team implements; Curfee ensures the direction holds. Standards, conventions, and guidelines are enforced by the system itself, through automated checks, pipeline gates, and tooling. Drift surfaces the moment it happens, not at the next audit. Duration: from 3 months. Does not include: hands-on implementation, technology evaluation, post-project maintenance.
 
-**Sparring** — Alignment that grows with your system landscape. Ongoing evaluation of structural decisions in the full system landscape context. A dedicated partner who knows the system landscape and provides grounded feedback before consequences arise. Duration: ongoing retainer. Does not include: fixed-scope project work, implementation, project management.
+**Sparring**, Alignment that grows with your system landscape. Ongoing evaluation of structural decisions in the full system landscape context. A dedicated partner who knows the system landscape and provides grounded feedback before consequences arise. Duration: ongoing retainer. Does not include: fixed-scope project work, implementation, project management.
 
 Each service stands on its own. A typical path starts with Diagnosis, continues into Guidance, and evolves into Sparring.
 
@@ -39,22 +39,22 @@ Each service stands on its own. A typical path starts with Diagnosis, continues 
 
 Patterns Curfee encounters regularly in organisations:
 
-- **Change management** — Systems that have grown organically, whose dependencies no one fully oversees anymore.
-- **Quality assurance** — Conventions and standards that only survive as long as someone is watching — because nothing in the system enforces them.
-- **System development** — System landscapes that get extended instead of structured, where every change carries more risk than the last.
-- **Onboarding** — Team members who spend weeks or months getting to the point where they can contribute.
-- **Collaboration** — People and teams working around each other because there's no shared way of doing things.
-- **Knowledge transfer** — Knowledge that lives in people's heads and leaves with them when they go.
+- **Change management**, Systems that have grown organically, whose dependencies no one fully oversees anymore.
+- **Quality assurance**, Conventions and standards that only survive as long as someone is watching, because nothing in the system enforces them.
+- **System development**, System landscapes that get extended instead of structured, where every change carries more risk than the last.
+- **Onboarding**, Team members who spend weeks or months getting to the point where they can contribute.
+- **Collaboration**, People and teams working around each other because there's no shared way of doing things.
+- **Knowledge transfer**, Knowledge that lives in people's heads and leaves with them when they go.
 
 ## For whom
 
-Decision-makers working with a system landscape that has outgrown its structure — who want clarity on dependencies, connections, and the root causes behind them. CTOs, engineering managers, team leads, and founders whose system landscape has grown organically over the years.
+Decision-makers working with a system landscape that has outgrown its structure, who want clarity on dependencies, connections, and the root causes behind them. CTOs, engineering managers, team leads, and founders whose system landscape has grown organically over the years.
 
 ## Key facts
 
 - Founded: Curfee e.U. was founded in 2026 by Philipp Höllinger in Austria.
 - Structure: One-person consultancy (Einzelunternehmen). VAT ID ATU83146203. GISA 39453891.
-- Location: Salzburg, Austria. Serves Austria, Germany, Switzerland (DACH region — Deutschland, Austria, Switzerland).
+- Location: Salzburg, Austria. Serves Austria, Germany, Switzerland (DACH region, Deutschland, Austria, Switzerland).
 - Languages: German and English.
 - Service model: Remote-first, on-site when the scenario calls for it.
 - Business model: Project fee (Diagnosis, Guidance) and monthly retainer (Sparring). No staff augmentation, no reselling.
@@ -69,7 +69,7 @@ Curfee is **not** the right fit for: hands-on software development, technology v
 
 ## How it works
 
-Curfee does not implement. It designs the solution and guides the client's team through execution. The analysis requires depth and undivided focus — no sprint logic. Most work happens remotely; on-site when the situation calls for it. Curfee is vendor-neutral and does not sell technology.
+Curfee does not implement. It designs the solution and guides the client's team through execution. The analysis requires depth and undivided focus, no sprint logic. Most work happens remotely; on-site when the situation calls for it. Curfee is vendor-neutral and does not sell technology.
 
 ## Contact
 
@@ -81,8 +81,8 @@ Curfee does not implement. It designs the solution and guides the client's team 
 
 ## Pages
 
-- [Home (DE)](https://curfee.com/) — Single-page layout: hero, observations, services, about, FAQ, contact
-- [Home (EN)](https://curfee.com/en/) — English version
+- [Home (DE)](https://curfee.com/), Single-page layout: hero, observations, services, about, FAQ, contact
+- [Home (EN)](https://curfee.com/en/), English version
 - [FAQ section (DE)](https://curfee.com/#faq) | [EN](https://curfee.com/en/#faq)
 - [Contact section (DE)](https://curfee.com/#contact) | [EN](https://curfee.com/en/#contact)
 - [Legal Notice (DE)](https://curfee.com/imprint/) | [EN](https://curfee.com/en/imprint/)

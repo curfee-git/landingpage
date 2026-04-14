@@ -9,7 +9,7 @@ interface Props {
 const { translations: t } = Astro.props;
 
 const questions = [
-  { question: t['faq.dep.question'], answer: t['faq.dep.answer'] },
+  { question: t['faq.patterns.question'], answer: t['faq.patterns.answer'] },
   { question: t['faq.decisions.question'], answer: t['faq.decisions.answer'] },
   { question: t['faq.1.question'], answer: t['faq.1.answer'] },
   { question: t['faq.2.question'], answer: t['faq.2.answer'] },
@@ -17,6 +17,9 @@ const questions = [
   { question: t['faq.5.question'], answer: t['faq.5.answer'] },
   { question: t['faq.6.question'], answer: t['faq.6.answer'] },
 ];
+
+const answerProseClass = "text-body-large text-ink-muted leading-relaxed [&_p]:mb-4 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_ul]:mb-4 [&_ul:last-child]:mb-0 [&_li]:leading-relaxed [&_strong]:text-ink-primary [&_strong]:font-semibold";
+const answerProseClassMobile = "text-body-medium text-ink-muted leading-relaxed pb-6 [&_p]:mb-3 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ul]:mb-3 [&_ul:last-child]:mb-0 [&_li]:leading-relaxed [&_strong]:text-ink-primary [&_strong]:font-semibold";
 ---
 
 <section id="faq" class="py-32 md:py-48" aria-labelledby="faq-heading">
@@ -44,7 +47,7 @@ const questions = [
       </div>
       <div data-faq-answer class="rounded-lg bg-surface-base shadow-elevation-1 p-8 min-h-[200px] max-h-[75vh] overflow-y-auto">
         <h3 class="text-title-large text-ink-primary mb-4" data-faq-answer-title>{questions[0].question}</h3>
-        <p data-speakable class="text-body-large text-ink-muted leading-relaxed" data-faq-answer-text>{questions[0].answer}</p>
+        <div data-speakable class={answerProseClass} data-faq-answer-text set:html={questions[0].answer} />
       </div>
     </div>
 
@@ -59,7 +62,7 @@ const questions = [
             </span>
           </summary>
           <div class="faq-content">
-            <p class="text-body-medium text-ink-muted leading-relaxed pb-6" {...(i === 0 ? { 'data-speakable': true } : {})}>{q.answer}</p>
+            <div class={answerProseClassMobile} {...(i === 0 ? { 'data-speakable': true } : {})} set:html={q.answer} />
           </div>
         </details>
       ))}
@@ -73,7 +76,7 @@ const questions = [
     grid-template-rows: 0fr;
     transition: grid-template-rows 150ms cubic-bezier(0.2, 0, 0, 1);
   }
-  .faq-content > p {
+  .faq-content > div {
     overflow: hidden;
   }
   .faq-details[open] > .faq-content {
@@ -85,7 +88,7 @@ const questions = [
   function initFaqSection() {
     const questions = document.querySelectorAll('[data-faq-select]');
     const title = document.querySelector('[data-faq-answer-title]');
-    const text = document.querySelector('[data-faq-answer-text]');
+    const text = document.querySelector<HTMLElement>('[data-faq-answer-text]');
     if (questions.length && title && text) {
       const data: { q: string; a: string }[] = [];
       questions.forEach(btn => {
@@ -95,14 +98,14 @@ const questions = [
       });
       const mobileDetails = document.querySelectorAll('.faq-details');
       mobileDetails.forEach((d, i) => {
-        const p = d.querySelector('.faq-content p');
-        if (p && data[i]) data[i].a = p.textContent?.trim() ?? '';
+        const content = d.querySelector<HTMLElement>('.faq-content > div');
+        if (content && data[i]) data[i].a = content.innerHTML?.trim() ?? '';
       });
       questions.forEach(btn => {
         btn.addEventListener('click', () => {
           const i = Number(btn.getAttribute('data-faq-select'));
           title.textContent = data[i].q;
-          text.textContent = data[i].a;
+          text.innerHTML = data[i].a;
           questions.forEach(b => {
             b.className = 'w-full text-left px-4 py-3 rounded-md text-body-large transition-all duration-short4 ease-standard cursor-pointer text-ink-muted hover:text-ink-primary hover:bg-ink-primary/[0.08]';
           });
