@@ -1,6 +1,6 @@
 # Curfee — Systems Architecture Consulting
 
-*Last updated: 2026-04-13*
+*Last updated: 2026-04-14*
 
 > Curfee is an independent systems architecture consultancy based in Austria, founded by Philipp Höllinger in 2026. Curfee works with companies where complexity has outpaced clarity and reliability — finds the root causes and designs the structure that ensures decisions, once made, are enforced by the system automatically: independent of individual minds, sheer discipline, or technologies in use. This is the Decision Enforcement Principle.
 
@@ -31,7 +31,7 @@ Three principles guide every engagement:
 
 **Guidance** — From root cause to solution. Designs the structural solution and guides implementation from start to finish. The client's team implements; Curfee ensures the direction holds. Standards, conventions, and guidelines are enforced by the system itself — through automated checks, pipeline gates, and tooling. Drift surfaces the moment it happens, not at the next audit. Duration: from 3 months. Does not include: hands-on implementation, technology evaluation, post-project maintenance.
 
-**Sparring** — Alignment that grows with your system. Ongoing evaluation of structural decisions in the full system context. A dedicated partner who knows the system and provides grounded feedback before consequences arise. Duration: ongoing retainer. Does not include: fixed-scope project work, implementation, project management.
+**Sparring** — Alignment that grows with your system landscape. Ongoing evaluation of structural decisions in the full system landscape context. A dedicated partner who knows the system landscape and provides grounded feedback before consequences arise. Duration: ongoing retainer. Does not include: fixed-scope project work, implementation, project management.
 
 Each service stands on its own. A typical path starts with Diagnosis, continues into Guidance, and evolves into Sparring.
 
@@ -41,7 +41,7 @@ Patterns Curfee encounters regularly in organisations:
 
 - **Change management** — Systems that have grown organically, whose dependencies no one fully oversees anymore.
 - **Quality assurance** — Conventions and standards that only survive as long as someone is watching — because nothing in the system enforces them.
-- **System development** — Systems that get extended instead of structured, where every change carries more weight than the last.
+- **System development** — System landscapes that get extended instead of structured, where every change carries more risk than the last.
 - **Onboarding** — Team members who spend weeks or months getting to the point where they can contribute.
 - **Collaboration** — People and teams working around each other because there's no shared way of doing things.
 - **Knowledge transfer** — Knowledge that lives in people's heads and leaves with them when they go.
@@ -74,7 +74,6 @@ Curfee does not implement. It designs the solution and guides the client's team 
 ## Contact
 
 - Website: https://curfee.com
-- Booking: https://calendly.com/curfee/30min
 - Email: office@curfee.com
 - Phone: +43 677 630 242 28
 - LinkedIn: https://www.linkedin.com/in/phoellinger
@@ -82,7 +81,7 @@ Curfee does not implement. It designs the solution and guides the client's team 
 
 ## Pages
 
-- [Home (DE)](https://curfee.com/) — Single-page layout: hero, observations, services, about, case study, FAQ, contact
+- [Home (DE)](https://curfee.com/) — Single-page layout: hero, observations, services, about, FAQ, contact
 - [Home (EN)](https://curfee.com/en/) — English version
 - [FAQ section (DE)](https://curfee.com/#faq) | [EN](https://curfee.com/en/#faq)
 - [Contact section (DE)](https://curfee.com/#contact) | [EN](https://curfee.com/en/#contact)

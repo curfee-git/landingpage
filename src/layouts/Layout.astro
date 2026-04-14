@@ -194,20 +194,18 @@ const organizationLd = {
     },
     {
       "@type": "ContactPoint",
-      "url": "https://calendly.com/curfee/30min",
+      "email": "office@curfee.com",
       "contactType": "sales",
-      "contactOption": "OnlineAppointment",
       "availableLanguage": ["de", "en"]
     }
   ],
   "potentialAction": {
-    "@type": "ReserveAction",
-    "name": lang === 'de' ? "30-minütiges Erstgespräch buchen" : "Book a 30-minute intro call",
+    "@type": "CommunicateAction",
+    "name": lang === 'de' ? "Per E-Mail Kontakt aufnehmen" : "Contact by email",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://calendly.com/curfee/30min",
-      "inLanguage": ["de", "en"],
-      "actionPlatform": ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"]
+      "urlTemplate": "mailto:office@curfee.com",
+      "inLanguage": ["de", "en"]
     }
   },
   "knowsLanguage": [
@@ -242,8 +240,7 @@ const organizationLd = {
     "Systemarchitekt Österreich"
   ],
   "sameAs": [
-    "https://www.linkedin.com/in/phoellinger",
-    "https://calendly.com/curfee/30min"
+    "https://www.linkedin.com/in/phoellinger"
   ]
 };
 

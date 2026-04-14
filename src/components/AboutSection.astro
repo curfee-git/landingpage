@@ -27,7 +27,12 @@ const principles = [
       <h2 id="about-heading" data-speakable class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">
         {t['about.heading']}
       </h2>
-      <p class="text-title-medium text-brand-tertiary font-medium mb-6">{t['about.who.heading']}</p>
+      <p class="text-title-medium text-brand-tertiary font-medium mb-4">{t['about.who.heading']}</p>
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="text-label-large text-brand-tertiary font-medium border border-brand-tertiary/30 px-4 py-1.5 rounded-full">{t['principles.1']}</span>
+        <span class="text-label-large text-brand-tertiary font-medium border border-brand-tertiary/30 px-4 py-1.5 rounded-full">{t['principles.2']}</span>
+        <span class="text-label-large text-brand-tertiary font-medium border border-brand-tertiary/30 px-4 py-1.5 rounded-full">{t['principles.3']}</span>
+      </div>
       <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
         <p data-speakable>{t['about.who.1']}</p>
         <p>{t['about.who.2']}</p>
@@ -38,7 +43,7 @@ const principles = [
       </div>
     </div>
 
-    <!-- Fünf Prinzipien -->
+    <!-- CURFEE Akronym -->
     <div>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
         {principles.map((p) => {

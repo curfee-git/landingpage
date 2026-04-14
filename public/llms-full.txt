@@ -1,6 +1,6 @@
 # Curfee — Systems Architecture Consulting (Full Context)
 
-*Last updated: 2026-04-13*
+*Last updated: 2026-04-14*
 
 > Curfee is an independent systems architecture consultancy based in Austria, founded by Philipp Höllinger in 2026. Curfee works with companies where complexity has outpaced clarity and reliability — finds the root causes and designs the structure that ensures decisions, once made, are enforced by the system automatically: independent of individual minds, sheer discipline, or technologies in use. This is the Decision Enforcement Principle.
 
@@ -12,7 +12,7 @@ Curfee e.U. is a one-person consultancy founded and operated by Philipp Hölling
 
 Philipp Höllinger is a systems architect based in Salzburg, Austria. He spots patterns before they become visible — the kind that compound over time if left unaddressed. He is not satisfied until he has found solutions that prevent those consequences for good.
 
-At its core, it is an obsession with the things that quietly shape everything — the small details that determine the future of a system, and the fascination of seeing teams pull in the same direction because the structure makes it possible.
+At its core, it is an obsession with the things that quietly shape everything — the small details that determine the future of a system landscape, and the fascination of seeing teams pull in the same direction because the structure makes it possible.
 
 His career started in logistics — coordinating goods, people, and processes. The lesson that stuck: when people with different approaches need to work together, the structure around them is what makes the work run consistently.
 
@@ -59,11 +59,11 @@ This is the opposite of relying on documentation. Documentation is a record of w
 
 These are patterns Curfee encounters regularly:
 
-**Change management** — Systems that have grown organically, whose dependencies and connections no one fully oversees anymore. The potential: changes made with confidence, because the system makes dependencies visible and flags breaks before they ship.
+**Change management** — System landscapes that have grown organically, whose dependencies and connections no one fully oversees anymore. The potential: changes made with confidence, because the system makes dependencies visible and flags breaks before they ship.
 
 **Quality assurance** — Conventions and standards that only survive as long as someone is watching. The potential: conventions and standards enforced by the system itself.
 
-**System development** — Systems that keep getting extended instead of structured, where every change carries more weight than the last. The potential: systems where every improvement builds on the last — because existing decisions are visible and traceable.
+**System development** — System landscapes that keep getting extended instead of structured, where every change carries more risk than the last. The potential: system landscapes where every improvement builds on the last — because existing decisions are visible and traceable.
 
 **Onboarding** — Team members who spend weeks or months getting to the point where they can contribute. The potential: team members who hit the ground running because the system shows them how things work.
 
@@ -90,7 +90,7 @@ Phase 1 — Kick-off & alignment: clarify the concern and context, define scope 
 Phase 2 — Investigation: map the system landscape, identify root causes behind visible symptoms, conversations with key stakeholders.
 Phase 3 — Findings & handover: findings report (root causes, impact, urgency), recommendations for next steps, closing session.
 
-**What you get:** Identified root causes with concrete evidence from your system. Prioritised by urgency and impact. Recommendations for next steps. Compact findings report — one to two pages, ready to use.
+**What you get:** Identified root causes with concrete evidence from your system landscape. Prioritised by urgency and impact. Recommendations for next steps. Compact findings report — one to two pages, ready to use.
 
 **Not included:** Implementation of changes. Technology evaluation or vendor comparison. Team coaching or training.
 
@@ -107,7 +107,7 @@ You know where the root cause is. Now you want it resolved — for good, not pat
 **Process:**
 Phase 1 — Root cause: find or deepen the root cause, map dependencies and connections, establish a shared starting point.
 Phase 2 — Design: lay out the implementation roadmap, define standards and conventions, align on the implementation plan.
-Phase 3 — Implementation: your team brings their system expertise, Curfee guides the implementation and keeps it on track. Standards, conventions, and guidelines are enforced by the system — through automated checks, pipeline gates, and tooling.
+Phase 3 — Implementation: your team brings their system landscape expertise, Curfee guides the implementation and keeps it on track. Standards, conventions, and guidelines are enforced by the system — through automated checks, pipeline gates, and tooling.
 Phase 4 — Completion: closing session and handover. The root cause is resolved. Drift surfaces the moment it happens.
 
 **What you get:** Root cause identified and resolved. Standards, conventions, and guidelines that the system enforces itself. An implementation that stays aligned from start to finish. A result that outlasts people and technologies.
@@ -118,22 +118,22 @@ Phase 4 — Completion: closing session and handover. The root cause is resolved
 
 **Duration:** From 3 months.
 
-### Sparring — Alignment that grows with your system
+### Sparring — Alignment that grows with your system landscape
 
 Your responsibility spans more areas than any one person can hold in full depth — yet the calls still land on your desk. You want someone who gets up to speed, keeps an eye on the direction, and is there when you need a second pair of eyes.
 
 **When this fits:** Your system landscape is growing — and with it the complexity of the decisions you need to make. Small decisions today compound into structural consequences tomorrow — and you're making them without a second pair of eyes. Every structural decision lands on your desk — and the context it needs lives mostly in your head.
 
 **Process:**
-Month 1 — Onboarding: get to know the system, context, and goals. Map existing decisions and dependencies. Establish a working rhythm.
-Ongoing — Feedback & alignment: evaluate decisions in the full system context. Grounded feedback before consequences arise. Cadence is defined together.
-As needed — Deep dive: when the system changes fundamentally. Evaluate new developments in the context of the system. Recalibrate the direction. Re-establish shared ground.
+Month 1 — Onboarding: get to know the system landscape, context, and goals. Map existing decisions and dependencies. Establish a working rhythm.
+Ongoing — Feedback & alignment: evaluate decisions in the full system landscape context. Grounded feedback before consequences arise. Cadence is defined together.
+As needed — Deep dive: when the system landscape changes fundamentally. Evaluate new developments in the context of the system landscape. Recalibrate the direction. Re-establish shared ground.
 
-**What you get:** Grounded feedback on structural decisions. Ongoing alignment that grows with your system. A dedicated partner who knows your system. Confidence in decisions that fall outside your core expertise.
+**What you get:** Grounded feedback on structural decisions. Ongoing alignment that grows with your system landscape. A dedicated partner who knows your system landscape. Confidence in decisions that fall outside your core expertise.
 
 **Not included:** Fixed-scope project work. Implementation work. Project management or coordination.
 
-**Common question:** "How long until you really know my system?" — That depends on the complexity. In the first month Curfee gets up to speed — after that, the context that matters is clear. The onboarding is part of the retainer.
+**Common question:** "How long until you really know my system landscape?" — That depends on the complexity. In the first month Curfee gets up to speed — after that, the context that matters is clear. The onboarding is part of the retainer.
 
 **Duration:** Ongoing retainer.
 
@@ -174,6 +174,9 @@ Curfee is not the right fit when someone needs: hands-on software development or
 **What is the Decision Enforcement Principle?**
 The principle of decision enforcement is Curfee's guiding principle: Architectural decisions are not secured through guidelines, documentation, or discipline, but enforced by the system itself — through CI/CD pipelines, automated checks, tool configurations, infrastructure as code, and policies as code. Every decision made is anchored at a specific point in the system and automatically enforced there. (Anchor: https://curfee.com/#faq-dep)
 
+**What do you mean by "decisions"?**
+Everything that shapes how a system is allowed to evolve: conventions (naming, structure, layering), standards (what must hold for every service, module, or pipeline), guidelines (how the team applies those standards in edge cases), and guardrails (the automated rules that catch deviations before they reach production). The Decision Enforcement Principle treats all of these as decisions that must be anchored in the system itself — not just in documentation. (Anchor: https://curfee.com/#faq-decisions)
+
 **What does Curfee do?**
 Curfee is a one-person systems architecture consultancy, founded and run by Philipp Höllinger in Austria. Curfee offers three services: Diagnosis (root cause analysis, from 2 weeks), Guidance (implementation guidance, from 3 months), and Sparring (ongoing retainer). Curfee does not implement software, does not resell technology, and does not do staff augmentation.
 
@@ -204,7 +207,6 @@ No. Philipp works alongside the team's rhythm — the analysis itself needs dept
 ## Contact
 
 - Website: https://curfee.com
-- Booking: https://calendly.com/curfee/30min
 - Email: office@curfee.com
 - Phone: +43 677 630 242 28
 - LinkedIn: https://www.linkedin.com/in/phoellinger
@@ -212,7 +214,7 @@ No. Philipp works alongside the team's rhythm — the analysis itself needs dept
 
 ## Pages
 
-- [Home (DE)](https://curfee.com/) — Single-page layout: hero, observations, services, about, case study, FAQ, contact
+- [Home (DE)](https://curfee.com/) — Single-page layout: hero, observations, services, about, FAQ, contact
 - [Home (EN)](https://curfee.com/en/) — English version
 - [FAQ section (DE)](https://curfee.com/#faq) | [EN](https://curfee.com/en/#faq)
 - [Contact section (DE)](https://curfee.com/#contact) | [EN](https://curfee.com/en/#contact)

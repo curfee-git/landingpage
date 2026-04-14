@@ -18,5 +18,6 @@ export function localizedRoutes(lang: 'de' | 'en') {
 }
 
 export const EXTERNAL = {
-  calendly: 'https://calendly.com/curfee/30min',
+  email: 'office@curfee.com',
+  mailto: 'mailto:office@curfee.com',
 } as const;
