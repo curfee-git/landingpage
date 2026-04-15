@@ -3,7 +3,6 @@ const ROUTES = {
   blog: '/blog/',
   imprint: '/imprint/',
   privacy: '/privacy/',
-  cookies: '/cookies/',
 } as const;
 
 export function localizedRoutes(lang: 'de' | 'en') {
@@ -13,7 +12,6 @@ export function localizedRoutes(lang: 'de' | 'en') {
       blog: '/en/blog/',
       imprint: '/en/imprint/',
       privacy: '/en/privacy/',
-      cookies: '/en/cookies/',
     };
   }
   return ROUTES;

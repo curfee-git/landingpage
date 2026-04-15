@@ -87,7 +87,6 @@ Curfee does not implement. It designs the solution and guides the client's team 
 - [Contact section (DE)](https://curfee.com/#contact) | [EN](https://curfee.com/en/#contact)
 - [Legal Notice (DE)](https://curfee.com/imprint/) | [EN](https://curfee.com/en/imprint/)
 - [Privacy Policy (DE)](https://curfee.com/privacy/) | [EN](https://curfee.com/en/privacy/)
-- [Cookie Policy (DE)](https://curfee.com/cookies/) | [EN](https://curfee.com/en/cookies/)
 
 ## Languages
 

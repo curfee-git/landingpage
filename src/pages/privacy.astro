@@ -3,11 +3,9 @@ import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
 import BackToHomeSection from '@/components/shared/BackToHomeSection.astro';
 import { getTranslations } from '@/i18n/translations';
-import { localizedRoutes } from '@/configurations/routes';
 
 const lang = 'de' as const;
 const t = getTranslations(lang);
-const routes = localizedRoutes(lang);
 const linkClass = "text-brand-primary hover:underline transition-colors duration-short4 ease-standard";
 
 const jsonLd = {
@@ -105,11 +103,6 @@ const jsonLd = {
         </section>
 
         <section>
-          <h2 class="text-headline-small text-ink-primary mb-4">{t['privacy.cookies.heading']}</h2>
-          <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.cookies.reference']} <a href={routes.cookies} class={linkClass}>{t['footer.legal.cookies']}</a></p>
-        </section>
-
-        <section>
           <h2 class="text-headline-small text-ink-primary mb-4">{t['privacy.links.heading']}</h2>
           <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.links']}</p>
         </section>
@@ -117,12 +110,6 @@ const jsonLd = {
         <section>
           <h2 class="text-headline-small text-ink-primary mb-4">{t['privacy.hosting.heading']}</h2>
           <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.hosting']}</p>
-        </section>
-
-        <section>
-          <h2 class="text-headline-small text-ink-primary mb-4">{t['privacy.analytics.heading']}</h2>
-          <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.analytics']}</p>
-          <p class="text-body-large text-ink-muted leading-relaxed mt-2">{t['privacy.analytics.more']} <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class={linkClass}>policies.google.com/privacy</a></p>
         </section>
 
       </div>

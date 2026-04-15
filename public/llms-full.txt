@@ -220,7 +220,6 @@ No. Philipp works alongside the team's rhythm, the analysis itself needs depth t
 - [Contact section (DE)](https://curfee.com/#contact) | [EN](https://curfee.com/en/#contact)
 - [Legal Notice (DE)](https://curfee.com/imprint/) | [EN](https://curfee.com/en/imprint/)
 - [Privacy Policy (DE)](https://curfee.com/privacy/) | [EN](https://curfee.com/en/privacy/)
-- [Cookie Policy (DE)](https://curfee.com/cookies/) | [EN](https://curfee.com/en/cookies/)
 
 ## Languages
 
