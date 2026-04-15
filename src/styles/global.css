@@ -67,10 +67,10 @@
     --brand-error-container: 249 222 220;
     --on-brand-error-container: 65 14 11;
 
-    --surface-base: 252 251 249;
+    --surface-base: 255 255 255;
     --surface-dim: 222 219 214;
     --surface-bright: 252 251 249;
-    --surface-soft: 255 255 255;
+    --surface-soft: 252 251 249;
     --surface-raised: 255 255 255;
     --surface-variant: 232 228 222;
     --surface-container-lowest: 255 255 255;
@@ -325,4 +325,108 @@
     outline: 3px solid LinkText;
     outline-offset: 3px;
   }
+}
+
+/* Blog post — H2 accent marker (editorial section rule) + first-paragraph drop cap */
+.prose-blog h2::before {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  background: rgb(var(--brand-primary));
+  margin-bottom: 0.75rem;
+  border-radius: 2px;
+}
+
+.prose-blog h2,
+.prose-blog h3 {
+  text-wrap: balance;
+}
+
+.prose-blog > p:first-of-type {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: rgb(var(--ink-primary));
+  margin-bottom: 1.75rem;
+}
+
+.prose-blog > p:first-of-type::first-letter {
+  float: left;
+  font-size: 3.5em;
+  line-height: 0.95;
+  padding: 0.1em 0.1em 0 0;
+  margin-right: 0.08em;
+  font-weight: 600;
+  font-family: "Inter Tight", "Inter", system-ui, sans-serif;
+  color: rgb(var(--brand-primary));
+}
+
+/* Blog post — footnotes (GFM via remark-gfm) */
+.prose-blog [data-footnotes],
+.prose-blog .footnotes {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgb(var(--outline-variant));
+  font-size: 0.875rem;
+  color: rgb(var(--ink-muted));
+}
+.prose-blog [data-footnotes] h2,
+.prose-blog .footnotes h2 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(var(--ink-muted));
+  margin: 0 0 1rem;
+}
+.prose-blog [data-footnotes] h2::before,
+.prose-blog .footnotes h2::before {
+  display: none;
+}
+.prose-blog [data-footnotes] ol,
+.prose-blog .footnotes ol {
+  padding-left: 1.25rem;
+  margin: 0;
+}
+.prose-blog [data-footnotes] ol li,
+.prose-blog .footnotes ol li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+.prose-blog [data-footnotes] ol li p,
+.prose-blog .footnotes ol li p {
+  margin-bottom: 0.25rem;
+  display: inline;
+}
+.prose-blog [data-footnote-ref],
+.prose-blog sup a {
+  color: rgb(var(--brand-primary));
+  text-decoration: none;
+  font-weight: 600;
+}
+.prose-blog [data-footnote-backref] {
+  color: rgb(var(--brand-primary));
+  text-decoration: none;
+  margin-left: 0.25rem;
+}
+
+/* Blog — heading anchor links injected by rehype-autolink-headings */
+.prose-blog :is(h2, h3) {
+  position: relative;
+}
+.prose-blog .heading-anchor {
+  display: inline-block;
+  margin-left: 0.5rem;
+  color: rgb(var(--brand-primary));
+  opacity: 0;
+  text-decoration: none;
+  font-weight: 400;
+  transition: opacity 150ms ease;
+}
+.prose-blog :is(h2, h3):hover .heading-anchor,
+.prose-blog .heading-anchor:focus-visible {
+  opacity: 0.7;
+}
+.prose-blog .heading-anchor:hover {
+  opacity: 1;
 }

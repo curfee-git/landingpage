@@ -16,7 +16,7 @@ createdAt: 2026-04-14
 
 # Required: primary topic. Used for filtering on the blog index page.
 # Suggested values: "Decision Enforcement" | "Architecture" | "System Landscape" |
-# "Standards & Conventions" | "Tooling & Pipelines" | "Onboarding" | "Knowledge Transfer"
+# "Standards & Conventions" | "Pipelines & CI" | "Onboarding" | "Knowledge Transfer"
 topic: "Decision Enforcement"
 
 # Optional: additional tags shown as labels on the post and used for filtering.

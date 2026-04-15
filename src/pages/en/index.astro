@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import HeroSection from '@/components/HeroSection.astro';
 import ObservationsSection from '@/components/ObservationsSection.astro';
 import ServicesSection from '@/components/ServicesSection.astro';
-// import CaseStudySection from '@/components/CaseStudySection.astro'; // disabled — component kept for future
+import CaseStudySection from '@/components/CaseStudySection.astro';
 import AboutSection from '@/components/AboutSection.astro';
 import FaqSection from '@/components/FaqSection.astro';
 import BlogSection from '@/components/BlogSection.astro';
@@ -188,7 +188,8 @@ const jsonLd = [webSiteLd, faqLd, serviceLd, aboutPageLd];
   <ObservationsSection translations={t} />
   <ServicesSection translations={t} />
   <AboutSection translations={t} />
-  <FaqSection translations={t} />
+  <CaseStudySection translations={t} />
   <BlogSection translations={t} lang={lang} />
+  <FaqSection translations={t} />
   <ContactSection translations={t} />
 </Layout>

@@ -1,5 +1,6 @@
 const ROUTES = {
   home: '/',
+  blog: '/blog/',
   imprint: '/imprint/',
   privacy: '/privacy/',
   cookies: '/cookies/',
@@ -9,6 +10,7 @@ export function localizedRoutes(lang: 'de' | 'en') {
   if (lang === 'en') {
     return {
       home: '/en/',
+      blog: '/en/blog/',
       imprint: '/en/imprint/',
       privacy: '/en/privacy/',
       cookies: '/en/cookies/',

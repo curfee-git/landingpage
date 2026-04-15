@@ -1,0 +1,39 @@
+---
+import { postPath, formatDate, type BlogPost } from '@/utils/blog';
+import type { Lang } from '@/configurations/i18n';
+
+interface Props {
+  post: BlogPost;
+  lang: Lang;
+  index: number;
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { post, lang, index, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+---
+
+<a
+  href={postPath(post)}
+  class="group flex h-full flex-col rounded-xl bg-surface-base shadow-elevation-1 p-6 md:p-8 hover:shadow-elevation-3 transition-shadow duration-medium2 ease-standard"
+>
+  <div class="flex items-center justify-between mb-5">
+    <span class="text-headline-small text-brand-primary/40 font-semibold tabular-nums leading-none">
+      {String(index).padStart(2, '0')}
+    </span>
+    <time class="text-[0.75rem] text-ink-muted/60 tabular-nums" datetime={post.data.createdAt.toISOString()}>
+      {formatDate(post.data.createdAt, lang)}
+    </time>
+  </div>
+  <Heading class="text-title-large text-ink-primary mb-3 tracking-tight">
+    {post.data.title}
+  </Heading>
+  <p class="text-body-medium text-ink-muted leading-relaxed mb-6 flex-1">
+    {post.data.excerpt}
+  </p>
+  <div class="flex justify-end">
+    <span class="inline-flex items-center rounded-full border border-stroke-outlineVariant/70 text-[0.688rem] leading-none text-ink-muted/80 px-2 py-1">
+      {post.data.topic}
+    </span>
+  </div>
+</a>

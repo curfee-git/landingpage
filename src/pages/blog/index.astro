@@ -3,7 +3,9 @@ import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
 import BackToHomeSection from '@/components/shared/BackToHomeSection.astro';
 import { getTranslations } from '@/i18n/translations';
-import { getPostsForLang, postPath, formatDate, readingTime } from '@/utils/blog';
+import { getPostsForLang, postPath } from '@/utils/blog';
+import BlogCard from '@/components/BlogCard.astro';
+
 
 const lang = 'de' as const;
 const t = getTranslations(lang);
@@ -85,39 +87,17 @@ const jsonLd = {
             </label>
           </div>
 
-          <ol class="space-y-4" data-blog-list>
-            {posts.map((post) => {
-              const minutes = post.data.readingTimeMinutes ?? readingTime(post.body ?? '');
-              return (
-                <li
-                  data-blog-item
-                  data-topic={post.data.topic}
-                  data-title={post.data.title}
-                  data-date={post.data.createdAt.toISOString()}
-                >
-                  <a
-                    href={postPath(post)}
-                    class="group block rounded-xl bg-surface-base shadow-elevation-1 p-6 md:p-8 hover:shadow-elevation-3 transition-shadow duration-medium2 ease-standard"
-                  >
-                    <div class="flex flex-wrap items-center gap-3 text-label-medium text-ink-muted mb-3">
-                      <span class="rounded-full bg-brand-primary/[0.08] text-brand-primary px-3 py-0.5">
-                        {post.data.topic}
-                      </span>
-                      <span>{minutes} {t['blog.minutes']}</span>
-                      <time datetime={post.data.createdAt.toISOString()}>
-                        {formatDate(post.data.createdAt, lang)}
-                      </time>
-                    </div>
-                    <h2 class="text-headline-small md:text-headline-large text-ink-primary mb-2 tracking-tight group-hover:text-brand-primary transition-colors duration-short4">
-                      {post.data.title}
-                    </h2>
-                    <p class="text-body-large text-ink-muted leading-relaxed">
-                      {post.data.excerpt}
-                    </p>
-                  </a>
-                </li>
-              );
-            })}
+          <ol class="grid grid-cols-1 md:grid-cols-2 gap-4" data-blog-list>
+            {posts.map((post, index) => (
+              <li
+                data-blog-item
+                data-topic={post.data.topic}
+                data-title={post.data.title}
+                data-date={post.data.createdAt.toISOString()}
+              >
+                <BlogCard post={post} lang={lang} index={index + 1} headingLevel="h2" />
+              </li>
+            ))}
           </ol>
         </>
       )}

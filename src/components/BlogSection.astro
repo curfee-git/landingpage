@@ -2,7 +2,8 @@
 import type { Translations } from '@/i18n/translations';
 import type { Lang } from '@/configurations/i18n';
 import Icon from '@/components/shared/Icon.astro';
-import { getPostsForLang, postPath, formatDate, readingTime, blogIndexPath } from '@/utils/blog';
+import BlogCard from '@/components/BlogCard.astro';
+import { getPostsForLang, blogIndexPath } from '@/utils/blog';
 
 interface Props {
   translations: Translations;
@@ -17,7 +18,7 @@ const showAllLink = allPosts.length > 3;
 ---
 
 {previewPosts.length > 0 && (
-  <section id="blog" class="py-32 md:py-48" aria-labelledby="blog-heading">
+  <section id="blog" class="py-32 md:py-48" style="background: linear-gradient(to bottom, rgb(var(--brand-secondary) / 0) 0%, rgb(var(--brand-secondary) / 0.10) 15%, rgb(var(--brand-secondary) / 0.10) 80%, rgb(var(--brand-secondary) / 0.05) 92%, rgb(var(--brand-secondary) / 0) 100%);" aria-labelledby="blog-heading">
     <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 md:mb-16">
         <div>
@@ -40,33 +41,9 @@ const showAllLink = allPosts.length > 3;
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {previewPosts.map((post) => {
-          const minutes = post.data.readingTimeMinutes ?? readingTime(post.body ?? '');
-          return (
-            <a
-              href={postPath(post)}
-              class="group flex flex-col rounded-xl bg-surface-base shadow-elevation-1 p-6 hover:shadow-elevation-3 transition-shadow duration-medium2 ease-standard"
-            >
-              <div class="flex items-center gap-3 text-label-medium text-ink-muted mb-3">
-                <span class="rounded-full bg-brand-primary/[0.08] text-brand-primary px-3 py-0.5">
-                  {post.data.topic}
-                </span>
-                <span>{minutes} {t['blog.minutes']}</span>
-              </div>
-              <h3 class="text-title-large text-ink-primary mb-2 tracking-tight group-hover:text-brand-primary transition-colors duration-short4">
-                {post.data.title}
-              </h3>
-              <p class="text-body-medium text-ink-muted leading-relaxed mb-4 flex-1">
-                {post.data.excerpt}
-              </p>
-              <div class="flex items-center gap-2 text-label-medium text-ink-muted/70">
-                <time datetime={post.data.createdAt.toISOString()}>
-                  {formatDate(post.data.createdAt, lang)}
-                </time>
-              </div>
-            </a>
-          );
-        })}
+        {previewPosts.map((post, index) => (
+          <BlogCard post={post} lang={lang} index={index + 1} headingLevel="h3" />
+        ))}
       </div>
     </div>
   </section>
