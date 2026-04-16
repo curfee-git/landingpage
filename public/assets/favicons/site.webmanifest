@@ -1,7 +1,7 @@
 {
-  "name": "Curfee – Systemarchitektur-Beratung",
+  "name": "Curfee – Systems Architecture Consulting",
   "short_name": "Curfee",
-  "description": "Beratung für Systemarchitektur aus Österreich",
+  "description": "Systems architecture consulting based in Austria",
   "start_url": "/",
   "scope": "/",
   "icons": [
@@ -11,6 +11,6 @@
   "theme_color": "#003366",
   "background_color": "#fcfbf9",
   "display": "standalone",
-  "lang": "de-AT",
+  "lang": "en",
   "categories": ["business", "productivity"]
 }

@@ -41,13 +41,6 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      i18n: {
-        defaultLocale: 'de',
-        locales: {
-          de: 'de-AT',
-          en: 'en',
-        },
-      },
       changefreq: 'monthly',
       priority: 0.7,
       lastmod: new Date(),
@@ -60,13 +53,6 @@ export default defineConfig({
       SVG: false,
     }),
   ],
-  i18n: {
-    defaultLocale: 'de',
-    locales: ['de', 'en'],
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
   server: { host: true, port: 4322 },
   vite: {
     resolve: {

@@ -3,14 +3,8 @@ import Icon from '@/components/shared/Icon.astro';
 import { EXTERNAL } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 import logoTextRaw from '@/assets/logos/logo_text.svg?raw';
-import type { Lang } from '@/configurations/i18n';
 
-interface Props {
-  lang: Lang;
-}
-
-const { lang } = Astro.props;
-const t = getTranslations(lang);
+const t = getTranslations();
 const menuId = 'mobile-menu';
 const navClass = "px-5 py-3 rounded-full text-label-large font-medium whitespace-nowrap text-ink-muted hover:text-ink-primary hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard";
 const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard text-ink-primary";
@@ -18,7 +12,7 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
 
 <header class="z-20 sticky top-0" role="banner" data-header>
   <div class="mx-auto max-w-7xl flex items-center gap-3 w-full relative h-20 px-6 md:px-12 lg:px-20" data-header-shell>
-    <a href={lang === 'en' ? '/en/' : '/'} class="flex-shrink-0 block h-9 text-brand-primary [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-label="Curfee" set:html={logoTextRaw} />
+    <a href="/" class="flex-shrink-0 block h-9 text-brand-primary [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-label="Curfee" set:html={logoTextRaw} />
 
     <nav class="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2" aria-label="Primary navigation">
       <a href="#observations" class={navClass} data-nav-link>{t['nav.observations']}</a>

@@ -1,6 +1,6 @@
 ---
 # Blog post template — copy this file, rename to your slug (e.g. `your-post-title.md`),
-# and place under `src/content/blog/de/` or `src/content/blog/en/` depending on locale.
+# and place under `src/content/blog/`.
 # Filename without extension becomes the URL slug.
 # Files starting with `_` are ignored by Astro Content Collections.
 

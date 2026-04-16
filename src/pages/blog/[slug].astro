@@ -4,10 +4,10 @@ import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
 import BackToHomeSection from '@/components/shared/BackToHomeSection.astro';
 import { getTranslations } from '@/i18n/translations';
-import { postSlug, postPath, formatDate, blogIndexPath, getRelatedPosts, extractToc, getAdjacentPosts, extractReferences } from '@/utils/blog';
+import { postSlug, postPath, formatDate, getRelatedPosts, extractToc, getAdjacentPosts, extractReferences } from '@/utils/blog';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data, id }) => !data.draft && id.startsWith('de/'));
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => ({
     params: { slug: postSlug(post) },
     props: { post },
@@ -15,8 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const lang = 'de' as const;
-const t = getTranslations(lang);
+const t = getTranslations();
 const { Content } = await render(post);
 const slug = postSlug(post);
 const canonicalPath = `/blog/${slug}/`;
@@ -36,7 +35,7 @@ const jsonLd = {
   "dateModified": (post.data.updatedAt ?? post.data.createdAt).toISOString(),
   "author": { "@id": "https://curfee.com/#founder" },
   "publisher": { "@id": "https://curfee.com/#organization" },
-  "inLanguage": "de-AT",
+  "inLanguage": "en",
   "url": `https://curfee.com${canonicalPath}`,
   "keywords": [post.data.topic, ...post.data.tags].join(', '),
   "wordCount": (post.body ?? '').split(/\s+/).filter(Boolean).length,
@@ -47,14 +46,13 @@ const jsonLd = {
 <Layout
   title={`${post.data.title} – Curfee Blog`}
   description={post.data.excerpt}
-  lang={lang}
   canonicalPath={canonicalPath}
   jsonLd={jsonLd}
   dateModified={(post.data.updatedAt ?? post.data.createdAt).toISOString().slice(0, 10)}
 >
   <article class="py-16 md:py-24 max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
     <div class="max-w-4xl mx-auto">
-      <a href={blogIndexPath(lang)} class="inline-flex items-center gap-1.5 text-label-medium text-ink-muted hover:text-brand-primary mb-8 transition-colors duration-short4">
+      <a href="/blog/" class="inline-flex items-center gap-1.5 text-label-medium text-ink-muted hover:text-brand-primary mb-8 transition-colors duration-short4">
         <Icon name="arrow_back_outline" class="w-4 h-4" />
         {t['blog.backToIndex']}
       </a>
@@ -67,7 +65,7 @@ const jsonLd = {
           <span class="inline-flex items-center gap-1.5 rounded-full border border-stroke-outlineVariant bg-surface-base px-3 py-1 text-label-medium text-ink-muted" title={t['blog.publishedOn']}>
             <Icon name="event" class="w-4 h-4" />
             <time datetime={post.data.createdAt.toISOString()}>
-              {formatDate(post.data.createdAt, lang)}
+              {formatDate(post.data.createdAt)}
             </time>
           </span>
         </div>
@@ -174,7 +172,7 @@ const jsonLd = {
                   <span class="text-label-small text-brand-primary">{r.data.topic}</span>
                   <span class="text-label-small text-ink-muted/60">·</span>
                   <time class="text-label-small text-ink-muted/70" datetime={r.data.createdAt.toISOString()}>
-                    {formatDate(r.data.createdAt, lang)}
+                    {formatDate(r.data.createdAt)}
                   </time>
                 </div>
                 <h3 class="text-title-large text-ink-primary group-hover:text-brand-primary transition-colors duration-short4 mb-1">
@@ -215,5 +213,5 @@ const jsonLd = {
       </nav>
     )}
   </article>
-  <BackToHomeSection lang={lang} />
+  <BackToHomeSection />
 </Layout>

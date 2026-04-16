@@ -3,14 +3,12 @@ import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
 import BackToHomeSection from '@/components/shared/BackToHomeSection.astro';
 import { getTranslations } from '@/i18n/translations';
-import { getPostsForLang, postPath } from '@/utils/blog';
+import { getPosts, postPath } from '@/utils/blog';
 import BlogCard from '@/components/BlogCard.astro';
 
+const t = getTranslations();
 
-const lang = 'de' as const;
-const t = getTranslations(lang);
-
-const posts = await getPostsForLang(lang);
+const posts = await getPosts();
 const topics = Array.from(new Set(posts.map((p) => p.data.topic))).sort();
 
 const jsonLd = {
@@ -19,7 +17,7 @@ const jsonLd = {
   "@id": "https://curfee.com/blog/#blog",
   "name": t['blog.indexHeading'],
   "description": t['blog.indexSubtitle'],
-  "inLanguage": "de-AT",
+  "inLanguage": "en",
   "url": "https://curfee.com/blog/",
   "publisher": { "@id": "https://curfee.com/#organization" },
   "blogPost": posts.map((p) => ({
@@ -39,7 +37,6 @@ const jsonLd = {
 <Layout
   title={`${t['blog.indexHeading']} – Curfee`}
   description={t['blog.indexSubtitle']}
-  lang={lang}
   canonicalPath="/blog/"
   jsonLd={jsonLd}
 >
@@ -95,7 +92,7 @@ const jsonLd = {
                 data-title={post.data.title}
                 data-date={post.data.createdAt.toISOString()}
               >
-                <BlogCard post={post} lang={lang} index={index + 1} headingLevel="h2" />
+                <BlogCard post={post} index={index + 1} headingLevel="h2" />
               </li>
             ))}
           </ol>
@@ -103,7 +100,7 @@ const jsonLd = {
       )}
     </div>
   </article>
-  <BackToHomeSection lang={lang} />
+  <BackToHomeSection />
 </Layout>
 
 <script>

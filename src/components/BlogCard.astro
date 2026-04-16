@@ -1,15 +1,13 @@
 ---
 import { postPath, formatDate, type BlogPost } from '@/utils/blog';
-import type { Lang } from '@/configurations/i18n';
 
 interface Props {
   post: BlogPost;
-  lang: Lang;
   index: number;
   headingLevel?: 'h2' | 'h3';
 }
 
-const { post, lang, index, headingLevel = 'h3' } = Astro.props;
+const { post, index, headingLevel = 'h3' } = Astro.props;
 const Heading = headingLevel;
 ---
 
@@ -22,7 +20,7 @@ const Heading = headingLevel;
       {String(index).padStart(2, '0')}
     </span>
     <time class="text-[0.75rem] text-ink-muted/60 tabular-nums" datetime={post.data.createdAt.toISOString()}>
-      {formatDate(post.data.createdAt, lang)}
+      {formatDate(post.data.createdAt)}
     </time>
   </div>
   <Heading class="text-title-large text-ink-primary mb-3 tracking-tight">

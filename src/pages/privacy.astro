@@ -4,8 +4,7 @@ import Icon from '@/components/shared/Icon.astro';
 import BackToHomeSection from '@/components/shared/BackToHomeSection.astro';
 import { getTranslations } from '@/i18n/translations';
 
-const lang = 'de' as const;
-const t = getTranslations(lang);
+const t = getTranslations();
 const linkClass = "text-brand-primary hover:underline transition-colors duration-short4 ease-standard";
 
 const jsonLd = {
@@ -21,7 +20,6 @@ const jsonLd = {
 <Layout
   title={t['meta.privacy.title']}
   description={t['meta.privacy.description']}
-  lang={lang}
   canonicalPath="/privacy/"
   jsonLd={jsonLd}
   dateModified="2026-03-30"
@@ -116,5 +114,5 @@ const jsonLd = {
 
     </div>
   </article>
-  <BackToHomeSection lang={lang} />
+  <BackToHomeSection />
 </Layout>

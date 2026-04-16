@@ -1,6 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import GithubSlugger from 'github-slugger';
-import type { Lang } from '@/configurations/i18n';
 
 export type BlogPost = CollectionEntry<'blog'>;
 
@@ -57,34 +56,22 @@ export function readingTime(body: string, wpm = WPM): number {
 }
 
 export function postSlug(post: BlogPost): string {
-  // id format: "de/foo" or "en/foo"; strip locale prefix
-  return post.id.replace(/^(de|en)\//, '');
+  return post.id;
 }
 
-export function postLang(post: BlogPost): Lang {
-  return post.id.startsWith('en/') ? 'en' : 'de';
-}
-
-export async function getPostsForLang(lang: Lang): Promise<BlogPost[]> {
-  const all = await getCollection('blog', ({ data, id }) => {
-    if (data.draft) return false;
-    return id.startsWith(`${lang}/`);
+export async function getPosts(): Promise<BlogPost[]> {
+  const all = await getCollection('blog', ({ data }) => {
+    return !data.draft;
   });
   return all.sort((a, b) => {
-    // Featured posts first, then newest first
     if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
     return b.data.createdAt.getTime() - a.data.createdAt.getTime();
   });
 }
 
-export function blogIndexPath(lang: Lang): string {
-  return lang === 'en' ? '/en/blog/' : '/blog/';
-}
-
 export function postPath(post: BlogPost): string {
-  const lang = postLang(post);
   const slug = postSlug(post);
-  return lang === 'en' ? `/en/blog/${slug}/` : `/blog/${slug}/`;
+  return `/blog/${slug}/`;
 }
 
 export function wordCount(body: string): number {
@@ -134,8 +121,7 @@ export function extractReferences(body: string): ReferenceLink[] {
 }
 
 export async function getAdjacentPosts(current: BlogPost): Promise<AdjacentPosts> {
-  const lang = postLang(current);
-  const pool = await getPostsForLang(lang);
+  const pool = await getPosts();
   const chronological = [...pool].sort(
     (a, b) => a.data.createdAt.getTime() - b.data.createdAt.getTime(),
   );
@@ -148,16 +134,15 @@ export async function getAdjacentPosts(current: BlogPost): Promise<AdjacentPosts
 }
 
 export async function getRelatedPosts(current: BlogPost, max = 3): Promise<BlogPost[]> {
-  const lang = postLang(current);
-  const pool = await getPostsForLang(lang);
+  const pool = await getPosts();
   const others = pool.filter((p) => p.id !== current.id);
   const sameTopic = others.filter((p) => p.data.topic === current.data.topic);
   const rest = others.filter((p) => p.data.topic !== current.data.topic);
   return [...sameTopic, ...rest].slice(0, max);
 }
 
-export function formatDate(date: Date, lang: Lang): string {
-  return new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'de-AT', {
+export function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-GB', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',

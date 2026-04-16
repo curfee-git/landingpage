@@ -10,8 +10,7 @@ import BlogSection from '@/components/BlogSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
 import { getTranslations } from '@/i18n/translations';
 
-const lang = 'de' as const;
-const t = getTranslations(lang);
+const t = getTranslations();
 
 const webSiteLd = {
   "@context": "https://schema.org",
@@ -21,14 +20,14 @@ const webSiteLd = {
   "alternateName": "Curfee — Systems Architecture Consulting",
   "url": "https://curfee.com",
   "description": t['meta.home.jsonld.description'],
-  "inLanguage": ["de-AT", "en"],
+  "inLanguage": "en",
   "publisher": { "@id": "https://curfee.com/#organization" },
   "about": { "@id": "https://curfee.com/#organization" },
   "mainEntity": { "@id": "https://curfee.com/#organization" },
   "potentialAction": {
     "@type": "CommunicateAction",
     "target": "mailto:office@curfee.com",
-    "name": "Per E-Mail Kontakt aufnehmen"
+    "name": "Contact by email"
   }
 };
 
@@ -53,7 +52,7 @@ const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": "https://curfee.com/#faq",
-  "inLanguage": "de-AT",
+  "inLanguage": "en",
   "about": { "@id": "https://curfee.com/#organization" },
   "author": { "@id": "https://curfee.com/#founder" },
   "publisher": { "@id": "https://curfee.com/#organization" },
@@ -91,7 +90,7 @@ const serviceLd = {
     "audienceType": "Decision-makers in companies with grown system landscapes"
   },
   "serviceOutput": "Root cause analysis, architectural standards enforced by the system through pipelines and tooling, governance frameworks, implementation guidance",
-  "availableLanguage": ["de", "en"],
+  "availableLanguage": ["en"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "@id": "https://curfee.com/#offer-catalog",
@@ -115,7 +114,7 @@ const serviceLd = {
           "slogan": t['services.diagnosis.subtitle'],
           "provider": { "@id": "https://curfee.com/#organization" },
           "serviceType": "System Diagnosis",
-          "inLanguage": ["de", "en"]
+          "inLanguage": ["en"]
         }
       },
       {
@@ -136,7 +135,7 @@ const serviceLd = {
           "slogan": t['services.guidance.subtitle'],
           "provider": { "@id": "https://curfee.com/#organization" },
           "serviceType": "Architecture Guidance",
-          "inLanguage": ["de", "en"]
+          "inLanguage": ["en"]
         }
       },
       {
@@ -156,7 +155,7 @@ const serviceLd = {
           "slogan": t['services.sparring.subtitle'],
           "provider": { "@id": "https://curfee.com/#organization" },
           "serviceType": "Architecture Sparring",
-          "inLanguage": ["de", "en"]
+          "inLanguage": ["en"]
         }
       },
     ]
@@ -170,7 +169,7 @@ const aboutPageLd = {
   "url": "https://curfee.com/#about",
   "mainEntity": { "@id": "https://curfee.com/#founder" },
   "isPartOf": { "@id": "https://curfee.com/#website" },
-  "inLanguage": "de-AT"
+  "inLanguage": "en"
 };
 
 const jsonLd = [webSiteLd, faqLd, serviceLd, aboutPageLd];
@@ -181,7 +180,6 @@ const jsonLd = [webSiteLd, faqLd, serviceLd, aboutPageLd];
   description={t['meta.home.description']}
   canonicalPath="/"
   jsonLd={jsonLd}
-  lang={lang}
   dateModified="2026-04-14"
 >
   <HeroSection translations={t} />
@@ -189,7 +187,7 @@ const jsonLd = [webSiteLd, faqLd, serviceLd, aboutPageLd];
   <ServicesSection translations={t} />
   <AboutSection translations={t} />
   <CaseStudySection translations={t} />
-  <BlogSection translations={t} lang={lang} />
+  <BlogSection translations={t} />
   <FaqSection translations={t} />
   <ContactSection translations={t} />
 </Layout>

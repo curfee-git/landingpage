@@ -1,22 +1,15 @@
 ---
 import Icon from '@/components/shared/Icon.astro';
-import { localizedRoutes } from '@/configurations/routes';
+import { ROUTES } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
-import type { Lang } from '@/configurations/i18n';
 
-interface Props {
-  lang: Lang;
-}
-
-const { lang } = Astro.props;
-const t = getTranslations(lang);
-const routes = localizedRoutes(lang);
+const t = getTranslations();
 ---
 
 <section class="py-8 md:py-12 -mt-8 md:-mt-12" style="background: linear-gradient(to bottom, rgb(var(--brand-primary) / 0) 0%, rgb(var(--brand-primary) / 0.05) 50%, rgb(var(--brand-primary) / 0.05) 100%);">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
     <a
-      href={routes.home}
+      href={ROUTES.home}
       class="inline-flex items-center gap-1.5 text-body-medium text-brand-primary rounded-full px-4 py-2 hover:bg-brand-primary/[0.08] active:bg-brand-primary/[0.12] transition-all duration-short4 ease-standard"
     >
       <Icon name="arrow_back_outline" class="w-4 h-4" />

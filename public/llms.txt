@@ -8,7 +8,7 @@
 
 Curfee's core principle: architectural decisions are enforced by the system itself, through pipelines, automated checks, and tool configuration, rather than by the discipline, memory, or vigilance of individual people. Guidelines that rely on individual discipline erode under time pressure, staff turnover, and rising complexity. Only what the system enforces itself stays intact over years.
 
-The principle is addressed directly in the FAQ: see https://curfee.com/#faq-dep (DE) · https://curfee.com/en/#faq-dep (EN).
+The principle is addressed directly in the FAQ: see https://curfee.com/#faq-dep.
 
 This principle applies across all three Curfee services (Diagnosis, Guidance, Sparring) and all six observation domains (Change management, Quality assurance, System development, Onboarding, Collaboration, Knowledge transfer).
 
@@ -81,16 +81,15 @@ Curfee does not implement. It designs the solution and guides the client's team 
 
 ## Pages
 
-- [Home (DE)](https://curfee.com/), Single-page layout: hero, observations, services, about, FAQ, contact
-- [Home (EN)](https://curfee.com/en/), English version
-- [FAQ section (DE)](https://curfee.com/#faq) | [EN](https://curfee.com/en/#faq)
-- [Contact section (DE)](https://curfee.com/#contact) | [EN](https://curfee.com/en/#contact)
-- [Legal Notice (DE)](https://curfee.com/imprint/) | [EN](https://curfee.com/en/imprint/)
-- [Privacy Policy (DE)](https://curfee.com/privacy/) | [EN](https://curfee.com/en/privacy/)
+- [Home](https://curfee.com/), Single-page layout: hero, observations, services, about, FAQ, contact
+- [FAQ section](https://curfee.com/#faq)
+- [Contact section](https://curfee.com/#contact)
+- [Legal Notice](https://curfee.com/imprint/)
+- [Privacy Policy](https://curfee.com/privacy/)
 
-## Languages
+## Language
 
-German (default) and English. Both versions have identical content and structure.
+English.
 
 ## Extended information
 

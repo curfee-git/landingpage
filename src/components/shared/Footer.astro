@@ -1,33 +1,14 @@
 ---
 import Icon from '@/components/shared/Icon.astro';
-import { localizedRoutes } from '@/configurations/routes';
+import { ROUTES } from '@/configurations/routes';
 import { BRAND } from '@/configurations/brand';
 import { getTranslations } from '@/i18n/translations';
 import logoTextRaw from '@/assets/logos/logo_text.svg?raw';
-import type { Lang } from '@/configurations/i18n';
 
-interface Props {
-  lang: Lang;
-}
-
-const { lang } = Astro.props;
-const t = getTranslations(lang);
-const routes = localizedRoutes(lang);
+const t = getTranslations();
+const routes = ROUTES;
 const year = new Date().getFullYear();
 const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transition-colors duration-short4 ease-standard";
-
-const currentPath = Astro.url.pathname;
-let otherLangPath: string;
-let otherLangLabel: string;
-
-if (lang === 'en') {
-  const basePath = currentPath.replace(/^\/en\/?/, '/') || '/';
-  otherLangPath = basePath;
-  otherLangLabel = 'Deutsch';
-} else {
-  otherLangPath = currentPath === '/' ? '/en/' : `/en${currentPath}`;
-  otherLangLabel = 'English';
-}
 ---
 
 <footer class="pt-20 md:pt-28 pb-12" style="padding-bottom: max(3rem, env(safe-area-inset-bottom, 3rem));" role="contentinfo">
@@ -76,12 +57,8 @@ if (lang === 'en') {
     </div>
 
     <!-- Bottom bar -->
-    <div class="border-t border-stroke-subtle pt-6 flex flex-wrap items-center justify-between gap-4 text-body-small text-ink-muted">
+    <div class="border-t border-stroke-subtle pt-6 text-body-small text-ink-muted">
       <span>&copy; {year} {BRAND.name} · {t['footer.copyright']}</span>
-      <a href={otherLangPath} data-lang-switch class="flex items-center gap-2 text-ink-onSurfaceVariant hover:text-ink-primary px-3 py-2 rounded-full hover:bg-ink-primary/[0.08] active:bg-ink-primary/[0.12] transition-all duration-short4 ease-standard">
-        <Icon name="language" class="w-4 h-4" />
-        {otherLangLabel}
-      </a>
     </div>
 
   </div>

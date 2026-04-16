@@ -4,8 +4,7 @@ import Icon from '@/components/shared/Icon.astro';
 import BackToHomeSection from '@/components/shared/BackToHomeSection.astro';
 import { getTranslations } from '@/i18n/translations';
 
-const lang = 'de' as const;
-const t = getTranslations(lang);
+const t = getTranslations();
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -20,7 +19,6 @@ const jsonLd = {
 <Layout
   title={t['meta.imprint.title']}
   description={t['meta.imprint.description']}
-  lang={lang}
   canonicalPath="/imprint/"
   jsonLd={jsonLd}
   dateModified="2026-03-30"
@@ -125,5 +123,5 @@ const jsonLd = {
 
     </div>
   </article>
-  <BackToHomeSection lang={lang} />
+  <BackToHomeSection />
 </Layout>
