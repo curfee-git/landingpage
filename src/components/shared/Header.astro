@@ -18,9 +18,10 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
 
 <header class="z-20 sticky top-0" role="banner" data-header>
   <div class="mx-auto max-w-7xl flex items-center gap-3 w-full relative h-20 px-6 md:px-12 lg:px-20" data-header-shell>
-    <a href={lang === 'en' ? '/en/' : '/'} class="flex-shrink-0 block h-7 text-brand-primary [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-label="Curfee" set:html={logoTextRaw} />
+    <a href={lang === 'en' ? '/en/' : '/'} class="flex-shrink-0 block h-9 text-brand-primary [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-label="Curfee" set:html={logoTextRaw} />
 
     <nav class="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2" aria-label="Primary navigation">
+      <a href="#observations" class={navClass} data-nav-link>{t['nav.observations']}</a>
       <a href="#services" class={navClass} data-nav-link>{t['nav.services']}</a>
       <a href="#about" class={navClass} data-nav-link>{t['nav.about']}</a>
       <a href="#casestudy" class={navClass} data-nav-link>{t['nav.casestudy']}</a>
@@ -42,6 +43,7 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
   <div id={menuId} inert data-mobile-menu class="md:hidden absolute -left-px -right-px transition-[max-height,opacity] duration-medium2 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 md:px-12 pb-4 space-y-2">
       <nav class="flex flex-col gap-1" aria-label="Mobile navigation">
+        <a href="#observations" class={menuItemClass} data-menu-close data-nav-link>{t['nav.observations']}</a>
         <a href="#services" class={menuItemClass} data-menu-close data-nav-link>{t['nav.services']}</a>
         <a href="#about" class={menuItemClass} data-menu-close data-nav-link>{t['nav.about']}</a>
         <a href="#casestudy" class={menuItemClass} data-menu-close data-nav-link>{t['nav.casestudy']}</a>
@@ -203,7 +205,7 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
 
   function initActiveSection() {
     const navLinks = document.querySelectorAll('[data-nav-link]') as NodeListOf<HTMLAnchorElement>;
-    const sectionIds = ['services', 'about', 'casestudy', 'blog', 'faq', 'contact'];
+    const sectionIds = ['observations', 'services', 'about', 'casestudy', 'blog', 'faq', 'contact'];
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
