@@ -5,15 +5,6 @@ interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
-
-const principles = [
-  { title: t['acronym.1.title'], description: t['acronym.1.description'] },
-  { title: t['acronym.2.title'], description: t['acronym.2.description'] },
-  { title: t['acronym.3.title'], description: t['acronym.3.description'] },
-  { title: t['acronym.4.title'], description: t['acronym.4.description'] },
-  { title: t['acronym.5.title'], description: t['acronym.5.description'] },
-  { title: t['acronym.6.title'], description: t['acronym.6.description'] },
-];
 ---
 
 <section id="about" class="py-[clamp(8rem,5rem+7vw,12rem)]" style="background: linear-gradient(to bottom, rgb(var(--brand-primary) / 0) 0%, rgb(var(--brand-primary) / 0.10) 15%, rgb(var(--brand-primary) / 0.10) 80%, rgb(var(--brand-primary) / 0.05) 92%, rgb(var(--brand-primary) / 0) 100%);" aria-labelledby="about-heading">
@@ -40,25 +31,6 @@ const principles = [
         <p>{t['about.who.4']}</p>
         <p data-speakable>{t['about.who.5']}</p>
         <p data-speakable>{t['about.who.6']}</p>
-      </div>
-    </div>
-
-    <!-- CURFEE Akronym -->
-    <div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
-        {principles.map((p) => {
-          const firstLetter = p.title.charAt(0);
-          const rest = p.title.slice(1);
-          return (
-            <div>
-              <div class="flex items-baseline gap-0.5">
-                <span class="text-display-medium text-brand-primary font-display leading-none">{firstLetter}</span>
-                <span class="text-title-medium text-ink-primary">{rest}</span>
-              </div>
-              <p class="text-body-medium text-ink-muted leading-relaxed mt-2">{p.description}</p>
-            </div>
-          );
-        })}
       </div>
     </div>
 
