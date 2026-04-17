@@ -47,6 +47,11 @@ const faqEntries = [
     name: t['faq.decisions.question'],
     text: t['faq.decisions.answer'],
   },
+  {
+    id: "https://curfee.com/#faq-enforcement",
+    name: t['faq.enforcement.question'],
+    text: t['faq.enforcement.answer'],
+  },
   ...([1, 2, 4, 5, 6] as const).map((n) => ({
     id: `https://curfee.com/#faq-${n}`,
     name: t[`faq.${n}.question` as keyof typeof t],

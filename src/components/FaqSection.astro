@@ -12,6 +12,7 @@ const questions = [
   { question: t['faq.patterns.structural.question'], answer: t['faq.patterns.structural.answer'] },
   { question: t['faq.patterns.operational.question'], answer: t['faq.patterns.operational.answer'] },
   { question: t['faq.decisions.question'], answer: t['faq.decisions.answer'] },
+  { question: t['faq.enforcement.question'], answer: t['faq.enforcement.answer'] },
   { question: t['faq.1.question'], answer: t['faq.1.answer'] },
   { question: t['faq.2.question'], answer: t['faq.2.answer'] },
   { question: t['faq.4.question'], answer: t['faq.4.answer'] },
@@ -23,7 +24,7 @@ const answerProseClass = "text-body-large text-ink-muted leading-relaxed [&_p]:m
 const answerProseClassMobile = "text-body-medium text-ink-muted leading-relaxed pb-6 [&_p]:mb-3 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ul]:mb-3 [&_ul:last-child]:mb-0 [&_li]:leading-relaxed [&_strong]:text-ink-primary [&_strong]:font-semibold";
 ---
 
-<section id="faq" class="py-32 md:py-48" aria-labelledby="faq-heading">
+<section id="faq" class="py-[clamp(8rem,5rem+7vw,12rem)]" aria-labelledby="faq-heading">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
     <h2 id="faq-heading" class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">{t['faq.heading']}</h2>
     <p class="text-title-medium text-brand-primary font-medium mb-12">{t['faq.subtitle']}</p>
