@@ -56,7 +56,7 @@ const answerProseClass = "text-body-medium md:text-body-large text-ink-muted lea
 
     {groups.map((group, gi) => (
       <div class={gi > 0 ? 'mt-10' : ''}>
-        <h3 class="text-label-small uppercase tracking-[0.14em] text-brand-primary/70 font-medium mb-3">{group.label}</h3>
+        <h3 class="text-label-small uppercase tracking-[0.14em] text-brand-primary/70 font-bold mb-3">{group.label}</h3>
         <div class="space-y-2">
           {group.items.map((q, i) => (
             <details class="group faq-details rounded-lg bg-surface-base shadow-elevation-1 transition-shadow duration-short4 ease-standard open:shadow-elevation-2" name="faq-accordion">

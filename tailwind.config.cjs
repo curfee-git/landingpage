@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Inter Tight"', "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ['"Quicksand"', "ui-sans-serif", "system-ui", "sans-serif"],
         body: ['"Inter"', "ui-sans-serif", "system-ui", "sans-serif"],
       },
       colors: {
