@@ -68,7 +68,11 @@ const answerProseClass = "text-body-medium md:text-body-large text-ink-muted lea
               </summary>
               <div class="faq-content">
                 <div class="px-5 md:px-6">
-                  <div class={answerProseClass} {...(gi === 0 && i === 0 ? { 'data-speakable': true } : {})} set:html={q.answer} />
+                  <div
+                    class={answerProseClass}
+                    {...((gi === 0 && i === 0) || (gi === 2 && i <= 4) ? { 'data-speakable': true } : {})}
+                    set:html={q.answer}
+                  />
                 </div>
               </div>
             </details>

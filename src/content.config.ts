@@ -14,6 +14,8 @@ const blog = defineCollection({
     readingTimeMinutes: z.number().optional(),
     coverImage: z.string().optional(),
     coverImageAlt: z.string().optional(),
+    coverImageWidth: z.number().optional(),
+    coverImageHeight: z.number().optional(),
     draft: z.boolean().default(false),
     featured: z.boolean().default(false),
   }),

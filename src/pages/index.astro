@@ -12,24 +12,7 @@ import { getTranslations } from '@/i18n/translations';
 
 const t = getTranslations();
 
-const webSiteLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://curfee.com/#website",
-  "name": "Curfee",
-  "alternateName": "Curfee – Systems, Software & Infrastructure Architecture Consulting",
-  "url": "https://curfee.com",
-  "description": t['meta.home.jsonld.description'],
-  "inLanguage": "en",
-  "publisher": { "@id": "https://curfee.com/#organization" },
-  "about": { "@id": "https://curfee.com/#organization" },
-  "mainEntity": { "@id": "https://curfee.com/#organization" },
-  "potentialAction": {
-    "@type": "CommunicateAction",
-    "target": "mailto:office@curfee.com",
-    "name": "Contact by email"
-  }
-};
+const buildDate = new Date().toISOString().slice(0, 10);
 
 const faqEntries = [
   { id: "https://curfee.com/#faq-1", name: t['faq.1.question'], text: t['faq.1.answer'] },
@@ -55,7 +38,7 @@ const faqLd = {
   "about": { "@id": "https://curfee.com/#organization" },
   "author": { "@id": "https://curfee.com/#founder" },
   "publisher": { "@id": "https://curfee.com/#organization" },
-  "dateModified": "2026-04-17",
+  "dateModified": buildDate,
   "mainEntity": faqEntries.map((q) => ({
     "@type": "Question",
     "@id": q.id,
@@ -99,11 +82,8 @@ const serviceLd = {
         "@type": "Offer",
         "@id": "https://curfee.com/#offer-diagnosis",
         "category": "Entry engagement",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Price on application"
-        },
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "EUR",
         "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 2, "unitCode": "WEE" },
         "itemOffered": {
           "@type": "Service",
@@ -121,11 +101,8 @@ const serviceLd = {
         "@type": "Offer",
         "@id": "https://curfee.com/#offer-guidance",
         "category": "Project engagement",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Price on application"
-        },
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "EUR",
         "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 3, "unitCode": "MON" },
         "itemOffered": {
           "@type": "Service",
@@ -143,11 +120,8 @@ const serviceLd = {
         "@type": "Offer",
         "@id": "https://curfee.com/#offer-sparring",
         "category": "Retainer engagement",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "priceCurrency": "EUR",
-          "description": "Ongoing retainer, price on application"
-        },
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "EUR",
         "itemOffered": {
           "@type": "Service",
           "@id": "https://curfee.com/#sparring",
@@ -184,14 +158,14 @@ const decisionEnforcementLd = {
   "url": "https://curfee.com/#faq-enforcement",
   "inDefinedTermSet": {
     "@type": "DefinedTermSet",
-    "@id": "https://curfee.com/#curfee-glossary",
-    "name": "Curfee glossary"
+    "name": "Curfee glossary",
+    "url": "https://curfee.com/llms.txt"
   },
   "subjectOf": { "@id": "https://curfee.com/#organization" },
   "author": { "@id": "https://curfee.com/#founder" }
 };
 
-const jsonLd = [webSiteLd, faqLd, serviceLd, aboutPageLd, decisionEnforcementLd];
+const jsonLd = [faqLd, serviceLd, aboutPageLd, decisionEnforcementLd];
 ---
 
 <Layout
@@ -199,7 +173,8 @@ const jsonLd = [webSiteLd, faqLd, serviceLd, aboutPageLd, decisionEnforcementLd]
   description={t['meta.home.description']}
   canonicalPath="/"
   jsonLd={jsonLd}
-  dateModified="2026-04-17"
+  dateModified={buildDate}
+  hasSpeakable={true}
 >
   <HeroSection translations={t} />
   <ObservationsSection translations={t} />

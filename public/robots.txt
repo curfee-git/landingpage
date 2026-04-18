@@ -16,9 +16,6 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: ClaudeBot
-Allow: /
-
 User-agent: Claude-Web
 Allow: /
 
@@ -73,6 +70,9 @@ User-agent: GPTBot
 Disallow: /
 
 User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
 Disallow: /
 
 User-agent: Google-Extended

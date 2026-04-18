@@ -1,16 +1,20 @@
 {
+  "id": "/",
   "name": "Curfee – Systems, Software & Infrastructure Architecture Consulting",
   "short_name": "Curfee",
-  "description": "Systems architecture consulting based in Austria",
+  "description": "Systems, software and infrastructure architecture consulting based in Salzburg, Austria.",
   "start_url": "/",
   "scope": "/",
   "icons": [
-    { "src": "/assets/favicons/android_chrome_192x192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/assets/favicons/android_chrome_512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "/assets/favicons/android_chrome_192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/favicons/android_chrome_512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/favicons/android_chrome_512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "theme_color": "#003366",
   "background_color": "#fcfbf9",
   "display": "standalone",
+  "orientation": "portrait-primary",
+  "dir": "ltr",
   "lang": "en",
   "categories": ["business", "productivity"]
 }
