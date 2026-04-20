@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import compress from "@playform/compress";
 import rehypeSlug from "rehype-slug";
@@ -73,7 +73,6 @@ export default defineConfig({
     ],
   },
   integrations: [
-    tailwind(),
     sitemap({
       changefreq: 'monthly',
       priority: 0.7,
@@ -114,6 +113,7 @@ export default defineConfig({
   ],
   server: { host: true, port: 4322 },
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         "@": resolve("./src"),

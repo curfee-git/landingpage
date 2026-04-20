@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import type { Translations } from '@/i18n/translations';
+import profileImage from '@/assets/images/profile.webp';
 
 interface Props {
   translations: Translations;
@@ -13,7 +15,7 @@ const { translations: t } = Astro.props;
     <!-- Intro: Bild oben links, Text fließt darum -->
     <div class="mb-6 md:mb-8">
       <div class="flex justify-center mb-6 md:float-left md:mr-8 md:mb-2">
-        <img src="/assets/profile.webp" alt={t['about.portrait.alt']} class="w-[180px] h-[225px] object-cover object-top rounded-md shadow-elevation-1" loading="eager" decoding="async" width="180" height="225" />
+        <Image src={profileImage} alt={t['about.portrait.alt']} class="w-[180px] h-[225px] object-cover object-top rounded-md shadow-elevation-1" loading="lazy" decoding="async" width={180} height={225} widths={[180, 360, 540]} sizes="180px" />
       </div>
       <h2 id="about-heading" data-speakable class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">
         {t['about.heading']}
@@ -33,20 +35,20 @@ const { translations: t } = Astro.props;
         <div class="flex-1 min-w-[1.5rem] border-t border-ink-primary/10"></div>
       </div>
 
-      <h3 class="text-label-small uppercase tracking-[0.14em] text-brand-primary/70 font-bold mt-10 mb-4">{t['about.section.background']}</h3>
+      <h3 class="text-label-small uppercase tracking-[0.14em] text-brand-primary/70 font-medium mt-10 mb-4">{t['about.section.background']}</h3>
       <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
         <p>{t['about.who.3']}</p>
         <p>{t['about.who.4']}</p>
       </div>
 
-      <h3 class="text-label-small uppercase tracking-[0.14em] text-brand-primary/70 font-bold mt-10 mb-4">{t['about.section.observation']}</h3>
+      <h3 class="text-label-small uppercase tracking-[0.14em] text-brand-primary/70 font-medium mt-10 mb-4">{t['about.section.observation']}</h3>
       <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
         <p data-speakable>{t['about.who.5']}</p>
         <p>{t['about.who.3b']}</p>
         <p>{t['about.who.5b']}</p>
       </div>
 
-      <h3 class="text-label-small uppercase tracking-[0.14em] text-brand-primary/70 font-bold mt-10 mb-4">{t['about.section.why']}</h3>
+      <h3 class="text-label-small uppercase tracking-[0.14em] text-brand-primary/70 font-medium mt-10 mb-4">{t['about.section.why']}</h3>
       <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
         <p data-speakable>{t['about.who.6']}</p>
       </div>

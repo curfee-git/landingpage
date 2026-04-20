@@ -17,7 +17,7 @@ const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transi
     <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_auto_auto] gap-10 md:gap-16 mb-16">
 
       <!-- Left: Logo + Tagline (link to home) -->
-      <a href={routes.home} class="block no-underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/40 rounded-sm" aria-label={t['back.home']}>
+      <a href={routes.home} class="block no-underline hover:no-underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-primary/40 rounded-sm" aria-label={t['back.home']}>
         <div class="mb-4">
           <span class="block h-9 text-brand-primary [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
         </div>
@@ -44,8 +44,14 @@ const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transi
         <div>
           <p class="text-label-large text-ink-primary mb-4">{t['footer.column.contact']}</p>
           <div class="flex flex-col gap-3">
-            <a href={`mailto:${t['contact.email']}`} class={linkClass}>{t['contact.email']}</a>
-            <a href={`tel:${t['contact.phone'].replace(/\s/g, '')}`} class={linkClass}>{t['contact.phone']}</a>
+            <a href={`mailto:${t['contact.email']}`} class={`flex items-center gap-2 ${linkClass}`}>
+              <Icon name="mail" class="w-4 h-4" />
+              {t['contact.email']}
+            </a>
+            <a href={`tel:${t['contact.phone'].replace(/\s/g, '')}`} class={`flex items-center gap-2 ${linkClass}`}>
+              <Icon name="phone" class="w-4 h-4" />
+              {t['contact.phone']}
+            </a>
             <a href={BRAND.linkedin} target="_blank" rel="noopener noreferrer" class={`flex items-center gap-2 ${linkClass}`}>
               <Icon name="linkedin" class="w-4 h-4" />
               LinkedIn
