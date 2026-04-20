@@ -107,6 +107,7 @@ Curfee does not implement. It designs the solution and guides the client's team 
 - [Contact section](https://curfee.com/#contact)
 - [Legal Notice](https://curfee.com/imprint/)
 - [Privacy Policy](https://curfee.com/privacy/)
+- [Cookie Policy](https://curfee.com/cookies/)
 
 ## Stable identifiers
 

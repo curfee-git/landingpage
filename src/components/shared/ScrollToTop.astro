@@ -1,0 +1,63 @@
+---
+import Icon from '@/components/shared/Icon.astro';
+---
+
+<button
+  type="button"
+  class="fixed bottom-20 md:bottom-6 right-6 z-30 w-12 h-12 rounded-full flex items-center justify-center bg-surface-raised border border-stroke-outlineVariant text-brand-primary shadow-elevation-2 hover:shadow-elevation-3 hover:bg-brand-primary/[0.08] active:shadow-elevation-2 active:bg-brand-primary/[0.12] transition-all duration-medium2 ease-standard opacity-0 translate-y-4 pointer-events-none"
+  aria-label="Scroll to top"
+  inert
+  data-scroll-top
+>
+  <Icon name="expand_less" class="w-6 h-6" />
+</button>
+
+<script>
+  const FAB_SCROLL_THRESHOLD = 0.85;
+  const VISIBLE_CLASSES = ['opacity-100', 'translate-y-0', 'pointer-events-auto'];
+  const HIDDEN_CLASSES = ['opacity-0', 'translate-y-4', 'pointer-events-none'];
+
+  function easeInOutSine(t: number): number {
+    return -(Math.cos(Math.PI * t) - 1) / 2;
+  }
+
+  function smoothScrollToTop(): void {
+    const start = window.scrollY;
+    const startTime = performance.now();
+    const duration = Math.min(2000, 600 + start * 0.25);
+
+    const step = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, start * (1 - easeInOutSine(progress)));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  }
+
+  function updateVisibility(button: HTMLButtonElement): void {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const isVisible = scrollableHeight > 0 && window.scrollY / scrollableHeight > FAB_SCROLL_THRESHOLD;
+
+    for (const cls of HIDDEN_CLASSES) button.classList.toggle(cls, !isVisible);
+    for (const cls of VISIBLE_CLASSES) button.classList.toggle(cls, isVisible);
+    button.inert = !isVisible;
+  }
+
+  let scrollHandler: (() => void) | null = null;
+
+  function initFab(): void {
+    const button = document.querySelector('[data-scroll-top]') as HTMLButtonElement | null;
+    if (!button) return;
+
+    button.addEventListener('click', smoothScrollToTop);
+
+    if (scrollHandler) window.removeEventListener('scroll', scrollHandler);
+    scrollHandler = () => updateVisibility(button);
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+    updateVisibility(button);
+  }
+
+  document.addEventListener('astro:page-load', initFab);
+</script>

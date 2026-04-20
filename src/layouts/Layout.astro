@@ -2,6 +2,8 @@
 import { ClientRouter } from 'astro:transitions';
 import Header from '@/components/shared/Header.astro';
 import Footer from '@/components/shared/Footer.astro';
+import ScrollToTop from '@/components/shared/ScrollToTop.astro';
+import CookieBanner from '@/components/shared/CookieBanner.astro';
 import { getTranslations } from '@/i18n/translations';
 import '@/styles/global.css';
 
@@ -328,7 +330,7 @@ const speakableLd = {
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), browsing-topics=(), interest-cohort=(), fullscreen=(self), autoplay=()" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' data:; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-src 'none'; base-uri 'self'; form-action 'self'" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src 'none'; base-uri 'self'; form-action 'self'" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -349,6 +351,10 @@ const speakableLd = {
     <meta name="geo.placename" content="Salzburg, Austria" />
     <meta name="geo.position" content="47.8066;13.0089" />
     <meta name="ICBM" content="47.8066, 13.0089" />
+
+    <!-- DNS Prefetch for third-party domains -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
     <!-- Preload critical fonts (only above-the-fold fonts) -->
     <link rel="preload" href="/assets/fonts/inter/inter.woff2" as="font" type="font/woff2" crossorigin />
@@ -431,5 +437,7 @@ const speakableLd = {
       <slot />
     </main>
     <Footer transition:persist />
+    <ScrollToTop />
+    <CookieBanner />
   </body>
 </html>
