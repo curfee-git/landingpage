@@ -306,7 +306,7 @@ const services: ServiceCard[] = [
                 <a
                   href={EXTERNAL.mailto}
                   class:list={["inline-flex items-center gap-1.5 text-title-medium rounded-full px-4 py-2 transition-all duration-short4 ease-standard", service.colorText, service.colorHoverBg, service.colorActiveBg]}
-                  aria-label={`${service.cta} – ${service.title}`}
+                  aria-label={`${service.cta}: ${service.title}`}
                 >
                   {service.cta}
                   <Icon name="arrow_outward" class="w-4 h-4" />
@@ -373,19 +373,19 @@ const services: ServiceCard[] = [
         allCards.forEach((c) => { c.classList.remove('open'); c.setAttribute('aria-expanded', 'false'); });
 
         if (isOpen) {
-          // This card was open – user is closing it
+          // This card was open, user is closing it
           if (savedScrollY !== null) {
             window.scrollTo({ top: savedScrollY, behavior: 'auto' });
             savedScrollY = null;
           } else {
-            // No saved scroll (e.g., closed after a switch) – snap card to viewport top
+            // No saved scroll (e.g., closed after a switch), snap card to viewport top
             card.scrollIntoView({ behavior: 'auto', block: 'start' });
           }
           return;
         }
 
         if (anyOtherOpen) {
-          // Switching cards – disable transition, snap layout instantly, scroll to new card top
+          // Switching cards: disable transition, snap layout instantly, scroll to new card top
           const allBodies = document.querySelectorAll<HTMLElement>('.card-body');
           allBodies.forEach((b) => { b.style.transition = 'none'; });
 
@@ -405,7 +405,7 @@ const services: ServiceCard[] = [
           return;
         }
 
-        // Fresh open – smooth animation, remember scroll to restore on close
+        // Fresh open: smooth animation, remember scroll to restore on close
         card.classList.add('open');
         card.setAttribute('aria-expanded', 'true');
         savedScrollY = window.scrollY;

@@ -287,7 +287,7 @@ const webSiteLd = {
   "@type": "WebSite",
   "@id": `${siteUrl}/#website`,
   "name": "Curfee",
-  "alternateName": "Curfee – Systems, Software & Infrastructure Architecture Consulting",
+  "alternateName": "Curfee: Systems, Software & Infrastructure Architecture Consulting",
   "url": siteUrl,
   "inLanguage": "en",
   "publisher": { "@id": `${siteUrl}/#organization` },
@@ -348,7 +348,7 @@ const speakableLd = {
     {ogType === 'article' && articleSection && <meta property="article:section" content={articleSection} />}
     {ogType === 'article' && articleTags && articleTags.map((tag) => <meta property="article:tag" content={tag} />)}
 
-    <!-- Geo Meta Tags – Local SEO (Salzburg, Austria) -->
+    <!-- Geo Meta Tags: Local SEO (Salzburg, Austria) -->
     <meta name="geo.region" content="AT-5" />
     <meta name="geo.placename" content="Salzburg, Austria" />
     <meta name="geo.position" content="47.8066;13.0089" />
@@ -414,13 +414,13 @@ const speakableLd = {
 
     {!noindex && (
       <>
-        <!-- Structured Data – Sitewide WebSite + Place + Person + Organization + WebPage -->
+        <!-- Structured Data: Sitewide WebSite + Place + Person + Organization + WebPage -->
         <script is:inline type="application/ld+json" set:html={JSON.stringify(webSiteLd)} />
         <script is:inline type="application/ld+json" set:html={JSON.stringify(placeLd)} />
         <script is:inline type="application/ld+json" set:html={JSON.stringify(personLd)} />
         <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
         <script is:inline type="application/ld+json" set:html={JSON.stringify(speakableLd)} />
-        <!-- Structured Data – Page-specific -->
+        <!-- Structured Data: Page-specific -->
         {jsonLd && (
           Array.isArray(jsonLd)
             ? jsonLd.map((ld) => (

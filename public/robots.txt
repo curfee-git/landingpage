@@ -1,7 +1,7 @@
-# Curfee (curfee.com) – crawler access policy
+# Curfee (curfee.com): crawler access policy
 #
 # Intent: search and AI answer-engine retrieval bots are welcome to crawl and
-# cite this site. Training-data crawlers are not – Curfee content must not be
+# cite this site. Training-data crawlers are not. Curfee content must not be
 # ingested into foundation-model training sets. See /llms.txt and
 # /llms-full.txt for the canonical corpus available for runtime retrieval.
 
@@ -64,7 +64,7 @@ Allow: /
 User-agent: Meta-ExternalFetcher
 Allow: /
 
-# --- Training-data crawlers (DISALLOW – no ingestion into training sets) ---
+# --- Training-data crawlers (DISALLOW: no ingestion into training sets) ---
 
 User-agent: GPTBot
 Disallow: /

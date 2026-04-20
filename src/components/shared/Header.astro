@@ -283,7 +283,7 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
       const scrollY = window.scrollY;
       const viewportMiddle = scrollY + window.innerHeight * 0.35;
 
-      // In hero zone – no highlight
+      // In hero zone, no highlight
       const firstSection = sections[0];
       if (firstSection && viewportMiddle < firstSection.offsetTop) {
         clearActive();
