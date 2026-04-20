@@ -13,7 +13,7 @@ function escapeXml(input: string): string {
 }
 
 export const GET: APIRoute = async () => {
-  const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  const posts = (await getCollection('blog'))
     .sort((a, b) => (b.data.updatedAt ?? b.data.createdAt).getTime() - (a.data.updatedAt ?? a.data.createdAt).getTime());
 
   const items = posts

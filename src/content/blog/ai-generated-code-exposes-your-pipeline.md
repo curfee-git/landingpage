@@ -9,8 +9,6 @@ tags:
   - Fitness Functions
   - AI
   - Architecture
-draft: false
-featured: true
 ---
 
 The real risk with AI-generated code is not speed. It is a pipeline designed for a different time – a time when engineers wrote the code, and pull request volume was bounded by how fast they could type, think, and context-switch.

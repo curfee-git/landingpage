@@ -13,10 +13,11 @@ const Heading = headingLevel;
 
 <a
   href={postPath(post)}
+  data-astro-reload
   class="group flex h-full flex-col rounded-xl bg-surface-base shadow-elevation-1 p-6 md:p-8 hover:shadow-elevation-3 transition-shadow duration-medium2 ease-standard"
 >
   <div class="flex items-center justify-between mb-5">
-    <span class="text-headline-small text-brand-primary/40 font-semibold tabular-nums leading-none">
+    <span class="text-headline-small text-brand-primary/40 font-semibold tabular-nums leading-none" data-card-number>
       {String(index).padStart(2, '0')}
     </span>
     <time class="text-[0.75rem] text-ink-muted/60 tabular-nums" datetime={post.data.createdAt.toISOString()}>

@@ -60,13 +60,8 @@ export function postSlug(post: BlogPost): string {
 }
 
 export async function getPosts(): Promise<BlogPost[]> {
-  const all = await getCollection('blog', ({ data }) => {
-    return !data.draft;
-  });
-  return all.sort((a, b) => {
-    if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
-    return b.data.createdAt.getTime() - a.data.createdAt.getTime();
-  });
+  const all = await getCollection('blog');
+  return all.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime());
 }
 
 export function postPath(post: BlogPost): string {
@@ -96,6 +91,20 @@ const OWN_HOSTS = new Set(['curfee.com']);
 const REFERENCE_TITLE_OVERRIDES: Record<string, string> = {
   'https://martinfowler.com/articles/evo-arch-forward.html': 'Building Evolutionary Architectures',
 };
+
+export function reorderForGrid<T>(items: T[], weight: (item: T) => number): T[] {
+  if (items.length <= 1) return [...items];
+  const sorted = [...items].sort((a, b) => weight(a) - weight(b));
+  const rows = Math.ceil(sorted.length / 2);
+  const col1: T[] = [];
+  const col2: T[] = [];
+  for (let i = 0; i < rows; i++) {
+    col1.push(sorted[2 * i]);
+    const second = sorted[2 * i + 1];
+    if (second !== undefined) col2.push(second);
+  }
+  return [...col1, ...col2];
+}
 
 export function extractReferences(body: string): ReferenceLink[] {
   const seen = new Set<string>();

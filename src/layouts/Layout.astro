@@ -24,6 +24,7 @@ interface Props {
   hasSpeakable?: boolean;
   articleSection?: string;
   articleTags?: string[];
+  enableTransitions?: boolean;
 }
 
 const t = getTranslations();
@@ -45,6 +46,7 @@ const {
   hasSpeakable = false,
   articleSection,
   articleTags,
+  enableTransitions = true,
 } = Astro.props;
 
 const defaultOgImageDims = !ogImageOverride;
@@ -429,14 +431,14 @@ const speakableLd = {
       </>
     )}
 
-    <ClientRouter />
+    {enableTransitions && <ClientRouter />}
   </head>
   <body>
     {showHeader && <Header />}
-    <main transition:animate="fade">
+    <main {...(enableTransitions ? { 'transition:animate': 'fade' } : {})}>
       <slot />
     </main>
-    <Footer transition:persist />
+    <Footer {...(enableTransitions ? { 'transition:persist': true } : {})} />
     <ScrollToTop />
     <CookieBanner />
   </body>

@@ -145,6 +145,19 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
 </style>
 
 <script>
+  let cleanupHandlers: Array<() => void> = [];
+
+  function addCleanup(fn: () => void) {
+    cleanupHandlers.push(fn);
+  }
+
+  function runCleanup() {
+    for (const fn of cleanupHandlers) {
+      try { fn(); } catch { /* ignore */ }
+    }
+    cleanupHandlers = [];
+  }
+
   function initHeader() {
     const header = document.querySelector('[data-header]') as HTMLElement | null;
     const toggle = header?.querySelector('[data-menu-toggle]') as HTMLButtonElement | null;
@@ -159,10 +172,10 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
       header.style.setProperty('--menu-height', menuOpen ? `${menu.scrollHeight}px` : '0px');
     };
 
-    let menuObserver: ResizeObserver | null = null;
     if (menu) {
-      menuObserver = new ResizeObserver(updateMenuHeight);
+      const menuObserver = new ResizeObserver(updateMenuHeight);
       menuObserver.observe(menu);
+      addCleanup(() => menuObserver.disconnect());
     }
 
     const setMenuState = (open: boolean) => {
@@ -187,16 +200,31 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
 
     if (toggle) {
       let open = false;
-      toggle.addEventListener('click', () => { open = !open; setMenuState(open); });
-      closeTargets.forEach((el) => el.addEventListener('click', () => { open = false; setMenuState(open); }));
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && open) { open = false; setMenuState(open); toggle.focus(); }
+      const onToggle = () => { open = !open; setMenuState(open); };
+      toggle.addEventListener('click', onToggle);
+      addCleanup(() => toggle.removeEventListener('click', onToggle));
+
+      const closeListeners: Array<[Element, () => void]> = [];
+      closeTargets.forEach((el) => {
+        const fn = () => { open = false; setMenuState(open); };
+        el.addEventListener('click', fn);
+        closeListeners.push([el, fn]);
       });
-      document.addEventListener('click', (event) => {
+      addCleanup(() => closeListeners.forEach(([el, fn]) => el.removeEventListener('click', fn)));
+
+      const onKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Escape' && open) { open = false; setMenuState(open); toggle.focus(); }
+      };
+      document.addEventListener('keydown', onKeyDown);
+      addCleanup(() => document.removeEventListener('keydown', onKeyDown));
+
+      const onDocClick = (event: MouseEvent) => {
         if (open && header && !header.contains(event.target as Node)) {
           open = false; setMenuState(open);
         }
-      });
+      };
+      document.addEventListener('click', onDocClick);
+      addCleanup(() => document.removeEventListener('click', onDocClick));
     }
 
     if (header) {
@@ -214,6 +242,7 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
         }
       };
       window.addEventListener('scroll', onScroll, { passive: true });
+      addCleanup(() => window.removeEventListener('scroll', onScroll));
       onScroll();
     }
   }
@@ -224,6 +253,9 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
+
+    // Skip entirely on pages with no tracked sections (blog posts, legal, etc.)
+    if (sections.length === 0) return;
 
     let currentActive = '';
 
@@ -273,10 +305,42 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    addCleanup(() => window.removeEventListener('scroll', onScroll));
+
+    // If the page was loaded with a section hash (e.g. browser back to /#blog),
+    // pre-populate state from the hash and explicitly scroll to the section.
+    // Relying on the browser's native anchor scroll is unreliable after a
+    // full-page back-navigation, especially with bfcache or lazy-loaded content
+    // above the target section.
+    const hashId = location.hash.startsWith('#') ? location.hash.slice(1) : '';
+    const hashSection = hashId ? sections.find((s) => s.id === hashId) : undefined;
+    if (hashSection) {
+      currentActive = hashId;
+      navLinks.forEach((link) => {
+        if (link.getAttribute('href') === `#${hashId}`) {
+          link.setAttribute('data-active', '');
+        } else {
+          link.removeAttribute('data-active');
+        }
+      });
+
+      // Wait two frames so any lazy layout above the target settles before
+      // measuring offsetTop, then scroll if the browser hasn't already.
+      const scrollToSection = () => {
+        const target = hashSection.offsetTop;
+        if (Math.abs(window.scrollY - target) > 4) {
+          window.scrollTo({ top: target, behavior: 'auto' });
+        }
+      };
+      requestAnimationFrame(() => requestAnimationFrame(scrollToSection));
+    } else {
+      onScroll();
+    }
   }
 
+  document.addEventListener('astro:before-swap', runCleanup);
   document.addEventListener('astro:page-load', () => {
+    runCleanup();
     initHeader();
     initActiveSection();
   });

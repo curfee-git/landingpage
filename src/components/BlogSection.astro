@@ -11,8 +11,9 @@ interface Props {
 const { translations: t } = Astro.props;
 
 const allPosts = await getPosts();
-const previewPosts = allPosts.slice(0, 3);
-const linkLabel = allPosts.length > 3 ? t['blog.all'] : t['blog.visit'];
+const LATEST_COUNT = 6;
+const previewPosts = allPosts.slice(0, LATEST_COUNT);
+const linkLabel = allPosts.length > LATEST_COUNT ? t['blog.all'] : t['blog.visit'];
 ---
 
 {previewPosts.length > 0 && (

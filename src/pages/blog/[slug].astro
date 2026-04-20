@@ -4,10 +4,10 @@ import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
 import BackToHomeSection from '@/components/shared/BackToHomeSection.astro';
 import { getTranslations } from '@/i18n/translations';
-import { postSlug, postPath, formatDate, getRelatedPosts, extractToc, getAdjacentPosts, extractReferences } from '@/utils/blog';
+import { postSlug, formatDate, extractToc, extractReferences, reorderForGrid } from '@/utils/blog';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const posts = await getCollection('blog');
   return posts.map((post) => ({
     params: { slug: postSlug(post) },
     props: { post },
@@ -19,10 +19,10 @@ const t = getTranslations();
 const { Content } = await render(post);
 const slug = postSlug(post);
 const canonicalPath = `/blog/${slug}/`;
-const related = await getRelatedPosts(post, 3);
 const toc = extractToc(post.body ?? '');
-const adjacent = await getAdjacentPosts(post);
-const references = extractReferences(post.body ?? '');
+const references = reorderForGrid(extractReferences(post.body ?? ''), (ref) => ref.title.length + ref.url.length);
+const tocRows = Math.max(1, Math.ceil(toc.length / 2));
+const referencesRows = Math.max(1, Math.ceil(references.length / 2));
 const contactPath = '/#contact';
 
 const postImage = post.data.coverImage
@@ -84,6 +84,7 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
   ogImageHeight={usingCoverImage ? undefined : 630}
   articleSection={post.data.topic}
   articleTags={post.data.tags}
+  enableTransitions={false}
 >
   <article class="pt-[clamp(4rem,3rem+3vw,7rem)] pb-[clamp(8rem,5rem+7vw,12rem)] max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
     <div class="max-w-4xl mx-auto">
@@ -126,9 +127,12 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
           <h2 id="toc-heading" class="text-label-small uppercase tracking-[0.14em] text-ink-muted mb-5">
             {t['blog.tocHeading']}
           </h2>
-          <ol class="sm:columns-2 sm:gap-x-10 space-y-3">
+          <ol
+            class="space-y-3 sm:space-y-0 sm:grid sm:grid-cols-2 sm:grid-flow-col sm:gap-x-10 sm:gap-y-3"
+            style={`grid-template-rows: repeat(${tocRows}, auto);`}
+          >
             {toc.map((item, i) => (
-              <li class="flex items-baseline gap-3 break-inside-avoid">
+              <li class="flex items-baseline gap-3">
                 <span class="text-label-small text-brand-primary/50 font-semibold tabular-nums shrink-0 w-6">
                   {String(i + 1).padStart(2, '0')}
                 </span>
@@ -169,9 +173,12 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
           <h2 id="references-heading" class="text-label-small uppercase tracking-[0.14em] text-ink-muted mb-4">
             {t['blog.referencesHeading']}
           </h2>
-          <ol class="sm:columns-2 sm:gap-x-8 space-y-4">
+          <ol
+            class="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:grid-flow-col sm:gap-x-8 sm:gap-y-4"
+            style={`grid-template-rows: repeat(${referencesRows}, auto);`}
+          >
             {references.map((ref, i) => (
-              <li class="flex items-baseline gap-3 break-inside-avoid">
+              <li class="flex items-baseline gap-3">
                 <span class="text-label-small text-ink-muted/50 font-semibold tabular-nums shrink-0 w-6">
                   {String(i + 1).padStart(2, '0')}
                 </span>
@@ -202,63 +209,6 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
         </a>
       </aside>
     </div>
-
-    {related.length > 0 && (
-      <aside class="max-w-4xl mx-auto mt-24 pt-12 border-t border-stroke-outlineVariant" aria-labelledby="related-heading">
-        <h2 id="related-heading" class="text-headline-small text-ink-primary tracking-tight mb-2">
-          {t['blog.relatedHeading']}
-        </h2>
-        <p class="text-body-medium text-ink-muted/80 mb-8">
-          {t['blog.relatedSubtitle']}
-        </p>
-        <ul class="space-y-6">
-          {related.map((r) => (
-            <li>
-              <a href={postPath(r)} class="group block">
-                <div class="flex items-center gap-3 mb-1.5">
-                  <span class="text-label-small text-brand-primary">{r.data.topic}</span>
-                  <span class="text-label-small text-ink-muted/60">·</span>
-                  <time class="text-label-small text-ink-muted/70" datetime={r.data.createdAt.toISOString()}>
-                    {formatDate(r.data.createdAt)}
-                  </time>
-                </div>
-                <h3 class="text-title-large text-ink-primary group-hover:text-brand-primary transition-colors duration-short4 mb-1">
-                  {r.data.title}
-                </h3>
-                <p class="text-body-medium text-ink-muted/80 line-clamp-2">
-                  {r.data.excerpt}
-                </p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </aside>
-    )}
-
-    {(adjacent.previous || adjacent.next) && (
-      <nav class="max-w-4xl mx-auto mt-16 pt-8 border-t border-stroke-outlineVariant grid grid-cols-1 md:grid-cols-2 gap-4" aria-label="Post navigation">
-        {adjacent.previous ? (
-          <a href={postPath(adjacent.previous)} class="group block p-5 rounded-lg bg-surface-base shadow-elevation-1 hover:shadow-elevation-3 transition-shadow duration-medium2 ease-standard">
-            <span class="block text-label-small uppercase tracking-[0.14em] text-ink-muted mb-2">
-              ← {t['blog.previous']}
-            </span>
-            <span class="block text-body-large text-ink-primary group-hover:text-brand-primary transition-colors duration-short4 [text-wrap:balance]">
-              {adjacent.previous.data.title}
-            </span>
-          </a>
-        ) : <span aria-hidden="true"></span>}
-        {adjacent.next ? (
-          <a href={postPath(adjacent.next)} class="group block p-5 rounded-lg bg-surface-base shadow-elevation-1 hover:shadow-elevation-3 transition-shadow duration-medium2 ease-standard text-right">
-            <span class="block text-label-small uppercase tracking-[0.14em] text-ink-muted mb-2">
-              {t['blog.next']} →
-            </span>
-            <span class="block text-body-large text-ink-primary group-hover:text-brand-primary transition-colors duration-short4 [text-wrap:balance]">
-              {adjacent.next.data.title}
-            </span>
-          </a>
-        ) : <span aria-hidden="true"></span>}
-      </nav>
-    )}
   </article>
   <BackToHomeSection />
 </Layout>
