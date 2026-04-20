@@ -60,7 +60,7 @@ const jsonLd = {
             <label class="inline-flex items-center gap-2 text-label-medium text-ink-onSurfaceVariant">
               <span>{t['blog.filterLabel']}</span>
               <span class="relative inline-block">
-                <select data-blog-filter class="appearance-none rounded-full border border-brand-primary/30 bg-surface-base text-body-medium text-brand-primary font-medium pl-4 pr-9 py-2 cursor-pointer hover:border-brand-primary/60 hover:bg-brand-primary/[0.04] transition-all duration-short4 ease-standard focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-primary/40">
+                <select data-blog-filter class="appearance-none rounded-full border border-brand-primary/30 bg-surface-base text-body-medium text-brand-primary font-medium pl-4 pr-9 py-2 cursor-pointer hover:border-brand-primary/60 hover:bg-brand-primary/[0.04] transition-all duration-short4 ease-standard focus:outline-hidden focus-visible:outline-hidden focus:border-brand-primary focus-visible:border-brand-primary focus:ring-2 focus-visible:ring-2 focus:ring-brand-primary/30 focus-visible:ring-brand-primary/30">
                   <option value="">{t['blog.filterAll']}</option>
                   {topics.map((topic) => (
                     <option value={topic}>{topic}</option>
@@ -72,7 +72,7 @@ const jsonLd = {
             <label class="inline-flex items-center gap-2 text-label-medium text-ink-onSurfaceVariant">
               <span>{t['blog.sortLabel']}</span>
               <span class="relative inline-block">
-                <select data-blog-sort class="appearance-none rounded-full border border-brand-primary/30 bg-surface-base text-body-medium text-brand-primary font-medium min-w-[11rem] pl-4 pr-9 py-2 cursor-pointer hover:border-brand-primary/60 hover:bg-brand-primary/[0.04] transition-all duration-short4 ease-standard focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-primary/40">
+                <select data-blog-sort class="appearance-none rounded-full border border-brand-primary/30 bg-surface-base text-body-medium text-brand-primary font-medium min-w-[11rem] pl-4 pr-9 py-2 cursor-pointer hover:border-brand-primary/60 hover:bg-brand-primary/[0.04] transition-all duration-short4 ease-standard focus:outline-hidden focus-visible:outline-hidden focus:border-brand-primary focus-visible:border-brand-primary focus:ring-2 focus-visible:ring-2 focus:ring-brand-primary/30 focus-visible:ring-brand-primary/30">
                   <option value="newest">{t['blog.sortNewest']}</option>
                   <option value="oldest">{t['blog.sortOldest']}</option>
                   <option value="az">{t['blog.sortAZ']}</option>

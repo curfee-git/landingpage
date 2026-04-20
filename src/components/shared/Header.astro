@@ -59,8 +59,7 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
   [data-header] {
     --menu-height: 0px;
     --header-duration: 500ms;
-    --header-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-    transition: top var(--header-duration) var(--header-ease);
+    transition: top var(--header-duration) var(--ease-standard);
   }
   [data-header]::before {
     content: '';
@@ -73,9 +72,9 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
     -webkit-backdrop-filter: blur(12px) saturate(120%);
     border-radius: 0;
     z-index: -1;
-    transition: left var(--header-duration) var(--header-ease),
-                right var(--header-duration) var(--header-ease),
-                border-radius var(--header-duration) var(--header-ease);
+    transition: left var(--header-duration) var(--ease-standard),
+                right var(--header-duration) var(--ease-standard),
+                border-radius var(--header-duration) var(--ease-standard);
   }
   [data-header][data-scrolled] {
     top: 0.75rem;
@@ -86,10 +85,10 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
     border-radius: 1.25rem;
   }
   [data-header-shell] {
-    transition: height var(--header-duration) var(--header-ease),
-                max-width var(--header-duration) var(--header-ease),
-                padding-left var(--header-duration) var(--header-ease),
-                padding-right var(--header-duration) var(--header-ease);
+    transition: height var(--header-duration) var(--ease-standard),
+                max-width var(--header-duration) var(--ease-standard),
+                padding-left var(--header-duration) var(--ease-standard),
+                padding-right var(--header-duration) var(--ease-standard);
   }
   [data-header][data-scrolled] [data-header-shell] {
     height: 4rem;

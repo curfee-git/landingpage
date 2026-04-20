@@ -20,7 +20,7 @@ const Heading = headingLevel;
     <span class="text-headline-small text-brand-primary/40 font-semibold tabular-nums leading-none" data-card-number>
       {String(index).padStart(2, '0')}
     </span>
-    <time class="text-[0.75rem] text-ink-muted/60 tabular-nums" datetime={post.data.createdAt.toISOString()}>
+    <time class="text-body-small text-ink-muted/60 tabular-nums" datetime={post.data.createdAt.toISOString()}>
       {formatDate(post.data.createdAt)}
     </time>
   </div>
@@ -31,7 +31,7 @@ const Heading = headingLevel;
     {post.data.excerpt}
   </p>
   <div class="flex justify-end">
-    <span class="inline-flex items-center rounded-full border border-stroke-outlineVariant/70 text-[0.688rem] leading-none text-ink-muted/80 px-2 py-1">
+    <span class="inline-flex items-center rounded-full border border-stroke-outlineVariant/70 text-label-small leading-none text-ink-muted/80 px-2 py-1">
       {post.data.topic}
     </span>
   </div>
