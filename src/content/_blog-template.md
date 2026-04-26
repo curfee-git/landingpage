@@ -1,10 +1,10 @@
 ---
 # Blog post template: copy this file into `src/content/blog/` and rename to
-# your slug (e.g. `your-post-title.md`). Filename without extension becomes
+# your slug (e.g. `your_post_title.md`). Filename without extension becomes
 # the URL slug. This file itself sits outside `src/content/blog/` so it is
 # never picked up by the blog collection.
 #
-# Structure mirrors the canonical post `ai-generated-code-exposes-your-pipeline.md`:
+# Structure mirrors the canonical post `ai_generated_code_exposes_your_pipeline.md`:
 #   - frontmatter (below)
 #   - intro: 2–3 short paragraphs, no heading
 #   - 6–7 H2 sections, no H3 sub-headings
