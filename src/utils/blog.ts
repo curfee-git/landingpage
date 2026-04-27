@@ -20,30 +20,11 @@ export interface ReferenceLink {
   title: string;
 }
 
-function humanizeSlug(segment: string): string {
-  return segment
-    .replace(/\.(html?|php|aspx?|jsp)$/i, '')
-    .replace(/[-_]+/g, ' ')
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
-    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
-    .replace(/([a-zA-Z])(\d)/g, '$1 $2')
-    .replace(/(\d)([a-zA-Z])/g, '$1 $2')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
-function referenceTitleFromUrl(url: string, host: string): string {
-  try {
-    const u = new URL(url);
-    const segments = u.pathname.split('/').filter(Boolean);
-    const last = segments[segments.length - 1];
-    if (!last || /^index(\.\w+)?$/i.test(last)) return host;
-    const humanized = humanizeSlug(decodeURIComponent(last));
-    return humanized || host;
-  } catch {
-    return host;
-  }
+function cleanReferenceText(text: string): string {
+  return text
+    .replace(/^["'‘’“”\s]+/, '')
+    .replace(/["'‘’“”\s]+$/, '')
+    .trim();
 }
 
 const TOC_MIN_WORDS = 1200;
@@ -123,7 +104,7 @@ export function extractReferences(body: string): ReferenceLink[] {
       host = url;
     }
     if (OWN_HOSTS.has(host)) continue;
-    const title = REFERENCE_TITLE_OVERRIDES[url] ?? referenceTitleFromUrl(url, host);
+    const title = REFERENCE_TITLE_OVERRIDES[url] ?? (cleanReferenceText(text) || host);
     items.push({ text, url, host, title });
   }
   return items;
