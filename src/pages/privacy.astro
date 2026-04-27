@@ -3,10 +3,8 @@ import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
 import BackToHomeSection from '@/components/shared/BackToHomeSection.astro';
 import { getTranslations } from '@/i18n/translations';
-import { ROUTES } from '@/configurations/routes';
 
 const t = getTranslations();
-const routes = ROUTES;
 const linkClass = "text-brand-primary hover:underline transition-colors duration-short4 ease-standard";
 
 const jsonLd = {
@@ -24,7 +22,7 @@ const jsonLd = {
   description={t['meta.privacy.description']}
   canonicalPath="/privacy/"
   jsonLd={jsonLd}
-  dateModified="2026-03-30"
+  dateModified="2026-04-27"
   showHeader={false}
 >
   <article class="pt-[clamp(4rem,3rem+3vw,7rem)] pb-[clamp(4rem,3rem+3vw,7rem)] max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
@@ -105,7 +103,7 @@ const jsonLd = {
 
         <section>
           <h2 class="text-headline-small text-ink-primary mb-4">{t['privacy.cookies.heading']}</h2>
-          <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.cookies.reference']} <a href={routes.cookies} class={linkClass}>{t['footer.legal.cookies']}</a></p>
+          <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.cookies']}</p>
         </section>
 
         <section>
@@ -116,12 +114,6 @@ const jsonLd = {
         <section>
           <h2 class="text-headline-small text-ink-primary mb-4">{t['privacy.hosting.heading']}</h2>
           <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.hosting']}</p>
-        </section>
-
-        <section>
-          <h2 class="text-headline-small text-ink-primary mb-4">{t['privacy.analytics.heading']}</h2>
-          <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.analytics']}</p>
-          <p class="text-body-large text-ink-muted leading-relaxed mt-2">{t['privacy.analytics.more']} <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class={linkClass}>policies.google.com/privacy</a></p>
         </section>
 
       </div>

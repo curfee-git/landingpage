@@ -3,7 +3,6 @@ export const ROUTES = {
   blog: '/blog/',
   imprint: '/imprint/',
   privacy: '/privacy/',
-  cookies: '/cookies/',
 } as const;
 
 export const EXTERNAL = {

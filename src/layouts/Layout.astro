@@ -3,7 +3,6 @@ import { ClientRouter } from 'astro:transitions';
 import Header from '@/components/shared/Header.astro';
 import Footer from '@/components/shared/Footer.astro';
 import ScrollToTop from '@/components/shared/ScrollToTop.astro';
-import CookieBanner from '@/components/shared/CookieBanner.astro';
 import { getTranslations } from '@/i18n/translations';
 import '@/styles/global.css';
 
@@ -68,23 +67,25 @@ const personLd = {
   "givenName": "Philipp",
   "familyName": "Höllinger",
   "jobTitle": t['meta.about.jobTitle'],
-  "description": "Philipp Höllinger is a systems, software and infrastructure architect based in Salzburg, Austria, and the sole founder of Curfee e.U. (founded 2026). He consults on systems, software and infrastructure architecture and root-cause analysis, applying the Decision Enforcement Principle: architectural decisions are enforced by the system itself through pipelines, automated checks, and tool configuration, rather than by the discipline, memory, or vigilance of individual people.",
+  "description": "Philipp Höllinger is a structural architect based in Salzburg, Austria, and the sole founder of Curfee e.U. (founded 2026). He consults on structural architecture across software, infrastructure, and organizational structures, and on root-cause analysis, applying the Decision Enforcement Principle: architectural decisions are enforced by the system itself through pipelines, automated checks, and tool configuration, rather than by the discipline, memory, or vigilance of individual people.",
   "url": siteUrl,
   "mainEntityOfPage": `${siteUrl}/#about`,
   "image": {
     "@type": "ImageObject",
     "url": `${siteUrl}/assets/profile.webp`,
     "contentUrl": `${siteUrl}/assets/profile.webp`,
-    "caption": "Portrait of Philipp Höllinger, systems, software and infrastructure architect and founder of Curfee",
+    "caption": "Portrait of Philipp Höllinger, founder of Curfee",
     "width": 320,
     "height": 400
   },
   "sameAs": ["https://www.linkedin.com/in/phoellinger"],
   "nationality": { "@type": "Country", "name": "Austria" },
   "knowsAbout": [
+    "Structural Architecture",
     "Systems Architecture",
     "Software Architecture",
     "Infrastructure Architecture",
+    "Organizational Architecture",
     "System Analysis",
     "IT Consulting",
     "Root Cause Analysis",
@@ -103,7 +104,7 @@ const personLd = {
   ],
   "hasOccupation": {
     "@type": "Occupation",
-    "name": "Systems, Software & Infrastructure Architect",
+    "name": "Structural Architect",
     "occupationLocation": { "@id": `${siteUrl}/#place-salzburg` },
     "occupationalCategory": {
       "@type": "CategoryCode",
@@ -114,7 +115,7 @@ const personLd = {
         "name": "O*NET-SOC"
       }
     },
-    "skills": "Systems architecture, software architecture, infrastructure architecture, root cause analysis, dependency mapping, decision enforcement, standards and conventions design, tool landscape assessment"
+    "skills": "Structural architecture across software, infrastructure, and organizational structures, root cause analysis, dependency mapping, decision enforcement, standards and conventions design, tool landscape assessment"
   },
   "knowsLanguage": [
     { "@type": "Language", "name": "German", "alternateName": "de" },
@@ -156,7 +157,7 @@ const organizationLd = {
   "@id": `${siteUrl}/#organization`,
   "name": "Curfee",
   "legalName": "Curfee e.U.",
-  "alternateName": ["Curfee Systems, Software & Infrastructure Architecture Consulting", "Curfee Consulting"],
+  "alternateName": ["Curfee Structural Architecture Consulting", "Curfee Consulting"],
   "url": siteUrl,
   "logo": {
     "@type": "ImageObject",
@@ -198,9 +199,11 @@ const organizationLd = {
     "name": "DACH region"
   },
   "knowsAbout": [
+    "Structural Architecture",
     "Systems Architecture",
     "Software Architecture",
     "Infrastructure Architecture",
+    "Organizational Architecture",
     "System Analysis",
     "IT Consulting",
     "Root Cause Analysis",
@@ -259,7 +262,7 @@ const organizationLd = {
     "url": "https://www.wko.at"
   },
   "keywords": [
-    "systems software and infrastructure architecture consulting",
+    "structural architecture consulting",
     "systems architecture consulting",
     "software architecture consulting",
     "infrastructure architecture consulting",
@@ -271,7 +274,11 @@ const organizationLd = {
     "standards enforcement pipelines",
     "structural consulting",
     "IT consulting Austria",
-    "Systems-, Software- und Infrastrukturarchitektur Beratung",
+    "organizational architecture consulting",
+    "Strukturarchitektur Beratung",
+    "Strukturarchitektur Österreich",
+    "Strukturarchitekt Österreich",
+    "Organisationsstruktur Beratung",
     "Systemarchitektur Beratung",
     "Systemarchitektur Österreich",
     "Architekturentscheidungen durchsetzen",
@@ -287,7 +294,7 @@ const webSiteLd = {
   "@type": "WebSite",
   "@id": `${siteUrl}/#website`,
   "name": "Curfee",
-  "alternateName": "Curfee: Systems, Software & Infrastructure Architecture Consulting",
+  "alternateName": "Curfee: Structural Architecture Consulting",
   "url": siteUrl,
   "inLanguage": "en",
   "publisher": { "@id": `${siteUrl}/#organization` },
@@ -332,7 +339,7 @@ const speakableLd = {
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), browsing-topics=(), interest-cohort=(), fullscreen=(self), autoplay=()" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' data: https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src 'none'; base-uri 'self'; form-action 'self'" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' data:; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-src 'none'; base-uri 'self'; form-action 'self'" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -353,10 +360,6 @@ const speakableLd = {
     <meta name="geo.placename" content="Salzburg, Austria" />
     <meta name="geo.position" content="47.8066;13.0089" />
     <meta name="ICBM" content="47.8066, 13.0089" />
-
-    <!-- DNS Prefetch for third-party domains -->
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
     <!-- Preload critical fonts (only above-the-fold fonts) -->
     <link rel="preload" href="/assets/fonts/inter/inter.woff2" as="font" type="font/woff2" crossorigin />
@@ -400,9 +403,9 @@ const speakableLd = {
     <link rel="icon" href="/assets/favicons/android_chrome_512x512.png" type="image/png" sizes="512x512" />
     <link rel="apple-touch-icon" href="/assets/favicons/apple_touch_icon.png" sizes="180x180" />
     <link rel="manifest" href="/assets/favicons/site.webmanifest" />
-    <meta name="theme-color" content="#003366" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#445a79" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)" />
-    <meta name="msapplication-TileColor" content="#003366" />
+    <meta name="msapplication-TileColor" content="#445a79" />
     <meta name="msapplication-TileImage" content="/assets/favicons/android_chrome_192x192.png" />
 
     <!-- Identity verification -->
@@ -440,6 +443,5 @@ const speakableLd = {
     </main>
     <Footer {...(enableTransitions ? { 'transition:persist': true } : {})} />
     <ScrollToTop />
-    <CookieBanner />
   </body>
 </html>

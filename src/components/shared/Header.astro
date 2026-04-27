@@ -11,10 +11,12 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
 ---
 
 <header class="z-20 sticky top-0" role="banner" data-header>
-  <div class="mx-auto max-w-7xl flex items-center gap-3 w-full relative h-16 md:h-20 px-6 md:px-12 lg:px-20" data-header-shell>
-    <a href="/" class="shrink-0 block h-9 text-brand-primary [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-label="Curfee" set:html={logoTextRaw} />
+  <div class="mx-auto max-w-7xl flex items-center justify-between gap-3 w-full relative h-[4.5rem] px-6 md:px-12 lg:px-20" data-header-shell>
+    <a href="/" class="shrink-0 inline-flex items-center gap-2 text-ink-primary" aria-label="Curfee">
+      <span class="block h-8 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
+    </a>
 
-    <nav class="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2" aria-label="Primary navigation">
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Primary navigation">
       <a href="#observations" class={navClass} data-nav-link>{t['nav.observations']}</a>
       <a href="#services" class={navClass} data-nav-link>{t['nav.services']}</a>
       <a href="#about" class={navClass} data-nav-link>{t['nav.about']}</a>
@@ -23,8 +25,8 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
       <a href="#faq" class={navClass} data-nav-link>{t['nav.faq']}</a>
     </nav>
 
-    <div class="flex items-center gap-1 ml-auto shrink-0 z-10">
-      <a href={EXTERNAL.mailto} class="hidden sm:inline-flex items-center justify-center gap-2 border border-brand-primary text-brand-primary px-5 py-2.5 rounded-full text-label-large font-medium whitespace-nowrap hover:bg-brand-primary/[0.08] active:bg-brand-primary/[0.12] transition-all duration-short4 ease-standard">
+    <div class="flex items-center gap-1 shrink-0 z-10">
+      <a href={EXTERNAL.mailto} class="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary px-6 py-3.5 rounded-md text-sm font-bold tracking-wide leading-none whitespace-nowrap hover:brightness-110 active:scale-[0.98] transition-all duration-short4 ease-standard">
         <span>{t['nav.cta']}</span>
       </a>
       <button type="button" class="lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-full text-ink-primary hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard" aria-label="Toggle navigation" aria-expanded="false" aria-controls={menuId} data-menu-toggle>
@@ -45,7 +47,7 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
         <a href="#faq" class={menuItemClass} data-menu-close data-nav-link>{t['nav.faq']}</a>
       </nav>
       <div class="sm:hidden flex flex-col gap-2 px-4 pt-2">
-        <a href={EXTERNAL.mailto} class="inline-flex items-center justify-center gap-2 border border-brand-primary text-brand-primary py-3 rounded-full text-label-large font-medium hover:bg-brand-primary/[0.08] active:bg-brand-primary/[0.12] transition-all duration-short4 ease-standard" data-menu-close>{t['nav.cta']}</a>
+        <a href={EXTERNAL.mailto} class="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary px-6 py-3.5 rounded-md text-sm font-bold tracking-wide leading-none hover:brightness-110 active:scale-[0.98] transition-all duration-short4 ease-standard" data-menu-close>{t['nav.cta']}</a>
       </div>
     </div>
   </div>
@@ -58,8 +60,6 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
   }
   [data-header] {
     --menu-height: 0px;
-    --header-duration: 500ms;
-    transition: top var(--header-duration) var(--ease-standard);
   }
   [data-header]::before {
     content: '';
@@ -68,77 +68,14 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
     left: 0;
     right: 0;
     bottom: 0;
-    backdrop-filter: blur(12px) saturate(120%);
-    -webkit-backdrop-filter: blur(12px) saturate(120%);
-    border-radius: 0;
+    background: rgb(var(--surface-soft) / 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: -1;
-    transition: left var(--header-duration) var(--ease-standard),
-                right var(--header-duration) var(--ease-standard),
-                border-radius var(--header-duration) var(--ease-standard);
-  }
-  [data-header][data-scrolled] {
-    top: 0.75rem;
-  }
-  [data-header][data-scrolled]::before {
-    left: max(0.5rem, calc(50% - 32rem));
-    right: max(0.5rem, calc(50% - 32rem));
-    border-radius: 1.25rem;
-  }
-  [data-header-shell] {
-    transition: height var(--header-duration) var(--ease-standard),
-                max-width var(--header-duration) var(--ease-standard),
-                padding-left var(--header-duration) var(--ease-standard),
-                padding-right var(--header-duration) var(--ease-standard);
-  }
-  [data-header][data-scrolled] [data-header-shell] {
-    height: 4rem;
-    max-width: 64rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-  [data-header][data-scrolled] [data-header-shell] a[href^="mailto"] {
-    padding: 0.625rem 1.25rem;
-  }
-  @media (max-width: 767px) {
-    [data-header][data-scrolled] {
-      top: 0;
-    }
-    [data-header][data-scrolled]::before {
-      left: 0;
-      right: 0;
-      border-radius: 0;
-    }
-    [data-header][data-scrolled] [data-header-shell] {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-    [data-header][data-scrolled] [data-mobile-menu] {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    [data-header][data-scrolled] [data-header-shell] {
-      padding-left: 3rem;
-      padding-right: 3rem;
-      max-width: none;
-    }
   }
   @media (max-width: 1023px) {
     [data-header]::before {
       height: calc(100% + var(--menu-height));
-    }
-    [data-header][data-scrolled]::before {
-      left: 0.5rem;
-      right: 0.5rem;
-    }
-    [data-header][data-scrolled][data-menu-open]::before {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-    [data-header][data-scrolled] [data-mobile-menu] {
-      border-bottom-left-radius: 1.25rem;
-      border-bottom-right-radius: 1.25rem;
     }
   }
 </style>
@@ -224,25 +161,6 @@ const menuItemClass = "flex items-center px-4 py-3 rounded-full text-label-large
       };
       document.addEventListener('click', onDocClick);
       addCleanup(() => document.removeEventListener('click', onDocClick));
-    }
-
-    if (header) {
-      let scrolled = false;
-      const onScroll = () => {
-        const threshold = scrolled ? 40 : 80;
-        const shouldBeScrolled = window.scrollY > threshold;
-        if (shouldBeScrolled !== scrolled) {
-          scrolled = shouldBeScrolled;
-          if (scrolled) {
-            header.setAttribute('data-scrolled', '');
-          } else {
-            header.removeAttribute('data-scrolled');
-          }
-        }
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
-      addCleanup(() => window.removeEventListener('scroll', onScroll));
-      onScroll();
     }
   }
 
