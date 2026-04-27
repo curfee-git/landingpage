@@ -1,6 +1,6 @@
 ---
 title: "Going \"AI-First\" means \"Data-First\": Why Architectural Structure is Data for AI"
-excerpt: "Most teams treat \"AI-first\" as a tooling decision. It's a data decision, and the one of the most underestimated form of data is the architecture itself."
+excerpt: "\"AI-first\" gets described in tools: Copilot seats, Claude Code rollouts, agents that open PRs. The decision that actually determines whether AI contributors can work in a real codebase is whether the architecture itself is treated as data."
 createdAt: 2026-04-20
 topic: "Architecture"
 tags:
@@ -11,100 +11,104 @@ tags:
   - Standards
 ---
 
-Being "AI-first" means being "data-first." This phrase is quoted, shared, and included in conference slides. But it is usually misunderstood. Most describe the tools themselves: Copilot seats, the introduction of Claude Code, an internal agent that initiates pull requests. That's the surface level. Behind it lies the decision that actually determines whether AI contributors can produce something useful in a codebase larger than a weekend project. This decision is all about data.
+Being "AI-first" means being "data-first." This phrase gets quoted and slotted into conference slides. It is usually misunderstood.
 
-The structure of your repository consists of data. The structure of a module consists of data. The names of the folders, the location of the test file next to the service file, the fact that every scoped context provides a port in the same location, all of these is structural data that a stateless agent must infer from the information you provide in its context window. An "AI-first" approach is a "data-first" approach, and the most underestimated form of data is the architecture itself.
+Most people describe AI-first in terms of the tools: Copilot seats, Claude Code rollouts, an internal agent that opens pull requests. That is one part of the answer. The other, the one that determines whether AI contributors can produce anything useful in a codebase larger than a weekend project, is whether the architecture itself is treated as data.
 
-Data, in the context of "AI-first," is not just the rows in Postgres, the embeddings in a vector store, or the JSON data flying back and forth between services. The architectural structure itself is a form of data. And the architecture you choose is the most reliable communication channel between an architect and a stateless AI agent.
+## The Context Window Has No Memory
 
-Most teams overlook this. They treat architecture as a cultural artifact, something that lead engineers carry around in their heads, enforced through code reviews, lunch conversations, and the occasional Confluence page that no one has opened since onboarding. This model works for a team of five people who have been working together for years. It breaks down the moment the primary maintainer of a module is an agent who has no memory of yesterday's pull request.
+An AI agent is not a junior engineer. A junior learns on the job. After six weeks, they no longer ask where the user repository is located, they internalize naming conventions, and they develop an instinct for which directory a new service belongs in. An agent does none of that.
 
-## The Context Window has No Memory
+AI agents do not learn your codebase. They have no persistent memory between tasks; each invocation starts with an empty slate and the tokens you provide. Anthropic's own engineering team describes this in its discussion of [effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), treating context as a finite resource that must be curated rather than stuffed full.
 
-An AI agent performing a task is not a junior engineer. A junior engineer learns on the job. After six weeks, they no longer ask where the user repository is located. They internalize naming conventions. They develop an instinct for which directory a new service belongs. An agent does none of these things.
+From a marketing perspective, the context window seems large. In practice, it shrinks fast. Tool schemas, dependencies, previous results, the current file, the prompt itself: the budget is exhausted before anyone realized it was there. Research on long-context reasoning shows the same pattern repeatedly. Effective performance degrades long before the nominal limit. Models focus on the beginning and end of the window and overlook what is in the middle: the ["Lost in the Middle"](https://arxiv.org/abs/2307.03172) effect.
 
-AI agents do not learn your codebase. They have no persistent memory between tasks. Each invocation starts with an empty memory and the tokens you provide. Anthropic's own development team clearly describes this limitation in its discussion of [effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), where it views context as a finite resource that must be deliberately curated rather than simply stuffed full.
+The practical consequence is uncomfortable for teams that have grown their codebase over a decade through decentralized decisions. An agent cannot store the whole codebase in its context window. Only a subset fits at any time. The question is whether that subset is representative of the rest.
 
-From a marketing perspective, the window seems large. In practice, however, it shrinks quickly. Dependencies, type definitions, the prompt, previous tool outputs, test frameworks, the file the agent is editing. The budget is exhausted before you've even noticed it was there. Research on long-context reasoning consistently reveals the same pattern: effective performance deteriorates long before the nominal limit, and this pattern has a name: "Lost in the Middle", models focus on the beginning and end of the window, overlooking what lies in the middle.
+If every module looks different, one module tells the agent nothing about the next. The number of tokens required for orientation on a single task skyrockets. Quality of conclusions drops as more context is loaded.
 
-Every task starts from scratch. The context window is limited. Depending on the model and level, it ranges somewhere between [200,000 and 2 million tokens](https://www.anthropic.com/news/claude-sonnet-4-5), but in practice it is far less when you factor in tool schemas, previous rounds, and retrieved files. The agent does not get to know your codebase. It does not accumulate institutional knowledge. It does not remember the meeting where you decided that email sending would run through `notifications` rather than `users`.
-
-The practical consequence is problematic for teams that have built up their codebase over a decade through decentralized decisions. An agent cannot keep the entire codebase in mind; it can only store a subset of it. The question is whether this subset is representative for the rest.
-
-If every module in the system looks different, a single module tells the agent nothing about the next one. The number of tokens required for orientation for a single task skyrockets. The quality of the conclusions decreases as more context is available. A phenomenon that is now well documented in [research on degradation with long context](https://arxiv.org/abs/2307.03172) as already mentioned (the "lost-in-the-middle" effect, where models overlook information hidden in the middle of large prompts).
-
-If every module follows the same pattern, a single module is the system in miniature. A module that has been understood can be applied to the next one. The pattern fits into the window because the window needs only one example of it.
+If every module follows the same pattern, one module is the system in miniature. A pattern understood once applies to the next. One example is enough.
 
 ## Structure Is Your Best Data
 
-Time and again, I come across the same gap when I’m familiarizing myself with existing code. The database schema is documented. The API specifications are defined at least most of the time. The technical terms are listed in a glossary that was last updated years ago. The folder structure, the module boundaries, the way a new feature is integrated into the system all of this is "tribal knowledge" stored in the minds of the engineers who have been there the longest. For an engineer who spends six weeks getting up to speed, this just barely works. For an AI agent called upon on a Tuesday afternoon, it doesn't work at all.
+I keep running into the same gap when I familiarize myself with existing code. The database schema is documented. The API specifications are defined, most of the time. Technical terms appear in a glossary last updated years ago. The folder structure, the module boundaries, the way a new feature integrates into the system. All of that exists as tribal knowledge in the minds of the engineers who have been there longest. For an engineer who spends six weeks getting up to speed, that just barely works. For an AI agent called in on a Tuesday afternoon, it does not work at all.
 
-A standardized architecture transforms tribal knowledge into structured data. A recurring module pattern tells an engineer reading a code review the same thing as an agent analyzing a directory listing. The function is located here. Your tests are located there. Your contract is in this file. Your boundary ends at this import rule. No additional explanation is needed to convey this signal, because the structure carries it within itself.
+I worked once at a company that built a product suite of more than ten domains, each owned by a different team. Every domain had a core repository plus whatever was built on top of it, for a total of more than thirty repositories across the suite. The architecture was a set of distributed monoliths. Developers rotated constantly between in-house and client projects, switching codebases every few weeks, and the inconsistency showed up everywhere. Comment styles and architectural decisions varied across files in the same repository. Each codebase had its own pipeline. Starting a local environment took a dozen Docker containers. The suite was supposed to fit together, but integration was rebuilt per customer at every rollout.
 
-This isn't a new idea that's just been dressed up for AI. The Thoughtworks Technology Radar has already bluntly addressed the risks of [AI-accelerated shadow IT](https://www.thoughtworks.com/radar/techniques/ai-accelerated-shadow-it) and the way unstructured AI contributions accumulate technical debt in systems that were already in a tailspin. [METR's 2025 study on AI-assisted developer productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) tracks a related signal: experienced developers were on average 19% slower when AI tools were allowed, not faster. The answer to this is: more structure in AI contributions. In my experience, this structure must be machine-readable, enforced, and consistent enough that a "stateless" reader can recognize it from a fragment.
+A standardized architecture transforms tribal knowledge into structured data. A recurring module pattern tells an engineer reading a code review the same thing it tells an agent analyzing a directory listing. The function is here. The tests are next to it. The contract is in this file. The boundary ends at this import rule. No additional explanation is needed, because the structure communicates the signal itself.
 
-This consistency isn't aesthetic. It's informational. The architecture communicates to the agent, in a condensed form that fits within the context window: *Here is what a module looks like, here is the logic, here are the side effects, here is where you are not allowed to cross.*
+This is not new packaged for AI. The Thoughtworks Technology Radar has addressed [AI-accelerated shadow IT](https://www.thoughtworks.com/radar/techniques/ai-accelerated-shadow-it) and the way unstructured AI contributions accumulate technical debt in already-fragile systems. [METR's 2025 study on AI-assisted developer productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) shows a related signal: experienced developers were on average 19% slower with AI tools enabled. The expected speedup did not show up. The response: more structure in AI contributions, machine-readable, enforced, consistent enough that a stateless reader recognizes it from a fragment.
 
-Compare this to a codebase where one module uses Active Record, with controllers calling models directly; another uses CQRS with separate read and write paths; and a third implements a thin service layer over an ORM. Each requires a new mental model. An architect creates these models once and maintains them. An agent must rebuild them for every task and pays for it with tokens and the quality of their conclusions.
+This consistency is not aesthetic. It is informational. The architecture communicates to the agent, in condensed form that fits inside the context window: *Here is what a module looks like. Here are the boundaries it is not allowed to cross.*
 
-## Standardization Is a One-Time Cost
+Compare that to a codebase where one module uses Active Record with controllers calling models directly, another uses CQRS with separate read and write paths, and a third implements a thin service layer over an ORM. Each requires a new mental model. An architect creates those models once and maintains them. An agent rebuilds them for every task and pays for it with tokens and quality.
 
-This is where it gets economically interesting, and this is where the somewhat uncomfortable argument lies.
+## Agents Are Replaceable Resources
 
-Opting for a standardized architecture entails a significant upfront investment. You pay for it once in advance and know exactly what it costs. The migration is manageable. The scope is limited. You can plan the rollout over the course of a quarter and track when the last non-compliant module was removed.
+Architects tend to treat agents like employees, providing context and training as if details would accumulate across sessions. This is a category mistake. Agents are stateless and interchangeable, and that is precisely their advantage.
 
-Diverging from conventions is the opposite of that. No one consciously decides to break from them. A repo starts out clean. Someone publishes a feature under time pressure and skips the usual layout. A team lead comes from a different stack and brings their preferred structure with them. A refactoring begins and is never completed. Two years later, there are four patterns in the same codebase, each the spirit of a reasonable decision, none of them enforced. The costs are distributed, invisible, and only become apparent when a new developer asks which pattern to follow and receives three different answers.
+You can deploy three different agents from three different providers on the same task and compare the results. You can swap a Claude-based agent for a GPT-based one mid-workflow, or shut one down and start another in parallel without coordination, because none of them needs the history of the others.
 
-For a stateless agent, a discrepancy is catastrophic in a way that it isn't for an engineer. An engineer plays it safe. He skims the README file, asks someone on Slack, looks at the latest merge, and pieces the information together. An agent does none of that. He only sees what's in the window. If the window contains two incompatible patterns, they pick one of them usually the wrong one for the task, and generate code that passes local tests but causes the integration to fail.
+All of that only works if the environment they operate in is uniform. A standardized architecture makes agents interchangeable. A custom-built, culturally grown one ties you to the agent that happened to cache the most context, or to the engineer who is willing to load the same twenty files into every new session.
 
-The argument for the architectural decision is simple: you should bear the costs of standardization early on, because the alternative isn't free, it involves worse costs that are paid in small increments and forever.
-
-This is the same approach that database normalization takes for data, static typing for runtime behavior, and [architectural decision records](https://adr.github.io/) for the chain of reasoning. Local flexibility is sacrificed in order to gain global readability. When AI agents come into play, global readability is no longer just a nice-to-have feature, but determines whether the agents can function at all.
-
-## Agents Are Workers
-
-Architects tend to treat agents like employees. They provide them with context, train them, and build up their understanding. This is a category mistake. Agents are not trainees. They are stateless, interchangeable, and fundamentally replaceable, and that is precisely their advantage, not their limitation.
-
-You can deploy three different programming agents from three different providers for the same task and compare the results. You can swap out a Claude-based agent for a GPT-based one in the middle of a workflow. You can shut one down, start another up, or chain them together sequentially. You can run them in parallel across modules without any coordination effort, since none of them needs the history of the others.
-
-All of this only works if the environment in which they operate is uniform. A standardized architecture makes agents interchangeable. A custom-built, culturally grown architecture ties you to the agent that happens to have cached the most context, or to the engineer who is willing to insert the same twenty files into every new session.
-
-The honest rephrasing: The architecture must be structured so clearly that any agent, regardless of its provider, delivers consistent results when configured to do so. This is a property of the system, not the model. [Google's guidelines on agent-based AI architectural patterns](https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system) point in a similar direction: agents should be viewed as combinable "workers" within a system whose structure is defined outside of them.
-
-The technical leverage here is real. [Anthropic's published guidelines on building effective agents](https://www.anthropic.com/research/building-effective-agents) repeatedly emphasize this: agents work best when the environment provides them with clear tools, clear boundaries, and consistent feedback signals. A structure outside the agent, enforced by the pipeline, unchanged across model changes.
-
-## The Pipeline Enforces the Architecture
-
-A Confluence page describing your module's layout is a guideline. A pipeline check that rejects a pull request if the layout is violated is a decision that enforces itself. This distinction is more important than ever for AI contributors compared to developers who write code by hand, since AI contributors produce large amounts of code and are not deterred when a reviewer points out their fourth violation of conventions within a week.
-
-The architecture defines the pattern. CI ensures compliance with the pattern. The agent follows the pattern because the pipeline does not allow for anything else. This is the model I keep coming back to: a set of architecture fitness functions that run with every commit, each checking an important property: no cross-module imports, every module exposes its port at the expected location, no database calls outside the repository layer, and every public function has a contract test.
-
-Even though fitness functions aren't the only quality assurance tools available, you can create, optimize, and use them to your heart's content. With them, you can test just about anything that matters to you whether you wrote the code yourself or it comes from an external tool. For getting started, they offer the greatest flexibility of all available options.
-
-Fitness functions are not a new concept. Neal Ford, Rebecca Parsons, and Patrick Kua made the case for them in [Building Evolutionary Architectures](https://www.oreilly.com/library/view/building-evolutionary-architectures/9781491986356/) years before AI agents arrived, and the Thoughtworks piece on [fitness-function-driven development](https://www.thoughtworks.com/insights/articles/fitness-function-driven-development) by Paula Paul and Rosemary Wang puts the idea into concrete practice. Tools like [ArchUnit](https://www.archunit.org/) for dependency and module-boundary checks, and [Testcontainers](https://testcontainers.com/) for adapter-level integration, make these fitness functions enforceable in real pipelines. What AI changes is the sense of urgency. A repository with five developers can survive through discipline and code reviews. A codebase with five engineers and three agents generating thirty pull requests daily cannot. The capacity for reviews is exhausted. Enforcement must be automated.
-
-When the pipeline enforces the architecture, three things happen simultaneously. Technical reviewers no longer waste attention on layout checks and instead focus on logic. The agent receives immediate, specific feedback on every inconsistency. And the architecture itself no longer decays, since inconsistencies are detected at the commit that caused them, rather than in the quarter when they are noticed.
-
-These aren't mere formalities. Every check is a piece of architecture encoded as executable data that is human-readable, enforced by the pipeline, and implicitly processed by the agent via the feedback loop: "Your pull request failed because it exceeded this limit." The agent doesn't need to read the architecture treatise. It needs the red X on the failed check, and it will adapt to the pattern within a few iterations.
-
-There's a second-order effect that I find more interesting. As soon as the pipeline enforces the structure, the context you pass to the agent shrinks. You no longer have to explain the architecture in the command line. You no longer need to include three example modules so that it can deduce the form. The form is already guaranteed. The agent reads a module, recognizes the pattern because the pattern is simply the pattern and operates within it.
-
-If this is the state your system landscape needs to reach, [a structural diagnosis](/#services) is usually the fastest way to identify where the architecture is still carried in people's heads versus where the pipeline already enforces it.
+The honest rephrasing: the architecture has to be structured clearly enough that any agent, regardless of provider, delivers consistent results when configured to do so. This is a property of the system itself; the choice of model is incidental. [Anthropic's guidelines on building effective agents](https://www.anthropic.com/research/building-effective-agents) point in the same direction. Agents work best when the environment provides clear tool definitions and clear boundaries, with consistent feedback on every action they take. Structure outside the agent, enforced by the pipeline, remains consistent across model changes.
 
 ## The Architect's Two Audiences
 
-The role of the architect is changing, though not to the dramatic extent that the discussion sometimes suggests. The architect still makes the decisions. He continues to weigh the pros and cons. He still defines the structure of the system. The difference is that these decisions now have two target audiences: the developers who will maintain the code, and the agents who will interact with it without ever seeing a Confluence page.
+The role of the architect has not changed. The audience has.
 
-Writing for both target groups simultaneously is an art in itself. This means that architectural decisions must be expressible in code in directory structures, in lint rules, in fitness functions, in port definitions and not just in wikis. It means viewing the repository's layout as part of the interface the system provides to its contributors, whether they are engineers or agents. It means recognizing when a local exception to the pattern costs more in consistency than it gains in local elegance.
+Until recently, architectural decisions were written for one kind of reader: the engineer who would maintain the code. Confluence pages, ADRs, whiteboard sketches, onboarding docs. All of it aimed at humans who could ask follow-up questions and gather tribal knowledge over time.
+
+AI contributors have joined the room. They don't read Confluence. They don't ask follow-up questions. They see only what is in the context window, and they act on what the system allows.
+
+Architects now write for two audiences.
+
+An engineer reads the commit, the pull request, the review comment. An agent reads the directory layout, the import graph, the fitness function that blocks its PR. An engineer can be told something in a meeting and remember it. An agent has access to none of that. The same architectural decision has to be encoded so that the agent encounters it as a property of the code itself.
+
+This is not a small shift. Architectural decisions have to become expressible in forms that both audiences can read. They have to be documented in a form a human can read, and enforced in a form a machine can act on. A naming convention in a wiki is instruction for humans. A lint rule that rejects the wrong name is instruction for both.
+
+The architects who internalize this are already moving their decisions out of wikis and onboarding slides. A naming convention becomes a linter rule. A diagram of module structure becomes the actual directory layout.
+
+The decisions have not changed. The location has. Architecture is still the work. The artifact is the system itself, written so that a machine can act on it without translation, and so that a human can still read and revise it.
+
+## Standardization Is a One-Time Cost
+
+This is where the economic argument matters, and where it gets uncomfortable.
+
+Choosing a standardized architecture means a significant upfront investment. You pay for it once, in advance, and you know what it costs. The migration is manageable and the scope is bounded. You can plan the rollout over a quarter and track when the last non-compliant module was removed.
+
+Deviating from conventions is the opposite. No one consciously decides to deviate. A repo starts clean. Someone delivers a feature under time pressure and skips the usual layout. A team lead arrives from a different stack and brings their preferred structure. A refactoring starts and never finishes. Two years later, four patterns coexist in the same codebase, each the residue of a reasonable decision, none of them enforced. The costs are distributed and invisible, and only show up when a new developer asks which pattern to follow and gets three different answers.
+
+For a stateless agent, inconsistency is catastrophic in a way it isn't for an engineer. An engineer plays it safe. They skim the README, ask someone on Slack, look at the latest merge, and piece it together. An agent does none of that. It sees only what is in the context window. If the window contains two incompatible patterns, it picks one, usually the wrong one, and generates code that passes local tests but breaks at integration.
+
+The argument is simple: pay the cost of standardization early, because the alternative is not free. The alternative is paid in smaller increments, indefinitely.
+
+This is the same logic that drives database normalization in storage and static typing for runtime behavior. It is also why [architectural decision records](https://adr.github.io/) exist: to keep the reasoning available after the people who created it have moved on. Local flexibility is sacrificed for global readability. When AI agents enter the picture, global readability stops being a nice-to-have. It determines whether the agents can function at all.
+
+## The Pipeline Enforces the Architecture
+
+A Confluence page describing your module layout is a guideline. A pipeline check that rejects a pull request when the layout is violated is enforcement. The distinction matters more for AI contributors than for developers, because AI contributors produce large amounts of code and are not discouraged when a reviewer flags their fourth convention violation in a week.
+
+The architecture defines the pattern. CI enforces it. The agent follows the pattern because the pipeline does not allow anything else. This is the model I keep returning to: architectural fitness functions running on every commit, each checking a property that matters. No cross-module imports. Every module exposes its port at the expected location. No database calls outside the repository layer. Every public function has a contract test.
+
+Fitness functions are not the only tool available, but they offer the greatest flexibility. You can shape and extend them to enforce almost anything that matters, whether the code came from an engineer or an external tool.
+
+The concept predates AI by years. Neal Ford, Rebecca Parsons, and Patrick Kua made the case in [Building Evolutionary Architectures](https://www.oreilly.com/library/view/building-evolutionary-architectures/9781491986356/). The Thoughtworks piece on [fitness-function-driven development](https://www.thoughtworks.com/insights/articles/fitness-function-driven-development) by Paula Paul and Rosemary Wang puts it into practice. Tools like [ArchUnit](https://www.archunit.org/) for dependency and boundary checks, and [Testcontainers](https://testcontainers.com/) for adapter-level integration, make these fitness functions enforceable in real pipelines.
+
+What AI changes is urgency. A repository with five developers can survive on discipline and code reviews. A codebase with five engineers and three agents producing thirty pull requests a day cannot. Review capacity is exhausted. Enforcement has to be automated.
+
+When the pipeline enforces the architecture, several things happen at once. Reviewers stop spending attention on layout and focus on logic. The agent receives immediate, specific feedback on every deviation. The architecture itself stops decaying, because deviations get caught at the commit that caused them, instead of months later.
+
+There is a second-order effect I find more interesting. Once the pipeline enforces structure, the context you pass to the agent shrinks. You no longer have to explain the architecture in the prompt. You no longer need to include three example modules so the agent can infer the pattern. The pattern is guaranteed. The agent reads a module, recognizes the pattern because the pattern is consistent, and operates within it.
 
 ## Structure Is the Message
 
-The transition from purely engineering-driven development to development involving engineers and agents does not require new architectural styles. Architectures have been around for decades: hexagonal architecture, clean architecture, onion architecture, and many more. What changes is the importance placed on consistency.
+The shift from engineering-only development to development with engineers and agents does not require new architectural styles. Hexagonal, clean, onion, and others have existed for decades. What changes is the weight placed on consistency.
 
-In a team without agents, consistency is a nice bonus that pays off over time. In a hybrid team with stateless agents, consistency is the bandwidth of your communication channel. Every module that follows the pattern makes every agent more effective. Every exception reduces the usable context window for every future task.
+In a team without agents, consistency is a quality-of-life improvement that pays off over time. In a hybrid team with stateless agents, consistency becomes the bandwidth of your communication channel. Every module that follows the pattern makes every agent more effective. Every exception reduces the usable context window for every future task.
 
-The architects who internalize this first will have clearer codebases, faster agents, and more predictable migrations. Those who continue to treat architecture as a stylistic preference will spend the next three years repeatedly re-explaining their system, one context window at a time.
+The architects who internalize this first will have clearer codebases and more predictable migrations. The ones who keep treating architecture as stylistic preference will spend the next three years re-explaining their system in every prompt.
 
-Architecture is data. Standardize the data, and the agent becomes a contributor. Leave it custom-built, and the agent becomes a burden, not because the agent is weak, but because the channel is noisy.
+Architecture is data. Standardized data lets the agent contribute as productively as a new engineer who has been onboarded. Inconsistent data forces the agent to spend most of its tokens reconstructing the conventions, leaving very little for the actual work.
 
-Choose your channel deliberately.
+The choice is structural. The cost is paid either upfront, in standardization work, or continuously, in time spent compensating for the lack of it.
