@@ -89,16 +89,6 @@
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* Montserrat – Logo wordmark only (Black 900) */
-@font-face {
-  font-family: "Montserrat";
-  src: url("/assets/fonts/montserrat/montserrat-black-latin.woff2") format("woff2");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
 @import "tailwindcss";
 
 @theme {
@@ -106,7 +96,6 @@
   --font-display: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-logo: "Montserrat", "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
 
   /* Brand colors – tied to M3 tokens via CSS variables */
   --color-brand-primary: rgb(var(--brand-primary));
@@ -200,9 +189,9 @@
     text-size-adjust: 100%;
   }
 
-  /* Light Mode (default) – #445a79 Navy, #7B1B38 Bordeaux, #D4C4A8 Beige, #1C1C20 Charcoal */
+  /* Light Mode (default) – #003366 Navy, #7B1B38 Bordeaux, #D4C4A8 Beige, #1C1C20 Charcoal */
   :root {
-    --brand-primary: 68 90 121;
+    --brand-primary: 0 51 102;
     --on-brand-primary: 255 255 255;
     --brand-primary-container: 194 218 242;
     --on-brand-primary-container: 0 28 64;
@@ -225,7 +214,7 @@
     --surface-base: 255 255 255;
     --surface-dim: 222 219 214;
     --surface-bright: 252 251 249;
-    --surface-soft: 241 241 241;
+    --surface-soft: 252 251 249;
     --surface-raised: 255 255 255;
     --surface-variant: 232 228 222;
     --surface-container-lowest: 255 255 255;
@@ -287,7 +276,7 @@
 
       --inverse-surface: 230 225 221;
       --inverse-on-surface: 49 48 51;
-      --inverse-primary: 68 90 121;
+      --inverse-primary: 0 51 102;
 
       --ink-primary: 230 228 224;
       --ink-muted: 190 188 184;
@@ -458,7 +447,7 @@ h3 {
     --ink-on-surface-variant: 36 36 44;
 
     --surface-base: 255 255 255;
-    --surface-soft: 241 241 241;
+    --surface-soft: 248 246 242;
     --surface-raised: 255 255 255;
 
     --stroke-subtle: 160 156 148;

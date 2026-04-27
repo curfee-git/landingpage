@@ -18,8 +18,8 @@ const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transi
 
       <!-- Left: Logo + Tagline (link to home) -->
       <a href={routes.home} class="block no-underline hover:no-underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-primary/40 rounded-sm" aria-label={t['back.home']}>
-        <div class="mb-4 inline-flex items-center gap-2 text-ink-primary">
-          <span class="block h-8 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
+        <div class="mb-4 inline-flex items-center gap-2 text-brand-primary">
+          <span class="block h-9 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
         </div>
         <p class="text-body-medium text-ink-muted/60 max-w-xs leading-relaxed italic">{t['footer.tagline']}</p>
       </a>
