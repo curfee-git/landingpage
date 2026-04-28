@@ -21,10 +21,10 @@ const operationalPairs = [
 ];
 ---
 
-<section id="observations" class="py-[clamp(8rem,5rem+7vw,12rem)]" style="background: linear-gradient(to bottom, rgb(var(--brand-secondary) / 0) 0%, rgb(var(--brand-secondary) / 0.10) 15%, rgb(var(--brand-secondary) / 0.10) 80%, rgb(var(--brand-secondary) / 0.05) 92%, rgb(var(--brand-secondary) / 0) 100%);" aria-labelledby="observations-heading">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-    <div class="max-w-4xl mx-auto">
-    <h2 id="observations-heading" class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">
+<section id="observations" class="uc-section uc-section--soft" aria-labelledby="observations-heading">
+  <div class="uc-container">
+    <div class="obs-inner">
+    <h2 id="observations-heading" class="uc-h2 mb-3">
       <span class="grid">
         <span data-speakable class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard" data-observations-heading="reality">{t['observations.heading.status_quo']}</span>
         <span class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-heading="potential" aria-hidden="true">{t['observations.heading.potential']}</span>
@@ -104,6 +104,10 @@ const operationalPairs = [
     </div>
   </div>
 </section>
+
+<style>
+  .obs-inner { max-width: 920px; }
+</style>
 
 <script>
   function initObservationsToggle() {

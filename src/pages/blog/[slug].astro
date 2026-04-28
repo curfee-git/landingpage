@@ -2,7 +2,6 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
-import BackToHomeSection from '@/components/shared/BackToHomeSection.astro';
 import { getTranslations } from '@/i18n/translations';
 import { postSlug, formatDate, extractToc, extractReferences, reorderForGrid } from '@/utils/blog';
 
@@ -77,7 +76,6 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
   ogType="article"
   datePublished={post.data.createdAt.toISOString().slice(0, 10)}
   dateModified={(post.data.updatedAt ?? post.data.createdAt).toISOString().slice(0, 10)}
-  showHeader={false}
   ogImageOverride={usingCoverImage ? post.data.coverImage : undefined}
   ogImageType={usingCoverImage ? undefined : 'image/png'}
   ogImageWidth={usingCoverImage ? undefined : 1200}
@@ -210,5 +208,4 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
       </aside>
     </div>
   </article>
-  <BackToHomeSection />
 </Layout>

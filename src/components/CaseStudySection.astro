@@ -11,20 +11,19 @@ const hasPlaceholder = Boolean(t['casestudy.placeholder']);
 ---
 
 {(hasHeading || hasSubtitle || hasPlaceholder) && (
-  <section id="casestudy" class="py-[clamp(8rem,5rem+7vw,12rem)]" aria-labelledby="casestudy-heading">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-      <div class="max-w-4xl mx-auto">
+  <section id="casestudy" class="uc-section" aria-labelledby="casestudy-heading">
+    <div class="uc-container">
+      <div style="max-width: 920px;">
+        <p class="uc-eyebrow" style="margin-bottom: 16px;">Case Studies</p>
         {hasHeading && (
-          <h2 id="casestudy-heading" class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">
-            {t['casestudy.heading']}
-          </h2>
+          <h2 id="casestudy-heading" class="uc-h2">{t['casestudy.heading']}</h2>
         )}
         {hasSubtitle && (
-          <p class="text-title-medium text-brand-primary font-medium mb-12">{t['casestudy.subtitle']}</p>
+          <p class="uc-lead" style="margin-top: 16px; color: rgb(var(--brand-primary)); font-weight: 600; max-width: 640px;">{t['casestudy.subtitle']}</p>
         )}
         {hasPlaceholder && (
-          <div class="rounded-lg bg-surface-base shadow-elevation-1 p-8 md:p-10">
-            <p class="text-body-large text-ink-muted leading-relaxed italic">
+          <div class="uc-card" style="margin-top: 40px;">
+            <p class="uc-body" style="font-style: italic;">
               {t['casestudy.placeholder']}
             </p>
           </div>

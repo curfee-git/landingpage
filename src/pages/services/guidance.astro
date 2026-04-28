@@ -1,0 +1,68 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ServiceDetail from '@/components/ServiceDetail.astro';
+import { getTranslations } from '@/i18n/translations';
+
+const t = getTranslations();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: t['services.guidance.title'],
+  description: t['services.guidance.problem'],
+  provider: { '@type': 'Organization', name: 'Curfee' },
+  areaServed: 'DACH',
+};
+
+const timeline = [
+  {
+    phase: t['services.guidance.timeline.1.phase'],
+    title: t['services.guidance.timeline.1.title'],
+    outcome: t['services.guidance.timeline.1.outcome'],
+    items: [t['services.guidance.timeline.1.item.1'], t['services.guidance.timeline.1.item.2'], t['services.guidance.timeline.1.item.3']],
+  },
+  {
+    phase: t['services.guidance.timeline.2.phase'],
+    title: t['services.guidance.timeline.2.title'],
+    outcome: t['services.guidance.timeline.2.outcome'],
+    items: [t['services.guidance.timeline.2.item.1'], t['services.guidance.timeline.2.item.2'], t['services.guidance.timeline.2.item.3']],
+  },
+  {
+    phase: t['services.guidance.timeline.3.phase'],
+    title: t['services.guidance.timeline.3.title'],
+    outcome: t['services.guidance.timeline.3.outcome'],
+    items: [t['services.guidance.timeline.3.item.1'], t['services.guidance.timeline.3.item.2'], t['services.guidance.timeline.3.item.3']],
+  },
+  {
+    phase: t['services.guidance.timeline.4.phase'],
+    title: t['services.guidance.timeline.4.title'],
+    outcome: t['services.guidance.timeline.4.outcome'],
+    items: [t['services.guidance.timeline.4.item.1'], t['services.guidance.timeline.4.item.2'], t['services.guidance.timeline.4.item.3']],
+  },
+];
+---
+
+<Layout
+  title={`${t['services.guidance.title']} — Curfee`}
+  description={t['services.guidance.problem']}
+  canonicalPath="/services/guidance/"
+  jsonLd={jsonLd}
+>
+  <ServiceDetail
+    serviceKey="guidance"
+    icon="route"
+    title={t['services.guidance.title']}
+    subtitle={t['services.guidance.subtitle']}
+    duration={t['services.guidance.duration']}
+    problem={t['services.guidance.problem']}
+    forwhom={[t['services.guidance.forwhom.1'], t['services.guidance.forwhom.2'], t['services.guidance.forwhom.3']]}
+    timeline={timeline}
+    delivers={[t['services.guidance.delivers.1'], t['services.guidance.delivers.2'], t['services.guidance.delivers.3'], t['services.guidance.delivers.4']]}
+    excludes={[t['services.guidance.excludes.1'], t['services.guidance.excludes.2'], t['services.guidance.excludes.3']]}
+    objectionQ={t['services.guidance.objection.q']}
+    objectionA={t['services.guidance.objection.a']}
+    cta={t['services.guidance.cta']}
+    translations={t}
+    accent="secondary"
+  />
+</Layout>

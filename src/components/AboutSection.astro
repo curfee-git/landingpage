@@ -2,57 +2,412 @@
 import { Image } from 'astro:assets';
 import type { Translations } from '@/i18n/translations';
 import profileImage from '@/assets/images/profile.webp';
+import { EXTERNAL } from '@/configurations/routes';
+import { BRAND } from '@/configurations/brand';
 
 interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
+
+const credentials = [
+  {
+    mark: 'L',
+    title: 'Logistics roots',
+    body: 'My career began in logistics: coordinating workflows between goods, people, and processes. That is where I learned that reliable structures are the difference between a process that runs and one that breaks.',
+  },
+  {
+    mark: 'C',
+    title: 'Computer science → architecture',
+    body: 'After my degree I moved into software development, then architecture. Across automotive, public sector, and software consulting, I kept the big picture and the small details in view at the same time.',
+  },
+  {
+    mark: 'A',
+    title: 'AI-era systems',
+    body: 'AI sees only what fits in its context window and brings no structure of its own. Boundaries have to be enforced by the system itself, which only works when the structure behind it is reliable.',
+  },
+  {
+    mark: 'I',
+    title: 'Independent practice',
+    body: 'Through Curfee e.U., I work directly with founders, CTOs, and engineering managers in the DACH region. No layers, no account managers, just the work.',
+  },
+  {
+    mark: 'D',
+    title: 'Decision Enforcement Principle',
+    body: 'My core principle: decisions should be enforced by the system itself, through pipelines, automated checks, and tool configuration. Not by individual discipline, memory, or vigilance.',
+  },
+  {
+    mark: 'S',
+    title: 'Based in Salzburg, Austria',
+    body: 'Active across the German-speaking region. Remote engagements are standard; on-site visits as the work requires.',
+  },
+];
 ---
 
-<section id="about" class="py-[clamp(8rem,5rem+7vw,12rem)]" style="background: linear-gradient(to bottom, rgb(var(--brand-primary) / 0) 0%, rgb(var(--brand-primary) / 0.10) 15%, rgb(var(--brand-primary) / 0.10) 80%, rgb(var(--brand-primary) / 0.05) 92%, rgb(var(--brand-primary) / 0) 100%);" aria-labelledby="about-heading">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+<article class="about-page">
 
-    <!-- Intro: Bild oben links, Text fließt darum -->
-    <div class="mb-6 md:mb-8">
-      <div class="flex justify-center mb-6 md:float-left md:mr-8 md:mb-2">
-        <Image src={profileImage} alt={t['about.portrait.alt']} class="w-[180px] h-[225px] object-cover object-top rounded-md shadow-elevation-1" loading="lazy" decoding="async" width={180} height={225} widths={[180, 360, 540]} sizes="180px" />
-      </div>
-      <h2 id="about-heading" data-speakable class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">
-        {t['about.heading']}
-      </h2>
-      <p class="text-title-medium text-brand-primary font-medium mb-4">{t['about.who.heading']}</p>
-      <ul class="flex flex-wrap gap-2 mb-6 list-none p-0" aria-label="Three guiding principles">
-        <li class="text-label-large text-brand-primary font-medium border border-brand-primary/30 px-4 py-1.5 rounded-full">{t['principles.1']}</li>
-        <li class="text-label-large text-brand-primary font-medium border border-brand-primary/30 px-4 py-1.5 rounded-full">{t['principles.2']}</li>
-        <li class="text-label-large text-brand-primary font-medium border border-brand-primary/30 px-4 py-1.5 rounded-full">{t['principles.3']}</li>
-      </ul>
-      <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
-        <p data-speakable>{t['about.who.1']}</p>
-      </div>
-      <div class="my-10 flex items-center gap-4">
-        <div class="flex-1 min-w-[1.5rem] border-t border-ink-primary/10"></div>
-        <p class="text-center text-body-large md:text-title-medium text-ink-muted italic leading-relaxed">{t['about.who.2']}</p>
-        <div class="flex-1 min-w-[1.5rem] border-t border-ink-primary/10"></div>
-      </div>
+  <!-- Hero -->
+  <section class="uc-section about-hero" aria-labelledby="about-hero-heading">
+    <div class="uc-container">
+      <div class="about-hero-grid">
+        <div class="about-hero-text">
+          <p class="uc-eyebrow">About</p>
+          <h1 id="about-hero-heading" class="about-hero-title">I'm {t['about.heading']}.</h1>
+          <p class="about-hero-jobtitle">
+            {t['about.who.heading']}<br />
+            <span>Structural Architect · Founder, Curfee e.U.</span>
+          </p>
+          <p class="about-hero-body">{t['about.who.1']}</p>
+          <p class="about-hero-emphasis">{t['about.who.6']}</p>
 
-      <h3 class="text-title-small uppercase tracking-[0.14em] text-brand-primary/70 font-medium mt-10 mb-4">{t['about.section.background']}</h3>
-      <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
-        <p>{t['about.who.3']}</p>
-        <p>{t['about.who.4']}</p>
-      </div>
+          <div class="about-hero-ctas">
+            <a href={EXTERNAL.mailto} class="about-btn about-btn--primary">{t['hero.cta']}</a>
+            <a href={BRAND.linkedin} target="_blank" rel="noopener noreferrer" class="about-btn about-btn--outline">Follow on LinkedIn</a>
+          </div>
+        </div>
 
-      <h3 class="text-title-small uppercase tracking-[0.14em] text-brand-primary/70 font-medium mt-10 mb-4">{t['about.section.observation']}</h3>
-      <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
-        <p data-speakable>{t['about.who.5']}</p>
-        <p>{t['about.who.3b']}</p>
-        <p>{t['about.who.5b']}</p>
-      </div>
-
-      <h3 class="text-title-small uppercase tracking-[0.14em] text-brand-primary/70 font-medium mt-10 mb-4">{t['about.section.why']}</h3>
-      <div class="space-y-4 text-body-large text-ink-muted leading-relaxed">
-        <p data-speakable>{t['about.who.6']}</p>
+        <div class="about-hero-aside">
+          <div class="about-portrait-wrap">
+            <Image src={profileImage} alt={t['about.portrait.alt']} class="about-portrait" loading="eager" decoding="async" width={400} height={533} widths={[280, 400, 600, 800]} sizes="(max-width: 900px) 280px, 400px" />
+          </div>
+          <div class="about-claim">
+            <p>"{t['about.who.2']}"</p>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- Why Curfee -->
+  <section class="uc-section uc-section--soft" aria-labelledby="why-heading">
+    <div class="uc-container">
+      <div class="uc-grid-2-3">
+        <div>
+          <p class="uc-eyebrow">Why Curfee</p>
+          <h2 id="why-heading" class="uc-h2">{t['about.section.why']}</h2>
+        </div>
+        <div class="about-prose">
+          <p>{t['about.who.5']}</p>
+          <p>{t['about.who.5b']}</p>
+          <p>{t['about.who.3b']}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials grid -->
+  <section class="uc-section" aria-labelledby="background-heading">
+    <div class="uc-container">
+      <div class="about-credentials-head">
+        <p class="uc-eyebrow">{t['about.section.background']}</p>
+        <h2 id="background-heading" class="uc-h2">What shaped my approach</h2>
+        <p class="uc-lead" style="margin-top: 16px; max-width: 640px;">Not as a list of titles, but as context for the work I do.</p>
+      </div>
+      <div class="about-credentials">
+        {credentials.map((c) => (
+          <div class="credential">
+            <div class="credential-mark" aria-hidden="true">{c.mark}</div>
+            <div class="credential-body">
+              <h3 class="credential-title">{c.title}</h3>
+              <p class="credential-text">{c.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="uc-section uc-section--soft" aria-labelledby="principles-heading">
+    <div class="uc-container">
+      <div class="about-principles-head">
+        <p class="uc-eyebrow">Three guiding principles</p>
+        <h2 id="principles-heading" class="uc-h2">How I work</h2>
+      </div>
+      <div class="about-principles-grid">
+        <div class="principle">
+          <span class="principle-num">01</span>
+          <h3 class="principle-title">{t['principles.1']}</h3>
+          <p class="principle-text">Symptoms point. Root causes resolve. The work starts where the chain ends.</p>
+        </div>
+        <div class="principle">
+          <span class="principle-num">02</span>
+          <h3 class="principle-title">{t['principles.2']}</h3>
+          <p class="principle-text">A standard that depends on individual vigilance is a standard waiting to drift. The system has to enforce it.</p>
+        </div>
+        <div class="principle">
+          <span class="principle-num">03</span>
+          <h3 class="principle-title">{t['principles.3']}</h3>
+          <p class="principle-text">Workarounds compound into structure no one chose. Build the foundation, then everything above it stays straight.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="uc-section uc-section--navy">
+    <div class="uc-container">
+      <div style="max-width: 760px;">
+        <h2 class="uc-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
+        <p class="uc-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
+        <a href={EXTERNAL.mailto} class="about-final-cta">{t['hero.cta']}</a>
+      </div>
+    </div>
+  </section>
+
+</article>
+
+<style>
+  /* === Hero === */
+  .about-hero {
+    padding-top: 80px;
+  }
+  .about-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-hero-text {
+    max-width: 640px;
+  }
+  .about-hero-title {
+    font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 16px 0 0 0;
+  }
+  .about-hero-jobtitle {
+    font-weight: 600;
+    font-size: 1rem;
+    color: rgb(var(--brand-primary));
+    margin: 16px 0 28px 0;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+  }
+  .about-hero-jobtitle span {
+    font-weight: 500;
+    color: rgb(var(--ink-muted));
+  }
+  .about-hero-body {
+    font-size: 1.0625rem;
+    color: rgb(var(--ink-muted));
+    line-height: 1.75;
+    margin: 0 0 20px 0;
+  }
+  .about-hero-emphasis {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    font-weight: 600;
+    color: rgb(var(--brand-primary));
+    margin: 0;
+  }
+  .about-hero-ctas {
+    margin-top: 36px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .about-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 140ms cubic-bezier(0.22, 1, 0.36, 1);
+    border: 1px solid transparent;
+  }
+  .about-btn--primary {
+    background: rgb(var(--brand-primary));
+    color: rgb(var(--on-brand-primary));
+  }
+  .about-btn--primary:hover {
+    filter: brightness(1.1);
+  }
+  .about-btn--outline {
+    background: transparent;
+    color: rgb(var(--ink-primary));
+    border-color: rgb(var(--stroke-subtle));
+  }
+  .about-btn--outline:hover {
+    border-color: rgb(var(--brand-primary));
+    color: rgb(var(--brand-primary));
+  }
+
+  .about-hero-aside {
+    display: flex;
+    flex-direction: column;
+  }
+  .about-portrait-wrap {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background: rgb(var(--surface-container-low));
+  }
+  :global(.about-portrait) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .about-claim {
+    margin-top: 20px;
+    padding: 20px 24px;
+    background: rgb(var(--ink-primary));
+    border-radius: 8px;
+  }
+  .about-claim p {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: rgb(var(--surface-base));
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* === Why section prose === */
+  .about-prose p {
+    font-size: 1.0625rem;
+    color: rgb(var(--ink-muted));
+    line-height: 1.75;
+    margin: 0 0 20px 0;
+  }
+  .about-prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* === Credentials === */
+  .about-credentials-head {
+    max-width: 720px;
+    margin-bottom: 56px;
+  }
+  .about-credentials {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 64px;
+  }
+  .credential {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .credential-mark {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgb(var(--brand-primary));
+    color: rgb(var(--on-brand-primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter Tight", sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+  }
+  .credential:nth-child(2) .credential-mark { background: rgb(var(--brand-secondary)); color: rgb(var(--on-brand-secondary)); }
+  .credential:nth-child(3) .credential-mark { background: rgb(var(--brand-tertiary)); color: rgb(var(--on-brand-tertiary)); }
+  .credential:nth-child(4) .credential-mark { background: rgb(var(--brand-primary)); color: rgb(var(--on-brand-primary)); }
+  .credential:nth-child(5) .credential-mark { background: rgb(var(--brand-secondary)); color: rgb(var(--on-brand-secondary)); }
+  .credential:nth-child(6) .credential-mark { background: rgb(var(--brand-tertiary)); color: rgb(var(--on-brand-tertiary)); }
+
+  .credential-title {
+    font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: rgb(var(--ink-primary));
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+  .credential-text {
+    font-size: 0.9375rem;
+    color: rgb(var(--ink-muted));
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* === Principles === */
+  .about-principles-head {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+  .about-principles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .principle {
+    background: rgb(var(--surface-base));
+    border: 1px solid rgb(var(--stroke-subtle));
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .principle-num {
+    display: inline-block;
+    font-family: "Inter Tight", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: rgb(var(--brand-primary));
+    margin-bottom: 16px;
+  }
+  .principle-title {
+    font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: rgb(var(--ink-primary));
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+  .principle-text {
+    font-size: 0.9375rem;
+    color: rgb(var(--ink-muted));
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* === Final CTA === */
+  .about-final-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    padding: 14px 28px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    background: rgb(var(--on-brand-primary));
+    color: rgb(var(--brand-primary));
+    border-radius: 8px;
+    text-decoration: none;
+    transition: filter 140ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .about-final-cta:hover {
+    filter: brightness(0.92);
+  }
+
+  /* === Responsive === */
+  @media (max-width: 900px) {
+    .about-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .about-hero-aside {
+      max-width: 360px;
+    }
+    .about-credentials {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .about-principles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

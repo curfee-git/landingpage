@@ -47,53 +47,112 @@ const groups = [
 const answerProseClass = "text-body-medium md:text-body-large text-ink-muted leading-relaxed pb-6 [&_p]:mb-3 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ul]:mb-3 [&_ul:last-child]:mb-0 [&_li]:leading-relaxed [&_strong]:text-ink-primary [&_strong]:font-semibold";
 ---
 
-<section id="faq" class="py-[clamp(8rem,5rem+7vw,12rem)]" aria-labelledby="faq-heading">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-    <div class="max-w-4xl mx-auto">
-    <h2 id="faq-heading" class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">{t['faq.heading']}</h2>
-    <p class="text-title-medium text-brand-primary font-medium mb-4">{t['faq.subtitle']}</p>
+<section id="faq" class="uc-section" aria-labelledby="faq-heading">
+  <div class="uc-container">
+    <div class="faq-inner">
+      <p class="uc-eyebrow" style="margin-bottom: 16px;">FAQ</p>
+      <h2 id="faq-heading" class="uc-h2">{t['faq.heading']}</h2>
+      <p class="uc-lead" style="margin-top: 16px; color: rgb(var(--brand-primary)); font-weight: 600; max-width: 640px;">{t['faq.subtitle']}</p>
 
-    {groups.map((group, gi) => (
-      <div class={gi > 0 ? 'mt-10' : ''}>
-        <h3 class="text-title-small uppercase tracking-[0.14em] text-brand-primary/70 font-medium mb-3">{group.label}</h3>
-        <div class="space-y-2">
-          {group.items.map((q, i) => (
-            <details class="group faq-details rounded-lg bg-surface-base shadow-elevation-1 transition-shadow duration-short4 ease-standard open:shadow-elevation-2" name="faq-accordion">
-              <summary class="flex items-center justify-between cursor-pointer px-5 py-4 md:px-6 md:py-5 text-title-medium text-ink-primary hover:text-brand-primary transition-colors duration-short4 ease-standard text-left list-none [&::-webkit-details-marker]:hidden">
-                <span>{q.question}</span>
-                <span class="shrink-0 ml-4 text-ink-muted transition-transform duration-150 ease-standard group-open:rotate-180">
-                  <Icon name="expand_less" class="w-5 h-5" />
-                </span>
-              </summary>
-              <div class="faq-content">
-                <div class="px-5 md:px-6">
-                  <div
-                    class={answerProseClass}
-                    {...((gi === 0 && i === 0) || (gi === 2 && i <= 4) ? { 'data-speakable': true } : {})}
-                    set:html={q.answer}
-                  />
-                </div>
-              </div>
-            </details>
-          ))}
-        </div>
+      <div style="margin-top: 48px;">
+        {groups.map((group, gi) => (
+          <div class={gi > 0 ? 'faq-group faq-group--gap' : 'faq-group'}>
+            <h3 class="faq-grouplabel">{group.label}</h3>
+            <div class="faq-list">
+              {group.items.map((q, i) => (
+                <details class="group faq-details" name="faq-accordion">
+                  <summary class="faq-summary">
+                    <span>{q.question}</span>
+                    <span class="faq-toggle" aria-hidden="true">
+                      <Icon name="expand_less" class="w-5 h-5" />
+                    </span>
+                  </summary>
+                  <div class="faq-content">
+                    <div class="faq-content-inner">
+                      <div
+                        class={answerProseClass}
+                        {...((gi === 0 && i === 0) || (gi === 2 && i <= 4) ? { 'data-speakable': true } : {})}
+                        set:html={q.answer}
+                      />
+                    </div>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
     </div>
   </div>
 </section>
 
 <style>
+  .faq-inner { max-width: 920px; }
+  .faq-group--gap { margin-top: 40px; }
+  .faq-grouplabel {
+    font-family: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--brand-primary) / 0.7);
+    margin: 0 0 16px 0;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .faq-details {
+    background: rgb(var(--surface-base));
+    border: 1px solid rgb(var(--stroke-subtle));
+    border-radius: 8px;
+    transition: border-color 140ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .faq-details[open] {
+    border-color: rgb(var(--brand-primary) / 0.4);
+  }
+  .faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 18px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(var(--ink-primary));
+    list-style: none;
+    transition: color 140ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .faq-summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-summary:hover {
+    color: rgb(var(--brand-primary));
+  }
+  .faq-toggle {
+    flex-shrink: 0;
+    margin-left: 16px;
+    color: rgb(var(--ink-muted));
+    transition: transform 150ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .faq-details[open] .faq-toggle {
+    transform: rotate(180deg);
+  }
   .faq-content {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 150ms var(--ease-standard);
   }
-  .faq-content > div {
+  .faq-content-inner {
     overflow: hidden;
+    padding: 0 24px;
   }
   .faq-details[open] > .faq-content {
     grid-template-rows: 1fr;
+  }
+  .faq-details[open] > .faq-content .faq-content-inner {
+    padding-bottom: 20px;
   }
 </style>
 

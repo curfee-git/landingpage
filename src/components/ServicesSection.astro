@@ -1,6 +1,5 @@
 ---
 import Icon from '@/components/shared/Icon.astro';
-import { EXTERNAL } from '@/configurations/routes';
 import type { Translations } from '@/i18n/translations';
 
 interface Props {
@@ -8,38 +7,7 @@ interface Props {
 }
 const { translations: t } = Astro.props;
 
-interface TimelineStep {
-  phase: string;
-  title: string;
-  outcome: string;
-  items: string[];
-}
-
-interface ServiceCard {
-  key: 'diagnosis' | 'guidance' | 'sparring';
-  icon: string;
-  title: string;
-  subtitle: string;
-  duration: string;
-  problem: string;
-  forwhom: string[];
-  timeline: TimelineStep[];
-  delivers: string[];
-  excludes: string[];
-  objectionQ: string;
-  objectionA: string;
-  colorText: string;
-  colorBg: string;
-  colorBgLow: string;
-  colorBgHigh: string;
-  colorBorder: string;
-  colorDot: string;
-  colorHoverBg: string;
-  colorActiveBg: string;
-  cta: string;
-}
-
-const services: ServiceCard[] = [
+const services = [
   {
     key: 'diagnosis',
     icon: 'search',
@@ -47,40 +15,8 @@ const services: ServiceCard[] = [
     subtitle: t['services.diagnosis.subtitle'],
     duration: t['services.diagnosis.duration'],
     problem: t['services.diagnosis.problem'],
-    forwhom: [t['services.diagnosis.forwhom.1'], t['services.diagnosis.forwhom.2'], t['services.diagnosis.forwhom.3']],
-    timeline: [
-      {
-        phase: t['services.diagnosis.timeline.1.phase'],
-        title: t['services.diagnosis.timeline.1.title'],
-        outcome: t['services.diagnosis.timeline.1.outcome'],
-        items: [t['services.diagnosis.timeline.1.item.1'], t['services.diagnosis.timeline.1.item.2']],
-      },
-      {
-        phase: t['services.diagnosis.timeline.2.phase'],
-        title: t['services.diagnosis.timeline.2.title'],
-        outcome: t['services.diagnosis.timeline.2.outcome'],
-        items: [t['services.diagnosis.timeline.2.item.1'], t['services.diagnosis.timeline.2.item.2'], t['services.diagnosis.timeline.2.item.3']],
-      },
-      {
-        phase: t['services.diagnosis.timeline.3.phase'],
-        title: t['services.diagnosis.timeline.3.title'],
-        outcome: t['services.diagnosis.timeline.3.outcome'],
-        items: [t['services.diagnosis.timeline.3.item.1'], t['services.diagnosis.timeline.3.item.2'], t['services.diagnosis.timeline.3.item.3']],
-      },
-    ],
-    delivers: [t['services.diagnosis.delivers.1'], t['services.diagnosis.delivers.2'], t['services.diagnosis.delivers.3'], t['services.diagnosis.delivers.4']],
-    excludes: [t['services.diagnosis.excludes.1'], t['services.diagnosis.excludes.2'], t['services.diagnosis.excludes.3'], t['services.diagnosis.excludes.4']],
-    objectionQ: t['services.diagnosis.objection.q'],
-    objectionA: t['services.diagnosis.objection.a'],
-    colorText: 'text-brand-primary',
-    colorBg: 'bg-brand-primary/[0.08]',
-    colorBgLow: 'bg-brand-primary/[0.04]',
-    colorBgHigh: 'bg-brand-primary/[0.14]',
-    colorBorder: 'border-brand-primary',
-    colorDot: 'bg-brand-primary',
-    colorHoverBg: 'hover:bg-brand-primary/[0.08]',
-    colorActiveBg: 'active:bg-brand-primary/[0.12]',
     cta: t['services.diagnosis.cta'],
+    accent: 'primary',
   },
   {
     key: 'guidance',
@@ -89,334 +25,131 @@ const services: ServiceCard[] = [
     subtitle: t['services.guidance.subtitle'],
     duration: t['services.guidance.duration'],
     problem: t['services.guidance.problem'],
-    forwhom: [t['services.guidance.forwhom.1'], t['services.guidance.forwhom.2'], t['services.guidance.forwhom.3']],
-    timeline: [
-      {
-        phase: t['services.guidance.timeline.1.phase'],
-        title: t['services.guidance.timeline.1.title'],
-        outcome: t['services.guidance.timeline.1.outcome'],
-        items: [t['services.guidance.timeline.1.item.1'], t['services.guidance.timeline.1.item.2'], t['services.guidance.timeline.1.item.3']],
-      },
-      {
-        phase: t['services.guidance.timeline.2.phase'],
-        title: t['services.guidance.timeline.2.title'],
-        outcome: t['services.guidance.timeline.2.outcome'],
-        items: [t['services.guidance.timeline.2.item.1'], t['services.guidance.timeline.2.item.2'], t['services.guidance.timeline.2.item.3']],
-      },
-      {
-        phase: t['services.guidance.timeline.3.phase'],
-        title: t['services.guidance.timeline.3.title'],
-        outcome: t['services.guidance.timeline.3.outcome'],
-        items: [t['services.guidance.timeline.3.item.1'], t['services.guidance.timeline.3.item.2'], t['services.guidance.timeline.3.item.3']],
-      },
-      {
-        phase: t['services.guidance.timeline.4.phase'],
-        title: t['services.guidance.timeline.4.title'],
-        outcome: t['services.guidance.timeline.4.outcome'],
-        items: [t['services.guidance.timeline.4.item.1'], t['services.guidance.timeline.4.item.2'], t['services.guidance.timeline.4.item.3']],
-      },
-    ],
-    delivers: [t['services.guidance.delivers.1'], t['services.guidance.delivers.2'], t['services.guidance.delivers.3'], t['services.guidance.delivers.4']],
-    excludes: [t['services.guidance.excludes.1'], t['services.guidance.excludes.2'], t['services.guidance.excludes.3']],
-    objectionQ: t['services.guidance.objection.q'],
-    objectionA: t['services.guidance.objection.a'],
-    colorText: 'text-brand-secondary',
-    colorBg: 'bg-brand-secondary/10',
-    colorBgLow: 'bg-brand-secondary/[0.05]',
-    colorBgHigh: 'bg-brand-secondary/[0.18]',
-    colorBorder: 'border-brand-secondary',
-    colorDot: 'bg-brand-secondary',
-    colorHoverBg: 'hover:bg-brand-secondary/[0.08]',
-    colorActiveBg: 'active:bg-brand-secondary/[0.12]',
     cta: t['services.guidance.cta'],
+    accent: 'secondary',
   },
   {
-    key: 'sparring',
+    key: 'advisory',
     icon: 'handshake',
-    title: t['services.sparring.title'],
-    subtitle: t['services.sparring.subtitle'],
-    duration: t['services.sparring.duration'],
-    problem: t['services.sparring.problem'],
-    forwhom: [t['services.sparring.forwhom.1'], t['services.sparring.forwhom.2'], t['services.sparring.forwhom.3']],
-    timeline: [
-      {
-        phase: t['services.sparring.timeline.1.phase'],
-        title: t['services.sparring.timeline.1.title'],
-        outcome: t['services.sparring.timeline.1.outcome'],
-        items: [t['services.sparring.timeline.1.item.1'], t['services.sparring.timeline.1.item.2'], t['services.sparring.timeline.1.item.3']],
-      },
-      {
-        phase: t['services.sparring.timeline.2.phase'],
-        title: t['services.sparring.timeline.2.title'],
-        outcome: t['services.sparring.timeline.2.outcome'],
-        items: [t['services.sparring.timeline.2.item.1'], t['services.sparring.timeline.2.item.2'], t['services.sparring.timeline.2.item.3']],
-      },
-      {
-        phase: t['services.sparring.timeline.3.phase'],
-        title: t['services.sparring.timeline.3.title'],
-        outcome: t['services.sparring.timeline.3.outcome'],
-        items: [t['services.sparring.timeline.3.item.1'], t['services.sparring.timeline.3.item.2'], t['services.sparring.timeline.3.item.3']],
-      },
-    ],
-    delivers: [t['services.sparring.delivers.1'], t['services.sparring.delivers.2'], t['services.sparring.delivers.3'], t['services.sparring.delivers.4']],
-    excludes: [t['services.sparring.excludes.1'], t['services.sparring.excludes.2'], t['services.sparring.excludes.3']],
-    objectionQ: t['services.sparring.objection.q'],
-    objectionA: t['services.sparring.objection.a'],
-    colorText: 'text-brand-tertiary',
-    colorBg: 'bg-brand-tertiary/10',
-    colorBgLow: 'bg-brand-tertiary/[0.05]',
-    colorBgHigh: 'bg-brand-tertiary/[0.18]',
-    colorBorder: 'border-brand-tertiary',
-    colorDot: 'bg-brand-tertiary',
-    colorHoverBg: 'hover:bg-brand-tertiary/[0.08]',
-    colorActiveBg: 'active:bg-brand-tertiary/[0.12]',
-    cta: t['services.sparring.cta'],
+    title: t['services.advisory.title'],
+    subtitle: t['services.advisory.subtitle'],
+    duration: t['services.advisory.duration'],
+    problem: t['services.advisory.problem'],
+    cta: t['services.advisory.cta'],
+    accent: 'tertiary',
   },
 ];
 ---
 
-<section id="services" class="py-[clamp(8rem,5rem+7vw,12rem)]" aria-labelledby="services-heading">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-    <div class="text-center mb-16 md:mb-20">
-      <h2 id="services-heading" data-speakable class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">
-        {t['services.heading']}
-      </h2>
-      <p data-speakable class="text-title-medium text-brand-primary font-medium">
-        {t['services.subtitle']}
-      </p>
-    </div>
+<section id="services" class="uc-section" aria-labelledby="services-heading">
+  <div class="uc-container">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start">
+    <header class="services-head">
+      <p class="uc-eyebrow">Services</p>
+      <h2 id="services-heading" data-speakable class="uc-h2">{t['services.heading']}</h2>
+      <p class="uc-lead" style="margin-top: 16px; max-width: 640px;">{t['services.subtitle']}</p>
+    </header>
+
+    <div class="uc-grid-3 services-grid">
       {services.map((service) => (
-        <div
-          class:list={["card flex flex-col rounded-xl bg-surface-base shadow-elevation-1 overflow-hidden cursor-pointer transition-shadow duration-medium2 ease-standard hover:shadow-elevation-3", service.key === 'sparring' && 'md:col-span-2']}
-          data-service-card={service.key}
-          role="button"
-          tabindex="0"
-          aria-expanded="false"
-        >
-          <!-- Header (always visible) -->
-          <div class="flex justify-between items-start gap-4 px-6 pt-6 md:px-8 md:pt-8" data-service-header>
-            <div class="flex-1 min-w-0">
-              <div class:list={["w-10 h-10 rounded-full flex items-center justify-center mb-4", service.colorBg]}>
-                <Icon name={service.icon} class:list={["w-5 h-5", service.colorText]} />
-              </div>
-              <div class="flex items-center gap-3 flex-wrap mb-1">
-                <h3 class="text-title-large text-ink-primary">{service.title}</h3>
-                <span class:list={["rounded-full text-label-medium px-3 py-0.5 whitespace-nowrap border", service.colorText, service.colorBorder]}>
-                  {service.duration}
-                </span>
-              </div>
-              <p class:list={["text-body-medium", service.colorText]}>{service.subtitle}</p>
-            </div>
-            <span class="w-9 h-9 rounded-full bg-ink-primary/[0.04] flex items-center justify-center shrink-0 mt-1 toggle-icon text-ink-muted transition-transform duration-medium2 ease-standard" aria-hidden="true">
-              <Icon name="expand_less" class="w-5 h-5" />
-            </span>
+        <a href={`/services/${service.key}/`} class={`service-card service-card--${service.accent}`} aria-label={`Read more: ${service.title}`}>
+          <div class="service-icon">
+            <Icon name={service.icon} class="w-6 h-6" />
           </div>
-
-          <p class="px-6 pt-2 pb-5 md:px-8 text-body-medium text-ink-muted flex-1">
-            {service.problem}
-          </p>
-
-          <!-- Body (expandable) -->
-          <div class="card-body" data-service-body>
-            <div class="px-6 pb-6 md:px-8 md:pb-8">
-              <div class="h-px bg-stroke-outlineVariant mb-6"></div>
-
-              <!-- For whom -->
-              <p class="text-label-medium text-ink-muted mb-3">
-                {t['services.label.forwhom']}
-              </p>
-              <div class:list={["rounded-sm overflow-hidden mb-6 flex", service.colorBgLow]}>
-                <div class:list={["w-1 shrink-0", service.colorDot]}></div>
-                <div class="p-4 space-y-2">
-                  {service.forwhom.map((item) => (
-                    <div class="flex gap-2 items-start">
-                      <Icon name="arrow_right_alt" class:list={["w-4 h-4 shrink-0 mt-0.5", service.colorText]} />
-                      <p class="text-body-medium text-ink-muted leading-relaxed">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Process / Timeline -->
-              <p class="text-label-medium text-ink-muted mb-3">
-                {t['services.label.process']}
-              </p>
-              <div class="mb-6">
-                {service.timeline.map((step, stepIdx) => (
-                  <div class="flex gap-4">
-                    <div class="flex flex-col items-center shrink-0">
-                      <div class:list={["w-1.5 h-1.5 rounded-full mt-1.5 shrink-0", service.colorDot]}></div>
-                      {stepIdx < service.timeline.length - 1 && (
-                        <div class="w-px bg-stroke-outlineVariant flex-1 my-1"></div>
-                      )}
-                    </div>
-                    <div class="pb-4">
-                      <div class="flex gap-3 items-baseline mb-0.5">
-                        <span class="text-body-medium text-ink-muted/60 tracking-wider">{step.phase}</span>
-                        <span class="text-body-medium text-ink-muted font-medium">{step.title}</span>
-                      </div>
-                      <p class="text-body-small text-ink-muted/70 italic mb-2">{step.outcome}</p>
-                      {step.items.map((item) => (
-                        <div class="flex gap-1.5 items-start mb-0.5">
-                          <Icon name="navigate_next" class="w-3.5 h-3.5 shrink-0 mt-0.5 text-ink-muted/40" />
-                          <span class="text-body-small text-ink-muted/80">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <!-- Bento grid: delivers + excludes -->
-              <div class="grid grid-cols-1 gap-3 mb-6">
-                <div class:list={["rounded-sm p-4", service.colorBgLow]}>
-                  <p class="text-label-medium text-ink-muted mb-3">
-                    {t['services.label.excludes']}
-                  </p>
-                  {service.excludes.map((item) => (
-                    <div class="flex gap-2 items-start mb-2">
-                      <Icon name="close" class="w-4 h-4 shrink-0 mt-0.5 text-ink-muted/40" />
-                      <span class="text-body-medium text-ink-muted/80">{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <div class:list={["rounded-sm p-4", service.colorBgHigh]}>
-                  <p class:list={["text-label-medium mb-3", service.colorText]}>
-                    {t['services.label.delivers']}
-                  </p>
-                  {service.delivers.map((item) => (
-                    <div class="flex gap-2 items-start mb-2">
-                      <Icon name="check_circle" class:list={["w-4 h-4 shrink-0 mt-0.5", service.colorText]} />
-                      <span class="text-body-medium text-ink-muted">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <!-- Objection Q&A -->
-              <div class:list={["rounded-sm p-4 mb-6", service.colorBg]}>
-                <p class="text-label-medium text-ink-muted mb-2">{service.objectionQ}</p>
-                <p class="text-body-medium text-ink-muted leading-relaxed">{service.objectionA}</p>
-              </div>
-
-              <!-- CTA row -->
-              <div class="text-center">
-                <a
-                  href={EXTERNAL.mailto}
-                  class:list={["inline-flex items-center gap-1.5 text-title-medium rounded-full px-4 py-2 transition-all duration-short4 ease-standard", service.colorText, service.colorHoverBg, service.colorActiveBg]}
-                  aria-label={`${service.cta}: ${service.title}`}
-                >
-                  {service.cta}
-                  <Icon name="arrow_outward" class="w-4 h-4" />
-                </a>
-                {(service.key === 'sparring' ? t['services.cta.note.sparring'] : t['services.cta.note']) && (
-                  <p class="text-body-small text-ink-muted/50 mt-2">
-                    {service.key === 'sparring' ? t['services.cta.note.sparring'] : t['services.cta.note']}
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+          <p class="uc-eyebrow service-duration">{service.duration}</p>
+          <h3 class="uc-h3 service-title">{service.title}</h3>
+          <p class="service-subtitle">{service.subtitle}</p>
+          <p class="service-problem">{service.problem}</p>
+          <span class="service-link">
+            {service.cta}
+            <Icon name="arrow_outward" class="w-4 h-4" />
+          </span>
+        </a>
       ))}
     </div>
+
   </div>
 </section>
 
 <style>
-  .card-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 400ms var(--ease-emphasized-decel);
+  .services-head { max-width: 640px; margin-bottom: 56px; }
+  .services-head .uc-eyebrow { margin-bottom: 16px; }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    background: rgb(var(--surface-base));
+    border: 1px solid rgb(var(--stroke-subtle));
+    border-radius: 12px;
+    padding: 32px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 140ms cubic-bezier(0.22, 1, 0.36, 1), transform 140ms cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+  }
+  .service-card:hover {
+    transform: translateY(-2px);
   }
 
-  .card.open .card-body {
-    max-height: 2400px;
+  .service-card--primary:hover { border-color: rgb(var(--brand-primary)); }
+  .service-card--secondary:hover { border-color: rgb(var(--brand-secondary)); }
+  .service-card--tertiary:hover { border-color: rgb(var(--brand-tertiary)); }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .service-card--primary .service-icon { background: rgb(var(--brand-primary) / 0.1); color: rgb(var(--brand-primary)); }
+  .service-card--secondary .service-icon { background: rgb(var(--brand-secondary) / 0.1); color: rgb(var(--brand-secondary)); }
+  .service-card--tertiary .service-icon { background: rgb(var(--brand-tertiary) / 0.1); color: rgb(var(--brand-tertiary)); }
+
+  .service-duration {
+    margin-bottom: 8px;
   }
 
-  .card .toggle-icon {
-    transform: rotate(180deg);
+  .service-title {
+    margin-bottom: 4px;
+    color: rgb(var(--ink-primary));
   }
 
-  .card.open .toggle-icon {
-    transform: rotate(0deg);
+  .service-subtitle {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+    color: rgb(var(--ink-primary));
+    font-weight: 600;
+  }
+  .service-card--primary .service-subtitle { color: rgb(var(--brand-primary)); }
+  .service-card--secondary .service-subtitle { color: rgb(var(--brand-secondary)); }
+  .service-card--tertiary .service-subtitle { color: rgb(var(--brand-tertiary)); }
+
+  .service-problem {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: rgb(var(--ink-muted));
+    margin: 0 0 24px 0;
+    flex: 1;
   }
 
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-top: auto;
+  }
+  .service-card--primary .service-link { color: rgb(var(--brand-primary)); }
+  .service-card--secondary .service-link { color: rgb(var(--brand-secondary)); }
+  .service-card--tertiary .service-link { color: rgb(var(--brand-tertiary)); }
+
+  @media (max-width: 640px) {
+    .service-card { padding: 24px; }
+  }
 </style>
-
-<script>
-  function initServiceCards() {
-    const allCards = document.querySelectorAll<HTMLElement>('[data-service-card]');
-    if (!allCards.length) return;
-
-    // Calculate and lock closed height once
-    let closedHeight = 0;
-    allCards.forEach((c) => { closedHeight = Math.max(closedHeight, c.offsetHeight); });
-    allCards.forEach((c) => c.style.minHeight = closedHeight + 'px');
-
-    let savedScrollY: number | null = null;
-
-    allCards.forEach((card) => {
-      if (card.hasAttribute('data-initialized')) return;
-      card.setAttribute('data-initialized', '');
-
-      const toggle = (e: Event) => {
-        e.stopPropagation();
-        const target = e.target as HTMLElement;
-        if (target.closest('a')) return;
-        const isOpen = card.classList.contains('open');
-        const anyOtherOpen = Array.from(allCards).some((c) => c !== card && c.classList.contains('open'));
-
-        // Close everything first
-        allCards.forEach((c) => { c.classList.remove('open'); c.setAttribute('aria-expanded', 'false'); });
-
-        if (isOpen) {
-          // This card was open, user is closing it
-          if (savedScrollY !== null) {
-            window.scrollTo({ top: savedScrollY, behavior: 'auto' });
-            savedScrollY = null;
-          } else {
-            // No saved scroll (e.g., closed after a switch), snap card to viewport top
-            card.scrollIntoView({ behavior: 'auto', block: 'start' });
-          }
-          return;
-        }
-
-        if (anyOtherOpen) {
-          // Switching cards: disable transition, snap layout instantly, scroll to new card top
-          const allBodies = document.querySelectorAll<HTMLElement>('.card-body');
-          allBodies.forEach((b) => { b.style.transition = 'none'; });
-
-          allCards.forEach((c) => { c.classList.remove('open'); c.setAttribute('aria-expanded', 'false'); });
-          card.classList.add('open');
-          card.setAttribute('aria-expanded', 'true');
-          savedScrollY = null;
-
-          // Force reflow so layout is committed before scrollIntoView measures
-          void card.offsetHeight;
-          card.scrollIntoView({ behavior: 'auto', block: 'start' });
-
-          // Restore transition on next frame (after paint, so the instant change has rendered)
-          requestAnimationFrame(() => {
-            allBodies.forEach((b) => { b.style.transition = ''; });
-          });
-          return;
-        }
-
-        // Fresh open: smooth animation, remember scroll to restore on close
-        card.classList.add('open');
-        card.setAttribute('aria-expanded', 'true');
-        savedScrollY = window.scrollY;
-      };
-      card.addEventListener('click', toggle);
-      card.addEventListener('keydown', (e: KeyboardEvent) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); }
-      });
-    });
-  }
-
-  initServiceCards();
-  document.addEventListener('astro:page-load', initServiceCards);
-</script>

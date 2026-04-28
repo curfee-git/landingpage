@@ -1,7 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
-import BackToHomeSection from '@/components/shared/BackToHomeSection.astro';
 import { getTranslations } from '@/i18n/translations';
 
 const t = getTranslations();
@@ -22,7 +21,6 @@ const jsonLd = {
   canonicalPath="/imprint/"
   jsonLd={jsonLd}
   dateModified="2026-03-30"
-  showHeader={false}
 >
   <article class="pt-[clamp(4rem,3rem+3vw,7rem)] pb-[clamp(4rem,3rem+3vw,7rem)] max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
     <div class="max-w-4xl mx-auto">
@@ -124,5 +122,4 @@ const jsonLd = {
 
     </div>
   </article>
-  <BackToHomeSection />
 </Layout>

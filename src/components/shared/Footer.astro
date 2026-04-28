@@ -3,7 +3,7 @@ import Icon from '@/components/shared/Icon.astro';
 import { ROUTES } from '@/configurations/routes';
 import { BRAND } from '@/configurations/brand';
 import { getTranslations } from '@/i18n/translations';
-import logoTextRaw from '@/assets/logos/logo_text.svg?raw';
+import logoTextRaw from '@/assets/logos/text.svg?raw';
 
 const t = getTranslations();
 const routes = ROUTES;
@@ -11,24 +11,34 @@ const year = new Date().getFullYear();
 const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transition-colors duration-short4 ease-standard";
 ---
 
-<footer class="pt-20 md:pt-28 pb-12" style="padding-bottom: max(3rem, env(safe-area-inset-bottom, 3rem));" role="contentinfo">
+<footer class="border-t-[0.0625rem] border-stroke-subtle/30 pt-12 md:pt-16 pb-12" style="padding-bottom: max(3rem, env(safe-area-inset-bottom, 3rem));" role="contentinfo">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
 
-    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_auto_auto] gap-10 md:gap-16 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_auto_auto_auto] gap-10 md:gap-16 mb-16">
 
       <!-- Left: Logo + Tagline (link to home) -->
       <a href={routes.home} class="block no-underline hover:no-underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-primary/40 rounded-sm" aria-label={t['back.home']}>
         <div class="mb-4 inline-flex items-center gap-2 text-brand-primary">
-          <span class="block h-9 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
+          <span class="block h-7 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
         </div>
         <p class="text-body-medium text-ink-muted/60 max-w-xs leading-relaxed italic">{t['footer.tagline']}</p>
       </a>
 
-      <!-- Right columns: Company + Legal + Contact -->
+      <!-- Right columns: Services + Company + Legal + Contact -->
       <div class="col-span-1 md:contents grid grid-cols-2 md:grid-cols-none gap-10">
+        <div>
+          <p class="text-label-large text-ink-primary mb-4">{t['nav.services']}</p>
+          <nav class="flex flex-col gap-3" aria-label="Services navigation">
+            <a href={routes.service.diagnosis} class={linkClass}>{t['services.diagnosis.title']}</a>
+            <a href={routes.service.guidance} class={linkClass}>{t['services.guidance.title']}</a>
+            <a href={routes.service.advisory} class={linkClass}>{t['services.advisory.title']}</a>
+          </nav>
+        </div>
+
         <div>
           <p class="text-label-large text-ink-primary mb-4">{t['footer.column.company']}</p>
           <nav class="flex flex-col gap-3" aria-label="Company navigation">
+            <a href={routes.about} class={linkClass}>{t['nav.about']}</a>
             <a href={routes.blog} class={linkClass}>{t['blog.indexHeading']}</a>
           </nav>
         </div>
