@@ -45,9 +45,9 @@ export async function getPosts(): Promise<BlogPost[]> {
   return all.sort((a, b) => b.data.createdAt.getTime() - a.data.createdAt.getTime());
 }
 
-export function postPath(post: BlogPost): string {
+export function postPath(post: BlogPost, locale: 'en' | 'de' = 'en'): string {
   const slug = postSlug(post);
-  return `/blog/${slug}/`;
+  return `/${locale}/blog/${slug}/`;
 }
 
 export function wordCount(body: string): number {

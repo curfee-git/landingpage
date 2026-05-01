@@ -14,7 +14,6 @@ interface TimelineStep {
 
 interface Props {
   serviceKey: 'diagnosis' | 'guidance' | 'advisory';
-  icon: string;
   title: string;
   subtitle: string;
   duration: string;
@@ -30,7 +29,7 @@ interface Props {
   accent: 'primary' | 'secondary' | 'tertiary';
 }
 
-const { serviceKey, icon, title, subtitle, duration, problem, forwhom, timeline, delivers, excludes, objectionQ, objectionA, cta, translations: t, accent } = Astro.props;
+const { title, subtitle, duration, problem, forwhom, timeline, delivers, excludes, objectionQ, objectionA, cta, translations: t, accent } = Astro.props;
 ---
 
 <article class={`service-detail service-detail--${accent}`}>
@@ -38,15 +37,8 @@ const { serviceKey, icon, title, subtitle, duration, problem, forwhom, timeline,
   <!-- Hero / Page header -->
   <section class="uc-section service-hero">
     <div class="uc-container">
-      <a href={`${routes.home}#services`} class="service-back">
-        <Icon name="arrow_back" class="w-4 h-4" />
-        Back to services
-      </a>
       <div class="service-hero-grid">
         <div class="service-hero-main">
-          <div class="service-hero-icon">
-            <Icon name={icon} class="w-7 h-7" />
-          </div>
           <p class="uc-eyebrow service-hero-eyebrow">{duration}</p>
           <h1 class="uc-h1 service-hero-title">{title}</h1>
           <p class="service-hero-subtitle">{subtitle}</p>
@@ -178,36 +170,11 @@ const { serviceKey, icon, title, subtitle, duration, problem, forwhom, timeline,
   .service-hero {
     padding-top: 64px;
   }
-  .service-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: rgb(var(--ink-muted));
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    margin-bottom: 32px;
-    transition: color 140ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .service-back:hover {
-    color: rgb(var(--service-accent));
-  }
   .service-hero-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 64px;
     align-items: start;
-  }
-  .service-hero-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
-    background: rgb(var(--service-accent) / 0.1);
-    color: rgb(var(--service-accent));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
   }
   .service-hero-eyebrow {
     margin-bottom: 12px;

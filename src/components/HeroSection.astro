@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import type { Translations } from '@/i18n/translations';
 import { getRoutes } from '@/configurations/routes';
-import profileImage from '@/assets/images/profile.webp';
+import profileImage from '@/assets/images/profile.png';
 
 interface Props {
   translations: Translations;
@@ -44,7 +44,7 @@ const routes = getRoutes(Astro.currentLocale);
           loading="eager"
           decoding="async"
           width={360}
-          height={480}
+          height={540}
           widths={[240, 360, 480, 720]}
           sizes="(max-width: 900px) 0px, (max-width: 1200px) 280px, 360px"
         />

@@ -1,6 +1,5 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Icon from '@/components/shared/Icon.astro';
 import { EXTERNAL } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 
@@ -23,104 +22,223 @@ const jsonLd = {
   jsonLd={jsonLd}
   dateModified="2026-03-30"
 >
-  <article class="pt-[clamp(4rem,3rem+3vw,7rem)] pb-[clamp(4rem,3rem+3vw,7rem)] max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-    <div class="max-w-4xl mx-auto">
-      <div class="mb-16">
-        <div class="w-12 h-12 rounded-full bg-brand-primary/[0.08] flex items-center justify-center mb-6">
-          <Icon name="gavel" class="w-6 h-6 text-brand-primary" />
+  <article class="uc-section">
+    <div class="uc-container">
+      <div class="legal-page">
+
+        <header class="legal-header">
+          <p class="uc-eyebrow">{t['legal.eyebrow']}</p>
+          <h1 class="uc-h1">{t['imprint.heading']}</h1>
+          <p class="legal-subheading">{t['imprint.legal.basis']}</p>
+        </header>
+
+        <div class="legal-content">
+
+          <section class="legal-grid">
+            <div class="legal-card">
+              <h2 class="legal-card-title">{t['imprint.owner']}</h2>
+              <div class="legal-card-body">
+                <p class="legal-emphasis">{t['imprint.company']}</p>
+                <p>{t['imprint.name']}</p>
+                <div class="legal-address">
+                  <p>{t['imprint.address.street']}</p>
+                  <p>{t['imprint.address.city']}</p>
+                  <p>{t['imprint.address.country']}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="legal-card">
+              <h2 class="legal-card-title">{t['imprint.contact']}</h2>
+              <div class="legal-card-body">
+                <div>
+                  <p class="legal-label">{t['imprint.email.label']}</p>
+                  <p><a href={EXTERNAL.mailto} class="legal-link">{EXTERNAL.email}</a></p>
+                </div>
+                <div>
+                  <p class="legal-label">{t['imprint.phone.label']}</p>
+                  <p><a href={EXTERNAL.tel} class="legal-link">{EXTERNAL.phone}</a></p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="uc-h3 legal-section-heading">{t['imprint.legal.heading']}</h2>
+            <div class="legal-data-grid">
+              <div>
+                <p class="legal-label">{t['imprint.trade.label']}</p>
+                <p class="legal-value">{t['imprint.trade']}</p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.form.label']}</p>
+                <p class="legal-value">{t['imprint.form']}</p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.authority.label']}</p>
+                <p class="legal-value">{t['imprint.authority']}</p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.uid.label']}</p>
+                <p class="legal-value">{t['imprint.uid']}</p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.gisa.label']}</p>
+                <p class="legal-value">{t['imprint.gisa']}</p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.law.label']}</p>
+                <p class="legal-value">{t['imprint.law']}</p>
+                <p><a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener noreferrer" class="legal-link legal-link--small">{t['imprint.lawlink']}</a></p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.wko.label']}</p>
+                <p class="legal-value">{t['imprint.wko']}</p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="uc-h3 legal-section-heading">{t['imprint.editorial.heading']}</h2>
+            <p class="legal-prose">{t['imprint.editorial']}</p>
+            <p class="legal-prose legal-emphasis">{t['imprint.editorial.responsible']}</p>
+          </section>
+
+          <section>
+            <h2 class="uc-h3 legal-section-heading">{t['imprint.liability.content.heading']}</h2>
+            <p class="legal-prose">{t['imprint.liability.content']}</p>
+          </section>
+
+          <section>
+            <h2 class="uc-h3 legal-section-heading">{t['imprint.liability.links.heading']}</h2>
+            <p class="legal-prose">{t['imprint.liability.links']}</p>
+          </section>
+
+          <section>
+            <h2 class="uc-h3 legal-section-heading">{t['imprint.copyright.heading']}</h2>
+            <p class="legal-prose">{t['imprint.copyright']}</p>
+          </section>
+
         </div>
-        <h1 class="text-headline-large md:text-display-small lg:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-3">{t['imprint.heading']}</h1>
-        <p class="text-title-medium text-brand-primary font-medium">{t['imprint.legal.basis']}</p>
       </div>
-
-      <div class="space-y-12">
-
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="rounded-md bg-surface-base shadow-elevation-1 p-6">
-            <h2 class="text-label-large text-ink-primary mb-4">{t['imprint.owner']}</h2>
-            <div class="text-body-large text-ink-muted">
-              <p class="text-title-medium text-ink-primary">{t['imprint.company']}</p>
-              <p class="mt-1">{t['imprint.name']}</p>
-              <div class="mt-3 leading-snug">
-                <p>{t['imprint.address.street']}</p>
-                <p>{t['imprint.address.city']}</p>
-                <p>{t['imprint.address.country']}</p>
-              </div>
-            </div>
-          </div>
-          <div class="rounded-md bg-surface-base shadow-elevation-1 p-6">
-            <h2 class="text-label-large text-ink-primary mb-4">{t['imprint.contact']}</h2>
-            <div class="space-y-4">
-              <div>
-                <span class="text-label-large font-medium text-ink-muted">{t['imprint.email.label']}</span>
-                <p><a href={`mailto:${EXTERNAL.email}`} class="text-body-large text-brand-primary hover:underline transition-colors duration-short4 ease-standard">{EXTERNAL.email}</a></p>
-              </div>
-              <div>
-                <span class="text-label-large font-medium text-ink-muted">{t['imprint.phone.label']}</span>
-                <p><a href={EXTERNAL.tel} class="text-body-large text-brand-primary hover:underline transition-colors duration-short4 ease-standard">{EXTERNAL.phone}</a></p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h2 class="text-headline-small text-ink-primary mb-6">{t['imprint.legal.heading']}</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 rounded-md bg-surface-base shadow-elevation-1 p-6">
-            <div>
-              <span class="text-label-medium font-medium text-ink-muted">{t['imprint.trade.label']}</span>
-              <p class="text-body-large text-ink-primary mt-1">{t['imprint.trade']}</p>
-            </div>
-            <div>
-              <span class="text-label-medium font-medium text-ink-muted">{t['imprint.form.label']}</span>
-              <p class="text-body-large text-ink-primary mt-1">{t['imprint.form']}</p>
-            </div>
-            <div>
-              <span class="text-label-medium font-medium text-ink-muted">{t['imprint.authority.label']}</span>
-              <p class="text-body-large text-ink-primary mt-1">{t['imprint.authority']}</p>
-            </div>
-            <div>
-              <span class="text-label-medium font-medium text-ink-muted">{t['imprint.uid.label']}</span>
-              <p class="text-body-large text-ink-primary mt-1">{t['imprint.uid']}</p>
-            </div>
-            <div>
-              <span class="text-label-medium font-medium text-ink-muted">{t['imprint.gisa.label']}</span>
-              <p class="text-body-large text-ink-primary mt-1">{t['imprint.gisa']}</p>
-            </div>
-            <div>
-              <span class="text-label-medium font-medium text-ink-muted">{t['imprint.law.label']}</span>
-              <p class="text-body-large text-ink-primary mt-1">{t['imprint.law']}</p>
-              <a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener noreferrer" class="text-body-small text-brand-primary hover:underline transition-colors duration-short4 ease-standard">{t['imprint.lawlink']}</a>
-            </div>
-            <div>
-              <span class="text-label-medium font-medium text-ink-muted">{t['imprint.wko.label']}</span>
-              <p class="text-body-large text-ink-primary mt-1">{t['imprint.wko']}</p>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h2 class="text-headline-small text-ink-primary mb-4">{t['imprint.editorial.heading']}</h2>
-          <p class="text-body-large text-ink-muted leading-relaxed mb-2">{t['imprint.editorial']}</p>
-          <p class="text-body-large text-ink-primary">{t['imprint.editorial.responsible']}</p>
-        </section>
-
-        <section>
-          <h2 class="text-headline-small text-ink-primary mb-4">{t['imprint.liability.content.heading']}</h2>
-          <p class="text-body-large text-ink-muted leading-relaxed">{t['imprint.liability.content']}</p>
-        </section>
-
-        <section>
-          <h2 class="text-headline-small text-ink-primary mb-4">{t['imprint.liability.links.heading']}</h2>
-          <p class="text-body-large text-ink-muted leading-relaxed">{t['imprint.liability.links']}</p>
-        </section>
-
-        <section>
-          <h2 class="text-headline-small text-ink-primary mb-4">{t['imprint.copyright.heading']}</h2>
-          <p class="text-body-large text-ink-muted leading-relaxed">{t['imprint.copyright']}</p>
-        </section>
-
-      </div>
-
     </div>
   </article>
 </Layout>
+
+<style>
+  .legal-page {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .legal-header {
+    margin-bottom: 64px;
+  }
+  .legal-header .uc-h1 {
+    margin-top: 16px;
+  }
+  .legal-subheading {
+    font-size: 1.125rem;
+    color: rgb(var(--ink-muted));
+    line-height: 1.6;
+    margin: 24px 0 0 0;
+    max-width: 720px;
+  }
+
+  .legal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .legal-section-heading {
+    margin: 0 0 20px 0;
+  }
+
+  .legal-prose {
+    font-size: 1rem;
+    color: rgb(var(--ink-muted));
+    line-height: 1.7;
+    margin: 0 0 12px 0;
+  }
+  .legal-prose:last-child {
+    margin-bottom: 0;
+  }
+  .legal-emphasis {
+    color: rgb(var(--ink-primary));
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .legal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .legal-card {
+    background: rgb(var(--surface-base));
+    border: 1px solid rgb(var(--stroke-subtle));
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .legal-card-title {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--ink-muted));
+    margin: 0 0 16px 0;
+  }
+  .legal-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    color: rgb(var(--ink-primary));
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+  .legal-card-body p {
+    margin: 0;
+  }
+  .legal-address {
+    color: rgb(var(--ink-muted));
+  }
+
+  .legal-data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 32px;
+  }
+  .legal-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--ink-muted));
+    margin: 0 0 6px 0;
+  }
+  .legal-value {
+    font-size: 0.9375rem;
+    color: rgb(var(--ink-primary));
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .legal-link {
+    color: rgb(var(--brand-primary));
+    text-decoration: none;
+    transition: color 140ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .legal-link:hover {
+    text-decoration: underline;
+  }
+  .legal-link--small {
+    font-size: 0.8125rem;
+  }
+
+  @media (max-width: 700px) {
+    .legal-grid,
+    .legal-data-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

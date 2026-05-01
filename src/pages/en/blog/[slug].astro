@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
-import Icon from '@/components/shared/Icon.astro';
 import { getRoutes } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 import { postSlug, formatDate, extractToc, extractReferences, reorderForGrid } from '@/content/_posts';
@@ -24,7 +23,6 @@ const toc = extractToc(post.body ?? '');
 const references = reorderForGrid(extractReferences(post.body ?? ''), (ref) => ref.title.length + ref.url.length);
 const tocRows = Math.max(1, Math.ceil(toc.length / 2));
 const referencesRows = Math.max(1, Math.ceil(references.length / 2));
-const contactPath = `${routes.home}#contact`;
 
 const postImage = post.data.coverImage
   ? (post.data.coverImage.startsWith('http') ? post.data.coverImage : `https://curfee.com${post.data.coverImage}`)
@@ -86,128 +84,325 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
   articleTags={post.data.tags}
   enableTransitions={false}
 >
-  <article class="pt-[clamp(4rem,3rem+3vw,7rem)] pb-[clamp(6rem,4rem+5vw,9rem)] max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-    <div class="max-w-4xl mx-auto">
-      <a href={routes.blog} class="inline-flex items-center gap-1.5 text-label-medium text-ink-muted hover:text-brand-primary mb-8 transition-colors duration-short4">
-        <Icon name="arrow_back_outline" class="w-4 h-4" />
-        {t['blog.backToIndex']}
-      </a>
+  <article class="uc-section">
+    <div class="uc-container">
+      <div class="post-page">
 
-      <header class="mb-12">
-        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-          <span class="inline-flex items-center rounded-full bg-brand-primaryContainer text-brand-onPrimaryContainer px-3 py-1 text-label-medium">
-            {post.data.topic}
-          </span>
-          <span class="inline-flex items-center gap-1.5 rounded-full border border-stroke-outlineVariant bg-surface-base px-3 py-1 text-label-medium text-ink-muted" title={t['blog.publishedOn']}>
-            <Icon name="event" class="w-4 h-4" />
-            <time datetime={post.data.createdAt.toISOString()}>
-              {formatDate(post.data.createdAt)}
-            </time>
-            {post.data.updatedAt && post.data.updatedAt.toISOString() !== post.data.createdAt.toISOString() && (
-              <>
-                <span class="text-ink-muted/50">·</span>
-                <span class="text-ink-muted/70">Updated</span>
-                <time datetime={post.data.updatedAt.toISOString()}>
-                  {formatDate(post.data.updatedAt)}
-                </time>
-              </>
-            )}
-          </span>
-        </div>
-        <h1 class="text-display-small md:text-display-medium text-ink-primary leading-[1.1] tracking-tight mb-4 [text-wrap:balance]">
-          {post.data.title}
-        </h1>
-        <p class="text-title-medium text-ink-muted/80 mb-6">
-          {post.data.excerpt}
-        </p>
-      </header>
+        <a href={routes.blog} class="post-back">← {t['blog.backToIndex']}</a>
 
-      {toc.length > 0 && (
-        <nav class="mb-14 p-6 md:p-7 rounded-xl bg-brand-primary/[0.025]" aria-labelledby="toc-heading">
-          <h2 id="toc-heading" class="text-title-small uppercase tracking-[0.14em] text-ink-muted mb-5">
-            {t['blog.tocHeading']}
-          </h2>
-          <ol
-            class="space-y-3 sm:space-y-0 sm:grid sm:grid-cols-2 sm:grid-flow-col sm:gap-x-10 sm:gap-y-3"
-            style={`grid-template-rows: repeat(${tocRows}, auto);`}
-          >
-            {toc.map((item, i) => (
-              <li class="flex items-baseline gap-3">
-                <span class="text-label-small text-brand-primary/50 font-semibold tabular-nums shrink-0 w-6">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <a href={`#${item.slug}`} class="flex-1 text-body-medium text-ink-primary leading-snug hover:text-brand-primary underline decoration-1 decoration-transparent underline-offset-4 hover:decoration-brand-primary/60 transition-all duration-short4">
-                  {item.text}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
-      )}
-
-      {post.data.coverImage && (
-        <figure class="mb-12 -mx-6 md:mx-0">
-          <img
-            src={post.data.coverImage}
-            alt={post.data.coverImageAlt ?? ''}
-            loading="lazy"
-            decoding="async"
-            width={post.data.coverImageWidth}
-            height={post.data.coverImageHeight}
-            class="w-full h-auto rounded-none md:rounded-lg"
-          />
-          {post.data.coverImageAlt && (
-            <figcaption class="mt-3 text-label-small text-ink-onSurfaceVariant px-6 md:px-0">
-              {post.data.coverImageAlt}
-            </figcaption>
-          )}
-        </figure>
-      )}
-
-      <div class={`prose-blog text-body-large text-ink-primary leading-[1.7] [&_h2]:text-headline-small [&_h2]:text-ink-primary [&_h2]:mt-14 [&_h2]:mb-4 [&_h2]:tracking-tight [&_h2]:scroll-mt-20 [&_h2]:md:scroll-mt-24 [&_h3]:text-title-large [&_h3]:text-ink-primary [&_h3]:mt-10 [&_h3]:mb-3 [&_h3]:scroll-mt-20 [&_h3]:md:scroll-mt-24 [&_p]:mb-6 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ul]:space-y-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-6 [&_ol]:space-y-2 [&_li]:leading-[1.7] [&_a]:text-brand-primary [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-brand-primary/80 [&_strong]:font-semibold [&_strong]:text-ink-primary [&_blockquote]:border-l-2 [&_blockquote]:border-brand-primary [&_blockquote]:pl-6 [&_blockquote]:my-10 [&_blockquote]:italic [&_blockquote]:text-title-medium [&_blockquote]:text-ink-primary [&_blockquote]:leading-[1.6] [&_blockquote_p]:mb-0 [&_code]:bg-surface-container [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-body-medium [&_pre]:bg-surface-container [&_pre]:border [&_pre]:border-stroke-outlineVariant [&_pre]:rounded-lg [&_pre]:p-4 [&_pre]:my-6 [&_pre]:overflow-x-auto [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_hr]:border-stroke-outlineVariant [&_hr]:my-12`}>
-        <Content />
-      </div>
-
-      {references.length > 0 && (
-        <section class="mt-16 p-6 md:p-7 rounded-xl bg-brand-primary/[0.025]" aria-labelledby="references-heading">
-          <h2 id="references-heading" class="text-title-small uppercase tracking-[0.14em] text-ink-muted mb-4">
-            {t['blog.referencesHeading']}
-          </h2>
-          <ol
-            class="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:grid-flow-col sm:gap-x-8 sm:gap-y-4"
-            style={`grid-template-rows: repeat(${referencesRows}, auto);`}
-          >
-            {references.map((ref, i) => (
-              <li class="flex items-baseline gap-3">
-                <span class="text-label-small text-ink-muted/50 font-semibold tabular-nums shrink-0 w-6">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span class="flex-1 min-w-0 text-body-medium leading-snug">
-                  <a href={ref.url} rel="noopener" target="_blank" class="block text-ink-primary hover:text-brand-primary transition-colors duration-short4">
-                    {ref.title}
-                  </a>
-                  <span class="block text-label-small text-ink-muted/50 mt-1 break-all">
-                    {ref.url}
+        <header class="post-header">
+          <div class="post-meta">
+            <span class="post-topic">{post.data.topic}</span>
+            <span class="post-date">
+              <time datetime={post.data.createdAt.toISOString()}>{formatDate(post.data.createdAt)}</time>
+              {post.data.updatedAt && post.data.updatedAt.toISOString() !== post.data.createdAt.toISOString() && (
+                <>
+                  <span aria-hidden="true"> · </span>
+                  <span class="post-date-updated">
+                    Updated <time datetime={post.data.updatedAt.toISOString()}>{formatDate(post.data.updatedAt)}</time>
                   </span>
-                </span>
-              </li>
-            ))}
-          </ol>
-        </section>
-      )}
+                </>
+              )}
+            </span>
+          </div>
+          <h1 class="uc-h1 post-title">{post.data.title}</h1>
+          <p class="post-excerpt">{post.data.excerpt}</p>
+        </header>
 
-      <aside class="mt-16 p-8 md:p-10 rounded-xl bg-brand-primary/[0.04] shadow-elevation-1" aria-labelledby="cta-heading">
-        <h2 id="cta-heading" class="text-title-large text-ink-primary tracking-tight mb-2 [text-wrap:balance]">
-          {t['blog.ctaTitle']}
-        </h2>
-        <p class="text-body-medium text-ink-muted mb-5 [text-wrap:pretty]">
-          {t['blog.ctaText']}
-        </p>
-        <a href={contactPath} class="inline-flex items-center gap-1.5 text-label-large text-brand-primary rounded-full px-4 py-2 -ml-4 hover:bg-brand-primary/[0.08] active:bg-brand-primary/[0.12] transition-all duration-short4 ease-standard">
-          {t['blog.ctaLink']}
-          <Icon name="arrow_outward" class="w-4 h-4" />
-        </a>
-      </aside>
+        {toc.length > 0 && (
+          <nav class="post-toc" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="post-toc-heading">{t['blog.tocHeading']}</h2>
+            <ol class="post-toc-list" style={`grid-template-rows: repeat(${tocRows}, auto);`}>
+              {toc.map((item, i) => (
+                <li class="post-toc-item">
+                  <span class="post-toc-num">{String(i + 1).padStart(2, '0')}</span>
+                  <a href={`#${item.slug}`} class="post-toc-link">{item.text}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
+
+        {post.data.coverImage && (
+          <figure class="post-cover">
+            <img
+              src={post.data.coverImage}
+              alt={post.data.coverImageAlt ?? ''}
+              loading="lazy"
+              decoding="async"
+              width={post.data.coverImageWidth}
+              height={post.data.coverImageHeight}
+            />
+            {post.data.coverImageAlt && <figcaption>{post.data.coverImageAlt}</figcaption>}
+          </figure>
+        )}
+
+        <div class={`prose-blog post-content text-body-large text-ink-primary leading-[1.7] [&_h2]:text-headline-small [&_h2]:text-ink-primary [&_h2]:mt-14 [&_h2]:mb-4 [&_h2]:tracking-tight [&_h2]:scroll-mt-20 [&_h2]:md:scroll-mt-24 [&_h3]:text-title-large [&_h3]:text-ink-primary [&_h3]:mt-10 [&_h3]:mb-3 [&_h3]:scroll-mt-20 [&_h3]:md:scroll-mt-24 [&_p]:mb-6 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ul]:space-y-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-6 [&_ol]:space-y-2 [&_li]:leading-[1.7] [&_a]:text-brand-primary [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-brand-primary/80 [&_strong]:font-semibold [&_strong]:text-ink-primary [&_blockquote]:border-l-2 [&_blockquote]:border-brand-primary [&_blockquote]:pl-6 [&_blockquote]:my-10 [&_blockquote]:italic [&_blockquote]:text-title-medium [&_blockquote]:text-ink-primary [&_blockquote]:leading-[1.6] [&_blockquote_p]:mb-0 [&_code]:bg-surface-container [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-body-medium [&_pre]:bg-surface-container [&_pre]:border [&_pre]:border-stroke-outlineVariant [&_pre]:rounded-lg [&_pre]:p-4 [&_pre]:my-6 [&_pre]:overflow-x-auto [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_hr]:border-stroke-outlineVariant [&_hr]:my-12`}>
+          <Content />
+        </div>
+
+        {references.length > 0 && (
+          <section class="post-references" aria-labelledby="references-heading">
+            <h2 id="references-heading" class="post-references-heading">{t['blog.referencesHeading']}</h2>
+            <ol class="post-references-list" style={`grid-template-rows: repeat(${referencesRows}, auto);`}>
+              {references.map((ref, i) => (
+                <li class="post-references-item">
+                  <span class="post-references-num">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="post-references-body">
+                    <a href={ref.url} rel="noopener" target="_blank" class="post-references-title">{ref.title}</a>
+                    <span class="post-references-url">{ref.url}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
+        <aside class="post-cta" aria-labelledby="cta-heading">
+          <h2 id="cta-heading" class="post-cta-title">{t['blog.ctaTitle']}</h2>
+          <p class="post-cta-text">{t['blog.ctaText']}</p>
+          <a href={routes.contact} class="post-cta-link">{t['blog.ctaLink']}</a>
+        </aside>
+
+      </div>
     </div>
   </article>
 </Layout>
+
+<style>
+  .post-page {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .post-back {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: rgb(var(--ink-muted));
+    text-decoration: none;
+    margin-bottom: 32px;
+    transition: color 140ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .post-back:hover {
+    color: rgb(var(--brand-primary));
+  }
+
+  .post-header {
+    margin-bottom: 56px;
+  }
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-size: 0.8125rem;
+    color: rgb(var(--ink-muted));
+  }
+  .post-topic {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--brand-primary));
+  }
+  .post-date {
+    color: rgb(var(--ink-muted));
+  }
+  .post-date-updated {
+    color: rgb(var(--ink-muted));
+  }
+  .post-title {
+    margin-top: 0;
+  }
+  .post-excerpt {
+    font-size: 1.125rem;
+    color: rgb(var(--ink-muted));
+    line-height: 1.6;
+    margin: 24px 0 0 0;
+  }
+
+  /* TOC */
+  .post-toc {
+    background: rgb(var(--surface-base));
+    border: 1px solid rgb(var(--stroke-subtle));
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 56px;
+  }
+  .post-toc-heading {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--ink-muted));
+    margin: 0 0 16px 0;
+  }
+  .post-toc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  @media (min-width: 700px) {
+    .post-toc-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-flow: column;
+      gap: 10px 32px;
+    }
+  }
+  .post-toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .post-toc-num {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgb(var(--brand-primary) / 0.5);
+    width: 24px;
+    flex-shrink: 0;
+  }
+  .post-toc-link {
+    font-size: 0.9375rem;
+    color: rgb(var(--ink-primary));
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 140ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .post-toc-link:hover {
+    color: rgb(var(--brand-primary));
+  }
+
+  /* Cover */
+  .post-cover {
+    margin: 0 -24px 48px -24px;
+  }
+  @media (min-width: 768px) {
+    .post-cover {
+      margin: 0 0 48px 0;
+    }
+  }
+  .post-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+  @media (min-width: 768px) {
+    .post-cover img {
+      border-radius: 12px;
+    }
+  }
+  .post-cover figcaption {
+    font-size: 0.75rem;
+    color: rgb(var(--ink-muted));
+    margin: 12px 24px 0 24px;
+  }
+  @media (min-width: 768px) {
+    .post-cover figcaption {
+      margin: 12px 0 0 0;
+    }
+  }
+
+  /* References */
+  .post-references {
+    margin-top: 64px;
+    padding: 28px 32px;
+    background: rgb(var(--surface-base));
+    border: 1px solid rgb(var(--stroke-subtle));
+    border-radius: 12px;
+  }
+  .post-references-heading {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--ink-muted));
+    margin: 0 0 16px 0;
+  }
+  .post-references-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  @media (min-width: 700px) {
+    .post-references-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-flow: column;
+      gap: 14px 32px;
+    }
+  }
+  .post-references-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .post-references-num {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgb(var(--ink-muted) / 0.6);
+    width: 24px;
+    flex-shrink: 0;
+  }
+  .post-references-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .post-references-title {
+    display: block;
+    font-size: 0.9375rem;
+    color: rgb(var(--ink-primary));
+    text-decoration: none;
+    transition: color 140ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .post-references-title:hover {
+    color: rgb(var(--brand-primary));
+  }
+  .post-references-url {
+    display: block;
+    font-size: 0.75rem;
+    color: rgb(var(--ink-muted) / 0.6);
+    margin-top: 4px;
+    word-break: break-all;
+  }
+
+  /* CTA */
+  .post-cta {
+    margin-top: 64px;
+    padding: 36px 40px;
+    background: rgb(var(--brand-primary) / 0.04);
+    border: 1px solid rgb(var(--stroke-subtle));
+    border-radius: 12px;
+  }
+  .post-cta-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: rgb(var(--ink-primary));
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+  .post-cta-text {
+    color: rgb(var(--ink-muted));
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+  }
+  .post-cta-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: rgb(var(--brand-primary));
+    text-decoration: none;
+    transition: color 140ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .post-cta-link:hover {
+    text-decoration: underline;
+  }
+</style>

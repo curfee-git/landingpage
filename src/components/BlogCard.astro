@@ -1,5 +1,6 @@
 ---
 import { postPath, formatDate, type BlogPost } from '@/content/_posts';
+import { resolveLocale } from '@/i18n/translations';
 
 interface Props {
   post: BlogPost;
@@ -9,12 +10,13 @@ interface Props {
 
 const { post, index, headingLevel = 'h3' } = Astro.props;
 const Heading = headingLevel;
+const locale = resolveLocale(Astro.currentLocale);
 ---
 
 <a
-  href={postPath(post)}
+  href={postPath(post, locale)}
   data-astro-reload
-  class="group flex h-full flex-col rounded-xl bg-surface-base shadow-elevation-1 p-6 md:p-8 hover:shadow-elevation-3 transition-shadow duration-medium2 ease-standard"
+  class="group flex h-full flex-col rounded-xl bg-surface-base border border-stroke-subtle p-6 md:p-8 hover:border-brand-primary/60 transition-colors duration-medium2 ease-standard"
 >
   <div class="flex items-center justify-between mb-5">
     <span class="text-headline-small text-brand-primary/40 font-semibold tabular-nums leading-none" data-card-number>

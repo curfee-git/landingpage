@@ -1,6 +1,5 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Icon from '@/components/shared/Icon.astro';
 import { getRoutes } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 
@@ -8,16 +7,62 @@ const t = getTranslations(Astro.currentLocale);
 const routes = getRoutes(Astro.currentLocale);
 ---
 
-<Layout title={t['meta.404.title']} description={t['meta.404.description']} canonicalPath={Astro.url.pathname} noindex={true}>
-  <div class="min-h-[75vh] flex items-center justify-center px-6" style="background: linear-gradient(to bottom, rgb(var(--brand-primary) / 0) 0%, rgb(var(--brand-primary) / 0.05) 50%, rgb(var(--brand-primary) / 0.05) 100%);">
-    <div class="text-center max-w-lg">
-      <span class="text-display-large text-brand-primary/15 block mb-2 select-none">404</span>
-      <h1 class="text-headline-large text-ink-primary mb-3">{t['404.heading']}</h1>
-      <p class="text-body-large text-ink-muted mb-12">{t['404.description']}</p>
-      <a href={routes.home} class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-brand-primary text-brand-onPrimary text-label-large font-medium shadow-elevation-0 hover:shadow-elevation-1 active:shadow-elevation-0 transition-all duration-medium2 ease-standard">
-        <Icon name="arrow_back" class="w-5 h-5" />
-        {t['404.cta']}
-      </a>
+<Layout
+  title={t['meta.404.title']}
+  description={t['meta.404.description']}
+  canonicalPath={Astro.url.pathname}
+  noindex={true}
+>
+  <article class="uc-section error-page">
+    <div class="uc-container">
+      <div class="error-inner">
+        <p class="error-code" aria-hidden="true">404</p>
+        <h1 class="error-heading">{t['404.heading']}</h1>
+        <p class="error-description">{t['404.description']}</p>
+        <a href={routes.home} class="uc-btn uc-btn--primary error-cta">{t['404.cta']}</a>
+      </div>
     </div>
-  </div>
+  </article>
 </Layout>
+
+<style>
+  .error-page {
+    padding-top: clamp(56px, 6vw, 96px);
+    padding-bottom: clamp(80px, 9vw, 128px);
+  }
+  .error-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .error-code {
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: rgb(var(--brand-primary) / 0.2);
+    margin: 0 0 8px 0;
+    user-select: none;
+  }
+  .error-heading {
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: rgb(var(--ink-primary));
+    margin: 0;
+    text-wrap: balance;
+  }
+  .error-description {
+    font-size: 1rem;
+    color: rgb(var(--ink-muted));
+    line-height: 1.6;
+    margin: 16px auto 0 auto;
+    max-width: 480px;
+  }
+  .error-cta {
+    margin-top: 32px;
+  }
+</style>

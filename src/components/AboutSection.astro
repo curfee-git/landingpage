@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { Translations } from '@/i18n/translations';
-import profileImage from '@/assets/images/profile.webp';
+import profileImage from '@/assets/images/profile.png';
 import { EXTERNAL, getRoutes } from '@/configurations/routes';
 
 interface Props {
@@ -68,7 +68,7 @@ const credentials = [
 
         <div class="about-hero-aside">
           <div class="about-portrait-wrap">
-            <Image src={profileImage} alt={t['about.portrait.alt']} class="about-portrait" loading="eager" decoding="async" width={400} height={533} widths={[280, 400, 600, 800]} sizes="(max-width: 900px) 280px, 400px" />
+            <Image src={profileImage} alt={t['about.portrait.alt']} class="about-portrait" loading="eager" decoding="async" width={400} height={600} widths={[280, 400, 600, 800]} sizes="(max-width: 900px) 280px, 400px" />
           </div>
           <div class="about-claim">
             <p>"{t['about.who.2']}"</p>

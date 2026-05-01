@@ -12,7 +12,6 @@ const routes = getRoutes(Astro.currentLocale);
 const services = [
   {
     key: 'diagnosis' as const,
-    icon: 'search',
     title: t['services.diagnosis.title'],
     subtitle: t['services.diagnosis.subtitle'],
     duration: t['services.diagnosis.duration'],
@@ -22,7 +21,6 @@ const services = [
   },
   {
     key: 'guidance' as const,
-    icon: 'route',
     title: t['services.guidance.title'],
     subtitle: t['services.guidance.subtitle'],
     duration: t['services.guidance.duration'],
@@ -32,7 +30,6 @@ const services = [
   },
   {
     key: 'advisory' as const,
-    icon: 'handshake',
     title: t['services.advisory.title'],
     subtitle: t['services.advisory.subtitle'],
     duration: t['services.advisory.duration'],
@@ -55,9 +52,6 @@ const services = [
     <div class="uc-grid-3 services-grid">
       {services.map((service) => (
         <a href={routes.service[service.key]} class={`service-card service-card--${service.accent}`} aria-label={`Read more: ${service.title}`}>
-          <div class="service-icon">
-            <Icon name={service.icon} class="w-6 h-6" />
-          </div>
           <p class="uc-eyebrow service-duration">{service.duration}</p>
           <h3 class="uc-h3 service-title">{service.title}</h3>
           <p class="service-subtitle">{service.subtitle}</p>
@@ -96,19 +90,6 @@ const services = [
   .service-card--primary:hover { border-color: rgb(var(--brand-primary)); }
   .service-card--secondary:hover { border-color: rgb(var(--brand-secondary)); }
   .service-card--tertiary:hover { border-color: rgb(var(--brand-tertiary)); }
-
-  .service-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  .service-card--primary .service-icon { background: rgb(var(--brand-primary) / 0.1); color: rgb(var(--brand-primary)); }
-  .service-card--secondary .service-icon { background: rgb(var(--brand-secondary) / 0.1); color: rgb(var(--brand-secondary)); }
-  .service-card--tertiary .service-icon { background: rgb(var(--brand-tertiary) / 0.1); color: rgb(var(--brand-tertiary)); }
 
   .service-duration {
     margin-bottom: 8px;

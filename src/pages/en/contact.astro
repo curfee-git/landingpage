@@ -1,10 +1,11 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
-import { EXTERNAL } from '@/configurations/routes';
+import { EXTERNAL, getRoutes } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 
 const t = getTranslations(Astro.currentLocale);
+const routes = getRoutes(Astro.currentLocale);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -23,41 +24,56 @@ const jsonLd = {
   canonicalPath={Astro.url.pathname}
   jsonLd={jsonLd}
 >
-  <article class="uc-section">
+  <article class="uc-section contact-page">
     <div class="uc-container">
       <div class="contact-grid">
 
-        <!-- Left: heading + intro + direct contact -->
-        <div class="contact-intro">
-          <p class="uc-eyebrow">{t['nav.contact']}</p>
-          <h1 class="uc-h1" style="margin-top: 16px;">{t['contact.heading']}</h1>
-          <p class="uc-lead" style="margin-top: 24px;">{t['contact.subtitle']}</p>
+        <!-- LEFT column -->
+        <div class="contact-left">
+          <header class="contact-header">
+            <p class="uc-eyebrow">{t['contact.eyebrow']}</p>
+            <h1 class="uc-h1 contact-heading">{t['contact.heading']}</h1>
+            <p class="contact-subheading">{t['contact.subheading']}</p>
+            <p class="contact-intro">{t['contact.subtitle']}</p>
+          </header>
 
-          <div class="contact-direct">
-            <p class="contact-direct-heading">{t['contact.direct.heading']}</p>
+          <section class="contact-direct" aria-label={t['contact.direct.heading']}>
+            <p class="contact-direct-lead">{t['contact.direct.lead']}</p>
             <ul class="contact-direct-list">
               <li>
-                <Icon name="mail" class="w-4 h-4" />
-                <span class="contact-direct-label">{t['contact.direct.email.label']}</span>
-                <a href={EXTERNAL.mailto}>{EXTERNAL.email}</a>
+                <a href={EXTERNAL.mailto} class="contact-direct-link">
+                  <Icon name="mail" class="w-4 h-4" />
+                  <span>{EXTERNAL.email}</span>
+                </a>
               </li>
               <li>
-                <Icon name="phone" class="w-4 h-4" />
-                <span class="contact-direct-label">{t['contact.direct.phone.label']}</span>
-                <a href={EXTERNAL.tel}>{EXTERNAL.phone}</a>
-              </li>
-              <li>
-                <Icon name="linkedin" class="w-4 h-4" />
-                <span class="contact-direct-label">{t['contact.direct.linkedin.label']}</span>
-                <a href={EXTERNAL.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/phoellinger</a>
+                <a href={EXTERNAL.linkedin} target="_blank" rel="noopener noreferrer" class="contact-direct-link">
+                  <Icon name="linkedin" class="w-4 h-4" />
+                  <span>{t['contact.linkedin.display']}</span>
+                </a>
               </li>
             </ul>
-          </div>
+            <p class="contact-direct-response">{t['contact.response.body']}</p>
+          </section>
+
+          <section class="contact-info" aria-label="Practical info">
+            <div class="contact-info-card">
+              <p class="contact-info-label">{t['contact.location.label']}</p>
+              <p class="contact-info-value">{t['contact.location.value']}</p>
+            </div>
+            <div class="contact-info-card">
+              <p class="contact-info-label">{t['contact.remote.label']}</p>
+              <p class="contact-info-value">{t['contact.remote.value']}</p>
+            </div>
+            <div class="contact-info-card">
+              <p class="contact-info-label">{t['contact.response.label']}</p>
+              <p class="contact-info-value">{t['contact.response.value']}</p>
+            </div>
+          </section>
         </div>
 
-        <!-- Right: form -->
-        <div class="contact-form-wrap">
-          <h2 class="contact-form-heading">{t['contact.form.heading']}</h2>
+        <!-- RIGHT column: Form -->
+        <div class="contact-right">
           <form
             action="https://api.web3forms.com/submit"
             method="POST"
@@ -66,6 +82,7 @@ const jsonLd = {
           >
             <input type="hidden" name="access_key" value="b1f25317-6496-43d7-9e5a-dc6b81967a17" />
             <input type="hidden" name="from_name" value="Curfee Contact Form" />
+            <input type="hidden" name="subject" value="New message from curfee.com contact form" />
             <input type="checkbox" name="botcheck" class="contact-form-honeypot" tabindex="-1" autocomplete="off" />
 
             <label class="contact-field">
@@ -87,8 +104,14 @@ const jsonLd = {
             </label>
 
             <label class="contact-field">
-              <span class="contact-field-label">{t['contact.form.subject']}</span>
-              <input type="text" name="subject" required placeholder={t['contact.form.subject.placeholder']} />
+              <span class="contact-field-label">{t['contact.interest.label']}</span>
+              <select name="interest" required>
+                <option value="" disabled selected>{t['contact.interest.placeholder']}</option>
+                <option value="diagnosis">{t['contact.interest.diagnosis']}</option>
+                <option value="guidance">{t['contact.interest.guidance']}</option>
+                <option value="advisory">{t['contact.interest.advisory']}</option>
+                <option value="other">{t['contact.interest.other']}</option>
+              </select>
             </label>
 
             <label class="contact-field">
@@ -96,7 +119,10 @@ const jsonLd = {
               <textarea name="message" required rows="6" placeholder={t['contact.form.message.placeholder']}></textarea>
             </label>
 
-            <p class="contact-form-privacy">{t['contact.form.privacy']}</p>
+            <p class="contact-form-privacy">
+              {t['contact.form.privacy.short']}
+              <a href={routes.privacy}>{t['contact.form.privacy.link']}</a>
+            </p>
 
             <button type="submit" class="uc-btn uc-btn--primary contact-form-submit">
               {t['contact.form.submit']}
@@ -128,21 +154,41 @@ const jsonLd = {
     gap: 80px;
     align-items: start;
   }
-  .contact-intro {
+
+  /* LEFT */
+  .contact-left {
     max-width: 520px;
   }
-  .contact-direct {
-    margin-top: 56px;
-    padding-top: 32px;
-    border-top: 1px solid rgb(var(--stroke-subtle));
+  .contact-header {
+    margin-bottom: 48px;
   }
-  .contact-direct-heading {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+  .contact-heading {
+    margin-top: 16px;
+  }
+  .contact-subheading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: rgb(var(--brand-primary));
+    margin: 20px 0 0 0;
+  }
+  .contact-intro {
+    font-size: 1.0625rem;
     color: rgb(var(--ink-muted));
-    margin: 0 0 20px 0;
+    line-height: 1.7;
+    margin: 24px 0 0 0;
+  }
+
+  /* Direct contact */
+  .contact-direct {
+    margin-bottom: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgb(var(--stroke-subtle));
+  }
+  .contact-direct-lead {
+    font-size: 0.9375rem;
+    color: rgb(var(--ink-muted));
+    margin: 0 0 16px 0;
   }
   .contact-direct-list {
     list-style: none;
@@ -150,48 +196,61 @@ const jsonLd = {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
   }
-  .contact-direct-list li {
-    display: flex;
+  .contact-direct-link {
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     font-size: 0.9375rem;
-    color: rgb(var(--ink-muted));
-  }
-  .contact-direct-label {
-    color: rgb(var(--ink-muted));
-    min-width: 64px;
-  }
-  .contact-direct-list a {
     color: rgb(var(--ink-primary));
     text-decoration: none;
     transition: color 140ms cubic-bezier(0.2, 0, 0, 1);
   }
-  .contact-direct-list a:hover {
+  .contact-direct-link:hover {
     color: rgb(var(--brand-primary));
   }
+  .contact-direct-link span {
+    text-decoration: underline;
+    text-decoration-color: rgb(var(--ink-muted) / 0.4);
+    text-underline-offset: 3px;
+  }
+  .contact-direct-link:hover span {
+    text-decoration-color: rgb(var(--brand-primary));
+  }
+  .contact-direct-response {
+    font-size: 0.875rem;
+    color: rgb(var(--ink-muted));
+    margin: 20px 0 0 0;
+    font-style: italic;
+  }
 
-  /* Form */
-  .contact-form-wrap {
-    background: rgb(var(--surface-base));
-    border: 1px solid rgb(var(--stroke-subtle));
-    border-radius: 16px;
-    padding: 40px;
+  /* Info cards stacked vertically in left column */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
-  .contact-form-heading {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-    font-size: 1.375rem;
+  .contact-info-label {
+    font-size: 0.6875rem;
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin: 0 0 28px 0;
-    color: rgb(var(--ink-primary));
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--ink-muted));
+    margin: 0 0 6px 0;
   }
+  .contact-info-value {
+    font-size: 0.9375rem;
+    color: rgb(var(--ink-primary));
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* RIGHT (form) */
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
   }
   .contact-field {
     display: flex;
@@ -212,28 +271,36 @@ const jsonLd = {
   }
   .contact-form input[type="text"],
   .contact-form input[type="email"],
+  .contact-form select,
   .contact-form textarea {
     font-family: inherit;
     font-size: 0.9375rem;
     color: rgb(var(--ink-primary));
-    background: rgb(var(--surface-soft));
+    background: rgb(var(--surface-base));
     border: 1px solid rgb(var(--stroke-subtle));
     border-radius: 8px;
     padding: 12px 14px;
-    transition: border-color 140ms cubic-bezier(0.2, 0, 0, 1), background-color 140ms cubic-bezier(0.2, 0, 0, 1);
+    transition: border-color 140ms cubic-bezier(0.2, 0, 0, 1);
     width: 100%;
     box-sizing: border-box;
   }
+  .contact-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' stroke='%23484850' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+  }
   .contact-form textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 140px;
     line-height: 1.5;
   }
   .contact-form input:focus,
+  .contact-form select:focus,
   .contact-form textarea:focus {
     outline: none;
     border-color: rgb(var(--brand-primary));
-    background: rgb(var(--surface-base));
   }
   .contact-form input::placeholder,
   .contact-form textarea::placeholder {
@@ -248,13 +315,22 @@ const jsonLd = {
     pointer-events: none;
   }
   .contact-form-privacy {
-    margin: 0;
+    margin: 4px 0 0 0;
     font-size: 0.8125rem;
     color: rgb(var(--ink-muted));
     line-height: 1.5;
   }
+  .contact-form-privacy a {
+    color: rgb(var(--ink-primary));
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .contact-form-privacy a:hover {
+    color: rgb(var(--brand-primary));
+  }
   .contact-form-submit {
     align-self: flex-start;
+    margin-top: 8px;
   }
   .contact-form-submit:disabled {
     opacity: 0.6;
@@ -285,10 +361,10 @@ const jsonLd = {
   @media (max-width: 900px) {
     .contact-grid {
       grid-template-columns: 1fr;
-      gap: 48px;
+      gap: 56px;
     }
-    .contact-form-wrap {
-      padding: 28px;
+    .contact-left {
+      max-width: none;
     }
   }
 </style>
