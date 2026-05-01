@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { EXTERNAL } from '@/configurations/routes';
 
 const SITE = 'https://curfee.com';
 
@@ -29,7 +30,7 @@ export const GET: APIRoute = async () => {
       <guid isPermaLink="true">${url}</guid>
       <pubDate>${pubDate}</pubDate>
       <description>${escapeXml(p.data.excerpt)}</description>
-      <author>office@curfee.com (Philipp Höllinger)</author>
+      <author>${EXTERNAL.email} (Philipp Höllinger)</author>
       ${category}${tagCats}
     </item>`;
     })

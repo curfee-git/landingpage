@@ -1,11 +1,12 @@
 ---
-import { EXTERNAL } from '@/configurations/routes';
+import { getRoutes } from '@/configurations/routes';
 import type { Translations } from '@/i18n/translations';
 
 interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
+const routes = getRoutes(Astro.currentLocale);
 ---
 
 <section id="contact" class="uc-section uc-section--navy" aria-labelledby="contact-heading">
@@ -13,7 +14,7 @@ const { translations: t } = Astro.props;
     <div class="contact-inner">
       <h2 id="contact-heading" class="uc-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
       <p class="uc-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
-      <a href={EXTERNAL.mailto} class="contact-cta">{t['hero.cta']}</a>
+      <a href={routes.contact} class="contact-cta">{t['hero.cta']}</a>
     </div>
   </div>
 </section>

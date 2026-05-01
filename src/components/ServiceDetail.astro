@@ -1,7 +1,9 @@
 ---
 import Icon from '@/components/shared/Icon.astro';
-import { EXTERNAL } from '@/configurations/routes';
+import { getRoutes } from '@/configurations/routes';
 import type { Translations } from '@/i18n/translations';
+
+const routes = getRoutes(Astro.currentLocale);
 
 interface TimelineStep {
   phase: string;
@@ -36,7 +38,7 @@ const { serviceKey, icon, title, subtitle, duration, problem, forwhom, timeline,
   <!-- Hero / Page header -->
   <section class="uc-section service-hero">
     <div class="uc-container">
-      <a href="/#services" class="service-back">
+      <a href={`${routes.home}#services`} class="service-back">
         <Icon name="arrow_back" class="w-4 h-4" />
         Back to services
       </a>
@@ -51,7 +53,7 @@ const { serviceKey, icon, title, subtitle, duration, problem, forwhom, timeline,
         </div>
         <aside class="service-hero-aside">
           <p class="uc-body service-hero-problem">{problem}</p>
-          <a href={EXTERNAL.mailto} class="service-hero-cta">
+          <a href={routes.contact} class="service-hero-cta">
             {cta}
             <Icon name="arrow_outward" class="w-4 h-4" />
           </a>
@@ -159,7 +161,7 @@ const { serviceKey, icon, title, subtitle, duration, problem, forwhom, timeline,
       <div style="max-width: 760px;">
         <h2 class="uc-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
         <p class="uc-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
-        <a href={EXTERNAL.mailto} class="service-final-cta">{cta}</a>
+        <a href={routes.contact} class="service-final-cta">{cta}</a>
       </div>
     </div>
   </section>
@@ -309,7 +311,7 @@ const { serviceKey, icon, title, subtitle, duration, problem, forwhom, timeline,
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Inter Tight", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 1.125rem;
   }

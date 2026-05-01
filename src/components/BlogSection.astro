@@ -1,14 +1,16 @@
 ---
 import type { Translations } from '@/i18n/translations';
+import { getRoutes } from '@/configurations/routes';
 import Icon from '@/components/shared/Icon.astro';
 import BlogCard from '@/components/BlogCard.astro';
-import { getPosts } from '@/utils/blog';
+import { getPosts } from '@/content/_posts';
 
 interface Props {
   translations: Translations;
 }
 
 const { translations: t } = Astro.props;
+const routes = getRoutes(Astro.currentLocale);
 
 const allPosts = await getPosts();
 const LATEST_COUNT = 6;
@@ -25,7 +27,7 @@ const linkLabel = allPosts.length > LATEST_COUNT ? t['blog.all'] : t['blog.visit
           <h2 id="blog-heading" class="uc-h2">{t['blog.heading']}</h2>
           <p class="uc-lead" style="margin-top: 16px; max-width: 640px;">{t['blog.subtitle']}</p>
         </div>
-        <a href="/blog/" class="blog-link">
+        <a href={routes.blog} class="blog-link">
           {linkLabel}
           <Icon name="arrow_outward" class="w-4 h-4" />
         </a>

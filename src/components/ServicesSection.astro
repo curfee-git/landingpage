@@ -1,15 +1,17 @@
 ---
 import Icon from '@/components/shared/Icon.astro';
+import { getRoutes } from '@/configurations/routes';
 import type { Translations } from '@/i18n/translations';
 
 interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
+const routes = getRoutes(Astro.currentLocale);
 
 const services = [
   {
-    key: 'diagnosis',
+    key: 'diagnosis' as const,
     icon: 'search',
     title: t['services.diagnosis.title'],
     subtitle: t['services.diagnosis.subtitle'],
@@ -19,7 +21,7 @@ const services = [
     accent: 'primary',
   },
   {
-    key: 'guidance',
+    key: 'guidance' as const,
     icon: 'route',
     title: t['services.guidance.title'],
     subtitle: t['services.guidance.subtitle'],
@@ -29,7 +31,7 @@ const services = [
     accent: 'secondary',
   },
   {
-    key: 'advisory',
+    key: 'advisory' as const,
     icon: 'handshake',
     title: t['services.advisory.title'],
     subtitle: t['services.advisory.subtitle'],
@@ -52,7 +54,7 @@ const services = [
 
     <div class="uc-grid-3 services-grid">
       {services.map((service) => (
-        <a href={`/services/${service.key}/`} class={`service-card service-card--${service.accent}`} aria-label={`Read more: ${service.title}`}>
+        <a href={routes.service[service.key]} class={`service-card service-card--${service.accent}`} aria-label={`Read more: ${service.title}`}>
           <div class="service-icon">
             <Icon name={service.icon} class="w-6 h-6" />
           </div>

@@ -2,10 +2,10 @@
 import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
 import { getTranslations } from '@/i18n/translations';
-import { getPosts, postPath } from '@/utils/blog';
+import { getPosts, postPath } from '@/content/_posts';
 import BlogCard from '@/components/BlogCard.astro';
 
-const t = getTranslations();
+const t = getTranslations(Astro.currentLocale);
 
 const posts = await getPosts();
 const topics = Array.from(new Set(posts.map((p) => p.data.topic))).sort();
@@ -36,7 +36,7 @@ const jsonLd = {
 <Layout
   title={t['meta.blog.title']}
   description={t['meta.blog.description']}
-  canonicalPath="/blog/"
+  canonicalPath={Astro.url.pathname}
   jsonLd={jsonLd}
   enableTransitions={false}
 >

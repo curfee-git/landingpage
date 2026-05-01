@@ -1,9 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
+import { EXTERNAL } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 
-const t = getTranslations();
+const t = getTranslations(Astro.currentLocale);
 const linkClass = "text-brand-primary hover:underline transition-colors duration-short4 ease-standard";
 
 const jsonLd = {
@@ -19,7 +20,7 @@ const jsonLd = {
 <Layout
   title={t['meta.privacy.title']}
   description={t['meta.privacy.description']}
-  canonicalPath="/privacy/"
+  canonicalPath={Astro.url.pathname}
   jsonLd={jsonLd}
   dateModified="2026-04-27"
 >
@@ -53,11 +54,11 @@ const jsonLd = {
             <div class="space-y-4">
               <div>
                 <span class="text-label-large font-medium text-ink-muted">{t['imprint.email.label']}</span>
-                <p><a href={`mailto:${t['imprint.email']}`} class={linkClass}>{t['imprint.email']}</a></p>
+                <p><a href={`mailto:${EXTERNAL.email}`} class={linkClass}>{EXTERNAL.email}</a></p>
               </div>
               <div>
                 <span class="text-label-large font-medium text-ink-muted">{t['privacy.phone.label']}</span>
-                <p><a href={`tel:${t['imprint.phone'].replace(/\s/g, '')}`} class={linkClass}>{t['imprint.phone']}</a></p>
+                <p><a href={EXTERNAL.tel} class={linkClass}>{EXTERNAL.phone}</a></p>
               </div>
             </div>
           </div>
@@ -75,7 +76,7 @@ const jsonLd = {
 
         <section>
           <h2 class="text-headline-small text-ink-primary mb-4">{t['privacy.withdrawal.heading']}</h2>
-          <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.withdrawal']} <a href={`mailto:${t['imprint.email']}`} class={linkClass}>{t['imprint.email']}</a></p>
+          <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.withdrawal']} <a href={`mailto:${EXTERNAL.email}`} class={linkClass}>{EXTERNAL.email}</a></p>
         </section>
 
         <section>
@@ -112,6 +113,11 @@ const jsonLd = {
         <section>
           <h2 class="text-headline-small text-ink-primary mb-4">{t['privacy.hosting.heading']}</h2>
           <p class="text-body-large text-ink-muted leading-relaxed">{t['privacy.hosting']}</p>
+        </section>
+
+        <section>
+          <h2 class="text-headline-small text-ink-primary mb-4">{t['privacy.web3forms.heading']}</h2>
+          <p class="text-body-large text-ink-muted leading-relaxed [&>a]:text-brand-primary [&>a:hover]:underline" set:html={t['privacy.web3forms.body']}></p>
         </section>
 
       </div>

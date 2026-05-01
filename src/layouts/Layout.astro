@@ -1,10 +1,24 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import Header from '@/components/shared/Header.astro';
 import Footer from '@/components/shared/Footer.astro';
 import ScrollToTop from '@/components/shared/ScrollToTop.astro';
-import { getTranslations } from '@/i18n/translations';
+import { getTranslations, resolveLocale, LOCALES } from '@/i18n/translations';
+import { EXTERNAL } from '@/configurations/routes';
 import '@/styles/global.css';
+
+const currentLocale = resolveLocale(Astro.currentLocale);
+const htmlLang = currentLocale === 'de' ? 'de-AT' : 'en';
+const ogLocale = currentLocale === 'de' ? 'de_AT' : 'en_GB';
+const ogLocaleAlt = currentLocale === 'de' ? 'en_GB' : 'de_AT';
+
+// Strip the leading "/<locale>" from current pathname to compute the same page in other locales
+const stripped = Astro.url.pathname.replace(/^\/(en|de)(\/|$)/, '/');
+const alternateLinks = LOCALES.map((loc) => ({
+  hreflang: loc === 'de' ? 'de-AT' : 'en',
+  href: getRelativeLocaleUrl(loc, stripped.replace(/^\//, '')),
+}));
 
 interface Props {
   title: string;
@@ -26,7 +40,7 @@ interface Props {
   enableTransitions?: boolean;
 }
 
-const t = getTranslations();
+const t = getTranslations(Astro.currentLocale);
 
 const {
   title,
@@ -75,10 +89,10 @@ const personLd = {
     "url": `${siteUrl}/assets/profile.webp`,
     "contentUrl": `${siteUrl}/assets/profile.webp`,
     "caption": "Portrait of Philipp Höllinger, founder of Curfee",
-    "width": 320,
-    "height": 400
+    "width": 1200,
+    "height": 1600
   },
-  "sameAs": ["https://www.linkedin.com/in/phoellinger"],
+  "sameAs": [EXTERNAL.linkedin],
   "nationality": { "@type": "Country", "name": "Austria" },
   "knowsAbout": [
     "Structural Architecture",
@@ -223,15 +237,15 @@ const organizationLd = {
   "contactPoint": [
     {
       "@type": "ContactPoint",
-      "email": "office@curfee.com",
-      "telephone": "+4367763024228",
+      "email": EXTERNAL.email,
+      "telephone": EXTERNAL.tel.replace(/^tel:/, ''),
       "contactType": "customer service",
       "availableLanguage": ["en", "de"],
       "areaServed": ["AT", "DE", "CH"]
     },
     {
       "@type": "ContactPoint",
-      "email": "office@curfee.com",
+      "email": EXTERNAL.email,
       "contactType": "sales",
       "availableLanguage": ["en", "de"]
     }
@@ -241,7 +255,7 @@ const organizationLd = {
     "name": "Contact by email",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "mailto:office@curfee.com",
+      "urlTemplate": EXTERNAL.mailto,
       "inLanguage": ["en"]
     }
   },
@@ -285,7 +299,7 @@ const organizationLd = {
     "Systemarchitekt Österreich"
   ],
   "sameAs": [
-    "https://www.linkedin.com/in/phoellinger"
+    EXTERNAL.linkedin
   ]
 };
 
@@ -328,7 +342,7 @@ const speakableLd = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -339,7 +353,7 @@ const speakableLd = {
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), browsing-topics=(), interest-cohort=(), fullscreen=(self), autoplay=()" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' data:; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-src 'none'; base-uri 'self'; form-action 'self'" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' data:; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.web3forms.com; frame-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -372,14 +386,20 @@ const speakableLd = {
     <!-- Canonical URL -->
     {!noindex && <link rel="canonical" href={canonicalUrl} />}
 
+    <!-- hreflang alternates -->
+    {!noindex && alternateLinks.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={`${siteUrl}${alt.href}`} />
+    ))}
+    {!noindex && <link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />}
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Curfee" />
-    <meta property="og:locale" content="en_GB" />
-    <meta property="og:locale:alternate" content="de_AT" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlt} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:secure_url" content={ogImage} />
     {resolvedOgType && <meta property="og:image:type" content={resolvedOgType} />}
@@ -409,7 +429,7 @@ const speakableLd = {
     <meta name="msapplication-TileImage" content="/assets/favicons/android_chrome_192x192.png" />
 
     <!-- Identity verification -->
-    <link rel="me" href="https://www.linkedin.com/in/phoellinger" />
+    <link rel="me" href={EXTERNAL.linkedin} />
 
     <!-- Sitemap + RSS -->
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />

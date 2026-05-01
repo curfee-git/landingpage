@@ -1,29 +1,53 @@
 ---
+import { Image } from 'astro:assets';
 import type { Translations } from '@/i18n/translations';
-import { EXTERNAL } from '@/configurations/routes';
+import { getRoutes } from '@/configurations/routes';
+import profileImage from '@/assets/images/profile.webp';
 
 interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
+const routes = getRoutes(Astro.currentLocale);
 ---
 
 <section class="uc-section" aria-labelledby="hero-heading" style="padding-top: 120px; padding-bottom: 120px;">
   <div class="uc-container">
-    <div class="hero-inner">
+    <div class="hero-grid">
 
-      <h1 id="hero-heading" data-speakable class="uc-h1">
-        {t['hero.heading']}
-      </h1>
+      <div class="hero-inner">
+        <p class="uc-eyebrow hero-eyebrow">{t['hero.eyebrow']}</p>
 
-      <p data-speakable class="uc-lead" style="margin-top: 28px; max-width: 640px;">
-        {t['hero.subtitle']}
-      </p>
+        <h1 id="hero-heading" data-speakable class="uc-h1">
+          {t['hero.heading']}
+        </h1>
 
-      <div class="hero-ctas">
-        <a href={EXTERNAL.mailto} class="uc-btn uc-btn--primary">
-          {t['hero.cta']}
-        </a>
+        <p data-speakable class="uc-lead" style="margin-top: 28px; max-width: 640px;">
+          {t['hero.subtitle']}
+        </p>
+
+        <div class="hero-ctas">
+          <a href={routes.contact} class="uc-btn uc-btn--primary">
+            {t['hero.cta']}
+          </a>
+          <a href="#services" class="uc-btn uc-btn--secondary">
+            {t['hero.cta.secondary']}
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-portrait">
+        <Image
+          src={profileImage}
+          alt={t['about.portrait.alt']}
+          class="hero-portrait-img"
+          loading="eager"
+          decoding="async"
+          width={360}
+          height={480}
+          widths={[240, 360, 480, 720]}
+          sizes="(max-width: 900px) 0px, (max-width: 1200px) 280px, 360px"
+        />
       </div>
 
     </div>
@@ -31,8 +55,26 @@ const { translations: t } = Astro.props;
 </section>
 
 <style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: center;
+  }
   .hero-inner {
     max-width: 920px;
+  }
+  .hero-eyebrow {
+    margin-bottom: 20px;
+  }
+  .hero-portrait {
+    place-self: center;
+  }
+  .hero-portrait-img {
+    display: block;
+    width: clamp(220px, 22vw, 360px);
+    height: auto;
+    border-radius: 16px;
   }
   .hero-ctas {
     margin-top: 40px;
@@ -40,6 +82,15 @@ const { translations: t } = Astro.props;
     gap: 16px;
     flex-wrap: wrap;
     align-items: center;
+  }
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-portrait {
+      display: none;
+    }
   }
   @media (max-width: 640px) {
     section.uc-section {

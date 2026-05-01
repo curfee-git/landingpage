@@ -1,9 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
+import { EXTERNAL } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 
-const t = getTranslations();
+const t = getTranslations(Astro.currentLocale);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -18,7 +19,7 @@ const jsonLd = {
 <Layout
   title={t['meta.imprint.title']}
   description={t['meta.imprint.description']}
-  canonicalPath="/imprint/"
+  canonicalPath={Astro.url.pathname}
   jsonLd={jsonLd}
   dateModified="2026-03-30"
 >
@@ -52,11 +53,11 @@ const jsonLd = {
             <div class="space-y-4">
               <div>
                 <span class="text-label-large font-medium text-ink-muted">{t['imprint.email.label']}</span>
-                <p><a href={`mailto:${t['imprint.email']}`} class="text-body-large text-brand-primary hover:underline transition-colors duration-short4 ease-standard">{t['imprint.email']}</a></p>
+                <p><a href={`mailto:${EXTERNAL.email}`} class="text-body-large text-brand-primary hover:underline transition-colors duration-short4 ease-standard">{EXTERNAL.email}</a></p>
               </div>
               <div>
                 <span class="text-label-large font-medium text-ink-muted">{t['imprint.phone.label']}</span>
-                <p><a href={`tel:${t['imprint.phone'].replace(/\s/g, '')}`} class="text-body-large text-brand-primary hover:underline transition-colors duration-short4 ease-standard">{t['imprint.phone']}</a></p>
+                <p><a href={EXTERNAL.tel} class="text-body-large text-brand-primary hover:underline transition-colors duration-short4 ease-standard">{EXTERNAL.phone}</a></p>
               </div>
             </div>
           </div>
