@@ -3,24 +3,24 @@ import Layout from '@/layouts/Layout.astro';
 import { EXTERNAL } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 
-const t = getTranslations(Astro.currentLocale);
+const t = getTranslations();
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": t['breadcrumb.home'], "item": "https://curfee.com/" },
-    { "@type": "ListItem", "position": 2, "name": t['footer.legal.privacy'], "item": "https://curfee.com/privacy/" }
+    { "@type": "ListItem", "position": 2, "name": t['footer.legal.notice'], "item": "https://curfee.com/imprint/" }
   ]
 };
 ---
 
 <Layout
-  title={t['meta.privacy.title']}
-  description={t['meta.privacy.description']}
+  title={t['meta.imprint.title']}
+  description={t['meta.imprint.description']}
   canonicalPath={Astro.url.pathname}
   jsonLd={jsonLd}
-  dateModified="2026-04-27"
+  dateModified="2026-03-30"
 >
   <article class="uc-section">
     <div class="uc-container">
@@ -28,15 +28,15 @@ const jsonLd = {
 
         <header class="legal-header">
           <p class="uc-eyebrow">{t['legal.eyebrow']}</p>
-          <h1 class="uc-h1">{t['privacy.heading']}</h1>
-          <p class="legal-subheading">{t['privacy.scope']}</p>
+          <h1 class="uc-h1">{t['imprint.heading']}</h1>
+          <p class="legal-subheading">{t['imprint.legal.basis']}</p>
         </header>
 
         <div class="legal-content">
 
           <section class="legal-grid">
             <div class="legal-card">
-              <h2 class="legal-card-title">{t['privacy.controller.heading']}</h2>
+              <h2 class="legal-card-title">{t['imprint.owner']}</h2>
               <div class="legal-card-body">
                 <p class="legal-emphasis">{t['imprint.company']}</p>
                 <p>{t['imprint.name']}</p>
@@ -56,7 +56,7 @@ const jsonLd = {
                   <p><a href={EXTERNAL.mailto} class="legal-link">{EXTERNAL.email}</a></p>
                 </div>
                 <div>
-                  <p class="legal-label">{t['privacy.phone.label']}</p>
+                  <p class="legal-label">{t['imprint.phone.label']}</p>
                   <p><a href={EXTERNAL.tel} class="legal-link">{EXTERNAL.phone}</a></p>
                 </div>
               </div>
@@ -64,63 +64,59 @@ const jsonLd = {
           </section>
 
           <section>
-            <h2 class="uc-h3 legal-section-heading">{t['privacy.personal.heading']}</h2>
-            <p class="legal-prose">{t['privacy.personal']}</p>
-          </section>
-
-          <section>
-            <h2 class="uc-h3 legal-section-heading">{t['privacy.rights.heading']}</h2>
-            <p class="legal-prose">{t['privacy.rights']}</p>
-          </section>
-
-          <section>
-            <h2 class="uc-h3 legal-section-heading">{t['privacy.withdrawal.heading']}</h2>
-            <p class="legal-prose">{t['privacy.withdrawal']} <a href={EXTERNAL.mailto} class="legal-link">{EXTERNAL.email}</a></p>
-          </section>
-
-          <section>
-            <h2 class="uc-h3 legal-section-heading">{t['privacy.complaint.heading']}</h2>
-            <p class="legal-prose">{t['privacy.complaint']}</p>
-            <div class="legal-card legal-card--inline">
-              <div class="legal-card-body">
-                <p class="legal-emphasis">{t['privacy.complaint.authority']}</p>
-                <div class="legal-address">
-                  <p>{t['privacy.complaint.address.street']}</p>
-                  <p>{t['privacy.complaint.address.city']}</p>
-                  <p>{t['privacy.complaint.address.country']}</p>
-                </div>
-                <div class="legal-card-rows">
-                  <p>{t['privacy.phone.label']}: <a href={`tel:${t['privacy.complaint.phone'].replace(/\s/g, '')}`} class="legal-link">{t['privacy.complaint.phone']}</a></p>
-                  <p>{t['imprint.email.label']}: <a href={`mailto:${t['privacy.complaint.email']}`} class="legal-link">{t['privacy.complaint.email']}</a></p>
-                  <p>Website: <a href={`https://${t['privacy.complaint.website']}`} target="_blank" rel="noopener noreferrer" class="legal-link">{t['privacy.complaint.website']}</a></p>
-                </div>
+            <h2 class="uc-h3 legal-section-heading">{t['imprint.legal.heading']}</h2>
+            <div class="legal-data-grid">
+              <div>
+                <p class="legal-label">{t['imprint.trade.label']}</p>
+                <p class="legal-value">{t['imprint.trade']}</p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.form.label']}</p>
+                <p class="legal-value">{t['imprint.form']}</p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.authority.label']}</p>
+                <p class="legal-value">{t['imprint.authority']}</p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.uid.label']}</p>
+                <p class="legal-value">{t['imprint.uid']}</p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.gisa.label']}</p>
+                <p class="legal-value">{t['imprint.gisa']}</p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.law.label']}</p>
+                <p class="legal-value">{t['imprint.law']}</p>
+                <p><a href="https://www.ris.bka.gv.at" target="_blank" rel="noopener noreferrer" class="legal-link legal-link--small">{t['imprint.lawlink']}</a></p>
+              </div>
+              <div>
+                <p class="legal-label">{t['imprint.wko.label']}</p>
+                <p class="legal-value">{t['imprint.wko']}</p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2 class="uc-h3 legal-section-heading">{t['privacy.ssl.heading']}</h2>
-            <p class="legal-prose">{t['privacy.ssl']}</p>
+            <h2 class="uc-h3 legal-section-heading">{t['imprint.editorial.heading']}</h2>
+            <p class="legal-prose">{t['imprint.editorial']}</p>
+            <p class="legal-prose legal-emphasis">{t['imprint.editorial.responsible']}</p>
           </section>
 
           <section>
-            <h2 class="uc-h3 legal-section-heading">{t['privacy.cookies.heading']}</h2>
-            <p class="legal-prose">{t['privacy.cookies']}</p>
+            <h2 class="uc-h3 legal-section-heading">{t['imprint.liability.content.heading']}</h2>
+            <p class="legal-prose">{t['imprint.liability.content']}</p>
           </section>
 
           <section>
-            <h2 class="uc-h3 legal-section-heading">{t['privacy.links.heading']}</h2>
-            <p class="legal-prose">{t['privacy.links']}</p>
+            <h2 class="uc-h3 legal-section-heading">{t['imprint.liability.links.heading']}</h2>
+            <p class="legal-prose">{t['imprint.liability.links']}</p>
           </section>
 
           <section>
-            <h2 class="uc-h3 legal-section-heading">{t['privacy.hosting.heading']}</h2>
-            <p class="legal-prose">{t['privacy.hosting']}</p>
-          </section>
-
-          <section>
-            <h2 class="uc-h3 legal-section-heading">{t['privacy.web3forms.heading']}</h2>
-            <p class="legal-prose [&>a]:text-brand-primary [&>a:hover]:underline" set:html={t['privacy.web3forms.body']}></p>
+            <h2 class="uc-h3 legal-section-heading">{t['imprint.copyright.heading']}</h2>
+            <p class="legal-prose">{t['imprint.copyright']}</p>
           </section>
 
         </div>
@@ -184,9 +180,6 @@ const jsonLd = {
     border-radius: 12px;
     padding: 28px;
   }
-  .legal-card--inline {
-    margin-top: 20px;
-  }
   .legal-card-title {
     font-size: 0.6875rem;
     font-weight: 700;
@@ -206,16 +199,15 @@ const jsonLd = {
   .legal-card-body p {
     margin: 0;
   }
-  .legal-card-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    color: rgb(var(--ink-muted));
-  }
   .legal-address {
     color: rgb(var(--ink-muted));
   }
 
+  .legal-data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 32px;
+  }
   .legal-label {
     font-size: 0.6875rem;
     font-weight: 700;
@@ -223,6 +215,12 @@ const jsonLd = {
     text-transform: uppercase;
     color: rgb(var(--ink-muted));
     margin: 0 0 6px 0;
+  }
+  .legal-value {
+    font-size: 0.9375rem;
+    color: rgb(var(--ink-primary));
+    line-height: 1.5;
+    margin: 0;
   }
 
   .legal-link {
@@ -233,9 +231,13 @@ const jsonLd = {
   .legal-link:hover {
     text-decoration: underline;
   }
+  .legal-link--small {
+    font-size: 0.8125rem;
+  }
 
   @media (max-width: 700px) {
-    .legal-grid {
+    .legal-grid,
+    .legal-data-grid {
       grid-template-columns: 1fr;
     }
   }

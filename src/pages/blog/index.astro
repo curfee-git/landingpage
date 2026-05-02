@@ -1,11 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { getTranslations, resolveLocale } from '@/i18n/translations';
+import { getTranslations } from '@/i18n/translations';
 import { getPosts, postPath } from '@/content/_posts';
 import BlogCard from '@/components/BlogCard.astro';
 
-const locale = resolveLocale(Astro.currentLocale);
-const t = getTranslations(locale);
+const t = getTranslations();
 
 const posts = await getPosts();
 const topics = Array.from(new Set(posts.map((p) => p.data.topic))).sort();
@@ -16,18 +15,18 @@ const jsonLd = {
   "@id": "https://curfee.com/blog/#blog",
   "name": t['blog.indexHeading'],
   "description": t['blog.indexSubtitle'],
-  "inLanguage": "en",
+  "inLanguage": "de",
   "url": "https://curfee.com/blog/",
   "publisher": { "@id": "https://curfee.com/#organization" },
   "blogPost": posts.map((p) => ({
     "@type": "BlogPosting",
-    "@id": `https://curfee.com${postPath(p, locale)}#post`,
+    "@id": `https://curfee.com${postPath(p)}#post`,
     "headline": p.data.title,
     "description": p.data.excerpt,
     "datePublished": p.data.createdAt.toISOString(),
     "dateModified": (p.data.updatedAt ?? p.data.createdAt).toISOString(),
     "author": { "@id": "https://curfee.com/#founder" },
-    "url": `https://curfee.com${postPath(p, locale)}`,
+    "url": `https://curfee.com${postPath(p)}`,
     "keywords": [p.data.topic, ...p.data.tags].join(', '),
   })),
 };

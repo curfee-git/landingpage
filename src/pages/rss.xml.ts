@@ -46,7 +46,7 @@ export const GET: APIRoute = async () => {
     <title>Curfee Blog</title>
     <link>${SITE}/blog/</link>
     <atom:link href="${SITE}/rss.xml" rel="self" type="application/rss+xml" />
-    <description>Essays on structural architecture across software, infrastructure, and organizations by Philipp Höllinger.</description>
+    <description>Essays zu struktureller Architektur über Software, Infrastruktur und Organisationen hinweg von Philipp Höllinger.</description>
     <language>en</language>
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
 ${items}

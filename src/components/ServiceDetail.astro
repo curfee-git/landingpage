@@ -3,7 +3,7 @@ import Icon from '@/components/shared/Icon.astro';
 import { getRoutes } from '@/configurations/routes';
 import type { Translations } from '@/i18n/translations';
 
-const routes = getRoutes(Astro.currentLocale);
+const routes = getRoutes();
 
 interface TimelineStep {
   phase: string;
@@ -60,7 +60,7 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
       <div class="uc-grid-2-3">
         <div>
           <p class="uc-eyebrow">{t['services.label.forwhom']}</p>
-          <h2 class="uc-h2" style="margin-top: 16px;">Sound familiar?</h2>
+          <h2 class="uc-h2" style="margin-top: 16px;">Klingt das vertraut?</h2>
         </div>
         <ul class="service-forwhom">
           {forwhom.map((item) => (
@@ -79,7 +79,7 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     <div class="uc-container">
       <div class="service-process-head">
         <p class="uc-eyebrow">{t['services.label.process']}</p>
-        <h2 class="uc-h2" style="margin-top: 16px;">How it unfolds</h2>
+        <h2 class="uc-h2" style="margin-top: 16px;">Wie es abläuft</h2>
       </div>
       <ol class="service-timeline">
         {timeline.map((step, idx) => (
@@ -140,7 +140,7 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
   <section class="uc-section">
     <div class="uc-container">
       <div class="service-objection">
-        <p class="uc-eyebrow">Common question</p>
+        <p class="uc-eyebrow">Häufige Frage</p>
         <h2 class="uc-h2" style="margin-top: 16px;">{objectionQ}</h2>
         <p class="uc-lead" style="margin-top: 24px; max-width: 720px;">{objectionA}</p>
       </div>

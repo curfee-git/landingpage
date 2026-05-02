@@ -1,29 +1,170 @@
 ---
-// Root entry: detect preferred locale (localStorage > navigator.language > en)
-// and redirect. Logic lives in src/scripts/locale-detect.ts.
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/HeroSection.astro';
+import ObservationsSection from '@/components/ObservationsSection.astro';
+import ServicesSection from '@/components/ServicesSection.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import ContactSection from '@/components/ContactSection.astro';
+import { getTranslations } from '@/i18n/translations';
+
+const t = getTranslations();
+
+const buildDate = new Date().toISOString().slice(0, 10);
+
+const faqEntries = [
+  { id: "https://curfee.com/#faq-1", name: t['faq.1.question'], text: t['faq.1.answer'] },
+  { id: "https://curfee.com/#faq-2", name: t['faq.2.question'], text: t['faq.2.answer'] },
+  { id: "https://curfee.com/#faq-4", name: t['faq.4.question'], text: t['faq.4.answer'] },
+  { id: "https://curfee.com/#faq-keep", name: t['faq.keep.question'], text: t['faq.keep.answer'] },
+  { id: "https://curfee.com/#faq-patterns-structural", name: t['faq.patterns.structural.question'], text: t['faq.patterns.structural.answer'] },
+  { id: "https://curfee.com/#faq-patterns-operational", name: t['faq.patterns.operational.question'], text: t['faq.patterns.operational.answer'] },
+  { id: "https://curfee.com/#faq-decisions", name: t['faq.decisions.question'], text: t['faq.decisions.answer'] },
+  { id: "https://curfee.com/#faq-enforcement", name: t['faq.enforcement.question'], text: t['faq.enforcement.answer'] },
+  { id: "https://curfee.com/#faq-ai", name: t['faq.ai.question'], text: t['faq.ai.answer'] },
+  { id: "https://curfee.com/#faq-cultural", name: t['faq.cultural.question'], text: t['faq.cultural.answer'] },
+  { id: "https://curfee.com/#faq-5", name: t['faq.5.question'], text: t['faq.5.answer'] },
+  { id: "https://curfee.com/#faq-international", name: t['faq.international.question'], text: t['faq.international.answer'] },
+  { id: "https://curfee.com/#faq-6", name: t['faq.6.question'], text: t['faq.6.answer'] },
+];
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://curfee.com/#faq",
+  "inLanguage": "de",
+  "about": { "@id": "https://curfee.com/#organization" },
+  "author": { "@id": "https://curfee.com/#founder" },
+  "publisher": { "@id": "https://curfee.com/#organization" },
+  "dateModified": buildDate,
+  "mainEntity": faqEntries.map((q) => ({
+    "@type": "Question",
+    "@id": q.id,
+    "name": q.name,
+    "author": { "@id": "https://curfee.com/#founder" },
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "author": { "@id": "https://curfee.com/#founder" },
+      "text": q.text
+    }
+  }))
+};
+
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://curfee.com/#services",
+  "name": "Strukturarchitektur-Beratung",
+  "alternateName": "Strukturarchitektur Consulting",
+  "provider": { "@id": "https://curfee.com/#organization" },
+  "serviceType": "Strukturarchitektur-Beratung",
+  "category": ["IT-Beratung", "Unternehmensberatung", "Strukturarchitektur", "Systemarchitektur", "Softwarearchitektur", "Infrastrukturarchitektur", "Organisationsarchitektur"],
+  "areaServed": [
+    { "@type": "Country", "name": "Österreich" },
+    { "@type": "Country", "name": "Deutschland" },
+    { "@type": "Country", "name": "Schweiz" }
+  ],
+  "audience": {
+    "@type": "BusinessAudience",
+    "name": "CTOs, Engineering-Manager, Team-Leads, Gründer",
+    "audienceType": "Entscheider in Unternehmen mit gewachsenen Systemlandschaften"
+  },
+  "serviceOutput": "Ursachenanalyse, vom System durchgesetzte Architektur-Standards über Pipelines und Werkzeuge, Governance-Rahmenwerke, Begleitung der Umsetzung",
+  "availableLanguage": ["de", "en"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "@id": "https://curfee.com/#offer-catalog",
+    "name": t['services.heading'],
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "@id": "https://curfee.com/#offer-diagnosis",
+        "category": "Einstiegs-Engagement",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "EUR",
+        "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 2, "unitCode": "WEE" },
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://curfee.com/#diagnosis",
+          "name": t['services.diagnosis.title'],
+          "alternateName": ["Diagnose", "Diagnosis"],
+          "description": t['services.diagnosis.problem'],
+          "slogan": t['services.diagnosis.subtitle'],
+          "provider": { "@id": "https://curfee.com/#organization" },
+          "serviceType": "Systemdiagnose",
+          "inLanguage": ["de"]
+        }
+      },
+      {
+        "@type": "Offer",
+        "@id": "https://curfee.com/#offer-guidance",
+        "category": "Projekt-Engagement",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "EUR",
+        "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 3, "unitCode": "MON" },
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://curfee.com/#guidance",
+          "name": t['services.guidance.title'],
+          "alternateName": ["Begleitung", "Guidance"],
+          "description": t['services.guidance.problem'],
+          "slogan": t['services.guidance.subtitle'],
+          "provider": { "@id": "https://curfee.com/#organization" },
+          "serviceType": "Architektur-Begleitung",
+          "inLanguage": ["de"]
+        }
+      },
+      {
+        "@type": "Offer",
+        "@id": "https://curfee.com/#offer-advisory",
+        "category": "Retainer-Engagement",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "EUR",
+        "itemOffered": {
+          "@type": "Service",
+          "@id": "https://curfee.com/#advisory",
+          "name": t['services.advisory.title'],
+          "alternateName": ["Architektur-Advisory", "Advisory"],
+          "description": t['services.advisory.problem'],
+          "slogan": t['services.advisory.subtitle'],
+          "provider": { "@id": "https://curfee.com/#organization" },
+          "serviceType": "Architektur-Advisory",
+          "inLanguage": ["de"]
+        }
+      },
+    ]
+  }
+};
+
+const decisionEnforcementLd = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "@id": "https://curfee.com/#decision-enforcement-principle",
+  "name": "Prinzip der Entscheidungsdurchsetzung",
+  "alternateName": ["Entscheidungsdurchsetzung", "Decision Enforcement Principle"],
+  "description": "Architekturentscheidungen werden vom System selbst durchgesetzt – über Pipelines, automatisierte Checks und Tool-Konfiguration, statt durch Disziplin, Erinnerung oder Wachsamkeit einzelner Personen. Das Kernprinzip von Curfee.",
+  "url": "https://curfee.com/#faq-enforcement",
+  "inDefinedTermSet": {
+    "@type": "DefinedTermSet",
+    "name": "Curfee Glossar",
+    "url": "https://curfee.com/llms.txt"
+  },
+  "subjectOf": { "@id": "https://curfee.com/#organization" },
+  "author": { "@id": "https://curfee.com/#founder" }
+};
+
+const jsonLd = [faqLd, serviceLd, decisionEnforcementLd];
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex" />
-    <title>Curfee</title>
-    <link rel="canonical" href="https://curfee.com/en/" />
-    <link rel="alternate" hreflang="en" href="https://curfee.com/en/" />
-    <link rel="alternate" hreflang="de-AT" href="https://curfee.com/de/" />
-    <link rel="alternate" hreflang="x-default" href="https://curfee.com/en/" />
-    <noscript>
-      <meta http-equiv="refresh" content="0;url=/en/" />
-    </noscript>
-    <script>
-      import { redirectToPreferredLocale } from '@/scripts/locale-detect';
-      redirectToPreferredLocale();
-    </script>
-  </head>
-  <body>
-    <p style="font-family:system-ui,sans-serif;padding:2rem;">
-      Loading… <a href="/en/">English</a> · <a href="/de/">Deutsch</a>
-    </p>
-  </body>
-</html>
+
+<Layout
+  title={t['meta.home.title']}
+  description={t['meta.home.description']}
+  canonicalPath={Astro.url.pathname}
+  jsonLd={jsonLd}
+  dateModified={buildDate}
+  hasSpeakable={true}
+>
+  <HeroSection translations={t} />
+  <ObservationsSection translations={t} />
+  <ServicesSection translations={t} />
+  <FaqSection translations={t} />
+  <ContactSection translations={t} />
+</Layout>

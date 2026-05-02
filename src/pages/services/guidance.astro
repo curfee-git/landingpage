@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import ServiceDetail from '@/components/ServiceDetail.astro';
 import { getTranslations } from '@/i18n/translations';
 
-const t = getTranslations(Astro.currentLocale);
+const t = getTranslations();
 
 const jsonLd = {
   '@context': 'https://schema.org',

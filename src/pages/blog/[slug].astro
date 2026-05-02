@@ -14,8 +14,8 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const t = getTranslations(Astro.currentLocale);
-const routes = getRoutes(Astro.currentLocale);
+const t = getTranslations();
+const routes = getRoutes();
 const { Content } = await render(post);
 const slug = postSlug(post);
 const canonicalPath = `${routes.blog}${slug}/`;
@@ -58,7 +58,7 @@ const blogPostingLd = {
   "author": { "@id": "https://curfee.com/#founder" },
   "publisher": { "@id": "https://curfee.com/#organization" },
   "mainEntityOfPage": { "@type": "WebPage", "@id": `https://curfee.com${canonicalPath}` },
-  "inLanguage": "en",
+  "inLanguage": "de",
   "url": `https://curfee.com${canonicalPath}`,
   "keywords": [post.data.topic, ...post.data.tags].join(', '),
   "wordCount": (post.body ?? '').split(/\s+/).filter(Boolean).length,
@@ -99,7 +99,7 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
                 <>
                   <span aria-hidden="true"> · </span>
                   <span class="post-date-updated">
-                    Updated <time datetime={post.data.updatedAt.toISOString()}>{formatDate(post.data.updatedAt)}</time>
+                    Aktualisiert <time datetime={post.data.updatedAt.toISOString()}>{formatDate(post.data.updatedAt)}</time>
                   </span>
                 </>
               )}

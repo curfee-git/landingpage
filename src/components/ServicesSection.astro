@@ -7,7 +7,7 @@ interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
-const routes = getRoutes(Astro.currentLocale);
+const routes = getRoutes();
 
 const services = [
   {
@@ -44,14 +44,14 @@ const services = [
   <div class="uc-container">
 
     <header class="services-head">
-      <p class="uc-eyebrow">Services</p>
+      <p class="uc-eyebrow">Leistungen</p>
       <h2 id="services-heading" data-speakable class="uc-h2">{t['services.heading']}</h2>
       <p class="uc-lead" style="margin-top: 16px; max-width: 640px;">{t['services.subtitle']}</p>
     </header>
 
     <div class="uc-grid-3 services-grid">
       {services.map((service) => (
-        <a href={routes.service[service.key]} class={`service-card service-card--${service.accent}`} aria-label={`Read more: ${service.title}`}>
+        <a href={routes.service[service.key]} class={`service-card service-card--${service.accent}`} aria-label={`Mehr lesen: ${service.title}`}>
           <p class="uc-eyebrow service-duration">{service.duration}</p>
           <h3 class="uc-h3 service-title">{service.title}</h3>
           <p class="service-subtitle">{service.subtitle}</p>

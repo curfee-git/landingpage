@@ -1,6 +1,5 @@
 ---
 import { postPath, formatDate, type BlogPost } from '@/content/_posts';
-import { resolveLocale } from '@/i18n/translations';
 
 interface Props {
   post: BlogPost;
@@ -10,11 +9,10 @@ interface Props {
 
 const { post, index, headingLevel = 'h3' } = Astro.props;
 const Heading = headingLevel;
-const locale = resolveLocale(Astro.currentLocale);
 ---
 
 <a
-  href={postPath(post, locale)}
+  href={postPath(post)}
   data-astro-reload
   class="group flex h-full flex-col rounded-xl bg-surface-base border border-stroke-subtle p-6 md:p-8 hover:border-brand-primary/60 transition-colors duration-medium2 ease-standard"
 >

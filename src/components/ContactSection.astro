@@ -6,7 +6,7 @@ interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
-const routes = getRoutes(Astro.currentLocale);
+const routes = getRoutes();
 ---
 
 <section id="contact" class="uc-section uc-section--navy" aria-labelledby="contact-heading">

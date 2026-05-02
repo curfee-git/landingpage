@@ -8,38 +8,38 @@ interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
-const routes = getRoutes(Astro.currentLocale);
+const routes = getRoutes();
 
 const credentials = [
   {
     mark: 'L',
-    title: 'Logistics roots',
-    body: 'My career began in logistics: coordinating workflows between goods, people, and processes. That is where I learned that reliable structures are the difference between a process that runs and one that breaks.',
-  },
-  {
-    mark: 'C',
-    title: 'Computer science → architecture',
-    body: 'After my degree I moved into software development, then architecture. Across automotive, public sector, and software consulting, I kept the big picture and the small details in view at the same time.',
-  },
-  {
-    mark: 'A',
-    title: 'AI-era systems',
-    body: 'AI sees only what fits in its context window and brings no structure of its own. Boundaries have to be enforced by the system itself, which only works when the structure behind it is reliable.',
+    title: 'Wurzeln in der Logistik',
+    body: 'Mein Werdegang begann in der Logistik: Workflows zwischen Waren, Menschen und Prozessen koordinieren. Dort habe ich gelernt, dass verlässliche Strukturen den Unterschied machen zwischen einem Prozess, der läuft, und einem, der bricht.',
   },
   {
     mark: 'I',
-    title: 'Independent practice',
-    body: 'Through Curfee e.U., I work directly with founders, CTOs, and engineering managers in the DACH region. No layers, no account managers, just the work.',
+    title: 'Informatik → Architektur',
+    body: 'Nach meinem Studium ging es in die Softwareentwicklung, dann in die Architektur. Über Automotive, öffentlichen Sektor und Software-Beratung hinweg habe ich das große Bild und die kleinen Details gleichzeitig im Blick behalten.',
+  },
+  {
+    mark: 'K',
+    title: 'Systeme im KI-Zeitalter',
+    body: 'KI sieht nur, was in ihr Kontextfenster passt, und bringt keine eigene Struktur mit. Grenzen müssen vom System selbst durchgesetzt werden — und das funktioniert nur, wenn die Struktur dahinter verlässlich ist.',
+  },
+  {
+    mark: 'E',
+    title: 'Eigenständige Praxis',
+    body: 'Über die Curfee e.U. arbeite ich direkt mit Gründern, CTOs und Engineering-Managern in der DACH-Region. Keine Zwischenebenen, keine Account-Manager, nur die Arbeit.',
   },
   {
     mark: 'D',
-    title: 'Decision Enforcement Principle',
-    body: 'My core principle: decisions should be enforced by the system itself, through pipelines, automated checks, and tool configuration. Not by individual discipline, memory, or vigilance.',
+    title: 'Prinzip der Entscheidungsdurchsetzung',
+    body: 'Mein Kernprinzip: Entscheidungen sollten vom System selbst durchgesetzt werden — über Pipelines, automatisierte Checks und Tool-Konfiguration. Nicht durch individuelle Disziplin, Erinnerung oder Wachsamkeit.',
   },
   {
     mark: 'S',
-    title: 'Based in Salzburg, Austria',
-    body: 'Active across the German-speaking region. Remote engagements are standard; on-site visits as the work requires.',
+    title: 'Mit Sitz in Salzburg, Österreich',
+    body: 'Tätig in der gesamten DACH-Region. Remote-Engagements sind Standard; Vor-Ort-Termine, wenn die Arbeit es erfordert.',
   },
 ];
 ---
@@ -51,18 +51,18 @@ const credentials = [
     <div class="uc-container">
       <div class="about-hero-grid">
         <div class="about-hero-text">
-          <p class="uc-eyebrow">About</p>
-          <h1 id="about-hero-heading" class="about-hero-title">I'm {t['about.heading']}.</h1>
+          <p class="uc-eyebrow">Über mich</p>
+          <h1 id="about-hero-heading" class="about-hero-title">Ich bin {t['about.heading']}.</h1>
           <p class="about-hero-jobtitle">
             {t['about.who.heading']}<br />
-            <span>Structural Architect · Founder, Curfee e.U.</span>
+            <span>Strukturarchitekt · Gründer, Curfee e.U.</span>
           </p>
           <p class="about-hero-body">{t['about.who.1']}</p>
           <p class="about-hero-emphasis">{t['about.who.6']}</p>
 
           <div class="about-hero-ctas">
             <a href={routes.contact} class="about-btn about-btn--primary">{t['hero.cta']}</a>
-            <a href={EXTERNAL.linkedin} target="_blank" rel="noopener noreferrer" class="about-btn about-btn--outline">Follow on LinkedIn</a>
+            <a href={EXTERNAL.linkedin} target="_blank" rel="noopener noreferrer" class="about-btn about-btn--outline">Auf LinkedIn folgen</a>
           </div>
         </div>
 
@@ -83,7 +83,7 @@ const credentials = [
     <div class="uc-container">
       <div class="uc-grid-2-3">
         <div>
-          <p class="uc-eyebrow">Why Curfee</p>
+          <p class="uc-eyebrow">Warum Curfee</p>
           <h2 id="why-heading" class="uc-h2">{t['about.section.why']}</h2>
         </div>
         <div class="about-prose">
@@ -100,8 +100,8 @@ const credentials = [
     <div class="uc-container">
       <div class="about-credentials-head">
         <p class="uc-eyebrow">{t['about.section.background']}</p>
-        <h2 id="background-heading" class="uc-h2">What shaped my approach</h2>
-        <p class="uc-lead" style="margin-top: 16px; max-width: 640px;">Not as a list of titles, but as context for the work I do.</p>
+        <h2 id="background-heading" class="uc-h2">Was meinen Ansatz geprägt hat</h2>
+        <p class="uc-lead" style="margin-top: 16px; max-width: 640px;">Keine Liste von Titeln, sondern Kontext für die Arbeit, die ich mache.</p>
       </div>
       <div class="about-credentials">
         {credentials.map((c) => (
@@ -121,24 +121,24 @@ const credentials = [
   <section class="uc-section uc-section--soft" aria-labelledby="principles-heading">
     <div class="uc-container">
       <div class="about-principles-head">
-        <p class="uc-eyebrow">Three guiding principles</p>
-        <h2 id="principles-heading" class="uc-h2">How I work</h2>
+        <p class="uc-eyebrow">Drei leitende Prinzipien</p>
+        <h2 id="principles-heading" class="uc-h2">Wie ich arbeite</h2>
       </div>
       <div class="about-principles-grid">
         <div class="principle">
           <span class="principle-num">01</span>
           <h3 class="principle-title">{t['principles.1']}</h3>
-          <p class="principle-text">Symptoms point. Root causes resolve. The work starts where the chain ends.</p>
+          <p class="principle-text">Symptome zeigen den Weg. Ursachen lösen. Die Arbeit beginnt dort, wo die Kette endet.</p>
         </div>
         <div class="principle">
           <span class="principle-num">02</span>
           <h3 class="principle-title">{t['principles.2']}</h3>
-          <p class="principle-text">A standard that depends on individual vigilance is a standard waiting to drift. The system has to enforce it.</p>
+          <p class="principle-text">Ein Standard, der von individueller Wachsamkeit abhängt, ist ein Standard, der irgendwann driftet. Das System muss ihn durchsetzen.</p>
         </div>
         <div class="principle">
           <span class="principle-num">03</span>
           <h3 class="principle-title">{t['principles.3']}</h3>
-          <p class="principle-text">Workarounds compound into structure no one chose. Build the foundation, then everything above it stays straight.</p>
+          <p class="principle-text">Workarounds summieren sich zu einer Struktur, die niemand gewählt hat. Bau das Fundament, dann bleibt alles darüber gerade.</p>
         </div>
       </div>
     </div>

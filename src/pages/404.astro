@@ -1,27 +1,25 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { getRoutes } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 
-// Root 404: GitHub Pages serves /404.html for ANY 404 regardless of URL path.
-// Render English content as the SEO/no-JS fallback. Inline script below
-// detects DE (via current pathname or localStorage.curfee_lang) and
-// redirects to /de/404/ so DE users see the localized 404.
-const t = getTranslations('en');
+const t = getTranslations();
+const routes = getRoutes();
 ---
 
-<Layout title={t['meta.404.title']} description={t['meta.404.description']} canonicalPath="/404" noindex={true}>
-  <script>
-    import { redirectIfDeLocale } from '@/scripts/locale-404-redirect';
-    redirectIfDeLocale();
-  </script>
-
+<Layout
+  title={t['meta.404.title']}
+  description={t['meta.404.description']}
+  canonicalPath={Astro.url.pathname}
+  noindex={true}
+>
   <article class="uc-section error-page">
     <div class="uc-container">
       <div class="error-inner">
         <p class="error-code" aria-hidden="true">404</p>
         <h1 class="error-heading">{t['404.heading']}</h1>
         <p class="error-description">{t['404.description']}</p>
-        <a href="/en/" class="uc-btn uc-btn--primary error-cta">{t['404.cta']}</a>
+        <a href={routes.home} class="uc-btn uc-btn--primary error-cta">{t['404.cta']}</a>
       </div>
     </div>
   </article>

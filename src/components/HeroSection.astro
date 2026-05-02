@@ -8,7 +8,7 @@ interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
-const routes = getRoutes(Astro.currentLocale);
+const routes = getRoutes();
 ---
 
 <section class="uc-section" aria-labelledby="hero-heading" style="padding-top: 120px; padding-bottom: 120px;">

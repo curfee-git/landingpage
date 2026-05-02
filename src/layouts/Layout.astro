@@ -1,24 +1,11 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 import Header from '@/components/shared/Header.astro';
 import Footer from '@/components/shared/Footer.astro';
 import ScrollToTop from '@/components/shared/ScrollToTop.astro';
-import { getTranslations, resolveLocale, LOCALES } from '@/i18n/translations';
+import { getTranslations } from '@/i18n/translations';
 import { EXTERNAL } from '@/configurations/routes';
 import '@/styles/global.css';
-
-const currentLocale = resolveLocale(Astro.currentLocale);
-const htmlLang = currentLocale === 'de' ? 'de-AT' : 'en';
-const ogLocale = currentLocale === 'de' ? 'de_AT' : 'en_GB';
-const ogLocaleAlt = currentLocale === 'de' ? 'en_GB' : 'de_AT';
-
-// Strip the leading "/<locale>" from current pathname to compute the same page in other locales
-const stripped = Astro.url.pathname.replace(/^\/(en|de)(\/|$)/, '/');
-const alternateLinks = LOCALES.map((loc) => ({
-  hreflang: loc === 'de' ? 'de-AT' : 'en',
-  href: getRelativeLocaleUrl(loc, stripped.replace(/^\//, '')),
-}));
 
 interface Props {
   title: string;
@@ -40,7 +27,7 @@ interface Props {
   enableTransitions?: boolean;
 }
 
-const t = getTranslations(Astro.currentLocale);
+const t = getTranslations();
 
 const {
   title,
@@ -81,44 +68,44 @@ const personLd = {
   "givenName": "Philipp",
   "familyName": "Höllinger",
   "jobTitle": t['meta.about.jobTitle'],
-  "description": "Philipp Höllinger is a structural architect based in Salzburg, Austria, and the sole founder of Curfee e.U. (founded 2026). He consults on structural architecture across software, infrastructure, and organizational structures, and on root-cause analysis, applying the Decision Enforcement Principle: architectural decisions are enforced by the system itself through pipelines, automated checks, and tool configuration, rather than by the discipline, memory, or vigilance of individual people.",
+  "description": "Philipp Höllinger ist Strukturarchitekt mit Sitz in Salzburg, Österreich, und alleiniger Gründer der Curfee e.U. (gegründet 2026). Er berät zu struktureller Architektur über Software, Infrastruktur und organisatorische Strukturen hinweg sowie zu Ursachenanalyse und wendet das Prinzip der Entscheidungsdurchsetzung an: Architekturentscheidungen werden vom System selbst durchgesetzt – über Pipelines, automatisierte Checks und Tool-Konfiguration, statt durch Disziplin, Erinnerung oder Wachsamkeit einzelner Personen.",
   "url": siteUrl,
   "mainEntityOfPage": `${siteUrl}/#about`,
   "image": {
     "@type": "ImageObject",
     "url": `${siteUrl}/assets/profile.png`,
     "contentUrl": `${siteUrl}/assets/profile.png`,
-    "caption": "Portrait of Philipp Höllinger, founder of Curfee",
+    "caption": "Porträt von Philipp Höllinger, Gründer der Curfee",
     "width": 1024,
     "height": 1536
   },
   "sameAs": [EXTERNAL.linkedin],
-  "nationality": { "@type": "Country", "name": "Austria" },
+  "nationality": { "@type": "Country", "name": "Österreich" },
   "knowsAbout": [
-    "Structural Architecture",
-    "Systems Architecture",
-    "Software Architecture",
-    "Infrastructure Architecture",
-    "Organizational Architecture",
-    "System Analysis",
-    "IT Consulting",
-    "Root Cause Analysis",
-    "Dependency Mapping",
-    "Decision Enforcement",
-    "Decision Enforcement Principle",
-    "Standards and Conventions Design",
-    "Tool Landscape Assessment",
-    "Structural Consulting",
+    "Strukturarchitektur",
+    "Systemarchitektur",
+    "Softwarearchitektur",
+    "Infrastrukturarchitektur",
+    "Organisationsarchitektur",
+    "Systemanalyse",
+    "IT-Beratung",
+    "Ursachenanalyse",
+    "Abhängigkeitsanalyse",
+    "Entscheidungsdurchsetzung",
+    "Prinzip der Entscheidungsdurchsetzung",
+    "Standards- und Konventions-Design",
+    "Tool-Landschaft-Bewertung",
+    "Strukturberatung",
     "Change Management",
-    "Quality Assurance",
-    "System Development",
+    "Qualitätssicherung",
+    "Systementwicklung",
     "Onboarding",
-    "Collaboration",
-    "Knowledge Transfer"
+    "Zusammenarbeit",
+    "Wissenstransfer"
   ],
   "hasOccupation": {
     "@type": "Occupation",
-    "name": "Structural Architect",
+    "name": "Strukturarchitekt",
     "occupationLocation": { "@id": `${siteUrl}/#place-salzburg` },
     "occupationalCategory": {
       "@type": "CategoryCode",
@@ -129,11 +116,11 @@ const personLd = {
         "name": "O*NET-SOC"
       }
     },
-    "skills": "Structural architecture across software, infrastructure, and organizational structures, root cause analysis, dependency mapping, decision enforcement, standards and conventions design, tool landscape assessment"
+    "skills": "Strukturarchitektur über Software, Infrastruktur und organisatorische Strukturen hinweg, Ursachenanalyse, Abhängigkeitsanalyse, Entscheidungsdurchsetzung, Standards- und Konventions-Design, Tool-Landschaft-Bewertung"
   },
   "knowsLanguage": [
-    { "@type": "Language", "name": "German", "alternateName": "de" },
-    { "@type": "Language", "name": "English", "alternateName": "en" }
+    { "@type": "Language", "name": "Deutsch", "alternateName": "de" },
+    { "@type": "Language", "name": "Englisch", "alternateName": "en" }
   ],
   "worksFor": { "@id": `${siteUrl}/#organization` },
   "memberOf": { "@id": `${siteUrl}/#organization` },
@@ -149,7 +136,7 @@ const placeLd = {
   "@context": "https://schema.org",
   "@type": "Place",
   "@id": `${siteUrl}/#place-salzburg`,
-  "name": "Salzburg, Austria",
+  "name": "Salzburg, Österreich",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Lieferinger Hauptstraße 49A",
@@ -171,7 +158,7 @@ const organizationLd = {
   "@id": `${siteUrl}/#organization`,
   "name": "Curfee",
   "legalName": "Curfee e.U.",
-  "alternateName": ["Curfee Structural Architecture Consulting", "Curfee Consulting"],
+  "alternateName": ["Curfee Strukturarchitektur-Beratung", "Curfee Beratung"],
   "url": siteUrl,
   "logo": {
     "@type": "ImageObject",
@@ -204,64 +191,64 @@ const organizationLd = {
     "longitude": 13.0089
   },
   "areaServed": [
-    { "@type": "Country", "name": "Austria", "alternateName": "AT" },
-    { "@type": "Country", "name": "Germany", "alternateName": "DE" },
-    { "@type": "Country", "name": "Switzerland", "alternateName": "CH" }
+    { "@type": "Country", "name": "Österreich", "alternateName": "AT" },
+    { "@type": "Country", "name": "Deutschland", "alternateName": "DE" },
+    { "@type": "Country", "name": "Schweiz", "alternateName": "CH" }
   ],
   "serviceArea": {
     "@type": "AdministrativeArea",
-    "name": "DACH region"
+    "name": "DACH-Region"
   },
   "knowsAbout": [
-    "Structural Architecture",
-    "Systems Architecture",
-    "Software Architecture",
-    "Infrastructure Architecture",
-    "Organizational Architecture",
-    "System Analysis",
-    "IT Consulting",
-    "Root Cause Analysis",
-    "Dependency Mapping",
-    "Decision Enforcement Principle",
-    "Standards and Conventions Design",
-    "Tool Landscape Assessment",
-    "Structural Consulting",
-    "Technical Debt Resolution",
+    "Strukturarchitektur",
+    "Systemarchitektur",
+    "Softwarearchitektur",
+    "Infrastrukturarchitektur",
+    "Organisationsarchitektur",
+    "Systemanalyse",
+    "IT-Beratung",
+    "Ursachenanalyse",
+    "Abhängigkeitsanalyse",
+    "Prinzip der Entscheidungsdurchsetzung",
+    "Standards- und Konventions-Design",
+    "Tool-Landschaft-Bewertung",
+    "Strukturberatung",
+    "Auflösung technischer Schulden",
     "Change Management",
-    "Quality Assurance",
-    "System Development",
+    "Qualitätssicherung",
+    "Systementwicklung",
     "Onboarding",
-    "Collaboration",
-    "Knowledge Transfer"
+    "Zusammenarbeit",
+    "Wissenstransfer"
   ],
   "contactPoint": [
     {
       "@type": "ContactPoint",
       "email": EXTERNAL.email,
       "telephone": EXTERNAL.tel.replace(/^tel:/, ''),
-      "contactType": "customer service",
-      "availableLanguage": ["en", "de"],
+      "contactType": "Kundenservice",
+      "availableLanguage": ["de", "en"],
       "areaServed": ["AT", "DE", "CH"]
     },
     {
       "@type": "ContactPoint",
       "email": EXTERNAL.email,
-      "contactType": "sales",
-      "availableLanguage": ["en", "de"]
+      "contactType": "Vertrieb",
+      "availableLanguage": ["de", "en"]
     }
   ],
   "potentialAction": {
     "@type": "CommunicateAction",
-    "name": "Contact by email",
+    "name": "Per E-Mail kontaktieren",
     "target": {
       "@type": "EntryPoint",
       "urlTemplate": EXTERNAL.mailto,
-      "inLanguage": ["en"]
+      "inLanguage": ["de"]
     }
   },
   "knowsLanguage": [
-    { "@type": "Language", "name": "German", "alternateName": "de" },
-    { "@type": "Language", "name": "English", "alternateName": "en" }
+    { "@type": "Language", "name": "Deutsch", "alternateName": "de" },
+    { "@type": "Language", "name": "Englisch", "alternateName": "en" }
   ],
   "vatID": "ATU83146203",
   "taxID": "ATU83146203",
@@ -276,19 +263,6 @@ const organizationLd = {
     "url": "https://www.wko.at"
   },
   "keywords": [
-    "structural architecture consulting",
-    "systems architecture consulting",
-    "software architecture consulting",
-    "infrastructure architecture consulting",
-    "decision enforcement",
-    "architecture governance automation",
-    "root cause analysis",
-    "system landscape assessment",
-    "dependency mapping",
-    "standards enforcement pipelines",
-    "structural consulting",
-    "IT consulting Austria",
-    "organizational architecture consulting",
     "Strukturarchitektur Beratung",
     "Strukturarchitektur Österreich",
     "Strukturarchitekt Österreich",
@@ -296,7 +270,15 @@ const organizationLd = {
     "Systemarchitektur Beratung",
     "Systemarchitektur Österreich",
     "Architekturentscheidungen durchsetzen",
-    "Systemarchitekt Österreich"
+    "Systemarchitekt Österreich",
+    "Entscheidungsdurchsetzung",
+    "Architektur-Governance-Automatisierung",
+    "Ursachenanalyse",
+    "Systemlandschaft-Bewertung",
+    "Abhängigkeitsanalyse",
+    "Standards-Durchsetzung Pipelines",
+    "Strukturberatung",
+    "IT-Beratung Österreich"
   ],
   "sameAs": [
     EXTERNAL.linkedin
@@ -310,7 +292,7 @@ const webSiteLd = {
   "name": "Curfee",
   "alternateName": "Curfee: Structural Architecture Consulting",
   "url": siteUrl,
-  "inLanguage": "en",
+  "inLanguage": "de",
   "publisher": { "@id": `${siteUrl}/#organization` },
   "about": { "@id": `${siteUrl}/#organization` },
   "mainEntity": { "@id": `${siteUrl}/#organization` }
@@ -326,7 +308,7 @@ const speakableLd = {
   "about": { "@id": `${siteUrl}/#organization` },
   "author": { "@id": `${siteUrl}/#founder` },
   "publisher": { "@id": `${siteUrl}/#organization` },
-  "inLanguage": "en",
+  "inLanguage": "de",
   ...(dateModified && { "dateModified": dateModified }),
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -342,7 +324,7 @@ const speakableLd = {
 ---
 
 <!doctype html>
-<html lang={htmlLang}>
+<html lang="de-AT">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -371,7 +353,7 @@ const speakableLd = {
 
     <!-- Geo Meta Tags: Local SEO (Salzburg, Austria) -->
     <meta name="geo.region" content="AT-5" />
-    <meta name="geo.placename" content="Salzburg, Austria" />
+    <meta name="geo.placename" content="Salzburg, Österreich" />
     <meta name="geo.position" content="47.8066;13.0089" />
     <meta name="ICBM" content="47.8066, 13.0089" />
 
@@ -386,20 +368,13 @@ const speakableLd = {
     <!-- Canonical URL -->
     {!noindex && <link rel="canonical" href={canonicalUrl} />}
 
-    <!-- hreflang alternates -->
-    {!noindex && alternateLinks.map((alt) => (
-      <link rel="alternate" hreflang={alt.hreflang} href={`${siteUrl}${alt.href}`} />
-    ))}
-    {!noindex && <link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />}
-
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Curfee" />
-    <meta property="og:locale" content={ogLocale} />
-    <meta property="og:locale:alternate" content={ogLocaleAlt} />
+    <meta property="og:locale" content="de_AT" />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:secure_url" content={ogImage} />
     {resolvedOgType && <meta property="og:image:type" content={resolvedOgType} />}

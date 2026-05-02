@@ -1,13 +1,11 @@
 ---
 import { getRoutes } from '@/configurations/routes';
 import { BRAND } from '@/configurations/brand';
-import { getTranslations, resolveLocale } from '@/i18n/translations';
-import LanguageToggle from '@/components/shared/LanguageToggle.astro';
+import { getTranslations } from '@/i18n/translations';
 import logoTextRaw from '@/assets/logos/logo_text.svg?raw';
 
-const currentLocale = resolveLocale(Astro.currentLocale);
-const t = getTranslations(currentLocale);
-const routes = getRoutes(currentLocale);
+const t = getTranslations();
+const routes = getRoutes();
 const year = new Date().getFullYear();
 const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transition-colors duration-short4 ease-standard";
 ---
@@ -29,7 +27,7 @@ const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transi
       <div class="col-span-1 md:contents grid grid-cols-2 md:grid-cols-none gap-10">
         <div>
           <p class="text-label-large text-ink-primary mb-4">{t['nav.services']}</p>
-          <nav class="flex flex-col gap-3" aria-label="Services navigation">
+          <nav class="flex flex-col gap-3" aria-label="Leistungen-Navigation">
             <a href={routes.service.diagnosis} class={linkClass}>{t['services.diagnosis.title']}</a>
             <a href={routes.service.guidance} class={linkClass}>{t['services.guidance.title']}</a>
             <a href={routes.service.advisory} class={linkClass}>{t['services.advisory.title']}</a>
@@ -38,7 +36,7 @@ const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transi
 
         <div>
           <p class="text-label-large text-ink-primary mb-4">{t['footer.column.company']}</p>
-          <nav class="flex flex-col gap-3" aria-label="Company navigation">
+          <nav class="flex flex-col gap-3" aria-label="Unternehmens-Navigation">
             <a href={routes.about} class={linkClass}>{t['nav.about']}</a>
             <a href={routes.blog} class={linkClass}>{t['blog.indexHeading']}</a>
             <a href={routes.contact} class={linkClass}>{t['nav.contact']}</a>
@@ -47,7 +45,7 @@ const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transi
 
         <div>
           <p class="text-label-large text-ink-primary mb-4">{t['footer.column.legal']}</p>
-          <nav class="flex flex-col gap-3" aria-label="Legal navigation">
+          <nav class="flex flex-col gap-3" aria-label="Rechtliches-Navigation">
             <a href={routes.imprint} class={linkClass}>{t['footer.legal.notice']}</a>
             <a href={routes.privacy} class={linkClass}>{t['footer.legal.privacy']}</a>
           </nav>
@@ -57,9 +55,8 @@ const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transi
     </div>
 
     <!-- Bottom bar -->
-    <div class="border-t border-stroke-subtle pt-6 text-body-small text-ink-muted flex flex-wrap items-center justify-between gap-4">
+    <div class="border-t border-stroke-subtle pt-6 text-body-small text-ink-muted">
       <span>&copy; {year} {BRAND.name} · {t['footer.copyright']}</span>
-      <LanguageToggle />
     </div>
 
   </div>

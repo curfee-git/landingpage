@@ -43,14 +43,6 @@ const buildDate = new Date().toISOString();
 
 export default defineConfig({
   site: "https://curfee.com",
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "de"],
-    routing: {
-      prefixDefaultLocale: true,
-      redirectToDefaultLocale: false,
-    },
-  },
   markdown: {
     rehypePlugins: [
       rehypeSlug,
@@ -84,10 +76,6 @@ export default defineConfig({
     sitemap({
       changefreq: 'monthly',
       priority: 0.7,
-      i18n: {
-        defaultLocale: 'en',
-        locales: { en: 'en', de: 'de-AT' },
-      },
       filter: (page) => !/\/404\/?$/.test(page),
       serialize(item) {
         const url = new URL(item.url);

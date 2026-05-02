@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { translations: t } = Astro.props;
-const routes = getRoutes(Astro.currentLocale);
+const routes = getRoutes();
 
 const allPosts = await getPosts();
 const LATEST_COUNT = 6;
@@ -23,7 +23,7 @@ const linkLabel = allPosts.length > LATEST_COUNT ? t['blog.all'] : t['blog.visit
     <div class="uc-container">
       <div class="blog-head">
         <div>
-          <p class="uc-eyebrow" style="margin-bottom: 16px;">Insights</p>
+          <p class="uc-eyebrow" style="margin-bottom: 16px;">Einblicke</p>
           <h2 id="blog-heading" class="uc-h2">{t['blog.heading']}</h2>
           <p class="uc-lead" style="margin-top: 16px; max-width: 640px;">{t['blog.subtitle']}</p>
         </div>
