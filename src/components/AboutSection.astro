@@ -172,37 +172,41 @@ const credentials = [
     max-width: 640px;
   }
   .about-hero-title {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-sans);
     font-size: clamp(2.25rem, 5vw, 3.75rem);
-    font-weight: 900;
+    font-weight: 800;
     line-height: 1.05;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
     margin: 16px 0 0 0;
   }
   .about-hero-jobtitle {
-    font-weight: 600;
+    font-family: var(--font-sans);
+    font-weight: 700;
     font-size: 1rem;
     color: rgb(var(--brand-primary));
     margin: 16px 0 28px 0;
-    letter-spacing: 0.01em;
     line-height: 1.5;
   }
   .about-hero-jobtitle span {
     font-weight: 500;
-    color: rgb(var(--ink-muted));
+    color: rgb(var(--ink-primary) / 0.65);
   }
   .about-hero-body {
+    font-family: var(--font-sans);
     font-size: 1.0625rem;
-    color: rgb(var(--ink-muted));
-    line-height: 1.75;
+    color: rgb(var(--ink-primary) / 0.75);
+    line-height: 1.6;
     margin: 0 0 20px 0;
+    max-width: 65ch;
   }
   .about-hero-emphasis {
+    font-family: var(--font-sans);
     font-size: 1.0625rem;
-    line-height: 1.75;
-    font-weight: 600;
+    line-height: 1.6;
+    font-weight: 700;
     color: rgb(var(--brand-primary));
     margin: 0;
+    max-width: 65ch;
   }
   .about-hero-ctas {
     margin-top: 36px;
@@ -215,29 +219,31 @@ const credentials = [
     align-items: center;
     justify-content: center;
     padding: 14px 24px;
+    font-family: var(--font-sans);
     font-size: 0.9375rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
     border-radius: 8px;
     text-decoration: none;
-    transition: all 140ms cubic-bezier(0.22, 1, 0.36, 1);
-    border: 1px solid transparent;
+    transition: background-color 200ms ease, color 200ms ease;
+    border: 1.5px solid transparent;
   }
   .about-btn--primary {
     background: rgb(var(--brand-primary));
     color: rgb(var(--on-brand-primary));
+    border-color: rgb(var(--brand-primary));
   }
   .about-btn--primary:hover {
-    filter: brightness(1.1);
+    background: rgb(var(--brand-primary) / 0.85);
+    border-color: rgb(var(--brand-primary) / 0.85);
   }
   .about-btn--outline {
     background: transparent;
-    color: rgb(var(--ink-primary));
-    border-color: rgb(var(--stroke-subtle));
+    color: rgb(var(--brand-primary));
+    border-color: rgb(var(--brand-primary));
   }
   .about-btn--outline:hover {
-    border-color: rgb(var(--brand-primary));
-    color: rgb(var(--brand-primary));
+    background: rgb(var(--brand-primary));
+    color: rgb(var(--on-brand-primary));
   }
 
   .about-hero-aside {
@@ -248,7 +254,7 @@ const credentials = [
     border-radius: 12px;
     overflow: hidden;
     aspect-ratio: 3/4;
-    background: rgb(var(--surface-container-low));
+    background: rgb(var(--surface-soft));
   }
   :global(.about-portrait) {
     width: 100%;
@@ -259,25 +265,28 @@ const credentials = [
   }
   .about-claim {
     margin-top: 20px;
-    padding: 20px 24px;
-    background: rgb(var(--ink-primary));
+    padding: 24px 28px;
+    background: rgb(var(--surface-soft));
+    border-left: 2px solid rgb(var(--brand-primary));
     border-radius: 8px;
   }
   .about-claim p {
-    font-weight: 700;
-    font-size: 0.9375rem;
-    color: rgb(var(--surface-base));
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    color: rgb(var(--ink-primary));
     line-height: 1.5;
-    font-style: italic;
     margin: 0;
   }
 
   /* === Why section prose === */
   .about-prose p {
+    font-family: var(--font-sans);
     font-size: 1.0625rem;
-    color: rgb(var(--ink-muted));
-    line-height: 1.75;
+    color: rgb(var(--ink-primary) / 0.75);
+    line-height: 1.6;
     margin: 0 0 20px 0;
+    max-width: 65ch;
   }
   .about-prose p:last-child {
     margin-bottom: 0;
@@ -302,35 +311,32 @@ const credentials = [
   .credential-mark {
     width: 48px;
     height: 48px;
-    border-radius: 12px;
+    border-radius: 4px;
     background: rgb(var(--brand-primary));
     color: rgb(var(--on-brand-primary));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-sans);
     font-weight: 800;
     font-size: 1.25rem;
   }
-  .credential:nth-child(2) .credential-mark { background: rgb(var(--brand-secondary)); color: rgb(var(--on-brand-secondary)); }
-  .credential:nth-child(3) .credential-mark { background: rgb(var(--brand-tertiary)); color: rgb(var(--on-brand-tertiary)); }
-  .credential:nth-child(4) .credential-mark { background: rgb(var(--brand-primary)); color: rgb(var(--on-brand-primary)); }
-  .credential:nth-child(5) .credential-mark { background: rgb(var(--brand-secondary)); color: rgb(var(--on-brand-secondary)); }
-  .credential:nth-child(6) .credential-mark { background: rgb(var(--brand-tertiary)); color: rgb(var(--on-brand-tertiary)); }
 
   .credential-title {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-    font-size: 1.0625rem;
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
     font-weight: 700;
     color: rgb(var(--ink-primary));
     margin: 0 0 8px 0;
     line-height: 1.3;
   }
   .credential-text {
+    font-family: var(--font-sans);
     font-size: 0.9375rem;
-    color: rgb(var(--ink-muted));
+    color: rgb(var(--ink-primary) / 0.75);
     line-height: 1.6;
     margin: 0;
+    max-width: 65ch;
   }
 
   /* === Principles === */
@@ -345,30 +351,35 @@ const credentials = [
   }
   .principle {
     background: rgb(var(--surface-base));
-    border: 1px solid rgb(var(--stroke-subtle));
-    border-radius: 12px;
-    padding: 28px;
+    border: 1px solid rgb(var(--ink-primary) / 0.1);
+    border-radius: 8px;
+    padding: 32px;
+    transition: transform 200ms ease;
+  }
+  .principle:hover {
+    transform: translateY(-4px);
   }
   .principle-num {
     display: inline-block;
-    font-family: "Inter", sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     color: rgb(var(--brand-primary));
     margin-bottom: 16px;
   }
   .principle-title {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-    font-size: 1.125rem;
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
     font-weight: 700;
     color: rgb(var(--ink-primary));
     margin: 0 0 8px 0;
     line-height: 1.3;
   }
   .principle-text {
+    font-family: var(--font-sans);
     font-size: 0.9375rem;
-    color: rgb(var(--ink-muted));
+    color: rgb(var(--ink-primary) / 0.75);
     line-height: 1.6;
     margin: 0;
   }
@@ -380,17 +391,18 @@ const credentials = [
     gap: 8px;
     margin-top: 32px;
     padding: 14px 28px;
+    font-family: var(--font-sans);
     font-size: 0.9375rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
-    background: rgb(var(--on-brand-primary));
+    background: rgb(var(--surface-base));
     color: rgb(var(--brand-primary));
+    border: 1.5px solid rgb(var(--surface-base));
     border-radius: 8px;
     text-decoration: none;
-    transition: filter 140ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background-color 200ms ease, color 200ms ease;
   }
   .about-final-cta:hover {
-    filter: brightness(0.92);
+    background: rgb(var(--surface-base) / 0.85);
   }
 
   /* === Responsive === */

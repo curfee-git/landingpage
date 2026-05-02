@@ -161,10 +161,7 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
 </article>
 
 <style>
-  /* Accent colors per service */
-  .service-detail--primary { --service-accent: var(--brand-primary); }
-  .service-detail--secondary { --service-accent: var(--brand-secondary); }
-  .service-detail--tertiary { --service-accent: var(--brand-tertiary); }
+  /* All services share the same brand accents – no per-service hue */
 
   /* Hero */
   .service-hero {
@@ -183,24 +180,26 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     margin: 0;
   }
   .service-hero-subtitle {
+    font-family: var(--font-sans);
     font-size: 1.5rem;
-    font-weight: 600;
-    color: rgb(var(--service-accent));
+    font-weight: 700;
+    color: rgb(var(--brand-primary));
     margin: 16px 0 0 0;
     line-height: 1.3;
   }
   .service-hero-aside {
     padding: 32px;
-    background: rgb(var(--surface-container-low));
-    border-radius: 12px;
-    border: 1px solid rgb(var(--stroke-subtle));
+    background: rgb(var(--surface-soft));
+    border-radius: 8px;
+    border: 1px solid rgb(var(--ink-primary) / 0.1);
     position: sticky;
     top: 96px;
   }
   .service-hero-problem {
     margin: 0;
     color: rgb(var(--ink-primary));
-    line-height: 1.65;
+    line-height: 1.6;
+    max-width: 65ch;
   }
   .service-hero-cta {
     display: inline-flex;
@@ -208,17 +207,19 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     gap: 6px;
     margin-top: 24px;
     padding: 12px 20px;
-    background: rgb(var(--service-accent));
-    color: rgb(var(--surface-base));
+    background: rgb(var(--brand-primary));
+    color: rgb(var(--on-brand-primary));
+    font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
+    border: 1.5px solid rgb(var(--brand-primary));
     border-radius: 8px;
     text-decoration: none;
-    transition: filter 140ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background-color 200ms ease, border-color 200ms ease;
   }
   .service-hero-cta:hover {
-    filter: brightness(1.1);
+    background: rgb(var(--brand-primary) / 0.85);
+    border-color: rgb(var(--brand-primary) / 0.85);
   }
 
   /* For whom */
@@ -242,7 +243,7 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     flex-shrink: 0;
     width: 20px;
     height: 20px;
-    color: rgb(var(--service-accent));
+    color: rgb(var(--brand-primary));
     margin-top: 4px;
   }
 
@@ -264,22 +265,22 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     grid-template-columns: 64px 1fr;
     gap: 24px;
     padding: 28px 0;
-    border-top: 1px solid rgb(var(--stroke-subtle));
+    border-top: 1px solid rgb(var(--ink-primary) / 0.1);
   }
   .service-step:last-child {
-    border-bottom: 1px solid rgb(var(--stroke-subtle));
+    border-bottom: 1px solid rgb(var(--ink-primary) / 0.1);
   }
   .service-step-num {
     width: 48px;
     height: 48px;
-    border-radius: 12px;
-    background: rgb(var(--service-accent) / 0.1);
-    color: rgb(var(--service-accent));
+    border-radius: 4px;
+    background: rgb(var(--brand-primary));
+    color: rgb(var(--on-brand-primary));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
+    font-family: var(--font-sans);
+    font-weight: 800;
     font-size: 1.125rem;
   }
   .service-step-phase {
@@ -291,8 +292,7 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
   }
   .service-step-outcome {
     font-size: 0.9375rem;
-    font-style: italic;
-    color: rgb(var(--ink-muted));
+    color: rgb(var(--ink-primary) / 0.65);
     margin: 0 0 16px 0;
   }
   .service-step-items {
@@ -308,14 +308,14 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     align-items: flex-start;
     gap: 6px;
     font-size: 0.9375rem;
-    color: rgb(var(--ink-muted));
+    color: rgb(var(--ink-primary) / 0.75);
   }
   :global(.service-step-item-icon) {
     flex-shrink: 0;
     width: 16px;
     height: 16px;
     margin-top: 4px;
-    color: rgb(var(--service-accent) / 0.5);
+    color: rgb(var(--brand-primary));
   }
 
   /* Delivers + Excludes */
@@ -343,14 +343,14 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     flex-shrink: 0;
     width: 18px;
     height: 18px;
-    color: rgb(var(--service-accent));
+    color: rgb(var(--brand-primary));
     margin-top: 3px;
   }
   :global(.service-excludes-icon) {
     flex-shrink: 0;
     width: 18px;
     height: 18px;
-    color: rgb(var(--ink-muted) / 0.4);
+    color: rgb(var(--ink-primary) / 0.4);
     margin-top: 3px;
   }
   .service-card-label {
@@ -369,17 +369,18 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     gap: 8px;
     margin-top: 32px;
     padding: 14px 28px;
+    font-family: var(--font-sans);
     font-size: 0.9375rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
-    background: rgb(var(--on-brand-primary));
+    background: rgb(var(--surface-base));
     color: rgb(var(--brand-primary));
+    border: 1.5px solid rgb(var(--surface-base));
     border-radius: 8px;
     text-decoration: none;
-    transition: filter 140ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background-color 200ms ease;
   }
   .service-final-cta:hover {
-    filter: brightness(0.92);
+    background: rgb(var(--surface-base) / 0.85);
   }
 
   @media (max-width: 900px) {

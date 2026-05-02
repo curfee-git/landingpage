@@ -31,17 +31,17 @@ const operationalPairs = [
       </span>
     </h2>
     <div class="grid mb-8">
-      <p class="col-start-1 row-start-1 text-title-medium text-brand-secondary font-medium transition-opacity duration-medium2 ease-standard" data-observations-subtitle="reality">{t['observations.subtitle.status_quo']}</p>
-      <p class="col-start-1 row-start-1 text-title-medium text-brand-secondary font-medium transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-subtitle="potential" aria-hidden="true">{t['observations.subtitle.potential']}</p>
+      <p class="col-start-1 row-start-1 text-title-medium text-brand-primary font-medium transition-opacity duration-medium2 ease-standard" data-observations-subtitle="reality">{t['observations.subtitle.status_quo']}</p>
+      <p class="col-start-1 row-start-1 text-title-medium text-brand-primary font-medium transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-subtitle="potential" aria-hidden="true">{t['observations.subtitle.potential']}</p>
     </div>
 
-    <div role="radiogroup" aria-label={t['observations.heading.status_quo']} class="inline-flex items-center gap-1 p-1 rounded-full bg-surface-base shadow-elevation-1 mb-6" data-observations-toggle-group>
+    <div role="radiogroup" aria-label={t['observations.heading.status_quo']} class="inline-flex items-center gap-1 p-1 rounded-md bg-surface-base border border-stroke-subtle mb-6" data-observations-toggle-group>
       <button
         type="button"
         role="radio"
         aria-checked="true"
         data-view="reality"
-        class="px-5 py-3 rounded-full text-label-large text-ink-primary bg-ink-primary/[0.08] transition-all duration-medium2 ease-standard"
+        class="px-5 py-3 rounded-md text-label-large text-brand-onPrimary bg-brand-primary transition-colors duration-short4 ease-standard"
       >
         {t['observations.column.left']}
       </button>
@@ -50,7 +50,7 @@ const operationalPairs = [
         role="radio"
         aria-checked="false"
         data-view="potential"
-        class="px-5 py-3 rounded-full text-label-large text-ink-onSurfaceVariant hover:text-ink-primary transition-all duration-medium2 ease-standard"
+        class="px-5 py-3 rounded-md text-label-large text-ink-muted hover:text-brand-primary transition-colors duration-short4 ease-standard"
       >
         {t['observations.column.right']}
       </button>
@@ -58,8 +58,8 @@ const operationalPairs = [
 
     <ol class="space-y-2" data-observations-toggle-list>
       {structuralPairs.map((pair) => (
-        <li class="rounded-lg bg-surface-base shadow-elevation-1 px-4 py-3 md:px-5 md:py-4 flex items-start gap-3">
-          <Icon name={pair.icon} class="w-5 h-5 text-brand-secondary shrink-0 mt-[3px] md:mt-1" />
+        <li class="rounded-md bg-surface-base border border-stroke-subtle px-4 py-3 md:px-5 md:py-4 flex items-start gap-3">
+          <Icon name={pair.icon} class="w-5 h-5 text-brand-primary shrink-0 mt-[3px] md:mt-1" />
           <div class="flex-1 min-w-0">
             <h3 class="text-title-medium font-semibold text-ink-primary mb-1">
               <span class="grid">
@@ -69,7 +69,7 @@ const operationalPairs = [
             </h3>
             <div class="grid">
               <p class="col-start-1 row-start-1 text-body-medium text-ink-muted leading-relaxed transition-opacity duration-medium2 ease-standard" data-observations-text="reality">{pair.reality}</p>
-              <p class="col-start-1 row-start-1 text-body-medium text-brand-secondary leading-relaxed transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-text="potential" aria-hidden="true">{pair.potential}</p>
+              <p class="col-start-1 row-start-1 text-body-medium text-brand-primary leading-relaxed transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-text="potential" aria-hidden="true">{pair.potential}</p>
             </div>
           </div>
         </li>
@@ -84,8 +84,8 @@ const operationalPairs = [
 
     <ol class="space-y-2" data-observations-toggle-list-b start="5">
       {operationalPairs.map((pair) => (
-        <li class="rounded-lg bg-surface-base shadow-elevation-1 px-4 py-3 md:px-5 md:py-4 flex items-start gap-3">
-          <Icon name={pair.icon} class="w-5 h-5 text-brand-secondary shrink-0 mt-[3px] md:mt-1" />
+        <li class="rounded-md bg-surface-base border border-stroke-subtle px-4 py-3 md:px-5 md:py-4 flex items-start gap-3">
+          <Icon name={pair.icon} class="w-5 h-5 text-brand-primary shrink-0 mt-[3px] md:mt-1" />
           <div class="flex-1 min-w-0">
             <h3 class="text-title-medium font-semibold text-ink-primary mb-1">
               <span class="grid">
@@ -95,7 +95,7 @@ const operationalPairs = [
             </h3>
             <div class="grid">
               <p class="col-start-1 row-start-1 text-body-medium text-ink-muted leading-relaxed transition-opacity duration-medium2 ease-standard" data-observations-text="reality">{pair.reality}</p>
-              <p class="col-start-1 row-start-1 text-body-medium text-brand-secondary leading-relaxed transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-text="potential" aria-hidden="true">{pair.potential}</p>
+              <p class="col-start-1 row-start-1 text-body-medium text-brand-primary leading-relaxed transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-text="potential" aria-hidden="true">{pair.potential}</p>
             </div>
           </div>
         </li>
@@ -143,11 +143,11 @@ const operationalPairs = [
           const active = b.dataset.view === view;
           b.setAttribute('aria-checked', String(active));
           if (active) {
-            b.classList.add('bg-ink-primary/[0.08]', 'text-ink-primary');
-            b.classList.remove('text-ink-onSurfaceVariant');
+            b.classList.add('bg-brand-primary', 'text-brand-onPrimary');
+            b.classList.remove('text-ink-muted', 'hover:text-brand-primary');
           } else {
-            b.classList.remove('bg-ink-primary/[0.08]', 'text-ink-primary');
-            b.classList.add('text-ink-onSurfaceVariant');
+            b.classList.remove('bg-brand-primary', 'text-brand-onPrimary');
+            b.classList.add('text-ink-muted', 'hover:text-brand-primary');
           }
         });
         const toggleText = (p: HTMLElement, visible: boolean) => {

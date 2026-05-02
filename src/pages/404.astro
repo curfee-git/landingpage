@@ -36,19 +36,19 @@ const routes = getRoutes();
     text-align: center;
   }
   .error-code {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-sans);
     font-size: clamp(3.5rem, 8vw, 6rem);
-    font-weight: 900;
+    font-weight: 800;
     line-height: 0.95;
-    letter-spacing: -0.04em;
-    color: rgb(var(--brand-primary) / 0.2);
+    letter-spacing: -0.03em;
+    color: rgb(var(--brand-primary));
     margin: 0 0 8px 0;
     user-select: none;
   }
   .error-heading {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-sans);
     font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 700;
+    font-weight: 800;
     line-height: 1.2;
     letter-spacing: -0.015em;
     color: rgb(var(--ink-primary));
@@ -56,8 +56,9 @@ const routes = getRoutes();
     text-wrap: balance;
   }
   .error-description {
+    font-family: var(--font-sans);
     font-size: 1rem;
-    color: rgb(var(--ink-muted));
+    color: rgb(var(--ink-primary) / 0.75);
     line-height: 1.6;
     margin: 16px auto 0 auto;
     max-width: 480px;

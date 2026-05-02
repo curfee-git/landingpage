@@ -9,12 +9,12 @@ interface Props {
 
 const { label, variant = 'outlined', class: className = '' } = Astro.props;
 
-const baseClasses = 'inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-label-large font-medium transition-all duration-medium2 ease-standard';
+const baseClasses = 'inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md text-label-large font-bold transition-colors duration-short4 ease-standard';
 
 const variantClasses = {
-  filled: 'bg-brand-primary text-brand-onPrimary shadow-elevation-0 hover:shadow-elevation-1 active:shadow-elevation-0',
-  outlined: 'border border-brand-primary text-brand-primary hover:bg-brand-primary/[0.08] active:bg-brand-primary/[0.12]',
-  text: 'text-brand-primary hover:bg-brand-primary/[0.08] active:bg-brand-primary/[0.12]',
+  filled: 'bg-brand-primary text-brand-onPrimary hover:bg-brand-primary/85',
+  outlined: 'border-[1.5px] border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-onPrimary',
+  text: 'text-brand-primary border-b border-transparent hover:border-brand-primary',
 };
 ---
 

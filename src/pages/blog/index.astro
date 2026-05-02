@@ -136,15 +136,19 @@ const jsonLd = {
     margin-top: 16px;
   }
   .blog-subheading {
+    font-family: var(--font-sans);
     font-size: 1.125rem;
-    color: rgb(var(--ink-muted));
+    color: rgb(var(--ink-primary) / 0.75);
     line-height: 1.6;
     margin: 24px 0 0 0;
+    max-width: 65ch;
+    font-weight: 500;
   }
 
   .blog-empty {
+    font-family: var(--font-sans);
     font-size: 1rem;
-    color: rgb(var(--ink-muted));
+    color: rgb(var(--ink-primary) / 0.65);
   }
 
   /* Filter / sort row */
@@ -161,27 +165,28 @@ const jsonLd = {
     gap: 8px;
   }
   .blog-control-label {
+    font-family: var(--font-sans);
     font-size: 0.8125rem;
     font-weight: 600;
-    color: rgb(var(--ink-muted));
+    color: rgb(var(--ink-primary) / 0.65);
     letter-spacing: 0.01em;
   }
   .blog-select {
     appearance: none;
-    background: rgb(var(--surface-base)) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' stroke='%23484850' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
-    border: 1px solid rgb(var(--stroke-subtle));
-    border-radius: 8px;
+    background: rgb(var(--surface-base)) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' stroke='%230A0A0A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+    border: 1px solid rgb(var(--ink-primary) / 0.15);
+    border-radius: 4px;
     color: rgb(var(--ink-primary));
-    font-family: inherit;
+    font-family: var(--font-sans);
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     padding: 8px 36px 8px 12px;
     min-width: 160px;
     cursor: pointer;
-    transition: border-color 140ms cubic-bezier(0.2, 0, 0, 1);
+    transition: border-color 200ms ease;
   }
   .blog-select:hover {
-    border-color: rgb(var(--ink-muted));
+    border-color: rgb(var(--brand-primary));
   }
   .blog-select:focus {
     outline: none;

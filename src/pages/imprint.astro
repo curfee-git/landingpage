@@ -137,11 +137,12 @@ const jsonLd = {
     margin-top: 16px;
   }
   .legal-subheading {
+    font-family: var(--font-sans);
     font-size: 1.125rem;
     color: rgb(var(--ink-muted));
     line-height: 1.6;
     margin: 24px 0 0 0;
-    max-width: 720px;
+    max-width: 65ch;
   }
 
   .legal-content {
@@ -155,17 +156,19 @@ const jsonLd = {
   }
 
   .legal-prose {
+    font-family: var(--font-sans);
     font-size: 1rem;
     color: rgb(var(--ink-muted));
-    line-height: 1.7;
+    line-height: 1.65;
     margin: 0 0 12px 0;
+    max-width: 65ch;
   }
   .legal-prose:last-child {
     margin-bottom: 0;
   }
   .legal-emphasis {
     color: rgb(var(--ink-primary));
-    font-weight: 600;
+    font-weight: 500;
     margin: 0;
   }
 
@@ -176,13 +179,14 @@ const jsonLd = {
   }
   .legal-card {
     background: rgb(var(--surface-base));
-    border: 1px solid rgb(var(--stroke-subtle));
-    border-radius: 12px;
+    border: 1px solid rgb(var(--ink-primary) / 0.1);
+    border-radius: 8px;
     padding: 28px;
   }
   .legal-card-title {
+    font-family: var(--font-sans);
     font-size: 0.6875rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgb(var(--ink-muted));
@@ -193,6 +197,7 @@ const jsonLd = {
     flex-direction: column;
     gap: 14px;
     color: rgb(var(--ink-primary));
+    font-family: var(--font-sans);
     font-size: 0.9375rem;
     line-height: 1.5;
   }
@@ -209,14 +214,16 @@ const jsonLd = {
     gap: 28px 32px;
   }
   .legal-label {
+    font-family: var(--font-sans);
     font-size: 0.6875rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgb(var(--ink-muted));
     margin: 0 0 6px 0;
   }
   .legal-value {
+    font-family: var(--font-sans);
     font-size: 0.9375rem;
     color: rgb(var(--ink-primary));
     line-height: 1.5;
@@ -226,10 +233,11 @@ const jsonLd = {
   .legal-link {
     color: rgb(var(--brand-primary));
     text-decoration: none;
-    transition: color 140ms cubic-bezier(0.2, 0, 0, 1);
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms ease;
   }
   .legal-link:hover {
-    text-decoration: underline;
+    border-bottom-color: rgb(var(--brand-primary));
   }
   .legal-link--small {
     font-size: 0.8125rem;

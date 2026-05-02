@@ -7,7 +7,7 @@ import logoTextRaw from '@/assets/logos/logo_text.svg?raw';
 const t = getTranslations();
 const routes = getRoutes();
 const year = new Date().getFullYear();
-const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transition-colors duration-short4 ease-standard";
+const linkClass = "text-body-medium text-ink-muted hover:text-brand-primary border-b border-transparent hover:border-brand-primary transition-colors duration-short4 ease-standard inline-block";
 ---
 
 <footer class="border-t-[0.0625rem] border-stroke-subtle/30 pt-12 md:pt-16 pb-12" style="padding-bottom: max(3rem, env(safe-area-inset-bottom, 3rem));" role="contentinfo">
@@ -18,9 +18,9 @@ const linkClass = "text-body-medium text-ink-muted hover:text-ink-primary transi
       <!-- Left: Logo + Tagline (link to home) -->
       <a href={routes.home} class="block no-underline hover:no-underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-primary/40 rounded-sm" aria-label={t['back.home']}>
         <div class="mb-4 inline-flex items-center gap-2 text-brand-primary">
-          <span class="block h-10 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
+          <span class="block h-5 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
         </div>
-        <p class="text-body-medium text-ink-muted/60 max-w-xs leading-relaxed italic">{t['footer.tagline']}</p>
+        <p class="text-body-medium text-ink-soft max-w-xs leading-relaxed font-medium">{t['footer.tagline']}</p>
       </a>
 
       <!-- Right columns: Services + Company + Legal -->

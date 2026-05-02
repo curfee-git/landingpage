@@ -55,15 +55,16 @@ const linkLabel = allPosts.length > LATEST_COUNT ? t['blog.all'] : t['blog.visit
     align-items: center;
     gap: 6px;
     color: rgb(var(--brand-primary));
+    font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
     text-decoration: none;
     flex-shrink: 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms ease;
   }
   .blog-link:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    border-bottom-color: rgb(var(--brand-primary));
   }
   @media (max-width: 900px) {
     .blog-head {

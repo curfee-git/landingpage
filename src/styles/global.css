@@ -1,109 +1,108 @@
-/* Inter – Body (100–900) */
-@font-face {
-  font-family: "Inter";
-  src: url("/assets/fonts/inter/inter.woff2") format("woff2-variations");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
+/* ===========================================================
+   Curfee – Brand System (final)
+   Farben:    Navy #003366  ·  Schwarz #0A0A0A (mit Opazitäten)
+              Off-White #FAFBFC  ·  Subtil-Blau #F2F5FA
+   Schrift:   Manrope (Variable, einzige Familie)
+   Form:      Buttons & Cards 8px · Prominente Cards/Portraits 12px
+              Inputs/Badges/Code/Marks 4px · keine Schatten
+   Hover:     macht leichter, nicht schwerer
+   =========================================================== */
 
+/* Manrope – einzige Schrift im System (Variable, 200–800) */
 @font-face {
-  font-family: "Inter";
-  src: url("/assets/fonts/inter/inter-italic.woff2") format("woff2-variations");
-  font-weight: 100 900;
-  font-style: italic;
+  font-family: "Manrope";
+  src: url("/assets/fonts/manrope/manrope.woff2") format("woff2-variations");
+  font-weight: 200 800;
+  font-style: normal;
   font-display: swap;
 }
 
 @import "tailwindcss";
 
 @theme {
-  /* Fonts */
-  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Fonts – nur Manrope */
+  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-sans);
+  --font-body: var(--font-sans);
+  --font-mono: var(--font-sans);
+  --font-serif: var(--font-sans); /* Legacy-Mapping, falls noch irgendwo verwendet */
 
-  /* Brand colors – tied to M3 tokens via CSS variables */
+  /* Brand-Tokens
+     – brand-primary  = Navy
+     – brand-secondary = Schwarz (legacy mapping for any remaining `text-brand-secondary`)
+     – brand-tertiary  = Navy (kein Akzent mehr; legacy mapping = Navy)            */
   --color-brand-primary: rgb(var(--brand-primary));
   --color-brand-secondary: rgb(var(--brand-secondary));
   --color-brand-tertiary: rgb(var(--brand-tertiary));
   --color-brand-onPrimary: rgb(var(--on-brand-primary));
   --color-brand-onSecondary: rgb(var(--on-brand-secondary));
   --color-brand-onTertiary: rgb(var(--on-brand-tertiary));
-  --color-brand-primaryContainer: rgb(var(--brand-primary-container));
-  --color-brand-secondaryContainer: rgb(var(--brand-secondary-container));
-  --color-brand-tertiaryContainer: rgb(var(--brand-tertiary-container));
-  --color-brand-onPrimaryContainer: rgb(var(--on-brand-primary-container));
-  --color-brand-onSecondaryContainer: rgb(var(--on-brand-secondary-container));
-  --color-brand-onTertiaryContainer: rgb(var(--on-brand-tertiary-container));
   --color-brand-error: rgb(var(--brand-error));
   --color-brand-onError: rgb(var(--on-brand-error));
-  --color-brand-errorContainer: rgb(var(--brand-error-container));
-  --color-brand-onErrorContainer: rgb(var(--on-brand-error-container));
 
-  /* Surface colors */
+  /* Surface
+     – base   = Off-White (#FAFBFC)
+     – soft   = Subtil-Blau (Section-Akzent)
+     – raised / container-* = legacy aliases, on Off-White                          */
   --color-surface-base: rgb(var(--surface-base));
-  --color-surface-dim: rgb(var(--surface-dim));
-  --color-surface-bright: rgb(var(--surface-bright));
   --color-surface-soft: rgb(var(--surface-soft));
-  --color-surface-raised: rgb(var(--surface-raised));
-  --color-surface-variant: rgb(var(--surface-variant));
-  --color-surface-containerLowest: rgb(var(--surface-container-lowest));
-  --color-surface-containerLow: rgb(var(--surface-container-low));
-  --color-surface-container: rgb(var(--surface-container));
-  --color-surface-containerHigh: rgb(var(--surface-container-high));
-  --color-surface-containerHighest: rgb(var(--surface-container-highest));
+  --color-surface-raised: rgb(var(--surface-base));
+  --color-surface-section: rgb(var(--surface-soft));
+  --color-surface-container-lowest: rgb(var(--surface-base));
+  --color-surface-container-low: rgb(var(--surface-soft));
+  --color-surface-container: rgb(var(--surface-soft));
+  --color-surface-container-high: rgb(var(--surface-soft));
+  --color-surface-container-highest: rgb(var(--surface-soft));
 
-  /* Inverse colors */
-  --color-inverse-surface: rgb(var(--inverse-surface));
-  --color-inverse-onSurface: rgb(var(--inverse-on-surface));
-  --color-inverse-primary: rgb(var(--inverse-primary));
-
-  /* Ink (text) colors */
+  /* Ink – Schwarz mit gestaffelten Opazitäten
+     – ink-primary = 100 % (#0A0A0A) – Headlines
+     – ink-muted   = 75 %             – Body
+     – ink-soft    = 65 %             – Tagline / sekundär
+     – ink-meta    = 40 %             – Captions / Meta                              */
   --color-ink-primary: rgb(var(--ink-primary));
-  --color-ink-muted: rgb(var(--ink-muted));
-  --color-ink-onSurfaceVariant: rgb(var(--ink-on-surface-variant));
+  --color-ink-muted: rgb(var(--ink-primary) / 0.75);
+  --color-ink-soft: rgb(var(--ink-primary) / 0.65);
+  --color-ink-meta: rgb(var(--ink-primary) / 0.4);
+  --color-ink-on-surface-variant: rgb(var(--ink-primary) / 0.65);
+  --color-ink-onSurfaceVariant: rgb(var(--ink-primary) / 0.65);
 
-  /* Stroke colors */
-  --color-stroke-subtle: rgb(var(--stroke-subtle));
-  --color-stroke-outlineVariant: rgb(var(--outline-variant));
+  /* Stroke / Hairlines */
+  --color-stroke-subtle: rgb(var(--ink-primary) / 0.15);
+  --color-stroke-outline-variant: rgb(var(--ink-primary) / 0.15);
+  --color-stroke-outlineVariant: rgb(var(--ink-primary) / 0.15);
 
-  --color-scrim: rgb(var(--scrim));
-
-  /* M3 Shape Scale – override defaults */
+  /* Shape – Inputs/Badges 4px · Buttons & Cards 8px · Prominent 12px */
   --radius-none: 0px;
   --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 28px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 12px;
   --radius-full: 9999px;
 
-  /* M3 Elevation */
+  /* Elevation – flat brand */
   --shadow-elevation-0: none;
-  --shadow-elevation-1: 0px 1px 2px 0px rgb(var(--shadow-color) / 0.3), 0px 1px 3px 1px rgb(var(--shadow-color) / 0.15);
-  --shadow-elevation-2: 0px 1px 2px 0px rgb(var(--shadow-color) / 0.3), 0px 2px 6px 2px rgb(var(--shadow-color) / 0.15);
-  --shadow-elevation-3: 0px 4px 8px 3px rgb(var(--shadow-color) / 0.15), 0px 1px 3px 0px rgb(var(--shadow-color) / 0.3);
-  --shadow-elevation-4: 0px 6px 10px 4px rgb(var(--shadow-color) / 0.15), 0px 2px 3px 0px rgb(var(--shadow-color) / 0.3);
-  --shadow-elevation-5: 0px 8px 12px 6px rgb(var(--shadow-color) / 0.15), 0px 4px 4px 0px rgb(var(--shadow-color) / 0.3);
+  --shadow-elevation-1: none;
+  --shadow-elevation-2: none;
+  --shadow-elevation-3: none;
+  --shadow-elevation-4: none;
+  --shadow-elevation-5: none;
 
-  /* M3 Motion Easing */
+  /* Motion */
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-standard-accel: cubic-bezier(0.3, 0, 1, 1);
   --ease-standard-decel: cubic-bezier(0, 0, 0, 1);
   --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
   --ease-emphasized-decel: cubic-bezier(0.05, 0.7, 0.1, 1);
   --ease-emphasized-accel: cubic-bezier(0.3, 0, 0.8, 0.15);
-
-  /* M3 Motion Duration – v4 namespace is --transition-duration-* (not --duration-*) */
   --transition-duration-short1: 50ms;
   --transition-duration-short2: 100ms;
   --transition-duration-short3: 150ms;
   --transition-duration-short4: 200ms;
-  --transition-duration-medium1: 250ms;
-  --transition-duration-medium2: 300ms;
-  --transition-duration-medium3: 350ms;
-  --transition-duration-medium4: 400ms;
+  --transition-duration-medium1: 200ms;
+  --transition-duration-medium2: 200ms;
+  --transition-duration-medium3: 200ms;
+  --transition-duration-medium4: 200ms;
 }
 
 @layer base {
@@ -114,216 +113,156 @@
     text-size-adjust: 100%;
   }
 
-  /* Light Mode (default) – #003366 Navy, #7B1B38 Bordeaux, #D4C4A8 Beige, #1C1C20 Charcoal */
+  /* Curfee colour palette
+     #003366 Navy  ·  #0A0A0A Black (with opacity tiers)  ·  #FAFBFC Off-White  ·  #F2F5FA Subtle-Blue */
   :root {
-    --brand-primary: 0 51 102;
+    --brand-primary: 0 51 102;          /* Navy */
     --on-brand-primary: 255 255 255;
-    --brand-primary-container: 194 218 242;
-    --on-brand-primary-container: 0 28 64;
-
-    --brand-secondary: 123 27 56;
+    --brand-secondary: 10 10 10;        /* legacy alias = ink-primary */
     --on-brand-secondary: 255 255 255;
-    --brand-secondary-container: 255 218 225;
-    --on-brand-secondary-container: 65 5 25;
-
-    --brand-tertiary: 90 78 48;
+    --brand-tertiary: 0 51 102;         /* legacy alias = Navy (no accent colour) */
     --on-brand-tertiary: 255 255 255;
-    --brand-tertiary-container: 240 232 212;
-    --on-brand-tertiary-container: 48 38 15;
-
     --brand-error: 179 38 30;
     --on-brand-error: 255 255 255;
-    --brand-error-container: 249 222 220;
-    --on-brand-error-container: 65 14 11;
 
-    --surface-base: 255 255 255;
-    --surface-dim: 222 219 214;
-    --surface-bright: 252 251 249;
-    --surface-soft: 252 251 249;
-    --surface-raised: 255 255 255;
-    --surface-variant: 232 228 222;
-    --surface-container-lowest: 255 255 255;
-    --surface-container-low: 248 246 243;
-    --surface-container: 242 240 236;
-    --surface-container-high: 237 234 230;
-    --surface-container-highest: 231 229 224;
+    --surface-base: 250 251 252;        /* Off-White – minimal cool tint, easier on the eyes than #FFF */
+    --surface-soft: 242 245 250;        /* Subtle-Blue Section accent */
 
-    --inverse-surface: 49 48 51;
-    --inverse-on-surface: 244 239 236;
-    --inverse-primary: 162 200 236;
+    --ink-primary: 10 10 10;            /* Near-black, slightly softened */
 
-    --ink-primary: 28 28 32;
-    --ink-muted: 72 72 80;
-    --ink-on-surface-variant: 68 68 76;
-
-    --stroke-subtle: 210 206 198;
-    --outline-variant: 200 196 188;
+    /* Opacity-tier RGB equivalents on white background, so legacy
+       rgb(var(--ink-muted))-style references resolve cleanly without
+       requiring every component to switch to rgb(var(--ink-primary) / 0.X) */
+    --ink-muted: 71 71 71;              /* ≈ ink-primary / 0.75 on white */
+    --ink-soft: 96 96 96;               /* ≈ ink-primary / 0.65 on white */
+    --ink-meta: 157 157 157;            /* ≈ ink-primary / 0.40 on white */
+    --stroke-subtle: 218 218 218;       /* ≈ ink-primary / 0.15 on white */
+    --outline-variant: 218 218 218;
 
     --scrim: 0 0 0;
-    --shadow-color: 0 0 0;
     color-scheme: light;
   }
 
-  /* Dark Mode – M3 tonal palette inversion */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --brand-primary: 162 200 236;
-      --on-brand-primary: 0 30 65;
-      --brand-primary-container: 0 42 88;
-      --on-brand-primary-container: 194 218 242;
-
-      --brand-secondary: 240 180 195;
-      --on-brand-secondary: 65 5 30;
-      --brand-secondary-container: 90 15 40;
-      --on-brand-secondary-container: 255 218 225;
-
-      --brand-tertiary: 210 195 165;
-      --on-brand-tertiary: 50 40 18;
-      --brand-tertiary-container: 65 55 30;
-      --on-brand-tertiary-container: 240 232 212;
-
-      --brand-error: 242 184 181;
-      --on-brand-error: 96 20 16;
-      --brand-error-container: 140 29 24;
-      --on-brand-error-container: 249 222 220;
-
-      --surface-base: 20 20 22;
-      --surface-dim: 20 20 22;
-      --surface-bright: 58 56 53;
-      --surface-soft: 28 28 30;
-      --surface-raised: 35 35 38;
-      --surface-variant: 55 52 48;
-      --surface-container-lowest: 15 15 17;
-      --surface-container-low: 28 27 30;
-      --surface-container: 33 32 35;
-      --surface-container-high: 43 42 45;
-      --surface-container-highest: 54 53 56;
-
-      --inverse-surface: 230 225 221;
-      --inverse-on-surface: 49 48 51;
-      --inverse-primary: 0 51 102;
-
-      --ink-primary: 230 228 224;
-      --ink-muted: 190 188 184;
-      --ink-on-surface-variant: 200 196 190;
-
-      --stroke-subtle: 55 52 48;
-      --outline-variant: 75 72 66;
-
-      --scrim: 0 0 0;
-      --shadow-color: 0 0 0;
-      color-scheme: dark;
-    }
-  }
-
   body {
-    @apply bg-surface-soft text-ink-primary font-body antialiased;
+    @apply bg-surface-base text-ink-primary font-sans antialiased;
+    font-family: "Manrope", system-ui, -apple-system, sans-serif;
+    font-weight: 400;
     text-rendering: geometricPrecision;
     font-synthesis: none;
     overflow-anchor: none;
   }
+
+  /* Default heading family + tracking */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Manrope", system-ui, -apple-system, sans-serif;
+    color: rgb(var(--ink-primary));
+    text-wrap: balance;
+  }
 }
 
-/* M3 Type Scale – defined via @utility so responsive/state variants (md:, lg:, hover:, etc.) work in Tailwind 4 */
+/* ===========================================================
+   Type scale (Manrope, weights 400–800)
+   =========================================================== */
 @utility text-display-large {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: 3.5625rem;
-  line-height: 4rem;
-  letter-spacing: -0.03125rem;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: clamp(3rem, 6vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
 @utility text-display-medium {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: 2.8125rem;
-  line-height: 3.25rem;
-  letter-spacing: -0.025rem;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
 @utility text-display-small {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: 2.25rem;
-  line-height: 2.75rem;
-  letter-spacing: -0.015625rem;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  font-weight: 800;
 }
 @utility text-headline-large {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: 2rem;
-  line-height: 2.5rem;
-  letter-spacing: 0;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  font-weight: 800;
 }
 @utility text-headline-medium {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: 1.75rem;
-  line-height: 2.25rem;
-  letter-spacing: 0;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 800;
 }
 @utility text-headline-small {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  letter-spacing: 0;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  font-weight: 700;
 }
 @utility text-title-large {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: 1.375rem;
-  line-height: 1.75rem;
-  letter-spacing: 0;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 700;
 }
 @utility text-title-medium {
+  font-family: var(--font-sans);
   font-size: 1rem;
-  line-height: 1.5rem;
-  letter-spacing: 0.009375rem;
-  font-weight: 500;
+  line-height: 1.5;
+  font-weight: 600;
 }
 @utility text-title-small {
+  font-family: var(--font-sans);
   font-size: 0.875rem;
-  line-height: 1.25rem;
-  letter-spacing: 0.00625rem;
-  font-weight: 500;
+  line-height: 1.4;
+  font-weight: 600;
 }
 @utility text-body-large {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  letter-spacing: 0.03125rem;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.6;
   font-weight: 400;
 }
 @utility text-body-medium {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  letter-spacing: 0.015625rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.6;
   font-weight: 400;
 }
 @utility text-body-small {
-  font-size: 0.75rem;
-  line-height: 1rem;
-  letter-spacing: 0.025rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  line-height: 1.5;
   font-weight: 400;
 }
 @utility text-label-large {
+  font-family: var(--font-sans);
   font-size: 0.875rem;
   line-height: 1.25rem;
-  letter-spacing: 0.00625rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 @utility text-label-medium {
-  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem; /* 13px */
   line-height: 1rem;
-  letter-spacing: 0.03125rem;
-  font-weight: 500;
+  letter-spacing: 0.06em;
+  font-weight: 600;
 }
 @utility text-label-small {
+  font-family: var(--font-sans);
   font-size: 0.6875rem;
   line-height: 1rem;
-  letter-spacing: 0.03125rem;
-  font-weight: 500;
+  letter-spacing: 0.06em;
+  font-weight: 600;
 }
 
-/* View Transitions – allow clicks to pass through the transition overlay */
+/* View transitions – let clicks pass through */
 ::view-transition,
 ::view-transition-group(*),
 ::view-transition-image-pair(*),
@@ -332,15 +271,15 @@
   pointer-events: none;
 }
 
-/* M3 Accessibility – Focus Visible (M3 uses secondary for focus indicators) */
+/* Focus ring – Navy, the only functional "shadow" we keep */
 @layer base {
   :focus-visible {
-    outline: 3px solid rgb(var(--brand-secondary));
+    outline: 2px solid rgb(var(--brand-primary));
     outline-offset: 3px;
   }
 }
 
-/* M3 Accessibility – Reduced Motion */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -352,52 +291,7 @@
   }
 }
 
-/* M3 Accessibility – Medium/High Contrast Mode */
-@media (prefers-contrast: more) {
-  :root {
-    --brand-primary: 0 40 82;
-    --on-brand-primary: 255 255 255;
-    --brand-secondary: 100 15 42;
-    --on-brand-secondary: 255 255 255;
-    --brand-tertiary: 90 78 48;
-    --on-brand-tertiary: 255 255 255;
-
-    --ink-primary: 0 0 0;
-    --ink-muted: 40 40 48;
-    --ink-on-surface-variant: 36 36 44;
-
-    --surface-base: 255 255 255;
-    --surface-soft: 248 246 242;
-    --surface-raised: 255 255 255;
-
-    --stroke-subtle: 160 156 148;
-    --outline-variant: 120 116 108;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --brand-primary: 180 215 248;
-      --on-brand-primary: 0 24 56;
-      --brand-secondary: 255 195 210;
-      --on-brand-secondary: 55 0 22;
-      --brand-tertiary: 225 210 180;
-      --on-brand-tertiary: 40 32 10;
-
-      --ink-primary: 255 255 255;
-      --ink-muted: 210 208 204;
-      --ink-on-surface-variant: 220 216 210;
-
-      --surface-base: 10 10 12;
-      --surface-soft: 20 20 22;
-      --surface-raised: 28 28 30;
-
-      --stroke-subtle: 90 86 80;
-      --outline-variant: 130 126 118;
-    }
-  }
-}
-
-/* M3 Accessibility – Forced Colors (Windows High Contrast) */
+/* Forced colours */
 @media (forced-colors: active) {
   :focus-visible {
     outline: 3px solid LinkText;
@@ -405,56 +299,48 @@
   }
 }
 
-/* Blog post – H2 accent marker (editorial section rule) + first-paragraph drop cap */
+/* ===========================================================
+   Blog typography – inherits Manrope
+   =========================================================== */
+.prose-blog h2,
+.prose-blog h3 {
+  font-weight: 800;
+  text-wrap: balance;
+}
+
 .prose-blog h2::before {
   content: "";
   display: block;
   width: 2.5rem;
-  height: 3px;
+  height: 1px;
   background: rgb(var(--brand-primary));
-  margin-bottom: 0.75rem;
-  border-radius: 2px;
-}
-
-.prose-blog h2,
-.prose-blog h3 {
-  text-wrap: balance;
+  margin-bottom: 1rem;
 }
 
 .prose-blog > p:first-of-type {
   font-size: 1.125rem;
-  line-height: 1.65;
-  color: rgb(var(--ink-primary));
+  line-height: 1.6;
+  color: rgb(var(--ink-primary) / 0.85);
   margin-bottom: 1.75rem;
+  font-weight: 500;
 }
 
-.prose-blog > p:first-of-type::first-letter {
-  float: left;
-  font-size: 3.5em;
-  line-height: 0.95;
-  padding: 0.1em 0.1em 0 0;
-  margin-right: 0.08em;
-  font-weight: 600;
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  color: rgb(var(--brand-primary));
-}
-
-/* Blog post – footnotes (GFM via remark-gfm) */
+/* Blog footnotes (GFM) */
 .prose-blog [data-footnotes],
 .prose-blog .footnotes {
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid rgb(var(--outline-variant));
+  border-top: 1px solid rgb(var(--ink-primary) / 0.15);
   font-size: 0.875rem;
-  color: rgb(var(--ink-muted));
+  color: rgb(var(--ink-primary) / 0.65);
 }
 .prose-blog [data-footnotes] h2,
 .prose-blog .footnotes h2 {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgb(var(--ink-muted));
+  color: rgb(var(--ink-primary) / 0.65);
   margin: 0 0 1rem;
 }
 .prose-blog [data-footnotes] h2::before,
@@ -480,7 +366,7 @@
 .prose-blog sup a {
   color: rgb(var(--brand-primary));
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
 }
 .prose-blog [data-footnote-backref] {
   color: rgb(var(--brand-primary));
@@ -488,7 +374,7 @@
   margin-left: 0.25rem;
 }
 
-/* Blog – heading anchor links injected by rehype-autolink-headings */
+/* Heading anchor links (rehype-autolink-headings) */
 .prose-blog :is(h2, h3) {
   position: relative;
 }
@@ -498,8 +384,8 @@
   color: rgb(var(--brand-primary));
   opacity: 0;
   text-decoration: none;
-  font-weight: 400;
-  transition: opacity 150ms ease;
+  font-weight: 600;
+  transition: opacity 200ms ease;
 }
 .prose-blog :is(h2, h3):hover .heading-anchor,
 .prose-blog .heading-anchor:focus-visible {
@@ -510,102 +396,111 @@
 }
 
 /* ===========================================================
-   Unbuzz-style layout system
-   - Fixed max-width container (1240px)
-   - Breakpoint-based padding (1100, 900, 640px)
-   - Section variants (default, soft, navy, ink)
-   - Card patterns
+   Layout primitives
    =========================================================== */
 
 .uc-container {
-  max-width: 1240px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 48px;
   padding-right: 48px;
 }
 
-.uc-section {
-  padding-top: 96px;
-  padding-bottom: 96px;
+.uc-container--narrow {
+  max-width: 720px;
 }
 
+.uc-section {
+  padding-top: clamp(4rem, 8vw, 8rem);
+  padding-bottom: clamp(4rem, 8vw, 8rem);
+}
+
+/* Section variants – background-only, no shadows, no decorative dividers */
 .uc-section--soft {
-  background: rgb(var(--surface-container-low));
+  background: rgb(var(--surface-soft));   /* Subtle-Blue */
 }
 
 .uc-section--navy {
-  background: rgb(var(--brand-primary));
+  background: rgb(var(--brand-primary));  /* Navy */
   color: rgb(var(--on-brand-primary));
 }
 
 .uc-section--ink {
-  background: rgb(var(--ink-primary));
+  background: rgb(var(--ink-primary));    /* Near-black */
   color: rgb(var(--surface-base));
 }
 
-/* Eyebrow / kicker labels */
+/* Kicker – Architectural editorial label, Manrope SemiBold All-Caps Navy */
 .uc-eyebrow {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem; /* 13px */
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgb(var(--ink-muted));
+  color: rgb(var(--brand-primary));
   margin: 0;
 }
-
 .uc-section--navy .uc-eyebrow,
 .uc-section--ink .uc-eyebrow {
-  color: rgb(var(--surface-base) / 0.65);
+  color: rgb(var(--surface-base) / 0.7);
 }
 
-/* Section heading */
+/* Display headings – Manrope ExtraBold */
 .uc-h1 {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 900;
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  text-wrap: balance;
-  margin: 0;
-}
-
-.uc-h2 {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: -0.02em;
   text-wrap: balance;
   margin: 0;
 }
 
-.uc-h3 {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: 1.375rem;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+.uc-h2 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
   margin: 0;
 }
 
-/* Body text */
+.uc-h3 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+
+/* Body text – Manrope, near-black with opacity tier */
 .uc-lead {
+  font-family: var(--font-sans);
   font-size: 1.125rem;
   line-height: 1.6;
-  color: rgb(var(--ink-muted));
+  color: rgb(var(--ink-primary) / 0.75);
+  max-width: 65ch;
+  font-weight: 500;
 }
 
 .uc-body {
-  font-size: 1rem;
-  line-height: 1.65;
-  color: rgb(var(--ink-muted));
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: rgb(var(--ink-primary) / 0.75);
+  max-width: 65ch;
+  font-weight: 400;
 }
 
 .uc-small {
-  font-size: 0.8125rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
   line-height: 1.6;
-  color: rgb(var(--ink-muted));
+  color: rgb(var(--ink-primary) / 0.65);
+  font-weight: 400;
 }
 
 .uc-section--navy .uc-lead,
@@ -617,18 +512,38 @@
   color: rgb(var(--surface-base) / 0.85);
 }
 
-/* Card pattern */
+/* ===========================================================
+   Hover patterns – four canonical behaviours
+   "Hover macht Elemente leichter, nicht schwerer."
+   =========================================================== */
+
+/* Card – subtle lift, never colour shift */
 .uc-card {
   background: rgb(var(--surface-base));
-  border: 1px solid rgb(var(--stroke-subtle));
-  border-radius: 12px;
+  border: 1px solid rgb(var(--ink-primary) / 0.1);
+  border-radius: 8px;
   padding: 32px;
+  transition: transform 200ms ease;
+}
+
+.uc-card-link,
+.uc-card--hover {
+  transition: transform 200ms ease;
+}
+.uc-card-link:hover,
+.uc-card--hover:hover {
+  transform: translateY(-4px);
+}
+
+/* On Subtle-Blue sections cards remain white with the same hairline */
+.uc-section--soft .uc-card {
+  background: rgb(var(--surface-base));
 }
 
 .uc-section--navy .uc-card,
 .uc-section--ink .uc-card {
-  background: rgb(var(--surface-base) / 0.04);
-  border-color: rgb(var(--surface-base) / 0.12);
+  background: rgb(var(--surface-base) / 0.05);
+  border-color: rgb(var(--surface-base) / 0.18);
 }
 
 /* Buttons */
@@ -637,44 +552,71 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  font-size: 0.875rem;
+  padding: 0.875rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.005em;
   border-radius: 8px;
   text-decoration: none;
-  transition: all 140ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background-color 200ms ease, color 200ms ease, opacity 200ms ease;
   white-space: nowrap;
-  border: 1px solid transparent;
+  border: 1.5px solid transparent;
+  cursor: pointer;
 }
 
 .uc-btn--primary {
   background: rgb(var(--brand-primary));
   color: rgb(var(--on-brand-primary));
+  border-color: rgb(var(--brand-primary));
 }
 .uc-btn--primary:hover {
-  filter: brightness(1.1);
+  background: rgb(var(--brand-primary) / 0.85);
+  border-color: rgb(var(--brand-primary) / 0.85);
 }
 
 .uc-btn--secondary {
   background: transparent;
-  color: rgb(var(--ink-primary));
-  border-color: rgb(var(--stroke-subtle));
+  color: rgb(var(--brand-primary));
+  border: 1.5px solid rgb(var(--brand-primary));
 }
 .uc-btn--secondary:hover {
-  border-color: rgb(var(--brand-primary));
-  color: rgb(var(--brand-primary));
+  background: rgb(var(--brand-primary));
+  color: rgb(var(--on-brand-primary));
 }
 
 .uc-section--navy .uc-btn--secondary,
 .uc-section--ink .uc-btn--secondary {
   color: rgb(var(--surface-base));
-  border-color: rgb(var(--surface-base) / 0.3);
+  border-color: rgb(var(--surface-base));
 }
 .uc-section--navy .uc-btn--secondary:hover,
 .uc-section--ink .uc-btn--secondary:hover {
-  border-color: rgb(var(--surface-base));
-  color: rgb(var(--surface-base));
+  background: rgb(var(--surface-base));
+  color: rgb(var(--brand-primary));
+}
+
+/* Text links – Navy + underline appears on hover */
+.uc-link {
+  color: rgb(var(--brand-primary));
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms ease;
+}
+.uc-link:hover {
+  border-bottom-color: rgb(var(--brand-primary));
+}
+
+/* Navigation links – black default, Navy + underline on hover */
+.uc-nav-link {
+  color: rgb(var(--ink-primary));
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+.uc-nav-link:hover {
+  color: rgb(var(--brand-primary));
+  border-bottom-color: rgb(var(--brand-primary));
 }
 
 /* Grid utilities */
@@ -683,10 +625,9 @@
 .uc-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .uc-grid-2-3 { display: grid; grid-template-columns: 2fr 3fr; gap: 64px; }
 
-/* Responsive breakpoints (matching unbuzz pattern) */
+/* Responsive */
 @media (max-width: 1100px) {
   .uc-container { padding-left: 32px; padding-right: 32px; }
-  .uc-section { padding-top: 80px; padding-bottom: 80px; }
 }
 
 @media (max-width: 900px) {
@@ -701,6 +642,5 @@
 
 @media (max-width: 640px) {
   .uc-container { padding-left: 20px; padding-right: 20px; }
-  .uc-section { padding-top: 60px; padding-bottom: 60px; }
   .uc-card { padding: 24px; }
 }

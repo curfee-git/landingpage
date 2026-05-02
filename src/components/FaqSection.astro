@@ -52,7 +52,7 @@ const answerProseClass = "text-body-medium md:text-body-large text-ink-muted lea
     <div class="faq-inner">
       <p class="uc-eyebrow" style="margin-bottom: 16px;">FAQ</p>
       <h2 id="faq-heading" class="uc-h2">{t['faq.heading']}</h2>
-      <p class="uc-lead" style="margin-top: 16px; color: rgb(var(--brand-primary)); font-weight: 600; max-width: 640px;">{t['faq.subtitle']}</p>
+      <p class="uc-lead" style="margin-top: 16px; color: rgb(var(--brand-primary)); font-weight: 600; max-width: 65ch;">{t['faq.subtitle']}</p>
 
       <div style="margin-top: 48px;">
         {groups.map((group, gi) => (
@@ -90,12 +90,12 @@ const answerProseClass = "text-body-medium md:text-body-large text-ink-muted lea
   .faq-inner { max-width: 920px; }
   .faq-group--gap { margin-top: 40px; }
   .faq-grouplabel {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgb(var(--brand-primary) / 0.7);
+    color: rgb(var(--brand-primary));
     margin: 0 0 16px 0;
   }
   .faq-list {
@@ -105,24 +105,25 @@ const answerProseClass = "text-body-medium md:text-body-large text-ink-muted lea
   }
   .faq-details {
     background: rgb(var(--surface-base));
-    border: 1px solid rgb(var(--stroke-subtle));
+    border: 1px solid rgb(var(--ink-primary) / 0.1);
     border-radius: 8px;
-    transition: border-color 140ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: border-color 200ms ease;
   }
   .faq-details[open] {
-    border-color: rgb(var(--brand-primary) / 0.4);
+    border-color: rgb(var(--brand-primary));
   }
   .faq-summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    padding: 18px 24px;
+    padding: 20px 24px;
+    font-family: var(--font-sans);
     font-size: 1rem;
     font-weight: 600;
     color: rgb(var(--ink-primary));
     list-style: none;
-    transition: color 140ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: color 200ms ease;
   }
   .faq-summary::-webkit-details-marker {
     display: none;
@@ -133,8 +134,8 @@ const answerProseClass = "text-body-medium md:text-body-large text-ink-muted lea
   .faq-toggle {
     flex-shrink: 0;
     margin-left: 16px;
-    color: rgb(var(--ink-muted));
-    transition: transform 150ms cubic-bezier(0.22, 1, 0.36, 1);
+    color: rgb(var(--ink-primary) / 0.4);
+    transition: transform 200ms ease;
   }
   .faq-details[open] .faq-toggle {
     transform: rotate(180deg);
