@@ -19,7 +19,8 @@ const routes = getRoutes();
         <p class="uc-eyebrow hero-eyebrow">{t['hero.eyebrow']}</p>
 
         <h1 id="hero-heading" data-speakable class="uc-h1">
-          {t['hero.heading']}
+          {t['hero.heading']}{' '}
+          <span class="hero-heading-accent">{t['hero.heading.accent']}</span>
         </h1>
 
         <p data-speakable class="uc-lead" style="margin-top: 28px; max-width: 640px;">
@@ -43,10 +44,11 @@ const routes = getRoutes();
           class="hero-portrait-img"
           loading="eager"
           decoding="async"
+          format="png"
           width={360}
           height={540}
           widths={[240, 360, 480, 720]}
-          sizes="(max-width: 900px) 0px, (max-width: 1200px) 280px, 360px"
+          sizes="(max-width: 900px) 0px, (max-width: 1200px) 320px, 400px"
         />
       </div>
 
@@ -57,7 +59,7 @@ const routes = getRoutes();
 <style>
   .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     gap: 64px;
     align-items: center;
   }
@@ -67,14 +69,20 @@ const routes = getRoutes();
   .hero-eyebrow {
     margin-bottom: 20px;
   }
+  .hero-heading-accent {
+    display: block;
+    color: rgb(var(--brand-primary));
+  }
   .hero-portrait {
-    place-self: center;
+    justify-self: end;
+    align-self: center;
   }
   .hero-portrait-img {
     display: block;
-    width: clamp(220px, 22vw, 360px);
+    width: clamp(240px, 24vw, 400px);
     height: auto;
     border-radius: 12px;
+    border: 1px solid rgb(var(--ink-primary) / 0.08);
   }
   .hero-ctas {
     margin-top: 40px;

@@ -435,7 +435,7 @@
 .uc-eyebrow {
   font-family: var(--font-sans);
   font-size: 0.8125rem; /* 13px */
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgb(var(--brand-primary));
@@ -571,8 +571,8 @@
   border-color: rgb(var(--brand-primary));
 }
 .uc-btn--primary:hover {
-  background: rgb(var(--brand-primary) / 0.85);
-  border-color: rgb(var(--brand-primary) / 0.85);
+  background: color-mix(in srgb, rgb(var(--brand-primary)) 80%, black);
+  border-color: color-mix(in srgb, rgb(var(--brand-primary)) 80%, black);
 }
 
 .uc-btn--secondary {
@@ -581,8 +581,8 @@
   border: 1.5px solid rgb(var(--brand-primary));
 }
 .uc-btn--secondary:hover {
-  background: rgb(var(--brand-primary));
-  color: rgb(var(--on-brand-primary));
+  background: rgb(var(--brand-primary) / 0.33);
+  color: rgb(var(--brand-primary));
 }
 
 .uc-section--navy .uc-btn--secondary,
