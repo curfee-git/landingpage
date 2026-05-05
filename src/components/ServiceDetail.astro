@@ -35,16 +35,16 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
 <article class={`service-detail service-detail--${accent}`}>
 
   <!-- Hero / Page header -->
-  <section class="uc-section service-hero">
-    <div class="uc-container">
+  <section class="cf-section service-hero">
+    <div class="cf-container">
       <div class="service-hero-grid">
         <div class="service-hero-main">
-          <p class="uc-eyebrow service-hero-eyebrow">{duration}</p>
-          <h1 class="uc-h1 service-hero-title">{title}</h1>
+          <p class="cf-eyebrow service-hero-eyebrow">{duration}</p>
+          <h1 class="cf-h1 service-hero-title">{title}</h1>
           <p class="service-hero-subtitle">{subtitle}</p>
         </div>
         <aside class="service-hero-aside">
-          <p class="uc-body service-hero-problem">{problem}</p>
+          <p class="cf-body service-hero-problem">{problem}</p>
           <a href={routes.contact} class="service-hero-cta">
             {cta}
             <Icon name="arrow_outward" class="w-4 h-4" />
@@ -55,12 +55,12 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
   </section>
 
   <!-- For whom -->
-  <section class="uc-section uc-section--soft">
-    <div class="uc-container">
-      <div class="uc-grid-2-3">
+  <section class="cf-section cf-section--soft">
+    <div class="cf-container">
+      <div class="cf-grid-2-3">
         <div>
-          <p class="uc-eyebrow">{t['services.label.forwhom']}</p>
-          <h2 class="uc-h2" style="margin-top: 16px;">Klingt das vertraut?</h2>
+          <p class="cf-eyebrow">{t['services.label.forwhom']}</p>
+          <h2 class="cf-h2" style="margin-top: 16px;">Klingt das vertraut?</h2>
         </div>
         <ul class="service-forwhom">
           {forwhom.map((item) => (
@@ -75,11 +75,11 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
   </section>
 
   <!-- Process timeline -->
-  <section class="uc-section">
-    <div class="uc-container">
+  <section class="cf-section">
+    <div class="cf-container">
       <div class="service-process-head">
-        <p class="uc-eyebrow">{t['services.label.process']}</p>
-        <h2 class="uc-h2" style="margin-top: 16px;">Wie es abläuft</h2>
+        <p class="cf-eyebrow">{t['services.label.process']}</p>
+        <h2 class="cf-h2" style="margin-top: 16px;">Wie es abläuft</h2>
       </div>
       <ol class="service-timeline">
         {timeline.map((step, idx) => (
@@ -88,8 +88,8 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
               <span>{idx + 1}</span>
             </div>
             <div class="service-step-body">
-              <p class="uc-eyebrow service-step-phase">{step.phase}</p>
-              <h3 class="uc-h3 service-step-title">{step.title}</h3>
+              <p class="cf-eyebrow service-step-phase">{step.phase}</p>
+              <h3 class="cf-h3 service-step-title">{step.title}</h3>
               <p class="service-step-outcome">{step.outcome}</p>
               <ul class="service-step-items">
                 {step.items.map((item) => (
@@ -107,11 +107,11 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
   </section>
 
   <!-- Delivers + Excludes -->
-  <section class="uc-section uc-section--soft">
-    <div class="uc-container">
-      <div class="uc-grid-2 service-bento">
-        <div class="service-delivers uc-card">
-          <p class="uc-eyebrow service-card-label">{t['services.label.delivers']}</p>
+  <section class="cf-section cf-section--soft">
+    <div class="cf-container">
+      <div class="cf-grid-2 service-bento">
+        <div class="service-delivers cf-card">
+          <p class="cf-eyebrow service-card-label">{t['services.label.delivers']}</p>
           <ul>
             {delivers.map((item) => (
               <li>
@@ -121,8 +121,8 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
             ))}
           </ul>
         </div>
-        <div class="service-excludes uc-card">
-          <p class="uc-eyebrow service-card-label">{t['services.label.excludes']}</p>
+        <div class="service-excludes cf-card">
+          <p class="cf-eyebrow service-card-label">{t['services.label.excludes']}</p>
           <ul>
             {excludes.map((item) => (
               <li>
@@ -137,22 +137,22 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
   </section>
 
   <!-- Objection -->
-  <section class="uc-section">
-    <div class="uc-container">
+  <section class="cf-section">
+    <div class="cf-container">
       <div class="service-objection">
-        <p class="uc-eyebrow">Häufige Frage</p>
-        <h2 class="uc-h2" style="margin-top: 16px;">{objectionQ}</h2>
-        <p class="uc-lead" style="margin-top: 24px; max-width: 720px;">{objectionA}</p>
+        <p class="cf-eyebrow">Häufige Frage</p>
+        <h2 class="cf-h2" style="margin-top: 16px;">{objectionQ}</h2>
+        <p class="cf-lead" style="margin-top: 24px; max-width: 720px;">{objectionA}</p>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="uc-section uc-section--navy">
-    <div class="uc-container">
+  <section class="cf-section cf-section--navy">
+    <div class="cf-container">
       <div style="max-width: 760px;">
-        <h2 class="uc-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
-        <p class="uc-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
+        <h2 class="cf-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
+        <p class="cf-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
         <a href={routes.contact} class="service-final-cta">{cta}</a>
       </div>
     </div>

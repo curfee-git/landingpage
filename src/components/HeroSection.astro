@@ -11,27 +11,27 @@ const { translations: t } = Astro.props;
 const routes = getRoutes();
 ---
 
-<section class="uc-section" aria-labelledby="hero-heading" style="padding-top: 120px; padding-bottom: 120px;">
-  <div class="uc-container">
+<section class="cf-section hero-fold" aria-labelledby="hero-heading">
+  <div class="cf-container hero-fold-container">
     <div class="hero-grid">
 
       <div class="hero-inner">
-        <p class="uc-eyebrow hero-eyebrow">{t['hero.eyebrow']}</p>
+        <p class="cf-eyebrow hero-eyebrow">{t['hero.eyebrow']}</p>
 
-        <h1 id="hero-heading" data-speakable class="uc-h1">
+        <h1 id="hero-heading" data-speakable class="cf-h1">
           {t['hero.heading']}{' '}
           <span class="hero-heading-accent">{t['hero.heading.accent']}</span>
         </h1>
 
-        <p data-speakable class="uc-lead" style="margin-top: 28px; max-width: 640px;">
+        <p data-speakable class="cf-lead" style="margin-top: 28px; max-width: 640px;">
           {t['hero.subtitle']}
         </p>
 
         <div class="hero-ctas">
-          <a href={routes.contact} class="uc-btn uc-btn--primary">
+          <a href={routes.contact} class="cf-btn cf-btn--primary">
             {t['hero.cta']}
           </a>
-          <a href="#services" class="uc-btn uc-btn--secondary">
+          <a href="#services" class="cf-btn cf-btn--secondary">
             {t['hero.cta.secondary']}
           </a>
         </div>
@@ -57,6 +57,19 @@ const routes = getRoutes();
 </section>
 
 <style>
+  .hero-fold-container {
+    width: 100%;
+  }
+  @media (min-width: 1024px) {
+    .hero-fold {
+      min-height: calc(50svh - 36px);
+      display: flex;
+      align-items: center;
+    }
+    .hero-fold-container {
+      padding-inline: 0;
+    }
+  }
   .hero-grid {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
@@ -79,7 +92,7 @@ const routes = getRoutes();
   }
   .hero-portrait-img {
     display: block;
-    width: clamp(240px, 24vw, 400px);
+    width: clamp(280px, 28vw, 480px);
     height: auto;
     border-radius: 12px;
     border: 1px solid rgb(var(--ink-primary) / 0.08);
@@ -98,12 +111,6 @@ const routes = getRoutes();
     }
     .hero-portrait {
       display: none;
-    }
-  }
-  @media (max-width: 640px) {
-    section.uc-section {
-      padding-top: 80px !important;
-      padding-bottom: 80px !important;
     }
   }
 </style>

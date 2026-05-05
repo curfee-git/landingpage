@@ -11,8 +11,8 @@ const navClass = "px-5 py-3 text-label-large font-semibold whitespace-nowrap tex
 const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibold transition-colors duration-short4 ease-standard text-ink-primary hover:text-brand-primary";
 ---
 
-<header class="z-20 sticky top-0" role="banner" data-header>
-  <div class="mx-auto max-w-7xl flex items-center justify-between gap-3 w-full relative h-[clamp(60px,3.5vw,96px)] px-6 md:px-12 lg:px-20" data-header-shell>
+<header role="banner" data-header class="fixed inset-x-0 top-0 z-50 bg-surface-base">
+  <div class="mx-auto max-w-7xl flex items-center justify-between gap-3 w-full relative h-[var(--header-height)] px-[var(--gutter)]" data-header-shell>
     <a href={routes.home} class="shrink-0 inline-flex items-center gap-2 text-brand-primary" aria-label="Curfee">
       <span class="block h-5 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
     </a>
@@ -61,18 +61,25 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
     </div>
   </div>
 
-  <div id={menuId} inert data-mobile-menu class="lg:hidden absolute -left-px -right-px transition-[max-height,opacity] duration-medium2 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 pb-4 space-y-2">
+  <div id={menuId} inert data-mobile-menu class="lg:hidden absolute -left-px -right-px bg-surface-base transition-[max-height,opacity] duration-medium2 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden">
+    <div class="max-w-7xl mx-auto px-[var(--gutter)] pb-4 space-y-2">
       <nav class="flex flex-col gap-1" aria-label="Mobile Navigation">
         <a href={routes.home} class={menuItemClass} data-menu-close data-nav-link>{t['nav.home']}</a>
-        <p class="px-4 pt-3 pb-1 text-label-medium uppercase tracking-wider text-ink-muted">{t['nav.services']}</p>
-        <a href={routes.service.diagnosis} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.diagnosis.title']}</a>
-        <a href={routes.service.guidance} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.guidance.title']}</a>
-        <a href={routes.service.advisory} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.advisory.title']}</a>
+        <button type="button" class={`${menuItemClass} justify-between w-full`} aria-expanded="false" data-mobile-services-toggle>
+          <span>{t['nav.services']}</span>
+          <svg class="w-5 h-5 transition-transform duration-short4 ease-standard shrink-0" data-mobile-services-icon viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true">
+            <path d="M480-345 240-585l43-43 197 198 197-197 43 43-240 239Z"/>
+          </svg>
+        </button>
+        <div data-mobile-services-list class="overflow-hidden max-h-0 transition-[max-height] duration-medium2 ease-standard flex flex-col gap-1">
+          <a href={routes.service.diagnosis} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.diagnosis.title']}</a>
+          <a href={routes.service.guidance} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.guidance.title']}</a>
+          <a href={routes.service.advisory} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.advisory.title']}</a>
+        </div>
         <a href={routes.about} class={menuItemClass} data-menu-close data-nav-link>{t['nav.about']}</a>
         <a href={routes.blog} class={menuItemClass} data-menu-close data-nav-link>{t['nav.blog']}</a>
       </nav>
-      <div class="sm:hidden flex flex-col gap-2 px-4 pt-2">
+      <div class="lg:hidden flex flex-col gap-2 px-4 pt-2">
         <a href={routes.contact} class="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary hover:bg-[#002952] px-6 py-3.5 rounded-md text-sm font-bold leading-none transition-colors duration-short4 ease-standard" data-menu-close>{t['nav.cta']}</a>
       </div>
     </div>
@@ -160,23 +167,6 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
   [data-header] {
     --menu-height: 0px;
   }
-  [data-header]::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgb(var(--surface-base) / 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: -1;
-  }
-  @media (max-width: 1023px) {
-    [data-header]::before {
-      height: calc(100% + var(--menu-height));
-    }
-  }
 </style>
 
 <script>
@@ -201,23 +191,9 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
     const iconOpen = header?.querySelector('[data-menu-icon="open"]') as HTMLElement | null;
     const iconClosed = header?.querySelector('[data-menu-icon="closed"]') as HTMLElement | null;
 
-    let menuOpen = false;
-    const updateMenuHeight = () => {
-      if (!menu || !header) return;
-      header.style.setProperty('--menu-height', menuOpen ? `${menu.scrollHeight}px` : '0px');
-    };
-
-    if (menu) {
-      const menuObserver = new ResizeObserver(updateMenuHeight);
-      menuObserver.observe(menu);
-      addCleanup(() => menuObserver.disconnect());
-    }
-
     const setMenuState = (open: boolean) => {
       if (!menu || !toggle || !header) return;
-      menuOpen = open;
-      updateMenuHeight();
-      menu.style.maxHeight = open ? '30rem' : '0px';
+      menu.style.maxHeight = open ? `${menu.scrollHeight}px` : '0px';
       menu.style.opacity = open ? '1' : '0';
       menu.style.pointerEvents = open ? 'auto' : 'none';
       menu.inert = !open;
@@ -343,7 +319,11 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
       // Wait two frames so any lazy layout above the target settles before
       // measuring offsetTop, then scroll if the browser hasn't already.
       const scrollToSection = () => {
-        const target = hashSection.offsetTop;
+        const headerHeight = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue('--header-height') || '72',
+          10,
+        ) || 72;
+        const target = Math.max(0, hashSection.offsetTop - headerHeight);
         if (Math.abs(window.scrollY - target) > 4) {
           window.scrollTo({ top: target, behavior: 'auto' });
         }
@@ -426,11 +406,41 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
     });
   }
 
-  document.addEventListener('astro:before-swap', runCleanup);
-  document.addEventListener('astro:page-load', () => {
+  function initMobileServicesToggle() {
+    const toggle = document.querySelector('[data-mobile-services-toggle]') as HTMLButtonElement | null;
+    const list = document.querySelector('[data-mobile-services-list]') as HTMLDivElement | null;
+    const icon = document.querySelector('[data-mobile-services-icon]') as HTMLElement | null;
+    if (!toggle || !list || !icon) return;
+
+    let open = false;
+    const setOpen = (next: boolean) => {
+      open = next;
+      toggle.setAttribute('aria-expanded', String(open));
+      const subHeight = list.scrollHeight;
+      list.style.maxHeight = open ? `${subHeight}px` : '0px';
+      icon.style.transform = open ? 'rotate(180deg)' : '';
+
+      const parentMenu = document.querySelector('[data-mobile-menu]') as HTMLElement | null;
+      const currentMax = parentMenu ? parseFloat(parentMenu.style.maxHeight) || 0 : 0;
+      if (parentMenu && currentMax > 0) {
+        parentMenu.style.maxHeight = `${currentMax + (open ? subHeight : -subHeight)}px`;
+      }
+    };
+
+    const onClick = () => setOpen(!open);
+    toggle.addEventListener('click', onClick);
+    addCleanup(() => toggle.removeEventListener('click', onClick));
+  }
+
+  function init() {
     runCleanup();
     initHeader();
     initActiveSection();
     initServicesDropdown();
-  });
+    initMobileServicesToggle();
+  }
+
+  init();
+  document.addEventListener('astro:before-swap', runCleanup);
+  document.addEventListener('astro:page-load', init);
 </script>

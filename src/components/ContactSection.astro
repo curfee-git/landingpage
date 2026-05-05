@@ -9,11 +9,11 @@ const { translations: t } = Astro.props;
 const routes = getRoutes();
 ---
 
-<section id="contact" class="uc-section uc-section--navy" aria-labelledby="contact-heading">
-  <div class="uc-container">
+<section id="contact" class="cf-section cf-section--navy" aria-labelledby="contact-heading">
+  <div class="cf-container">
     <div class="contact-inner">
-      <h2 id="contact-heading" class="uc-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
-      <p class="uc-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
+      <h2 id="contact-heading" class="cf-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
+      <p class="cf-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
       <a href={routes.contact} class="contact-cta">{t['hero.cta']}</a>
     </div>
   </div>

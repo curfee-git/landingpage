@@ -7,165 +7,103 @@ interface Props {
 }
 const { translations: t } = Astro.props;
 
-const structuralPairs = [
-  { icon: 'rule', title: t['observations.1.title'], titlePositive: t['observations.1.title.positive'], reality: t['observations.1.reality'], potential: t['observations.1.potential'] },
-  { icon: 'account_tree', title: t['observations.2.title'], titlePositive: t['observations.2.title.positive'], reality: t['observations.2.reality'], potential: t['observations.2.potential'] },
-  { icon: 'call_split', title: t['observations.3.title'], titlePositive: t['observations.3.title.positive'], reality: t['observations.3.reality'], potential: t['observations.3.potential'] },
-  { icon: 'code', title: t['observations.7.title'], titlePositive: t['observations.7.title.positive'], reality: t['observations.7.reality'], potential: t['observations.7.potential'] },
+const cards = [
+  { icon: 'rule', title: t['observations.1.title'], text: t['observations.1.reality'] },
+  { icon: 'account_tree', title: t['observations.2.title'], text: t['observations.2.reality'] },
+  { icon: 'call_split', title: t['observations.3.title'], text: t['observations.3.reality'] },
+  { icon: 'code', title: t['observations.7.title'], text: t['observations.7.reality'] },
+  { icon: 'psychology', title: t['observations.4.title'], text: t['observations.4.reality'] },
+  { icon: 'hub', title: t['observations.5.title'], text: t['observations.5.reality'] },
+  { icon: 'explore', title: t['observations.6.title'], text: t['observations.6.reality'] },
 ];
 
-const operationalPairs = [
-  { icon: 'psychology', title: t['observations.4.title'], titlePositive: t['observations.4.title.positive'], reality: t['observations.4.reality'], potential: t['observations.4.potential'] },
-  { icon: 'hub', title: t['observations.5.title'], titlePositive: t['observations.5.title.positive'], reality: t['observations.5.reality'], potential: t['observations.5.potential'] },
-  { icon: 'explore', title: t['observations.6.title'], titlePositive: t['observations.6.title.positive'], reality: t['observations.6.reality'], potential: t['observations.6.potential'] },
-];
+const loop = [...cards, ...cards];
 ---
 
-<section id="observations" class="uc-section uc-section--soft" aria-labelledby="observations-heading">
-  <div class="uc-container">
+<section id="observations" class="cf-section" aria-labelledby="observations-heading">
+  <div class="cf-container">
     <div class="obs-inner">
-    <h2 id="observations-heading" class="uc-h2 mb-3">
-      <span class="grid">
-        <span data-speakable class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard" data-observations-heading="reality">{t['observations.heading.status_quo']}</span>
-        <span class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-heading="potential" aria-hidden="true">{t['observations.heading.potential']}</span>
-      </span>
-    </h2>
-    <div class="grid mb-8">
-      <p class="col-start-1 row-start-1 text-title-medium text-brand-primary font-medium transition-opacity duration-medium2 ease-standard" data-observations-subtitle="reality">{t['observations.subtitle.status_quo']}</p>
-      <p class="col-start-1 row-start-1 text-title-medium text-brand-primary font-medium transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-subtitle="potential" aria-hidden="true">{t['observations.subtitle.potential']}</p>
+      <p class="cf-eyebrow mb-4">{t['observations.subtitle.status_quo']}</p>
+      <h2 id="observations-heading" data-speakable class="cf-h2">
+        {t['observations.heading.status_quo']}
+      </h2>
     </div>
+  </div>
 
-    <div role="radiogroup" aria-label={t['observations.heading.status_quo']} class="inline-flex items-center gap-1 p-1 rounded-md bg-surface-base border border-stroke-subtle mb-6" data-observations-toggle-group>
-      <button
-        type="button"
-        role="radio"
-        aria-checked="true"
-        data-view="reality"
-        class="px-5 py-3 rounded-md text-label-large text-brand-onPrimary bg-brand-primary transition-colors duration-short4 ease-standard"
-      >
-        {t['observations.column.left']}
-      </button>
-      <button
-        type="button"
-        role="radio"
-        aria-checked="false"
-        data-view="potential"
-        class="px-5 py-3 rounded-md text-label-large text-ink-muted hover:text-brand-primary transition-colors duration-short4 ease-standard"
-      >
-        {t['observations.column.right']}
-      </button>
-    </div>
-
-    <ol class="space-y-2" data-observations-toggle-list>
-      {structuralPairs.map((pair) => (
-        <li class="rounded-md bg-surface-base border border-stroke-subtle px-4 py-3 md:px-5 md:py-4 flex items-start gap-3">
-          <Icon name={pair.icon} class="w-5 h-5 text-brand-primary shrink-0 mt-[3px] md:mt-1" />
-          <div class="flex-1 min-w-0">
-            <h3 class="text-title-medium font-semibold text-ink-primary mb-1">
-              <span class="grid">
-                <span class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard" data-observations-card-title="reality">{pair.title}</span>
-                <span class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-card-title="potential" aria-hidden="true">{pair.titlePositive}</span>
-              </span>
-            </h3>
-            <div class="grid">
-              <p class="col-start-1 row-start-1 text-body-medium text-ink-muted leading-relaxed transition-opacity duration-medium2 ease-standard" data-observations-text="reality">{pair.reality}</p>
-              <p class="col-start-1 row-start-1 text-body-medium text-brand-primary leading-relaxed transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-text="potential" aria-hidden="true">{pair.potential}</p>
-            </div>
-          </div>
+  <div class="obs-carousel" role="region" aria-label={t['observations.heading.status_quo']}>
+    <ul class="obs-track" role="list">
+      {loop.map((card, i) => (
+        <li class="obs-card" aria-hidden={i >= cards.length ? 'true' : undefined}>
+          <Icon name={card.icon} class="w-6 h-6 text-brand-primary shrink-0" />
+          <h3 class="text-title-medium font-semibold text-ink-primary mt-3 mb-2">{card.title}</h3>
+          <p class="text-body-medium text-ink-muted leading-relaxed">{card.text}</p>
         </li>
       ))}
-    </ol>
-
-    <div class="my-12 flex items-center gap-4">
-      <div class="flex-1 min-w-[1.5rem] border-t border-ink-primary/10"></div>
-      <p class="text-body-large text-ink-muted/70 italic text-center">{t['observations.transition']}</p>
-      <div class="flex-1 min-w-[1.5rem] border-t border-ink-primary/10"></div>
-    </div>
-
-    <ol class="space-y-2" data-observations-toggle-list-b start="5">
-      {operationalPairs.map((pair) => (
-        <li class="rounded-md bg-surface-base border border-stroke-subtle px-4 py-3 md:px-5 md:py-4 flex items-start gap-3">
-          <Icon name={pair.icon} class="w-5 h-5 text-brand-primary shrink-0 mt-[3px] md:mt-1" />
-          <div class="flex-1 min-w-0">
-            <h3 class="text-title-medium font-semibold text-ink-primary mb-1">
-              <span class="grid">
-                <span class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard" data-observations-card-title="reality">{pair.title}</span>
-                <span class="col-start-1 row-start-1 transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-card-title="potential" aria-hidden="true">{pair.titlePositive}</span>
-              </span>
-            </h3>
-            <div class="grid">
-              <p class="col-start-1 row-start-1 text-body-medium text-ink-muted leading-relaxed transition-opacity duration-medium2 ease-standard" data-observations-text="reality">{pair.reality}</p>
-              <p class="col-start-1 row-start-1 text-body-medium text-brand-primary leading-relaxed transition-opacity duration-medium2 ease-standard opacity-0 pointer-events-none" data-observations-text="potential" aria-hidden="true">{pair.potential}</p>
-            </div>
-          </div>
-        </li>
-      ))}
-    </ol>
-    </div>
+    </ul>
   </div>
 </section>
 
 <style>
   .obs-inner { max-width: 920px; }
-</style>
 
-<script>
-  function initObservationsToggle() {
-    const toggleGroup = document.querySelector<HTMLElement>('[data-observations-toggle-group]');
-    if (!toggleGroup) return;
-
-    const buttons = toggleGroup.querySelectorAll<HTMLButtonElement>('[data-view]');
-    const realityTexts = document.querySelectorAll<HTMLElement>('[data-observations-text="reality"]');
-    const potentialTexts = document.querySelectorAll<HTMLElement>('[data-observations-text="potential"]');
-    const realitySubtitles = document.querySelectorAll<HTMLElement>('[data-observations-subtitle="reality"]');
-    const potentialSubtitles = document.querySelectorAll<HTMLElement>('[data-observations-subtitle="potential"]');
-    const realityHeadings = document.querySelectorAll<HTMLElement>('[data-observations-heading="reality"]');
-    const potentialHeadings = document.querySelectorAll<HTMLElement>('[data-observations-heading="potential"]');
-    const realityCardTitles = document.querySelectorAll<HTMLElement>('[data-observations-card-title="reality"]');
-    const potentialCardTitles = document.querySelectorAll<HTMLElement>('[data-observations-card-title="potential"]');
-    const cards = document.querySelectorAll<HTMLElement>('[data-observations-toggle-list] > li, [data-observations-toggle-list-b] > li');
-
-    // Equalize all cards to the tallest one so the whole list has uniform row height
-    const equalize = () => {
-      cards.forEach((c) => { c.style.minHeight = ''; });
-      let max = 0;
-      cards.forEach((c) => { max = Math.max(max, c.offsetHeight); });
-      cards.forEach((c) => { c.style.minHeight = max + 'px'; });
-    };
-    equalize();
-    window.addEventListener('resize', equalize);
-
-    buttons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const view = btn.dataset.view;
-        const showReality = view === 'reality';
-        buttons.forEach((b) => {
-          const active = b.dataset.view === view;
-          b.setAttribute('aria-checked', String(active));
-          if (active) {
-            b.classList.add('bg-brand-primary', 'text-brand-onPrimary');
-            b.classList.remove('text-ink-muted', 'hover:text-brand-primary');
-          } else {
-            b.classList.remove('bg-brand-primary', 'text-brand-onPrimary');
-            b.classList.add('text-ink-muted', 'hover:text-brand-primary');
-          }
-        });
-        const toggleText = (p: HTMLElement, visible: boolean) => {
-          p.classList.toggle('opacity-0', !visible);
-          p.classList.toggle('pointer-events-none', !visible);
-          p.setAttribute('aria-hidden', String(!visible));
-        };
-        realityTexts.forEach((p) => toggleText(p, showReality));
-        potentialTexts.forEach((p) => toggleText(p, !showReality));
-        realitySubtitles.forEach((p) => toggleText(p, showReality));
-        potentialSubtitles.forEach((p) => toggleText(p, !showReality));
-        realityHeadings.forEach((p) => toggleText(p, showReality));
-        potentialHeadings.forEach((p) => toggleText(p, !showReality));
-        realityCardTitles.forEach((p) => toggleText(p, showReality));
-        potentialCardTitles.forEach((p) => toggleText(p, !showReality));
-      });
-    });
+  .obs-carousel {
+    margin-top: 48px;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
   }
-  document.addEventListener('astro:page-load', initObservationsToggle);
-  initObservationsToggle();
-</script>
+
+  .obs-track {
+    --obs-card-w: 320px;
+    --obs-card-gap: 16px;
+    --obs-cards: 7;
+    display: flex;
+    width: max-content;
+    margin: 0;
+    padding: 4px 0;
+    list-style: none;
+    animation: obs-scroll 90s linear infinite;
+    will-change: transform;
+  }
+
+  .obs-carousel:hover .obs-track,
+  .obs-carousel:focus-within .obs-track {
+    animation-play-state: paused;
+  }
+
+  .obs-card {
+    flex: 0 0 var(--obs-card-w);
+    min-height: 220px;
+    margin-right: var(--obs-card-gap);
+    background: rgb(var(--surface-base));
+    border: 1px solid rgb(var(--ink-primary) / 0.18);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  @keyframes obs-scroll {
+    from { transform: translate3d(0, 0, 0); }
+    to {
+      transform: translate3d(
+        calc(var(--obs-cards) * (var(--obs-card-w) + var(--obs-card-gap)) * -1),
+        0,
+        0
+      );
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .obs-carousel {
+      overflow-x: auto;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+    .obs-track {
+      animation: none;
+    }
+  }
+</style>

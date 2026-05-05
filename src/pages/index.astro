@@ -1,8 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import HeroSection from '@/components/HeroSection.astro';
+import WhyCurfeeSection from '@/components/WhyCurfeeSection.astro';
 import ObservationsSection from '@/components/ObservationsSection.astro';
 import ServicesSection from '@/components/ServicesSection.astro';
+import DifferentiatorSection from '@/components/DifferentiatorSection.astro';
 import FaqSection from '@/components/FaqSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
 import { getTranslations } from '@/i18n/translations';
@@ -163,8 +165,10 @@ const jsonLd = [faqLd, serviceLd, decisionEnforcementLd];
   hasSpeakable={true}
 >
   <HeroSection translations={t} />
+  <WhyCurfeeSection translations={t} />
   <ObservationsSection translations={t} />
   <ServicesSection translations={t} />
+  <DifferentiatorSection />
   <FaqSection translations={t} />
   <ContactSection translations={t} />
 </Layout>

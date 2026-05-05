@@ -116,6 +116,8 @@
   /* Curfee colour palette
      #003366 Navy  ·  #0A0A0A Black (with opacity tiers)  ·  #FAFBFC Off-White  ·  #F2F5FA Subtle-Blue */
   :root {
+    --header-height: 80px;
+    --gutter: 48px;
     --brand-primary: 0 51 102;          /* Navy */
     --on-brand-primary: 255 255 255;
     --brand-secondary: 10 10 10;        /* legacy alias = ink-primary */
@@ -125,7 +127,7 @@
     --brand-error: 179 38 30;
     --on-brand-error: 255 255 255;
 
-    --surface-base: 250 251 252;        /* Off-White – minimal cool tint, easier on the eyes than #FFF */
+    --surface-base: 255 255 255;        /* Pure white */
     --surface-soft: 242 245 250;        /* Subtle-Blue Section accent */
 
     --ink-primary: 10 10 10;            /* Near-black, slightly softened */
@@ -150,6 +152,20 @@
     text-rendering: geometricPrecision;
     font-synthesis: none;
     overflow-anchor: none;
+    padding-top: var(--header-height);
+  }
+
+  @media (max-width: 1100px) {
+    :root { --gutter: 32px; --header-height: 88px; }
+  }
+
+  @media (max-width: 640px) {
+    :root { --gutter: 20px; --header-height: 76px; }
+  }
+
+  :target,
+  section[id] {
+    scroll-margin-top: var(--header-height);
   }
 
   /* Default heading family + tracking */
@@ -399,40 +415,55 @@
    Layout primitives
    =========================================================== */
 
-.uc-container {
+.cf-container {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 48px;
-  padding-right: 48px;
+}
+@media (max-width: 1100px) {
+  .cf-container {
+    padding-inline: var(--gutter);
+  }
 }
 
-.uc-container--narrow {
+.cf-container--narrow {
   max-width: 720px;
 }
 
-.uc-section {
-  padding-top: clamp(4rem, 8vw, 8rem);
-  padding-bottom: clamp(4rem, 8vw, 8rem);
+.cf-section {
+  padding-top: 144px;
+  padding-bottom: 144px;
+}
+@media (max-width: 1100px) {
+  .cf-section {
+    padding-top: 104px;
+    padding-bottom: 104px;
+  }
+}
+@media (max-width: 640px) {
+  .cf-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
 }
 
 /* Section variants – background-only, no shadows, no decorative dividers */
-.uc-section--soft {
+.cf-section--soft {
   background: rgb(var(--surface-soft));   /* Subtle-Blue */
 }
 
-.uc-section--navy {
+.cf-section--navy {
   background: rgb(var(--brand-primary));  /* Navy */
   color: rgb(var(--on-brand-primary));
 }
 
-.uc-section--ink {
+.cf-section--ink {
   background: rgb(var(--ink-primary));    /* Near-black */
   color: rgb(var(--surface-base));
 }
 
 /* Kicker – Architectural editorial label, Manrope SemiBold All-Caps Navy */
-.uc-eyebrow {
+.cf-eyebrow {
   font-family: var(--font-sans);
   font-size: 0.8125rem; /* 13px */
   font-weight: 800;
@@ -441,43 +472,49 @@
   color: rgb(var(--brand-primary));
   margin: 0;
 }
-.uc-section--navy .uc-eyebrow,
-.uc-section--ink .uc-eyebrow {
+.cf-section--navy .cf-eyebrow,
+.cf-section--ink .cf-eyebrow {
   color: rgb(var(--surface-base) / 0.7);
 }
 
 /* Display headings – Manrope ExtraBold */
-.uc-h1 {
+.cf-h1 {
   font-family: var(--font-sans);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-wrap: balance;
+  overflow-wrap: break-word;
+  hyphens: auto;
   margin: 0;
 }
 
-.uc-h2 {
+.cf-h2 {
   font-family: var(--font-sans);
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.015em;
   text-wrap: balance;
+  overflow-wrap: break-word;
+  hyphens: auto;
   margin: 0;
 }
 
-.uc-h3 {
+.cf-h3 {
   font-family: var(--font-sans);
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.005em;
+  overflow-wrap: break-word;
+  hyphens: auto;
   margin: 0;
 }
 
 /* Body text – Manrope, near-black with opacity tier */
-.uc-lead {
+.cf-lead {
   font-family: var(--font-sans);
   font-size: 1.125rem;
   line-height: 1.6;
@@ -486,7 +523,7 @@
   font-weight: 500;
 }
 
-.uc-body {
+.cf-body {
   font-family: var(--font-sans);
   font-size: 1.0625rem;
   line-height: 1.6;
@@ -495,7 +532,7 @@
   font-weight: 400;
 }
 
-.uc-small {
+.cf-small {
   font-family: var(--font-sans);
   font-size: 0.875rem;
   line-height: 1.6;
@@ -503,12 +540,12 @@
   font-weight: 400;
 }
 
-.uc-section--navy .uc-lead,
-.uc-section--navy .uc-body,
-.uc-section--navy .uc-small,
-.uc-section--ink .uc-lead,
-.uc-section--ink .uc-body,
-.uc-section--ink .uc-small {
+.cf-section--navy .cf-lead,
+.cf-section--navy .cf-body,
+.cf-section--navy .cf-small,
+.cf-section--ink .cf-lead,
+.cf-section--ink .cf-body,
+.cf-section--ink .cf-small {
   color: rgb(var(--surface-base) / 0.85);
 }
 
@@ -518,7 +555,7 @@
    =========================================================== */
 
 /* Card – subtle lift, never colour shift */
-.uc-card {
+.cf-card {
   background: rgb(var(--surface-base));
   border: 1px solid rgb(var(--ink-primary) / 0.1);
   border-radius: 8px;
@@ -526,28 +563,28 @@
   transition: transform 200ms ease;
 }
 
-.uc-card-link,
-.uc-card--hover {
+.cf-card-link,
+.cf-card--hover {
   transition: transform 200ms ease;
 }
-.uc-card-link:hover,
-.uc-card--hover:hover {
+.cf-card-link:hover,
+.cf-card--hover:hover {
   transform: translateY(-4px);
 }
 
 /* On Subtle-Blue sections cards remain white with the same hairline */
-.uc-section--soft .uc-card {
+.cf-section--soft .cf-card {
   background: rgb(var(--surface-base));
 }
 
-.uc-section--navy .uc-card,
-.uc-section--ink .uc-card {
+.cf-section--navy .cf-card,
+.cf-section--ink .cf-card {
   background: rgb(var(--surface-base) / 0.05);
   border-color: rgb(var(--surface-base) / 0.18);
 }
 
 /* Buttons */
-.uc-btn {
+.cf-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -565,82 +602,77 @@
   cursor: pointer;
 }
 
-.uc-btn--primary {
+.cf-btn--primary {
   background: rgb(var(--brand-primary));
   color: rgb(var(--on-brand-primary));
   border-color: rgb(var(--brand-primary));
 }
-.uc-btn--primary:hover {
+.cf-btn--primary:hover {
   background: color-mix(in srgb, rgb(var(--brand-primary)) 80%, black);
   border-color: color-mix(in srgb, rgb(var(--brand-primary)) 80%, black);
 }
 
-.uc-btn--secondary {
+.cf-btn--secondary {
   background: transparent;
   color: rgb(var(--brand-primary));
   border: 1.5px solid rgb(var(--brand-primary));
 }
-.uc-btn--secondary:hover {
+.cf-btn--secondary:hover {
   background: rgb(var(--brand-primary) / 0.33);
   color: rgb(var(--brand-primary));
 }
 
-.uc-section--navy .uc-btn--secondary,
-.uc-section--ink .uc-btn--secondary {
+.cf-section--navy .cf-btn--secondary,
+.cf-section--ink .cf-btn--secondary {
   color: rgb(var(--surface-base));
   border-color: rgb(var(--surface-base));
 }
-.uc-section--navy .uc-btn--secondary:hover,
-.uc-section--ink .uc-btn--secondary:hover {
+.cf-section--navy .cf-btn--secondary:hover,
+.cf-section--ink .cf-btn--secondary:hover {
   background: rgb(var(--surface-base));
   color: rgb(var(--brand-primary));
 }
 
 /* Text links – Navy + underline appears on hover */
-.uc-link {
+.cf-link {
   color: rgb(var(--brand-primary));
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 200ms ease;
 }
-.uc-link:hover {
+.cf-link:hover {
   border-bottom-color: rgb(var(--brand-primary));
 }
 
 /* Navigation links – black default, Navy + underline on hover */
-.uc-nav-link {
+.cf-nav-link {
   color: rgb(var(--ink-primary));
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: color 200ms ease, border-color 200ms ease;
 }
-.uc-nav-link:hover {
+.cf-nav-link:hover {
   color: rgb(var(--brand-primary));
   border-bottom-color: rgb(var(--brand-primary));
 }
 
 /* Grid utilities */
-.uc-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-.uc-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.uc-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.uc-grid-2-3 { display: grid; grid-template-columns: 2fr 3fr; gap: 64px; }
+.cf-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.cf-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.cf-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.cf-grid-2-3 { display: grid; grid-template-columns: 2fr 3fr; gap: 64px; }
 
 /* Responsive */
-@media (max-width: 1100px) {
-  .uc-container { padding-left: 32px; padding-right: 32px; }
-}
-
 @media (max-width: 900px) {
-  .uc-grid-2,
-  .uc-grid-3,
-  .uc-grid-4,
-  .uc-grid-2-3 {
+  .cf-grid-2,
+  .cf-grid-3,
+  .cf-grid-4,
+  .cf-grid-2-3 {
     grid-template-columns: 1fr;
     gap: 24px;
   }
 }
 
 @media (max-width: 640px) {
-  .uc-container { padding-left: 20px; padding-right: 20px; }
-  .uc-card { padding: 24px; }
+  .cf-card { padding: 24px; }
 }

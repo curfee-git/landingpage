@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import Header from '@/components/shared/Header.astro';
 import Footer from '@/components/shared/Footer.astro';
 import ScrollToTop from '@/components/shared/ScrollToTop.astro';
@@ -24,7 +23,6 @@ interface Props {
   hasSpeakable?: boolean;
   articleSection?: string;
   articleTags?: string[];
-  enableTransitions?: boolean;
 }
 
 const t = getTranslations();
@@ -46,7 +44,6 @@ const {
   hasSpeakable = false,
   articleSection,
   articleTags,
-  enableTransitions = true,
 } = Astro.props;
 
 const defaultOgImageDims = !ogImageOverride;
@@ -427,14 +424,13 @@ const speakableLd = {
       </>
     )}
 
-    {enableTransitions && <ClientRouter />}
   </head>
   <body>
     {showHeader && <Header />}
-    <main {...(enableTransitions ? { 'transition:animate': 'fade' } : {})}>
+    <main>
       <slot />
     </main>
-    <Footer {...(enableTransitions ? { 'transition:persist': true } : {})} />
+    <Footer />
     <ScrollToTop />
   </body>
 </html>

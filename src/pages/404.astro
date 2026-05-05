@@ -13,13 +13,13 @@ const routes = getRoutes();
   canonicalPath={Astro.url.pathname}
   noindex={true}
 >
-  <article class="uc-section error-page">
-    <div class="uc-container">
+  <article class="cf-section error-page">
+    <div class="cf-container">
       <div class="error-inner">
         <p class="error-code" aria-hidden="true">404</p>
         <h1 class="error-heading">{t['404.heading']}</h1>
         <p class="error-description">{t['404.description']}</p>
-        <a href={routes.home} class="uc-btn uc-btn--primary error-cta">{t['404.cta']}</a>
+        <a href={routes.home} class="cf-btn cf-btn--primary error-cta">{t['404.cta']}</a>
       </div>
     </div>
   </article>

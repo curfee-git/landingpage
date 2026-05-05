@@ -1,0 +1,45 @@
+---
+import type { Translations } from '@/i18n/translations';
+
+interface Props {
+  translations: Translations;
+}
+const { translations: t } = Astro.props;
+---
+
+<section id="why-curfee" class="cf-section cf-section--soft whycurfee-fold" aria-labelledby="whycurfee-heading">
+  <div class="cf-container whycurfee-fold-container">
+    <div class="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-8 lg:gap-16 items-start">
+      <div>
+        <p class="cf-eyebrow mb-4">{t['whycurfee.eyebrow']}</p>
+        <h2 id="whycurfee-heading" data-speakable class="cf-h2" style="text-wrap: balance;">
+          {t['whycurfee.heading.1']}<br />{t['whycurfee.heading.2']}
+        </h2>
+      </div>
+      <div class="space-y-5">
+        <p data-speakable class="whycurfee-body">{t['whycurfee.body.1']}</p>
+        <p data-speakable class="whycurfee-body">{t['whycurfee.body.2']}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .whycurfee-fold-container {
+    width: 100%;
+  }
+  .whycurfee-body {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgb(var(--ink-primary) / 0.72);
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .whycurfee-fold {
+      min-height: calc(50svh - 36px);
+      display: flex;
+      align-items: center;
+    }
+  }
+</style>

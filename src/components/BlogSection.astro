@@ -19,13 +19,13 @@ const linkLabel = allPosts.length > LATEST_COUNT ? t['blog.all'] : t['blog.visit
 ---
 
 {previewPosts.length > 0 && (
-  <section id="blog" class="uc-section uc-section--soft" aria-labelledby="blog-heading">
-    <div class="uc-container">
+  <section id="blog" class="cf-section cf-section--soft" aria-labelledby="blog-heading">
+    <div class="cf-container">
       <div class="blog-head">
         <div>
-          <p class="uc-eyebrow" style="margin-bottom: 16px;">Einblicke</p>
-          <h2 id="blog-heading" class="uc-h2">{t['blog.heading']}</h2>
-          <p class="uc-lead" style="margin-top: 16px; max-width: 640px;">{t['blog.subtitle']}</p>
+          <p class="cf-eyebrow" style="margin-bottom: 16px;">Einblicke</p>
+          <h2 id="blog-heading" class="cf-h2">{t['blog.heading']}</h2>
+          <p class="cf-lead" style="margin-top: 16px; max-width: 640px;">{t['blog.subtitle']}</p>
         </div>
         <a href={routes.blog} class="blog-link">
           {linkLabel}
@@ -33,7 +33,7 @@ const linkLabel = allPosts.length > LATEST_COUNT ? t['blog.all'] : t['blog.visit
         </a>
       </div>
 
-      <div class="uc-grid-3 blog-grid">
+      <div class="cf-grid-3 blog-grid">
         {previewPosts.map((post, index) => (
           <BlogCard post={post} index={index + 1} headingLevel="h3" />
         ))}

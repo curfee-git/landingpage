@@ -82,10 +82,9 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
   ogImageHeight={usingCoverImage ? undefined : 630}
   articleSection={post.data.topic}
   articleTags={post.data.tags}
-  enableTransitions={false}
 >
-  <article class="uc-section">
-    <div class="uc-container">
+  <article class="cf-section">
+    <div class="cf-container">
       <div class="post-page">
 
         <a href={routes.blog} class="post-back">← {t['blog.backToIndex']}</a>
@@ -105,7 +104,7 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
               )}
             </span>
           </div>
-          <h1 class="uc-h1 post-title">{post.data.title}</h1>
+          <h1 class="cf-h1 post-title">{post.data.title}</h1>
           <p class="post-excerpt">{post.data.excerpt}</p>
         </header>
 

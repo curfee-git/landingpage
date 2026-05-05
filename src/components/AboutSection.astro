@@ -47,11 +47,11 @@ const credentials = [
 <article class="about-page">
 
   <!-- Hero -->
-  <section class="uc-section about-hero" aria-labelledby="about-hero-heading">
-    <div class="uc-container">
+  <section class="cf-section about-hero" aria-labelledby="about-hero-heading">
+    <div class="cf-container">
       <div class="about-hero-grid">
         <div class="about-hero-text">
-          <p class="uc-eyebrow">Über mich</p>
+          <p class="cf-eyebrow">Über mich</p>
           <h1 id="about-hero-heading" class="about-hero-title">Ich bin {t['about.heading']}.</h1>
           <p class="about-hero-jobtitle">
             {t['about.who.heading']}<br />
@@ -79,12 +79,12 @@ const credentials = [
   </section>
 
   <!-- Why Curfee -->
-  <section class="uc-section uc-section--soft" aria-labelledby="why-heading">
-    <div class="uc-container">
-      <div class="uc-grid-2-3">
+  <section class="cf-section cf-section--soft" aria-labelledby="why-heading">
+    <div class="cf-container">
+      <div class="cf-grid-2-3">
         <div>
-          <p class="uc-eyebrow">Warum Curfee</p>
-          <h2 id="why-heading" class="uc-h2">{t['about.section.why']}</h2>
+          <p class="cf-eyebrow">Warum Curfee</p>
+          <h2 id="why-heading" class="cf-h2">{t['about.section.why']}</h2>
         </div>
         <div class="about-prose">
           <p>{t['about.who.5']}</p>
@@ -96,12 +96,12 @@ const credentials = [
   </section>
 
   <!-- Credentials grid -->
-  <section class="uc-section" aria-labelledby="background-heading">
-    <div class="uc-container">
+  <section class="cf-section" aria-labelledby="background-heading">
+    <div class="cf-container">
       <div class="about-credentials-head">
-        <p class="uc-eyebrow">{t['about.section.background']}</p>
-        <h2 id="background-heading" class="uc-h2">Was meinen Ansatz geprägt hat</h2>
-        <p class="uc-lead" style="margin-top: 16px; max-width: 640px;">Keine Liste von Titeln, sondern Kontext für die Arbeit, die ich mache.</p>
+        <p class="cf-eyebrow">{t['about.section.background']}</p>
+        <h2 id="background-heading" class="cf-h2">Was meinen Ansatz geprägt hat</h2>
+        <p class="cf-lead" style="margin-top: 16px; max-width: 640px;">Keine Liste von Titeln, sondern Kontext für die Arbeit, die ich mache.</p>
       </div>
       <div class="about-credentials">
         {credentials.map((c) => (
@@ -118,11 +118,11 @@ const credentials = [
   </section>
 
   <!-- Principles -->
-  <section class="uc-section uc-section--soft" aria-labelledby="principles-heading">
-    <div class="uc-container">
+  <section class="cf-section cf-section--soft" aria-labelledby="principles-heading">
+    <div class="cf-container">
       <div class="about-principles-head">
-        <p class="uc-eyebrow">Drei leitende Prinzipien</p>
-        <h2 id="principles-heading" class="uc-h2">Wie ich arbeite</h2>
+        <p class="cf-eyebrow">Drei leitende Prinzipien</p>
+        <h2 id="principles-heading" class="cf-h2">Wie ich arbeite</h2>
       </div>
       <div class="about-principles-grid">
         <div class="principle">
@@ -145,11 +145,11 @@ const credentials = [
   </section>
 
   <!-- CTA -->
-  <section class="uc-section uc-section--navy">
-    <div class="uc-container">
+  <section class="cf-section cf-section--navy">
+    <div class="cf-container">
       <div style="max-width: 760px;">
-        <h2 class="uc-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
-        <p class="uc-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
+        <h2 class="cf-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
+        <p class="cf-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
         <a href={routes.contact} class="about-final-cta">{t['hero.cta']}</a>
       </div>
     </div>

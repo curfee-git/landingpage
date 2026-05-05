@@ -37,14 +37,13 @@ const jsonLd = {
   description={t['meta.blog.description']}
   canonicalPath={Astro.url.pathname}
   jsonLd={jsonLd}
-  enableTransitions={false}
 >
-  <article class="uc-section">
-    <div class="uc-container">
+  <article class="cf-section">
+    <div class="cf-container">
 
       <header class="blog-header">
-        <p class="uc-eyebrow">{t['nav.blog']}</p>
-        <h1 class="uc-h1">{t['blog.indexH1']}</h1>
+        <p class="cf-eyebrow">{t['nav.blog']}</p>
+        <h1 class="cf-h1">{t['blog.indexH1']}</h1>
         <p class="blog-subheading">{t['blog.indexSubtitle']}</p>
       </header>
 
@@ -132,7 +131,7 @@ const jsonLd = {
     margin-bottom: 56px;
     max-width: 720px;
   }
-  .blog-header .uc-h1 {
+  .blog-header .cf-h1 {
     margin-top: 16px;
   }
   .blog-subheading {
