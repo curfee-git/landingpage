@@ -72,8 +72,8 @@ const routes = getRoutes();
   }
   .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-    gap: 64px;
+    grid-template-columns: 1fr;
+    gap: 40px;
     align-items: center;
   }
   .hero-inner {
@@ -87,6 +87,7 @@ const routes = getRoutes();
     color: rgb(var(--brand-primary));
   }
   .hero-portrait {
+    display: none;
     justify-self: end;
     align-self: center;
   }
@@ -104,13 +105,13 @@ const routes = getRoutes();
     flex-wrap: wrap;
     align-items: center;
   }
-  @media (max-width: 900px) {
+  @media (min-width: 901px) {
     .hero-grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      gap: 64px;
     }
     .hero-portrait {
-      display: none;
+      display: block;
     }
   }
 </style>

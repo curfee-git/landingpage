@@ -150,14 +150,14 @@ const jsonLd = {
 <style>
   .contact-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 80px;
+    grid-template-columns: 1fr;
+    gap: 56px;
     align-items: start;
   }
 
   /* LEFT */
   .contact-left {
-    max-width: 520px;
+    max-width: none;
   }
   .contact-header {
     margin-bottom: 48px;
@@ -394,13 +394,13 @@ const jsonLd = {
     text-decoration: underline;
   }
 
-  @media (max-width: 900px) {
+  @media (min-width: 901px) {
     .contact-grid {
-      grid-template-columns: 1fr;
-      gap: 56px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 80px;
     }
     .contact-left {
-      max-width: none;
+      max-width: 520px;
     }
   }
 </style>

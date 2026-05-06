@@ -169,8 +169,8 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
   }
   .service-hero-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 64px;
+    grid-template-columns: 1fr;
+    gap: 32px;
     align-items: start;
   }
   .service-hero-eyebrow {
@@ -192,8 +192,7 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     background: rgb(var(--surface-soft));
     border-radius: 8px;
     border: 1px solid rgb(var(--ink-primary) / 0.1);
-    position: sticky;
-    top: 96px;
+    position: static;
   }
   .service-hero-problem {
     margin: 0;
@@ -262,8 +261,8 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
   }
   .service-step {
     display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: 24px;
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
     padding: 28px 0;
     border-top: 1px solid rgb(var(--ink-primary) / 0.1);
   }
@@ -271,8 +270,8 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     border-bottom: 1px solid rgb(var(--ink-primary) / 0.1);
   }
   .service-step-num {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 4px;
     background: rgb(var(--brand-primary));
     color: rgb(var(--on-brand-primary));
@@ -383,24 +382,25 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
     background: rgb(var(--surface-base) / 0.85);
   }
 
-  @media (max-width: 900px) {
-    .service-hero-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
+  @media (min-width: 641px) {
+    .service-step {
+      grid-template-columns: 64px 1fr;
+      gap: 24px;
     }
-    .service-hero-aside {
-      position: static;
+    .service-step-num {
+      width: 48px;
+      height: 48px;
     }
   }
 
-  @media (max-width: 640px) {
-    .service-step {
-      grid-template-columns: 48px 1fr;
-      gap: 16px;
+  @media (min-width: 901px) {
+    .service-hero-grid {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 64px;
     }
-    .service-step-num {
-      width: 40px;
-      height: 40px;
+    .service-hero-aside {
+      position: sticky;
+      top: 96px;
     }
   }
 </style>

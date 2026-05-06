@@ -178,7 +178,7 @@ const jsonLd = {
 
   .legal-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 20px;
   }
   .legal-card {
@@ -241,9 +241,9 @@ const jsonLd = {
     border-bottom-color: rgb(var(--brand-primary));
   }
 
-  @media (max-width: 700px) {
+  @media (min-width: 701px) {
     .legal-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>

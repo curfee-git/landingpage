@@ -77,11 +77,14 @@ const services = [
     background: rgb(var(--surface-base));
     border: 1px solid rgb(var(--ink-primary) / 0.1);
     border-radius: 8px;
-    padding: 32px;
+    padding: 24px;
     text-decoration: none;
     color: inherit;
     transition: transform 200ms ease;
     position: relative;
+  }
+  @media (min-width: 641px) {
+    .service-card { padding: 32px; }
   }
   .service-card:hover {
     transform: translateY(-4px);
@@ -132,7 +135,4 @@ const services = [
     border-bottom-color: rgb(var(--brand-primary));
   }
 
-  @media (max-width: 640px) {
-    .service-card { padding: 24px; }
-  }
 </style>

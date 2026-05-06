@@ -50,9 +50,9 @@ const points = [
 
   .differentiator-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 32px;
-    margin-top: 56px;
+    margin-top: 40px;
   }
 
   .differentiator-item {
@@ -105,11 +105,10 @@ const points = [
     margin: 0;
   }
 
-  @media (max-width: 900px) {
+  @media (min-width: 901px) {
     .differentiator-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-      margin-top: 40px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 56px;
     }
   }
 </style>

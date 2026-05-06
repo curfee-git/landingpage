@@ -24,7 +24,7 @@ const credentials = [
   {
     mark: 'K',
     title: 'Systeme im KI-Zeitalter',
-    body: 'KI sieht nur, was in ihr Kontextfenster passt, und bringt keine eigene Struktur mit. Grenzen müssen vom System selbst durchgesetzt werden — und das funktioniert nur, wenn die Struktur dahinter verlässlich ist.',
+    body: 'KI sieht nur, was in ihr Kontextfenster passt, und bringt keine eigene Struktur mit. Grenzen müssen vom System selbst durchgesetzt werden, und das funktioniert nur, wenn die Struktur dahinter verlässlich ist.',
   },
   {
     mark: 'E',
@@ -34,7 +34,7 @@ const credentials = [
   {
     mark: 'D',
     title: 'Prinzip der Entscheidungsdurchsetzung',
-    body: 'Mein Kernprinzip: Entscheidungen sollten vom System selbst durchgesetzt werden — über Pipelines, automatisierte Checks und Tool-Konfiguration. Nicht durch individuelle Disziplin, Erinnerung oder Wachsamkeit.',
+    body: 'Mein Kernprinzip: Entscheidungen sollten vom System selbst durchgesetzt werden, über Pipelines, automatisierte Checks und Tool-Konfiguration. Nicht durch individuelle Disziplin, Erinnerung oder Wachsamkeit.',
   },
   {
     mark: 'S',
@@ -164,8 +164,8 @@ const credentials = [
   }
   .about-hero-grid {
     display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 80px;
+    grid-template-columns: 1fr;
+    gap: 48px;
     align-items: start;
   }
   .about-hero-text {
@@ -249,6 +249,7 @@ const credentials = [
   .about-hero-aside {
     display: flex;
     flex-direction: column;
+    max-width: 360px;
   }
   .about-portrait-wrap {
     border-radius: 12px;
@@ -299,8 +300,8 @@ const credentials = [
   }
   .about-credentials {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px 64px;
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
   .credential {
     display: grid;
@@ -346,7 +347,7 @@ const credentials = [
   }
   .about-principles-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 24px;
   }
   .principle {
@@ -406,20 +407,20 @@ const credentials = [
   }
 
   /* === Responsive === */
-  @media (max-width: 900px) {
+  @media (min-width: 901px) {
     .about-hero-grid {
-      grid-template-columns: 1fr;
-      gap: 48px;
+      grid-template-columns: 1fr 400px;
+      gap: 80px;
     }
     .about-hero-aside {
-      max-width: 360px;
+      max-width: none;
     }
     .about-credentials {
-      grid-template-columns: 1fr;
-      gap: 32px;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 64px;
     }
     .about-principles-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 </style>
