@@ -13,7 +13,7 @@ const { translations: t } = Astro.props;
       <div>
         <p class="cf-eyebrow mb-4">{t['whycurfee.eyebrow']}</p>
         <h2 id="whycurfee-heading" data-speakable class="cf-h2" style="text-wrap: balance;">
-          {t['whycurfee.heading.1']}<br />{t['whycurfee.heading.2']}<br />{t['whycurfee.heading.3']}
+          {t['whycurfee.heading.1']}<br />{t['whycurfee.heading.2']}<br class="whycurfee-break-tablet" />{' '}{t['whycurfee.heading.3']}
         </h2>
       </div>
       <div>
@@ -40,11 +40,19 @@ const { translations: t } = Astro.props;
     color: rgb(var(--ink-primary) / 0.72);
     margin: 0;
   }
+  @media (min-width: 768px) {
+    .whycurfee-break-tablet {
+      display: none;
+    }
+  }
   @media (min-width: 1024px) {
     .whycurfee-fold {
       min-height: calc(50svh - 36px);
       display: flex;
       align-items: center;
+    }
+    .whycurfee-break-tablet {
+      display: inline;
     }
   }
 </style>

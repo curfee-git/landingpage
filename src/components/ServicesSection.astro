@@ -3,11 +3,10 @@ import { Image } from 'astro:assets';
 import Icon from '@/components/shared/Icon.astro';
 import { getRoutes } from '@/configurations/routes';
 import type { Translations } from '@/i18n/translations';
-import diagnosisImage from '@/assets/images/diagnosis_section_image.png';
-import guidanceBackground from '@/assets/images/guidance_background_gray.png';
-import advisoryBackground from '@/assets/images/advisory_background_gray.png';
-import guidanceOverlay from '@/assets/images/guidance_overlay_blue.png';
-import advisoryOverlay from '@/assets/images/advisory_overlay_blue.png';
+import sectionBackground from '@/assets/images/section_image_background.png';
+import diagnosisOverlay from '@/assets/images/diagnosis_overlay.png';
+import guidanceOverlay from '@/assets/images/guidance_overlay.png';
+import advisoryOverlay from '@/assets/images/advisory_overlay.png';
 
 interface Props {
   translations: Translations;
@@ -23,8 +22,8 @@ const services = [
     duration: t['services.diagnosis.duration'],
     problem: t['services.diagnosis.problem'],
     cta: t['services.card.cta'],
-    image: diagnosisImage,
-    overlay: null,
+    image: sectionBackground,
+    overlay: diagnosisOverlay,
     imageAlt: t['services.diagnosis.image.alt'],
     accent: 'primary',
   },
@@ -35,7 +34,7 @@ const services = [
     duration: t['services.guidance.duration'],
     problem: t['services.guidance.problem'],
     cta: t['services.card.cta'],
-    image: guidanceBackground,
+    image: sectionBackground,
     overlay: guidanceOverlay,
     imageAlt: t['services.guidance.image.alt'],
     accent: 'secondary',
@@ -47,7 +46,7 @@ const services = [
     duration: t['services.advisory.duration'],
     problem: t['services.advisory.problem'],
     cta: t['services.card.cta'],
-    image: advisoryBackground,
+    image: sectionBackground,
     overlay: advisoryOverlay,
     imageAlt: t['services.advisory.image.alt'],
     accent: 'tertiary',
@@ -113,6 +112,18 @@ const services = [
   .services-head { max-width: 640px; margin-bottom: 56px; }
   .services-head .cf-eyebrow { margin-bottom: 16px; }
 
+  @media (min-width: 641px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+  @media (min-width: 901px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
   .service-card {
     display: flex;
     flex-direction: column;
@@ -134,7 +145,7 @@ const services = [
   }
 
   .service-card-image {
-    margin: -24px -24px 20px;
+    margin: -12px -12px 20px;
     aspect-ratio: 1586 / 992;
     overflow: hidden;
     position: relative;
@@ -150,7 +161,7 @@ const services = [
     inset: 0;
   }
   @media (min-width: 641px) {
-    .service-card-image { margin: -32px -32px 24px; }
+    .service-card-image { margin: -16px -16px 24px; }
   }
 
 

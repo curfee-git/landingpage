@@ -20,6 +20,7 @@ const routes = getRoutes();
 
         <h1 id="hero-heading" data-speakable class="cf-h1">
           {t['hero.heading']}{' '}
+          <span class="hero-heading-subject">{t['hero.heading.subject']}</span>
           <span class="hero-heading-accent">{t['hero.heading.accent']}</span>
         </h1>
 
@@ -82,6 +83,12 @@ const routes = getRoutes();
   .hero-eyebrow {
     margin-bottom: 20px;
   }
+  .hero-fold :global(.cf-h1) {
+    hyphens: manual;
+  }
+  .hero-heading-subject {
+    display: block;
+  }
   .hero-heading-accent {
     display: block;
     color: rgb(var(--brand-primary));
@@ -93,7 +100,7 @@ const routes = getRoutes();
   }
   .hero-portrait-img {
     display: block;
-    width: clamp(280px, 28vw, 480px);
+    width: clamp(320px, 34vw, 560px);
     height: auto;
     border-radius: 12px;
     border: 1px solid rgb(var(--ink-primary) / 0.08);
