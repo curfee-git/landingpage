@@ -5,50 +5,13 @@ import WhyCurfeeSection from '@/components/WhyCurfeeSection.astro';
 import ObservationsSection from '@/components/ObservationsSection.astro';
 import ServicesSection from '@/components/ServicesSection.astro';
 import DifferentiatorSection from '@/components/DifferentiatorSection.astro';
-import FaqSection from '@/components/FaqSection.astro';
+import ConwaySection from '@/components/ConwaySection.astro';
 import ContactSection from '@/components/ContactSection.astro';
 import { getTranslations } from '@/i18n/translations';
 
 const t = getTranslations();
 
 const buildDate = new Date().toISOString().slice(0, 10);
-
-const faqEntries = [
-  { id: "https://curfee.com/#faq-1", name: t['faq.1.question'], text: t['faq.1.answer'] },
-  { id: "https://curfee.com/#faq-2", name: t['faq.2.question'], text: t['faq.2.answer'] },
-  { id: "https://curfee.com/#faq-4", name: t['faq.4.question'], text: t['faq.4.answer'] },
-  { id: "https://curfee.com/#faq-keep", name: t['faq.keep.question'], text: t['faq.keep.answer'] },
-  { id: "https://curfee.com/#faq-patterns-structural", name: t['faq.patterns.structural.question'], text: t['faq.patterns.structural.answer'] },
-  { id: "https://curfee.com/#faq-patterns-operational", name: t['faq.patterns.operational.question'], text: t['faq.patterns.operational.answer'] },
-  { id: "https://curfee.com/#faq-decisions", name: t['faq.decisions.question'], text: t['faq.decisions.answer'] },
-  { id: "https://curfee.com/#faq-enforcement", name: t['faq.enforcement.question'], text: t['faq.enforcement.answer'] },
-  { id: "https://curfee.com/#faq-ai", name: t['faq.ai.question'], text: t['faq.ai.answer'] },
-  { id: "https://curfee.com/#faq-cultural", name: t['faq.cultural.question'], text: t['faq.cultural.answer'] },
-  { id: "https://curfee.com/#faq-5", name: t['faq.5.question'], text: t['faq.5.answer'] },
-  { id: "https://curfee.com/#faq-international", name: t['faq.international.question'], text: t['faq.international.answer'] },
-  { id: "https://curfee.com/#faq-6", name: t['faq.6.question'], text: t['faq.6.answer'] },
-];
-const faqLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": "https://curfee.com/#faq",
-  "inLanguage": "de",
-  "about": { "@id": "https://curfee.com/#organization" },
-  "author": { "@id": "https://curfee.com/#founder" },
-  "publisher": { "@id": "https://curfee.com/#organization" },
-  "dateModified": buildDate,
-  "mainEntity": faqEntries.map((q) => ({
-    "@type": "Question",
-    "@id": q.id,
-    "name": q.name,
-    "author": { "@id": "https://curfee.com/#founder" },
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "author": { "@id": "https://curfee.com/#founder" },
-      "text": q.text
-    }
-  }))
-};
 
 const serviceLd = {
   "@context": "https://schema.org",
@@ -82,7 +45,7 @@ const serviceLd = {
         "category": "Einstiegs-Engagement",
         "availability": "https://schema.org/InStock",
         "priceCurrency": "EUR",
-        "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 2, "unitCode": "WEE" },
+        "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 4, "unitCode": "WEE" },
         "itemOffered": {
           "@type": "Service",
           "@id": "https://curfee.com/#diagnosis",
@@ -101,7 +64,7 @@ const serviceLd = {
         "category": "Projekt-Engagement",
         "availability": "https://schema.org/InStock",
         "priceCurrency": "EUR",
-        "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 3, "unitCode": "MON" },
+        "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 6, "unitCode": "MON" },
         "itemOffered": {
           "@type": "Service",
           "@id": "https://curfee.com/#guidance",
@@ -153,7 +116,7 @@ const decisionEnforcementLd = {
   "author": { "@id": "https://curfee.com/#founder" }
 };
 
-const jsonLd = [faqLd, serviceLd, decisionEnforcementLd];
+const jsonLd = [serviceLd, decisionEnforcementLd];
 ---
 
 <Layout
@@ -169,6 +132,6 @@ const jsonLd = [faqLd, serviceLd, decisionEnforcementLd];
   <ObservationsSection translations={t} />
   <ServicesSection translations={t} />
   <DifferentiatorSection />
-  <FaqSection translations={t} />
+  <ConwaySection translations={t} />
   <ContactSection translations={t} />
 </Layout>

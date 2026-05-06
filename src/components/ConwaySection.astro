@@ -1,0 +1,78 @@
+---
+import type { Translations } from '@/i18n/translations';
+
+interface Props {
+  translations: Translations;
+}
+const { translations: t } = Astro.props;
+---
+
+<section id="conway" class="cf-section" aria-labelledby="conway-heading">
+  <div class="cf-container">
+    <p class="cf-eyebrow conway-eyebrow" id="conway-heading">{t['conway.eyebrow']}</p>
+    <figure class="conway-figure">
+      <blockquote data-speakable class="conway-quote">
+        <p>{t['conway.quote']}</p>
+      </blockquote>
+      <figcaption class="conway-attribution">
+        <span class="conway-dash" aria-hidden="true">&mdash;</span>
+        <span class="conway-author">{t['conway.attribution']}</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .conway-eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .conway-figure {
+    margin: 0;
+    border-left: 3px solid rgb(var(--brand-primary));
+    padding: 8px 0 8px 24px;
+  }
+
+  .conway-quote {
+    margin: 0;
+  }
+
+  .conway-quote p {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: rgb(var(--ink-primary));
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .conway-attribution {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 16px;
+    font-family: var(--font-sans);
+  }
+
+  .conway-dash {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(var(--brand-primary));
+    line-height: 1;
+  }
+
+  .conway-author {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(var(--brand-primary));
+    letter-spacing: 0.04em;
+  }
+
+  @media (min-width: 768px) {
+    .conway-figure {
+      padding-left: 32px;
+    }
+  }
+</style>

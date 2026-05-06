@@ -1,0 +1,67 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import FaqSection from '@/components/FaqSection.astro';
+import { getTranslations } from '@/i18n/translations';
+
+const t = getTranslations();
+
+const buildDate = new Date().toISOString().slice(0, 10);
+
+const faqEntries = [
+  { id: 'https://curfee.com/faq/#faq-1', name: t['faq.1.question'], text: t['faq.1.answer'] },
+  { id: 'https://curfee.com/faq/#faq-2', name: t['faq.2.question'], text: t['faq.2.answer'] },
+  { id: 'https://curfee.com/faq/#faq-4', name: t['faq.4.question'], text: t['faq.4.answer'] },
+  { id: 'https://curfee.com/faq/#faq-keep', name: t['faq.keep.question'], text: t['faq.keep.answer'] },
+  { id: 'https://curfee.com/faq/#faq-patterns-structural', name: t['faq.patterns.structural.question'], text: t['faq.patterns.structural.answer'] },
+  { id: 'https://curfee.com/faq/#faq-patterns-operational', name: t['faq.patterns.operational.question'], text: t['faq.patterns.operational.answer'] },
+  { id: 'https://curfee.com/faq/#faq-decisions', name: t['faq.decisions.question'], text: t['faq.decisions.answer'] },
+  { id: 'https://curfee.com/faq/#faq-enforcement', name: t['faq.enforcement.question'], text: t['faq.enforcement.answer'] },
+  { id: 'https://curfee.com/faq/#faq-ai', name: t['faq.ai.question'], text: t['faq.ai.answer'] },
+  { id: 'https://curfee.com/faq/#faq-cultural', name: t['faq.cultural.question'], text: t['faq.cultural.answer'] },
+  { id: 'https://curfee.com/faq/#faq-5', name: t['faq.5.question'], text: t['faq.5.answer'] },
+  { id: 'https://curfee.com/faq/#faq-international', name: t['faq.international.question'], text: t['faq.international.answer'] },
+  { id: 'https://curfee.com/faq/#faq-6', name: t['faq.6.question'], text: t['faq.6.answer'] },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://curfee.com/faq/#faq',
+  inLanguage: 'de',
+  about: { '@id': 'https://curfee.com/#organization' },
+  author: { '@id': 'https://curfee.com/#founder' },
+  publisher: { '@id': 'https://curfee.com/#organization' },
+  dateModified: buildDate,
+  mainEntity: faqEntries.map((q) => ({
+    '@type': 'Question',
+    '@id': q.id,
+    name: q.name,
+    author: { '@id': 'https://curfee.com/#founder' },
+    acceptedAnswer: {
+      '@type': 'Answer',
+      author: { '@id': 'https://curfee.com/#founder' },
+      text: q.text,
+    },
+  })),
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t['breadcrumb.home'] ?? 'Home', item: 'https://curfee.com/' },
+    { '@type': 'ListItem', position: 2, name: t['faq.heading'], item: 'https://curfee.com/faq/' },
+  ],
+};
+---
+
+<Layout
+  title={`${t['faq.heading']} · Curfee`}
+  description={t['faq.subtitle']}
+  canonicalPath={Astro.url.pathname}
+  jsonLd={[faqLd, breadcrumbLd]}
+  dateModified={buildDate}
+  hasSpeakable={true}
+>
+  <FaqSection translations={t} />
+</Layout>

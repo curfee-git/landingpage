@@ -1,7 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import Icon from '@/components/shared/Icon.astro';
 import { getRoutes } from '@/configurations/routes';
 import type { Translations } from '@/i18n/translations';
+import diagnosisImage from '@/assets/images/diagnosis_section_image.png';
+import guidanceBackground from '@/assets/images/guidance_background_gray.png';
+import advisoryBackground from '@/assets/images/advisory_background_gray.png';
+import guidanceOverlay from '@/assets/images/guidance_overlay_blue.png';
+import advisoryOverlay from '@/assets/images/advisory_overlay_blue.png';
 
 interface Props {
   translations: Translations;
@@ -16,7 +22,10 @@ const services = [
     subtitle: t['services.diagnosis.subtitle'],
     duration: t['services.diagnosis.duration'],
     problem: t['services.diagnosis.problem'],
-    cta: t['services.diagnosis.cta'],
+    cta: t['services.card.cta'],
+    image: diagnosisImage,
+    overlay: null,
+    imageAlt: t['services.diagnosis.image.alt'],
     accent: 'primary',
   },
   {
@@ -25,7 +34,10 @@ const services = [
     subtitle: t['services.guidance.subtitle'],
     duration: t['services.guidance.duration'],
     problem: t['services.guidance.problem'],
-    cta: t['services.guidance.cta'],
+    cta: t['services.card.cta'],
+    image: guidanceBackground,
+    overlay: guidanceOverlay,
+    imageAlt: t['services.guidance.image.alt'],
     accent: 'secondary',
   },
   {
@@ -34,7 +46,10 @@ const services = [
     subtitle: t['services.advisory.subtitle'],
     duration: t['services.advisory.duration'],
     problem: t['services.advisory.problem'],
-    cta: t['services.advisory.cta'],
+    cta: t['services.card.cta'],
+    image: advisoryBackground,
+    overlay: advisoryOverlay,
+    imageAlt: t['services.advisory.image.alt'],
     accent: 'tertiary',
   },
 ];
@@ -52,13 +67,40 @@ const services = [
     <div class="cf-grid-3 services-grid">
       {services.map((service) => (
         <a href={routes.service[service.key]} class={`service-card service-card--${service.accent}`} aria-label={`Mehr lesen: ${service.title}`}>
+          {service.image && (
+            <div class="service-card-image">
+              <Image
+                src={service.image}
+                alt={service.imageAlt ?? ''}
+                loading="lazy"
+                decoding="async"
+                width={800}
+                height={500}
+                widths={[400, 600, 800, 1200]}
+                sizes="(min-width: 1024px) 360px, (min-width: 641px) 50vw, 100vw"
+              />
+              {service.overlay && (
+                <Image
+                  class="service-card-overlay"
+                  src={service.overlay}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  width={800}
+                  height={500}
+                  widths={[400, 600, 800, 1200]}
+                  sizes="(min-width: 1024px) 360px, (min-width: 641px) 50vw, 100vw"
+                />
+              )}
+            </div>
+          )}
           <p class="cf-eyebrow service-duration">{service.duration}</p>
           <h3 class="cf-h3 service-title">{service.title}</h3>
           <p class="service-subtitle">{service.subtitle}</p>
           <p class="service-problem">{service.problem}</p>
           <span class="service-link">
             {service.cta}
-            <Icon name="arrow_outward" class="w-4 h-4" />
+            <Icon name="arrow_right_alt" class="w-4 h-4" />
           </span>
         </a>
       ))}
@@ -82,6 +124,7 @@ const services = [
     color: inherit;
     transition: transform 200ms ease;
     position: relative;
+    overflow: hidden;
   }
   @media (min-width: 641px) {
     .service-card { padding: 32px; }
@@ -89,6 +132,27 @@ const services = [
   .service-card:hover {
     transform: translateY(-4px);
   }
+
+  .service-card-image {
+    margin: -24px -24px 20px;
+    aspect-ratio: 1586 / 992;
+    overflow: hidden;
+    position: relative;
+  }
+  .service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .service-card-image .service-card-overlay {
+    position: absolute;
+    inset: 0;
+  }
+  @media (min-width: 641px) {
+    .service-card-image { margin: -32px -32px 24px; }
+  }
+
 
   .service-duration {
     margin-bottom: 12px;
@@ -127,12 +191,7 @@ const services = [
     font-weight: 700;
     margin-top: auto;
     color: rgb(var(--brand-primary));
-    border-bottom: 1px solid transparent;
     align-self: flex-start;
-    transition: border-color 200ms ease;
-  }
-  .service-card:hover .service-link {
-    border-bottom-color: rgb(var(--brand-primary));
   }
 
 </style>
