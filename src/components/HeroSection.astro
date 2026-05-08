@@ -11,38 +11,57 @@ const { translations: t } = Astro.props;
 const routes = getRoutes();
 ---
 
-<section class="cf-section hero-fold" aria-labelledby="hero-heading">
-  <div class="cf-container hero-fold-container">
-    <div class="hero-grid">
+<section
+  class="py-20 sm:py-[104px] xl:py-[144px] lg:min-h-[calc(50svh-36px)] lg:flex lg:items-center"
+  aria-labelledby="hero-heading"
+>
+  <div class="w-full max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-10 lg:gap-16 items-center">
 
-      <div class="hero-inner">
-        <p class="cf-eyebrow hero-eyebrow">{t['hero.eyebrow']}</p>
+      <div class="max-w-[920px]">
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0 mb-5">
+          {t['hero.eyebrow']}
+        </p>
 
-        <h1 id="hero-heading" data-speakable class="cf-h1">
+        <h1
+          id="hero-heading"
+          data-speakable
+          class="font-sans text-[clamp(2.5rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words m-0"
+          style="hyphens: manual;"
+        >
           {t['hero.heading']}{' '}
-          <span class="hero-heading-subject">{t['hero.heading.subject']}</span>
-          <span class="hero-heading-accent">{t['hero.heading.accent']}</span>
+          <span class="block">{t['hero.heading.subject']}</span>
+          <span class="block text-brand-primary">{t['hero.heading.accent']}</span>
         </h1>
 
-        <p data-speakable class="cf-lead" style="margin-top: 28px; max-width: 640px;">
+        <p
+          data-speakable
+          class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[640px] font-medium mt-7"
+        >
           {t['hero.subtitle']}
         </p>
 
-        <div class="hero-ctas">
-          <a href={routes.contact} class="cf-btn cf-btn--primary">
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a
+            href={routes.contact}
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sans text-[0.9375rem] font-bold rounded-md no-underline whitespace-nowrap border-[1.5px] cursor-pointer transition-colors duration-200 bg-brand-primary text-brand-onPrimary border-brand-primary hover:bg-[#002952] hover:border-[#002952]"
+          >
             {t['hero.cta']}
           </a>
-          <a href="#services" class="cf-btn cf-btn--secondary">
+          <a
+            href="#services"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sans text-[0.9375rem] font-bold rounded-md no-underline whitespace-nowrap border-[1.5px] cursor-pointer transition-colors duration-200 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary/[0.33]"
+          >
             {t['hero.cta.secondary']}
           </a>
         </div>
       </div>
 
-      <div class="hero-portrait">
+      <div class="hidden lg:flex justify-end self-center">
         <Image
           src={profileImage}
           alt={t['about.portrait.alt']}
-          class="hero-portrait-img"
+          class="block w-[clamp(320px,34vw,560px)] h-auto rounded-lg border border-ink-primary/[0.08]"
           loading="eager"
           decoding="async"
           format="png"
@@ -56,69 +75,3 @@ const routes = getRoutes();
     </div>
   </div>
 </section>
-
-<style>
-  .hero-fold-container {
-    width: 100%;
-  }
-  @media (min-width: 1024px) {
-    .hero-fold {
-      min-height: calc(50svh - 36px);
-      display: flex;
-      align-items: center;
-    }
-    .hero-fold-container {
-      padding-inline: 0;
-    }
-  }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    align-items: center;
-  }
-  .hero-inner {
-    max-width: 920px;
-  }
-  .hero-eyebrow {
-    margin-bottom: 20px;
-  }
-  .hero-fold :global(.cf-h1) {
-    hyphens: manual;
-  }
-  .hero-heading-subject {
-    display: block;
-  }
-  .hero-heading-accent {
-    display: block;
-    color: rgb(var(--brand-primary));
-  }
-  .hero-portrait {
-    display: none;
-    justify-self: end;
-    align-self: center;
-  }
-  .hero-portrait-img {
-    display: block;
-    width: clamp(320px, 34vw, 560px);
-    height: auto;
-    border-radius: 12px;
-    border: 1px solid rgb(var(--ink-primary) / 0.08);
-  }
-  .hero-ctas {
-    margin-top: 40px;
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  @media (min-width: 901px) {
-    .hero-grid {
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-      gap: 64px;
-    }
-    .hero-portrait {
-      display: block;
-    }
-  }
-</style>

@@ -19,21 +19,37 @@ const linkLabel = allPosts.length > LATEST_COUNT ? t['blog.all'] : t['blog.visit
 ---
 
 {previewPosts.length > 0 && (
-  <section id="blog" class="cf-section cf-section--soft" aria-labelledby="blog-heading">
-    <div class="cf-container">
-      <div class="blog-head">
+  <section
+    id="blog"
+    class="py-20 sm:py-[104px] xl:py-[144px] bg-surface-soft"
+    aria-labelledby="blog-heading"
+  >
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="flex flex-col items-start gap-6 mb-12 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p class="cf-eyebrow" style="margin-bottom: 16px;">Einblicke</p>
-          <h2 id="blog-heading" class="cf-h2">{t['blog.heading']}</h2>
-          <p class="cf-lead" style="margin-top: 16px; max-width: 640px;">{t['blog.subtitle']}</p>
+          <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0 mb-4">
+            {t['blog.section.eyebrow']}
+          </p>
+          <h2
+            id="blog-heading"
+            class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0"
+          >
+            {t['blog.heading']}
+          </h2>
+          <p class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[640px] font-medium mt-4">
+            {t['blog.subtitle']}
+          </p>
         </div>
-        <a href={routes.blog} class="blog-link">
+        <a
+          href={routes.blog}
+          class="inline-flex items-center gap-1.5 text-brand-primary font-sans text-[0.875rem] font-bold no-underline shrink-0 border-b border-transparent transition-colors duration-200 hover:border-brand-primary"
+        >
           {linkLabel}
           <Icon name="arrow_outward" class="w-4 h-4" />
         </a>
       </div>
 
-      <div class="cf-grid-3 blog-grid">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {previewPosts.map((post, index) => (
           <BlogCard post={post} index={index + 1} headingLevel="h3" />
         ))}
@@ -41,36 +57,3 @@ const linkLabel = allPosts.length > LATEST_COUNT ? t['blog.all'] : t['blog.visit
     </div>
   </section>
 )}
-
-<style>
-  .blog-head {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    margin-bottom: 48px;
-  }
-  .blog-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: rgb(var(--brand-primary));
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: 700;
-    text-decoration: none;
-    flex-shrink: 0;
-    border-bottom: 1px solid transparent;
-    transition: border-color 200ms ease;
-  }
-  .blog-link:hover {
-    border-bottom-color: rgb(var(--brand-primary));
-  }
-  @media (min-width: 901px) {
-    .blog-head {
-      flex-direction: row;
-      align-items: flex-end;
-      justify-content: space-between;
-    }
-  }
-</style>

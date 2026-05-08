@@ -1,7 +1,7 @@
-import de from './de.json';
+import en from './en.json';
 
-export type Translations = typeof de;
+export type Translations = typeof en;
 
 export function getTranslations(): Translations {
-  return de;
+  return en;
 }

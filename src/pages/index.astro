@@ -17,23 +17,23 @@ const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": "https://curfee.com/#services",
-  "name": "Strukturarchitektur-Beratung",
-  "alternateName": "Strukturarchitektur Consulting",
+  "name": t['schema.serviceName'],
+  "alternateName": t['schema.serviceAlternateName'],
   "provider": { "@id": "https://curfee.com/#organization" },
-  "serviceType": "Strukturarchitektur-Beratung",
-  "category": ["IT-Beratung", "Unternehmensberatung", "Strukturarchitektur", "Systemarchitektur", "Softwarearchitektur", "Infrastrukturarchitektur", "Organisationsarchitektur"],
+  "serviceType": t['schema.serviceType'],
+  "category": t['schema.service.category'],
   "areaServed": [
-    { "@type": "Country", "name": "Österreich" },
-    { "@type": "Country", "name": "Deutschland" },
-    { "@type": "Country", "name": "Schweiz" }
+    { "@type": "Country", "name": t['schema.country.austria'] },
+    { "@type": "Country", "name": t['schema.country.germany'] },
+    { "@type": "Country", "name": t['schema.country.switzerland'] }
   ],
   "audience": {
     "@type": "BusinessAudience",
-    "name": "CTOs, Engineering-Manager, Team-Leads, Gründer",
-    "audienceType": "Entscheider in Unternehmen mit gewachsenen Systemlandschaften"
+    "name": t['schema.audienceName'],
+    "audienceType": t['schema.audienceType']
   },
-  "serviceOutput": "Ursachenanalyse, vom System durchgesetzte Architektur-Standards über Pipelines und Werkzeuge, Governance-Rahmenwerke, Begleitung der Umsetzung",
-  "availableLanguage": ["de", "en"],
+  "serviceOutput": t['schema.serviceOutput'],
+  "availableLanguage": ["en", "de"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "@id": "https://curfee.com/#offer-catalog",
@@ -42,7 +42,7 @@ const serviceLd = {
       {
         "@type": "Offer",
         "@id": "https://curfee.com/#offer-diagnosis",
-        "category": "Einstiegs-Engagement",
+        "category": t['schema.offer.diagnosis.category'],
         "availability": "https://schema.org/InStock",
         "priceCurrency": "EUR",
         "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 4, "unitCode": "WEE" },
@@ -50,18 +50,18 @@ const serviceLd = {
           "@type": "Service",
           "@id": "https://curfee.com/#diagnosis",
           "name": t['services.diagnosis.title'],
-          "alternateName": ["Diagnose", "Diagnosis"],
+          "alternateName": ["Diagnosis"],
           "description": t['services.diagnosis.problem'],
           "slogan": t['services.diagnosis.subtitle'],
           "provider": { "@id": "https://curfee.com/#organization" },
-          "serviceType": "Systemdiagnose",
-          "inLanguage": ["de"]
+          "serviceType": t['schema.offer.diagnosis.serviceType'],
+          "inLanguage": ["en"]
         }
       },
       {
         "@type": "Offer",
         "@id": "https://curfee.com/#offer-guidance",
-        "category": "Projekt-Engagement",
+        "category": t['schema.offer.guidance.category'],
         "availability": "https://schema.org/InStock",
         "priceCurrency": "EUR",
         "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 6, "unitCode": "MON" },
@@ -69,30 +69,30 @@ const serviceLd = {
           "@type": "Service",
           "@id": "https://curfee.com/#guidance",
           "name": t['services.guidance.title'],
-          "alternateName": ["Begleitung", "Guidance"],
+          "alternateName": ["Guidance"],
           "description": t['services.guidance.problem'],
           "slogan": t['services.guidance.subtitle'],
           "provider": { "@id": "https://curfee.com/#organization" },
-          "serviceType": "Architektur-Begleitung",
-          "inLanguage": ["de"]
+          "serviceType": t['schema.offer.guidance.serviceType'],
+          "inLanguage": ["en"]
         }
       },
       {
         "@type": "Offer",
         "@id": "https://curfee.com/#offer-advisory",
-        "category": "Retainer-Engagement",
+        "category": t['schema.offer.advisory.category'],
         "availability": "https://schema.org/InStock",
         "priceCurrency": "EUR",
         "itemOffered": {
           "@type": "Service",
           "@id": "https://curfee.com/#advisory",
           "name": t['services.advisory.title'],
-          "alternateName": ["Architektur-Advisory", "Advisory"],
+          "alternateName": ["Architecture Advisory", "Advisory"],
           "description": t['services.advisory.problem'],
           "slogan": t['services.advisory.subtitle'],
           "provider": { "@id": "https://curfee.com/#organization" },
-          "serviceType": "Architektur-Advisory",
-          "inLanguage": ["de"]
+          "serviceType": t['schema.offer.advisory.serviceType'],
+          "inLanguage": ["en"]
         }
       },
     ]
@@ -103,13 +103,13 @@ const decisionEnforcementLd = {
   "@context": "https://schema.org",
   "@type": "DefinedTerm",
   "@id": "https://curfee.com/#decision-enforcement-principle",
-  "name": "Prinzip der Entscheidungsdurchsetzung",
-  "alternateName": ["Entscheidungsdurchsetzung", "Decision Enforcement Principle"],
-  "description": "Architekturentscheidungen werden vom System selbst durchgesetzt – über Pipelines, automatisierte Checks und Tool-Konfiguration, statt durch Disziplin, Erinnerung oder Wachsamkeit einzelner Personen. Das Kernprinzip von Curfee.",
+  "name": t['schema.decisionEnforcement.name'],
+  "alternateName": ["Decision Enforcement", "Decision Enforcement Principle"],
+  "description": t['schema.decisionEnforcement.description'],
   "url": "https://curfee.com/#faq-enforcement",
   "inDefinedTermSet": {
     "@type": "DefinedTermSet",
-    "name": "Curfee Glossar",
+    "name": t['schema.glossaryName'],
     "url": "https://curfee.com/llms.txt"
   },
   "subjectOf": { "@id": "https://curfee.com/#organization" },

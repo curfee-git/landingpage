@@ -11,67 +11,78 @@ const { translations: t } = Astro.props;
 const routes = getRoutes();
 
 const credentials = [
-  {
-    mark: 'L',
-    title: 'Wurzeln in der Logistik',
-    body: 'Mein Werdegang begann in der Logistik: Workflows zwischen Waren, Menschen und Prozessen koordinieren. Dort habe ich gelernt, dass verlässliche Strukturen den Unterschied machen zwischen einem Prozess, der läuft, und einem, der bricht.',
-  },
-  {
-    mark: 'I',
-    title: 'Informatik → Architektur',
-    body: 'Nach meinem Studium ging es in die Softwareentwicklung, dann in die Architektur. Über Automotive, öffentlichen Sektor und Software-Beratung hinweg habe ich das große Bild und die kleinen Details gleichzeitig im Blick behalten.',
-  },
-  {
-    mark: 'K',
-    title: 'Systeme im KI-Zeitalter',
-    body: 'KI sieht nur, was in ihr Kontextfenster passt, und bringt keine eigene Struktur mit. Grenzen müssen vom System selbst durchgesetzt werden, und das funktioniert nur, wenn die Struktur dahinter verlässlich ist.',
-  },
-  {
-    mark: 'E',
-    title: 'Eigenständige Praxis',
-    body: 'Über die Curfee e.U. arbeite ich direkt mit Gründern, CTOs und Engineering-Managern in der DACH-Region. Keine Zwischenebenen, keine Account-Manager, nur die Arbeit.',
-  },
-  {
-    mark: 'D',
-    title: 'Prinzip der Entscheidungsdurchsetzung',
-    body: 'Mein Kernprinzip: Entscheidungen sollten vom System selbst durchgesetzt werden, über Pipelines, automatisierte Checks und Tool-Konfiguration. Nicht durch individuelle Disziplin, Erinnerung oder Wachsamkeit.',
-  },
-  {
-    mark: 'S',
-    title: 'Mit Sitz in Salzburg, Österreich',
-    body: 'Tätig in der gesamten DACH-Region. Remote-Engagements sind Standard; Vor-Ort-Termine, wenn die Arbeit es erfordert.',
-  },
+  { mark: 'L', title: t['about.credentials.1.title'], body: t['about.credentials.1.body'] },
+  { mark: 'I', title: t['about.credentials.2.title'], body: t['about.credentials.2.body'] },
+  { mark: 'K', title: t['about.credentials.3.title'], body: t['about.credentials.3.body'] },
+  { mark: 'E', title: t['about.credentials.4.title'], body: t['about.credentials.4.body'] },
+  { mark: 'D', title: t['about.credentials.5.title'], body: t['about.credentials.5.body'] },
+  { mark: 'S', title: t['about.credentials.6.title'], body: t['about.credentials.6.body'] },
 ];
 ---
 
-<article class="about-page">
+<article>
 
   <!-- Hero -->
-  <section class="cf-section about-hero" aria-labelledby="about-hero-heading">
-    <div class="cf-container">
-      <div class="about-hero-grid">
-        <div class="about-hero-text">
-          <p class="cf-eyebrow">Über mich</p>
-          <h1 id="about-hero-heading" class="about-hero-title">Ich bin {t['about.heading']}.</h1>
-          <p class="about-hero-jobtitle">
-            {t['about.who.heading']}<br />
-            <span>Strukturarchitekt · Gründer, Curfee e.U.</span>
+  <section class="pt-20 pb-20 sm:py-[104px] xl:py-[144px]" aria-labelledby="about-hero-heading">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_400px] lg:gap-20 items-start">
+        <div class="max-w-[640px]">
+          <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+            {t['about.eyebrow']}
           </p>
-          <p class="about-hero-body">{t['about.who.1']}</p>
-          <p class="about-hero-emphasis">{t['about.who.6']}</p>
+          <h1
+            id="about-hero-heading"
+            class="font-sans text-[clamp(2.25rem,5vw,3.75rem)] font-extrabold leading-[1.05] tracking-[-0.02em] m-0 mt-4"
+          >
+            {t['about.intro.greeting']} {t['about.heading']}.
+          </h1>
+          <p class="font-sans font-bold text-base text-brand-primary leading-[1.5] mt-4 mb-7">
+            {t['about.who.heading']}<br />
+            <span class="font-medium text-ink-primary/65">{t['about.jobtitle.subline']}</span>
+          </p>
+          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">
+            {t['about.who.1']}
+          </p>
+          <p class="font-sans text-[1.0625rem] leading-[1.6] font-bold text-brand-primary m-0 max-w-[65ch]">
+            {t['about.who.6']}
+          </p>
 
-          <div class="about-hero-ctas">
-            <a href={routes.contact} class="about-btn about-btn--primary">{t['hero.cta']}</a>
-            <a href={EXTERNAL.linkedin} target="_blank" rel="noopener noreferrer" class="about-btn about-btn--outline">Auf LinkedIn folgen</a>
+          <div class="mt-9 flex flex-wrap gap-4">
+            <a
+              href={routes.contact}
+              class="inline-flex items-center justify-center px-6 py-3.5 font-sans text-[0.9375rem] font-bold rounded-md no-underline border-[1.5px] transition-colors duration-200 bg-brand-primary text-brand-onPrimary border-brand-primary hover:bg-[#002952] hover:border-[#002952]"
+            >
+              {t['hero.cta']}
+            </a>
+            <a
+              href={EXTERNAL.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center px-6 py-3.5 font-sans text-[0.9375rem] font-bold rounded-md no-underline border-[1.5px] transition-colors duration-200 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary hover:text-brand-onPrimary"
+            >
+              {t['about.linkedin.cta']}
+            </a>
           </div>
         </div>
 
-        <div class="about-hero-aside">
-          <div class="about-portrait-wrap">
-            <Image src={profileImage} alt={t['about.portrait.alt']} class="about-portrait" loading="eager" decoding="async" width={400} height={600} widths={[280, 400, 600, 800]} sizes="(max-width: 900px) 280px, 400px" />
+        <div class="flex flex-col max-w-[360px] lg:max-w-none">
+          <div class="rounded-lg overflow-hidden aspect-[3/4] bg-surface-soft">
+            <Image
+              src={profileImage}
+              alt={t['about.portrait.alt']}
+              class="w-full h-full object-cover object-[center_top] block"
+              loading="eager"
+              decoding="async"
+              width={400}
+              height={600}
+              widths={[280, 400, 600, 800]}
+              sizes="(max-width: 900px) 280px, 400px"
+            />
           </div>
-          <div class="about-claim">
-            <p>"{t['about.who.2']}"</p>
+          <div class="mt-5 py-6 px-7 bg-surface-soft border-l-2 border-brand-primary rounded-md">
+            <p class="font-sans font-semibold text-[1.0625rem] text-ink-primary leading-[1.5] m-0">
+              "{t['about.who.2']}"
+            </p>
           </div>
         </div>
       </div>
@@ -79,37 +90,62 @@ const credentials = [
   </section>
 
   <!-- Why Curfee -->
-  <section class="cf-section cf-section--soft" aria-labelledby="why-heading">
-    <div class="cf-container">
-      <div class="cf-grid-2-3">
+  <section class="py-20 sm:py-[104px] xl:py-[144px] bg-surface-soft" aria-labelledby="why-heading">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-[2fr_3fr] lg:gap-16">
         <div>
-          <p class="cf-eyebrow">Warum Curfee</p>
-          <h2 id="why-heading" class="cf-h2">{t['about.section.why']}</h2>
+          <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+            {t['about.why.eyebrow']}
+          </p>
+          <h2
+            id="why-heading"
+            class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-2"
+          >
+            {t['about.section.why']}
+          </h2>
         </div>
-        <div class="about-prose">
-          <p>{t['about.who.5']}</p>
-          <p>{t['about.who.5b']}</p>
-          <p>{t['about.who.3b']}</p>
+        <div>
+          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.5']}</p>
+          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.5b']}</p>
+          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 max-w-[65ch]">{t['about.who.3b']}</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Credentials grid -->
-  <section class="cf-section" aria-labelledby="background-heading">
-    <div class="cf-container">
-      <div class="about-credentials-head">
-        <p class="cf-eyebrow">{t['about.section.background']}</p>
-        <h2 id="background-heading" class="cf-h2">Was meinen Ansatz geprägt hat</h2>
-        <p class="cf-lead" style="margin-top: 16px; max-width: 640px;">Keine Liste von Titeln, sondern Kontext für die Arbeit, die ich mache.</p>
+  <section class="py-20 sm:py-[104px] xl:py-[144px]" aria-labelledby="background-heading">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="max-w-[720px] mb-14">
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+          {t['about.section.background']}
+        </p>
+        <h2
+          id="background-heading"
+          class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4"
+        >
+          {t['about.background.heading']}
+        </h2>
+        <p class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[640px] font-medium mt-4">
+          {t['about.background.lead']}
+        </p>
       </div>
-      <div class="about-credentials">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12">
         {credentials.map((c) => (
-          <div class="credential">
-            <div class="credential-mark" aria-hidden="true">{c.mark}</div>
-            <div class="credential-body">
-              <h3 class="credential-title">{c.title}</h3>
-              <p class="credential-text">{c.body}</p>
+          <div class="grid grid-cols-[56px_1fr] gap-5 items-start">
+            <div
+              class="w-12 h-12 rounded-xs bg-brand-primary text-brand-onPrimary flex items-center justify-center font-sans font-extrabold text-[1.25rem]"
+              aria-hidden="true"
+            >
+              {c.mark}
+            </div>
+            <div>
+              <h3 class="font-sans text-[1.125rem] font-bold text-ink-primary m-0 mb-2 leading-[1.3]">
+                {c.title}
+              </h3>
+              <p class="font-sans text-[0.9375rem] text-ink-muted leading-[1.6] m-0 max-w-[65ch]">
+                {c.body}
+              </p>
             </div>
           </div>
         ))}
@@ -118,309 +154,57 @@ const credentials = [
   </section>
 
   <!-- Principles -->
-  <section class="cf-section cf-section--soft" aria-labelledby="principles-heading">
-    <div class="cf-container">
-      <div class="about-principles-head">
-        <p class="cf-eyebrow">Drei leitende Prinzipien</p>
-        <h2 id="principles-heading" class="cf-h2">Wie ich arbeite</h2>
+  <section class="py-20 sm:py-[104px] xl:py-[144px] bg-surface-soft" aria-labelledby="principles-heading">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="max-w-[640px] mb-12">
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+          {t['about.principles.eyebrow']}
+        </p>
+        <h2
+          id="principles-heading"
+          class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4"
+        >
+          {t['about.principles.heading']}
+        </h2>
       </div>
-      <div class="about-principles-grid">
-        <div class="principle">
-          <span class="principle-num">01</span>
-          <h3 class="principle-title">{t['principles.1']}</h3>
-          <p class="principle-text">Symptome zeigen den Weg. Ursachen lösen. Die Arbeit beginnt dort, wo die Kette endet.</p>
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div class="bg-surface-base border border-ink-primary/10 rounded-md p-8 transition-transform duration-200 hover:-translate-y-1">
+          <span class="inline-block font-sans text-[0.8125rem] font-semibold tracking-[0.06em] text-brand-primary mb-4">01</span>
+          <h3 class="font-sans text-[1.25rem] font-bold text-ink-primary m-0 mb-2 leading-[1.3]">{t['principles.1']}</h3>
+          <p class="font-sans text-[0.9375rem] text-ink-muted leading-[1.6] m-0">{t['about.principles.1.text']}</p>
         </div>
-        <div class="principle">
-          <span class="principle-num">02</span>
-          <h3 class="principle-title">{t['principles.2']}</h3>
-          <p class="principle-text">Ein Standard, der von individueller Wachsamkeit abhängt, ist ein Standard, der irgendwann driftet. Das System muss ihn durchsetzen.</p>
+        <div class="bg-surface-base border border-ink-primary/10 rounded-md p-8 transition-transform duration-200 hover:-translate-y-1">
+          <span class="inline-block font-sans text-[0.8125rem] font-semibold tracking-[0.06em] text-brand-primary mb-4">02</span>
+          <h3 class="font-sans text-[1.25rem] font-bold text-ink-primary m-0 mb-2 leading-[1.3]">{t['principles.2']}</h3>
+          <p class="font-sans text-[0.9375rem] text-ink-muted leading-[1.6] m-0">{t['about.principles.2.text']}</p>
         </div>
-        <div class="principle">
-          <span class="principle-num">03</span>
-          <h3 class="principle-title">{t['principles.3']}</h3>
-          <p class="principle-text">Workarounds summieren sich zu einer Struktur, die niemand gewählt hat. Bau das Fundament, dann bleibt alles darüber gerade.</p>
+        <div class="bg-surface-base border border-ink-primary/10 rounded-md p-8 transition-transform duration-200 hover:-translate-y-1">
+          <span class="inline-block font-sans text-[0.8125rem] font-semibold tracking-[0.06em] text-brand-primary mb-4">03</span>
+          <h3 class="font-sans text-[1.25rem] font-bold text-ink-primary m-0 mb-2 leading-[1.3]">{t['principles.3']}</h3>
+          <p class="font-sans text-[0.9375rem] text-ink-muted leading-[1.6] m-0">{t['about.principles.3.text']}</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cf-section cf-section--navy">
-    <div class="cf-container">
-      <div style="max-width: 760px;">
-        <h2 class="cf-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
-        <p class="cf-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
-        <a href={routes.contact} class="about-final-cta">{t['hero.cta']}</a>
+  <section class="py-20 sm:py-[104px] xl:py-[144px] bg-brand-primary text-brand-onPrimary">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="max-w-[760px]">
+        <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 text-brand-onPrimary">
+          {t['calltoaction.heading']}
+        </h2>
+        <p class="font-sans text-[1.125rem] leading-[1.6] text-surface-base/85 max-w-[640px] font-medium mt-4">
+          {t['calltoaction.subtitle']}
+        </p>
+        <a
+          href={routes.contact}
+          class="inline-flex items-center gap-2 mt-8 px-7 py-3.5 font-sans text-[0.9375rem] font-bold bg-surface-base text-brand-primary border-[1.5px] border-surface-base rounded-md no-underline transition-colors duration-200 hover:bg-surface-base/85"
+        >
+          {t['hero.cta']}
+        </a>
       </div>
     </div>
   </section>
 
 </article>
-
-<style>
-  /* === Hero === */
-  .about-hero {
-    padding-top: 80px;
-  }
-  .about-hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-  .about-hero-text {
-    max-width: 640px;
-  }
-  .about-hero-title {
-    font-family: var(--font-sans);
-    font-size: clamp(2.25rem, 5vw, 3.75rem);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin: 16px 0 0 0;
-  }
-  .about-hero-jobtitle {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 1rem;
-    color: rgb(var(--brand-primary));
-    margin: 16px 0 28px 0;
-    line-height: 1.5;
-  }
-  .about-hero-jobtitle span {
-    font-weight: 500;
-    color: rgb(var(--ink-primary) / 0.65);
-  }
-  .about-hero-body {
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    color: rgb(var(--ink-primary) / 0.75);
-    line-height: 1.6;
-    margin: 0 0 20px 0;
-    max-width: 65ch;
-  }
-  .about-hero-emphasis {
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    font-weight: 700;
-    color: rgb(var(--brand-primary));
-    margin: 0;
-    max-width: 65ch;
-  }
-  .about-hero-ctas {
-    margin-top: 36px;
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .about-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 24px;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 700;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 200ms ease, color 200ms ease;
-    border: 1.5px solid transparent;
-  }
-  .about-btn--primary {
-    background: rgb(var(--brand-primary));
-    color: rgb(var(--on-brand-primary));
-    border-color: rgb(var(--brand-primary));
-  }
-  .about-btn--primary:hover {
-    background: color-mix(in srgb, rgb(var(--brand-primary)) 80%, black);
-    border-color: color-mix(in srgb, rgb(var(--brand-primary)) 80%, black);
-  }
-  .about-btn--outline {
-    background: transparent;
-    color: rgb(var(--brand-primary));
-    border-color: rgb(var(--brand-primary));
-  }
-  .about-btn--outline:hover {
-    background: rgb(var(--brand-primary));
-    color: rgb(var(--on-brand-primary));
-  }
-
-  .about-hero-aside {
-    display: flex;
-    flex-direction: column;
-    max-width: 360px;
-  }
-  .about-portrait-wrap {
-    border-radius: 12px;
-    overflow: hidden;
-    aspect-ratio: 3/4;
-    background: rgb(var(--surface-soft));
-  }
-  :global(.about-portrait) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-  .about-claim {
-    margin-top: 20px;
-    padding: 24px 28px;
-    background: rgb(var(--surface-soft));
-    border-left: 2px solid rgb(var(--brand-primary));
-    border-radius: 8px;
-  }
-  .about-claim p {
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 1.0625rem;
-    color: rgb(var(--ink-primary));
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  /* === Why section prose === */
-  .about-prose p {
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    color: rgb(var(--ink-primary) / 0.75);
-    line-height: 1.6;
-    margin: 0 0 20px 0;
-    max-width: 65ch;
-  }
-  .about-prose p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* === Credentials === */
-  .about-credentials-head {
-    max-width: 720px;
-    margin-bottom: 56px;
-  }
-  .about-credentials {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .credential {
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    gap: 20px;
-    align-items: start;
-  }
-  .credential-mark {
-    width: 48px;
-    height: 48px;
-    border-radius: 4px;
-    background: rgb(var(--brand-primary));
-    color: rgb(var(--on-brand-primary));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: 1.25rem;
-  }
-
-  .credential-title {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: rgb(var(--ink-primary));
-    margin: 0 0 8px 0;
-    line-height: 1.3;
-  }
-  .credential-text {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    color: rgb(var(--ink-primary) / 0.75);
-    line-height: 1.6;
-    margin: 0;
-    max-width: 65ch;
-  }
-
-  /* === Principles === */
-  .about-principles-head {
-    max-width: 640px;
-    margin-bottom: 48px;
-  }
-  .about-principles-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .principle {
-    background: rgb(var(--surface-base));
-    border: 1px solid rgb(var(--ink-primary) / 0.1);
-    border-radius: 8px;
-    padding: 32px;
-    transition: transform 200ms ease;
-  }
-  .principle:hover {
-    transform: translateY(-4px);
-  }
-  .principle-num {
-    display: inline-block;
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    color: rgb(var(--brand-primary));
-    margin-bottom: 16px;
-  }
-  .principle-title {
-    font-family: var(--font-sans);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: rgb(var(--ink-primary));
-    margin: 0 0 8px 0;
-    line-height: 1.3;
-  }
-  .principle-text {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    color: rgb(var(--ink-primary) / 0.75);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* === Final CTA === */
-  .about-final-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 32px;
-    padding: 14px 28px;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 700;
-    background: rgb(var(--surface-base));
-    color: rgb(var(--brand-primary));
-    border: 1.5px solid rgb(var(--surface-base));
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 200ms ease, color 200ms ease;
-  }
-  .about-final-cta:hover {
-    background: rgb(var(--surface-base) / 0.85);
-  }
-
-  /* === Responsive === */
-  @media (min-width: 901px) {
-    .about-hero-grid {
-      grid-template-columns: 1fr 400px;
-      gap: 80px;
-    }
-    .about-hero-aside {
-      max-width: none;
-    }
-    .about-credentials {
-      grid-template-columns: 1fr 1fr;
-      gap: 48px 64px;
-    }
-    .about-principles-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-</style>

@@ -13,57 +13,26 @@ const routes = getRoutes();
   canonicalPath={Astro.url.pathname}
   noindex={true}
 >
-  <article class="cf-section error-page">
-    <div class="cf-container">
-      <div class="error-inner">
-        <p class="error-code" aria-hidden="true">404</p>
-        <h1 class="error-heading">{t['404.heading']}</h1>
-        <p class="error-description">{t['404.description']}</p>
-        <a href={routes.home} class="cf-btn cf-btn--primary error-cta">{t['404.cta']}</a>
+  <article class="pt-14 sm:pt-20 xl:pt-24 pb-20 sm:pb-28 xl:pb-32">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="max-w-[720px] mx-auto text-center">
+        <p
+          class="font-sans text-[clamp(3.5rem,8vw,6rem)] font-extrabold leading-[0.95] tracking-[-0.03em] text-brand-primary m-0 mb-2 select-none"
+          aria-hidden="true"
+        >404</p>
+        <h1 class="font-sans text-[clamp(1.5rem,3vw,2rem)] font-extrabold leading-[1.2] tracking-[-0.015em] text-ink-primary m-0 text-balance">
+          {t['404.heading']}
+        </h1>
+        <p class="font-sans text-base text-ink-muted leading-[1.6] mt-4 mx-auto max-w-[480px]">
+          {t['404.description']}
+        </p>
+        <a
+          href={routes.home}
+          class="inline-flex items-center justify-center mt-8 px-6 py-3.5 font-sans text-[0.9375rem] font-bold rounded-md no-underline border-[1.5px] transition-colors duration-200 bg-brand-primary text-brand-onPrimary border-brand-primary hover:bg-[#002952] hover:border-[#002952]"
+        >
+          {t['404.cta']}
+        </a>
       </div>
     </div>
   </article>
 </Layout>
-
-<style>
-  .error-page {
-    padding-top: clamp(56px, 6vw, 96px);
-    padding-bottom: clamp(80px, 9vw, 128px);
-  }
-  .error-inner {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .error-code {
-    font-family: var(--font-sans);
-    font-size: clamp(3.5rem, 8vw, 6rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    color: rgb(var(--brand-primary));
-    margin: 0 0 8px 0;
-    user-select: none;
-  }
-  .error-heading {
-    font-family: var(--font-sans);
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.015em;
-    color: rgb(var(--ink-primary));
-    margin: 0;
-    text-wrap: balance;
-  }
-  .error-description {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    color: rgb(var(--ink-primary) / 0.75);
-    line-height: 1.6;
-    margin: 16px auto 0 auto;
-    max-width: 480px;
-  }
-  .error-cta {
-    margin-top: 32px;
-  }
-</style>

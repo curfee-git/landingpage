@@ -15,7 +15,7 @@ const jsonLd = {
   "@id": "https://curfee.com/blog/#blog",
   "name": t['blog.indexHeading'],
   "description": t['blog.indexSubtitle'],
-  "inLanguage": "de",
+  "inLanguage": "en",
   "url": "https://curfee.com/blog/",
   "publisher": { "@id": "https://curfee.com/#organization" },
   "blogPost": posts.map((p) => ({
@@ -38,32 +38,42 @@ const jsonLd = {
   canonicalPath={Astro.url.pathname}
   jsonLd={jsonLd}
 >
-  <article class="cf-section">
-    <div class="cf-container">
+  <article class="py-20 sm:py-[104px] xl:py-[144px]">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
 
-      <header class="blog-header">
-        <p class="cf-eyebrow">{t['nav.blog']}</p>
-        <h1 class="cf-h1">{t['blog.indexH1']}</h1>
-        <p class="blog-subheading">{t['blog.indexSubtitle']}</p>
+      <header class="mb-14 max-w-[720px]">
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+          {t['nav.blog']}
+        </p>
+        <h1 class="font-sans text-[clamp(2.5rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0 mt-4">
+          {t['blog.indexH1']}
+        </h1>
+        <p class="font-sans text-[1.125rem] text-ink-muted leading-[1.6] mt-6 m-0 max-w-[65ch] font-medium">
+          {t['blog.indexSubtitle']}
+        </p>
       </header>
 
       {posts.length === 0 ? (
-        <p class="blog-empty">{t['blog.empty']}</p>
+        <p class="font-sans text-base text-ink-primary/65">{t['blog.empty']}</p>
       ) : (
         <>
-          <div class="blog-controls" data-blog-controls>
-            <label class="blog-control">
-              <span class="blog-control-label">{t['blog.filterLabel']}</span>
-              <select data-blog-filter class="blog-select">
+          <div class="flex flex-wrap items-center gap-4 mb-10" data-blog-controls>
+            <label class="inline-flex items-center gap-2">
+              <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
+                {t['blog.filterLabel']}
+              </span>
+              <select data-blog-filter class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-[0.875rem] font-semibold py-2 pl-3 pr-9 min-w-[160px] cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
                 <option value="">{t['blog.filterAll']}</option>
                 {topics.map((topic) => (
                   <option value={topic}>{topic}</option>
                 ))}
               </select>
             </label>
-            <label class="blog-control">
-              <span class="blog-control-label">{t['blog.sortLabel']}</span>
-              <select data-blog-sort class="blog-select">
+            <label class="inline-flex items-center gap-2">
+              <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
+                {t['blog.sortLabel']}
+              </span>
+              <select data-blog-sort class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-[0.875rem] font-semibold py-2 pl-3 pr-9 min-w-[160px] cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
                 <option value="newest">{t['blog.sortNewest']}</option>
                 <option value="oldest">{t['blog.sortOldest']}</option>
                 <option value="az">{t['blog.sortAZ']}</option>
@@ -71,7 +81,7 @@ const jsonLd = {
             </label>
           </div>
 
-          <ol class="blog-grid" data-blog-list>
+          <ol class="grid grid-cols-1 gap-6 list-none p-0 m-0 md:grid-cols-2 lg:grid-cols-3" data-blog-list>
             {posts.map((post, index) => (
               <li
                 data-blog-item
@@ -127,88 +137,9 @@ const jsonLd = {
 </script>
 
 <style>
-  .blog-header {
-    margin-bottom: 56px;
-    max-width: 720px;
-  }
-  .blog-header .cf-h1 {
-    margin-top: 16px;
-  }
-  .blog-subheading {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    color: rgb(var(--ink-primary) / 0.75);
-    line-height: 1.6;
-    margin: 24px 0 0 0;
-    max-width: 65ch;
-    font-weight: 500;
-  }
-
-  .blog-empty {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    color: rgb(var(--ink-primary) / 0.65);
-  }
-
-  /* Filter / sort row */
-  .blog-controls {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-  .blog-control {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .blog-control-label {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: rgb(var(--ink-primary) / 0.65);
-    letter-spacing: 0.01em;
-  }
   .blog-select {
-    appearance: none;
-    background: rgb(var(--surface-base)) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' stroke='%230A0A0A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
-    border: 1px solid rgb(var(--ink-primary) / 0.15);
-    border-radius: 4px;
-    color: rgb(var(--ink-primary));
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: 600;
-    padding: 8px 36px 8px 12px;
-    min-width: 160px;
-    cursor: pointer;
-    transition: border-color 200ms ease;
-  }
-  .blog-select:hover {
-    border-color: rgb(var(--brand-primary));
-  }
-  .blog-select:focus {
-    outline: none;
-    border-color: rgb(var(--brand-primary));
-  }
-
-  /* Card grid */
-  .blog-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  @media (min-width: 768px) {
-    .blog-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 1024px) {
-    .blog-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' stroke='%230A0A0A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
   }
 </style>

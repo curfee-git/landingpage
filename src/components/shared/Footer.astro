@@ -27,7 +27,7 @@ const linkClass = "text-body-medium text-ink-muted hover:text-brand-primary tran
       <div class="col-span-1 md:contents grid grid-cols-2 md:grid-cols-none gap-10">
         <div>
           <p class="text-label-large text-ink-primary mb-4">{t['nav.services']}</p>
-          <nav class="flex flex-col gap-3" aria-label="Leistungen-Navigation">
+          <nav class="flex flex-col gap-3" aria-label={t['footer.aria.services']}>
             <a href={routes.service.diagnosis} class={linkClass}>{t['services.diagnosis.title']}</a>
             <a href={routes.service.guidance} class={linkClass}>{t['services.guidance.title']}</a>
             <a href={routes.service.advisory} class={linkClass}>{t['services.advisory.title']}</a>
@@ -36,7 +36,7 @@ const linkClass = "text-body-medium text-ink-muted hover:text-brand-primary tran
 
         <div>
           <p class="text-label-large text-ink-primary mb-4">{t['footer.column.company']}</p>
-          <nav class="flex flex-col gap-3" aria-label="Unternehmens-Navigation">
+          <nav class="flex flex-col gap-3" aria-label={t['footer.aria.company']}>
             <a href={routes.about} class={linkClass}>{t['nav.about']}</a>
             <a href={routes.blog} class={linkClass}>{t['blog.indexHeading']}</a>
             <a href={routes.contact} class={linkClass}>{t['nav.contact']}</a>
@@ -45,7 +45,7 @@ const linkClass = "text-body-medium text-ink-muted hover:text-brand-primary tran
 
         <div>
           <p class="text-label-large text-ink-primary mb-4">{t['footer.column.legal']}</p>
-          <nav class="flex flex-col gap-3" aria-label="Rechtliches-Navigation">
+          <nav class="flex flex-col gap-3" aria-label={t['footer.aria.legal']}>
             <a href={routes.imprint} class={linkClass}>{t['footer.legal.notice']}</a>
             <a href={routes.privacy} class={linkClass}>{t['footer.legal.privacy']}</a>
           </nav>

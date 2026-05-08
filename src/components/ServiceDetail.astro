@@ -18,7 +18,6 @@ interface Props {
   subtitle: string;
   duration: string;
   problem: string;
-  forwhom: string[];
   timeline: TimelineStep[];
   delivers: string[];
   excludes: string[];
@@ -29,72 +28,170 @@ interface Props {
   accent: 'primary' | 'secondary' | 'tertiary';
 }
 
-const { title, subtitle, duration, problem, forwhom, timeline, delivers, excludes, objectionQ, objectionA, cta, translations: t, accent } = Astro.props;
+const { serviceKey, title, subtitle, duration, problem, timeline, delivers, excludes, objectionQ, objectionA, cta, translations: t } = Astro.props;
+
+const pad2 = (n: number) => String(n).padStart(2, '0');
+
+const approachByService = {
+  diagnosis: [
+    { title: t['approach.diagnosis.1.title'], body: t['approach.diagnosis.1.body'] },
+    { title: t['approach.diagnosis.2.title'], body: t['approach.diagnosis.2.body'] },
+    { title: t['approach.diagnosis.3.title'], body: t['approach.diagnosis.3.body'] },
+  ],
+  guidance: [
+    { title: t['approach.guidance.1.title'], body: t['approach.guidance.1.body'] },
+    { title: t['approach.guidance.2.title'], body: t['approach.guidance.2.body'] },
+    { title: t['approach.guidance.3.title'], body: t['approach.guidance.3.body'] },
+  ],
+  advisory: [
+    { title: t['approach.advisory.1.title'], body: t['approach.advisory.1.body'] },
+    { title: t['approach.advisory.2.title'], body: t['approach.advisory.2.body'] },
+    { title: t['approach.advisory.3.title'], body: t['approach.advisory.3.body'] },
+  ],
+} as const;
+
+const fieldsByService = {
+  diagnosis: [
+    { title: t['fields.diagnosis.1.title'], subtitle: t['fields.diagnosis.1.subtitle'], body: t['fields.diagnosis.1.body'] },
+    { title: t['fields.diagnosis.2.title'], subtitle: t['fields.diagnosis.2.subtitle'], body: t['fields.diagnosis.2.body'] },
+    { title: t['fields.diagnosis.3.title'], subtitle: t['fields.diagnosis.3.subtitle'], body: t['fields.diagnosis.3.body'] },
+    { title: t['fields.diagnosis.4.title'], subtitle: t['fields.diagnosis.4.subtitle'], body: t['fields.diagnosis.4.body'] },
+  ],
+  guidance: [
+    { title: t['fields.guidance.1.title'], subtitle: t['fields.guidance.1.subtitle'], body: t['fields.guidance.1.body'] },
+    { title: t['fields.guidance.2.title'], subtitle: t['fields.guidance.2.subtitle'], body: t['fields.guidance.2.body'] },
+    { title: t['fields.guidance.3.title'], subtitle: t['fields.guidance.3.subtitle'], body: t['fields.guidance.3.body'] },
+    { title: t['fields.guidance.4.title'], subtitle: t['fields.guidance.4.subtitle'], body: t['fields.guidance.4.body'] },
+  ],
+  advisory: [
+    { title: t['fields.advisory.1.title'], subtitle: t['fields.advisory.1.subtitle'], body: t['fields.advisory.1.body'] },
+    { title: t['fields.advisory.2.title'], subtitle: t['fields.advisory.2.subtitle'], body: t['fields.advisory.2.body'] },
+    { title: t['fields.advisory.3.title'], subtitle: t['fields.advisory.3.subtitle'], body: t['fields.advisory.3.body'] },
+    { title: t['fields.advisory.4.title'], subtitle: t['fields.advisory.4.subtitle'], body: t['fields.advisory.4.body'] },
+  ],
+} as const;
+
+const approachItems = approachByService[serviceKey];
+const fieldItems = fieldsByService[serviceKey];
 ---
 
-<article class={`service-detail service-detail--${accent}`}>
+<article>
 
   <!-- Hero / Page header -->
-  <section class="cf-section service-hero">
-    <div class="cf-container">
-      <div class="service-hero-grid">
-        <div class="service-hero-main">
-          <p class="cf-eyebrow service-hero-eyebrow">{duration}</p>
-          <h1 class="cf-h1 service-hero-title">{title}</h1>
-          <p class="service-hero-subtitle">{subtitle}</p>
-        </div>
-        <aside class="service-hero-aside">
-          <p class="cf-body service-hero-problem">{problem}</p>
-          <a href={routes.contact} class="service-hero-cta">
-            {cta}
-            <Icon name="arrow_outward" class="w-4 h-4" />
-          </a>
-        </aside>
+  <section class="pt-16 sm:pt-[104px] xl:pt-[144px] pb-20 sm:pb-[104px] xl:pb-[144px] bg-surface-soft">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div>
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0 mb-3">
+          {duration}
+        </p>
+        <h1 class="font-sans text-[clamp(2.5rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0">
+          {title}
+        </h1>
+        <p class="font-sans text-[1.5rem] font-bold text-brand-primary leading-[1.3] mt-6 m-0">
+          {subtitle}
+        </p>
+        <p class="font-sans text-[1.125rem] font-medium leading-[1.6] text-ink-muted m-0 mt-6 max-w-[65ch]">
+          {problem}
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- For whom -->
-  <section class="cf-section cf-section--soft">
-    <div class="cf-container">
-      <div class="cf-grid-2-3">
-        <div>
-          <p class="cf-eyebrow">{t['services.label.forwhom']}</p>
-          <h2 class="cf-h2" style="margin-top: 16px;">Klingt das vertraut?</h2>
-        </div>
-        <ul class="service-forwhom">
-          {forwhom.map((item) => (
-            <li>
-              <Icon name="arrow_right_alt" class="service-forwhom-icon" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+  <!-- The approach -->
+  <section class="py-20 sm:py-[104px] xl:py-[144px]">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <header class="max-w-[720px] mb-12">
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+          {t['approach.eyebrow']}
+        </p>
+        <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
+          {t['approach.heading']}
+        </h2>
+        <p class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[640px] font-medium mt-4">
+          {t['approach.subtitle']}
+        </p>
+      </header>
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-y-4 lg:gap-x-6">
+        {approachItems.map((item, idx) => (
+          <article class="approach-card flex flex-col gap-4 p-7 bg-surface-base border border-ink-primary/[0.12] rounded-md transition-colors duration-200 lg:grid lg:grid-rows-subgrid lg:row-span-3">
+            <div class="font-sans text-[2rem] font-extrabold tracking-[-0.02em] text-brand-primary leading-none">
+              {idx + 1}
+            </div>
+            <h3 class="font-sans text-[1.125rem] font-bold tracking-[-0.005em] m-0 text-ink-primary">
+              {item.title}
+            </h3>
+            <p class="font-sans text-[1rem] leading-[1.55] text-ink-primary/85 m-0">
+              {item.body}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Consulting fields -->
+  <section class="py-20 sm:py-[104px] xl:py-[144px] bg-surface-soft">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <header class="max-w-[720px] mb-12">
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+          {t['fields.eyebrow']}
+        </p>
+        <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
+          {t['fields.heading']}
+        </h2>
+        <p class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[640px] font-medium mt-4">
+          {t['fields.subtitle']}
+        </p>
+      </header>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+        {fieldItems.map((item) => (
+          <article class="flex flex-col p-8 bg-surface-base border border-ink-primary/10 rounded-md transition-colors duration-200 hover:border-brand-primary">
+            <h3 class="font-sans text-[1.25rem] font-extrabold tracking-[-0.005em] text-ink-primary m-0">
+              {item.title}
+            </h3>
+            <p class="font-sans text-[0.9375rem] font-bold text-brand-primary leading-[1.4] mt-2 m-0">
+              {item.subtitle}
+            </p>
+            <p class="font-sans text-[0.9375rem] leading-[1.6] text-ink-muted mt-5 m-0">
+              {item.body}
+            </p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- Process timeline -->
-  <section class="cf-section">
-    <div class="cf-container">
-      <div class="service-process-head">
-        <p class="cf-eyebrow">{t['services.label.process']}</p>
-        <h2 class="cf-h2" style="margin-top: 16px;">Wie es abläuft</h2>
+  <section class="py-20 sm:py-[104px] xl:py-[144px] bg-brand-primary text-brand-onPrimary">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="max-w-[640px] mb-14">
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-surface-base/70 m-0">
+          {t['services.label.process']}
+        </p>
+        <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4 text-brand-onPrimary">
+          {t['service.process.heading']}
+        </h2>
       </div>
-      <ol class="service-timeline">
+      <ol class="list-none p-0 m-0 flex flex-col gap-2">
         {timeline.map((step, idx) => (
-          <li class="service-step">
-            <div class="service-step-num">
-              <span>{idx + 1}</span>
+          <li class="grid grid-cols-[56px_1fr] sm:grid-cols-[88px_1fr] gap-4 sm:gap-7 py-7 sm:py-8 border-t border-surface-base/[0.15] last:border-b last:border-surface-base/[0.15]">
+            <div class="font-sans font-extrabold text-[2rem] sm:text-[2.75rem] leading-none tracking-[-0.02em] text-surface-base/50">
+              {pad2(idx + 1)}
             </div>
-            <div class="service-step-body">
-              <p class="cf-eyebrow service-step-phase">{step.phase}</p>
-              <h3 class="cf-h3 service-step-title">{step.title}</h3>
-              <p class="service-step-outcome">{step.outcome}</p>
-              <ul class="service-step-items">
+            <div>
+              <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-surface-base/70 m-0 mb-2">
+                {step.phase}
+              </p>
+              <h3 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-1 text-brand-onPrimary">
+                {step.title}
+              </h3>
+              <p class="font-sans text-[0.9375rem] text-surface-base/70 m-0 mb-4">
+                {step.outcome}
+              </p>
+              <ul class="list-none p-0 m-0 flex flex-col gap-1.5">
                 {step.items.map((item) => (
-                  <li>
-                    <Icon name="navigate_next" class="service-step-item-icon" />
+                  <li class="flex items-start gap-1.5 font-sans text-[0.9375rem] text-surface-base/80">
+                    <Icon name="navigate_next" class="shrink-0 w-4 h-4 mt-1 text-surface-base/55" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -107,26 +204,30 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
   </section>
 
   <!-- Delivers + Excludes -->
-  <section class="cf-section cf-section--soft">
-    <div class="cf-container">
-      <div class="cf-grid-2 service-bento">
-        <div class="service-delivers cf-card">
-          <p class="cf-eyebrow service-card-label">{t['services.label.delivers']}</p>
-          <ul>
+  <section class="py-20 sm:py-[104px] xl:py-[144px] bg-surface-soft">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
+        <div class="bento-card bg-surface-base border border-ink-primary/10 rounded-md p-6 sm:p-8 transition-colors duration-200">
+          <span class="inline-block font-sans text-[0.6875rem] font-extrabold tracking-[0.16em] uppercase text-brand-primary bg-surface-soft py-1.5 px-3 rounded-xs m-0 mb-5">
+            {t['services.label.delivers']}
+          </span>
+          <ul class="list-none p-0 m-0 flex flex-col gap-3">
             {delivers.map((item) => (
-              <li>
-                <Icon name="check_circle" class="service-delivers-icon" />
+              <li class="flex items-start gap-2.5 font-sans text-[0.9375rem] leading-[1.55] text-ink-primary">
+                <Icon name="check_circle" class="shrink-0 w-[18px] h-[18px] text-brand-primary mt-[3px]" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
         </div>
-        <div class="service-excludes cf-card">
-          <p class="cf-eyebrow service-card-label">{t['services.label.excludes']}</p>
-          <ul>
+        <div class="bento-card bg-surface-base border border-ink-primary/10 rounded-md p-6 sm:p-8 transition-colors duration-200">
+          <span class="inline-block font-sans text-[0.6875rem] font-extrabold tracking-[0.16em] uppercase text-ink-primary/60 bg-ink-primary/[0.06] py-1.5 px-3 rounded-xs m-0 mb-5">
+            {t['services.label.excludes']}
+          </span>
+          <ul class="list-none p-0 m-0 flex flex-col gap-3">
             {excludes.map((item) => (
-              <li>
-                <Icon name="close" class="service-excludes-icon" />
+              <li class="flex items-start gap-2.5 font-sans text-[0.9375rem] leading-[1.55] text-ink-primary">
+                <Icon name="close" class="shrink-0 w-[18px] h-[18px] text-ink-primary/40 mt-[3px]" />
                 <span>{item}</span>
               </li>
             ))}
@@ -137,270 +238,50 @@ const { title, subtitle, duration, problem, forwhom, timeline, delivers, exclude
   </section>
 
   <!-- Objection -->
-  <section class="cf-section">
-    <div class="cf-container">
-      <div class="service-objection">
-        <p class="cf-eyebrow">Häufige Frage</p>
-        <h2 class="cf-h2" style="margin-top: 16px;">{objectionQ}</h2>
-        <p class="cf-lead" style="margin-top: 24px; max-width: 720px;">{objectionA}</p>
+  <section class="py-20 sm:py-[104px] xl:py-[144px]">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="max-w-[920px]">
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+          {t['service.objection.eyebrow']}
+        </p>
+        <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
+          {objectionQ}
+        </h2>
+        <p class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[720px] font-medium mt-6">
+          {objectionA}
+        </p>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cf-section cf-section--navy">
-    <div class="cf-container">
-      <div style="max-width: 760px;">
-        <h2 class="cf-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
-        <p class="cf-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
-        <a href={routes.contact} class="service-final-cta">{cta}</a>
-      </div>
+  <section class="py-20 sm:py-[104px] xl:py-[144px] bg-brand-primary text-brand-onPrimary">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0 text-center max-w-[720px]">
+      <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-surface-base/70 m-0 mb-4">
+        {t['service.cta.eyebrow']}
+      </p>
+      <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 text-brand-onPrimary">
+        {t['calltoaction.heading']}
+      </h2>
+      <p class="font-sans text-[1.125rem] leading-[1.6] text-surface-base/85 max-w-[560px] font-medium mt-6 mx-auto">
+        {t['calltoaction.subtitle']}
+      </p>
+      <a
+        href={routes.contact}
+        class="inline-flex items-center gap-2 mt-8 px-7 py-3.5 font-sans text-[0.9375rem] font-bold bg-surface-base text-brand-primary border-[1.5px] border-surface-base rounded-md no-underline transition-colors duration-200 hover:bg-surface-base/85"
+      >
+        {cta}
+      </a>
     </div>
   </section>
 
 </article>
 
 <style>
-  /* All services share the same brand accents – no per-service hue */
-
-  /* Hero */
-  .service-hero {
-    padding-top: 64px;
+  .approach-card:hover {
+    border-color: rgb(var(--brand-primary));
   }
-  .service-hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-    align-items: start;
-  }
-  .service-hero-eyebrow {
-    margin-bottom: 12px;
-  }
-  .service-hero-title {
-    margin: 0;
-  }
-  .service-hero-subtitle {
-    font-family: var(--font-sans);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: rgb(var(--brand-primary));
-    margin: 16px 0 0 0;
-    line-height: 1.3;
-  }
-  .service-hero-aside {
-    padding: 32px;
-    background: rgb(var(--surface-soft));
-    border-radius: 8px;
-    border: 1px solid rgb(var(--ink-primary) / 0.1);
-    position: static;
-  }
-  .service-hero-problem {
-    margin: 0;
-    color: rgb(var(--ink-primary));
-    line-height: 1.6;
-    max-width: 65ch;
-  }
-  .service-hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 24px;
-    padding: 12px 20px;
-    background: rgb(var(--brand-primary));
-    color: rgb(var(--on-brand-primary));
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: 700;
-    border: 1.5px solid rgb(var(--brand-primary));
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 200ms ease, border-color 200ms ease;
-  }
-  .service-hero-cta:hover {
-    background: color-mix(in srgb, rgb(var(--brand-primary)) 80%, black);
-    border-color: color-mix(in srgb, rgb(var(--brand-primary)) 80%, black);
-  }
-
-  /* For whom */
-  .service-forwhom {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .service-forwhom li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 1.0625rem;
-    line-height: 1.55;
-    color: rgb(var(--ink-primary));
-  }
-  :global(.service-forwhom-icon) {
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    color: rgb(var(--brand-primary));
-    margin-top: 4px;
-  }
-
-  /* Process timeline */
-  .service-process-head {
-    max-width: 640px;
-    margin-bottom: 56px;
-  }
-  .service-timeline {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .service-step {
-    display: grid;
-    grid-template-columns: 48px 1fr;
-    gap: 16px;
-    padding: 28px 0;
-    border-top: 1px solid rgb(var(--ink-primary) / 0.1);
-  }
-  .service-step:last-child {
-    border-bottom: 1px solid rgb(var(--ink-primary) / 0.1);
-  }
-  .service-step-num {
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
-    background: rgb(var(--brand-primary));
-    color: rgb(var(--on-brand-primary));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: 1.125rem;
-  }
-  .service-step-phase {
-    margin-bottom: 8px;
-  }
-  .service-step-title {
-    margin: 0 0 4px 0;
-    color: rgb(var(--ink-primary));
-  }
-  .service-step-outcome {
-    font-size: 0.9375rem;
-    color: rgb(var(--ink-primary) / 0.65);
-    margin: 0 0 16px 0;
-  }
-  .service-step-items {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .service-step-items li {
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    font-size: 0.9375rem;
-    color: rgb(var(--ink-primary) / 0.75);
-  }
-  :global(.service-step-item-icon) {
-    flex-shrink: 0;
-    width: 16px;
-    height: 16px;
-    margin-top: 4px;
-    color: rgb(var(--brand-primary));
-  }
-
-  /* Delivers + Excludes */
-  .service-bento .service-delivers,
-  .service-bento .service-excludes {
-    background: rgb(var(--surface-base));
-  }
-  .service-bento ul {
-    list-style: none;
-    padding: 0;
-    margin: 16px 0 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .service-bento li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 0.9375rem;
-    line-height: 1.55;
-    color: rgb(var(--ink-primary));
-  }
-  :global(.service-delivers-icon) {
-    flex-shrink: 0;
-    width: 18px;
-    height: 18px;
-    color: rgb(var(--brand-primary));
-    margin-top: 3px;
-  }
-  :global(.service-excludes-icon) {
-    flex-shrink: 0;
-    width: 18px;
-    height: 18px;
-    color: rgb(var(--ink-primary) / 0.4);
-    margin-top: 3px;
-  }
-  .service-card-label {
-    margin: 0;
-  }
-
-  /* Objection */
-  .service-objection {
-    max-width: 920px;
-  }
-
-  /* Final CTA */
-  .service-final-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 32px;
-    padding: 14px 28px;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 700;
-    background: rgb(var(--surface-base));
-    color: rgb(var(--brand-primary));
-    border: 1.5px solid rgb(var(--surface-base));
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 200ms ease;
-  }
-  .service-final-cta:hover {
-    background: rgb(var(--surface-base) / 0.85);
-  }
-
-  @media (min-width: 641px) {
-    .service-step {
-      grid-template-columns: 64px 1fr;
-      gap: 24px;
-    }
-    .service-step-num {
-      width: 48px;
-      height: 48px;
-    }
-  }
-
-  @media (min-width: 901px) {
-    .service-hero-grid {
-      grid-template-columns: 1.4fr 1fr;
-      gap: 64px;
-    }
-    .service-hero-aside {
-      position: sticky;
-      top: 96px;
-    }
+  .bento-card:hover {
+    border-color: rgb(var(--brand-primary));
   }
 </style>

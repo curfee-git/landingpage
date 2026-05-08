@@ -1,8 +1,11 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { EXTERNAL } from '@/configurations/routes';
+import { getTranslations } from '@/i18n/translations';
 
 const SITE = 'https://curfee.com';
+
+const t = getTranslations();
 
 function escapeXml(input: string): string {
   return input
@@ -30,7 +33,7 @@ export const GET: APIRoute = async () => {
       <guid isPermaLink="true">${url}</guid>
       <pubDate>${pubDate}</pubDate>
       <description>${escapeXml(p.data.excerpt)}</description>
-      <author>${EXTERNAL.email} (Philipp Höllinger)</author>
+      <author>${EXTERNAL.email} (${t['rss.author.suffix']})</author>
       ${category}${tagCats}
     </item>`;
     })
@@ -43,10 +46,10 @@ export const GET: APIRoute = async () => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Curfee Blog</title>
+    <title>${escapeXml(t['rss.title'])}</title>
     <link>${SITE}/blog/</link>
     <atom:link href="${SITE}/rss.xml" rel="self" type="application/rss+xml" />
-    <description>Essays zu struktureller Architektur über Software, Infrastruktur und Organisationen hinweg von Philipp Höllinger.</description>
+    <description>${escapeXml(t['rss.description'])}</description>
     <language>en</language>
     <lastBuildDate>${lastBuildDate}</lastBuildDate>
 ${items}

@@ -20,20 +20,33 @@ const cards = [
 const loop = [...cards, ...cards];
 ---
 
-<section id="observations" class="cf-section" aria-labelledby="observations-heading">
-  <div class="cf-container">
-    <div class="obs-inner">
-      <p class="cf-eyebrow mb-4">{t['observations.subtitle.status_quo']}</p>
-      <h2 id="observations-heading" data-speakable class="cf-h2">
+<section
+  id="observations"
+  class="py-20 sm:py-[104px] xl:py-[144px]"
+  aria-labelledby="observations-heading"
+>
+  <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+    <div class="max-w-[920px]">
+      <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0 mb-4">
+        {t['observations.subtitle.status_quo']}
+      </p>
+      <h2
+        id="observations-heading"
+        data-speakable
+        class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0"
+      >
         {t['observations.heading.status_quo']}
       </h2>
     </div>
   </div>
 
-  <div class="obs-carousel" role="region" aria-label={t['observations.heading.status_quo']}>
-    <ul class="obs-track" role="list">
+  <div class="obs-carousel mt-12" role="region" aria-label={t['observations.heading.status_quo']}>
+    <ul class="obs-track flex w-max m-0 py-1 list-none" role="list">
       {loop.map((card, i) => (
-        <li class="obs-card" aria-hidden={i >= cards.length ? 'true' : undefined}>
+        <li
+          class="flex flex-col flex-[0_0_320px] min-h-[220px] mr-4 p-6 bg-surface-base border border-ink-primary/[0.18] rounded-md backface-hidden"
+          aria-hidden={i >= cards.length ? 'true' : undefined}
+        >
           <Icon name={card.icon} class="w-6 h-6 text-brand-primary shrink-0" />
           <h3 class="text-title-medium font-semibold text-ink-primary mt-3 mb-2">{card.title}</h3>
           <p class="text-body-medium text-ink-muted leading-relaxed">{card.text}</p>
@@ -44,24 +57,16 @@ const loop = [...cards, ...cards];
 </section>
 
 <style>
-  .obs-inner { max-width: 920px; }
-
   .obs-carousel {
-    margin-top: 48px;
     overflow: hidden;
     mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
   }
 
   .obs-track {
+    --obs-cards: 7;
     --obs-card-w: 320px;
     --obs-card-gap: 16px;
-    --obs-cards: 7;
-    display: flex;
-    width: max-content;
-    margin: 0;
-    padding: 4px 0;
-    list-style: none;
     animation: obs-scroll 75s linear infinite;
     will-change: transform;
   }
@@ -69,20 +74,6 @@ const loop = [...cards, ...cards];
   .obs-carousel:hover .obs-track,
   .obs-carousel:focus-within .obs-track {
     animation-play-state: paused;
-  }
-
-  .obs-card {
-    flex: 0 0 var(--obs-card-w);
-    min-height: 220px;
-    margin-right: var(--obs-card-gap);
-    background: rgb(var(--surface-base));
-    border: 1px solid rgb(var(--ink-primary) / 0.18);
-    border-radius: 8px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
   }
 
   @keyframes obs-scroll {

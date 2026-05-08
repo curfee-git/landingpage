@@ -13,11 +13,11 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
 
 <header role="banner" data-header class="fixed inset-x-0 top-0 z-50 bg-surface-base">
   <div class="mx-auto max-w-[1200px] flex items-center justify-between gap-3 w-full relative h-[var(--header-height)] px-[var(--gutter)] min-[1101px]:px-0" data-header-shell>
-    <a href={routes.home} class="shrink-0 inline-flex items-center gap-2 text-brand-primary" aria-label="Curfee">
+    <a href={routes.home} class="shrink-0 inline-flex items-center gap-2 text-brand-primary" aria-label={t['header.aria.brand']}>
       <span class="block h-5 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
     </a>
 
-    <nav class="hidden lg:flex items-center gap-1" aria-label="Hauptnavigation">
+    <nav class="hidden lg:flex items-center gap-1" aria-label={t['header.aria.main']}>
       <a href={routes.home} class={navClass} data-nav-link>{t['nav.home']}</a>
 
       <div class="services-dropdown" data-services-dropdown>
@@ -55,7 +55,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
       <a href={routes.contact} class="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary hover:bg-[#002952] px-6 py-3.5 rounded-md text-sm font-bold leading-none whitespace-nowrap transition-colors duration-short4 ease-standard">
         <span>{t['nav.cta']}</span>
       </a>
-      <button type="button" class="lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-full text-ink-primary hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard" aria-label="Navigation umschalten" aria-expanded="false" aria-controls={menuId} data-menu-toggle>
+      <button type="button" class="lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-full text-ink-primary hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard" aria-label={t['header.aria.toggle']} aria-expanded="false" aria-controls={menuId} data-menu-toggle>
         <span data-menu-icon="closed"><Icon name="menu" class="w-6 h-6" /></span>
         <span data-menu-icon="open" style="display:none"><Icon name="close" class="w-6 h-6" /></span>
       </button>
@@ -64,7 +64,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
 
   <div id={menuId} inert data-mobile-menu class="lg:hidden absolute -left-px -right-px bg-surface-base transition-[max-height,opacity] duration-medium2 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden">
     <div class="max-w-7xl mx-auto px-[var(--gutter)] pb-4 space-y-2">
-      <nav class="flex flex-col gap-1" aria-label="Mobile Navigation">
+      <nav class="flex flex-col gap-1" aria-label={t['header.aria.mobile']}>
         <a href={routes.home} class={menuItemClass} data-menu-close data-nav-link>{t['nav.home']}</a>
         <button type="button" class={`${menuItemClass} justify-between w-full`} aria-expanded="false" data-mobile-services-toggle>
           <span>{t['nav.services']}</span>

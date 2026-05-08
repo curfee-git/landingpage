@@ -9,38 +9,28 @@ const { translations: t } = Astro.props;
 const routes = getRoutes();
 ---
 
-<section id="contact" class="cf-section cf-section--navy" aria-labelledby="contact-heading">
-  <div class="cf-container">
-    <div class="contact-inner">
-      <h2 id="contact-heading" class="cf-h2" style="color: rgb(var(--on-brand-primary));">{t['calltoaction.heading']}</h2>
-      <p class="cf-lead" style="margin-top: 16px; max-width: 640px; color: rgb(var(--on-brand-primary) / 0.85);">{t['calltoaction.subtitle']}</p>
-      <a href={routes.contact} class="contact-cta">{t['hero.cta']}</a>
+<section
+  id="contact"
+  class="py-20 sm:py-[104px] xl:py-[144px] bg-brand-primary text-brand-onPrimary"
+  aria-labelledby="contact-heading"
+>
+  <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+    <div class="max-w-[920px]">
+      <h2
+        id="contact-heading"
+        class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 text-brand-onPrimary"
+      >
+        {t['calltoaction.heading']}
+      </h2>
+      <p class="font-sans text-[1.125rem] leading-[1.6] text-surface-base/85 max-w-[640px] font-medium mt-4">
+        {t['calltoaction.subtitle']}
+      </p>
+      <a
+        href={routes.contact}
+        class="inline-flex items-center justify-center gap-2 mt-8 px-7 py-3.5 font-sans text-[0.9375rem] font-bold bg-surface-base text-brand-primary border-[1.5px] border-surface-base rounded-md no-underline transition-colors duration-200 hover:bg-surface-base/85"
+      >
+        {t['hero.cta']}
+      </a>
     </div>
   </div>
 </section>
-
-<style>
-  .contact-inner {
-    max-width: 920px;
-  }
-  .contact-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 32px;
-    padding: 14px 28px;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 700;
-    background: rgb(var(--surface-base));
-    color: rgb(var(--brand-primary));
-    border: 1.5px solid rgb(var(--surface-base));
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 200ms ease;
-  }
-  .contact-cta:hover {
-    background: rgb(var(--surface-base) / 0.85);
-  }
-</style>

@@ -22,105 +22,165 @@ const jsonLd = {
   jsonLd={jsonLd}
   dateModified="2026-04-27"
 >
-  <article class="cf-section">
-    <div class="cf-container">
-      <div class="legal-page">
+  <article class="py-20 sm:py-[104px] xl:py-[144px]">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="max-w-[880px] mx-auto">
 
-        <header class="legal-header">
-          <p class="cf-eyebrow">{t['legal.eyebrow']}</p>
-          <h1 class="cf-h1">{t['privacy.heading']}</h1>
-          <p class="legal-subheading">{t['privacy.scope']}</p>
+        <header class="mb-16">
+          <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+            {t['legal.eyebrow']}
+          </p>
+          <h1 class="font-sans text-[clamp(2.5rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0 mt-4">
+            {t['privacy.heading']}
+          </h1>
+          <p class="font-sans text-[1.125rem] text-ink-muted leading-[1.6] mt-6 m-0 max-w-[65ch]">
+            {t['privacy.scope']}
+          </p>
         </header>
 
-        <div class="legal-content">
+        <div class="flex flex-col gap-14">
 
-          <section class="legal-grid">
-            <div class="legal-card">
-              <h2 class="legal-card-title">{t['privacy.controller.heading']}</h2>
-              <div class="legal-card-body">
-                <p class="legal-emphasis">{t['imprint.company']}</p>
-                <p>{t['imprint.name']}</p>
-                <div class="legal-address">
-                  <p>{t['imprint.address.street']}</p>
-                  <p>{t['imprint.address.city']}</p>
-                  <p>{t['imprint.address.country']}</p>
+          <section class="grid grid-cols-1 gap-5 md:grid-cols-2">
+            <div class="bg-surface-base border border-ink-primary/10 rounded-md p-7">
+              <h2 class="font-sans text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-ink-muted m-0 mb-4">
+                {t['privacy.controller.heading']}
+              </h2>
+              <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-[0.9375rem] leading-[1.5]">
+                <p class="m-0 text-ink-primary font-medium">{t['imprint.company']}</p>
+                <p class="m-0">{t['imprint.name']}</p>
+                <div class="text-ink-muted">
+                  <p class="m-0">{t['imprint.address.street']}</p>
+                  <p class="m-0">{t['imprint.address.city']}</p>
+                  <p class="m-0">{t['imprint.address.country']}</p>
                 </div>
               </div>
             </div>
 
-            <div class="legal-card">
-              <h2 class="legal-card-title">{t['imprint.contact']}</h2>
-              <div class="legal-card-body">
+            <div class="bg-surface-base border border-ink-primary/10 rounded-md p-7">
+              <h2 class="font-sans text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-ink-muted m-0 mb-4">
+                {t['imprint.contact']}
+              </h2>
+              <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-[0.9375rem] leading-[1.5]">
                 <div>
-                  <p class="legal-label">{t['imprint.email.label']}</p>
-                  <p><a href={EXTERNAL.mailto} class="legal-link">{EXTERNAL.email}</a></p>
+                  <p class="font-sans text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-ink-muted m-0 mb-1.5">
+                    {t['imprint.email.label']}
+                  </p>
+                  <p class="m-0">
+                    <a href={EXTERNAL.mailto} class="text-brand-primary no-underline border-b border-transparent transition-colors duration-200 hover:border-brand-primary">
+                      {EXTERNAL.email}
+                    </a>
+                  </p>
                 </div>
                 <div>
-                  <p class="legal-label">{t['privacy.phone.label']}</p>
-                  <p><a href={EXTERNAL.tel} class="legal-link">{EXTERNAL.phone}</a></p>
+                  <p class="font-sans text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-ink-muted m-0 mb-1.5">
+                    {t['privacy.phone.label']}
+                  </p>
+                  <p class="m-0">
+                    <a href={EXTERNAL.tel} class="text-brand-primary no-underline border-b border-transparent transition-colors duration-200 hover:border-brand-primary">
+                      {EXTERNAL.phone}
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
           </section>
 
           <section>
-            <h2 class="cf-h3 legal-section-heading">{t['privacy.personal.heading']}</h2>
-            <p class="legal-prose">{t['privacy.personal']}</p>
+            <h2 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-5">
+              {t['privacy.personal.heading']}
+            </h2>
+            <p class="font-sans text-base text-ink-muted leading-[1.65] m-0 max-w-[65ch]">{t['privacy.personal']}</p>
           </section>
 
           <section>
-            <h2 class="cf-h3 legal-section-heading">{t['privacy.rights.heading']}</h2>
-            <p class="legal-prose">{t['privacy.rights']}</p>
+            <h2 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-5">
+              {t['privacy.rights.heading']}
+            </h2>
+            <p class="font-sans text-base text-ink-muted leading-[1.65] m-0 max-w-[65ch]">{t['privacy.rights']}</p>
           </section>
 
           <section>
-            <h2 class="cf-h3 legal-section-heading">{t['privacy.withdrawal.heading']}</h2>
-            <p class="legal-prose">{t['privacy.withdrawal']} <a href={EXTERNAL.mailto} class="legal-link">{EXTERNAL.email}</a></p>
+            <h2 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-5">
+              {t['privacy.withdrawal.heading']}
+            </h2>
+            <p class="font-sans text-base text-ink-muted leading-[1.65] m-0 max-w-[65ch]">
+              {t['privacy.withdrawal']}
+              <a href={EXTERNAL.mailto} class="text-brand-primary no-underline border-b border-transparent transition-colors duration-200 hover:border-brand-primary">
+                {EXTERNAL.email}
+              </a>
+            </p>
           </section>
 
           <section>
-            <h2 class="cf-h3 legal-section-heading">{t['privacy.complaint.heading']}</h2>
-            <p class="legal-prose">{t['privacy.complaint']}</p>
-            <div class="legal-card legal-card--inline">
-              <div class="legal-card-body">
-                <p class="legal-emphasis">{t['privacy.complaint.authority']}</p>
-                <div class="legal-address">
-                  <p>{t['privacy.complaint.address.street']}</p>
-                  <p>{t['privacy.complaint.address.city']}</p>
-                  <p>{t['privacy.complaint.address.country']}</p>
+            <h2 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-5">
+              {t['privacy.complaint.heading']}
+            </h2>
+            <p class="font-sans text-base text-ink-muted leading-[1.65] m-0 max-w-[65ch]">{t['privacy.complaint']}</p>
+            <div class="mt-5 bg-surface-base border border-ink-primary/10 rounded-md p-7">
+              <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-[0.9375rem] leading-[1.5]">
+                <p class="m-0 text-ink-primary font-medium">{t['privacy.complaint.authority']}</p>
+                <div class="text-ink-muted">
+                  <p class="m-0">{t['privacy.complaint.address.street']}</p>
+                  <p class="m-0">{t['privacy.complaint.address.city']}</p>
+                  <p class="m-0">{t['privacy.complaint.address.country']}</p>
                 </div>
-                <div class="legal-card-rows">
-                  <p>{t['privacy.phone.label']}: <a href={`tel:${t['privacy.complaint.phone'].replace(/\s/g, '')}`} class="legal-link">{t['privacy.complaint.phone']}</a></p>
-                  <p>{t['imprint.email.label']}: <a href={`mailto:${t['privacy.complaint.email']}`} class="legal-link">{t['privacy.complaint.email']}</a></p>
-                  <p>Website: <a href={`https://${t['privacy.complaint.website']}`} target="_blank" rel="noopener noreferrer" class="legal-link">{t['privacy.complaint.website']}</a></p>
+                <div class="flex flex-col gap-1 text-ink-muted">
+                  <p class="m-0">
+                    {t['privacy.phone.label']}:
+                    <a href={`tel:${t['privacy.complaint.phone'].replace(/\s/g, '')}`} class="text-brand-primary no-underline border-b border-transparent transition-colors duration-200 hover:border-brand-primary">
+                      {t['privacy.complaint.phone']}
+                    </a>
+                  </p>
+                  <p class="m-0">
+                    {t['imprint.email.label']}:
+                    <a href={`mailto:${t['privacy.complaint.email']}`} class="text-brand-primary no-underline border-b border-transparent transition-colors duration-200 hover:border-brand-primary">
+                      {t['privacy.complaint.email']}
+                    </a>
+                  </p>
+                  <p class="m-0">
+                    {t['privacy.website.label']}
+                    <a href={`https://${t['privacy.complaint.website']}`} target="_blank" rel="noopener noreferrer" class="text-brand-primary no-underline border-b border-transparent transition-colors duration-200 hover:border-brand-primary">
+                      {t['privacy.complaint.website']}
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
           </section>
 
           <section>
-            <h2 class="cf-h3 legal-section-heading">{t['privacy.ssl.heading']}</h2>
-            <p class="legal-prose">{t['privacy.ssl']}</p>
+            <h2 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-5">
+              {t['privacy.ssl.heading']}
+            </h2>
+            <p class="font-sans text-base text-ink-muted leading-[1.65] m-0 max-w-[65ch]">{t['privacy.ssl']}</p>
           </section>
 
           <section>
-            <h2 class="cf-h3 legal-section-heading">{t['privacy.cookies.heading']}</h2>
-            <p class="legal-prose">{t['privacy.cookies']}</p>
+            <h2 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-5">
+              {t['privacy.cookies.heading']}
+            </h2>
+            <p class="font-sans text-base text-ink-muted leading-[1.65] m-0 max-w-[65ch]">{t['privacy.cookies']}</p>
           </section>
 
           <section>
-            <h2 class="cf-h3 legal-section-heading">{t['privacy.links.heading']}</h2>
-            <p class="legal-prose">{t['privacy.links']}</p>
+            <h2 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-5">
+              {t['privacy.links.heading']}
+            </h2>
+            <p class="font-sans text-base text-ink-muted leading-[1.65] m-0 max-w-[65ch]">{t['privacy.links']}</p>
           </section>
 
           <section>
-            <h2 class="cf-h3 legal-section-heading">{t['privacy.hosting.heading']}</h2>
-            <p class="legal-prose">{t['privacy.hosting']}</p>
+            <h2 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-5">
+              {t['privacy.hosting.heading']}
+            </h2>
+            <p class="font-sans text-base text-ink-muted leading-[1.65] m-0 max-w-[65ch]">{t['privacy.hosting']}</p>
           </section>
 
           <section>
-            <h2 class="cf-h3 legal-section-heading">{t['privacy.web3forms.heading']}</h2>
-            <p class="legal-prose [&>a]:text-brand-primary [&>a:hover]:underline" set:html={t['privacy.web3forms.body']}></p>
+            <h2 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-5">
+              {t['privacy.web3forms.heading']}
+            </h2>
+            <p class="font-sans text-base text-ink-muted leading-[1.65] m-0 max-w-[65ch] [&>a]:text-brand-primary [&>a:hover]:underline" set:html={t['privacy.web3forms.body']}></p>
           </section>
 
         </div>
@@ -128,122 +188,3 @@ const jsonLd = {
     </div>
   </article>
 </Layout>
-
-<style>
-  .legal-page {
-    max-width: 880px;
-    margin: 0 auto;
-  }
-  .legal-header {
-    margin-bottom: 64px;
-  }
-  .legal-header .cf-h1 {
-    margin-top: 16px;
-  }
-  .legal-subheading {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    color: rgb(var(--ink-muted));
-    line-height: 1.6;
-    margin: 24px 0 0 0;
-    max-width: 65ch;
-  }
-
-  .legal-content {
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
-  }
-
-  .legal-section-heading {
-    margin: 0 0 20px 0;
-  }
-
-  .legal-prose {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    color: rgb(var(--ink-muted));
-    line-height: 1.65;
-    margin: 0 0 12px 0;
-    max-width: 65ch;
-  }
-  .legal-prose:last-child {
-    margin-bottom: 0;
-  }
-  .legal-emphasis {
-    color: rgb(var(--ink-primary));
-    font-weight: 500;
-    margin: 0;
-  }
-
-  .legal-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .legal-card {
-    background: rgb(var(--surface-base));
-    border: 1px solid rgb(var(--ink-primary) / 0.1);
-    border-radius: 8px;
-    padding: 28px;
-  }
-  .legal-card--inline {
-    margin-top: 20px;
-  }
-  .legal-card-title {
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgb(var(--ink-muted));
-    margin: 0 0 16px 0;
-  }
-  .legal-card-body {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    color: rgb(var(--ink-primary));
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    line-height: 1.5;
-  }
-  .legal-card-body p {
-    margin: 0;
-  }
-  .legal-card-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    color: rgb(var(--ink-muted));
-  }
-  .legal-address {
-    color: rgb(var(--ink-muted));
-  }
-
-  .legal-label {
-    font-family: var(--font-sans);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgb(var(--ink-muted));
-    margin: 0 0 6px 0;
-  }
-
-  .legal-link {
-    color: rgb(var(--brand-primary));
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 200ms ease;
-  }
-  .legal-link:hover {
-    border-bottom-color: rgb(var(--brand-primary));
-  }
-
-  @media (min-width: 701px) {
-    .legal-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-</style>

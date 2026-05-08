@@ -65,59 +65,38 @@ const personLd = {
   "givenName": "Philipp",
   "familyName": "Höllinger",
   "jobTitle": t['meta.about.jobTitle'],
-  "description": "Philipp Höllinger ist Strukturarchitekt mit Sitz in Salzburg, Österreich, und alleiniger Gründer der Curfee e.U. (gegründet 2026). Er berät zu struktureller Architektur über Software, Infrastruktur und organisatorische Strukturen hinweg sowie zu Ursachenanalyse und wendet das Prinzip der Entscheidungsdurchsetzung an: Architekturentscheidungen werden vom System selbst durchgesetzt – über Pipelines, automatisierte Checks und Tool-Konfiguration, statt durch Disziplin, Erinnerung oder Wachsamkeit einzelner Personen.",
+  "description": t['schema.person.description'],
   "url": siteUrl,
   "mainEntityOfPage": `${siteUrl}/#about`,
   "image": {
     "@type": "ImageObject",
     "url": `${siteUrl}/assets/profile.png`,
     "contentUrl": `${siteUrl}/assets/profile.png`,
-    "caption": "Porträt von Philipp Höllinger, Gründer der Curfee",
+    "caption": t['schema.person.image.caption'],
     "width": 1024,
     "height": 1536
   },
   "sameAs": [EXTERNAL.linkedin],
-  "nationality": { "@type": "Country", "name": "Österreich" },
-  "knowsAbout": [
-    "Strukturarchitektur",
-    "Systemarchitektur",
-    "Softwarearchitektur",
-    "Infrastrukturarchitektur",
-    "Organisationsarchitektur",
-    "Systemanalyse",
-    "IT-Beratung",
-    "Ursachenanalyse",
-    "Abhängigkeitsanalyse",
-    "Entscheidungsdurchsetzung",
-    "Prinzip der Entscheidungsdurchsetzung",
-    "Standards- und Konventions-Design",
-    "Tool-Landschaft-Bewertung",
-    "Strukturberatung",
-    "Change Management",
-    "Qualitätssicherung",
-    "Systementwicklung",
-    "Onboarding",
-    "Zusammenarbeit",
-    "Wissenstransfer"
-  ],
+  "nationality": { "@type": "Country", "name": t['schema.country.austria'] },
+  "knowsAbout": t['schema.knowsAbout.person'],
   "hasOccupation": {
     "@type": "Occupation",
-    "name": "Strukturarchitekt",
+    "name": t['schema.person.occupation'],
     "occupationLocation": { "@id": `${siteUrl}/#place-salzburg` },
     "occupationalCategory": {
       "@type": "CategoryCode",
       "codeValue": "15-1199.02",
-      "name": "Computer Systems Engineer/Architect",
+      "name": t['schema.occupation.onet'],
       "inCodeSet": {
         "@type": "CategoryCodeSet",
         "name": "O*NET-SOC"
       }
     },
-    "skills": "Strukturarchitektur über Software, Infrastruktur und organisatorische Strukturen hinweg, Ursachenanalyse, Abhängigkeitsanalyse, Entscheidungsdurchsetzung, Standards- und Konventions-Design, Tool-Landschaft-Bewertung"
+    "skills": t['schema.person.skills']
   },
   "knowsLanguage": [
-    { "@type": "Language", "name": "Deutsch", "alternateName": "de" },
-    { "@type": "Language", "name": "Englisch", "alternateName": "en" }
+    { "@type": "Language", "name": "German", "alternateName": "de" },
+    { "@type": "Language", "name": "English", "alternateName": "en" }
   ],
   "worksFor": { "@id": `${siteUrl}/#organization` },
   "memberOf": { "@id": `${siteUrl}/#organization` },
@@ -133,7 +112,7 @@ const placeLd = {
   "@context": "https://schema.org",
   "@type": "Place",
   "@id": `${siteUrl}/#place-salzburg`,
-  "name": "Salzburg, Österreich",
+  "name": t['schema.place.name'],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Lieferinger Hauptstraße 49A",
@@ -155,7 +134,7 @@ const organizationLd = {
   "@id": `${siteUrl}/#organization`,
   "name": "Curfee",
   "legalName": "Curfee e.U.",
-  "alternateName": ["Curfee Strukturarchitektur-Beratung", "Curfee Beratung"],
+  "alternateName": [t['schema.org.alternateName.1'], t['schema.org.alternateName.2']],
   "url": siteUrl,
   "logo": {
     "@type": "ImageObject",
@@ -188,64 +167,43 @@ const organizationLd = {
     "longitude": 13.0089
   },
   "areaServed": [
-    { "@type": "Country", "name": "Österreich", "alternateName": "AT" },
-    { "@type": "Country", "name": "Deutschland", "alternateName": "DE" },
-    { "@type": "Country", "name": "Schweiz", "alternateName": "CH" }
+    { "@type": "Country", "name": t['schema.country.austria'], "alternateName": "AT" },
+    { "@type": "Country", "name": t['schema.country.germany'], "alternateName": "DE" },
+    { "@type": "Country", "name": t['schema.country.switzerland'], "alternateName": "CH" }
   ],
   "serviceArea": {
     "@type": "AdministrativeArea",
-    "name": "DACH-Region"
+    "name": t['schema.serviceArea']
   },
-  "knowsAbout": [
-    "Strukturarchitektur",
-    "Systemarchitektur",
-    "Softwarearchitektur",
-    "Infrastrukturarchitektur",
-    "Organisationsarchitektur",
-    "Systemanalyse",
-    "IT-Beratung",
-    "Ursachenanalyse",
-    "Abhängigkeitsanalyse",
-    "Prinzip der Entscheidungsdurchsetzung",
-    "Standards- und Konventions-Design",
-    "Tool-Landschaft-Bewertung",
-    "Strukturberatung",
-    "Auflösung technischer Schulden",
-    "Change Management",
-    "Qualitätssicherung",
-    "Systementwicklung",
-    "Onboarding",
-    "Zusammenarbeit",
-    "Wissenstransfer"
-  ],
+  "knowsAbout": t['schema.knowsAbout.organization'],
   "contactPoint": [
     {
       "@type": "ContactPoint",
       "email": EXTERNAL.email,
       "telephone": EXTERNAL.tel.replace(/^tel:/, ''),
-      "contactType": "Kundenservice",
-      "availableLanguage": ["de", "en"],
+      "contactType": t['schema.contact.customer'],
+      "availableLanguage": ["en", "de"],
       "areaServed": ["AT", "DE", "CH"]
     },
     {
       "@type": "ContactPoint",
       "email": EXTERNAL.email,
-      "contactType": "Vertrieb",
-      "availableLanguage": ["de", "en"]
+      "contactType": t['schema.contact.sales'],
+      "availableLanguage": ["en", "de"]
     }
   ],
   "potentialAction": {
     "@type": "CommunicateAction",
-    "name": "Per E-Mail kontaktieren",
+    "name": t['schema.action.contactByEmail'],
     "target": {
       "@type": "EntryPoint",
       "urlTemplate": EXTERNAL.mailto,
-      "inLanguage": ["de"]
+      "inLanguage": ["en"]
     }
   },
   "knowsLanguage": [
-    { "@type": "Language", "name": "Deutsch", "alternateName": "de" },
-    { "@type": "Language", "name": "Englisch", "alternateName": "en" }
+    { "@type": "Language", "name": "German", "alternateName": "de" },
+    { "@type": "Language", "name": "English", "alternateName": "en" }
   ],
   "vatID": "ATU83146203",
   "taxID": "ATU83146203",
@@ -255,28 +213,11 @@ const organizationLd = {
   ],
   "memberOf": {
     "@type": "Organization",
-    "name": "Wirtschaftskammer Österreich",
+    "name": t['schema.org.memberOfWko'],
     "alternateName": "WKO",
     "url": "https://www.wko.at"
   },
-  "keywords": [
-    "Strukturarchitektur Beratung",
-    "Strukturarchitektur Österreich",
-    "Strukturarchitekt Österreich",
-    "Organisationsstruktur Beratung",
-    "Systemarchitektur Beratung",
-    "Systemarchitektur Österreich",
-    "Architekturentscheidungen durchsetzen",
-    "Systemarchitekt Österreich",
-    "Entscheidungsdurchsetzung",
-    "Architektur-Governance-Automatisierung",
-    "Ursachenanalyse",
-    "Systemlandschaft-Bewertung",
-    "Abhängigkeitsanalyse",
-    "Standards-Durchsetzung Pipelines",
-    "Strukturberatung",
-    "IT-Beratung Österreich"
-  ],
+  "keywords": t['schema.org.keywords'],
   "sameAs": [
     EXTERNAL.linkedin
   ]
@@ -289,7 +230,7 @@ const webSiteLd = {
   "name": "Curfee",
   "alternateName": "Curfee: Structural Architecture Consulting",
   "url": siteUrl,
-  "inLanguage": "de",
+  "inLanguage": "en",
   "publisher": { "@id": `${siteUrl}/#organization` },
   "about": { "@id": `${siteUrl}/#organization` },
   "mainEntity": { "@id": `${siteUrl}/#organization` }
@@ -305,7 +246,7 @@ const speakableLd = {
   "about": { "@id": `${siteUrl}/#organization` },
   "author": { "@id": `${siteUrl}/#founder` },
   "publisher": { "@id": `${siteUrl}/#organization` },
-  "inLanguage": "de",
+  "inLanguage": "en",
   ...(dateModified && { "dateModified": dateModified }),
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -321,7 +262,7 @@ const speakableLd = {
 ---
 
 <!doctype html>
-<html lang="de-AT">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -350,7 +291,7 @@ const speakableLd = {
 
     <!-- Geo Meta Tags: Local SEO (Salzburg, Austria) -->
     <meta name="geo.region" content="AT-5" />
-    <meta name="geo.placename" content="Salzburg, Österreich" />
+    <meta name="geo.placename" content={t['schema.geo.placename']} />
     <meta name="geo.position" content="47.8066;13.0089" />
     <meta name="ICBM" content="47.8066, 13.0089" />
 
@@ -358,8 +299,8 @@ const speakableLd = {
     <link rel="preload" href="/assets/fonts/manrope/manrope.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- LLM context files -->
-    <link rel="help" type="text/plain" href={`${siteUrl}/llms.txt`} title="LLM context" />
-    <link rel="help" type="text/plain" href={`${siteUrl}/llms-full.txt`} title="LLM full context" />
+    <link rel="help" type="text/plain" href={`${siteUrl}/llms.txt`} title={t['linkTitle.llmContext']} />
+    <link rel="help" type="text/plain" href={`${siteUrl}/llms-full.txt`} title={t['linkTitle.llmFull']} />
 
     <!-- Canonical URL -->
     {!noindex && <link rel="canonical" href={canonicalUrl} />}
@@ -370,7 +311,7 @@ const speakableLd = {
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Curfee" />
-    <meta property="og:locale" content="de_AT" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:secure_url" content={ogImage} />
     {resolvedOgType && <meta property="og:image:type" content={resolvedOgType} />}
@@ -403,7 +344,7 @@ const speakableLd = {
 
     <!-- Sitemap + RSS -->
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
-    <link rel="alternate" type="application/rss+xml" title="Curfee Blog" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title={t['linkTitle.rssFeed']} href="/rss.xml" />
 
     {!noindex && (
       <>

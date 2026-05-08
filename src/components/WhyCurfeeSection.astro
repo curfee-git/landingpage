@@ -7,52 +7,43 @@ interface Props {
 const { translations: t } = Astro.props;
 ---
 
-<section id="why-curfee" class="cf-section cf-section--soft whycurfee-fold" aria-labelledby="whycurfee-heading">
-  <div class="cf-container whycurfee-fold-container">
+<section
+  id="why-curfee"
+  class="py-20 sm:py-[104px] xl:py-[144px] bg-surface-soft lg:min-h-[calc(50svh-36px)] lg:flex lg:items-center"
+  aria-labelledby="whycurfee-heading"
+>
+  <div class="w-full max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
     <div class="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-8 lg:gap-16 items-start">
       <div>
-        <p class="cf-eyebrow mb-4">{t['whycurfee.eyebrow']}</p>
-        <h2 id="whycurfee-heading" data-speakable class="cf-h2" style="text-wrap: balance;">
-          {t['whycurfee.heading.1']}<br />{t['whycurfee.heading.2']}<br class="whycurfee-break-tablet" />{' '}{t['whycurfee.heading.3']}
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0 mb-4">
+          {t['whycurfee.eyebrow']}
+        </p>
+        <h2
+          id="whycurfee-heading"
+          data-speakable
+          class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0"
+          style="text-wrap: balance;"
+        >
+          {t['whycurfee.heading.1']}<br />{t['whycurfee.heading.2']}<br class="md:hidden" />{' '}{t['whycurfee.heading.3']}
         </h2>
       </div>
       <div>
-        <p data-speakable class="whycurfee-body">{t['whycurfee.body.1']}</p>
+        <p data-speakable class="font-sans text-[1.0625rem] leading-[1.75] text-ink-primary/[0.72] m-0">
+          {t['whycurfee.body.1']}
+        </p>
         <br />
-        <p data-speakable class="whycurfee-body">{t['whycurfee.body.2']}</p>
+        <p data-speakable class="font-sans text-[1.0625rem] leading-[1.75] text-ink-primary/[0.72] m-0">
+          {t['whycurfee.body.2']}
+        </p>
         <br />
-        <p data-speakable class="whycurfee-body">{t['whycurfee.body.3']}</p>
+        <p data-speakable class="font-sans text-[1.0625rem] leading-[1.75] text-ink-primary/[0.72] m-0">
+          {t['whycurfee.body.3']}
+        </p>
         <br />
-        <p data-speakable class="whycurfee-body">{t['whycurfee.body.4']}</p>
+        <p data-speakable class="font-sans text-[1.0625rem] leading-[1.75] text-ink-primary/[0.72] m-0">
+          {t['whycurfee.body.4']}
+        </p>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .whycurfee-fold-container {
-    width: 100%;
-  }
-  .whycurfee-body {
-    font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    line-height: 1.75;
-    color: rgb(var(--ink-primary) / 0.72);
-    margin: 0;
-  }
-  @media (min-width: 768px) {
-    .whycurfee-break-tablet {
-      display: none;
-    }
-  }
-  @media (min-width: 1024px) {
-    .whycurfee-fold {
-      min-height: calc(50svh - 36px);
-      display: flex;
-      align-items: center;
-    }
-    .whycurfee-break-tablet {
-      display: inline;
-    }
-  }
-</style>

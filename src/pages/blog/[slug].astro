@@ -58,7 +58,7 @@ const blogPostingLd = {
   "author": { "@id": "https://curfee.com/#founder" },
   "publisher": { "@id": "https://curfee.com/#organization" },
   "mainEntityOfPage": { "@type": "WebPage", "@id": `https://curfee.com${canonicalPath}` },
-  "inLanguage": "de",
+  "inLanguage": "en",
   "url": `https://curfee.com${canonicalPath}`,
   "keywords": [post.data.topic, ...post.data.tags].join(', '),
   "wordCount": (post.body ?? '').split(/\s+/).filter(Boolean).length,
@@ -83,39 +83,47 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
   articleSection={post.data.topic}
   articleTags={post.data.tags}
 >
-  <article class="cf-section">
-    <div class="cf-container">
-      <div class="post-page">
+  <article class="py-20 sm:py-[104px] xl:py-[144px]">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="max-w-[880px] mx-auto">
 
-        <a href={routes.blog} class="post-back">← {t['blog.backToIndex']}</a>
+        <a href={routes.blog} class="post-back inline-block font-sans text-[0.875rem] text-brand-primary no-underline mb-8 border-b border-transparent font-semibold transition-colors duration-200 hover:border-brand-primary">← {t['blog.backToIndex']}</a>
 
-        <header class="post-header">
-          <div class="post-meta">
-            <span class="post-topic">{post.data.topic}</span>
-            <span class="post-date">
+        <header class="mb-14">
+          <div class="flex flex-wrap items-center gap-3 mb-6 font-sans text-[0.8125rem] text-ink-muted">
+            <span class="font-sans text-[0.8125rem] font-semibold tracking-[0.06em] uppercase text-brand-primary">{post.data.topic}</span>
+            <span class="text-ink-muted">
               <time datetime={post.data.createdAt.toISOString()}>{formatDate(post.data.createdAt)}</time>
               {post.data.updatedAt && post.data.updatedAt.toISOString() !== post.data.createdAt.toISOString() && (
                 <>
                   <span aria-hidden="true"> · </span>
-                  <span class="post-date-updated">
-                    Aktualisiert <time datetime={post.data.updatedAt.toISOString()}>{formatDate(post.data.updatedAt)}</time>
+                  <span class="text-ink-muted">
+                    {t['blog.updatedLabel']} <time datetime={post.data.updatedAt.toISOString()}>{formatDate(post.data.updatedAt)}</time>
                   </span>
                 </>
               )}
             </span>
           </div>
-          <h1 class="cf-h1 post-title">{post.data.title}</h1>
-          <p class="post-excerpt">{post.data.excerpt}</p>
+          <h1 class="font-sans text-[clamp(2.5rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0">
+            {post.data.title}
+          </h1>
+          <p class="font-sans text-[1.125rem] text-ink-muted leading-[1.65] mt-6 m-0 max-w-[65ch]">
+            {post.data.excerpt}
+          </p>
         </header>
 
         {toc.length > 0 && (
-          <nav class="post-toc" aria-labelledby="toc-heading">
-            <h2 id="toc-heading" class="post-toc-heading">{t['blog.tocHeading']}</h2>
-            <ol class="post-toc-list" style={`grid-template-rows: repeat(${tocRows}, auto);`}>
+          <nav class="bg-surface-soft border border-ink-primary/10 rounded-md py-6 px-7 mb-14" aria-labelledby="toc-heading">
+            <h2 id="toc-heading" class="font-sans text-[0.8125rem] font-semibold tracking-[0.06em] uppercase text-brand-primary m-0 mb-4">
+              {t['blog.tocHeading']}
+            </h2>
+            <ol class="post-toc-list flex flex-col gap-2.5 list-none p-0 m-0 md:grid md:grid-cols-2 md:grid-flow-col md:gap-x-8 md:gap-y-2.5" style={`grid-template-rows: repeat(${tocRows}, auto);`}>
               {toc.map((item, i) => (
-                <li class="post-toc-item">
-                  <span class="post-toc-num">{String(i + 1).padStart(2, '0')}</span>
-                  <a href={`#${item.slug}`} class="post-toc-link">{item.text}</a>
+                <li class="flex items-baseline gap-3">
+                  <span class="font-sans text-[0.75rem] font-bold text-brand-primary w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <a href={`#${item.slug}`} class="font-sans text-[0.9375rem] text-ink-primary no-underline leading-[1.4] border-b border-transparent transition-colors duration-200 hover:border-brand-primary">
+                    {item.text}
+                  </a>
                 </li>
               ))}
             </ol>
@@ -123,8 +131,9 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
         )}
 
         {post.data.coverImage && (
-          <figure class="post-cover">
+          <figure class="-mx-6 mb-12 md:mx-0">
             <img
+              class="w-full h-auto rounded-none md:rounded-lg"
               src={post.data.coverImage}
               alt={post.data.coverImageAlt ?? ''}
               loading="lazy"
@@ -132,7 +141,11 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
               width={post.data.coverImageWidth}
               height={post.data.coverImageHeight}
             />
-            {post.data.coverImageAlt && <figcaption>{post.data.coverImageAlt}</figcaption>}
+            {post.data.coverImageAlt && (
+              <figcaption class="text-[0.75rem] text-ink-muted mt-3 mx-6 md:mx-0">
+                {post.data.coverImageAlt}
+              </figcaption>
+            )}
           </figure>
         )}
 
@@ -141,15 +154,26 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
         </div>
 
         {references.length > 0 && (
-          <section class="post-references" aria-labelledby="references-heading">
-            <h2 id="references-heading" class="post-references-heading">{t['blog.referencesHeading']}</h2>
-            <ol class="post-references-list" style={`grid-template-rows: repeat(${referencesRows}, auto);`}>
+          <section class="mt-16 py-7 px-8 bg-surface-soft border border-ink-primary/10 rounded-md" aria-labelledby="references-heading">
+            <h2 id="references-heading" class="font-sans text-[0.8125rem] font-semibold tracking-[0.06em] uppercase text-brand-primary m-0 mb-4">
+              {t['blog.referencesHeading']}
+            </h2>
+            <ol class="post-references-list flex flex-col gap-3.5 list-none p-0 m-0 md:grid md:grid-cols-2 md:grid-flow-col md:gap-x-8 md:gap-y-3.5" style={`grid-template-rows: repeat(${referencesRows}, auto);`}>
               {references.map((ref, i) => (
-                <li class="post-references-item">
-                  <span class="post-references-num">{String(i + 1).padStart(2, '0')}</span>
-                  <span class="post-references-body">
-                    <a href={ref.url} rel="noopener" target="_blank" class="post-references-title">{ref.title}</a>
-                    <span class="post-references-url">{ref.url}</span>
+                <li class="flex items-baseline gap-3">
+                  <span class="font-sans text-[0.75rem] font-medium text-ink-muted w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="flex-1 min-w-0">
+                    <a
+                      href={ref.url}
+                      rel="noopener"
+                      target="_blank"
+                      class="block font-sans text-[0.9375rem] font-semibold text-ink-primary no-underline border-b border-transparent transition-colors duration-200 hover:text-brand-primary hover:border-brand-primary"
+                    >
+                      {ref.title}
+                    </a>
+                    <span class="block font-sans text-[0.75rem] text-ink-muted mt-1 break-all">
+                      {ref.url}
+                    </span>
                   </span>
                 </li>
               ))}
@@ -157,10 +181,19 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
           </section>
         )}
 
-        <aside class="post-cta" aria-labelledby="cta-heading">
-          <h2 id="cta-heading" class="post-cta-title">{t['blog.ctaTitle']}</h2>
-          <p class="post-cta-text">{t['blog.ctaText']}</p>
-          <a href={routes.contact} class="post-cta-link">{t['blog.ctaLink']}</a>
+        <aside class="mt-16 py-9 px-10 bg-surface-soft border border-ink-primary/10 rounded-md" aria-labelledby="cta-heading">
+          <h2 id="cta-heading" class="font-sans text-2xl font-extrabold text-ink-primary m-0 mb-2 leading-[1.2] tracking-[-0.01em]">
+            {t['blog.ctaTitle']}
+          </h2>
+          <p class="font-sans text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">
+            {t['blog.ctaText']}
+          </p>
+          <a
+            href={routes.contact}
+            class="inline-flex items-center font-sans text-[0.9375rem] font-bold text-brand-primary no-underline border-b border-brand-primary transition-opacity duration-200 hover:opacity-85"
+          >
+            {t['blog.ctaLink']}
+          </a>
         </aside>
 
       </div>
@@ -168,264 +201,3 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
   </article>
 </Layout>
 
-<style>
-  .post-page {
-    max-width: 880px;
-    margin: 0 auto;
-  }
-
-  .post-back {
-    display: inline-block;
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    color: rgb(var(--brand-primary));
-    text-decoration: none;
-    margin-bottom: 32px;
-    border-bottom: 1px solid transparent;
-    font-weight: 600;
-    transition: border-color 200ms ease;
-  }
-  .post-back:hover {
-    border-bottom-color: rgb(var(--brand-primary));
-  }
-
-  .post-header {
-    margin-bottom: 56px;
-  }
-  .post-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    color: rgb(var(--ink-muted));
-  }
-  .post-topic {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: rgb(var(--brand-primary));
-  }
-  .post-date {
-    color: rgb(var(--ink-muted));
-  }
-  .post-date-updated {
-    color: rgb(var(--ink-muted));
-  }
-  .post-title {
-    margin-top: 0;
-  }
-  .post-excerpt {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    color: rgb(var(--ink-muted));
-    line-height: 1.65;
-    margin: 24px 0 0 0;
-    max-width: 65ch;
-  }
-
-  /* TOC */
-  .post-toc {
-    background: rgb(var(--surface-soft));
-    border: 1px solid rgb(var(--ink-primary) / 0.1);
-    border-radius: 8px;
-    padding: 24px 28px;
-    margin-bottom: 56px;
-  }
-  .post-toc-heading {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: rgb(var(--brand-primary));
-    margin: 0 0 16px 0;
-  }
-  .post-toc-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  @media (min-width: 700px) {
-    .post-toc-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-auto-flow: column;
-      gap: 10px 32px;
-    }
-  }
-  .post-toc-item {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-  }
-  .post-toc-num {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: rgb(var(--brand-primary));
-    width: 24px;
-    flex-shrink: 0;
-  }
-  .post-toc-link {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    color: rgb(var(--ink-primary));
-    text-decoration: none;
-    line-height: 1.4;
-    border-bottom: 1px solid transparent;
-    transition: border-color 200ms ease;
-  }
-  .post-toc-link:hover {
-    border-bottom-color: rgb(var(--brand-primary));
-  }
-
-  /* Cover */
-  .post-cover {
-    margin: 0 -24px 48px -24px;
-  }
-  @media (min-width: 768px) {
-    .post-cover {
-      margin: 0 0 48px 0;
-    }
-  }
-  .post-cover img {
-    width: 100%;
-    height: auto;
-    border-radius: 0;
-  }
-  @media (min-width: 768px) {
-    .post-cover img {
-      border-radius: 12px;
-    }
-  }
-  .post-cover figcaption {
-    font-size: 0.75rem;
-    color: rgb(var(--ink-muted));
-    margin: 12px 24px 0 24px;
-  }
-  @media (min-width: 768px) {
-    .post-cover figcaption {
-      margin: 12px 0 0 0;
-    }
-  }
-
-  /* References */
-  .post-references {
-    margin-top: 64px;
-    padding: 28px 32px;
-    background: rgb(var(--surface-soft));
-    border: 1px solid rgb(var(--ink-primary) / 0.1);
-    border-radius: 8px;
-  }
-  .post-references-heading {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: rgb(var(--brand-primary));
-    margin: 0 0 16px 0;
-  }
-  .post-references-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  @media (min-width: 700px) {
-    .post-references-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-auto-flow: column;
-      gap: 14px 32px;
-    }
-  }
-  .post-references-item {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-  }
-  .post-references-num {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: rgb(var(--ink-muted));
-    width: 24px;
-    flex-shrink: 0;
-  }
-  .post-references-body {
-    flex: 1;
-    min-width: 0;
-  }
-  .post-references-title {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: rgb(var(--ink-primary));
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 200ms ease, color 200ms ease;
-  }
-  .post-references-title:hover {
-    color: rgb(var(--brand-primary));
-    border-bottom-color: rgb(var(--brand-primary));
-  }
-  .post-references-url {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    color: rgb(var(--ink-muted));
-    margin-top: 4px;
-    word-break: break-all;
-  }
-
-  /* CTA */
-  .post-cta {
-    margin-top: 64px;
-    padding: 36px 40px;
-    background: rgb(var(--surface-soft));
-    border: 1px solid rgb(var(--ink-primary) / 0.1);
-    border-radius: 8px;
-  }
-  .post-cta-title {
-    font-family: var(--font-sans);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: rgb(var(--ink-primary));
-    margin: 0 0 8px 0;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-  }
-  .post-cta-text {
-    font-family: var(--font-sans);
-    color: rgb(var(--ink-primary) / 0.75);
-    line-height: 1.6;
-    margin: 0 0 20px 0;
-    max-width: 65ch;
-  }
-  .post-cta-link {
-    display: inline-flex;
-    align-items: center;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: rgb(var(--brand-primary));
-    text-decoration: none;
-    border-bottom: 1px solid rgb(var(--brand-primary));
-    transition: opacity 200ms ease;
-  }
-  .post-cta-link:hover {
-    opacity: 0.85;
-  }
-</style>
