@@ -19,7 +19,6 @@ const services = [
     key: 'diagnosis' as const,
     title: t['services.diagnosis.title'],
     subtitle: t['services.diagnosis.subtitle'],
-    duration: t['services.diagnosis.duration'],
     problem: t['services.diagnosis.problem'],
     cta: t['services.card.cta'],
     image: sectionBackground,
@@ -30,7 +29,6 @@ const services = [
     key: 'guidance' as const,
     title: t['services.guidance.title'],
     subtitle: t['services.guidance.subtitle'],
-    duration: t['services.guidance.duration'],
     problem: t['services.guidance.problem'],
     cta: t['services.card.cta'],
     image: sectionBackground,
@@ -41,7 +39,6 @@ const services = [
     key: 'advisory' as const,
     title: t['services.advisory.title'],
     subtitle: t['services.advisory.subtitle'],
-    duration: t['services.advisory.duration'],
     problem: t['services.advisory.problem'],
     cta: t['services.card.cta'],
     image: sectionBackground,
@@ -69,17 +66,14 @@ const services = [
       >
         {t['services.heading']}
       </h2>
-      <p class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[640px] font-medium mt-4">
-        {t['services.subtitle']}
-      </p>
     </header>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[auto_auto_auto_auto_auto] gap-6">
       {services.map((service) => (
         <a
           href={routes.service[service.key]}
           aria-label={`${t['services.aria.read_more']} ${service.title}`}
-          class="group relative flex flex-col bg-surface-base border border-ink-primary/10 rounded-md p-6 sm:p-8 no-underline text-inherit overflow-hidden transition-transform duration-200 hover:-translate-y-1"
+          class="group relative flex flex-col md:grid md:grid-rows-subgrid md:row-span-5 bg-surface-base border border-ink-primary/10 rounded-md p-6 sm:p-8 no-underline text-inherit overflow-hidden transition-transform duration-200 hover:-translate-y-1"
         >
           {service.image && (
             <div class="-mx-3 sm:-mx-4 -mt-3 sm:-mt-4 mb-5 sm:mb-6 aspect-[1586/992] overflow-hidden relative">
@@ -109,9 +103,6 @@ const services = [
               )}
             </div>
           )}
-          <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0 mb-3">
-            {service.duration}
-          </p>
           <h3 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-extrabold leading-tight tracking-[-0.005em] break-words hyphens-auto m-0 mb-2 text-ink-primary">
             {service.title}
           </h3>

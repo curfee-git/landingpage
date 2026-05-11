@@ -16,19 +16,16 @@ interface Props {
   serviceKey: 'diagnosis' | 'guidance' | 'advisory';
   title: string;
   subtitle: string;
-  duration: string;
   problem: string;
   timeline: TimelineStep[];
   delivers: string[];
   excludes: string[];
-  objectionQ: string;
-  objectionA: string;
   cta: string;
   translations: Translations;
   accent: 'primary' | 'secondary' | 'tertiary';
 }
 
-const { serviceKey, title, subtitle, duration, problem, timeline, delivers, excludes, objectionQ, objectionA, cta, translations: t } = Astro.props;
+const { serviceKey, title, subtitle, problem, timeline, delivers, excludes, cta, translations: t } = Astro.props;
 
 const pad2 = (n: number) => String(n).padStart(2, '0');
 
@@ -52,22 +49,22 @@ const approachByService = {
 
 const fieldsByService = {
   diagnosis: [
-    { title: t['fields.diagnosis.1.title'], subtitle: t['fields.diagnosis.1.subtitle'], body: t['fields.diagnosis.1.body'] },
-    { title: t['fields.diagnosis.2.title'], subtitle: t['fields.diagnosis.2.subtitle'], body: t['fields.diagnosis.2.body'] },
-    { title: t['fields.diagnosis.3.title'], subtitle: t['fields.diagnosis.3.subtitle'], body: t['fields.diagnosis.3.body'] },
-    { title: t['fields.diagnosis.4.title'], subtitle: t['fields.diagnosis.4.subtitle'], body: t['fields.diagnosis.4.body'] },
+    { category: t['fields.diagnosis.1.category'], title: t['fields.diagnosis.1.title'], subtitle: t['fields.diagnosis.1.subtitle'], body: t['fields.diagnosis.1.body'] },
+    { category: t['fields.diagnosis.2.category'], title: t['fields.diagnosis.2.title'], subtitle: t['fields.diagnosis.2.subtitle'], body: t['fields.diagnosis.2.body'] },
+    { category: t['fields.diagnosis.3.category'], title: t['fields.diagnosis.3.title'], subtitle: t['fields.diagnosis.3.subtitle'], body: t['fields.diagnosis.3.body'] },
+    { category: t['fields.diagnosis.4.category'], title: t['fields.diagnosis.4.title'], subtitle: t['fields.diagnosis.4.subtitle'], body: t['fields.diagnosis.4.body'] },
   ],
   guidance: [
-    { title: t['fields.guidance.1.title'], subtitle: t['fields.guidance.1.subtitle'], body: t['fields.guidance.1.body'] },
-    { title: t['fields.guidance.2.title'], subtitle: t['fields.guidance.2.subtitle'], body: t['fields.guidance.2.body'] },
-    { title: t['fields.guidance.3.title'], subtitle: t['fields.guidance.3.subtitle'], body: t['fields.guidance.3.body'] },
-    { title: t['fields.guidance.4.title'], subtitle: t['fields.guidance.4.subtitle'], body: t['fields.guidance.4.body'] },
+    { category: t['fields.guidance.1.category'], title: t['fields.guidance.1.title'], subtitle: t['fields.guidance.1.subtitle'], body: t['fields.guidance.1.body'] },
+    { category: t['fields.guidance.2.category'], title: t['fields.guidance.2.title'], subtitle: t['fields.guidance.2.subtitle'], body: t['fields.guidance.2.body'] },
+    { category: t['fields.guidance.3.category'], title: t['fields.guidance.3.title'], subtitle: t['fields.guidance.3.subtitle'], body: t['fields.guidance.3.body'] },
+    { category: t['fields.guidance.4.category'], title: t['fields.guidance.4.title'], subtitle: t['fields.guidance.4.subtitle'], body: t['fields.guidance.4.body'] },
   ],
   advisory: [
-    { title: t['fields.advisory.1.title'], subtitle: t['fields.advisory.1.subtitle'], body: t['fields.advisory.1.body'] },
-    { title: t['fields.advisory.2.title'], subtitle: t['fields.advisory.2.subtitle'], body: t['fields.advisory.2.body'] },
-    { title: t['fields.advisory.3.title'], subtitle: t['fields.advisory.3.subtitle'], body: t['fields.advisory.3.body'] },
-    { title: t['fields.advisory.4.title'], subtitle: t['fields.advisory.4.subtitle'], body: t['fields.advisory.4.body'] },
+    { category: t['fields.advisory.1.category'], title: t['fields.advisory.1.title'], subtitle: t['fields.advisory.1.subtitle'], body: t['fields.advisory.1.body'] },
+    { category: t['fields.advisory.2.category'], title: t['fields.advisory.2.title'], subtitle: t['fields.advisory.2.subtitle'], body: t['fields.advisory.2.body'] },
+    { category: t['fields.advisory.3.category'], title: t['fields.advisory.3.title'], subtitle: t['fields.advisory.3.subtitle'], body: t['fields.advisory.3.body'] },
+    { category: t['fields.advisory.4.category'], title: t['fields.advisory.4.title'], subtitle: t['fields.advisory.4.subtitle'], body: t['fields.advisory.4.body'] },
   ],
 } as const;
 
@@ -81,9 +78,6 @@ const fieldItems = fieldsByService[serviceKey];
   <section class="pt-16 sm:pt-[104px] xl:pt-[144px] pb-20 sm:pb-[104px] xl:pb-[144px] bg-surface-soft">
     <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
       <div>
-        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0 mb-3">
-          {duration}
-        </p>
         <h1 class="font-sans text-[clamp(2.5rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0">
           {title}
         </h1>
@@ -107,13 +101,10 @@ const fieldItems = fieldsByService[serviceKey];
         <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
           {t['approach.heading']}
         </h2>
-        <p class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[640px] font-medium mt-4">
-          {t['approach.subtitle']}
-        </p>
       </header>
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-y-4 lg:gap-x-6">
         {approachItems.map((item, idx) => (
-          <article class="approach-card flex flex-col gap-4 p-7 bg-surface-base border border-ink-primary/[0.12] rounded-md transition-colors duration-200 lg:grid lg:grid-rows-subgrid lg:row-span-3">
+          <article class="approach-card flex flex-col gap-4 p-7 bg-surface-base border border-brand-primary rounded-md lg:grid lg:grid-rows-subgrid lg:row-span-3">
             <div class="font-sans text-[2rem] font-extrabold tracking-[-0.02em] text-brand-primary leading-none">
               {idx + 1}
             </div>
@@ -139,19 +130,21 @@ const fieldItems = fieldsByService[serviceKey];
         <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
           {t['fields.heading']}
         </h2>
-        <p class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[640px] font-medium mt-4">
-          {t['fields.subtitle']}
-        </p>
       </header>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
         {fieldItems.map((item) => (
           <article class="flex flex-col p-8 bg-surface-base border border-ink-primary/10 rounded-md transition-colors duration-200 hover:border-brand-primary">
+            <span class="inline-block self-start font-sans text-[0.6875rem] font-extrabold tracking-[0.16em] uppercase text-brand-primary bg-surface-soft py-1.5 px-3 rounded-xs mb-5">
+              {item.category}
+            </span>
             <h3 class="font-sans text-[1.25rem] font-extrabold tracking-[-0.005em] text-ink-primary m-0">
               {item.title}
             </h3>
-            <p class="font-sans text-[0.9375rem] font-bold text-brand-primary leading-[1.4] mt-2 m-0">
-              {item.subtitle}
-            </p>
+            {item.subtitle && (
+              <p class="font-sans text-[0.9375rem] font-bold text-brand-primary leading-[1.4] mt-2 m-0">
+                {item.subtitle}
+              </p>
+            )}
             <p class="font-sans text-[0.9375rem] leading-[1.6] text-ink-muted mt-5 m-0">
               {item.body}
             </p>
@@ -237,23 +230,6 @@ const fieldItems = fieldsByService[serviceKey];
     </div>
   </section>
 
-  <!-- Objection -->
-  <section class="py-20 sm:py-[104px] xl:py-[144px]">
-    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
-      <div class="max-w-[920px]">
-        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
-          {t['service.objection.eyebrow']}
-        </p>
-        <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
-          {objectionQ}
-        </h2>
-        <p class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[720px] font-medium mt-6">
-          {objectionA}
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA -->
   <section class="py-20 sm:py-[104px] xl:py-[144px] bg-brand-primary text-brand-onPrimary">
     <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0 text-center max-w-[720px]">
@@ -278,9 +254,6 @@ const fieldItems = fieldsByService[serviceKey];
 </article>
 
 <style>
-  .approach-card:hover {
-    border-color: rgb(var(--brand-primary));
-  }
   .bento-card:hover {
     border-color: rgb(var(--brand-primary));
   }
