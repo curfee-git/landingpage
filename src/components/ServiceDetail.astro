@@ -99,7 +99,7 @@ const fieldItems = fieldsByService[serviceKey];
           {t['approach.eyebrow']}
         </p>
         <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
-          {t['approach.heading']}
+          {t[`approach.${serviceKey}.heading`]}
         </h2>
       </header>
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr] lg:gap-y-4 lg:gap-x-6">
@@ -131,10 +131,10 @@ const fieldItems = fieldsByService[serviceKey];
           {t[`fields.${serviceKey}.heading`]}
         </h2>
       </header>
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:grid-rows-[auto_auto_auto] md:gap-8">
         {fieldItems.map((item) => (
-          <article class="flex flex-col p-8 bg-surface-base border border-ink-primary/10 rounded-md transition-colors duration-200 hover:border-brand-primary">
-            <span class="inline-block self-start font-sans text-[0.6875rem] font-extrabold tracking-[0.16em] uppercase text-brand-primary bg-surface-soft py-1.5 px-3 rounded-xs mb-5">
+          <article class="flex flex-col md:grid md:grid-rows-subgrid md:row-span-3 p-8 bg-surface-base border border-ink-primary/10 rounded-md transition-colors duration-200 hover:border-brand-primary">
+            <span class="inline-block self-start justify-self-start font-sans text-[0.6875rem] font-extrabold tracking-[0.16em] uppercase text-brand-primary bg-surface-soft py-1.5 px-3 rounded-xs mb-5 md:mb-0">
               {item.category}
             </span>
             <h3 class="font-sans text-[1.25rem] font-extrabold tracking-[-0.005em] text-ink-primary m-0">
@@ -145,7 +145,7 @@ const fieldItems = fieldsByService[serviceKey];
                 {item.subtitle}
               </p>
             )}
-            <p class="font-sans text-[0.9375rem] leading-[1.6] text-ink-muted mt-5 m-0">
+            <p class="font-sans text-[0.9375rem] leading-[1.6] text-ink-muted mt-5 md:mt-0 m-0">
               {item.body}
             </p>
           </article>
