@@ -5,9 +5,9 @@ import { getTranslations } from '@/i18n/translations';
 const t = getTranslations();
 
 const points = [
-  { icon: 'hub', title: t['differentiator.1.title'], body: t['differentiator.1.body'] },
-  { icon: 'shield', title: t['differentiator.2.title'], body: t['differentiator.2.body'] },
-  { icon: 'handshake', title: t['differentiator.3.title'], body: t['differentiator.3.body'] },
+  { icon: 'trending_up', title: t['differentiator.1.title'], body: t['differentiator.1.body'] },
+  { icon: 'visibility', title: t['differentiator.2.title'], body: t['differentiator.2.body'] },
+  { icon: 'autorenew', title: t['differentiator.3.title'], body: t['differentiator.3.body'] },
 ];
 ---
 
@@ -28,13 +28,13 @@ const points = [
       {t['differentiator.heading.1']}<br /><span class="inline-block whitespace-nowrap">{t['differentiator.heading.2']}</span>
     </h2>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-14 mt-10 lg:mt-14">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-x-14 lg:gap-y-5 lg:grid-rows-[auto_auto_auto] mt-10 lg:mt-14">
       {points.map((p) => (
-        <div class="diff-item flex flex-col">
-          <div class="diff-icon w-10 h-10 rounded-[10px] bg-surface-base/[0.07] border border-surface-base/[0.14] flex items-center justify-center mb-5 text-surface-base/70 transition-all duration-[280ms]">
+        <div class="diff-item flex flex-col lg:grid lg:grid-rows-subgrid lg:row-span-3">
+          <div class="diff-icon w-10 h-10 rounded-[10px] bg-surface-base/[0.07] border border-surface-base/[0.14] flex items-center justify-center mb-5 lg:mb-0 text-surface-base/70 transition-all duration-[280ms]">
             <Icon name={p.icon} class="w-[18px] h-[18px]" />
           </div>
-          <h3 class="font-sans font-extrabold text-[1.0625rem] tracking-[-0.01em] m-0 mb-3 text-brand-onPrimary">
+          <h3 class="font-sans font-extrabold text-[1.0625rem] tracking-[-0.01em] m-0 mb-3 lg:mb-0 text-brand-onPrimary">
             {p.title}
           </h3>
           <p class="font-sans text-[0.9375rem] leading-[1.7] text-brand-onPrimary/70 m-0">
