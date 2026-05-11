@@ -44,7 +44,7 @@ const loop = [...cards, ...cards];
     <ul class="obs-track flex w-max m-0 py-1 list-none" role="list">
       {loop.map((card, i) => (
         <li
-          class="flex flex-col flex-[0_0_320px] min-h-[220px] mr-4 p-6 bg-surface-base border border-ink-primary/[0.18] rounded-md backface-hidden"
+          class="flex flex-col flex-[0_0_320px] min-h-[220px] mr-4 p-6 bg-surface-base ring-1 ring-inset ring-ink-primary/[0.18] rounded-md backface-hidden"
           aria-hidden={i >= cards.length ? 'true' : undefined}
         >
           <Icon name={card.icon} class="w-6 h-6 text-brand-primary shrink-0" />
@@ -69,6 +69,10 @@ const loop = [...cards, ...cards];
     --obs-card-gap: 16px;
     animation: obs-scroll 75s linear infinite;
     will-change: transform;
+  }
+
+  .obs-track > li {
+    transform: translateZ(0);
   }
 
   .obs-carousel:hover .obs-track,

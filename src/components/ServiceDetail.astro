@@ -128,7 +128,7 @@ const fieldItems = fieldsByService[serviceKey];
           {t['fields.eyebrow']}
         </p>
         <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
-          {t['fields.heading']}
+          {t[`fields.${serviceKey}.heading`]}
         </h2>
       </header>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
@@ -233,9 +233,6 @@ const fieldItems = fieldsByService[serviceKey];
   <!-- CTA -->
   <section class="py-20 sm:py-[104px] xl:py-[144px] bg-brand-primary text-brand-onPrimary">
     <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0 text-center max-w-[720px]">
-      <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-surface-base/70 m-0 mb-4">
-        {t['service.cta.eyebrow']}
-      </p>
       <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 text-brand-onPrimary">
         {t['calltoaction.heading']}
       </h2>
