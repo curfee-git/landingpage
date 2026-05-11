@@ -172,9 +172,11 @@ const fieldItems = fieldsByService[serviceKey];
               {pad2(idx + 1)}
             </div>
             <div>
-              <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-surface-base/70 m-0 mb-2">
-                {step.phase}
-              </p>
+              {step.phase && (
+                <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-surface-base/70 m-0 mb-2">
+                  {step.phase}
+                </p>
+              )}
               <h3 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-1 text-brand-onPrimary">
                 {step.title}
               </h3>

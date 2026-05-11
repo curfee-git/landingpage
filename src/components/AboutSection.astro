@@ -18,6 +18,15 @@ const credentials = [
   { mark: 'D', title: t['about.credentials.5.title'], body: t['about.credentials.5.body'] },
   { mark: 'S', title: t['about.credentials.6.title'], body: t['about.credentials.6.body'] },
 ];
+
+const curfeeLetters = [
+  { letter: 'C', word: t['about.curfee.c.word'], text: t['about.curfee.c.text'] },
+  { letter: 'U', word: t['about.curfee.u.word'], text: t['about.curfee.u.text'] },
+  { letter: 'R', word: t['about.curfee.r.word'], text: t['about.curfee.r.text'] },
+  { letter: 'F', word: t['about.curfee.f.word'], text: t['about.curfee.f.text'] },
+  { letter: 'E', word: t['about.curfee.e1.word'], text: t['about.curfee.e1.text'] },
+  { letter: 'E', word: t['about.curfee.e2.word'], text: t['about.curfee.e2.text'] },
+];
 ---
 
 <article>
@@ -42,6 +51,9 @@ const credentials = [
           </p>
           <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">
             {t['about.who.1']}
+          </p>
+          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">
+            {t['about.who.1b']}
           </p>
           <p class="font-sans text-[1.0625rem] leading-[1.6] font-bold text-brand-primary m-0 max-w-[65ch]">
             {t['about.who.6']}
@@ -107,7 +119,8 @@ const credentials = [
         <div>
           <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.5']}</p>
           <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.5b']}</p>
-          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 max-w-[65ch]">{t['about.who.3b']}</p>
+          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.3b']}</p>
+          <p class="font-sans text-[1.0625rem] leading-[1.6] font-bold text-brand-primary m-0 max-w-[65ch]">{t['about.who.5c']}</p>
         </div>
       </div>
     </div>
@@ -183,6 +196,43 @@ const credentials = [
           <h3 class="font-sans text-[1.25rem] font-bold text-ink-primary m-0 mb-2 leading-[1.3]">{t['principles.3']}</h3>
           <p class="font-sans text-[0.9375rem] text-ink-muted leading-[1.6] m-0">{t['about.principles.3.text']}</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURFEE acronym -->
+  <section class="py-20 sm:py-[104px] xl:py-[144px]" aria-labelledby="curfee-heading">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="max-w-[720px] mb-14">
+        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+          {t['about.curfee.eyebrow']}
+        </p>
+        <h2
+          id="curfee-heading"
+          class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4"
+        >
+          {t['about.curfee.heading']}
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-12">
+        {curfeeLetters.map((c) => (
+          <div class="grid grid-cols-[56px_1fr] gap-5 items-start">
+            <div
+              class="w-12 h-12 rounded-xs bg-brand-primary text-brand-onPrimary flex items-center justify-center font-sans font-extrabold text-[1.25rem]"
+              aria-hidden="true"
+            >
+              {c.letter}
+            </div>
+            <div>
+              <h3 class="font-sans text-[1.125rem] font-bold text-ink-primary m-0 mb-2 leading-[1.3]">
+                {c.word}
+              </h3>
+              <p class="font-sans text-[0.9375rem] text-ink-muted leading-[1.6] m-0 max-w-[40ch]">
+                {c.text}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>

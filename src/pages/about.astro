@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import AboutSection from '@/components/AboutSection.astro';
+import BlogSection from '@/components/BlogSection.astro';
 import { getTranslations } from '@/i18n/translations';
 
 const t = getTranslations();
@@ -32,4 +33,5 @@ const breadcrumbLd = {
   jsonLd={[jsonLd, breadcrumbLd]}
 >
   <AboutSection translations={t} />
+  <BlogSection translations={t} />
 </Layout>
