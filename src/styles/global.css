@@ -179,48 +179,6 @@
 /* ===========================================================
    Type scale (Manrope, weights 400–800)
    =========================================================== */
-@utility text-display-large {
-  font-family: var(--font-sans);
-  font-size: clamp(3rem, 6vw, 4rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-weight: 800;
-}
-@utility text-display-medium {
-  font-family: var(--font-sans);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-weight: 800;
-}
-@utility text-display-small {
-  font-family: var(--font-sans);
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  font-weight: 800;
-}
-@utility text-headline-large {
-  font-family: var(--font-sans);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  font-weight: 800;
-}
-@utility text-headline-medium {
-  font-family: var(--font-sans);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  font-weight: 800;
-}
-@utility text-headline-small {
-  font-family: var(--font-sans);
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  line-height: 1.25;
-  letter-spacing: -0.005em;
-  font-weight: 700;
-}
 @utility text-title-large {
   font-family: var(--font-sans);
   font-size: 1.25rem;
@@ -238,6 +196,12 @@
   font-size: 0.875rem;
   line-height: 1.4;
   font-weight: 600;
+}
+@utility text-body-x-large {
+  font-family: var(--font-sans);
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.6;
+  font-weight: 400;
 }
 @utility text-body-large {
   font-family: var(--font-sans);
@@ -276,6 +240,12 @@
   line-height: 1rem;
   letter-spacing: 0.06em;
   font-weight: 600;
+}
+@utility text-caption {
+  font-family: var(--font-sans);
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.4;
+  font-weight: 400;
 }
 
 /* View transitions – let clicks pass through */
@@ -328,7 +298,7 @@
   content: "";
   display: block;
   width: 2.5rem;
-  height: 1px;
+  height: 2px;
   background: rgb(var(--brand-primary));
   margin-bottom: 1rem;
 }

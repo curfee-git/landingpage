@@ -32,17 +32,17 @@ const linkLabel = allPosts.length > LATEST_COUNT ? t['blog.all'] : t['blog.visit
           </p>
           <h2
             id="blog-heading"
-            class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0"
+            class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0"
           >
             {t['blog.heading']}
           </h2>
-          <p class="font-sans text-[1.125rem] leading-[1.6] text-ink-muted max-w-[640px] font-medium mt-4">
+          <p class="text-body-x-large text-ink-muted max-w-[640px] font-medium mt-4">
             {t['blog.subtitle']}
           </p>
         </div>
         <a
           href={routes.blog}
-          class="inline-flex items-center gap-1.5 text-brand-primary font-sans text-[0.875rem] font-bold no-underline shrink-0 border-b border-transparent transition-colors duration-200 hover:border-brand-primary"
+          class="inline-flex items-center gap-1.5 text-brand-primary font-sans text-[0.875rem] font-bold no-underline shrink-0"
         >
           {linkLabel}
           <Icon name="arrow_outward" class="w-4 h-4" />

@@ -17,7 +17,7 @@ const Heading = headingLevel;
   class="group flex h-full flex-col rounded-lg bg-surface-base border border-stroke-subtle p-6 md:p-8 transition-transform duration-short4 ease-standard hover:-translate-y-1"
 >
   <div class="flex items-center justify-between mb-5">
-    <span class="text-headline-small text-brand-primary font-extrabold tabular-nums leading-none" data-card-number>
+    <span class="text-xl md:text-2xl tracking-[-0.005em] text-brand-primary font-extrabold tabular-nums leading-none" data-card-number>
       {String(index).padStart(2, '0')}
     </span>
     <time class="text-body-small text-ink-meta tabular-nums" datetime={post.data.createdAt.toISOString()}>

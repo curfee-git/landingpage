@@ -78,13 +78,13 @@ const fieldItems = fieldsByService[serviceKey];
   <section class="pt-16 sm:pt-[104px] xl:pt-[144px] pb-20 sm:pb-[104px] xl:pb-[144px] bg-surface-soft">
     <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
       <div>
-        <h1 class="font-sans text-[clamp(2.5rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0">
+        <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0">
           {title}
         </h1>
         <p class="font-sans text-[1.5rem] font-bold text-brand-primary leading-[1.3] mt-6 m-0">
           {subtitle}
         </p>
-        <p class="font-sans text-[1.125rem] font-medium leading-[1.6] text-ink-muted m-0 mt-6 max-w-[65ch]">
+        <p class="text-body-x-large font-medium text-ink-muted m-0 mt-6 max-w-[65ch]">
           {problem}
         </p>
       </div>
@@ -98,7 +98,7 @@ const fieldItems = fieldsByService[serviceKey];
         <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
           {t['approach.eyebrow']}
         </p>
-        <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
+        <h2 class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
           {t[`approach.${serviceKey}.heading`]}
         </h2>
       </header>
@@ -108,7 +108,7 @@ const fieldItems = fieldsByService[serviceKey];
             <div class="font-sans text-[2rem] font-extrabold tracking-[-0.02em] text-brand-primary leading-none">
               {idx + 1}
             </div>
-            <h3 class="font-sans text-[1.125rem] font-bold tracking-[-0.005em] m-0 text-ink-primary">
+            <h3 class="text-body-x-large font-bold tracking-[-0.005em] m-0 text-ink-primary">
               {item.title}
             </h3>
             <p class="font-sans text-[1rem] leading-[1.55] text-ink-primary/85 m-0">
@@ -127,7 +127,7 @@ const fieldItems = fieldsByService[serviceKey];
         <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
           {t['fields.eyebrow']}
         </p>
-        <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
+        <h2 class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4">
           {t[`fields.${serviceKey}.heading`]}
         </h2>
       </header>
@@ -161,7 +161,7 @@ const fieldItems = fieldsByService[serviceKey];
         <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-surface-base/70 m-0">
           {t['services.label.process']}
         </p>
-        <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4 text-brand-onPrimary">
+        <h2 class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4 text-brand-onPrimary">
           {t['service.process.heading']}
         </h2>
       </div>
@@ -177,7 +177,7 @@ const fieldItems = fieldsByService[serviceKey];
                   {step.phase}
                 </p>
               )}
-              <h3 class="font-sans text-[clamp(1.25rem,2vw,1.5rem)] font-bold leading-tight tracking-[-0.005em] m-0 mb-1 text-brand-onPrimary">
+              <h3 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-[-0.005em] m-0 mb-1 text-brand-onPrimary">
                 {step.title}
               </h3>
               <p class="font-sans text-[0.9375rem] text-surface-base/70 m-0 mb-4">
@@ -235,10 +235,10 @@ const fieldItems = fieldsByService[serviceKey];
   <!-- CTA -->
   <section class="py-20 sm:py-[104px] xl:py-[144px] bg-brand-primary text-brand-onPrimary">
     <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0 text-center max-w-[720px]">
-      <h2 class="font-sans text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 text-brand-onPrimary">
+      <h2 class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 text-brand-onPrimary">
         {t['calltoaction.heading']}
       </h2>
-      <p class="font-sans text-[1.125rem] leading-[1.6] text-surface-base/85 max-w-[560px] font-medium mt-6 mx-auto">
+      <p class="text-body-x-large text-surface-base/85 max-w-[560px] font-medium mt-6 mx-auto">
         {t['calltoaction.subtitle']}
       </p>
       <a

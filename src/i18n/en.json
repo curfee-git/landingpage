@@ -52,7 +52,7 @@
   "services.diagnosis.image.alt": "A path through a network of connected nodes, tracing the route from symptom to root cause",
   "services.diagnosis.title": "Diagnosis",
   "services.diagnosis.subtitle": "From symptoms to root cause",
-  "services.diagnosis.problem": "The symptoms surface, but the root cause stays buried. Years of decisions have settled into a structure no one chose, and no one has the full picture of anymore. You want the right starting point before the next decision is made on top.",
+  "services.diagnosis.problem": "The symptoms are visible, but the root cause stays buried. Years of decisions have settled into a structure no one chose, and no one has the full picture of anymore. You want the right starting point before the next decision is made on top.",
   "services.diagnosis.forwhom.1": "You are dealing with a system landscape no one has the full overview of anymore.",
   "services.diagnosis.forwhom.2": "You change one thing, and three others break, because the dependencies between them are invisible.",
   "services.diagnosis.forwhom.3": "You face decisions whose consequences will compound over years, and you want a clear picture before you commit.",
