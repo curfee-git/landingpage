@@ -48,7 +48,6 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
 
       <a href={routes.about} class={navClass} data-nav-link>{t['nav.about']}</a>
       <a href={routes.blog} class={navClass} data-nav-link>{t['nav.blog']}</a>
-      <a href={routes.faq} class={navClass} data-nav-link>{t['nav.faq']}</a>
     </nav>
 
     <div class="flex items-center gap-1 shrink-0 z-10">
@@ -79,7 +78,6 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
         </div>
         <a href={routes.about} class={menuItemClass} data-menu-close data-nav-link>{t['nav.about']}</a>
         <a href={routes.blog} class={menuItemClass} data-menu-close data-nav-link>{t['nav.blog']}</a>
-        <a href={routes.faq} class={menuItemClass} data-menu-close data-nav-link>{t['nav.faq']}</a>
       </nav>
       <div class="lg:hidden flex flex-col gap-2 px-4 pt-2">
         <a href={routes.contact} class="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary hover:bg-[#002952] px-6 py-3.5 rounded-md text-sm font-bold leading-none transition-colors duration-short4 ease-standard" data-menu-close>{t['nav.cta']}</a>
@@ -243,7 +241,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
 
   function initActiveSection() {
     const navLinks = document.querySelectorAll('[data-nav-link]') as NodeListOf<HTMLAnchorElement>;
-    const sectionIds = ['observations', 'services', 'blog', 'faq', 'contact'];
+    const sectionIds = ['observations', 'services', 'blog', 'contact'];
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);

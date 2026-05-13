@@ -43,7 +43,7 @@ const curfeeLetters = [
             id="about-hero-heading"
             class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-[-0.02em] m-0 mt-4"
           >
-            {t['about.intro.greeting']} {t['about.heading']}.
+            {t['about.intro.greeting']} Philipp<br />Höllinger.
           </h1>
           <p class="font-sans font-bold text-base text-brand-primary leading-[1.5] mt-4 mb-7">
             {t['about.who.heading']}<br />
@@ -91,7 +91,7 @@ const curfeeLetters = [
               sizes="(max-width: 900px) 280px, 400px"
             />
           </div>
-          <div class="mt-5 py-6 px-7 bg-surface-soft border-l-2 border-brand-primary rounded-md">
+          <div class="mt-5 py-6 px-7 bg-surface-soft border border-ink-primary/10 rounded-md">
             <p class="font-sans font-semibold text-[1.0625rem] text-ink-primary leading-[1.5] m-0">
               "{t['about.who.2']}"
             </p>
@@ -233,26 +233,6 @@ const curfeeLetters = [
             </div>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-20 sm:py-[104px] xl:py-[144px] bg-brand-primary text-brand-onPrimary">
-    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
-      <div class="max-w-[760px]">
-        <h2 class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 text-brand-onPrimary">
-          {t['calltoaction.heading']}
-        </h2>
-        <p class="text-body-x-large text-surface-base/85 max-w-[640px] font-medium mt-4">
-          {t['calltoaction.subtitle']}
-        </p>
-        <a
-          href={routes.contact}
-          class="inline-flex items-center gap-2 mt-8 px-7 py-3.5 font-sans text-[0.9375rem] font-bold bg-surface-base text-brand-primary border-[1.5px] border-surface-base rounded-md no-underline transition-colors duration-200 hover:bg-surface-base/85"
-        >
-          {t['hero.cta']}
-        </a>
       </div>
     </div>
   </section>

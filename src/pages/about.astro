@@ -3,8 +3,10 @@ import Layout from '@/layouts/Layout.astro';
 import AboutSection from '@/components/AboutSection.astro';
 import BlogSection from '@/components/BlogSection.astro';
 import { getTranslations } from '@/i18n/translations';
+import { getRoutes } from '@/configurations/routes';
 
 const t = getTranslations();
+const routes = getRoutes();
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -34,4 +36,24 @@ const breadcrumbLd = {
 >
   <AboutSection translations={t} />
   <BlogSection translations={t} />
+
+  <!-- CTA -->
+  <section class="py-20 sm:py-[104px] xl:py-[144px] bg-brand-primary text-brand-onPrimary">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <div class="max-w-[760px]">
+        <h2 class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 text-brand-onPrimary">
+          {t['calltoaction.heading']}
+        </h2>
+        <p class="text-body-x-large text-surface-base/85 max-w-[640px] font-medium mt-4">
+          {t['calltoaction.subtitle']}
+        </p>
+        <a
+          href={routes.contact}
+          class="inline-flex items-center gap-2 mt-8 px-7 py-3.5 font-sans text-[0.9375rem] font-bold bg-surface-base text-brand-primary border-[1.5px] border-surface-base rounded-md no-underline transition-colors duration-200 hover:bg-surface-base/85"
+        >
+          {t['hero.cta']}
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>

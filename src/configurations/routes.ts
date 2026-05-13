@@ -2,7 +2,6 @@ export const ROUTES = {
   home: '/',
   about: '/about/',
   blog: '/blog/',
-  faq: '/faq/',
   contact: '/contact/',
   imprint: '/imprint/',
   privacy: '/privacy/',
