@@ -48,29 +48,27 @@ const jsonLd = {
         <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0 mt-4">
           {t['blog.index.h1']}
         </h1>
-        <a href="/rss.xml" class="inline-flex items-center gap-2 mt-6 font-sans text-body-medium text-ink-muted hover:text-brand-primary transition-colors duration-200">
-          {t['rss.link']}
-          <span aria-hidden="true">→</span>
-        </a>
       </header>
 
       {posts.length === 0 ? (
         <p class="font-sans text-base text-ink-primary/65">{t['blog.empty']}</p>
       ) : (
         <>
-          {posts.length >= 3 && (
+          {posts.length >= 2 && (
             <div class="flex flex-wrap items-center gap-4 mb-10" data-blog-controls>
-              <label class="inline-flex items-center gap-2">
-                <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
-                  {t['blog.filter.label']}
-                </span>
-                <select data-blog-filter class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-[0.875rem] font-semibold py-2 pl-3 pr-9 min-w-[160px] cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
-                  <option value="">{t['blog.filter.all']}</option>
-                  {topics.map((topic) => (
-                    <option value={topic}>{topic}</option>
-                  ))}
-                </select>
-              </label>
+              {topics.length > 1 && (
+                <label class="inline-flex items-center gap-2">
+                  <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
+                    {t['blog.filter.label']}
+                  </span>
+                  <select data-blog-filter class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-[0.875rem] font-semibold py-2 pl-3 pr-9 min-w-[160px] cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
+                    <option value="">{t['blog.filter.all']}</option>
+                    {topics.map((topic) => (
+                      <option value={topic}>{topic}</option>
+                    ))}
+                  </select>
+                </label>
+              )}
               <label class="inline-flex items-center gap-2">
                 <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
                   {t['blog.sort.label']}
@@ -107,12 +105,12 @@ const jsonLd = {
     const list = document.querySelector<HTMLElement>('[data-blog-list]');
     const filter = document.querySelector<HTMLSelectElement>('[data-blog-filter]');
     const sort = document.querySelector<HTMLSelectElement>('[data-blog-sort]');
-    if (!list || !filter || !sort) return;
+    if (!list || !sort) return;
 
     const items = Array.from(list.querySelectorAll<HTMLElement>('[data-blog-item]'));
 
     const apply = () => {
-      const topicFilter = filter.value;
+      const topicFilter = filter?.value ?? '';
       const sortMode = sort.value;
       const visible = items.filter((it) => !topicFilter || it.dataset.topic === topicFilter);
       const hidden = items.filter((it) => topicFilter && it.dataset.topic !== topicFilter);
@@ -130,7 +128,7 @@ const jsonLd = {
       hidden.forEach((el) => { el.style.display = 'none'; });
     };
 
-    filter.addEventListener('change', apply);
+    filter?.addEventListener('change', apply);
     sort.addEventListener('change', apply);
     apply();
   }
