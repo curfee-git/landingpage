@@ -64,7 +64,7 @@ const personLd = {
   "name": "Philipp Höllinger",
   "givenName": "Philipp",
   "familyName": "Höllinger",
-  "jobTitle": t['meta.about.jobTitle'],
+  "jobTitle": t['meta.about.job.title'],
   "description": t['schema.person.description'],
   "url": siteUrl,
   "mainEntityOfPage": `${siteUrl}/#about`,
@@ -78,7 +78,7 @@ const personLd = {
   },
   "sameAs": [EXTERNAL.linkedin],
   "nationality": { "@type": "Country", "name": t['schema.country.austria'] },
-  "knowsAbout": t['schema.knowsAbout.person'],
+  "knowsAbout": t['schema.knows.about.person'],
   "hasOccupation": {
     "@type": "Occupation",
     "name": t['schema.person.occupation'],
@@ -134,7 +134,7 @@ const organizationLd = {
   "@id": `${siteUrl}/#organization`,
   "name": "Curfee",
   "legalName": "Curfee e.U.",
-  "alternateName": [t['schema.org.alternateName.1'], t['schema.org.alternateName.2']],
+  "alternateName": [t['schema.org.alternate.name.1'], t['schema.org.alternate.name.2']],
   "url": siteUrl,
   "logo": {
     "@type": "ImageObject",
@@ -173,9 +173,9 @@ const organizationLd = {
   ],
   "serviceArea": {
     "@type": "AdministrativeArea",
-    "name": t['schema.serviceArea']
+    "name": t['schema.service.area']
   },
-  "knowsAbout": t['schema.knowsAbout.organization'],
+  "knowsAbout": t['schema.knows.about.organization'],
   "contactPoint": [
     {
       "@type": "ContactPoint",
@@ -194,7 +194,7 @@ const organizationLd = {
   ],
   "potentialAction": {
     "@type": "CommunicateAction",
-    "name": t['schema.action.contactByEmail'],
+    "name": t['schema.action.contact.by.email'],
     "target": {
       "@type": "EntryPoint",
       "urlTemplate": EXTERNAL.mailto,
@@ -213,7 +213,7 @@ const organizationLd = {
   ],
   "memberOf": {
     "@type": "Organization",
-    "name": t['schema.org.memberOfWko'],
+    "name": t['schema.org.member.of.wko'],
     "alternateName": "WKO",
     "url": "https://www.wko.at"
   },
@@ -299,8 +299,8 @@ const speakableLd = {
     <link rel="preload" href="/assets/fonts/manrope/manrope.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- LLM context files -->
-    <link rel="help" type="text/plain" href={`${siteUrl}/llms.txt`} title={t['linkTitle.llmContext']} />
-    <link rel="help" type="text/plain" href={`${siteUrl}/llms-full.txt`} title={t['linkTitle.llmFull']} />
+    <link rel="help" type="text/plain" href={`${siteUrl}/llms.txt`} title={t['link.title.llm.context']} />
+    <link rel="help" type="text/plain" href={`${siteUrl}/llms-full.txt`} title={t['link.title.llm.full']} />
 
     <!-- Canonical URL -->
     {!noindex && <link rel="canonical" href={canonicalUrl} />}
@@ -344,7 +344,7 @@ const speakableLd = {
 
     <!-- Sitemap + RSS -->
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
-    <link rel="alternate" type="application/rss+xml" title={t['linkTitle.rssFeed']} href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title={t['link.title.rss.feed']} href="/rss.xml" />
 
     {!noindex && (
       <>

@@ -13,8 +13,8 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "@id": "https://curfee.com/blog/#blog",
-  "name": t['blog.indexHeading'],
-  "description": t['blog.indexSubtitle'],
+  "name": t['blog.index.heading'],
+  "description": t['meta.blog.description'],
   "inLanguage": "en",
   "url": "https://curfee.com/blog/",
   "publisher": { "@id": "https://curfee.com/#organization" },
@@ -43,43 +43,46 @@ const jsonLd = {
 
       <header class="mb-14 max-w-[720px]">
         <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
-          {t['nav.blog']}
+          {t['blog.section.eyebrow']}
         </p>
         <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0 mt-4">
-          {t['blog.indexH1']}
+          {t['blog.index.h1']}
         </h1>
-        <p class="text-body-x-large text-ink-muted mt-6 m-0 max-w-[65ch] font-medium">
-          {t['blog.indexSubtitle']}
-        </p>
+        <a href="/rss.xml" class="inline-flex items-center gap-2 mt-6 font-sans text-body-medium text-ink-muted hover:text-brand-primary transition-colors duration-200">
+          {t['rss.link']}
+          <span aria-hidden="true">→</span>
+        </a>
       </header>
 
       {posts.length === 0 ? (
         <p class="font-sans text-base text-ink-primary/65">{t['blog.empty']}</p>
       ) : (
         <>
-          <div class="flex flex-wrap items-center gap-4 mb-10" data-blog-controls>
-            <label class="inline-flex items-center gap-2">
-              <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
-                {t['blog.filterLabel']}
-              </span>
-              <select data-blog-filter class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-[0.875rem] font-semibold py-2 pl-3 pr-9 min-w-[160px] cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
-                <option value="">{t['blog.filterAll']}</option>
-                {topics.map((topic) => (
-                  <option value={topic}>{topic}</option>
-                ))}
-              </select>
-            </label>
-            <label class="inline-flex items-center gap-2">
-              <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
-                {t['blog.sortLabel']}
-              </span>
-              <select data-blog-sort class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-[0.875rem] font-semibold py-2 pl-3 pr-9 min-w-[160px] cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
-                <option value="newest">{t['blog.sortNewest']}</option>
-                <option value="oldest">{t['blog.sortOldest']}</option>
-                <option value="az">{t['blog.sortAZ']}</option>
-              </select>
-            </label>
-          </div>
+          {posts.length >= 3 && (
+            <div class="flex flex-wrap items-center gap-4 mb-10" data-blog-controls>
+              <label class="inline-flex items-center gap-2">
+                <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
+                  {t['blog.filter.label']}
+                </span>
+                <select data-blog-filter class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-[0.875rem] font-semibold py-2 pl-3 pr-9 min-w-[160px] cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
+                  <option value="">{t['blog.filter.all']}</option>
+                  {topics.map((topic) => (
+                    <option value={topic}>{topic}</option>
+                  ))}
+                </select>
+              </label>
+              <label class="inline-flex items-center gap-2">
+                <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
+                  {t['blog.sort.label']}
+                </span>
+                <select data-blog-sort class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-[0.875rem] font-semibold py-2 pl-3 pr-9 min-w-[160px] cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
+                  <option value="newest">{t['blog.sort.newest']}</option>
+                  <option value="oldest">{t['blog.sort.oldest']}</option>
+                  <option value="az">{t['blog.sort.az']}</option>
+                </select>
+              </label>
+            </div>
+          )}
 
           <ol class="grid grid-cols-1 gap-6 list-none p-0 m-0 md:grid-cols-2 lg:grid-cols-3" data-blog-list>
             {posts.map((post, index) => (

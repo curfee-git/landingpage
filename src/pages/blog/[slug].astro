@@ -34,7 +34,7 @@ const breadcrumbLd = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": t['breadcrumb.home'], "item": "https://curfee.com/" },
-    { "@type": "ListItem", "position": 2, "name": t['blog.indexHeading'], "item": "https://curfee.com/blog/" },
+    { "@type": "ListItem", "position": 2, "name": t['blog.index.heading'], "item": "https://curfee.com/blog/" },
     { "@type": "ListItem", "position": 3, "name": post.data.title, "item": `https://curfee.com${canonicalPath}` }
   ]
 };
@@ -87,7 +87,7 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
     <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
       <div class="max-w-[880px] mx-auto">
 
-        <a href={routes.blog} class="post-back inline-block text-label-large text-brand-primary no-underline mb-8">← {t['blog.backToIndex']}</a>
+        <a href={routes.blog} class="post-back inline-block text-label-large text-brand-primary no-underline mb-8">← {t['blog.back.to.index']}</a>
 
         <header class="mb-14">
           <div class="flex flex-wrap items-center justify-between gap-3 mb-6 text-body-small text-ink-muted">
@@ -98,7 +98,7 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
                 <>
                   <span aria-hidden="true"> · </span>
                   <span class="text-ink-muted">
-                    {t['blog.updatedLabel']} <time datetime={post.data.updatedAt.toISOString()}>{formatDate(post.data.updatedAt)}</time>
+                    {t['blog.updated.label']} <time datetime={post.data.updatedAt.toISOString()}>{formatDate(post.data.updatedAt)}</time>
                   </span>
                 </>
               )}
@@ -115,7 +115,7 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
         {toc.length > 0 && (
           <nav class="bg-surface-soft border border-ink-primary/10 rounded-md py-6 px-7 mb-14" aria-labelledby="toc-heading">
             <h2 id="toc-heading" class="text-label-medium uppercase text-brand-primary m-0 mb-4">
-              {t['blog.tocHeading']}
+              {t['blog.toc.heading']}
             </h2>
             <ol class="post-toc-list flex flex-col gap-2.5 list-none p-0 m-0 md:grid md:grid-cols-2 md:grid-flow-col md:gap-x-8 md:gap-y-2.5" style={`grid-template-rows: repeat(${tocRows}, auto);`}>
               {toc.map((item, i) => (
@@ -156,7 +156,7 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
         {references.length > 0 && (
           <section class="mt-16 py-7 px-8 bg-surface-soft border border-ink-primary/10 rounded-md" aria-labelledby="references-heading">
             <h2 id="references-heading" class="text-label-medium uppercase text-brand-primary m-0 mb-4">
-              {t['blog.referencesHeading']}
+              {t['blog.references.heading']}
             </h2>
             <ol class="post-references-list flex flex-col gap-3.5 list-none p-0 m-0 md:grid md:grid-cols-2 md:grid-flow-col md:gap-x-8 md:gap-y-3.5" style={`grid-template-rows: repeat(${referencesRows}, auto);`}>
               {references.map((ref, i) => (
@@ -182,21 +182,21 @@ const jsonLd = [blogPostingLd, breadcrumbLd];
         )}
 
         <div class="mt-16">
-          <a href={routes.blog} class="post-back inline-block text-label-large text-brand-primary no-underline">← {t['blog.backToIndex']}</a>
+          <a href={routes.blog} class="post-back inline-block text-label-large text-brand-primary no-underline">← {t['blog.back.to.index']}</a>
         </div>
 
         <aside class="mt-10 py-9 px-10 bg-surface-soft border border-ink-primary/10 rounded-md" aria-labelledby="cta-heading">
           <h2 id="cta-heading" class="font-sans text-2xl md:text-3xl font-extrabold leading-[1.2] tracking-[-0.01em] text-ink-primary m-0 mb-2">
-            {t['blog.ctaTitle']}
+            {t['blog.cta.title']}
           </h2>
           <p class="text-body-large text-ink-muted m-0 mb-5 max-w-[65ch]">
-            {t['blog.ctaText']}
+            {t['blog.cta.text']}
           </p>
           <a
             href={routes.contact}
             class="inline-flex items-center text-body-medium font-bold text-brand-primary no-underline border-b border-brand-primary transition-opacity duration-200 hover:opacity-85"
           >
-            {t['blog.ctaLink']}
+            {t['blog.cta.link']}
           </a>
         </aside>
 

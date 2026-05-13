@@ -17,10 +17,10 @@ const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": "https://curfee.com/#services",
-  "name": t['schema.serviceName'],
-  "alternateName": t['schema.serviceAlternateName'],
+  "name": t['schema.service.name'],
+  "alternateName": t['schema.service.alternate.name'],
   "provider": { "@id": "https://curfee.com/#organization" },
-  "serviceType": t['schema.serviceType'],
+  "serviceType": t['schema.service.type'],
   "category": t['schema.service.category'],
   "areaServed": [
     { "@type": "Country", "name": t['schema.country.austria'] },
@@ -29,10 +29,10 @@ const serviceLd = {
   ],
   "audience": {
     "@type": "BusinessAudience",
-    "name": t['schema.audienceName'],
-    "audienceType": t['schema.audienceType']
+    "name": t['schema.audience.name'],
+    "audienceType": t['schema.audience.type']
   },
-  "serviceOutput": t['schema.serviceOutput'],
+  "serviceOutput": t['schema.service.output'],
   "availableLanguage": ["en", "de"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -54,7 +54,7 @@ const serviceLd = {
           "description": t['services.diagnosis.problem'],
           "slogan": t['services.diagnosis.subtitle'],
           "provider": { "@id": "https://curfee.com/#organization" },
-          "serviceType": t['schema.offer.diagnosis.serviceType'],
+          "serviceType": t['schema.offer.diagnosis.service.type'],
           "inLanguage": ["en"]
         }
       },
@@ -73,7 +73,7 @@ const serviceLd = {
           "description": t['services.guidance.problem'],
           "slogan": t['services.guidance.subtitle'],
           "provider": { "@id": "https://curfee.com/#organization" },
-          "serviceType": t['schema.offer.guidance.serviceType'],
+          "serviceType": t['schema.offer.guidance.service.type'],
           "inLanguage": ["en"]
         }
       },
@@ -91,7 +91,7 @@ const serviceLd = {
           "description": t['services.advisory.problem'],
           "slogan": t['services.advisory.subtitle'],
           "provider": { "@id": "https://curfee.com/#organization" },
-          "serviceType": t['schema.offer.advisory.serviceType'],
+          "serviceType": t['schema.offer.advisory.service.type'],
           "inLanguage": ["en"]
         }
       },
@@ -103,12 +103,12 @@ const decisionEnforcementLd = {
   "@context": "https://schema.org",
   "@type": "DefinedTerm",
   "@id": "https://curfee.com/#decision-enforcement-principle",
-  "name": t['schema.decisionEnforcement.name'],
+  "name": t['schema.decision.enforcement.name'],
   "alternateName": ["Decision Enforcement", "Decision Enforcement Principle"],
-  "description": t['schema.decisionEnforcement.description'],
+  "description": t['schema.decision.enforcement.description'],
   "inDefinedTermSet": {
     "@type": "DefinedTermSet",
-    "name": t['schema.glossaryName'],
+    "name": t['schema.glossary.name'],
     "url": "https://curfee.com/llms.txt"
   },
   "subjectOf": { "@id": "https://curfee.com/#organization" },

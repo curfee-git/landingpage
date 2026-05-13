@@ -16,7 +16,7 @@ const linkClass = "text-body-medium text-ink-muted hover:text-brand-primary tran
     <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_auto_auto] gap-10 md:gap-16 mb-16">
 
       <!-- Left: Logo + Tagline (link to home) -->
-      <a href={routes.home} class="block no-underline hover:no-underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-primary/40 rounded-sm" aria-label={t['back.home']}>
+      <a href={routes.home} class="inline-block w-fit no-underline hover:no-underline focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-primary/40 rounded-sm" aria-label={t['back.home']}>
         <div class="mb-4 inline-flex items-center gap-2 text-brand-primary">
           <span class="block h-5 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
         </div>
@@ -38,7 +38,7 @@ const linkClass = "text-body-medium text-ink-muted hover:text-brand-primary tran
           <p class="text-label-large text-ink-primary mb-4">{t['footer.column.company']}</p>
           <nav class="flex flex-col gap-3" aria-label={t['footer.aria.company']}>
             <a href={routes.about} class={linkClass}>{t['nav.about']}</a>
-            <a href={routes.blog} class={linkClass}>{t['blog.indexHeading']}</a>
+            <a href={routes.blog} class={linkClass}>{t['blog.index.heading']}</a>
             <a href={routes.contact} class={linkClass}>{t['nav.contact']}</a>
           </nav>
         </div>
