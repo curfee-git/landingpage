@@ -68,9 +68,10 @@ const services = [
       </h2>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[auto_auto_auto_auto_auto] gap-6">
+    <div id="offer-catalog" class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[auto_auto_auto_auto_auto] gap-6">
       {services.map((service) => (
         <a
+          id={`offer-${service.key}`}
           href={routes.service[service.key]}
           aria-label={`${t['services.aria.read_more']} ${service.title}`}
           class="group relative flex flex-col md:grid md:grid-rows-subgrid md:row-span-5 bg-surface-base border border-ink-primary/10 rounded-md p-6 sm:p-8 no-underline text-inherit overflow-hidden transition-transform duration-200 hover:-translate-y-1"

@@ -17,8 +17,8 @@ export function getRoutes() {
 }
 
 export const EXTERNAL = {
-  email: 'office@curfee.com',
-  mailto: 'mailto:office@curfee.com',
+  email: 'philipp.hoellinger@curfee.com',
+  mailto: 'mailto:philipp.hoellinger@curfee.com',
   phone: '+43 677 630 242 28',
   tel: 'tel:+4367763024228',
   linkedin: 'https://www.linkedin.com/in/phoellinger',

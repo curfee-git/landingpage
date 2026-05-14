@@ -70,6 +70,20 @@ const fieldsByService = {
 
 const approachItems = approachByService[serviceKey];
 const fieldItems = fieldsByService[serviceKey];
+
+const allServices = {
+  diagnosis: { href: routes.service.diagnosis, title: t['services.diagnosis.title'], subtitle: t['services.diagnosis.subtitle'] },
+  guidance: { href: routes.service.guidance, title: t['services.guidance.title'], subtitle: t['services.guidance.subtitle'] },
+  advisory: { href: routes.service.advisory, title: t['services.advisory.title'], subtitle: t['services.advisory.subtitle'] },
+} as const;
+
+const relatedByService = {
+  diagnosis: [allServices.guidance, allServices.advisory],
+  guidance: [allServices.diagnosis, allServices.advisory],
+  advisory: [allServices.diagnosis, allServices.guidance],
+} as const;
+
+const relatedServices = relatedByService[serviceKey];
 ---
 
 <article>
@@ -228,6 +242,31 @@ const fieldItems = fieldsByService[serviceKey];
             ))}
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="py-16 sm:py-20 xl:py-24" aria-labelledby="related-heading">
+    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+      <h2 id="related-heading" class="font-sans text-2xl md:text-3xl font-extrabold leading-[1.15] tracking-[-0.01em] m-0 mb-8">
+        {t['services.related.heading']}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {relatedServices.map((s) => (
+          <a href={s.href} class="group block p-6 md:p-8 bg-surface-base border border-stroke-subtle rounded-md no-underline transition-transform duration-200 hover:-translate-y-1">
+            <h3 class="font-sans text-xl md:text-2xl font-extrabold m-0 mb-2 text-ink-primary transition-colors group-hover:text-brand-primary">
+              {s.title}
+            </h3>
+            <p class="font-sans text-[0.9375rem] text-ink-muted leading-[1.5] m-0 mb-4">
+              {s.subtitle}
+            </p>
+            <span class="inline-flex items-center gap-1.5 font-sans text-[0.875rem] font-bold text-brand-primary">
+              {t['services.card.cta']}
+              <Icon name="arrow_outward" class="w-4 h-4" />
+            </span>
+          </a>
+        ))}
       </div>
     </div>
   </section>

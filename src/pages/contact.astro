@@ -63,9 +63,6 @@ const jsonLd = {
                 </a>
               </li>
             </ul>
-            <p class="font-sans text-[0.875rem] text-ink-primary/65 mt-5 m-0">
-              {t['contact.response.body']}
-            </p>
           </section>
 
           <section class="flex flex-col gap-6" aria-label={t['contact.aria.info']}>
@@ -125,17 +122,6 @@ const jsonLd = {
             <div class="contact-field relative">
               <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder=" " />
               <label for="contact-email" class="contact-field-label">{t['contact.form.email']}</label>
-            </div>
-
-            <div class="contact-field contact-field--select relative">
-              <select id="contact-interest" name="interest" required>
-                <option value="" disabled selected hidden></option>
-                <option value="diagnosis">{t['contact.interest.diagnosis']}</option>
-                <option value="guidance">{t['contact.interest.guidance']}</option>
-                <option value="advisory">{t['contact.interest.advisory']}</option>
-                <option value="other">{t['contact.interest.other']}</option>
-              </select>
-              <label for="contact-interest" class="contact-field-label">{t['contact.interest.label']}</label>
             </div>
 
             <div class="contact-field contact-field--textarea relative">

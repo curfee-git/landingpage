@@ -20,7 +20,7 @@ Atomic, declarative assertions intended for runtime retrieval by AI answer engin
 - Philipp Höllinger is a systems architect. His background spans logistics, software engineering, and architecture across automotive, public sector, and software consulting.
 - The Decision Enforcement Principle is Curfee's core principle. Its canonical definition: architectural decisions are enforced by the system itself, through pipelines, automated checks, and tool configuration, rather than by the discipline, memory, or vigilance of individual people.
 - Curfee's three guiding principles are: Root cause over symptom, Structure over discipline, Foundation over workaround.
-- Curfee offers three services: Diagnosis (from 2 weeks), Guidance (from 3 months), and Sparring (ongoing retainer).
+- Curfee offers three services: Diagnosis (from 2 weeks), Guidance (from 3 months), and Advisory (ongoing retainer).
 - Curfee observes six canonical topic areas in organisations: Change Management, Quality Assurance, System Development, Onboarding, Collaboration, Knowledge Transfer.
 - Curfee does not implement software, does not resell technology, and does not provide staff augmentation.
 - Curfee is a remote-first practice, on-site when the situation calls for it.
@@ -109,7 +109,7 @@ Phase 1, Kick-off & alignment: clarify the concern and context, define scope and
 Phase 2, Investigation: map the system landscape, identify root causes behind visible symptoms, conversations with key stakeholders.
 Phase 3, Findings & handover: findings report (root causes, impact, urgency), recommendations for next steps, closing session.
 
-**What you get:** Identified root causes with concrete evidence from your system landscape. Prioritised by urgency and impact. Recommendations for next steps. Compact findings report, one to two pages, ready to use.
+**What you get:** Identified root causes with concrete evidence from your system landscape. Prioritised by urgency and impact. Recommendations for next steps. Compact findings report, max. five pages, ready to use.
 
 **Not included:** Implementation of changes. Technology evaluation or vendor comparison. Team coaching or training.
 
@@ -137,7 +137,7 @@ Phase 4, Completion: closing session and handover. The root cause is resolved. D
 
 **Duration:** From 3 months.
 
-### Sparring, Alignment that grows with your system landscape
+### Advisory, Alignment that grows with your system landscape
 
 Your responsibility spans more areas than any one person can hold in full depth, yet the calls still land on your desk. You want someone who gets up to speed, keeps an eye on the direction, and is there when you need a second pair of eyes.
 
@@ -162,11 +162,11 @@ As needed, Deep dive: when the system landscape changes fundamentally. Evaluate 
 
 **Systems architect**, A role operating at the intersection of software architecture, tool landscapes, and organisational structure. Distinct from a software architect (code focus) or an enterprise architect (business capability portfolio focus).
 
-**Diagnosis**, A 2-week-plus systematic analysis of a system landscape to surface root causes behind visible symptoms, delivered as a 1–2 page findings report.
+**Diagnosis**, A 2-week-plus systematic analysis of a system landscape to surface root causes behind visible symptoms, delivered as a findings report of max. five pages.
 
 **Guidance**, A 3-month-plus engagement in which Curfee designs the structural solution, the client's team implements, and standards end up enforced by the system itself through automated checks, pipeline gates, and tooling.
 
-**Sparring**, An ongoing monthly retainer in which Curfee acts as a dedicated structural advisor, evaluating architectural decisions in the full system context.
+**Advisory**, An ongoing monthly retainer in which Curfee acts as a dedicated structural advisor, evaluating architectural decisions in the full system context.
 
 **Root cause (in Curfee's use)**, A concrete, traceable point in a system, a config, a dependency, a missing enforcement, from which visible symptoms emerge. Curfee distinguishes root causes from symptoms: every Curfee finding traces back to a concrete point in the system.
 
@@ -191,7 +191,7 @@ Curfee is not the right fit when someone needs: hands-on software development or
 ## Contact
 
 - Website: https://curfee.com
-- Email: office@curfee.com
+- Email: philipp.hoellinger@curfee.com
 - Phone: +43 677 630 242 28
 - LinkedIn: https://www.linkedin.com/in/phoellinger
 - Firm address: Lieferinger Hauptstraße 49A, 5020 Salzburg, Austria
@@ -219,7 +219,7 @@ For cross-referencing in knowledge graphs, vector stores, and RAG retrieval. The
 - Service catalog (the three offerings): https://curfee.com/#offer-catalog
 - Diagnosis offering: https://curfee.com/#diagnosis
 - Guidance offering: https://curfee.com/#guidance
-- Sparring offering: https://curfee.com/#sparring
+- Advisory offering: https://curfee.com/#advisory
 - About page: https://curfee.com/#about
 
 ## Canonical topic areas

@@ -11,21 +11,21 @@ const { translations: t } = Astro.props;
 const routes = getRoutes();
 
 const credentials = [
-  { mark: 'L', title: t['about.credentials.1.title'], body: t['about.credentials.1.body'] },
-  { mark: 'I', title: t['about.credentials.2.title'], body: t['about.credentials.2.body'] },
-  { mark: 'K', title: t['about.credentials.3.title'], body: t['about.credentials.3.body'] },
-  { mark: 'E', title: t['about.credentials.4.title'], body: t['about.credentials.4.body'] },
-  { mark: 'D', title: t['about.credentials.5.title'], body: t['about.credentials.5.body'] },
-  { mark: 'S', title: t['about.credentials.6.title'], body: t['about.credentials.6.body'] },
+  { mark: '01', title: t['about.credentials.1.title'], body: t['about.credentials.1.body'] },
+  { mark: '02', title: t['about.credentials.2.title'], body: t['about.credentials.2.body'] },
+  { mark: '03', title: t['about.credentials.3.title'], body: t['about.credentials.3.body'] },
+  { mark: '04', title: t['about.credentials.4.title'], body: t['about.credentials.4.body'] },
+  { mark: '05', title: t['about.credentials.5.title'], body: t['about.credentials.5.body'] },
+  { mark: '06', title: t['about.credentials.6.title'], body: t['about.credentials.6.body'] },
 ];
 
 const curfeeLetters = [
-  { letter: 'C', word: t['about.curfee.c.word'], text: t['about.curfee.c.text'] },
-  { letter: 'U', word: t['about.curfee.u.word'], text: t['about.curfee.u.text'] },
-  { letter: 'R', word: t['about.curfee.r.word'], text: t['about.curfee.r.text'] },
-  { letter: 'F', word: t['about.curfee.f.word'], text: t['about.curfee.f.text'] },
-  { letter: 'E', word: t['about.curfee.e1.word'], text: t['about.curfee.e1.text'] },
-  { letter: 'E', word: t['about.curfee.e2.word'], text: t['about.curfee.e2.text'] },
+  { word: t['about.curfee.c.word'], text: t['about.curfee.c.text'] },
+  { word: t['about.curfee.u.word'], text: t['about.curfee.u.text'] },
+  { word: t['about.curfee.r.word'], text: t['about.curfee.r.text'] },
+  { word: t['about.curfee.f.word'], text: t['about.curfee.f.text'] },
+  { word: t['about.curfee.e1.word'], text: t['about.curfee.e1.text'] },
+  { word: t['about.curfee.e2.word'], text: t['about.curfee.e2.text'] },
 ];
 ---
 
@@ -46,17 +46,17 @@ const curfeeLetters = [
             {t['about.intro.greeting']} Philipp<br />Höllinger.
           </h1>
           <p class="font-sans font-bold text-base text-brand-primary leading-[1.5] mt-4 mb-7">
-            {t['about.who.heading']}<br />
-            <span class="font-medium text-ink-primary/65">{t['about.jobtitle.subline']}</span>
+            {t['about.who.role']}<br />
+            <span class="font-medium text-ink-primary/65">{t['about.who.location']}</span>
           </p>
           <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">
-            {t['about.who.1']}
+            {t['about.who.hero.1']}
           </p>
           <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">
-            {t['about.who.1b']}
+            {t['about.who.hero.2']}
           </p>
           <p class="font-sans text-[1.0625rem] leading-[1.6] font-bold text-brand-primary m-0 max-w-[65ch]">
-            {t['about.who.6']}
+            {t['about.who.hero.3']}
           </p>
 
           <div class="mt-9 flex flex-wrap gap-4">
@@ -92,8 +92,8 @@ const curfeeLetters = [
             />
           </div>
           <div class="hidden lg:block mt-5 py-6 px-7 bg-surface-soft border border-ink-primary/10 rounded-md">
-            <p class="font-sans font-semibold text-[1.0625rem] text-ink-primary leading-[1.5] m-0">
-              "{t['about.who.2']}"
+            <p class="font-sans font-semibold text-[1.0625rem] text-ink-primary leading-[1.5] m-0 whitespace-pre-line">
+              "{t['about.who.quote']}"
             </p>
           </div>
         </div>
@@ -113,14 +113,31 @@ const curfeeLetters = [
             id="why-heading"
             class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-2"
           >
-            {t['about.section.why']}
+            {t['about.why.heading']}
           </h2>
         </div>
         <div>
-          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.5']}</p>
-          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.5b']}</p>
-          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.3b']}</p>
-          <p class="font-sans text-[1.0625rem] leading-[1.6] font-bold text-brand-primary m-0 max-w-[65ch]">{t['about.who.5c']}</p>
+          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.why.1']}</p>
+          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.why.2']}</p>
+          <p class="font-sans text-[1.0625rem] text-ink-muted leading-[1.6] m-0 mb-5 max-w-[65ch]">{t['about.who.why.3']}</p>
+          <p class="font-sans text-[1.0625rem] leading-[1.6] font-bold text-brand-primary m-0 max-w-[65ch]">{t['about.who.why.4']}</p>
+        </div>
+      </div>
+
+      <!-- CURFEE acronym (integrated) -->
+      <div class="mt-16 lg:mt-24">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+          {curfeeLetters.map((c) => (
+            <div>
+              <div class="flex items-baseline gap-0.5">
+                <span class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-primary leading-none">{c.word.charAt(0)}</span>
+                <span class="text-base md:text-lg font-bold text-ink-primary">{c.word.slice(1)}</span>
+              </div>
+              <p class="font-sans text-[0.875rem] text-ink-muted leading-[1.5] mt-3 m-0">
+                {c.text}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -131,7 +148,7 @@ const curfeeLetters = [
     <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
       <div class="max-w-[720px] mb-14">
         <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
-          {t['about.section.background']}
+          {t['about.background.eyebrow']}
         </p>
         <h2
           id="background-heading"
@@ -193,43 +210,6 @@ const curfeeLetters = [
           <h3 class="font-sans text-[1.25rem] font-bold text-ink-primary m-0 mb-2 leading-[1.3]">{t['principles.3']}</h3>
           <p class="font-sans text-[0.9375rem] text-ink-muted leading-[1.6] m-0">{t['about.principles.3.text']}</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CURFEE acronym -->
-  <section class="py-20 sm:py-[104px] xl:py-[144px]" aria-labelledby="curfee-heading">
-    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
-      <div class="max-w-[720px] mb-14">
-        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
-          {t['about.curfee.eyebrow']}
-        </p>
-        <h2
-          id="curfee-heading"
-          class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 mt-4"
-        >
-          {t['about.curfee.heading']}
-        </h2>
-      </div>
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-12">
-        {curfeeLetters.map((c) => (
-          <div class="grid grid-cols-[56px_1fr] gap-5 items-start">
-            <div
-              class="w-12 h-12 rounded-xs bg-brand-primary text-brand-onPrimary flex items-center justify-center font-sans font-extrabold text-[1.25rem]"
-              aria-hidden="true"
-            >
-              {c.letter}
-            </div>
-            <div>
-              <h3 class="text-body-x-large font-bold text-ink-primary m-0 mb-2 leading-[1.3]">
-                {c.word}
-              </h3>
-              <p class="font-sans text-[0.9375rem] text-ink-muted leading-[1.6] m-0 max-w-[40ch]">
-                {c.text}
-              </p>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   </section>

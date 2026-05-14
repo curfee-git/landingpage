@@ -34,13 +34,26 @@ const timeline = [
     items: [t['services.diagnosis.timeline.3.item.1'], t['services.diagnosis.timeline.3.item.2'], t['services.diagnosis.timeline.3.item.3']],
   },
 ];
+
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: `How a ${t['services.diagnosis.title']} engagement works`,
+  description: t['services.diagnosis.problem'],
+  step: timeline.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.title,
+    text: s.outcome,
+  })),
+};
 ---
 
 <Layout
   title={`${t['services.diagnosis.title']} | Curfee`}
-  description={t['services.diagnosis.problem']}
+  description={t['meta.services.diagnosis.description']}
   canonicalPath={Astro.url.pathname}
-  jsonLd={jsonLd}
+  jsonLd={[jsonLd, howToJsonLd]}
 >
   <ServiceDetail
     serviceKey="diagnosis"
