@@ -83,12 +83,13 @@ const curfeeLetters = [
               src={profileImage}
               alt={t['about.portrait.alt']}
               class="w-full h-full object-cover object-[center_top] block"
-              loading="eager"
+              loading="lazy"
               decoding="async"
               width={400}
               height={600}
               widths={[280, 400, 600, 800]}
               sizes="(max-width: 900px) 280px, 400px"
+              transition:name="profile-portrait"
             />
           </div>
         </div>

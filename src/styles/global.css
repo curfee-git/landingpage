@@ -175,6 +175,11 @@
     color: rgb(var(--ink-primary));
     text-wrap: balance;
   }
+
+  /* Body text wrapping — prevents short last line and orphan words */
+  p, li {
+    text-wrap: pretty;
+  }
 }
 
 /* ===========================================================
@@ -283,6 +288,28 @@
   :focus-visible {
     outline: 3px solid LinkText;
     outline-offset: 3px;
+  }
+}
+
+/* High contrast preference — boost text opacity tiers for better readability */
+@media (prefers-contrast: more) {
+  :root {
+    --ink-muted: var(--ink-primary);
+  }
+  a {
+    text-decoration: underline;
+  }
+}
+
+/* Save-data preference — skip decorative imagery and animations */
+@media (prefers-reduced-data: reduce) {
+  /* Service card decorative overlays */
+  [class*="overlay"] {
+    display: none;
+  }
+  /* Observations carousel animation */
+  .obs-scroll {
+    animation: none !important;
   }
 }
 

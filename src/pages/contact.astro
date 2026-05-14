@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Icon from '@/components/shared/Icon.astro';
 import { EXTERNAL, getRoutes } from '@/configurations/routes';
+import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '@/configurations/forms';
 import { getTranslations } from '@/i18n/translations';
 
 const t = getTranslations();
@@ -96,12 +97,12 @@ const jsonLd = {
         <!-- RIGHT column: Form -->
         <div>
           <form
-            action="https://api.web3forms.com/submit"
+            action={WEB3FORMS_ENDPOINT}
             method="POST"
             class="contact-form flex flex-col gap-[18px]"
             data-contact-form
           >
-            <input type="hidden" name="access_key" value="b1f25317-6496-43d7-9e5a-dc6b81967a17" />
+            <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
             <input type="hidden" name="from_name" value={t['contact.form.from_name']} />
             <input type="hidden" name="subject" value={t['contact.form.subject']} />
             <input type="checkbox" name="botcheck" class="absolute -left-[9999px] w-px h-px opacity-0 pointer-events-none" tabindex="-1" autocomplete="off" />
@@ -229,13 +230,20 @@ const jsonLd = {
   .contact-form input:focus ~ .contact-field-label,
   .contact-form input:not(:placeholder-shown) ~ .contact-field-label,
   .contact-form textarea:focus ~ .contact-field-label,
-  .contact-form textarea:not(:placeholder-shown) ~ .contact-field-label,
-  .contact-form select:focus ~ .contact-field-label,
-  .contact-form select:valid ~ .contact-field-label {
+  .contact-form textarea:not(:placeholder-shown) ~ .contact-field-label {
     top: 0;
     transform: translateY(-50%);
     font-size: 0.75rem;
     font-weight: 600;
     color: rgb(var(--brand-primary));
+  }
+  /* Post-interaction validation — fires only after user has interacted */
+  .contact-form input:user-invalid,
+  .contact-form textarea:user-invalid {
+    border-color: rgb(var(--brand-error));
+  }
+  .contact-form input:user-valid,
+  .contact-form textarea:user-valid {
+    border-color: rgb(var(--brand-primary));
   }
 </style>

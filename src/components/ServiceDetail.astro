@@ -1,6 +1,7 @@
 ---
 import Icon from '@/components/shared/Icon.astro';
 import { getRoutes } from '@/configurations/routes';
+import type { ServiceKey } from '@/configurations/services';
 import type { Translations } from '@/i18n/translations';
 
 const routes = getRoutes();
@@ -13,7 +14,7 @@ interface TimelineStep {
 }
 
 interface Props {
-  serviceKey: 'diagnosis' | 'guidance' | 'advisory';
+  serviceKey: ServiceKey;
   title: string;
   subtitle: string;
   problem: string;

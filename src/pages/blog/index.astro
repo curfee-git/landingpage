@@ -101,6 +101,15 @@ const jsonLd = {
 </Layout>
 
 <script>
+  let cleanupHandlers: Array<() => void> = [];
+
+  function runCleanup() {
+    for (const fn of cleanupHandlers) {
+      try { fn(); } catch { /* ignore */ }
+    }
+    cleanupHandlers = [];
+  }
+
   function initBlogControls() {
     const list = document.querySelector<HTMLElement>('[data-blog-list]');
     const filter = document.querySelector<HTMLSelectElement>('[data-blog-filter]');
@@ -130,9 +139,12 @@ const jsonLd = {
 
     filter?.addEventListener('change', apply);
     sort.addEventListener('change', apply);
+    if (filter) cleanupHandlers.push(() => filter.removeEventListener('change', apply));
+    cleanupHandlers.push(() => sort.removeEventListener('change', apply));
     apply();
   }
 
+  document.addEventListener('astro:before-swap', runCleanup);
   document.addEventListener('astro:page-load', initBlogControls);
   initBlogControls();
 </script>

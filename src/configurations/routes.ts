@@ -10,7 +10,7 @@ export const ROUTES = {
     guidance: '/services/guidance/',
     advisory: '/services/advisory/',
   },
-} as const;
+} as const satisfies Record<string, string | Record<string, string>>;
 
 export function getRoutes() {
   return ROUTES;
@@ -22,4 +22,4 @@ export const EXTERNAL = {
   phone: '+43 677 630 242 28',
   tel: 'tel:+4367763024228',
   linkedin: 'https://www.linkedin.com/in/phoellinger',
-} as const;
+} as const satisfies Record<string, string>;

@@ -43,6 +43,7 @@ const buildDate = new Date().toISOString();
 
 export default defineConfig({
   site: "https://curfee.com",
+  prefetch: { defaultStrategy: 'hover' },
   markdown: {
     rehypePlugins: [
       rehypeSlug,
