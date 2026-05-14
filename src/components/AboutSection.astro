@@ -32,8 +32,8 @@ const curfeeLetters = [
 <article>
 
 
-  <section class="py-20 sm:py-26 xl:py-36" aria-labelledby="about-hero-heading">
-    <div class="max-w-300 mx-auto px-gutter xl:px-0">
+  <section class="py-20 sm:py-26 xl:py-36 lg:min-h-[calc(100svh-var(--header-height))] lg:flex lg:items-center" aria-labelledby="about-hero-heading">
+    <div class="w-full max-w-300 mx-auto px-gutter xl:px-0">
       <div class="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
         <div class="order-2 lg:order-1 max-w-160 lg:flex-1 lg:min-w-0">
           <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0">
@@ -77,20 +77,23 @@ const curfeeLetters = [
           </div>
         </div>
 
-        <div class="order-1 lg:order-2 flex flex-col max-w-90 lg:max-w-none lg:shrink-0 lg:basis-100">
-          <div class="rounded-lg overflow-hidden aspect-3/4 bg-surface-soft">
-            <Image
-              src={profileImage}
-              alt={t['about.portrait.alt']}
-              class="w-full h-full object-cover object-top block"
-              loading="lazy"
-              decoding="async"
-              width={400}
-              height={600}
-              widths={[280, 400, 600, 800]}
-              sizes="(max-width: 900px) 280px, 400px"
-              transition:name="profile-portrait"
-            />
+        <div class="order-1 lg:order-2 lg:flex lg:flex-col lg:flex-1 lg:min-w-0 lg:items-center">
+          <Image
+            src={profileImage}
+            alt={t['about.portrait.alt']}
+            class="block w-full max-w-72 lg:max-w-64 xl:max-w-80 2xl:max-w-96 aspect-[2/3] rounded-lg border border-ink-primary/8"
+            loading="lazy"
+            decoding="async"
+            width={360}
+            height={540}
+            widths={[280, 360, 480, 800]}
+            sizes="(max-width: 1023px) 288px, (max-width: 1279px) 256px, (max-width: 1535px) 320px, 384px"
+            transition:name="profile-portrait"
+          />
+          <div class="hidden lg:block lg:w-full lg:max-w-64 xl:max-w-80 2xl:max-w-96 mt-5 py-6 px-7 bg-surface-soft border border-ink-primary/10 rounded-md">
+            <p class="text-body-large font-semibold text-ink-primary m-0">
+              "{t['about.who.quote']}"
+            </p>
           </div>
         </div>
       </div>

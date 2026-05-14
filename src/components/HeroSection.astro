@@ -12,11 +12,11 @@ const routes = getRoutes();
 ---
 
 <section
-  class="py-20 sm:py-26 xl:py-36"
+  class="py-20 sm:py-26 xl:py-36 lg:min-h-[calc(100svh-var(--header-height))] lg:flex lg:items-center"
   aria-labelledby="hero-heading"
 >
   <div class="w-full max-w-300 mx-auto px-gutter xl:px-0">
-    <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
+    <div class="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
 
       <div class="max-w-230 lg:flex-1 lg:min-w-0">
         <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-5">
@@ -56,18 +56,18 @@ const routes = getRoutes();
         </div>
       </div>
 
-      <div class="hidden lg:flex justify-start self-center">
+      <div class="hidden lg:flex lg:flex-1 lg:min-w-0 lg:justify-center">
         <Image
           src={profileImage}
           alt={t['about.portrait.alt']}
-          class="block lg:w-67 xl:w-90 2xl:w-105 aspect-[2/3] rounded-lg border border-ink-primary/8"
+          class="block lg:w-full lg:max-w-64 xl:max-w-80 2xl:max-w-96 aspect-[2/3] rounded-lg border border-ink-primary/8"
           loading="eager"
           decoding="async"
           fetchpriority="high"
           width={360}
           height={540}
-          widths={[240, 360, 480, 720]}
-          sizes="(max-width: 900px) 0px, (max-width: 1200px) 320px, 400px"
+          widths={[280, 360, 480, 800]}
+          sizes="(max-width: 1023px) 0px, (max-width: 1279px) 256px, (max-width: 1535px) 320px, 384px"
           transition:name="profile-portrait"
         />
       </div>
