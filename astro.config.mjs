@@ -105,10 +105,10 @@ export default defineConfig({
     }),
     compress({
       CSS: true,
-      HTML: false,
-      Image: false,
+      HTML: true,
+      Image: true,
       JavaScript: true,
-      SVG: false,
+      SVG: true,
     }),
   ],
   server: { host: true, port: 4322 },

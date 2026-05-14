@@ -298,6 +298,9 @@ const speakableLd = {
     <!-- Preload Manrope (single font family, self-hosted variable woff2) -->
     <link rel="preload" href="/assets/fonts/manrope/manrope.woff2" as="font" type="font/woff2" crossorigin />
 
+    <!-- DNS-prefetch for contact form endpoint -->
+    <link rel="dns-prefetch" href="https://api.web3forms.com" />
+
     <!-- LLM context files -->
     <link rel="help" type="text/plain" href={`${siteUrl}/llms.txt`} title={t['link.title.llm.context']} />
     <link rel="help" type="text/plain" href={`${siteUrl}/llms-full.txt`} title={t['link.title.llm.full']} />

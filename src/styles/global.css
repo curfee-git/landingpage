@@ -111,6 +111,7 @@
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 51, 102, 0.1);
   }
 
   /* Curfee colour palette
