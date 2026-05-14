@@ -21,25 +21,25 @@ const linkLabel = allPosts.length > LATEST_COUNT ? t['blog.all'] : t['blog.visit
 {previewPosts.length > 0 && (
   <section
     id="blog"
-    class="py-20 sm:py-[104px] xl:py-[144px]"
+    class="py-20 sm:py-26 xl:py-36"
     aria-labelledby="blog-heading"
   >
-    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+    <div class="max-w-300 mx-auto px-gutter xl:px-0">
       <div class="flex flex-col items-start gap-6 mb-12 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0 mb-4">
+          <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-4">
             {t['blog.section.eyebrow']}
           </p>
           <h2
             id="blog-heading"
-            class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0"
+            class="font-sans text-3xl md:text-4xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0"
           >
             {t['blog.heading']}
           </h2>
         </div>
         <a
           href={routes.blog}
-          class="inline-flex items-center gap-1.5 text-brand-primary font-sans text-[0.875rem] font-bold no-underline shrink-0"
+          class="inline-flex items-center gap-1.5 text-brand-primary font-sans text-sm font-bold no-underline shrink-0"
         >
           {linkLabel}
           <Icon name="arrow_outward" class="w-4 h-4" />

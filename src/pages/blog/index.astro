@@ -38,14 +38,14 @@ const jsonLd = {
   canonicalPath={Astro.url.pathname}
   jsonLd={jsonLd}
 >
-  <article class="py-20 sm:py-[104px] xl:py-[144px]">
-    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+  <article class="py-20 sm:py-26 xl:py-36">
+    <div class="max-w-300 mx-auto px-gutter xl:px-0">
 
-      <header class="mb-14 max-w-[720px]">
-        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+      <header class="mb-14 max-w-180">
+        <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0">
           {t['blog.section.eyebrow']}
         </p>
-        <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0 mt-4">
+        <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0 mt-4">
           {t['blog.index.h1']}
         </h1>
       </header>
@@ -58,10 +58,10 @@ const jsonLd = {
             <div class="flex flex-wrap items-center gap-4 mb-10" data-blog-controls>
               {topics.length > 1 && (
                 <label class="inline-flex items-center gap-2">
-                  <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
+                  <span class="font-sans text-sm font-semibold text-ink-primary/65 tracking-normal">
                     {t['blog.filter.label']}
                   </span>
-                  <select data-blog-filter class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-[0.875rem] font-semibold py-2 pl-3 pr-9 min-w-[160px] cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
+                  <select data-blog-filter class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-sm font-semibold py-2 pl-3 pr-9 min-w-40 cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
                     <option value="">{t['blog.filter.all']}</option>
                     {topics.map((topic) => (
                       <option value={topic}>{topic}</option>
@@ -70,10 +70,10 @@ const jsonLd = {
                 </label>
               )}
               <label class="inline-flex items-center gap-2">
-                <span class="font-sans text-[0.8125rem] font-semibold text-ink-primary/65 tracking-[0.01em]">
+                <span class="font-sans text-sm font-semibold text-ink-primary/65 tracking-normal">
                   {t['blog.sort.label']}
                 </span>
-                <select data-blog-sort class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-[0.875rem] font-semibold py-2 pl-3 pr-9 min-w-[160px] cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
+                <select data-blog-sort class="blog-select appearance-none bg-surface-base border border-ink-primary/15 rounded-xs text-ink-primary font-sans text-sm font-semibold py-2 pl-3 pr-9 min-w-40 cursor-pointer transition-colors duration-200 hover:border-brand-primary focus:outline-none focus:border-brand-primary">
                   <option value="newest">{t['blog.sort.newest']}</option>
                   <option value="oldest">{t['blog.sort.oldest']}</option>
                   <option value="az">{t['blog.sort.az']}</option>
@@ -105,7 +105,7 @@ const jsonLd = {
 
   function runCleanup() {
     for (const fn of cleanupHandlers) {
-      try { fn(); } catch { /* ignore */ }
+      try { fn(); } catch {  }
     }
     cleanupHandlers = [];
   }

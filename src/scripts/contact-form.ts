@@ -1,8 +1,4 @@
-/**
- * Submit the contact form via fetch so we can show inline success/error states
- * without a full page reload. Falls back gracefully — without JS the form
- * does a regular POST and Web3Forms shows its default thank-you page.
- */
+
 async function handleSubmit(event: SubmitEvent): Promise<void> {
   const form = event.target;
   if (!(form instanceof HTMLFormElement)) return;

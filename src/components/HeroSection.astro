@@ -12,22 +12,21 @@ const routes = getRoutes();
 ---
 
 <section
-  class="py-20 sm:py-[104px] xl:py-[144px] lg:min-h-[calc(50svh-36px)] lg:flex lg:items-center"
+  class="py-20 sm:py-26 xl:py-36"
   aria-labelledby="hero-heading"
 >
-  <div class="w-full max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
-    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-10 lg:gap-16 items-center">
+  <div class="w-full max-w-300 mx-auto px-gutter xl:px-0">
+    <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
 
-      <div class="max-w-[920px]">
-        <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0 mb-5">
+      <div class="max-w-230 lg:flex-1 lg:min-w-0">
+        <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-5">
           {t['hero.eyebrow']}
         </p>
 
         <h1
           id="hero-heading"
           data-speakable
-          class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words m-0"
-          style="hyphens: manual;"
+          class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-manual m-0"
         >
           {t['hero.heading']}{' '}
           <span class="block">{t['hero.heading.subject']}</span>
@@ -36,7 +35,7 @@ const routes = getRoutes();
 
         <p
           data-speakable
-          class="text-body-x-large text-ink-muted max-w-[640px] font-medium mt-7"
+          class="text-body-x-large text-ink-muted max-w-160 font-medium mt-7"
         >
           {t['hero.subtitle']}
         </p>
@@ -44,24 +43,24 @@ const routes = getRoutes();
         <div class="mt-10 flex flex-wrap items-center gap-4">
           <a
             href={routes.contact}
-            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sans text-[0.9375rem] font-bold rounded-md no-underline whitespace-nowrap border-[1.5px] cursor-pointer transition-colors duration-200 bg-brand-primary text-brand-onPrimary border-brand-primary hover:bg-[#002952] hover:border-[#002952]"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline whitespace-nowrap border-2 cursor-pointer transition-colors duration-200 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover"
           >
             {t['hero.cta']}
           </a>
           <a
             href="#services"
-            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sans text-[0.9375rem] font-bold rounded-md no-underline whitespace-nowrap border-[1.5px] cursor-pointer transition-colors duration-200 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary/[0.33]"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline whitespace-nowrap border-2 cursor-pointer transition-colors duration-200 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary/33"
           >
             {t['hero.cta.secondary']}
           </a>
         </div>
       </div>
 
-      <div class="hidden lg:flex justify-end self-center">
+      <div class="hidden lg:flex justify-start self-center">
         <Image
           src={profileImage}
           alt={t['about.portrait.alt']}
-          class="block lg:h-[380px] xl:h-[440px] 2xl:h-[500px] w-auto rounded-lg border border-ink-primary/[0.08]"
+          class="block lg:h-115 xl:h-135 2xl:h-155 w-auto rounded-lg border border-ink-primary/8"
           loading="eager"
           decoding="async"
           fetchpriority="high"

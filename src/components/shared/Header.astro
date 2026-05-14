@@ -7,12 +7,12 @@ import logoTextRaw from '@/assets/logos/logo_text.svg?raw';
 const t = getTranslations();
 const routes = getRoutes();
 const menuId = 'mobile-menu';
-const navClass = "px-5 py-3 text-label-large font-semibold whitespace-nowrap text-ink-primary hover:text-brand-primary transition-colors duration-short4 ease-standard";
-const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibold transition-colors duration-short4 ease-standard text-ink-primary hover:text-brand-primary";
+const navClass = "px-5 py-3 text-label-large font-semibold whitespace-nowrap text-ink-primary hover:text-brand-primary transition-colors duration-200 ease-standard";
+const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibold transition-colors duration-200 ease-standard text-ink-primary hover:text-brand-primary";
 ---
 
 <header role="banner" data-header transition:persist class="fixed inset-x-0 top-0 z-50 bg-surface-base border-b border-ink-primary/10">
-  <div class="mx-auto max-w-[1200px] flex items-center justify-between gap-3 w-full relative h-[var(--header-height)] px-[var(--gutter)] min-[1101px]:px-0" data-header-shell>
+  <div class="mx-auto max-w-300 flex items-center justify-between gap-3 w-full relative h-header px-gutter xl:px-0" data-header-shell>
     <a href={routes.home} class="shrink-0 inline-flex items-center gap-2 text-brand-primary" aria-label={t['header.aria.brand']} data-menu-close>
       <span class="block h-5 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
     </a>
@@ -51,27 +51,27 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
     </nav>
 
     <div class="flex items-center gap-1 shrink-0 z-10">
-      <a href={routes.contact} class="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary hover:bg-[#002952] px-6 py-3.5 rounded-md text-sm font-bold leading-none whitespace-nowrap transition-colors duration-short4 ease-standard">
+      <a href={routes.contact} class="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary-hover px-6 py-3.5 rounded-md text-sm font-bold leading-none whitespace-nowrap transition-colors duration-200 ease-standard">
         <span>{t['nav.cta']}</span>
       </a>
-      <button type="button" class="lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-full text-ink-primary hover:bg-ink-primary/[0.08] transition-all duration-short4 ease-standard" aria-label={t['header.aria.toggle']} aria-expanded="false" aria-controls={menuId} data-menu-toggle>
+      <button type="button" class="lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-full text-ink-primary hover:bg-ink-primary/8 transition-all duration-200 ease-standard" aria-label={t['header.aria.toggle']} aria-expanded="false" aria-controls={menuId} data-menu-toggle>
         <span data-menu-icon="closed"><Icon name="menu" class="w-6 h-6" /></span>
-        <span data-menu-icon="open" style="display:none"><Icon name="close" class="w-6 h-6" /></span>
+        <span data-menu-icon="open" class="hidden"><Icon name="close" class="w-6 h-6" /></span>
       </button>
     </div>
   </div>
 
-  <div id={menuId} inert data-mobile-menu class="lg:hidden absolute -left-px -right-px bg-surface-base transition-[max-height,opacity] duration-medium2 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden">
-    <div class="max-w-7xl mx-auto px-[var(--gutter)] pb-4 space-y-2">
+  <div id={menuId} inert data-mobile-menu class="lg:hidden absolute -left-px -right-px bg-surface-base transition-all duration-200 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden">
+    <div class="max-w-7xl mx-auto px-gutter pb-4 space-y-2">
       <nav class="flex flex-col gap-1" aria-label={t['header.aria.mobile']}>
         <a href={routes.home} class={menuItemClass} data-menu-close data-nav-link>{t['nav.home']}</a>
         <button type="button" class={`${menuItemClass} justify-between w-full`} aria-expanded="false" data-mobile-services-toggle>
           <span>{t['nav.services']}</span>
-          <svg class="w-5 h-5 transition-transform duration-short4 ease-standard shrink-0" data-mobile-services-icon viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true">
+          <svg class="w-5 h-5 transition-transform duration-200 ease-standard shrink-0" data-mobile-services-icon viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true">
             <path d="M480-345 240-585l43-43 197 198 197-197 43 43-240 239Z"/>
           </svg>
         </button>
-        <div data-mobile-services-list class="overflow-hidden max-h-0 transition-[max-height] duration-medium2 ease-standard flex flex-col gap-1">
+        <div data-mobile-services-list class="overflow-hidden max-h-0 transition-all duration-200 ease-standard flex flex-col gap-1">
           <a href={routes.service.diagnosis} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.diagnosis.title']}</a>
           <a href={routes.service.guidance} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.guidance.title']}</a>
           <a href={routes.service.advisory} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.advisory.title']}</a>
@@ -80,7 +80,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
         <a href={routes.blog} class={menuItemClass} data-menu-close data-nav-link>{t['nav.blog']}</a>
       </nav>
       <div class="lg:hidden flex flex-col gap-2 px-4 pt-2">
-        <a href={routes.contact} class="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-onPrimary hover:bg-[#002952] px-6 py-3.5 rounded-md text-sm font-bold leading-none transition-colors duration-short4 ease-standard" data-menu-close>{t['nav.cta']}</a>
+        <a href={routes.contact} class="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary-hover px-6 py-3.5 rounded-md text-sm font-bold leading-none transition-colors duration-200 ease-standard" data-menu-close>{t['nav.cta']}</a>
       </div>
     </div>
   </div>
@@ -91,7 +91,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
     color: rgb(var(--brand-primary));
   }
 
-  /* Services dropdown */
+
   .services-dropdown {
     position: relative;
   }
@@ -127,7 +127,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
     transform: translateY(0);
     transition: opacity 160ms cubic-bezier(0.2, 0, 0, 1), transform 160ms cubic-bezier(0.2, 0, 0, 1), visibility 0s linear 0s;
   }
-  /* Bridge the 8px gap between button and menu so hover doesn't drop */
+
   .services-dropdown::after {
     content: "";
     position: absolute;
@@ -178,7 +178,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
 
   function runCleanup() {
     for (const fn of cleanupHandlers) {
-      try { fn(); } catch { /* ignore */ }
+      try { fn(); } catch {  }
     }
     cleanupHandlers = [];
   }
@@ -246,7 +246,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
 
-    // Skip entirely on pages with no tracked sections (blog posts, legal, etc.)
+
     if (sections.length === 0) return;
 
     let currentActive = '';
@@ -275,14 +275,14 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
       const scrollY = window.scrollY;
       const viewportMiddle = scrollY + window.innerHeight * 0.35;
 
-      // In hero zone, no highlight
+
       const firstSection = sections[0];
       if (firstSection && viewportMiddle < firstSection.offsetTop) {
         clearActive();
         return;
       }
 
-      // Find the section whose top is closest to (but not past) the viewport trigger
+
       let active = '';
       for (const section of sections) {
         if (section.offsetTop <= viewportMiddle) {
@@ -299,11 +299,11 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
     window.addEventListener('scroll', onScroll, { passive: true });
     addCleanup(() => window.removeEventListener('scroll', onScroll));
 
-    // If the page was loaded with a section hash (e.g. browser back to /#blog),
-    // pre-populate state from the hash and explicitly scroll to the section.
-    // Relying on the browser's native anchor scroll is unreliable after a
-    // full-page back-navigation, especially with bfcache or lazy-loaded content
-    // above the target section.
+
+
+
+
+
     const hashId = location.hash.startsWith('#') ? location.hash.slice(1) : '';
     const hashSection = hashId ? sections.find((s) => s.id === hashId) : undefined;
     if (hashSection) {
@@ -316,8 +316,8 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
         }
       });
 
-      // Wait two frames so any lazy layout above the target settles before
-      // measuring offsetTop, then scroll if the browser hasn't already.
+
+
       const scrollToSection = () => {
         const headerHeight = parseInt(
           getComputedStyle(document.documentElement).getPropertyValue('--header-height') || '72',

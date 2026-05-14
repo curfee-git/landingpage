@@ -50,34 +50,34 @@ const services = [
 
 <section
   id="services"
-  class="py-20 sm:py-[104px] xl:py-[144px] bg-surface-soft"
+  class="py-20 sm:py-26 xl:py-36 bg-surface-soft"
   aria-labelledby="services-heading"
 >
-  <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
+  <div class="max-w-300 mx-auto px-gutter xl:px-0">
 
-    <header class="max-w-[640px] mb-14">
-      <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0 mb-4">
+    <header class="max-w-160 mb-14">
+      <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-4">
         {t['services.eyebrow']}
       </p>
       <h2
         id="services-heading"
         data-speakable
-        class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0"
+        class="font-sans text-3xl md:text-4xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0"
       >
         {t['services.heading']}
       </h2>
     </header>
 
-    <div id="offer-catalog" class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-[auto_auto_auto_auto_auto] gap-6">
+    <div id="offer-catalog" class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {services.map((service) => (
         <a
           id={`offer-${service.key}`}
           href={routes.service[service.key]}
           aria-label={`${t['services.aria.read_more']} ${service.title}`}
-          class="group relative flex flex-col md:grid md:grid-rows-subgrid md:row-span-5 bg-surface-base border border-ink-primary/10 rounded-md p-6 sm:p-8 no-underline text-inherit overflow-hidden transition-transform duration-200 hover:-translate-y-1"
+          class="group relative flex flex-col bg-surface-base border border-ink-primary/10 rounded-md p-6 sm:p-8 no-underline text-inherit overflow-hidden transition-transform duration-200 hover:-translate-y-1"
         >
           {service.image && (
-            <div class="-mx-3 sm:-mx-4 -mt-3 sm:-mt-4 mb-5 sm:mb-6 aspect-[1586/992] overflow-hidden relative">
+            <div class="-mx-3 sm:-mx-4 -mt-3 sm:-mt-4 mb-5 sm:mb-6 aspect-1586/992 overflow-hidden relative">
               <Image
                 src={service.image}
                 alt={service.imageAlt ?? ''}
@@ -104,16 +104,16 @@ const services = [
               )}
             </div>
           )}
-          <h3 class="font-sans text-xl md:text-2xl font-extrabold leading-tight tracking-[-0.005em] break-words hyphens-auto m-0 mb-2 text-ink-primary">
+          <h3 class="font-sans text-xl md:text-2xl font-extrabold leading-tight tracking-normal break-words hyphens-auto m-0 mb-2 text-ink-primary">
             {service.title}
           </h3>
-          <p class="font-sans text-[0.9375rem] leading-[1.5] text-brand-primary font-bold m-0 mb-4">
+          <p class="font-sans text-base leading-normal text-brand-primary font-bold m-0 mb-4">
             {service.subtitle}
           </p>
-          <p class="font-sans text-[0.9375rem] leading-[1.6] text-ink-muted m-0 mb-6 flex-1">
+          <p class="font-sans text-base leading-relaxed text-ink-muted m-0 mb-6 flex-1">
             {service.problem}
           </p>
-          <span class="inline-flex items-center gap-1.5 mt-auto self-start font-sans text-[0.875rem] font-bold text-brand-primary">
+          <span class="inline-flex items-center gap-1.5 mt-auto self-start font-sans text-sm font-bold text-brand-primary">
             {service.cta}
             <Icon name="arrow_right_alt" class="w-4 h-4" />
           </span>

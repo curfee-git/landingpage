@@ -14,17 +14,17 @@ const Heading = headingLevel;
 <a
   href={postPath(post)}
   data-astro-reload
-  class="group flex h-full flex-col rounded-lg bg-surface-base border border-stroke-subtle p-6 md:p-8 transition-transform duration-short4 ease-standard hover:-translate-y-1"
+  class="group flex h-full flex-col rounded-lg bg-surface-base border border-stroke-subtle p-6 md:p-8 transition-transform duration-200 ease-standard hover:-translate-y-1"
 >
   <div class="flex items-center justify-between mb-5">
-    <span class="text-xl md:text-2xl tracking-[-0.005em] text-brand-primary font-extrabold tabular-nums leading-none" data-card-number>
+    <span class="text-xl md:text-2xl tracking-normal text-brand-primary font-extrabold tabular-nums leading-none" data-card-number>
       {String(index).padStart(2, '0')}
     </span>
     <time class="text-body-small text-ink-meta tabular-nums" datetime={post.data.createdAt.toISOString()}>
       {formatDate(post.data.createdAt)}
     </time>
   </div>
-  <Heading class="font-sans font-extrabold text-[1.25rem] leading-[1.2] tracking-tight text-ink-primary mb-3">
+  <Heading class="font-sans font-extrabold text-xl leading-tight tracking-tight text-ink-primary mb-3">
     {post.data.title}
   </Heading>
   <p class="text-body-medium text-ink-muted leading-relaxed mb-6 flex-1">

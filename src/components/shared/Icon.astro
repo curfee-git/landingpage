@@ -13,13 +13,13 @@ const iconPath = join(process.cwd(), 'public', 'assets', 'icons', `${name}.svg`)
 let svgContent = '';
 try {
   svgContent = readFileSync(iconPath, 'utf-8');
-  // Remove width/height to let CSS control size, keep viewBox
+
   svgContent = svgContent
     .replace(/width="24"/, '')
     .replace(/height="24"/, '')
     .replace('<svg', `<svg class="${className}" aria-hidden="true"`);
 } catch {
-  svgContent = `<!-- Icon "${name}" not found -->`;
+  svgContent = ``;
 }
 ---
 <Fragment set:html={svgContent} />

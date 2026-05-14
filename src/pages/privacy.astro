@@ -22,18 +22,18 @@ const jsonLd = {
   jsonLd={jsonLd}
   dateModified="2026-04-27"
 >
-  <article class="py-20 sm:py-[104px] xl:py-[144px]">
-    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
-      <div class="max-w-[920px] mx-auto">
+  <article class="py-20 sm:py-26 xl:py-36">
+    <div class="max-w-300 mx-auto px-gutter xl:px-0">
+      <div class="max-w-230 mx-auto">
 
         <header class="mb-16">
-          <p class="font-sans text-[0.8125rem] font-extrabold tracking-[0.06em] uppercase text-brand-primary m-0">
+          <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0">
             {t['legal.eyebrow']}
           </p>
-          <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-[-0.02em] text-balance break-words hyphens-auto m-0 mt-4">
+          <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0 mt-4">
             {t['privacy.heading']}
           </h1>
-          <p class="text-body-x-large text-ink-muted mt-6 m-0 max-w-[65ch]">
+          <p class="text-body-x-large text-ink-muted mt-6 m-0 max-w-prose">
             {t['privacy.scope']}
           </p>
         </header>
@@ -42,10 +42,10 @@ const jsonLd = {
 
           <section class="grid grid-cols-1 gap-5 md:grid-cols-2">
             <div class="bg-surface-base border border-ink-primary/10 rounded-md p-7">
-              <h2 class="font-sans text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-ink-muted m-0 mb-4">
+              <h2 class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-4">
                 {t['privacy.controller.heading']}
               </h2>
-              <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-[0.9375rem] leading-[1.5]">
+              <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-base leading-normal">
                 <p class="m-0 text-ink-primary font-medium">{t['imprint.company']}</p>
                 <p class="m-0">{t['imprint.name']}</p>
                 <div class="text-ink-muted">
@@ -57,12 +57,12 @@ const jsonLd = {
             </div>
 
             <div class="bg-surface-base border border-ink-primary/10 rounded-md p-7">
-              <h2 class="font-sans text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-ink-muted m-0 mb-4">
+              <h2 class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-4">
                 {t['imprint.contact']}
               </h2>
-              <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-[0.9375rem] leading-[1.5]">
+              <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-base leading-normal">
                 <div>
-                  <p class="font-sans text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-ink-muted m-0 mb-1.5">
+                  <p class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-1.5">
                     {t['imprint.email.label']}
                   </p>
                   <p class="m-0">
@@ -72,7 +72,7 @@ const jsonLd = {
                   </p>
                 </div>
                 <div>
-                  <p class="font-sans text-[0.6875rem] font-semibold tracking-[0.14em] uppercase text-ink-muted m-0 mb-1.5">
+                  <p class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-1.5">
                     {t['privacy.phone.label']}
                   </p>
                   <p class="m-0">
@@ -86,24 +86,24 @@ const jsonLd = {
           </section>
 
           <section>
-            <h2 class="font-sans text-xl md:text-2xl font-bold leading-[1.25] tracking-[-0.005em] m-0 mb-5">
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['privacy.personal.heading']}
             </h2>
-            <p class="text-body-large text-ink-muted m-0 max-w-[65ch]">{t['privacy.personal']}</p>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['privacy.personal']}</p>
           </section>
 
           <section>
-            <h2 class="font-sans text-xl md:text-2xl font-bold leading-[1.25] tracking-[-0.005em] m-0 mb-5">
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['privacy.rights.heading']}
             </h2>
-            <p class="text-body-large text-ink-muted m-0 max-w-[65ch]">{t['privacy.rights']}</p>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['privacy.rights']}</p>
           </section>
 
           <section>
-            <h2 class="font-sans text-xl md:text-2xl font-bold leading-[1.25] tracking-[-0.005em] m-0 mb-5">
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['privacy.withdrawal.heading']}
             </h2>
-            <p class="text-body-large text-ink-muted m-0 max-w-[65ch]">
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">
               {t['privacy.withdrawal']}
               <a href={EXTERNAL.mailto} class="text-brand-primary no-underline">
                 {EXTERNAL.email}
@@ -112,12 +112,12 @@ const jsonLd = {
           </section>
 
           <section>
-            <h2 class="font-sans text-xl md:text-2xl font-bold leading-[1.25] tracking-[-0.005em] m-0 mb-5">
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['privacy.complaint.heading']}
             </h2>
-            <p class="text-body-large text-ink-muted m-0 max-w-[65ch]">{t['privacy.complaint']}</p>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['privacy.complaint']}</p>
             <div class="mt-5 bg-surface-base border border-ink-primary/10 rounded-md p-7">
-              <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-[0.9375rem] leading-[1.5]">
+              <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-base leading-normal">
                 <p class="m-0 text-ink-primary font-medium">{t['privacy.complaint.authority']}</p>
                 <div class="text-ink-muted">
                   <p class="m-0">{t['privacy.complaint.address.street']}</p>
@@ -149,38 +149,38 @@ const jsonLd = {
           </section>
 
           <section>
-            <h2 class="font-sans text-xl md:text-2xl font-bold leading-[1.25] tracking-[-0.005em] m-0 mb-5">
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['privacy.ssl.heading']}
             </h2>
-            <p class="text-body-large text-ink-muted m-0 max-w-[65ch]">{t['privacy.ssl']}</p>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['privacy.ssl']}</p>
           </section>
 
           <section>
-            <h2 class="font-sans text-xl md:text-2xl font-bold leading-[1.25] tracking-[-0.005em] m-0 mb-5">
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['privacy.cookies.heading']}
             </h2>
-            <p class="text-body-large text-ink-muted m-0 max-w-[65ch]">{t['privacy.cookies']}</p>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['privacy.cookies']}</p>
           </section>
 
           <section>
-            <h2 class="font-sans text-xl md:text-2xl font-bold leading-[1.25] tracking-[-0.005em] m-0 mb-5">
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['privacy.links.heading']}
             </h2>
-            <p class="text-body-large text-ink-muted m-0 max-w-[65ch]">{t['privacy.links']}</p>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['privacy.links']}</p>
           </section>
 
           <section>
-            <h2 class="font-sans text-xl md:text-2xl font-bold leading-[1.25] tracking-[-0.005em] m-0 mb-5">
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['privacy.hosting.heading']}
             </h2>
-            <p class="text-body-large text-ink-muted m-0 max-w-[65ch]">{t['privacy.hosting']}</p>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['privacy.hosting']}</p>
           </section>
 
           <section>
-            <h2 class="font-sans text-xl md:text-2xl font-bold leading-[1.25] tracking-[-0.005em] m-0 mb-5">
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['privacy.web3forms.heading']}
             </h2>
-            <p class="text-body-large text-ink-muted m-0 max-w-[65ch] [&>a]:text-brand-primary" set:html={t['privacy.web3forms.body']}></p>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose [&>a]:text-brand-primary" set:html={t['privacy.web3forms.body']}></p>
           </section>
 
         </div>

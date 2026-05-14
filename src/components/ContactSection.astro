@@ -11,22 +11,22 @@ const routes = getRoutes();
 
 <section
   id="contact"
-  class="py-20 sm:py-[104px] xl:py-[144px] bg-brand-primary text-brand-onPrimary"
+  class="py-20 sm:py-26 xl:py-36 bg-brand-primary text-brand-primary-foreground"
   aria-labelledby="contact-heading"
 >
-  <div class="mx-auto px-[var(--gutter)] xl:px-0 text-center max-w-[720px]">
+  <div class="mx-auto px-gutter xl:px-0 text-center max-w-180">
     <h2
       id="contact-heading"
-      class="font-sans text-3xl md:text-4xl font-extrabold leading-[1.1] tracking-[-0.015em] text-balance break-words hyphens-auto m-0 text-brand-onPrimary"
+      class="font-sans text-3xl md:text-4xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0 text-brand-primary-foreground"
     >
       {t['calltoaction.heading']}
     </h2>
-    <p class="text-body-x-large text-surface-base/85 max-w-[560px] font-medium mt-6 mx-auto">
+    <p class="text-body-x-large text-surface-base/85 max-w-140 font-medium mt-6 mx-auto">
       {t['calltoaction.subtitle']}
     </p>
     <a
       href={routes.contact}
-      class="inline-flex items-center gap-2 mt-8 px-7 py-3.5 font-sans text-[0.9375rem] font-bold bg-surface-base text-brand-primary border-[1.5px] border-surface-base rounded-md no-underline transition-colors duration-200 hover:bg-surface-base/85"
+      class="inline-flex items-center gap-2 mt-8 px-7 py-3.5 font-sans text-base font-bold bg-surface-base text-brand-primary border-2 border-surface-base rounded-md no-underline transition-colors duration-200 hover:bg-surface-base/85"
     >
       {t['hero.cta']}
     </a>

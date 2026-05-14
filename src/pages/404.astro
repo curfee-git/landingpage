@@ -13,22 +13,22 @@ const routes = getRoutes();
   canonicalPath={Astro.url.pathname}
   noindex={true}
 >
-  <article class="pt-14 sm:pt-20 xl:pt-24 pb-20 sm:pb-28 xl:pb-32">
-    <div class="max-w-[1200px] mx-auto px-[var(--gutter)] xl:px-0">
-      <div class="max-w-[720px] mx-auto text-center">
+  <article class="py-20 sm:py-26 xl:py-36">
+    <div class="max-w-300 mx-auto px-gutter xl:px-0">
+      <div class="max-w-180 mx-auto text-center">
         <p
-          class="font-sans text-6xl sm:text-7xl md:text-8xl font-extrabold leading-[0.95] tracking-[-0.03em] text-brand-primary m-0 mb-2 select-none"
+          class="font-sans text-6xl sm:text-7xl md:text-8xl font-extrabold leading-none tracking-tight text-brand-primary m-0 mb-2 select-none"
           aria-hidden="true"
         >404</p>
-        <h1 class="font-sans text-2xl md:text-3xl font-extrabold leading-[1.2] tracking-[-0.015em] text-ink-primary m-0 text-balance">
+        <h1 class="font-sans text-2xl md:text-3xl font-extrabold leading-tight tracking-tight text-ink-primary m-0 text-balance">
           {t['404.heading']}
         </h1>
-        <p class="font-sans text-base text-ink-muted leading-[1.6] mt-4 mx-auto max-w-[480px]">
+        <p class="font-sans text-base text-ink-muted leading-relaxed mt-4 mx-auto max-w-120">
           {t['404.description']}
         </p>
         <a
           href={routes.home}
-          class="inline-flex items-center justify-center mt-8 px-6 py-3.5 font-sans text-[0.9375rem] font-bold rounded-md no-underline border-[1.5px] transition-colors duration-200 bg-brand-primary text-brand-onPrimary border-brand-primary hover:bg-[#002952] hover:border-[#002952]"
+          class="inline-flex items-center justify-center mt-8 px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-colors duration-200 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover"
         >
           {t['404.cta']}
         </a>

@@ -270,7 +270,7 @@ const speakableLd = {
 
     <meta name="color-scheme" content="light" />
 
-    <!-- Security Headers -->
+
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), browsing-topics=(), interest-cohort=(), fullscreen=(self), autoplay=()" />
@@ -290,26 +290,26 @@ const speakableLd = {
     {ogType === 'article' && articleSection && <meta property="article:section" content={articleSection} />}
     {ogType === 'article' && articleTags && articleTags.map((tag) => <meta property="article:tag" content={tag} />)}
 
-    <!-- Geo Meta Tags: Local SEO (Salzburg, Austria) -->
+
     <meta name="geo.region" content="AT-5" />
     <meta name="geo.placename" content={t['schema.geo.placename']} />
     <meta name="geo.position" content="47.8066;13.0089" />
     <meta name="ICBM" content="47.8066, 13.0089" />
 
-    <!-- Preload Manrope (single font family, self-hosted variable woff2) -->
+
     <link rel="preload" href="/assets/fonts/manrope/manrope.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- DNS-prefetch for contact form endpoint -->
+
     <link rel="dns-prefetch" href="https://api.web3forms.com" />
 
-    <!-- LLM context files -->
+
     <link rel="help" type="text/plain" href={`${siteUrl}/llms.txt`} title={t['link.title.llm.context']} />
     <link rel="help" type="text/plain" href={`${siteUrl}/llms-full.txt`} title={t['link.title.llm.full']} />
 
-    <!-- Canonical URL -->
+
     {!noindex && <link rel="canonical" href={canonicalUrl} />}
 
-    <!-- Open Graph -->
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
@@ -323,14 +323,14 @@ const speakableLd = {
     {resolvedOgHeight && <meta property="og:image:height" content={String(resolvedOgHeight)} />}
     <meta property="og:image:alt" content={t['meta.og.image.alt']} />
 
-    <!-- Twitter Card -->
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={t['meta.og.image.alt']} />
 
-    <!-- Favicons -->
+
     <link rel="icon" href="/assets/favicons/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/assets/favicons/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/assets/favicons/favicon_32x32.png" type="image/png" sizes="32x32" />
@@ -343,22 +343,22 @@ const speakableLd = {
     <meta name="msapplication-TileColor" content="#003366" />
     <meta name="msapplication-TileImage" content="/assets/favicons/android_chrome_192x192.png" />
 
-    <!-- Identity verification -->
+
     <link rel="me" href={EXTERNAL.linkedin} />
 
-    <!-- Sitemap + RSS -->
+
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title={t['link.title.rss.feed']} href="/rss.xml" />
 
     {!noindex && (
       <>
-        <!-- Structured Data: Sitewide WebSite + Place + Person + Organization + WebPage -->
+
         <script is:inline type="application/ld+json" set:html={JSON.stringify(webSiteLd)} />
         <script is:inline type="application/ld+json" set:html={JSON.stringify(placeLd)} />
         <script is:inline type="application/ld+json" set:html={JSON.stringify(personLd)} />
         <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
         <script is:inline type="application/ld+json" set:html={JSON.stringify(speakableLd)} />
-        <!-- Structured Data: Page-specific -->
+
         {jsonLd && (
           Array.isArray(jsonLd)
             ? jsonLd.map((ld) => (
