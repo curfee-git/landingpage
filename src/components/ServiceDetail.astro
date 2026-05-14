@@ -121,7 +121,7 @@ const relatedServices = relatedByService[serviceKey];
         {approachItems.map((item, idx) => (
           <article class="approach-card flex flex-col gap-4 p-7 bg-surface-base border border-brand-primary rounded-md">
             <div class="font-sans text-3xl font-extrabold tracking-tight text-brand-primary leading-none">
-              {idx + 1}
+              {pad2(idx + 1)}
             </div>
             <h3 class="text-body-x-large font-bold tracking-normal m-0 text-ink-primary">
               {item.title}
@@ -149,18 +149,18 @@ const relatedServices = relatedByService[serviceKey];
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
         {fieldItems.map((item) => (
           <article class="flex flex-col p-8 bg-surface-base border border-ink-primary/10 rounded-md transition-colors duration-200 hover:border-brand-primary">
-            <span class="inline-block self-start justify-self-start font-sans text-xs font-extrabold tracking-widest uppercase text-brand-primary bg-surface-soft py-1.5 px-3 rounded-xs mb-5 md:mb-0">
+            <span class="inline-block self-start justify-self-start font-sans text-xs font-extrabold tracking-widest uppercase text-brand-primary bg-surface-soft py-1.5 px-3 rounded-xs mb-5">
               {item.category}
             </span>
             <h3 class="font-sans text-xl font-extrabold tracking-normal text-ink-primary m-0">
               {item.title}
             </h3>
             {item.subtitle && (
-              <p class="font-sans text-base font-bold text-brand-primary leading-snug mt-2 m-0">
+              <p class="font-sans text-base font-bold text-brand-primary leading-snug mt-3 m-0">
                 {item.subtitle}
               </p>
             )}
-            <p class="font-sans text-base leading-relaxed text-ink-muted mt-5 md:mt-0 m-0">
+            <p class="font-sans text-base leading-relaxed text-ink-muted mt-5 m-0">
               {item.body}
             </p>
           </article>
