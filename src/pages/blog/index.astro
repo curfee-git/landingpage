@@ -18,6 +18,12 @@ const jsonLd = {
   "inLanguage": "en",
   "url": "https://curfee.com/blog/",
   "publisher": { "@id": "https://curfee.com/#organization" },
+  "author": { "@id": "https://curfee.com/#founder" },
+  "isPartOf": { "@id": "https://curfee.com/#website" },
+  "about": [
+    { "@id": "https://curfee.com/#organization" },
+    { "@id": "https://curfee.com/#decision-enforcement-principle" }
+  ],
   "blogPost": posts.map((p) => ({
     "@type": "BlogPosting",
     "@id": `https://curfee.com${postPath(p)}#post`,
@@ -26,7 +32,9 @@ const jsonLd = {
     "datePublished": p.data.createdAt.toISOString(),
     "dateModified": (p.data.updatedAt ?? p.data.createdAt).toISOString(),
     "author": { "@id": "https://curfee.com/#founder" },
+    "publisher": { "@id": "https://curfee.com/#organization" },
     "url": `https://curfee.com${postPath(p)}`,
+    "inLanguage": "en",
     "keywords": [p.data.topic, ...p.data.tags].join(', '),
   })),
 };

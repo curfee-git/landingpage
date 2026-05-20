@@ -11,11 +11,18 @@ const routes = getRoutes();
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
+  "@id": "https://curfee.com/contact/#contact",
   "name": t['contact.heading'],
-  "description": t['contact.subtitle'],
+  "description": t['meta.contact.description'],
   "url": `https://curfee.com${Astro.url.pathname}`,
   "isPartOf": { "@id": "https://curfee.com/#website" },
-  "about": { "@id": "https://curfee.com/#organization" }
+  "about": [
+    { "@id": "https://curfee.com/#organization" },
+    { "@id": "https://curfee.com/#founder" }
+  ],
+  "mainEntity": { "@id": "https://curfee.com/#founder" },
+  "publisher": { "@id": "https://curfee.com/#organization" },
+  "inLanguage": "en"
 };
 ---
 

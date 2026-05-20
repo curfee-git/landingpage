@@ -33,15 +33,12 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
         <div class="services-dropdown-menu" role="menu" data-services-menu>
           <a href={routes.service.diagnosis} class="services-dropdown-item" role="menuitem" data-nav-link>
             <span class="services-dropdown-item-title">{t['services.diagnosis.title']}</span>
-            <span class="services-dropdown-item-desc">{t['services.diagnosis.subtitle']}</span>
           </a>
           <a href={routes.service.guidance} class="services-dropdown-item" role="menuitem" data-nav-link>
             <span class="services-dropdown-item-title">{t['services.guidance.title']}</span>
-            <span class="services-dropdown-item-desc">{t['services.guidance.subtitle']}</span>
           </a>
-          <a href={routes.service.advisory} class="services-dropdown-item" role="menuitem" data-nav-link>
-            <span class="services-dropdown-item-title">{t['services.advisory.title']}</span>
-            <span class="services-dropdown-item-desc">{t['services.advisory.subtitle']}</span>
+          <a href={routes.service.sparring} class="services-dropdown-item" role="menuitem" data-nav-link>
+            <span class="services-dropdown-item-title">{t['services.sparring.title']}</span>
           </a>
         </div>
       </div>
@@ -74,7 +71,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
         <div data-mobile-services-list class="overflow-hidden max-h-0 transition-all duration-200 ease-standard flex flex-col gap-1">
           <a href={routes.service.diagnosis} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.diagnosis.title']}</a>
           <a href={routes.service.guidance} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.guidance.title']}</a>
-          <a href={routes.service.advisory} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.advisory.title']}</a>
+          <a href={routes.service.sparring} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.sparring.title']}</a>
         </div>
         <a href={routes.about} class={menuItemClass} data-menu-close data-nav-link>{t['nav.about']}</a>
         <a href={routes.blog} class={menuItemClass} data-menu-close data-nav-link>{t['nav.blog']}</a>
@@ -157,12 +154,6 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
   }
   .services-dropdown-item:hover .services-dropdown-item-title {
     color: rgb(var(--brand-primary));
-  }
-  .services-dropdown-item-desc {
-    display: block;
-    font-size: 0.8125rem;
-    color: rgb(var(--ink-primary) / 0.65);
-    margin-top: 2px;
   }
   [data-header] {
     --menu-height: 0px;

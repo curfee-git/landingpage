@@ -1,0 +1,89 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ServiceDetail from '@/components/ServiceDetail.astro';
+import { getTranslations } from '@/i18n/translations';
+
+const t = getTranslations();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://curfee.com/services/sparring/#service',
+  name: t['services.sparring.title'],
+  alternateName: ['Sparring', 'Curfee Sparring', 'Architecture Sparring', 'Architecture Decision Sparring'],
+  description: t['meta.services.sparring.description'],
+  slogan: t['services.sparring.subtitle'],
+  serviceType: t['schema.offer.sparring.service.type'],
+  category: t['schema.offer.sparring.category'],
+  provider: { '@id': 'https://curfee.com/#organization' },
+  brand: { '@id': 'https://curfee.com/#organization' },
+  isPartOf: { '@id': 'https://curfee.com/#services' },
+  isRelatedTo: { '@id': 'https://curfee.com/#decision-enforcement-principle' },
+  mainEntityOfPage: 'https://curfee.com/services/sparring/',
+  areaServed: [
+    { '@type': 'Country', name: t['schema.country.austria'] },
+    { '@type': 'Country', name: t['schema.country.germany'] },
+    { '@type': 'Country', name: t['schema.country.switzerland'] },
+  ],
+  audience: {
+    '@type': 'BusinessAudience',
+    name: t['schema.audience.name'],
+    audienceType: t['schema.audience.type'],
+  },
+  availableLanguage: ['en', 'de'],
+};
+
+const timeline = [
+  {
+    phase: t['services.sparring.timeline.1.phase'],
+    title: t['services.sparring.timeline.1.title'],
+    outcome: t['services.sparring.timeline.1.outcome'],
+    items: [t['services.sparring.timeline.1.item.1'], t['services.sparring.timeline.1.item.2'], t['services.sparring.timeline.1.item.3']],
+  },
+  {
+    phase: t['services.sparring.timeline.2.phase'],
+    title: t['services.sparring.timeline.2.title'],
+    outcome: t['services.sparring.timeline.2.outcome'],
+    items: [t['services.sparring.timeline.2.item.1'], t['services.sparring.timeline.2.item.2'], t['services.sparring.timeline.2.item.3']],
+  },
+  {
+    phase: t['services.sparring.timeline.3.phase'],
+    title: t['services.sparring.timeline.3.title'],
+    outcome: t['services.sparring.timeline.3.outcome'],
+    items: [t['services.sparring.timeline.3.item.1'], t['services.sparring.timeline.3.item.2'], t['services.sparring.timeline.3.item.3']],
+  },
+];
+
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: `How a ${t['services.sparring.title']} engagement works`,
+  description: t['meta.services.sparring.description'],
+  step: timeline.map((s, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: s.title,
+    text: s.outcome,
+  })),
+};
+---
+
+<Layout
+  title={t['meta.services.sparring.title']}
+  description={t['meta.services.sparring.description']}
+  canonicalPath={Astro.url.pathname}
+  jsonLd={[jsonLd, howToJsonLd]}
+>
+  <ServiceDetail
+    serviceKey="sparring"
+    title={t['services.sparring.title']}
+    subtitle={t['services.sparring.subtitle']}
+    problem={t['services.sparring.problem']}
+    timeline={timeline}
+    delivers={[t['services.sparring.delivers.1'], t['services.sparring.delivers.2'], t['services.sparring.delivers.3'], t['services.sparring.delivers.4']]}
+    excludes={[t['services.sparring.excludes.1'], t['services.sparring.excludes.2'], t['services.sparring.excludes.3']]}
+    cta={t['services.sparring.cta']}
+    translations={t}
+    accent="tertiary"
+  />
+</Layout>

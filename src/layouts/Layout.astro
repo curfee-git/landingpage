@@ -65,10 +65,16 @@ const personLd = {
   "name": "Philipp Höllinger",
   "givenName": "Philipp",
   "familyName": "Höllinger",
+  "alternateName": [
+    t['schema.person.alternate.name.1'],
+    t['schema.person.alternate.name.2'],
+    t['schema.person.alternate.name.3'],
+    t['schema.person.alternate.name.4']
+  ],
   "jobTitle": t['meta.about.job.title'],
   "description": t['schema.person.description'],
   "url": siteUrl,
-  "mainEntityOfPage": `${siteUrl}/#about`,
+  "mainEntityOfPage": `${siteUrl}/about/#about`,
   "image": {
     "@type": "ImageObject",
     "url": `${siteUrl}/assets/profile.png`,
@@ -135,7 +141,13 @@ const organizationLd = {
   "@id": `${siteUrl}/#organization`,
   "name": "Curfee",
   "legalName": "Curfee e.U.",
-  "alternateName": [t['schema.org.alternate.name.1'], t['schema.org.alternate.name.2']],
+  "alternateName": [
+    t['schema.org.alternate.name.1'],
+    t['schema.org.alternate.name.2'],
+    t['schema.org.alternate.name.3'],
+    t['schema.org.alternate.name.4'],
+    t['schema.org.alternate.name.5']
+  ],
   "url": siteUrl,
   "logo": {
     "@type": "ImageObject",
@@ -229,11 +241,22 @@ const webSiteLd = {
   "@type": "WebSite",
   "@id": `${siteUrl}/#website`,
   "name": "Curfee",
-  "alternateName": "Curfee: Structural Architecture Consulting",
+  "alternateName": [
+    "Curfee: Structural Architecture for systems, software, and workflows",
+    "Curfee Structural Architecture",
+    "curfee.com"
+  ],
+  "description": t['schema.website.description'],
   "url": siteUrl,
   "inLanguage": "en",
   "publisher": { "@id": `${siteUrl}/#organization` },
-  "about": { "@id": `${siteUrl}/#organization` },
+  "creator": { "@id": `${siteUrl}/#founder` },
+  "author": { "@id": `${siteUrl}/#founder` },
+  "about": [
+    { "@id": `${siteUrl}/#organization` },
+    { "@id": `${siteUrl}/#founder` },
+    { "@id": `${siteUrl}/#decision-enforcement-principle` }
+  ],
   "mainEntity": { "@id": `${siteUrl}/#organization` }
 };
 

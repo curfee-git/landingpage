@@ -5,7 +5,7 @@ import WhyCurfeeSection from '@/components/WhyCurfeeSection.astro';
 import ObservationsSection from '@/components/ObservationsSection.astro';
 import ServicesSection from '@/components/ServicesSection.astro';
 import DifferentiatorSection from '@/components/DifferentiatorSection.astro';
-import ConwaySection from '@/components/ConwaySection.astro';
+import QuoteSection from '@/components/QuoteSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
 import { getTranslations } from '@/i18n/translations';
 
@@ -21,6 +21,7 @@ const serviceLd = {
   "alternateName": t['schema.service.alternate.name'],
   "description": t['schema.service.description'],
   "provider": { "@id": "https://curfee.com/#organization" },
+  "brand": { "@id": "https://curfee.com/#organization" },
   "serviceType": t['schema.service.type'],
   "category": t['schema.service.category'],
   "areaServed": [
@@ -34,6 +35,8 @@ const serviceLd = {
     "audienceType": t['schema.audience.type']
   },
   "serviceOutput": t['schema.service.output'],
+  "termsOfService": "https://curfee.com/imprint/",
+  "isRelatedTo": { "@id": "https://curfee.com/#decision-enforcement-principle" },
   "availableLanguage": ["en", "de"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -47,17 +50,7 @@ const serviceLd = {
         "availability": "https://schema.org/InStock",
         "priceCurrency": "EUR",
         "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 4, "unitCode": "WEE" },
-        "itemOffered": {
-          "@type": "Service",
-          "@id": "https://curfee.com/#diagnosis",
-          "name": t['services.diagnosis.title'],
-          "alternateName": ["Diagnosis"],
-          "description": t['services.diagnosis.problem'],
-          "slogan": t['services.diagnosis.subtitle'],
-          "provider": { "@id": "https://curfee.com/#organization" },
-          "serviceType": t['schema.offer.diagnosis.service.type'],
-          "inLanguage": ["en"]
-        }
+        "itemOffered": { "@id": "https://curfee.com/services/diagnosis/#service" }
       },
       {
         "@type": "Offer",
@@ -66,35 +59,15 @@ const serviceLd = {
         "availability": "https://schema.org/InStock",
         "priceCurrency": "EUR",
         "eligibleDuration": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 6, "unitCode": "MON" },
-        "itemOffered": {
-          "@type": "Service",
-          "@id": "https://curfee.com/#guidance",
-          "name": t['services.guidance.title'],
-          "alternateName": ["Guidance"],
-          "description": t['services.guidance.problem'],
-          "slogan": t['services.guidance.subtitle'],
-          "provider": { "@id": "https://curfee.com/#organization" },
-          "serviceType": t['schema.offer.guidance.service.type'],
-          "inLanguage": ["en"]
-        }
+        "itemOffered": { "@id": "https://curfee.com/services/guidance/#service" }
       },
       {
         "@type": "Offer",
-        "@id": "https://curfee.com/#offer-advisory",
-        "category": t['schema.offer.advisory.category'],
+        "@id": "https://curfee.com/#offer-sparring",
+        "category": t['schema.offer.sparring.category'],
         "availability": "https://schema.org/InStock",
         "priceCurrency": "EUR",
-        "itemOffered": {
-          "@type": "Service",
-          "@id": "https://curfee.com/#advisory",
-          "name": t['services.advisory.title'],
-          "alternateName": ["Architecture Advisory", "Advisory"],
-          "description": t['services.advisory.problem'],
-          "slogan": t['services.advisory.subtitle'],
-          "provider": { "@id": "https://curfee.com/#organization" },
-          "serviceType": t['schema.offer.advisory.service.type'],
-          "inLanguage": ["en"]
-        }
+        "itemOffered": { "@id": "https://curfee.com/services/sparring/#service" }
       },
     ]
   }
@@ -105,15 +78,26 @@ const decisionEnforcementLd = {
   "@type": "DefinedTerm",
   "@id": "https://curfee.com/#decision-enforcement-principle",
   "name": t['schema.decision.enforcement.name'],
-  "alternateName": ["Decision Enforcement", "Decision Enforcement Principle"],
+  "alternateName": [
+    "Decision Enforcement",
+    "Decision Enforcement Principle",
+    "Curfee Decision Enforcement Principle",
+    "DEP"
+  ],
   "description": t['schema.decision.enforcement.description'],
+  "termCode": "decision-enforcement-principle",
+  "url": "https://curfee.com/#decision-enforcement-principle",
   "inDefinedTermSet": {
     "@type": "DefinedTermSet",
+    "@id": "https://curfee.com/#glossary",
     "name": t['schema.glossary.name'],
-    "url": "https://curfee.com/llms.txt"
+    "url": "https://curfee.com/llms.txt",
+    "inLanguage": "en",
+    "publisher": { "@id": "https://curfee.com/#organization" }
   },
   "subjectOf": { "@id": "https://curfee.com/#organization" },
-  "author": { "@id": "https://curfee.com/#founder" }
+  "author": { "@id": "https://curfee.com/#founder" },
+  "creator": { "@id": "https://curfee.com/#founder" }
 };
 
 const jsonLd = [serviceLd, decisionEnforcementLd];
@@ -132,6 +116,6 @@ const jsonLd = [serviceLd, decisionEnforcementLd];
   <ObservationsSection translations={t} />
   <ServicesSection translations={t} />
   <DifferentiatorSection />
-  <ConwaySection translations={t} />
+  <QuoteSection translations={t} />
   <ContactSection translations={t} />
 </Layout>

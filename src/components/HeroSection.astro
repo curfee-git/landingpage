@@ -12,62 +12,64 @@ const routes = getRoutes();
 ---
 
 <section
-  class="py-20 sm:py-26 xl:py-36 lg:min-h-[calc(100svh-var(--header-height))] lg:flex lg:items-center"
+  class="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 lg:min-h-[calc(100svh-var(--header-height))] lg:flex lg:items-center"
   aria-labelledby="hero-heading"
 >
   <div class="w-full max-w-300 mx-auto px-gutter xl:px-0">
-    <div class="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
+    <div class="flex flex-col gap-8 sm:gap-10 md:gap-12 lg:flex-row lg:items-stretch lg:gap-16 xl:gap-20">
 
-      <div class="max-w-230 lg:flex-1 lg:min-w-0">
-        <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-5">
+      <div class="max-w-230 lg:flex-[3] lg:min-w-0">
+        <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-4 lg:mb-6 xl:mb-7">
           {t['hero.eyebrow']}
         </p>
 
         <h1
           id="hero-heading"
           data-speakable
-          class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-manual m-0"
+          class="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold leading-[0.95] tracking-tight text-balance break-words hyphens-manual m-0"
         >
-          {t['hero.heading']}{' '}
-          <span class="block">{t['hero.heading.subject']}</span>
-          <span class="block text-brand-primary">{t['hero.heading.accent']}</span>
+          <Fragment set:html={t['hero.heading']} />
+          {t['hero.heading.subject'] && (
+            <span class="block">{t['hero.heading.subject']}</span>
+          )}
+          <span class="block text-brand-primary" set:html={t['hero.heading.accent']} />
         </h1>
 
         <p
           data-speakable
-          class="text-body-x-large text-ink-muted max-w-160 font-medium mt-7"
+          class="text-base lg:text-lg xl:text-xl text-ink-muted max-w-160 font-medium leading-relaxed mt-6 lg:mt-8 xl:mt-10"
         >
           {t['hero.subtitle']}
         </p>
 
-        <div class="mt-10 flex flex-wrap items-center gap-4">
+        <div class="mt-8 lg:mt-10 xl:mt-12 flex flex-wrap items-center gap-4">
           <a
             href={routes.contact}
-            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline whitespace-nowrap border-2 cursor-pointer transition-colors duration-200 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 font-sans text-base font-bold rounded-md no-underline whitespace-nowrap border-2 cursor-pointer transition-colors duration-200 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover"
           >
             {t['hero.cta']}
           </a>
           <a
             href="#services"
-            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline whitespace-nowrap border-2 cursor-pointer transition-colors duration-200 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary/33"
+            class="inline-flex items-center justify-center gap-2 px-8 py-4 font-sans text-base font-bold rounded-md no-underline whitespace-nowrap border-2 cursor-pointer transition-colors duration-200 bg-transparent text-ink-primary border-ink-primary hover:bg-ink-primary/6"
           >
             {t['hero.cta.secondary']}
           </a>
         </div>
       </div>
 
-      <div class="hidden lg:flex lg:flex-1 lg:min-w-0 lg:justify-center">
+      <div class="hidden lg:flex lg:flex-[2] lg:min-w-0 lg:justify-center">
         <Image
           src={profileImage}
           alt={t['about.portrait.alt']}
-          class="block lg:w-full lg:max-w-64 xl:max-w-80 2xl:max-w-96 aspect-[2/3] rounded-lg border border-ink-primary/8"
+          class="block w-full h-full max-w-xs xl:max-w-sm 2xl:max-w-md rounded-lg border border-ink-primary/8 object-cover"
           loading="eager"
           decoding="async"
           fetchpriority="high"
-          width={360}
-          height={540}
-          widths={[280, 360, 480, 800]}
-          sizes="(max-width: 1023px) 0px, (max-width: 1279px) 256px, (max-width: 1535px) 320px, 384px"
+          width={512}
+          height={683}
+          widths={[400, 512, 640, 800]}
+          sizes="(max-width: 1023px) 0px, (max-width: 1279px) 448px, (max-width: 1535px) 512px, 576px"
           transition:name="profile-portrait"
         />
       </div>

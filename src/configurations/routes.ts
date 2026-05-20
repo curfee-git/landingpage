@@ -8,7 +8,7 @@ export const ROUTES = {
   service: {
     diagnosis: '/services/diagnosis/',
     guidance: '/services/guidance/',
-    advisory: '/services/advisory/',
+    sparring: '/services/sparring/',
   },
 } as const satisfies Record<string, string | Record<string, string>>;
 
@@ -17,8 +17,8 @@ export function getRoutes() {
 }
 
 export const EXTERNAL = {
-  email: 'philipp.hoellinger@curfee.com',
-  mailto: 'mailto:philipp.hoellinger@curfee.com',
+  email: 'office@curfee.com',
+  mailto: 'mailto:office@curfee.com',
   phone: '+43 677 630 242 28',
   tel: 'tel:+4367763024228',
   linkedin: 'https://www.linkedin.com/in/phoellinger',

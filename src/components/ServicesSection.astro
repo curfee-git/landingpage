@@ -6,7 +6,7 @@ import type { Translations } from '@/i18n/translations';
 import sectionBackground from '@/assets/images/section_image_background.png';
 import diagnosisOverlay from '@/assets/images/diagnosis_overlay.png';
 import guidanceOverlay from '@/assets/images/guidance_overlay.png';
-import advisoryOverlay from '@/assets/images/advisory_overlay.png';
+import sparringOverlay from '@/assets/images/sparring_overlay.png';
 
 interface Props {
   translations: Translations;
@@ -36,14 +36,14 @@ const services = [
     imageAlt: t['services.guidance.image.alt'],
   },
   {
-    key: 'advisory' as const,
-    title: t['services.advisory.title'],
-    subtitle: t['services.advisory.subtitle'],
-    problem: t['services.advisory.problem'],
+    key: 'sparring' as const,
+    title: t['services.sparring.title'],
+    subtitle: t['services.sparring.subtitle'],
+    problem: t['services.sparring.problem'],
     cta: t['services.card.cta'],
     image: sectionBackground,
-    overlay: advisoryOverlay,
-    imageAlt: t['services.advisory.image.alt'],
+    overlay: sparringOverlay,
+    imageAlt: t['services.sparring.image.alt'],
   },
 ];
 ---

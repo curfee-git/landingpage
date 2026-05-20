@@ -87,7 +87,7 @@ The counterintuitive part: AI-generated code becomes faster once the structure s
 
 Teams that arrive at this state report a shift in how contributions feel. Fear of AI-generated code fades, and reviewer fatigue subsides. The result is a codebase that remains consistent as volume grows, as new commits arrive without institutional memory.
 
-A structure that relies on engineers' memories fails the moment attention shifts elsewhere. A structure encoded in the pipeline gives automatic feedback and survives reorganizations. It remains discoverable when it needs to change.
+A structure that relies on engineers' memories fails the moment attention shifts elsewhere. A structure encoded in the pipeline gives automatic feedback and survives team changes. It remains discoverable when it needs to change.
 
 ## Where This Leaves the Review Gate
 

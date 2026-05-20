@@ -12,9 +12,21 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
   '@id': 'https://curfee.com/about/#about',
+  name: t['meta.about.title'],
+  description: t['meta.about.description'],
   url: 'https://curfee.com/about/',
   mainEntity: { '@id': 'https://curfee.com/#founder' },
+  about: [
+    { '@id': 'https://curfee.com/#founder' },
+    { '@id': 'https://curfee.com/#organization' }
+  ],
+  publisher: { '@id': 'https://curfee.com/#organization' },
+  author: { '@id': 'https://curfee.com/#founder' },
   isPartOf: { '@id': 'https://curfee.com/#website' },
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: 'https://curfee.com/assets/profile.png'
+  },
   inLanguage: 'en',
 };
 
@@ -29,8 +41,8 @@ const breadcrumbLd = {
 ---
 
 <Layout
-  title={`${t['about.heading']} | Curfee`}
-  description={t['about.who.hero.1']}
+  title={t['meta.about.title']}
+  description={t['meta.about.description']}
   canonicalPath={Astro.url.pathname}
   jsonLd={[jsonLd, breadcrumbLd]}
 >
