@@ -1,40 +1,32 @@
 ---
+import { getTranslations } from '@/i18n/translations';
+
+const t = getTranslations();
+
 const engagements = [
   {
-    sector: 'Justice',
-    title: 'Booking platform, rebuilt around integrity',
-    situation:
-      'A booking system enabled the very errors it was meant to prevent. Courtrooms were double-booked, past-dated bookings went through, and conflicts went unchecked.',
-    issue:
-      'Transactional integrity, validation rules, and database constraints were missing from the booking system.',
-    built:
-      'The system was rebuilt to enforce data integrity at every layer, refusing any booking that conflicted with another or fell outside the rules of a valid booking.',
-    outcome:
-      'Duplicate bookings disappeared. Hearings stayed on schedule and rescheduling costs vanished.',
+    sector: t['engagements.1.sector'],
+    title: t['engagements.1.title'],
+    situation: t['engagements.1.situation'],
+    issue: t['engagements.1.issue'],
+    built: t['engagements.1.built'],
+    outcome: t['engagements.1.outcome'],
   },
   {
-    sector: 'Events',
-    title: 'Regional events, redesigned around self-service',
-    situation:
-      'For several years, five students, one per region, spent each summer reading emails sent by event organisers and entering every event into the system by hand.',
-    issue:
-      'Each region collected event data its own way, in unstructured emails and inconsistent formats.',
-    built:
-      'A self-service form let event organisers submit their own listings. An automated import loaded the submissions into the system daily, and an approval mechanism replaced the manual review the students used to do.',
-    outcome:
-      'What used to be a summer job became a single click.',
+    sector: t['engagements.2.sector'],
+    title: t['engagements.2.title'],
+    situation: t['engagements.2.situation'],
+    issue: t['engagements.2.issue'],
+    built: t['engagements.2.built'],
+    outcome: t['engagements.2.outcome'],
   },
   {
-    sector: 'Public Administration',
-    title: 'Publishing system, built around SDG compliance',
-    situation:
-      'The EU Single Digital Gateway required administrative information to be available in a structured, multilingual, and machine-readable format, crawlable for EU infrastructure.',
-    issue:
-      'No publishing system existed that could produce content in a structured, multilingual, machine-readable format.',
-    built:
-      'A publishing system was built from the ground up, designed around predefined form fields that editors filled out to create or update entries. Metadata tagging, publication, and a structured translation workflow for German and English content were handled automatically in the background.',
-    outcome:
-      'Editors kept filling fields. Anyone in the EU needing Austrian administrative information could find it in two languages.',
+    sector: t['engagements.3.sector'],
+    title: t['engagements.3.title'],
+    situation: t['engagements.3.situation'],
+    issue: t['engagements.3.issue'],
+    built: t['engagements.3.built'],
+    outcome: t['engagements.3.outcome'],
   },
 ];
 ---
@@ -47,20 +39,20 @@ const engagements = [
   <div class="max-w-300 mx-auto px-gutter xl:px-0">
     <header class="max-w-160 mb-14">
       <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-4">
-        Where the approach was built
+        {t['engagements.eyebrow']}
       </p>
       <h2
         id="selected-engagements-heading"
         data-speakable
         class="font-sans text-3xl md:text-4xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0"
       >
-        Selected engagements
+        {t['engagements.heading']}
       </h2>
     </header>
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-5">
       {engagements.map((engagement) => (
-        <article class="flex flex-col bg-surface-base border border-ink-primary/10 rounded-md p-6 sm:p-8 lg:grid lg:grid-rows-subgrid lg:row-span-6">
+        <article class="flex flex-col bg-surface-base border border-brand-primary rounded-md p-6 sm:p-8 lg:grid lg:grid-rows-subgrid lg:row-span-6">
           <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-3 lg:mb-0">
             {engagement.sector}
           </p>
@@ -72,7 +64,7 @@ const engagements = [
           </p>
           <div class="mb-5 lg:mb-0">
             <p class="font-sans text-xs font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-2">
-              Structural issue
+              {t['engagements.label.issue']}
             </p>
             <p class="font-sans text-base leading-relaxed text-ink-muted m-0">
               {engagement.issue}
@@ -80,7 +72,7 @@ const engagements = [
           </div>
           <div class="mb-5 lg:mb-0">
             <p class="font-sans text-xs font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-2">
-              Built
+              {t['engagements.label.built']}
             </p>
             <p class="font-sans text-base leading-relaxed text-ink-muted m-0">
               {engagement.built}
