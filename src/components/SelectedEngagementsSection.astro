@@ -1,0 +1,70 @@
+---
+const engagements = [
+  {
+    sector: 'Justice',
+    title: 'Booking platform, rebuilt around integrity',
+    description:
+      'A booking system enabled the very errors it was meant to prevent. Courtrooms were double-booked, past-dated bookings went through, and conflicts went unchecked. The structural issue was the absence of transactional integrity, validation rules, and database constraints. The system was rebuilt to embed all three.',
+    outcome:
+      'Duplicate bookings disappeared. Hearings stayed on schedule and rescheduling costs vanished.',
+  },
+  {
+    sector: 'Events',
+    title: 'Regional events, redesigned around self-service',
+    description:
+      'For several years, five students, one per region, spent each summer reading emails and manually entering events. The structural issue was the absence of a standardised input format and shared foundation. A form was designed for event organisers to fill out themselves, an automated import loaded the data daily, and an approval mechanism handled review and editing.',
+    outcome:
+      'What used to be a summer job became a single click.',
+  },
+  {
+    sector: 'Public Administration',
+    title: 'Publishing system, built around SDG compliance',
+    description:
+      'The EU Single Digital Gateway required administrative information to be available in a structured, multilingual, and machine-readable format, crawlable for EU infrastructure. The structural issue was the absence of an editorial foundation for producing this kind of content. A publishing system was designed around predefined form fields, which editors filled out to create or update entries. Metadata tagging, publication, and a structured translation workflow for German and English content were handled automatically in the background.',
+    outcome:
+      'The first application of its kind in the public sector at the time.',
+  },
+];
+---
+
+<section
+  id="selected-engagements"
+  class="py-20 sm:py-26 xl:py-36 bg-surface-base"
+  aria-labelledby="selected-engagements-heading"
+>
+  <div class="max-w-300 mx-auto px-gutter xl:px-0">
+    <header class="max-w-160 mb-14">
+      <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-4">
+        Where the approach was built
+      </p>
+      <h2
+        id="selected-engagements-heading"
+        data-speakable
+        class="font-sans text-3xl md:text-4xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0"
+      >
+        Selected engagements
+      </h2>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {engagements.map((engagement) => (
+        <article class="flex flex-col bg-surface-base border border-ink-primary/10 rounded-md p-6 sm:p-8">
+          <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-3">
+            {engagement.sector}
+          </p>
+          <h3 class="font-sans text-xl md:text-2xl font-extrabold leading-tight tracking-normal break-words hyphens-auto m-0 mb-4 text-ink-primary">
+            {engagement.title}
+          </h3>
+          <p class="font-sans text-base leading-relaxed text-ink-muted m-0 mb-4 flex-1">
+            {engagement.description}
+          </p>
+          {engagement.outcome && (
+            <p class="font-sans text-sm text-ink-muted m-0 mt-auto">
+              {engagement.outcome}
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

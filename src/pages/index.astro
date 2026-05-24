@@ -5,6 +5,7 @@ import WhyCurfeeSection from '@/components/WhyCurfeeSection.astro';
 import ObservationsSection from '@/components/ObservationsSection.astro';
 import ServicesSection from '@/components/ServicesSection.astro';
 import DifferentiatorSection from '@/components/DifferentiatorSection.astro';
+import SelectedEngagementsSection from '@/components/SelectedEngagementsSection.astro';
 import QuoteSection from '@/components/QuoteSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
 import { getTranslations } from '@/i18n/translations';
@@ -116,6 +117,7 @@ const jsonLd = [serviceLd, decisionEnforcementLd];
   <ObservationsSection translations={t} />
   <ServicesSection translations={t} />
   <DifferentiatorSection />
+  <SelectedEngagementsSection />
   <QuoteSection translations={t} />
   <ContactSection translations={t} />
 </Layout>

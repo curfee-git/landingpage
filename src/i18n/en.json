@@ -413,7 +413,7 @@
   "contact.form.email": "Email",
   "contact.form.message": "Message",
   "contact.form.submit": "Send message",
-  "contact.form.success": "Message sent. I will get back to you within one working day.",
+  "contact.form.success": "Message sent. I will get back to you within two to three working days.",
   "contact.form.error": "Something went wrong. Please write to me directly at",
   "contact.form.from_name": "Curfee contact form",
   "contact.form.subject": "New message via the contact form on curfee.com",
