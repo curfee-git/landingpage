@@ -8,9 +8,9 @@ const routes = getRoutes(Astro.currentLocale);
 const menuId = 'mobile-menu';
 
 const navItems = [
-  { id: 'why-curfee', label: t['nav.why-curfee'] },
-  { id: 'selected-engagements', label: t['nav.engagements'] },
+  { id: 'observations', label: t['nav.observations'] },
   { id: 'about', label: t['nav.about'] },
+  { id: 'selected-engagements', label: t['nav.engagements'] },
 ].map((item) => ({ ...item, href: `${routes.home}#${item.id}` }));
 
 const navClass = "px-4 py-3 text-label-large font-semibold whitespace-nowrap text-ink-primary hover:text-brand-primary transition-colors duration-200 ease-standard";
