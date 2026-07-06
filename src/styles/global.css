@@ -1,9 +1,25 @@
 
 
 @font-face {
-  font-family: "Manrope";
-  src: url("/assets/fonts/manrope/manrope.woff2") format("woff2-variations");
-  font-weight: 200 800;
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/space-grotesk/space-grotesk.woff2") format("woff2-variations");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  src: url("/assets/fonts/space-mono/space-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  src: url("/assets/fonts/space-mono/space-mono-700.woff2") format("woff2");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -11,7 +27,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-sans: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
 
   --color-brand-primary: rgb(var(--brand-primary));
   --color-brand-primary-hover: #002952;
@@ -29,11 +46,10 @@
   --color-stroke-subtle: rgb(var(--ink-primary) / 0.15);
 
   --spacing-gutter: var(--gutter);
-  --spacing-header: var(--header-height);
 
   --radius-xs: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-md: 9px;
+  --radius-lg: 14px;
 
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
 }
@@ -50,13 +66,13 @@
 
   :root {
     --header-height: 76px;
-    --gutter: 20px;
+    --gutter: 2.5rem;
     --brand-primary: 0 51 102;
     --on-brand-primary: 255 255 255;
     --brand-error: 179 38 30;
 
-    --surface-base: 255 255 255;
-    --surface-soft: 242 245 250;
+    --surface-base: 246 245 241;
+    --surface-soft: 239 238 231;
 
     --ink-primary: 10 10 10;
 
@@ -65,8 +81,8 @@
 
   body {
     @apply bg-surface-base text-ink-primary font-sans antialiased;
-    font-family: "Manrope", system-ui, -apple-system, sans-serif;
-    font-weight: 400;
+    font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+    font-weight: 500;
     text-rendering: geometricPrecision;
     font-synthesis: none;
     overflow-anchor: none;
@@ -74,7 +90,7 @@
   }
 
   @media (width >= theme(--breakpoint-sm)) {
-    :root { --gutter: 32px; --header-height: 88px; }
+    :root { --header-height: 88px; }
   }
 
   @media (width >= theme(--breakpoint-xl)) {
@@ -88,7 +104,9 @@
 
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Manrope", system-ui, -apple-system, sans-serif;
+    font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
     color: rgb(var(--ink-primary));
     text-wrap: balance;
   }
@@ -99,6 +117,17 @@
   }
 }
 
+@utility section-pad {
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+}
+@utility text-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
 @utility text-title-large {
   font-family: var(--font-sans);
   font-size: 1.25rem;
@@ -215,100 +244,5 @@
   [class*="overlay"] {
     display: none;
   }
-
-  .obs-scroll {
-    animation: none !important;
-  }
-}
-
-.prose-blog h2,
-.prose-blog h3 {
-  font-weight: 800;
-  text-wrap: balance;
-}
-
-.prose-blog h2::before {
-  content: "";
-  display: block;
-  width: 2.5rem;
-  height: 2px;
-  background: rgb(var(--brand-primary));
-  margin-bottom: 1rem;
-}
-
-.prose-blog > p:first-of-type {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: rgb(var(--ink-primary) / 0.85);
-  margin-bottom: 1.75rem;
-  font-weight: 500;
-}
-
-.prose-blog [data-footnotes],
-.prose-blog .footnotes {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgb(var(--ink-primary) / 0.15);
-  font-size: 0.875rem;
-  color: rgb(var(--ink-primary) / 0.65);
-}
-.prose-blog [data-footnotes] h2,
-.prose-blog .footnotes h2 {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgb(var(--ink-primary) / 0.65);
-  margin: 0 0 1rem;
-}
-.prose-blog [data-footnotes] h2::before,
-.prose-blog .footnotes h2::before {
-  display: none;
-}
-.prose-blog [data-footnotes] ol,
-.prose-blog .footnotes ol {
-  padding-left: 1.25rem;
-  margin: 0;
-}
-.prose-blog [data-footnotes] ol li,
-.prose-blog .footnotes ol li {
-  margin-bottom: 0.5rem;
-  line-height: 1.6;
-}
-.prose-blog [data-footnotes] ol li p,
-.prose-blog .footnotes ol li p {
-  margin-bottom: 0.25rem;
-  display: inline;
-}
-.prose-blog [data-footnote-ref],
-.prose-blog sup a {
-  color: rgb(var(--brand-primary));
-  text-decoration: none;
-  font-weight: 700;
-}
-.prose-blog [data-footnote-backref] {
-  color: rgb(var(--brand-primary));
-  text-decoration: none;
-  margin-left: 0.25rem;
-}
-
-.prose-blog :is(h2, h3) {
-  position: relative;
-}
-.prose-blog .heading-anchor {
-  display: inline-block;
-  margin-left: 0.5rem;
-  color: rgb(var(--brand-primary));
-  opacity: 0;
-  text-decoration: none;
-  font-weight: 600;
-  transition: opacity 200ms ease;
-}
-.prose-blog :is(h2, h3):hover .heading-anchor,
-.prose-blog .heading-anchor:focus-visible {
-  opacity: 0.7;
-}
-.prose-blog .heading-anchor:hover {
-  opacity: 1;
 }
 

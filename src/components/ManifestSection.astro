@@ -1,0 +1,24 @@
+---
+import type { Translations } from '@/i18n/translations';
+
+interface Props {
+  translations: Translations;
+}
+const { translations: t } = Astro.props;
+---
+
+<section
+  id="manifest"
+  class="py-32 bg-brand-primary text-brand-primary-foreground relative overflow-hidden"
+  aria-labelledby="manifest-heading"
+>
+  <div class="relative z-1 max-w-240 mx-auto px-gutter xl:px-0 text-center">
+    <h2
+      id="manifest-heading"
+      data-speakable
+      class="font-sans text-3xl sm:text-4xl md:text-5xl font-bold leading-snug tracking-tight text-balance m-0 text-brand-primary-foreground"
+    >
+      {t['manifest.text']}
+    </h2>
+  </div>
+</section>

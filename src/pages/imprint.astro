@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import { EXTERNAL } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 
-const t = getTranslations();
+const t = getTranslations(Astro.currentLocale);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -22,15 +22,15 @@ const jsonLd = {
   jsonLd={jsonLd}
   dateModified="2026-03-30"
 >
-  <article class="py-20 sm:py-26 xl:py-36">
+  <article class="section-pad">
     <div class="max-w-300 mx-auto px-gutter xl:px-0">
       <div class="max-w-230 mx-auto">
 
         <header class="mb-16">
-          <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0">
+          <p class="text-eyebrow text-brand-primary m-0">
             {t['legal.eyebrow']}
           </p>
-          <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0 mt-4">
+          <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-4">
             {t['imprint.heading']}
           </h1>
           <p class="text-body-x-large text-ink-muted mt-6 m-0 max-w-prose">
@@ -41,8 +41,8 @@ const jsonLd = {
         <div class="flex flex-col gap-14">
 
           <section class="grid grid-cols-1 gap-5 md:grid-cols-2">
-            <div class="bg-surface-base border border-ink-primary/10 rounded-md p-7">
-              <h2 class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-4">
+            <div class="bg-white border border-ink-primary/13 rounded-lg p-7">
+              <h2 class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary m-0 mb-4">
                 {t['imprint.owner']}
               </h2>
               <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-base leading-normal">
@@ -56,13 +56,13 @@ const jsonLd = {
               </div>
             </div>
 
-            <div class="bg-surface-base border border-ink-primary/10 rounded-md p-7">
-              <h2 class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-4">
+            <div class="bg-white border border-ink-primary/13 rounded-lg p-7">
+              <h2 class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary m-0 mb-4">
                 {t['imprint.contact']}
               </h2>
               <div class="flex flex-col gap-3.5 text-ink-primary font-sans text-base leading-normal">
                 <div>
-                  <p class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-1.5">
+                  <p class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta m-0 mb-1.5">
                     {t['imprint.email.label']}
                   </p>
                   <p class="m-0">
@@ -72,7 +72,7 @@ const jsonLd = {
                   </p>
                 </div>
                 <div>
-                  <p class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-1.5">
+                  <p class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta m-0 mb-1.5">
                     {t['imprint.phone.label']}
                   </p>
                   <p class="m-0">
@@ -85,7 +85,8 @@ const jsonLd = {
             </div>
           </section>
 
-          <section>
+          <section class="border-t border-ink-primary/10 pt-10">
+            <p class="font-mono text-sm font-bold text-brand-primary m-0 mb-3" aria-hidden="true">01</p>
             <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['imprint.legal.heading']}
             </h2>
@@ -98,14 +99,14 @@ const jsonLd = {
                 { label: t['imprint.gisa.label'], value: t['imprint.gisa'] },
               ].map((row) => (
                 <div>
-                  <p class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-1.5">
+                  <p class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta m-0 mb-1.5">
                     {row.label}
                   </p>
                   <p class="font-sans text-base text-ink-primary leading-normal m-0">{row.value}</p>
                 </div>
               ))}
               <div>
-                <p class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-1.5">
+                <p class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta m-0 mb-1.5">
                   {t['imprint.law.label']}
                 </p>
                 <p class="font-sans text-base text-ink-primary leading-normal m-0">{t['imprint.law']}</p>
@@ -116,7 +117,7 @@ const jsonLd = {
                 </p>
               </div>
               <div>
-                <p class="font-sans text-xs font-semibold tracking-widest uppercase text-ink-muted m-0 mb-1.5">
+                <p class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta m-0 mb-1.5">
                   {t['imprint.wko.label']}
                 </p>
                 <p class="font-sans text-base text-ink-primary leading-normal m-0">{t['imprint.wko']}</p>
@@ -124,7 +125,8 @@ const jsonLd = {
             </div>
           </section>
 
-          <section>
+          <section class="border-t border-ink-primary/10 pt-10">
+            <p class="font-mono text-sm font-bold text-brand-primary m-0 mb-3" aria-hidden="true">02</p>
             <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['imprint.editorial.heading']}
             </h2>
@@ -132,21 +134,24 @@ const jsonLd = {
             <p class="text-body-large text-ink-primary font-medium m-0 max-w-prose">{t['imprint.editorial.responsible']}</p>
           </section>
 
-          <section>
+          <section class="border-t border-ink-primary/10 pt-10">
+            <p class="font-mono text-sm font-bold text-brand-primary m-0 mb-3" aria-hidden="true">03</p>
             <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['imprint.liability.content.heading']}
             </h2>
             <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['imprint.liability.content']}</p>
           </section>
 
-          <section>
+          <section class="border-t border-ink-primary/10 pt-10">
+            <p class="font-mono text-sm font-bold text-brand-primary m-0 mb-3" aria-hidden="true">04</p>
             <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['imprint.liability.links.heading']}
             </h2>
             <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['imprint.liability.links']}</p>
           </section>
 
-          <section>
+          <section class="border-t border-ink-primary/10 pt-10">
+            <p class="font-mono text-sm font-bold text-brand-primary m-0 mb-3" aria-hidden="true">05</p>
             <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
               {t['imprint.copyright.heading']}
             </h2>

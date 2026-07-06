@@ -1,68 +1,59 @@
 ---
 import { Image } from 'astro:assets';
 import type { Translations } from '@/i18n/translations';
-import profileImage from '@/assets/images/profile.png';
+import profileImage from '@/assets/images/profile-transparent.png';
 import { EXTERNAL, getRoutes } from '@/configurations/routes';
 
 interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
-const routes = getRoutes();
+const routes = getRoutes(Astro.currentLocale);
 
-const credentials = [
-  { mark: '01', title: t['about.credentials.1.title'], body: t['about.credentials.1.body'] },
-  { mark: '02', title: t['about.credentials.2.title'], body: t['about.credentials.2.body'] },
-  { mark: '03', title: t['about.credentials.3.title'], body: t['about.credentials.3.body'] },
-  { mark: '04', title: t['about.credentials.4.title'], body: t['about.credentials.4.body'] },
-  { mark: '05', title: t['about.credentials.5.title'], body: t['about.credentials.5.body'] },
-  { mark: '06', title: t['about.credentials.6.title'], body: t['about.credentials.6.body'] },
+// Arc: the path (1, 2) -> the lessons it taught (4, 5, 3) -> what follows today (6)
+const path = [
+  { mark: '01', title: t['about.credentials.1.title'], body: t['about.credentials.1.body'], lesson: t['about.credentials.1.lesson'] },
+  { mark: '02', title: t['about.credentials.2.title'], body: t['about.credentials.2.body'], lesson: t['about.credentials.2.lesson'] },
 ];
-
-const curfeeLetters = [
-  { word: t['about.curfee.c.word'], text: t['about.curfee.c.text'] },
-  { word: t['about.curfee.u.word'], text: t['about.curfee.u.text'] },
-  { word: t['about.curfee.r.word'], text: t['about.curfee.r.text'] },
-  { word: t['about.curfee.f.word'], text: t['about.curfee.f.text'] },
-  { word: t['about.curfee.e1.word'], text: t['about.curfee.e1.text'] },
-  { word: t['about.curfee.e2.word'], text: t['about.curfee.e2.text'] },
+const lessons = [
+  { mark: '03', title: t['about.credentials.4.title'], body: t['about.credentials.4.body'], lesson: t['about.credentials.4.lesson'] },
+  { mark: '04', title: t['about.credentials.5.title'], body: t['about.credentials.5.body'], lesson: t['about.credentials.5.lesson'] },
+  { mark: '05', title: t['about.credentials.3.title'], body: t['about.credentials.3.body'], lesson: t['about.credentials.3.lesson'] },
 ];
+const today = { mark: '06', title: t['about.credentials.6.title'], body: t['about.credentials.6.body'], lesson: t['about.credentials.6.lesson'] };
 ---
 
-<article>
+<article id="about">
 
-
-  <section class="py-20 sm:py-26 xl:py-36 lg:min-h-[calc(100svh-var(--header-height))] lg:flex lg:items-center" aria-labelledby="about-hero-heading">
+  <section class="section-pad" aria-labelledby="about-hero-heading">
     <div class="w-full max-w-300 mx-auto px-gutter xl:px-0">
-      <div class="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-20">
-        <div class="order-2 lg:order-1 max-w-160 lg:flex-1 lg:min-w-0">
-          <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0">
+      <div class="flex flex-col gap-12 lg:flex-row lg:items-stretch lg:gap-20">
+
+        <div class="max-w-160 lg:flex-[1.15] lg:min-w-0">
+          <p class="text-eyebrow text-brand-primary m-0">
             {t['about.eyebrow']}
           </p>
-          <h1
+          <h2
             id="about-hero-heading"
-            class="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-none tracking-tight m-0 mt-4"
+            class="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight m-0 mt-4"
           >
-            {t['about.intro.greeting']} Philipp<br />Höllinger.
-          </h1>
-          <p class="font-sans font-bold text-base text-brand-primary leading-normal mt-4 mb-7">
-            {t['about.who.role']}<br />
-            <span class="font-medium text-ink-primary/65">{t['about.who.location']}</span>
-          </p>
-          <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mb-5 max-w-prose">
+            {t['about.heading']}
+          </h2>
+
+          <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mt-9 mb-5 max-w-prose">
             {t['about.who.hero.1']}
           </p>
           <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mb-5 max-w-prose">
-            {t['about.who.hero.2']}
+            {t['about.who.why.2']}
           </p>
-          <p class="font-sans text-lg leading-relaxed font-bold text-brand-primary m-0 max-w-prose">
-            {t['about.who.hero.3']}
+          <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 max-w-prose">
+            {t['about.who.why.3']}
           </p>
 
           <div class="mt-9 flex flex-wrap gap-4">
             <a
               href={routes.contact}
-              class="inline-flex items-center justify-center px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-colors duration-200 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover"
+              class="inline-flex items-center justify-center px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-all duration-200 hover:-translate-y-0.5 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover"
             >
               {t['hero.cta']}
             </a>
@@ -70,146 +61,141 @@ const curfeeLetters = [
               href={EXTERNAL.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-colors duration-200 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary hover:text-brand-primary-foreground"
+              class="inline-flex items-center justify-center px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-all duration-200 hover:-translate-y-0.5 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary hover:text-brand-primary-foreground"
             >
               {t['about.linkedin.cta']}
             </a>
           </div>
         </div>
 
-        <div class="order-1 lg:order-2 lg:flex lg:flex-col lg:flex-1 lg:min-w-0 lg:items-center">
-          <Image
-            src={profileImage}
-            alt={t['about.portrait.alt']}
-            class="block w-full max-w-72 lg:max-w-64 xl:max-w-80 2xl:max-w-96 aspect-[2/3] rounded-lg border border-ink-primary/8"
-            loading="lazy"
-            decoding="async"
-            width={360}
-            height={540}
-            widths={[280, 360, 480, 800]}
-            sizes="(max-width: 1023px) 288px, (max-width: 1279px) 256px, (max-width: 1535px) 320px, 384px"
-            transition:name="profile-portrait"
-          />
-          <div class="hidden lg:block lg:w-full lg:max-w-64 xl:max-w-80 2xl:max-w-96 mt-5 py-6 px-7 bg-surface-soft border border-ink-primary/10 rounded-md">
-            <p class="text-body-large font-semibold text-ink-primary m-0">
-              "{t['about.who.quote']}"
-            </p>
+        <div class="order-first lg:order-none lg:flex-[0.85] lg:min-w-0 flex justify-center lg:justify-end">
+          <div class="w-full max-w-96 lg:h-full flex flex-col bg-surface-soft border border-ink-primary/13 rounded-lg overflow-hidden">
+            <div class="relative aspect-[2/3] lg:aspect-auto lg:flex-1 lg:min-h-0">
+              <Image
+                src={profileImage}
+                alt={t['about.portrait.alt']}
+                class="absolute inset-0 w-full h-full object-cover object-top"
+                loading="lazy"
+                decoding="async"
+                width={360}
+                height={540}
+                widths={[280, 360, 480, 800]}
+                sizes="384px"
+                transition:name="profile-portrait"
+              />
+            </div>
+            <div class="p-5 sm:p-6 border-t border-ink-primary/13 flex-none">
+              <blockquote class="m-0">
+                <p class="font-sans text-base font-medium leading-relaxed text-ink-primary m-0">
+                  "{t['about.who.quote']}"
+                </p>
+              </blockquote>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-
-  <section class="py-20 sm:py-26 xl:py-36 bg-surface-soft" aria-labelledby="why-heading">
+  <section class="section-pad bg-brand-primary" aria-labelledby="background-heading">
     <div class="max-w-300 mx-auto px-gutter xl:px-0">
-      <div class="grid grid-cols-1 gap-6 lg:grid-cols-5 lg:gap-16">
-        <div class="lg:col-span-2">
-          <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0">
-            {t['about.why.eyebrow']}
-          </p>
-          <h2
-            id="why-heading"
-            class="font-sans text-3xl md:text-4xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0 mt-2"
-          >
-            {t['about.why.heading']}
-          </h2>
-        </div>
-        <div class="lg:col-span-3">
-          <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mb-5 max-w-prose">{t['about.who.why.1']}</p>
-          <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mb-5 max-w-prose">{t['about.who.why.2']}</p>
-          <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mb-5 max-w-prose">{t['about.who.why.3']}</p>
-          <p class="font-sans text-lg leading-relaxed font-bold text-brand-primary m-0 max-w-prose">{t['about.who.why.4']}</p>
-        </div>
-      </div>
-
-
-      <div class="mt-16 lg:mt-24">
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-          {curfeeLetters.map((c) => (
-            <div>
-              <div class="flex items-baseline gap-0.5">
-                <span class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-primary leading-none">{c.word.charAt(0)}</span>
-                <span class="text-base md:text-lg font-bold text-ink-primary">{c.word.slice(1)}</span>
-              </div>
-              <p class="font-sans text-sm text-ink-muted leading-normal mt-3 m-0">
-                {c.text}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="py-20 sm:py-26 xl:py-36" aria-labelledby="background-heading">
-    <div class="max-w-300 mx-auto px-gutter xl:px-0">
-      <div class="max-w-180 mb-14">
-        <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0">
+      <header class="max-w-184 mb-16">
+        <p class="text-eyebrow text-brand-primary-foreground/60 m-0">
           {t['about.background.eyebrow']}
         </p>
         <h2
           id="background-heading"
-          class="font-sans text-3xl md:text-4xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0 mt-4"
+          class="font-sans text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-6 text-brand-primary-foreground"
         >
           {t['about.background.heading']}
         </h2>
-      </div>
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12">
-        {credentials.map((c) => (
-          <div class="flex items-start gap-5">
-            <div
-              class="w-14 h-14 rounded-xs bg-brand-primary text-brand-primary-foreground shrink-0 flex items-center justify-center font-sans font-extrabold text-xl"
-              aria-hidden="true"
-            >
-              {c.mark}
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-body-x-large font-bold text-ink-primary m-0 mb-2 leading-tight">
-                {c.title}
+      </header>
+
+      <div class="flex flex-col gap-10">
+
+        <div>
+          <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary-foreground/50 m-0 mb-4">
+            {t['about.group.path']}
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {path.map((c) => (
+              <article class="flex flex-col p-10 bg-white rounded-lg md:grid md:grid-rows-subgrid md:row-span-2">
+                <div class="mb-6 md:mb-0">
+                  <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
+                    {c.mark}
+                  </p>
+                  <h3 class="font-sans text-xl font-bold text-ink-primary leading-tight m-0 mt-4 mb-2">
+                    {c.title}
+                  </h3>
+                  <p class="text-body-medium text-ink-muted leading-relaxed m-0">
+                    {c.body}
+                  </p>
+                </div>
+                <div class="mt-auto md:mt-0">
+                  <p class="font-sans text-sm font-bold text-brand-primary leading-relaxed m-0">
+                    {c.lesson}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary-foreground/50 m-0 mb-4">
+            {t['about.group.lessons']}
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {lessons.map((c) => (
+              <article class="flex flex-col p-10 bg-white rounded-lg md:grid md:grid-rows-subgrid md:row-span-2">
+                <div class="mb-6 md:mb-0">
+                  <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
+                    {c.mark}
+                  </p>
+                  <h3 class="font-sans text-xl font-bold text-ink-primary leading-tight m-0 mt-4 mb-2">
+                    {c.title}
+                  </h3>
+                  <p class="text-body-medium text-ink-muted leading-relaxed m-0">
+                    {c.body}
+                  </p>
+                </div>
+                <div class="mt-auto md:mt-0">
+                  <p class="font-sans text-sm font-bold text-brand-primary leading-relaxed m-0">
+                    {c.lesson}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary-foreground/50 m-0 mb-4">
+            {t['about.group.today']}
+          </p>
+          <article class="p-10 bg-white rounded-lg md:flex md:items-start md:gap-12">
+            <div class="md:w-1/3 md:shrink-0">
+              <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
+                {today.mark}
+              </p>
+              <h3 class="font-sans text-xl font-bold text-ink-primary leading-tight m-0 mt-4 mb-2 md:mb-0">
+                {today.title}
               </h3>
-              <p class="font-sans text-base text-ink-muted leading-relaxed m-0 max-w-prose">
-                {c.body}
+            </div>
+            <div class="md:flex-1 md:pt-1">
+              <p class="text-body-medium text-ink-muted leading-relaxed m-0 mb-5">
+                {today.body}
+              </p>
+              <p class="font-sans text-sm font-bold text-brand-primary leading-relaxed m-0">
+                {today.lesson}
               </p>
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+          </article>
+        </div>
 
+      </div>
 
-  <section class="py-20 sm:py-26 xl:py-36 bg-surface-soft" aria-labelledby="principles-heading">
-    <div class="max-w-300 mx-auto px-gutter xl:px-0">
-      <div class="max-w-160 mb-12">
-        <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0">
-          {t['about.principles.eyebrow']}
-        </p>
-        <h2
-          id="principles-heading"
-          class="font-sans text-3xl md:text-4xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0 mt-4"
-        >
-          {t['about.principles.heading']}
-        </h2>
-      </div>
-      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div class="bg-surface-base border border-ink-primary/10 rounded-md p-8 transition-transform duration-200 hover:-translate-y-1">
-          <span class="inline-block font-sans text-sm font-semibold tracking-wider text-brand-primary mb-4">01</span>
-          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mb-2 leading-tight">{t['principles.1']}</h3>
-          <p class="font-sans text-base text-ink-muted leading-relaxed m-0">{t['about.principles.1.text']}</p>
-        </div>
-        <div class="bg-surface-base border border-ink-primary/10 rounded-md p-8 transition-transform duration-200 hover:-translate-y-1">
-          <span class="inline-block font-sans text-sm font-semibold tracking-wider text-brand-primary mb-4">02</span>
-          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mb-2 leading-tight">{t['principles.2']}</h3>
-          <p class="font-sans text-base text-ink-muted leading-relaxed m-0">{t['about.principles.2.text']}</p>
-        </div>
-        <div class="bg-surface-base border border-ink-primary/10 rounded-md p-8 transition-transform duration-200 hover:-translate-y-1">
-          <span class="inline-block font-sans text-sm font-semibold tracking-wider text-brand-primary mb-4">03</span>
-          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mb-2 leading-tight">{t['principles.3']}</h3>
-          <p class="font-sans text-base text-ink-muted leading-relaxed m-0">{t['about.principles.3.text']}</p>
-        </div>
-      </div>
     </div>
   </section>
 

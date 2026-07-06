@@ -1,171 +1,156 @@
 ---
-import Icon from '@/components/shared/Icon.astro';
 import { getRoutes } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 import logoTextRaw from '@/assets/logos/logo_text.svg?raw';
 
-const t = getTranslations();
-const routes = getRoutes();
+const t = getTranslations(Astro.currentLocale);
+const routes = getRoutes(Astro.currentLocale);
 const menuId = 'mobile-menu';
-const navClass = "px-5 py-3 text-label-large font-semibold whitespace-nowrap text-ink-primary hover:text-brand-primary transition-colors duration-200 ease-standard";
+
+const navItems = [
+  { id: 'why-curfee', label: t['nav.why-curfee'] },
+  { id: 'selected-engagements', label: t['nav.engagements'] },
+  { id: 'about', label: t['nav.about'] },
+].map((item) => ({ ...item, href: `${routes.home}#${item.id}` }));
+
+const navClass = "px-4 py-3 text-label-large font-semibold whitespace-nowrap text-ink-primary hover:text-brand-primary transition-colors duration-200 ease-standard";
 const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibold transition-colors duration-200 ease-standard text-ink-primary hover:text-brand-primary";
 ---
 
-<header role="banner" data-header transition:persist class="fixed inset-x-0 top-0 z-50 bg-surface-base border-b border-ink-primary/10">
-  <div class="mx-auto max-w-300 flex items-center justify-between gap-3 w-full relative h-header px-gutter xl:px-0" data-header-shell>
-    <a href={routes.home} class="shrink-0 inline-flex items-center gap-2 text-brand-primary" aria-label={t['header.aria.brand']} data-menu-close>
+<header role="banner" data-header transition:persist class="fixed inset-x-0 top-0 z-50">
+  <div data-header-shell class="mx-auto max-w-300 flex items-center justify-between gap-3 w-full relative h-[var(--header-height)] px-gutter xl:px-0">
+    <a href={routes.home} data-logo class="shrink-0 inline-flex items-center gap-2 text-brand-primary" aria-label={t['header.aria.brand']} data-menu-close>
       <span class="block h-5 [&>svg]:h-full [&>svg]:max-h-full [&>svg]:w-auto" aria-hidden="true" set:html={logoTextRaw} />
     </a>
 
     <nav class="hidden lg:flex items-center gap-1" aria-label={t['header.aria.main']}>
-      <a href={routes.home} class={navClass} data-nav-link>{t['nav.home']}</a>
-
-      <div class="services-dropdown" data-services-dropdown>
-        <button
-          type="button"
-          class={`${navClass} services-dropdown-trigger`}
-          aria-haspopup="true"
-          aria-expanded="false"
-          data-services-trigger
-        >
-          {t['nav.services']}
-        </button>
-        <div class="services-dropdown-menu" role="menu" data-services-menu>
-          <a href={routes.service.diagnosis} class="services-dropdown-item" role="menuitem" data-nav-link>
-            <span class="services-dropdown-item-title">{t['services.diagnosis.title']}</span>
-          </a>
-          <a href={routes.service.guidance} class="services-dropdown-item" role="menuitem" data-nav-link>
-            <span class="services-dropdown-item-title">{t['services.guidance.title']}</span>
-          </a>
-          <a href={routes.service.sparring} class="services-dropdown-item" role="menuitem" data-nav-link>
-            <span class="services-dropdown-item-title">{t['services.sparring.title']}</span>
-          </a>
-        </div>
-      </div>
-
-      <a href={routes.about} class={navClass} data-nav-link>{t['nav.about']}</a>
-      <a href={routes.blog} class={navClass} data-nav-link>{t['nav.blog']}</a>
+      {navItems.map((item) => (
+        <a href={item.href} class={navClass} data-nav-link>{item.label}</a>
+      ))}
     </nav>
 
     <div class="flex items-center gap-1 shrink-0 z-10">
-      <a href={routes.contact} class="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary-hover px-6 py-3.5 rounded-md text-sm font-bold leading-none whitespace-nowrap transition-colors duration-200 ease-standard">
+      <a href={routes.contact} data-header-cta class="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary-hover px-6 py-3.5 rounded-full text-sm font-bold leading-none whitespace-nowrap transition-colors duration-200 ease-standard">
         <span>{t['nav.cta']}</span>
       </a>
       <button type="button" class="lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-full text-ink-primary hover:bg-ink-primary/8 transition-all duration-200 ease-standard" aria-label={t['header.aria.toggle']} aria-expanded="false" aria-controls={menuId} data-menu-toggle>
-        <span data-menu-icon="closed"><Icon name="menu" class="w-6 h-6" /></span>
-        <span data-menu-icon="open" class="hidden"><Icon name="close" class="w-6 h-6" /></span>
+        <span data-icon-closed>
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </span>
+        <span data-icon-open class="hidden">
+          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </span>
       </button>
     </div>
   </div>
 
-  <div id={menuId} inert data-mobile-menu class="lg:hidden absolute -left-px -right-px bg-surface-base transition-all duration-200 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden">
+  <div id={menuId} inert data-mobile-menu class="lg:hidden transition-all duration-200 ease-standard max-h-0 opacity-0 pointer-events-none overflow-hidden">
     <div class="max-w-7xl mx-auto px-gutter pb-4 space-y-2">
       <nav class="flex flex-col gap-1" aria-label={t['header.aria.mobile']}>
-        <a href={routes.home} class={menuItemClass} data-menu-close data-nav-link>{t['nav.home']}</a>
-        <button type="button" class={`${menuItemClass} justify-between w-full`} aria-expanded="false" data-mobile-services-toggle>
-          <span>{t['nav.services']}</span>
-          <svg class="w-5 h-5 transition-transform duration-200 ease-standard shrink-0" data-mobile-services-icon viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true">
-            <path d="M480-345 240-585l43-43 197 198 197-197 43 43-240 239Z"/>
-          </svg>
-        </button>
-        <div data-mobile-services-list class="overflow-hidden max-h-0 transition-all duration-200 ease-standard flex flex-col gap-1">
-          <a href={routes.service.diagnosis} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.diagnosis.title']}</a>
-          <a href={routes.service.guidance} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.guidance.title']}</a>
-          <a href={routes.service.sparring} class={`${menuItemClass} pl-7`} data-menu-close data-nav-link>{t['services.sparring.title']}</a>
-        </div>
-        <a href={routes.about} class={menuItemClass} data-menu-close data-nav-link>{t['nav.about']}</a>
-        <a href={routes.blog} class={menuItemClass} data-menu-close data-nav-link>{t['nav.blog']}</a>
+        {navItems.map((item) => (
+          <a href={item.href} class={menuItemClass} data-menu-close data-nav-link>{item.label}</a>
+        ))}
       </nav>
       <div class="lg:hidden flex flex-col gap-2 px-4 pt-2">
-        <a href={routes.contact} class="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary-hover px-6 py-3.5 rounded-md text-sm font-bold leading-none transition-colors duration-200 ease-standard" data-menu-close>{t['nav.cta']}</a>
+        <a href={routes.contact} data-header-cta class="inline-flex items-center justify-center gap-2 bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary-hover px-6 py-3.5 rounded-full text-sm font-bold leading-none transition-colors duration-200 ease-standard" data-menu-close>{t['nav.cta']}</a>
       </div>
     </div>
   </div>
 </header>
 
 <style>
+  /* Adaptive foreground colors — flip to light over dark sections */
+  [data-header] {
+    --header-fg: var(--ink-primary);
+    --header-logo: var(--brand-primary);
+  }
+  [data-header][data-theme="dark"] {
+    --header-fg: 255 255 255;
+    --header-logo: 255 255 255;
+  }
+  [data-logo] {
+    color: rgb(var(--header-logo));
+    transition: color 300ms var(--header-ease, ease);
+  }
+  [data-logo] :global(svg),
+  [data-logo] :global(svg *) {
+    fill: rgb(var(--header-logo));
+    transition: fill 300ms var(--header-ease, ease);
+  }
+  [data-nav-link],
+  [data-menu-toggle] {
+    color: rgb(var(--header-fg));
+    transition: color 300ms var(--header-ease, ease);
+  }
+  [data-nav-link]:hover,
   [data-nav-link][data-active] {
     color: rgb(var(--brand-primary));
   }
-
-
-  .services-dropdown {
-    position: relative;
+  [data-header][data-theme="dark"] [data-nav-link]:hover,
+  [data-header][data-theme="dark"] [data-nav-link][data-active] {
+    color: rgb(255 255 255);
+    opacity: 0.75;
   }
-  .services-dropdown-trigger {
-    display: inline-flex;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  .services-dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 280px;
-    margin-top: 8px;
-    padding: 8px;
-    background: rgb(var(--surface-base));
-    border: 1px solid rgb(var(--ink-primary) / 0.1);
-    border-radius: 8px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-4px);
-    transition: opacity 160ms cubic-bezier(0.2, 0, 0, 1), transform 160ms cubic-bezier(0.2, 0, 0, 1), visibility 0s linear 160ms;
-    z-index: 30;
-  }
-  .services-dropdown[data-open] .services-dropdown-menu,
-  .services-dropdown:hover .services-dropdown-menu,
-  .services-dropdown:focus-within .services-dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition: opacity 160ms cubic-bezier(0.2, 0, 0, 1), transform 160ms cubic-bezier(0.2, 0, 0, 1), visibility 0s linear 0s;
-  }
-
-  .services-dropdown::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    height: 12px;
-    pointer-events: auto;
-  }
-  .services-dropdown-item {
-    display: block;
-    padding: 12px 14px;
-    border-radius: 4px;
-    text-decoration: none;
-    color: rgb(var(--ink-primary));
-    transition: background-color 200ms ease;
-  }
-  .services-dropdown-item:hover {
-    background: rgb(var(--surface-soft));
-  }
-  .services-dropdown-item-title {
-    display: block;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: rgb(var(--ink-primary));
-  }
-  .services-dropdown-item:hover .services-dropdown-item-title {
+  [data-header][data-theme="dark"] [data-header-cta] {
+    background-color: rgb(255 255 255);
     color: rgb(var(--brand-primary));
   }
+  [data-header][data-theme="dark"] [data-header-cta]:hover {
+    background-color: rgb(255 255 255 / 0.88);
+  }
+
+  /* Liquid glass header */
   [data-header] {
-    --menu-height: 0px;
+    --header-duration: 500ms;
+    --header-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: top var(--header-duration) var(--header-ease);
+  }
+  [data-header]::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: transparent;
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    transform: translateZ(0);
+    transition: left var(--header-duration) var(--header-ease),
+                right var(--header-duration) var(--header-ease),
+                border-radius var(--header-duration) var(--header-ease);
+  }
+  [data-header-shell] {
+    transition: height var(--header-duration) var(--header-ease),
+                max-width var(--header-duration) var(--header-ease),
+                padding var(--header-duration) var(--header-ease);
+  }
+  /* Collapse into the floating pill on desktop only — mobile stays full width */
+  @media (min-width: 1024px) {
+    [data-header][data-scrolled] {
+      top: 0.75rem;
+    }
+    [data-header][data-scrolled]::before {
+      left: max(0.75rem, calc(50% - 32rem));
+      right: max(0.75rem, calc(50% - 32rem));
+      border-radius: 1.25rem;
+    }
+    [data-header][data-scrolled] [data-header-shell] {
+      height: 4rem;
+      max-width: 64rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-header],
+    [data-header]::before,
+    [data-header-shell] {
+      transition: none;
+    }
   }
 </style>
 
 <script>
   let cleanupHandlers: Array<() => void> = [];
-
-  function addCleanup(fn: () => void) {
-    cleanupHandlers.push(fn);
-  }
 
   function runCleanup() {
     for (const fn of cleanupHandlers) {
@@ -174,261 +159,180 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
     cleanupHandlers = [];
   }
 
-  function initHeader() {
+  function initMobileMenu() {
     const header = document.querySelector('[data-header]') as HTMLElement | null;
     const toggle = header?.querySelector('[data-menu-toggle]') as HTMLButtonElement | null;
-    const menu = header?.querySelector('[data-mobile-menu]') as HTMLDivElement | null;
-    const closeTargets = header?.querySelectorAll('[data-menu-close]') ?? [];
-    const iconOpen = header?.querySelector('[data-menu-icon="open"]') as HTMLElement | null;
-    const iconClosed = header?.querySelector('[data-menu-icon="closed"]') as HTMLElement | null;
+    const menu = header?.querySelector('[data-mobile-menu]') as HTMLElement | null;
+    if (!header || !toggle || !menu) return;
 
-    const setMenuState = (open: boolean) => {
-      if (!menu || !toggle || !header) return;
+    const iconOpen = toggle.querySelector('[data-icon-open]') as HTMLElement | null;
+    const iconClosed = toggle.querySelector('[data-icon-closed]') as HTMLElement | null;
+    const closeTargets = header.querySelectorAll('[data-menu-close]');
+
+    let open = false;
+    const setOpen = (next: boolean) => {
+      open = next;
       menu.style.maxHeight = open ? `${menu.scrollHeight}px` : '0px';
       menu.style.opacity = open ? '1' : '0';
       menu.style.pointerEvents = open ? 'auto' : 'none';
       menu.inert = !open;
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (open) {
-        header.setAttribute('data-menu-open', '');
-      } else {
-        header.removeAttribute('data-menu-open');
-      }
+      header.toggleAttribute('data-menu-open', open);
       if (iconOpen && iconClosed) {
-        iconOpen.style.display = open ? 'inline-block' : 'none';
-        iconClosed.style.display = open ? 'none' : 'inline-block';
+        iconOpen.style.display = open ? 'block' : 'none';
+        iconClosed.style.display = open ? 'none' : 'block';
       }
     };
 
-    if (toggle) {
-      let open = false;
-      const onToggle = () => { open = !open; setMenuState(open); };
-      toggle.addEventListener('click', onToggle);
-      addCleanup(() => toggle.removeEventListener('click', onToggle));
+    const onToggle = () => setOpen(!open);
+    toggle.addEventListener('click', onToggle);
+    cleanupHandlers.push(() => toggle.removeEventListener('click', onToggle));
 
-      const closeListeners: Array<[Element, () => void]> = [];
-      closeTargets.forEach((el) => {
-        const fn = () => { open = false; setMenuState(open); };
-        el.addEventListener('click', fn);
-        closeListeners.push([el, fn]);
-      });
-      addCleanup(() => closeListeners.forEach(([el, fn]) => el.removeEventListener('click', fn)));
+    closeTargets.forEach((el) => {
+      const fn = () => setOpen(false);
+      el.addEventListener('click', fn);
+      cleanupHandlers.push(() => el.removeEventListener('click', fn));
+    });
 
-      const onKeyDown = (event: KeyboardEvent) => {
-        if (event.key === 'Escape' && open) { open = false; setMenuState(open); toggle.focus(); }
-      };
-      document.addEventListener('keydown', onKeyDown);
-      addCleanup(() => document.removeEventListener('keydown', onKeyDown));
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && open) { setOpen(false); toggle.focus(); }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    cleanupHandlers.push(() => document.removeEventListener('keydown', onKeyDown));
 
-      const onDocClick = (event: MouseEvent) => {
-        if (open && header && !header.contains(event.target as Node)) {
-          open = false; setMenuState(open);
-        }
-      };
-      document.addEventListener('click', onDocClick);
-      addCleanup(() => document.removeEventListener('click', onDocClick));
-    }
+    const onDocClick = (e: MouseEvent) => {
+      if (open && !header.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('click', onDocClick);
+    cleanupHandlers.push(() => document.removeEventListener('click', onDocClick));
   }
 
-  function initActiveSection() {
-    const navLinks = document.querySelectorAll('[data-nav-link]') as NodeListOf<HTMLAnchorElement>;
-    const sectionIds = ['observations', 'services', 'blog', 'contact'];
-    const sections = sectionIds
+  function initScrollSpy() {
+    const links = Array.from(document.querySelectorAll('[data-nav-link]')) as HTMLAnchorElement[];
+    const ids: string[] = [];
+    for (const l of links) {
+      const id = l.hash.replace(/^#/, '');
+      if (id && !ids.includes(id)) ids.push(id);
+    }
+    const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
-
-
     if (sections.length === 0) return;
 
-    let currentActive = '';
-
+    let active = '';
     const setActive = (id: string) => {
-      if (id === currentActive) return;
-      currentActive = id;
-      navLinks.forEach((link) => {
-        if (link.hash === `#${id}`) {
-          link.setAttribute('data-active', '');
-        } else {
-          link.removeAttribute('data-active');
-        }
-      });
-      history.replaceState(null, '', `#${id}`);
+      if (id === active) return;
+      active = id;
+      links.forEach((l) => l.toggleAttribute('data-active', l.hash === `#${id}`));
     };
-
     const clearActive = () => {
-      if (!currentActive) return;
-      currentActive = '';
-      navLinks.forEach((link) => link.removeAttribute('data-active'));
-      history.replaceState(null, '', location.pathname);
+      if (!active) return;
+      active = '';
+      links.forEach((l) => l.removeAttribute('data-active'));
     };
 
     const onScroll = () => {
-      const scrollY = window.scrollY;
-      const viewportMiddle = scrollY + window.innerHeight * 0.35;
-
-
-      const firstSection = sections[0];
-      if (firstSection && viewportMiddle < firstSection.offsetTop) {
-        clearActive();
-        return;
+      const middle = window.scrollY + window.innerHeight * 0.35;
+      if (middle < sections[0].offsetTop) { clearActive(); return; }
+      let current = '';
+      for (const s of sections) {
+        if (s.offsetTop <= middle) current = s.id;
       }
+      if (current) setActive(current); else clearActive();
+    };
 
+    window.addEventListener('scroll', onScroll, { passive: true });
+    cleanupHandlers.push(() => window.removeEventListener('scroll', onScroll));
+    onScroll();
+  }
 
-      let active = '';
-      for (const section of sections) {
-        if (section.offsetTop <= viewportMiddle) {
-          active = section.id;
-        }
-      }
-      if (active) {
-        setActive(active);
-      } else {
-        clearActive();
+  function initHeaderScroll() {
+    const header = document.querySelector('[data-header]') as HTMLElement | null;
+    if (!header) return;
+
+    let scrolled = false;
+    const onScroll = () => {
+      const threshold = scrolled ? 40 : 80;
+      const shouldBeScrolled = window.scrollY > threshold;
+      if (shouldBeScrolled !== scrolled) {
+        scrolled = shouldBeScrolled;
+        header.toggleAttribute('data-scrolled', scrolled);
       }
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    addCleanup(() => window.removeEventListener('scroll', onScroll));
+    cleanupHandlers.push(() => window.removeEventListener('scroll', onScroll));
+    onScroll();
+  }
 
+  function initHeaderTheme() {
+    const header = document.querySelector('[data-header]') as HTMLElement | null;
+    if (!header) return;
 
+    const parseColor = (str: string): [number, number, number, number] | null => {
+      const m = str.match(/rgba?\(([^)]+)\)/);
+      if (!m) return null;
+      const parts = m[1].split(/[\s,/]+/).map(Number).filter((n) => !Number.isNaN(n));
+      if (parts.length < 3) return null;
+      return [parts[0], parts[1], parts[2], parts.length > 3 ? parts[3] : 1];
+    };
 
+    // Nearest ancestor with an opaque-enough background color.
+    const backgroundOf = (el: Element | null): [number, number, number] | null => {
+      let node: Element | null = el;
+      while (node && node !== document.documentElement) {
+        const c = parseColor(getComputedStyle(node).backgroundColor);
+        if (c && c[3] > 0.5) return [c[0], c[1], c[2]];
+        node = node.parentElement;
+      }
+      const body = parseColor(getComputedStyle(document.body).backgroundColor);
+      return body ? [body[0], body[1], body[2]] : null;
+    };
 
-
-
-    const hashId = location.hash.startsWith('#') ? location.hash.slice(1) : '';
-    const hashSection = hashId ? sections.find((s) => s.id === hashId) : undefined;
-    if (hashSection) {
-      currentActive = hashId;
-      navLinks.forEach((link) => {
-        if (link.hash === `#${hashId}`) {
-          link.setAttribute('data-active', '');
-        } else {
-          link.removeAttribute('data-active');
-        }
+    // Perceived luminance (WCAG relative luminance).
+    const isDark = (r: number, g: number, b: number) => {
+      const lin = [r, g, b].map((v) => {
+        const s = v / 255;
+        return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
       });
+      return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2] < 0.5;
+    };
 
-
-
-      const scrollToSection = () => {
-        const headerHeight = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue('--header-height') || '72',
-          10,
-        ) || 72;
-        const target = Math.max(0, hashSection.offsetTop - headerHeight);
-        if (Math.abs(window.scrollY - target) > 4) {
-          window.scrollTo({ top: target, behavior: 'auto' });
-        }
-      };
-      requestAnimationFrame(() => requestAnimationFrame(scrollToSection));
-    } else {
-      onScroll();
-    }
-  }
-
-  function initServicesDropdown() {
-    const dropdown = document.querySelector('[data-services-dropdown]') as HTMLElement | null;
-    if (!dropdown) return;
-    const trigger = dropdown.querySelector('[data-services-trigger]') as HTMLButtonElement | null;
-    const menu = dropdown.querySelector('[data-services-menu]') as HTMLElement | null;
-    if (!trigger || !menu) return;
-
-    let open = false;
-    let hoverCloseTimer: number | null = null;
-
-    const setOpen = (next: boolean) => {
-      open = next;
-      if (open) {
-        dropdown.setAttribute('data-open', '');
-        trigger.setAttribute('aria-expanded', 'true');
+    let raf = 0;
+    const evaluate = () => {
+      raf = 0;
+      const rect = header.getBoundingClientRect();
+      const x = Math.round(window.innerWidth / 2);
+      const y = Math.round(rect.top + rect.height / 2);
+      const stack = document.elementsFromPoint(x, y);
+      const behind = stack.find((el) => el !== header && !header.contains(el)) ?? null;
+      const bg = backgroundOf(behind);
+      if (bg && isDark(bg[0], bg[1], bg[2])) {
+        header.setAttribute('data-theme', 'dark');
       } else {
-        dropdown.removeAttribute('data-open');
-        trigger.setAttribute('aria-expanded', 'false');
+        header.removeAttribute('data-theme');
       }
     };
-
-    const cancelClose = () => {
-      if (hoverCloseTimer !== null) {
-        window.clearTimeout(hoverCloseTimer);
-        hoverCloseTimer = null;
-      }
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(evaluate);
     };
 
-    const scheduleClose = () => {
-      cancelClose();
-      hoverCloseTimer = window.setTimeout(() => setOpen(false), 120);
-    };
-
-    const onTriggerClick = (e: MouseEvent) => {
-      e.stopPropagation();
-      cancelClose();
-      setOpen(!open);
-    };
-    const onEnter = () => { cancelClose(); setOpen(true); };
-    const onLeave = () => { scheduleClose(); };
-    const onDocClick = (e: MouseEvent) => {
-      if (!dropdown.contains(e.target as Node)) setOpen(false);
-    };
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && open) {
-        setOpen(false);
-        trigger.focus();
-      }
-    };
-    const onItemFocusOut = (e: FocusEvent) => {
-      const next = e.relatedTarget as Node | null;
-      if (!next || !dropdown.contains(next)) setOpen(false);
-    };
-
-    trigger.addEventListener('click', onTriggerClick);
-    dropdown.addEventListener('mouseenter', onEnter);
-    dropdown.addEventListener('mouseleave', onLeave);
-    document.addEventListener('click', onDocClick);
-    document.addEventListener('keydown', onKeyDown);
-    menu.addEventListener('focusout', onItemFocusOut);
-
-    addCleanup(() => {
-      trigger.removeEventListener('click', onTriggerClick);
-      dropdown.removeEventListener('mouseenter', onEnter);
-      dropdown.removeEventListener('mouseleave', onLeave);
-      document.removeEventListener('click', onDocClick);
-      document.removeEventListener('keydown', onKeyDown);
-      menu.removeEventListener('focusout', onItemFocusOut);
-      cancelClose();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    cleanupHandlers.push(() => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      if (raf) cancelAnimationFrame(raf);
     });
-  }
-
-  function initMobileServicesToggle() {
-    const toggle = document.querySelector('[data-mobile-services-toggle]') as HTMLButtonElement | null;
-    const list = document.querySelector('[data-mobile-services-list]') as HTMLDivElement | null;
-    const icon = document.querySelector('[data-mobile-services-icon]') as HTMLElement | null;
-    if (!toggle || !list || !icon) return;
-
-    let open = false;
-    const setOpen = (next: boolean) => {
-      open = next;
-      toggle.setAttribute('aria-expanded', String(open));
-      const subHeight = list.scrollHeight;
-      list.style.maxHeight = open ? `${subHeight}px` : '0px';
-      icon.style.transform = open ? 'rotate(180deg)' : '';
-
-      const parentMenu = document.querySelector('[data-mobile-menu]') as HTMLElement | null;
-      const currentMax = parentMenu ? parseFloat(parentMenu.style.maxHeight) || 0 : 0;
-      if (parentMenu && currentMax > 0) {
-        parentMenu.style.maxHeight = `${currentMax + (open ? subHeight : -subHeight)}px`;
-      }
-    };
-
-    const onClick = () => setOpen(!open);
-    toggle.addEventListener('click', onClick);
-    addCleanup(() => toggle.removeEventListener('click', onClick));
+    evaluate();
   }
 
   function init() {
     runCleanup();
-    initHeader();
-    initActiveSection();
-    initServicesDropdown();
-    initMobileServicesToggle();
+    initMobileMenu();
+    initScrollSpy();
+    initHeaderScroll();
+    initHeaderTheme();
   }
 
   init();

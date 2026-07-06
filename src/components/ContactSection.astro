@@ -1,34 +1,275 @@
 ---
-import { getRoutes } from '@/configurations/routes';
+import Icon from '@/components/shared/Icon.astro';
+import { EXTERNAL, getRoutes } from '@/configurations/routes';
+import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '@/configurations/forms';
 import type { Translations } from '@/i18n/translations';
 
 interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
-const routes = getRoutes();
+const routes = getRoutes(Astro.currentLocale);
+
+interface ContactMethod {
+  href: string;
+  icon: string;
+  title: string;
+  value: string;
+  meta: string;
+  copyValue?: string;
+  copiedText?: string;
+}
+
+const contactMethods: ContactMethod[] = [
+  {
+    href: EXTERNAL.mailto,
+    icon: 'mail',
+    title: t['contact.method.email.title'],
+    value: EXTERNAL.email,
+    meta: t['contact.method.email.meta'],
+  },
+  {
+    href: EXTERNAL.tel,
+    icon: 'call',
+    title: t['contact.method.phone.title'],
+    value: EXTERNAL.phone,
+    meta: t['contact.method.phone.meta'],
+    copyValue: EXTERNAL.phone,
+    copiedText: t['contact.method.phone.copied'],
+  },
+];
 ---
 
 <section
   id="contact"
-  class="py-20 sm:py-26 xl:py-36 bg-brand-primary text-brand-primary-foreground"
+  class="contact-section section-pad"
   aria-labelledby="contact-heading"
 >
-  <div class="mx-auto px-gutter xl:px-0 text-center max-w-180">
-    <h2
-      id="contact-heading"
-      class="font-sans text-3xl md:text-4xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0 text-brand-primary-foreground"
-    >
-      {t['calltoaction.heading']}
-    </h2>
-    <p class="text-body-x-large text-surface-base/85 max-w-140 font-medium mt-6 mx-auto">
-      {t['calltoaction.subtitle']}
-    </p>
-    <a
-      href={routes.contact}
-      class="inline-flex items-center gap-2 mt-8 px-7 py-3.5 font-sans text-base font-bold bg-surface-base text-brand-primary border-2 border-surface-base rounded-md no-underline transition-colors duration-200 hover:bg-surface-base/85"
-    >
-      {t['hero.cta']}
-    </a>
+  <div class="max-w-300 mx-auto px-gutter xl:px-0">
+    <div class="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16 items-start lg:items-center">
+
+
+      <div class="min-w-0 lg:col-span-7">
+        <header class="mb-12">
+          <p class="text-eyebrow text-surface-base/70 m-0">
+            {t['contact.eyebrow']}
+          </p>
+          <h2
+            id="contact-heading"
+            class="font-sans text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-6 text-brand-primary-foreground"
+          >
+            {t['contact.heading']}
+          </h2>
+          <p class="font-sans text-lg text-brand-primary-foreground/75 leading-relaxed mt-6 m-0 max-w-prose">
+            {t['contact.subtitle']}
+          </p>
+        </header>
+
+        <section aria-label={t['contact.direct.heading']}>
+          <p class="font-sans text-base text-brand-primary-foreground/70 m-0 mb-5">
+            {t['contact.direct.lead']}
+          </p>
+          <ul class="list-none p-0 m-0 flex flex-col gap-4">
+            {contactMethods.map((method) => (
+              <li>
+                <a
+                  href={method.href}
+                  data-copy-value={method.copyValue}
+                  data-copied-text={method.copiedText}
+                  class="method-card group flex items-center gap-5 p-5 sm:p-6 no-underline bg-white border border-ink-primary/13 rounded-lg transition-all duration-300 ease-standard hover:translate-x-2 hover:border-brand-primary/25 hover:shadow-[0_1px_3px_rgb(var(--ink-primary)/0.1),0_4px_12px_rgb(var(--brand-primary)/0.1)]"
+                >
+                  <span class="flex items-center justify-center w-12 h-12 shrink-0 rounded-xl bg-brand-primary/8 text-brand-primary transition-colors duration-300 group-hover:bg-surface-soft">
+                    <Icon name={method.icon} class="w-5 h-5" />
+                  </span>
+                  <span class="flex flex-col min-w-0">
+                    <span class="font-sans text-base font-bold text-ink-primary">{method.title}</span>
+                    <span class="font-sans text-base font-medium text-ink-muted break-all transition-colors duration-300 group-hover:text-brand-primary">{method.value}</span>
+                    <span class="font-sans text-sm text-ink-meta mt-0.5" data-method-meta>{method.meta}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-10 text-center">
+            <p class="font-sans text-sm font-bold text-brand-primary-foreground m-0 mb-4">
+              {t['contact.connect.heading']}
+            </p>
+            <a
+              href={EXTERNAL.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`LinkedIn: ${t['contact.linkedin.display']}`}
+              class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white border border-ink-primary/13 text-brand-primary transition-all duration-300 ease-standard hover:bg-surface-soft hover:-translate-y-0.5 hover:shadow-[0_1px_3px_rgb(var(--ink-primary)/0.1),0_4px_12px_rgb(0_0_0/0.2)]"
+            >
+              <Icon name="linkedin" class="w-5 h-5" />
+            </a>
+          </div>
+        </section>
+      </div>
+
+
+      <div class="min-w-0 lg:col-span-5">
+        <div class="contact-form-card relative overflow-hidden rounded-lg bg-white border border-ink-primary/13 p-7 sm:p-10 shadow-[0_1px_3px_rgb(var(--ink-primary)/0.08),0_8px_24px_rgb(var(--ink-primary)/0.06)]">
+        <header class="text-center mb-9">
+          <span class="flex items-center justify-center mx-auto mb-5 text-brand-primary">
+            <Icon name="chat" class="w-7 h-7" />
+          </span>
+          <h3 class="font-sans text-2xl font-bold m-0">{t['contact.form.header.title']}</h3>
+          <p class="font-sans text-base text-ink-muted leading-relaxed m-0 mt-3">{t['contact.form.header.text']}</p>
+        </header>
+
+        <form
+          action={WEB3FORMS_ENDPOINT}
+          method="POST"
+          class="contact-form flex flex-col gap-4.5"
+          data-contact-form
+        >
+          <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+          <input type="hidden" name="from_name" value={t['contact.form.from_name']} />
+          <input type="hidden" name="subject" value={t['contact.form.subject']} />
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+
+          <div class="contact-field relative">
+            <input type="text" id="contact-name" name="name" required autocomplete="name" placeholder=" " />
+            <label for="contact-name" class="contact-field-label">{t['contact.form.name']}</label>
+          </div>
+
+          <div class="contact-field relative">
+            <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder=" " />
+            <label for="contact-email" class="contact-field-label">{t['contact.form.email']}</label>
+          </div>
+
+          <div class="contact-field contact-field--textarea relative">
+            <textarea id="contact-message" name="message" required rows="6" placeholder=" "></textarea>
+            <label for="contact-message" class="contact-field-label">{t['contact.form.message']}</label>
+          </div>
+
+          <p class="font-sans text-sm text-ink-primary/65 leading-normal m-0 mt-1">
+            {t['contact.form.privacy.short']}
+            <a href={routes.privacy} class="text-brand-primary no-underline">{t['contact.form.privacy.link']}</a>
+          </p>
+
+          <button
+            type="submit"
+            class="w-full mt-2 inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline whitespace-nowrap border-2 cursor-pointer transition-colors duration-200 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {t['contact.form.submit']}
+          </button>
+
+          <p class="contact-form-status m-0 py-3 px-3.5 rounded-xs text-sm leading-normal bg-brand-primary/6 text-brand-primary border border-brand-primary/20" data-status="success" hidden>
+            {t['contact.form.success']}
+          </p>
+          <p class="contact-form-status m-0 py-3 px-3.5 rounded-xs text-sm leading-normal bg-brand-error/6 text-brand-error border border-brand-error/20" data-status="error" hidden>
+            {t['contact.form.error']} <a href={EXTERNAL.mailto} class="text-inherit underline">{EXTERNAL.email}</a>
+          </p>
+        </form>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
+
+<script>
+  import { initContactForm } from '@/scripts/contact-form';
+  import { initContactMethods } from '@/scripts/contact-methods';
+  initContactForm();
+  initContactMethods();
+</script>
+
+<style>
+  .contact-section {
+    background: rgb(var(--brand-primary));
+  }
+
+  .method-card.is-copied [data-method-meta] {
+    color: rgb(var(--brand-primary));
+    font-weight: 600;
+  }
+
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form select,
+  .contact-form textarea {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: rgb(var(--ink-primary));
+    background: #ffffff;
+    border: 1px solid rgb(var(--ink-primary) / 0.25);
+    border-radius: 4px;
+    padding: 16px 14px;
+    transition: border-color 200ms ease;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .contact-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5l3 3 3-3' stroke='%230A0A0A' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+  }
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.5;
+    padding-top: 18px;
+  }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: rgb(var(--brand-primary));
+    border-width: 2px;
+    padding: 15px 13px;
+  }
+  .contact-form select:focus {
+    padding-right: 39px;
+  }
+  .contact-form textarea:focus {
+    padding-top: 17px;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: transparent;
+  }
+  .contact-field-label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    padding: 0 4px;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1;
+    color: rgb(var(--ink-primary) / 0.55);
+    background: #ffffff;
+    pointer-events: none;
+    transition: top 160ms ease, font-size 160ms ease, color 160ms ease, font-weight 160ms ease;
+  }
+  .contact-field--textarea .contact-field-label {
+    top: 18px;
+    transform: none;
+  }
+  .contact-form input:focus ~ .contact-field-label,
+  .contact-form input:not(:placeholder-shown) ~ .contact-field-label,
+  .contact-form textarea:focus ~ .contact-field-label,
+  .contact-form textarea:not(:placeholder-shown) ~ .contact-field-label {
+    top: 0;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgb(var(--brand-primary));
+  }
+
+  .contact-form input:user-invalid,
+  .contact-form textarea:user-invalid {
+    border-color: rgb(var(--brand-error));
+  }
+  .contact-form input:user-valid,
+  .contact-form textarea:user-valid {
+    border-color: rgb(var(--brand-primary));
+  }
+</style>

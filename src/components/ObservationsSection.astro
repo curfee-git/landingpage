@@ -8,103 +8,52 @@ interface Props {
 const { translations: t } = Astro.props;
 
 const cards = [
-  { icon: 'rule', title: t['observations.1.title'], text: t['observations.1.reality'] },
+  { icon: 'groups', title: t['observations.7.title'], text: t['observations.7.reality'] },
   { icon: 'account_tree', title: t['observations.2.title'], text: t['observations.2.reality'] },
   { icon: 'call_split', title: t['observations.3.title'], text: t['observations.3.reality'] },
-  { icon: 'code', title: t['observations.7.title'], text: t['observations.7.reality'] },
+  { icon: 'rule', title: t['observations.1.title'], text: t['observations.1.reality'] },
   { icon: 'psychology', title: t['observations.4.title'], text: t['observations.4.reality'] },
   { icon: 'route', title: t['observations.5.title'], text: t['observations.5.reality'] },
-  { icon: 'explore', title: t['observations.6.title'], text: t['observations.6.reality'] },
 ];
-
-const loop = [...cards, ...cards];
 ---
 
 <section
   id="observations"
-  class="py-20 sm:py-26 xl:py-36"
+  class="section-pad bg-surface-soft"
   aria-labelledby="observations-heading"
 >
   <div class="max-w-300 mx-auto px-gutter xl:px-0">
-    <div class="max-w-230">
-      <p class="font-sans text-sm font-extrabold tracking-wider uppercase text-brand-primary m-0 mb-4">
+    <header class="max-w-184 mb-16">
+      <p class="text-eyebrow text-brand-primary m-0">
         {t['observations.subtitle.status_quo']}
       </p>
       <h2
         id="observations-heading"
         data-speakable
-        class="font-sans text-3xl md:text-4xl font-extrabold leading-none tracking-tight text-balance break-words hyphens-auto m-0"
+        class="font-sans text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-6"
       >
         {t['observations.heading.status_quo']}
       </h2>
-    </div>
-  </div>
+    </header>
 
-  <div class="obs-carousel mt-12" role="region" aria-label={t['observations.heading.status_quo']}>
-    <ul class="obs-track flex w-max m-0 py-1 list-none" role="list">
-      {loop.map((card, i) => (
-        <li
-          class="flex flex-col shrink-0 grow-0 basis-80 min-h-55 mr-4 p-6 bg-surface-base ring-1 ring-inset ring-ink-primary/18 rounded-md backface-hidden"
-          aria-hidden={i >= cards.length ? 'true' : undefined}
-        >
-          <Icon name={card.icon} class="w-6 h-6 text-brand-primary shrink-0" />
-          <h3 class="text-title-medium font-semibold text-ink-primary mt-3 mb-2">{card.title}</h3>
-          <p class="text-body-medium text-ink-muted leading-relaxed">{card.text}</p>
+    <ul
+      class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6 m-0 p-0 list-none"
+      role="list"
+    >
+      {cards.map((card, i) => (
+        <li class="flex flex-col p-10 bg-white border border-ink-primary/13 rounded-lg">
+          <div class="flex items-center justify-between">
+            <p class="font-mono text-sm font-bold uppercase tracking-[0.04em] text-brand-primary m-0">
+              {String(i + 1).padStart(2, '0')}
+            </p>
+            <Icon name={card.icon} class="w-6 h-6 text-brand-primary shrink-0" aria-hidden="true" />
+          </div>
+          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mt-4 mb-2">
+            {card.title}
+          </h3>
+          <p class="text-body-medium text-ink-muted leading-relaxed m-0">{card.text}</p>
         </li>
       ))}
     </ul>
   </div>
 </section>
-
-<style>
-  .obs-carousel {
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-  }
-
-  .obs-track {
-    --obs-cards: 7;
-    --obs-card-w: 320px;
-    --obs-card-gap: 16px;
-    animation: obs-scroll 75s linear infinite;
-    will-change: transform;
-  }
-
-  .obs-track > li {
-    transform: translateZ(0);
-  }
-
-  .obs-carousel:hover .obs-track,
-  .obs-carousel:focus-within .obs-track {
-    animation-play-state: paused;
-  }
-
-  @keyframes obs-scroll {
-    from { transform: translate3d(0, 0, 0); }
-    to {
-      transform: translate3d(
-        calc(var(--obs-cards) * (var(--obs-card-w) + var(--obs-card-gap)) * -1),
-        0,
-        0
-      );
-    }
-  }
-
-  @media (max-width: 639px) {
-    .obs-track {
-      animation-duration: 45s;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .obs-carousel {
-      overflow-x: auto;
-      mask-image: none;
-      -webkit-mask-image: none;
-    }
-    .obs-track {
-      animation: none;
-    }
-  }
-</style>
