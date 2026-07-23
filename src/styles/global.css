@@ -2,7 +2,9 @@
 
 @font-face {
   font-family: "Space Grotesk";
-  src: url("/assets/fonts/space-grotesk/space-grotesk.woff2") format("woff2-variations");
+  src:
+    url("/assets/fonts/space-grotesk/space-grotesk.woff2") format("woff2") tech(variations),
+    url("/assets/fonts/space-grotesk/space-grotesk.woff2") format("woff2-variations");
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
@@ -209,6 +211,27 @@
   :focus-visible {
     outline: 2px solid rgb(var(--brand-primary));
     outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 60;
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+    background: rgb(var(--brand-primary));
+    color: rgb(var(--on-brand-primary));
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    transform: translateY(calc(-100% - 1rem));
+  }
+  .skip-link:focus-visible {
+    transform: none;
+    outline-color: rgb(var(--on-brand-primary));
+    outline-offset: -4px;
   }
 }
 

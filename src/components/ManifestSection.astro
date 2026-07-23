@@ -1,10 +1,8 @@
 ---
-import type { Translations } from '@/i18n/translations';
-
 interface Props {
-  translations: Translations;
+  text: string;
 }
-const { translations: t } = Astro.props;
+const { text } = Astro.props;
 ---
 
 <section
@@ -18,7 +16,7 @@ const { translations: t } = Astro.props;
       data-speakable
       class="font-sans text-3xl sm:text-4xl md:text-5xl font-bold leading-snug tracking-tight text-balance m-0 text-brand-primary-foreground"
     >
-      {t['manifest.text']}
+      {text}
     </h2>
   </div>
 </section>

@@ -221,20 +221,20 @@ const webSiteLd = {
   "@id": `${siteUrl}/#website`,
   "name": "Curfee",
   "alternateName": [
-    "Curfee Structural Architecture for systems, software, and workflows",
-    "Curfee Structural Architecture",
+    "Curfee Enterprise Architecture for grown IT landscapes",
+    "Curfee Enterprise Architecture",
     "curfee.com"
   ],
   "description": t['schema.website.description'],
   "url": siteUrl,
-  "inLanguage": "en",
+  "inLanguage": ["en", "de"],
   "publisher": { "@id": `${siteUrl}/#organization` },
   "creator": { "@id": `${siteUrl}/#founder` },
   "author": { "@id": `${siteUrl}/#founder` },
   "about": [
     { "@id": `${siteUrl}/#organization` },
     { "@id": `${siteUrl}/#founder` },
-    { "@id": `${siteUrl}/#decision-enforcement-principle` }
+    { "@id": `${siteUrl}/#decisions-that-enforce-themselves` }
   ],
   "mainEntity": { "@id": `${siteUrl}/#organization` }
 };
@@ -249,7 +249,7 @@ const speakableLd = {
   "about": { "@id": `${siteUrl}/#organization` },
   "author": { "@id": `${siteUrl}/#founder` },
   "publisher": { "@id": `${siteUrl}/#organization` },
-  "inLanguage": "en",
+  "inLanguage": locale,
   ...(dateModified && { "dateModified": dateModified }),
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -273,10 +273,8 @@ const speakableLd = {
     <meta name="color-scheme" content="light" />
 
 
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), browsing-topics=(), interest-cohort=(), fullscreen=(self), autoplay=()" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' data:; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.web3forms.com; frame-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://api.web3forms.com; frame-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -358,8 +356,6 @@ const speakableLd = {
     <link rel="apple-touch-icon" href="/assets/favicons/apple_touch_icon.png" sizes="180x180" />
     <link rel="manifest" href="/assets/favicons/site.webmanifest" />
     <meta name="theme-color" content="#003366" />
-    <meta name="msapplication-TileColor" content="#003366" />
-    <meta name="msapplication-TileImage" content="/assets/favicons/android_chrome_192x192.png" />
 
 
     <link rel="me" href={EXTERNAL.linkedin} />
@@ -390,8 +386,9 @@ const speakableLd = {
 
   </head>
   <body class="flex min-h-dvh flex-col">
+    <a href="#main-content" class="skip-link">{t['a11y.skip.to.content']}</a>
     <Header />
-    <main class="flex-1 flex flex-col">
+    <main id="main-content" class="flex-1 flex flex-col">
       <slot />
     </main>
     <Footer />

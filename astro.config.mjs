@@ -2,50 +2,21 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import compress from "@playform/compress";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeExternalLinks from "rehype-external-links";
 import { resolve } from "node:path";
 
 const buildDate = new Date().toISOString();
 
 export default defineConfig({
   site: "https://curfee.com",
+  // Astro 7 defaults to 'jsx' whitespace handling, which strips the space
+  // before inline links (e.g. "Phone: <a>"). Keep HTML-aware compression.
+  compressHTML: true,
   i18n: {
     defaultLocale: "en",
     locales: ["en", "de"],
     routing: { prefixDefaultLocale: false },
   },
   prefetch: { defaultStrategy: 'hover' },
-  markdown: {
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypeExternalLinks,
-        {
-          target: '_blank',
-          rel: ['noopener', 'noreferrer'],
-          protocols: ['http', 'https'],
-        },
-      ],
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'append',
-          test: ['h2', 'h3'],
-          properties: {
-            class: 'heading-anchor',
-            ariaHidden: 'true',
-            tabIndex: -1,
-          },
-          content: {
-            type: 'text',
-            value: '#',
-          },
-        },
-      ],
-    ],
-  },
   integrations: [
     sitemap({
       changefreq: 'monthly',
@@ -53,7 +24,7 @@ export default defineConfig({
       filter: (page) => !/\/404\/?$/.test(page),
       serialize(item) {
         const url = new URL(item.url);
-        const path = url.pathname;
+        const path = url.pathname.replace(/^\/de(\/|$)/, "/");
         if (path === "/") {
           item.lastmod = buildDate;
           item.priority = 1.0;
@@ -69,7 +40,9 @@ export default defineConfig({
       },
     }),
     compress({
-      CSS: true,
+      // CSS is already minified by Vite (lightningcss); csso drops
+      // `@media (width >= …)` range-syntax blocks emitted by Tailwind v4.
+      CSS: false,
       HTML: true,
       Image: true,
       JavaScript: true,

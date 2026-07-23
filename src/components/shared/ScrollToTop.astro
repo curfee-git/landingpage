@@ -25,15 +25,30 @@ const t = getTranslations(Astro.currentLocale);
   }
 
   function smoothScrollToTop(): void {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, 0);
+      return;
+    }
+
     const start = window.scrollY;
     const startTime = performance.now();
     const duration = Math.min(2000, 600 + start * 0.25);
 
+    let cancelled = false;
+    const cancel = () => { cancelled = true; };
+    const cancelEvents = ['wheel', 'touchstart', 'keydown'] as const;
+    for (const type of cancelEvents) window.addEventListener(type, cancel, { passive: true, once: true });
+    const removeCancelListeners = () => {
+      for (const type of cancelEvents) window.removeEventListener(type, cancel);
+    };
+
     const step = (currentTime: number) => {
+      if (cancelled) { removeCancelListeners(); return; }
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       window.scrollTo(0, start * (1 - easeInOutSine(progress)));
       if (progress < 1) requestAnimationFrame(step);
+      else removeCancelListeners();
     };
 
     requestAnimationFrame(step);

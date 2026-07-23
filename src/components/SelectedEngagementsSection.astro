@@ -8,19 +8,30 @@ const engagements = [
     mark: '01',
     title: t['engagements.1.title'],
     body: t['engagements.1.body'],
+    mechanism: t['engagements.1.mechanism'],
     aria: t['engagements.1.diagram.aria'],
   },
   {
     mark: '02',
     title: t['engagements.2.title'],
     body: t['engagements.2.body'],
+    mechanism: t['engagements.2.mechanism'],
     aria: t['engagements.2.diagram.aria'],
   },
   {
     mark: '03',
     title: t['engagements.3.title'],
     body: t['engagements.3.body'],
+    mechanism: t['engagements.3.mechanism'],
     aria: t['engagements.3.diagram.aria'],
+  },
+  {
+    mark: '04',
+    label: t['engagements.4.label'],
+    title: t['engagements.4.title'],
+    body: t['engagements.4.body'],
+    mechanism: t['engagements.4.mechanism'],
+    aria: t['engagements.4.diagram.aria'],
   },
 ];
 ---
@@ -42,6 +53,9 @@ const engagements = [
       >
         {t['engagements.heading']}
       </h2>
+      <p class="text-body-medium text-ink-muted leading-relaxed mt-6 m-0 max-w-prose">
+        {t['engagements.lede']}
+      </p>
     </header>
 
     <div class="flex flex-col gap-20 lg:gap-28">
@@ -49,14 +63,26 @@ const engagements = [
         <article class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16 items-center">
 
           <div class={`lg:col-span-7 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
-            <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
-              {e.mark}
-            </p>
+            <div class="flex items-center gap-4">
+              <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
+                {e.mark}
+              </p>
+              {'label' in e && e.label && (
+                <p class="m-0">
+                  <span class="inline-flex items-center font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-brand-primary border border-brand-primary/25 bg-brand-primary/4 rounded-full px-3 py-1">
+                    {e.label}
+                  </span>
+                </p>
+              )}
+            </div>
             <h3 class="font-sans text-2xl md:text-3xl font-bold leading-tight tracking-tight text-balance break-words hyphens-auto m-0 mt-4 text-ink-primary">
               {e.title}
             </h3>
             <p class="font-sans text-lg leading-relaxed text-ink-muted m-0 mt-5 max-w-[62ch]">
               {e.body}
+            </p>
+            <p class="font-mono text-sm font-bold text-brand-primary m-0 mt-5 max-w-[62ch]">
+              {e.mechanism}
             </p>
           </div>
 
@@ -213,6 +239,46 @@ const engagements = [
                         <div class="h-1.5 rounded-full bg-ink-primary/10 w-full mb-1.5"></div>
                         <div class="h-1.5 rounded-full bg-ink-primary/10 w-2/3"></div>
                       </div>
+                    </div>
+                  </div>
+                )}
+
+                {i === 3 && (
+                  <div class="flex flex-col">
+                    <div class="border border-ink-primary/13 rounded-md p-3.5">
+                      <p class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta m-0 mb-3">
+                        {t['engagements.4.diagram.title']}
+                      </p>
+                      <div class="flex flex-col gap-2">
+                        <div class="flex items-center justify-between gap-3 bg-surface-base rounded-md px-3.5 py-2.5">
+                          <span class="font-sans text-sm font-medium text-ink-muted truncate">{t['engagements.4.diagram.check.1']}</span>
+                          <span class="flex items-center gap-1.5 shrink-0 text-brand-primary">
+                            <svg viewBox="0 0 16 16" class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+                            <span class="font-sans text-xs font-bold">{t['engagements.4.diagram.passed']}</span>
+                          </span>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 bg-surface-base rounded-md px-3.5 py-2.5">
+                          <span class="font-sans text-sm font-medium text-ink-muted truncate">{t['engagements.4.diagram.check.2']}</span>
+                          <span class="flex items-center gap-1.5 shrink-0 text-brand-primary">
+                            <svg viewBox="0 0 16 16" class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+                            <span class="font-sans text-xs font-bold">{t['engagements.4.diagram.passed']}</span>
+                          </span>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 bg-brand-error/8 border border-brand-error/25 rounded-md px-3.5 py-2.5">
+                          <span class="font-sans text-sm font-medium text-brand-error truncate">{t['engagements.4.diagram.check.3']}</span>
+                          <span class="flex items-center gap-1 shrink-0 text-brand-error">
+                            <svg viewBox="0 0 16 16" class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+                            <span class="font-sans text-xs font-bold">{t['engagements.4.diagram.failed']}</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex justify-center py-1.5">
+                      <svg viewBox="0 0 16 22" class="w-3.5 h-[1.2rem] text-brand-error/50"><path d="M8 2v12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M4.7 13.6h6.6L8 18.8z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 border border-brand-error/25 bg-brand-error/8 rounded-md px-4 py-2.5">
+                      <svg viewBox="0 0 16 16" class="w-3.5 h-3.5 shrink-0 text-brand-error" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+                      <span class="font-sans text-sm font-bold text-brand-error">{t['engagements.4.diagram.blocked']}</span>
                     </div>
                   </div>
                 )}

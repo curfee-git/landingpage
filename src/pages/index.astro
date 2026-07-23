@@ -2,14 +2,18 @@
 import Layout from '@/layouts/Layout.astro';
 import HeroSection from '@/components/HeroSection.astro';
 import WhyCurfeeSection from '@/components/WhyCurfeeSection.astro';
-import ObservationsSection from '@/components/ObservationsSection.astro';
+import PatternSection from '@/components/PatternSection.astro';
 import SelectedEngagementsSection from '@/components/SelectedEngagementsSection.astro';
+import MethodSection from '@/components/MethodSection.astro';
+import EngagementSection from '@/components/EngagementSection.astro';
 import AboutSection from '@/components/AboutSection.astro';
 import ManifestSection from '@/components/ManifestSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
+import FaqSection from '@/components/FaqSection.astro';
 import { getTranslations } from '@/i18n/translations';
 
 const t = getTranslations(Astro.currentLocale);
+const locale = Astro.currentLocale === 'de' ? 'de' : 'en';
 
 const buildDate = new Date().toISOString().slice(0, 10);
 
@@ -36,24 +40,22 @@ const serviceLd = {
   },
   "serviceOutput": t['schema.service.output'],
   "termsOfService": "https://curfee.com/imprint/",
-  "isRelatedTo": { "@id": "https://curfee.com/#decision-enforcement-principle" },
+  "isRelatedTo": { "@id": "https://curfee.com/#decisions-that-enforce-themselves" },
   "availableLanguage": ["en", "de"]
 };
 
-const decisionEnforcementLd = {
+const mechanismLd = {
   "@context": "https://schema.org",
   "@type": "DefinedTerm",
-  "@id": "https://curfee.com/#decision-enforcement-principle",
-  "name": t['schema.decision.enforcement.name'],
+  "@id": "https://curfee.com/#decisions-that-enforce-themselves",
+  "name": t['schema.mechanism.name'],
   "alternateName": [
-    "Decision Enforcement",
-    "Decision Enforcement Principle",
-    "Curfee Decision Enforcement Principle",
-    "DEP"
+    "Machine-checked decisions",
+    "Self-checking decisions"
   ],
-  "description": t['schema.decision.enforcement.description'],
-  "termCode": "decision-enforcement-principle",
-  "url": "https://curfee.com/#decision-enforcement-principle",
+  "description": t['schema.mechanism.description'],
+  "termCode": "decisions-that-enforce-themselves",
+  "url": "https://curfee.com/#decisions-that-enforce-themselves",
   "inDefinedTermSet": {
     "@type": "DefinedTermSet",
     "@id": "https://curfee.com/#glossary",
@@ -67,7 +69,29 @@ const decisionEnforcementLd = {
   "creator": { "@id": "https://curfee.com/#founder" }
 };
 
-const jsonLd = [serviceLd, decisionEnforcementLd];
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://curfee.com/#faq",
+  "isPartOf": { "@id": "https://curfee.com/#website" },
+  "about": { "@id": "https://curfee.com/#organization" },
+  "author": { "@id": "https://curfee.com/#founder" },
+  "inLanguage": locale,
+  "mainEntity": [
+    { "q": t['faq.1.question'], "a": t['faq.1.answer'] },
+    { "q": t['faq.2.question'], "a": t['faq.2.answer'] },
+    { "q": t['faq.3.question'], "a": t['faq.3.answer'] },
+    { "q": t['faq.4.question'], "a": t['faq.4.answer'] },
+    { "q": t['faq.5.question'], "a": t['faq.5.answer'] },
+    { "q": t['faq.6.question'], "a": t['faq.6.answer'] },
+  ].map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a }
+  }))
+};
+
+const jsonLd = [serviceLd, mechanismLd, faqLd];
 ---
 
 <Layout
@@ -79,10 +103,13 @@ const jsonLd = [serviceLd, decisionEnforcementLd];
   hasSpeakable={true}
 >
   <HeroSection translations={t} />
-  <ObservationsSection translations={t} />
-  <ManifestSection translations={t} />
-  <WhyCurfeeSection translations={t} />
-  <AboutSection translations={t} />
+  <PatternSection translations={t} />
   <SelectedEngagementsSection />
+  <WhyCurfeeSection translations={t} />
+  <MethodSection translations={t} />
+  <ManifestSection text={t['method.closer']} />
+  <EngagementSection translations={t} />
+  <AboutSection translations={t} />
+  <FaqSection translations={t} />
   <ContactSection translations={t} />
 </Layout>

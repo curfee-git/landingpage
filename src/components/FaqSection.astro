@@ -1,0 +1,64 @@
+---
+import type { Translations } from '@/i18n/translations';
+
+interface Props {
+  translations: Translations;
+}
+const { translations: t } = Astro.props;
+
+const items = [
+  { question: t['faq.1.question'], answer: t['faq.1.answer'] },
+  { question: t['faq.2.question'], answer: t['faq.2.answer'] },
+  { question: t['faq.3.question'], answer: t['faq.3.answer'] },
+  { question: t['faq.4.question'], answer: t['faq.4.answer'] },
+  { question: t['faq.5.question'], answer: t['faq.5.answer'] },
+  { question: t['faq.6.question'], answer: t['faq.6.answer'] },
+];
+---
+
+<section
+  id="faq"
+  class="section-pad bg-surface-soft"
+  aria-labelledby="faq-heading"
+>
+  <div class="max-w-300 mx-auto px-gutter xl:px-0">
+    <header class="max-w-184 mx-auto text-center mb-14 lg:mb-16">
+      <p class="text-eyebrow text-brand-primary m-0">
+        {t['faq.eyebrow']}
+      </p>
+      <h2
+        id="faq-heading"
+        data-speakable
+        class="font-sans text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-6"
+      >
+        {t['faq.heading']}
+      </h2>
+    </header>
+
+    <div class="max-w-208 mx-auto min-w-0 bg-white border border-ink-primary/13 rounded-lg overflow-hidden">
+        {items.map((item, i) => (
+          <details
+            name="faq"
+            open={i === 0}
+            class:list={['group', i > 0 && 'border-t border-ink-primary/13']}
+          >
+            <summary class="grid grid-cols-[auto_1fr_auto] items-baseline gap-x-5 px-6 sm:px-8 py-6 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden transition-colors hover:bg-surface-soft/60">
+              <span class="font-mono text-sm font-bold text-brand-primary" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="font-sans text-lg md:text-xl font-bold text-ink-primary m-0 transition-colors group-hover:text-brand-primary group-open:text-brand-primary">
+                {item.question}
+              </h3>
+              <span
+                class="font-mono text-lg leading-none text-ink-muted self-center transition-transform duration-200 group-open:rotate-45 group-open:text-brand-primary"
+                aria-hidden="true"
+              >+</span>
+            </summary>
+            <p data-speakable class="text-body-medium text-ink-muted leading-relaxed m-0 px-6 sm:px-8 pb-7 sm:pl-[calc(2rem+2ch+1.25rem)] max-w-[75ch]">
+              {item.answer}
+            </p>
+          </details>
+        ))}
+    </div>
+  </div>
+</section>

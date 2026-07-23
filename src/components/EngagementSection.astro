@@ -1,0 +1,75 @@
+---
+import type { Translations } from '@/i18n/translations';
+
+interface Props {
+  translations: Translations;
+}
+const { translations: t } = Astro.props;
+
+const phases = [
+  { mark: '01', title: t['engagement.1.title'], body: t['engagement.1.body'] },
+  { mark: '02', title: t['engagement.2.title'], body: t['engagement.2.body'] },
+  { mark: '03', title: t['engagement.3.title'], body: t['engagement.3.body'] },
+];
+
+const domains = [
+  t['engagement.domain.1'],
+  t['engagement.domain.2'],
+  t['engagement.domain.3'],
+  t['engagement.domain.4'],
+  t['engagement.domain.5'],
+  t['engagement.domain.6'],
+];
+---
+
+<section
+  id="engagement"
+  class="section-pad bg-surface-soft"
+  aria-labelledby="engagement-heading"
+>
+  <div class="max-w-300 mx-auto px-gutter xl:px-0">
+    <header class="max-w-184 mb-16">
+      <p class="text-eyebrow text-brand-primary m-0">
+        {t['engagement.eyebrow']}
+      </p>
+      <h2
+        id="engagement-heading"
+        data-speakable
+        class="font-sans text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-6"
+      >
+        {t['engagement.heading']}
+      </h2>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {phases.map((p) => (
+        <article class="flex flex-col p-10 bg-white border border-ink-primary/13 rounded-lg">
+          <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
+            {p.mark}
+          </p>
+          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mt-4 mb-2 leading-tight">
+            {p.title}
+          </h3>
+          <p class="text-body-medium text-ink-muted leading-relaxed m-0">
+            {p.body}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 lg:mt-16">
+      <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary m-0 mb-4">
+        {t['engagement.domains.heading']}
+      </p>
+      <ul class="m-0 p-0 list-none grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 max-w-184">
+        {domains.map((d) => (
+          <li class="font-sans text-base text-ink-muted leading-relaxed">{d}</li>
+        ))}
+      </ul>
+      <p data-speakable class="font-sans text-lg font-bold text-ink-primary leading-relaxed m-0 mt-10 max-w-[65ch]">
+        {t['engagement.bring']}
+      </p>
+    </div>
+
+  </div>
+</section>

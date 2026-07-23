@@ -8,31 +8,33 @@ interface Props {
 const { translations: t } = Astro.props;
 
 const cards = [
-  { icon: 'groups', title: t['observations.7.title'], text: t['observations.7.reality'] },
-  { icon: 'account_tree', title: t['observations.2.title'], text: t['observations.2.reality'] },
-  { icon: 'call_split', title: t['observations.3.title'], text: t['observations.3.reality'] },
-  { icon: 'rule', title: t['observations.1.title'], text: t['observations.1.reality'] },
-  { icon: 'psychology', title: t['observations.4.title'], text: t['observations.4.reality'] },
-  { icon: 'route', title: t['observations.5.title'], text: t['observations.5.reality'] },
+  { icon: 'groups', title: t['pattern.7.title'], text: t['pattern.7.reality'] },
+  { icon: 'account_tree', title: t['pattern.2.title'], text: t['pattern.2.reality'] },
+  { icon: 'call_split', title: t['pattern.3.title'], text: t['pattern.3.reality'] },
+  { icon: 'rule', title: t['pattern.1.title'], text: t['pattern.1.reality'] },
+  { icon: 'route', title: t['pattern.5.title'], text: t['pattern.5.reality'] },
+  { icon: 'autorenew', title: t['pattern.6.title'], text: t['pattern.6.reality'] },
 ];
 ---
 
 <section
-  id="observations"
+  id="pattern"
   class="section-pad bg-surface-soft"
-  aria-labelledby="observations-heading"
+  aria-labelledby="pattern-heading"
 >
+  {/* Legacy anchor: external links to /#observations keep landing here */}
+  <div id="observations" aria-hidden="true"></div>
   <div class="max-w-300 mx-auto px-gutter xl:px-0">
     <header class="max-w-184 mb-16">
       <p class="text-eyebrow text-brand-primary m-0">
-        {t['observations.subtitle.status_quo']}
+        {t['pattern.subtitle.status_quo']}
       </p>
       <h2
-        id="observations-heading"
+        id="pattern-heading"
         data-speakable
         class="font-sans text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-6"
       >
-        {t['observations.heading.status_quo']}
+        {t['pattern.heading.status_quo']}
       </h2>
     </header>
 

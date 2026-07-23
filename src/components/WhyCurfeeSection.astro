@@ -16,14 +16,6 @@ const startItems = [
   t['whycurfee.start.2'],
   t['whycurfee.start.3'],
 ].filter((p) => p && p.trim());
-
-const payoff = t['whycurfee.payoff'];
-
-const principles = [
-  { mark: '01', title: t['howiwork.1.title'], body: t['howiwork.1.body'] },
-  { mark: '02', title: t['howiwork.2.title'], body: t['howiwork.2.body'] },
-  { mark: '03', title: t['howiwork.3.title'], body: t['howiwork.3.body'] },
-];
 ---
 
 <section
@@ -49,6 +41,9 @@ const principles = [
       </div>
 
       <div class="lg:col-span-3 flex flex-col gap-5">
+        <p data-speakable class="font-sans text-xl leading-relaxed font-bold text-ink-primary m-0 max-w-[65ch]">
+          {t['whycurfee.opening']}
+        </p>
         {paragraphs.map((p) => (
           <p data-speakable class="font-sans text-lg leading-relaxed text-ink-muted m-0 max-w-[65ch]">
             {p}
@@ -62,47 +57,10 @@ const principles = [
             </li>
           ))}
         </ol>
-        {payoff && (
-          <p data-speakable class="font-sans text-lg leading-relaxed font-bold text-brand-primary m-0 max-w-[65ch]">
-            {payoff}
-          </p>
-        )}
-      </div>
-    </div>
-
-    <div class="mt-16 lg:mt-20 bg-white border border-ink-primary/13 rounded-lg overflow-hidden shadow-[0_1px_3px_rgb(var(--ink-primary)/0.08),0_12px_32px_rgb(var(--ink-primary)/0.07)]">
-
-      <div class="px-8 lg:px-10 py-4 border-b border-ink-primary/10">
-        <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary m-0">
-          {t['howiwork.eyebrow']}
+        <p data-speakable class="font-sans text-lg leading-relaxed font-bold text-brand-primary m-0 max-w-[65ch]">
+          {t['whycurfee.highlight']}
         </p>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-ink-primary/10">
-        {principles.map((p) => (
-          <article class="p-8 lg:p-10">
-            <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
-              {p.mark}
-            </p>
-            <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mt-4 mb-2 leading-tight">
-              {p.title}
-            </h3>
-            <p class="text-body-medium text-ink-muted leading-relaxed m-0">
-              {p.body}
-            </p>
-          </article>
-        ))}
-      </div>
-
-      <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-8 lg:px-10 py-5 bg-brand-primary text-brand-primary-foreground">
-        <p data-speakable class="font-sans text-base font-bold m-0">
-          {t['whycurfee.conclusion']}
-        </p>
-        <p class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-brand-primary-foreground/70 m-0">
-          {t['whycurfee.conclusion.label']}
-        </p>
-      </div>
-
     </div>
 
   </div>

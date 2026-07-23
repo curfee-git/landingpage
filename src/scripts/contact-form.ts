@@ -19,6 +19,7 @@ async function handleSubmit(event: SubmitEvent): Promise<void> {
       method: 'POST',
       body: formData,
       headers: { Accept: 'application/json' },
+      signal: AbortSignal.timeout(15_000),
     });
     const data = await res.json().catch(() => ({} as Record<string, unknown>));
     const ok = res.ok && (data.success === true || data.success === undefined);

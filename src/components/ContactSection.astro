@@ -157,10 +157,10 @@ const contactMethods: ContactMethod[] = [
             {t['contact.form.submit']}
           </button>
 
-          <p class="contact-form-status m-0 py-3 px-3.5 rounded-xs text-sm leading-normal bg-brand-primary/6 text-brand-primary border border-brand-primary/20" data-status="success" hidden>
+          <p role="status" class="contact-form-status m-0 py-3 px-3.5 rounded-xs text-sm leading-normal bg-brand-primary/6 text-brand-primary border border-brand-primary/20" data-status="success" hidden>
             {t['contact.form.success']}
           </p>
-          <p class="contact-form-status m-0 py-3 px-3.5 rounded-xs text-sm leading-normal bg-brand-error/6 text-brand-error border border-brand-error/20" data-status="error" hidden>
+          <p role="alert" class="contact-form-status m-0 py-3 px-3.5 rounded-xs text-sm leading-normal bg-brand-error/6 text-brand-error border border-brand-error/20" data-status="error" hidden>
             {t['contact.form.error']} <a href={EXTERNAL.mailto} class="text-inherit underline">{EXTERNAL.email}</a>
           </p>
         </form>
