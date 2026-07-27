@@ -1,6 +1,6 @@
 {
   "a11y.skip.to.content": "Zum Inhalt springen",
-  "hero.heading": "Wie viel <span class=\"text-brand-primary\">Zeit</span> verbringt dein Team jede Woche mit Arbeit, die <span class=\"text-brand-primary\">das System</span> erledigen sollte?",
+  "hero.heading": "Wie viel <span class=\"text-brand-primary\">Zeit</span> verbringt dein Team jede Woche mit Arbeit, die <span class=\"text-brand-primary\">deine Systeme</span> erledigen sollten?",
   "hero.eyebrow": "Struktur statt Disziplin",
   "hero.subtitle": "Ich begleite dich dabei, Entscheidungen in deine Systeme einzubauen: solche, die längst getroffen sind und in deinen Wikis und Protokollen liegen, und solche, die erst noch getroffen werden müssen. Ab dann setzt das System sie durch, ohne dass jemand hinschauen oder sie pflegen muss.",
   "hero.mode": "Das Wissen bleibt bei deinem Team: Ich entwerfe das Vorgehen, das wir gemeinsam abstimmen, leite die Umsetzung und helfe mit, wo es nötig ist.",
@@ -47,7 +47,7 @@
   "hero.visual.row.5": "Dokumentation lesen",
   "hero.visual.reduce": "Reduzieren auf das, was zählt",
   "hero.visual.embed": "Entscheidungen in die Struktur einbauen",
-  "hero.visual.takeover": "Die Struktur übernimmt das",
+  "hero.visual.takeover": "Die Struktur übernimmt ab jetzt",
   "hero.visual.badge.discipline": "Disziplinabhängig",
   "hero.visual.result": "Integrity by Design",
   "nav.pattern": "Muster",

@@ -107,18 +107,25 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
     --header-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
     transition: top var(--header-duration) var(--header-ease);
   }
+  /* Firefox refuses to sample the backdrop for a negative-z-index pseudo and for
+     3D-transformed filter layers, so the glass layer sits at z-index 0 with the
+     header content lifted above it instead. */
   [data-header]::before {
     content: '';
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
     background: transparent;
     backdrop-filter: blur(12px) saturate(120%);
     -webkit-backdrop-filter: blur(12px) saturate(120%);
-    transform: translateZ(0);
     transition: left var(--header-duration) var(--header-ease),
                 right var(--header-duration) var(--header-ease),
                 border-radius var(--header-duration) var(--header-ease);
+  }
+  [data-header-shell],
+  [data-mobile-menu] {
+    position: relative;
+    z-index: 1;
   }
   [data-header-shell] {
     transition: height var(--header-duration) var(--header-ease),

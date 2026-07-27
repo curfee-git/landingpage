@@ -62,10 +62,10 @@ const metaLabel =
     </header>
 
     {/* Three offers side by side. Subgrid puts the same block on the same line in every card. */}
-    {/* Each card: flat head (title, outcome, terms so the price reads early), then the two list blocks as bordered mini-cards, then flat "How it works" prose. The subgrid stretches each mini-card row to equal height across cards. */}
-    <div class="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-[auto_auto_repeat(3,auto)_auto] gap-5 lg:gap-y-0">
+    {/* Each card: flat head (title, outcome, terms so the price reads early), then the two list blocks as bordered mini-cards, then flat "How it works" prose. The subgrid chains down into the list items, so item 1/2/3 of each block sits on the same row in every card: 12 rows total (head 3, two blocks of label + 3 items, how). */}
+    <div class="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-[repeat(12,auto)] gap-5 lg:gap-y-0">
       {modules.map((p) => (
-        <article class="bg-white border border-ink-primary/13 rounded-lg p-6 shadow-[0_1px_3px_rgb(var(--ink-primary)/0.06),0_12px_32px_rgb(var(--ink-primary)/0.06)] transition-all duration-300 ease-standard hover:-translate-y-1.5 hover:border-brand-primary/30 hover:shadow-[0_2px_6px_rgb(var(--ink-primary)/0.08),0_22px_48px_rgb(var(--brand-primary)/0.14)] lg:grid lg:grid-rows-subgrid lg:row-span-6">
+        <article class="bg-white border border-ink-primary/13 rounded-lg p-6 shadow-[0_1px_3px_rgb(var(--ink-primary)/0.06),0_12px_32px_rgb(var(--ink-primary)/0.06)] transition-all duration-300 ease-standard hover:-translate-y-1.5 hover:border-brand-primary/30 hover:shadow-[0_2px_6px_rgb(var(--ink-primary)/0.08),0_22px_48px_rgb(var(--brand-primary)/0.14)] lg:grid lg:grid-rows-subgrid lg:row-span-12">
 
           <h3 class="flex items-baseline gap-4 font-sans text-xl xl:text-2xl font-bold text-ink-primary m-0 leading-tight tracking-tight">
             <span
@@ -93,13 +93,14 @@ const metaLabel =
           </dl>
 
           {p.blocks.map((b, blockIndex) => (
-            <div class={blockIndex === 0
+            <div class={`lg:grid lg:grid-rows-subgrid lg:row-span-4 ${blockIndex === 0
               ? 'mt-4 border border-brand-primary/15 bg-brand-primary/4 rounded-md p-4'
-              : 'mt-4 border border-ink-primary/13 rounded-md p-4'}>
+              : 'mt-4 border border-ink-primary/13 rounded-md p-4'}`}>
               <p class={metaLabel}>{b.label}</p>
-              <ul class="m-0 mt-1.5 p-0 list-none flex flex-col gap-1.5">
+              {/* lg:contents lifts the items into the block subgrid, one row per item, so they align across cards. */}
+              <ul role="list" class="m-0 mt-1.5 p-0 list-none flex flex-col gap-1.5 lg:contents">
                 {b.items.map((item) => (
-                  <li class="flex items-start gap-2.5 font-sans text-base text-ink-muted leading-normal">
+                  <li class="flex items-start gap-2.5 font-sans text-base text-ink-muted leading-normal lg:mt-1.5">
                     <Icon name={b.icon} class={`w-4 h-4 shrink-0 mt-[0.22em] ${b.tone}`} />
                     <span>{item}</span>
                   </li>
