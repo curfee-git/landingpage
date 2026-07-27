@@ -35,15 +35,11 @@ const startItems = [
           data-speakable
           class="font-sans text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-6"
         >
-          {t['whycurfee.heading.1'] && <span class="block">{t['whycurfee.heading.1']}</span>}
           <span class="block text-brand-primary">{t['whycurfee.heading.2']}</span>
         </h2>
       </div>
 
       <div class="lg:col-span-3 flex flex-col gap-5">
-        <p data-speakable class="font-sans text-xl leading-relaxed font-bold text-ink-primary m-0 max-w-[65ch]">
-          {t['whycurfee.opening']}
-        </p>
         {paragraphs.map((p) => (
           <p data-speakable class="font-sans text-lg leading-relaxed text-ink-muted m-0 max-w-[65ch]">
             {p}

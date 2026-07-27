@@ -6,17 +6,34 @@ interface Props {
 }
 const { translations: t } = Astro.props;
 
-const principles = [
-  { mark: '01', title: t['howiwork.1.title'], body: t['howiwork.1.body'] },
-  { mark: '02', title: t['howiwork.2.title'], body: t['howiwork.2.body'] },
-  { mark: '03', title: t['howiwork.3.title'], body: t['howiwork.3.body'] },
-  { mark: '04', title: t['howiwork.4.title'], body: t['howiwork.4.body'] },
+const groups = [
+  {
+    label: t['howiwork.group.1'],
+    principles: [
+      { mark: '01', title: t['howiwork.1.title'], body: t['howiwork.1.body'] },
+      { mark: '02', title: t['howiwork.2.title'], body: t['howiwork.2.body'] },
+    ],
+  },
+  {
+    label: t['howiwork.group.2'],
+    principles: [
+      { mark: '03', title: t['howiwork.3.title'], body: t['howiwork.3.body'] },
+      { mark: '04', title: t['howiwork.4.title'], body: t['howiwork.4.body'] },
+    ],
+  },
+  {
+    label: t['howiwork.group.3'],
+    principles: [
+      { mark: '05', title: t['howiwork.5.title'], body: t['howiwork.5.body'] },
+    ],
+  },
 ];
 
 const origins = [
   { title: t['method.origin.1.title'], body: t['method.origin.1.body'] },
   { title: t['method.origin.2.title'], body: t['method.origin.2.body'] },
   { title: t['method.origin.3.title'], body: t['method.origin.3.body'] },
+  { title: t['method.origin.4.title'], body: t['method.origin.4.body'] },
 ];
 ---
 
@@ -26,7 +43,8 @@ const origins = [
   aria-labelledby="method-heading"
 >
   <div class="max-w-300 mx-auto px-gutter xl:px-0">
-    <header class="max-w-184 mb-16">
+
+    <header class="max-w-184 mb-14 lg:mb-18">
       <p class="text-eyebrow text-brand-primary m-0">
         {t['method.eyebrow']}
       </p>
@@ -39,36 +57,44 @@ const origins = [
       </h2>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {principles.map((p) => (
-        <article class="flex flex-col p-10 bg-white border border-ink-primary/13 rounded-lg">
-          <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
-            {p.mark}
-          </p>
-          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mt-4 mb-2 leading-tight">
-            {p.title}
+    <div class="flex flex-col gap-14 lg:gap-16">
+      {groups.map((g) => (
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-5">
+          <h3 class="lg:col-span-3 font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary m-0 lg:mt-2">
+            {g.label}
           </h3>
-          <p class="text-body-medium text-ink-muted leading-relaxed m-0">
-            {p.body}
-          </p>
-        </article>
+          <div class="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-9">
+            {g.principles.map((p) => (
+              <article class="group max-w-[48ch]">
+                <h4 class="flex items-center gap-5 font-sans text-xl lg:text-2xl font-bold text-ink-primary m-0 leading-tight tracking-tight">
+                  <span
+                    class="font-mono text-2xl lg:text-3xl text-brand-primary/40 transition-colors duration-300 group-hover:text-brand-primary leading-none tracking-tight shrink-0"
+                    aria-hidden="true"
+                  >
+                    {p.mark}
+                  </span>
+                  {p.title}
+                </h4>
+                <p class="font-sans text-base text-ink-muted leading-relaxed m-0 mt-3">
+                  {p.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
       ))}
     </div>
 
-    <div class="mt-16 lg:mt-20">
-      <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary m-0 mb-6">
+    <div class="mt-16 lg:mt-20 bg-surface-soft rounded-lg p-8 lg:p-12">
+      <h3 class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary m-0 mb-7">
         {t['method.origins.heading']}
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-8">
         {origins.map((o) => (
-          <div>
-            <h3 class="font-sans text-lg font-bold text-ink-primary m-0 mb-2 leading-tight">
-              {o.title}
-            </h3>
-            <p class="text-body-medium text-ink-muted leading-relaxed m-0">
-              {o.body}
-            </p>
-          </div>
+          <p class="font-sans text-base text-ink-muted leading-relaxed m-0">
+            <span class="block font-bold text-ink-primary mb-1">{o.title}</span>
+            {o.body}
+          </p>
         ))}
       </div>
     </div>

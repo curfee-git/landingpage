@@ -6,19 +6,56 @@ interface Props {
 }
 const { translations: t } = Astro.props;
 
-const phases = [
-  { mark: '01', title: t['engagement.1.title'], body: t['engagement.1.body'] },
-  { mark: '02', title: t['engagement.2.title'], body: t['engagement.2.body'] },
-  { mark: '03', title: t['engagement.3.title'], body: t['engagement.3.body'] },
-];
+const labels = {
+  do: t['engagement.label.do'],
+  expect: t['engagement.label.expect'],
+  expectNot: t['engagement.label.expect.not'],
+  how: t['engagement.label.how'],
+};
 
-const domains = [
-  t['engagement.domain.1'],
-  t['engagement.domain.2'],
-  t['engagement.domain.3'],
-  t['engagement.domain.4'],
-  t['engagement.domain.5'],
-  t['engagement.domain.6'],
+const modules = [
+  {
+    mark: '01',
+    title: t['engagement.1.title'],
+    blocks: [
+      { label: labels.do, text: t['engagement.1.do'] },
+      { label: labels.expect, text: t['engagement.1.expect'] },
+      { label: labels.expectNot, text: t['engagement.1.expect.not'] },
+      { label: labels.how, text: t['engagement.1.how'] },
+    ],
+    facts: [
+      { label: t['engagement.1.fact.1.label'], value: t['engagement.1.fact.1.value'] },
+      { label: t['engagement.1.fact.2.label'], value: t['engagement.1.fact.2.value'] },
+      { label: t['engagement.1.fact.3.label'], value: t['engagement.1.fact.3.value'] },
+    ],
+  },
+  {
+    mark: '02',
+    title: t['engagement.2.title'],
+    blocks: [
+      { label: labels.do, text: t['engagement.2.do'] },
+      { label: labels.expect, text: t['engagement.2.expect'] },
+      { label: labels.expectNot, text: t['engagement.2.expect.not'] },
+      { label: labels.how, text: t['engagement.2.how'] },
+    ],
+    facts: [
+      { label: t['engagement.2.fact.1.label'], value: t['engagement.2.fact.1.value'] },
+    ],
+  },
+  {
+    mark: '03',
+    title: t['engagement.3.title'],
+    blocks: [
+      { label: labels.do, text: t['engagement.3.do'] },
+      { label: labels.expect, text: t['engagement.3.expect'] },
+      { label: labels.expectNot, text: t['engagement.3.expect.not'] },
+      { label: labels.how, text: t['engagement.3.how'] },
+    ],
+    facts: [
+      { label: t['engagement.3.fact.1.label'], value: t['engagement.3.fact.1.value'] },
+      { label: t['engagement.3.fact.2.label'], value: t['engagement.3.fact.2.value'] },
+    ],
+  },
 ];
 ---
 
@@ -28,7 +65,7 @@ const domains = [
   aria-labelledby="engagement-heading"
 >
   <div class="max-w-300 mx-auto px-gutter xl:px-0">
-    <header class="max-w-184 mb-16">
+    <header class="max-w-184 mb-14 lg:mb-18">
       <p class="text-eyebrow text-brand-primary m-0">
         {t['engagement.eyebrow']}
       </p>
@@ -41,34 +78,44 @@ const domains = [
       </h2>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {phases.map((p) => (
-        <article class="flex flex-col p-10 bg-white border border-ink-primary/13 rounded-lg">
-          <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
-            {p.mark}
-          </p>
-          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mt-4 mb-2 leading-tight">
-            {p.title}
-          </h3>
-          <p class="text-body-medium text-ink-muted leading-relaxed m-0">
-            {p.body}
-          </p>
+    {/* One card per offer. Subgrid puts the same block on the same line in both cards, so they compare. */}
+    <div class="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-[auto_repeat(4,auto)_auto] gap-6 lg:gap-6 lg:gap-y-0">
+      {modules.map((p) => (
+        <article class="bg-white border border-ink-primary/13 rounded-lg p-7 sm:p-9 lg:p-8 shadow-[0_1px_3px_rgb(var(--ink-primary)/0.06),0_12px_32px_rgb(var(--ink-primary)/0.06)] lg:grid lg:grid-rows-subgrid lg:row-span-6">
+          <div>
+            <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
+              {p.mark}
+            </p>
+            <h3 class="font-sans text-xl lg:text-2xl font-bold text-ink-primary m-0 mt-4 leading-tight tracking-tight">
+              {p.title}
+            </h3>
+          </div>
+
+          {p.blocks.map((b) => (
+            <div class="mt-7">
+              <p class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-brand-primary m-0">
+                {b.label}
+              </p>
+              <p class="text-body-medium text-ink-muted leading-relaxed m-0 mt-2 max-w-[52ch]">
+                {b.text}
+              </p>
+            </div>
+          ))}
+
+          <dl class="m-0 mt-9 self-start grid grid-cols-[minmax(4.5rem,auto)_1fr] items-baseline gap-x-4 gap-y-2.5">
+            {p.facts.map((f) => (
+              <Fragment>
+                <dt class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta m-0">
+                  {f.label}
+                </dt>
+                <dd class="font-sans text-sm font-bold text-brand-primary m-0">
+                  {f.value}
+                </dd>
+              </Fragment>
+            ))}
+          </dl>
         </article>
       ))}
-    </div>
-
-    <div class="mt-12 lg:mt-16">
-      <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary m-0 mb-4">
-        {t['engagement.domains.heading']}
-      </p>
-      <ul class="m-0 p-0 list-none grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 max-w-184">
-        {domains.map((d) => (
-          <li class="font-sans text-base text-ink-muted leading-relaxed">{d}</li>
-        ))}
-      </ul>
-      <p data-speakable class="font-sans text-lg font-bold text-ink-primary leading-relaxed m-0 mt-10 max-w-[65ch]">
-        {t['engagement.bring']}
-      </p>
     </div>
 
   </div>
