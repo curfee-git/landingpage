@@ -10,16 +10,16 @@ interface Props {
 const { name, class: className = '' } = Astro.props;
 
 const iconPath = join(process.cwd(), 'public', 'assets', 'icons', `${name}.svg`);
-let svgContent = '';
+let svgContent: string;
 try {
   svgContent = readFileSync(iconPath, 'utf-8');
-
-  svgContent = svgContent
-    .replace(/width="24"/, '')
-    .replace(/height="24"/, '')
-    .replace('<svg', `<svg class="${className}" aria-hidden="true"`);
 } catch {
-  svgContent = ``;
+  throw new Error(`Icon "${name}" not found at ${iconPath}. Icons are referenced by name only, so a typo or a deleted file would otherwise render nothing.`);
 }
+
+svgContent = svgContent
+  .replace(/width="24"/, '')
+  .replace(/height="24"/, '')
+  .replace('<svg', `<svg class="${className}" aria-hidden="true"`);
 ---
 <Fragment set:html={svgContent} />

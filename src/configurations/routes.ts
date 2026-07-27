@@ -1,11 +1,11 @@
-export const ROUTES = {
+const ROUTES = {
   home: '/',
   contact: '/#contact',
   imprint: '/imprint/',
   privacy: '/privacy/',
-} as const satisfies Record<string, string | Record<string, string>>;
+} as const satisfies Record<string, string>;
 
-export type Routes = { [K in keyof typeof ROUTES]: string };
+type Routes = { [K in keyof typeof ROUTES]: string };
 
 export function getRoutes(locale?: string): Routes {
   if (locale === 'de') {

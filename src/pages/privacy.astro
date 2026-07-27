@@ -1,16 +1,17 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { EXTERNAL } from '@/configurations/routes';
+import { EXTERNAL, getRoutes } from '@/configurations/routes';
 import { getTranslations } from '@/i18n/translations';
 
 const t = getTranslations(Astro.currentLocale);
+const routes = getRoutes(Astro.currentLocale);
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": t['breadcrumb.home'], "item": "https://curfee.com/" },
-    { "@type": "ListItem", "position": 2, "name": t['footer.legal.privacy'], "item": "https://curfee.com/privacy/" }
+    { "@type": "ListItem", "position": 1, "name": t['breadcrumb.home'], "item": `https://curfee.com${routes.home}` },
+    { "@type": "ListItem", "position": 2, "name": t['footer.legal.privacy'], "item": `https://curfee.com${routes.privacy}` }
   ]
 };
 ---

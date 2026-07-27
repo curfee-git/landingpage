@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import type { Translations } from '@/i18n/translations';
 import profileImage from '@/assets/images/profile-transparent.png';
 import { EXTERNAL, getRoutes } from '@/configurations/routes';
+import Icon from '@/components/shared/Icon.astro';
 
 interface Props {
   translations: Translations;
@@ -15,7 +16,7 @@ const routes = getRoutes(Astro.currentLocale);
 
   <section class="section-pad" aria-labelledby="about-hero-heading">
     <div class="w-full max-w-300 mx-auto px-gutter xl:px-0">
-      <div class="flex flex-col gap-12 lg:flex-row lg:items-stretch lg:gap-20">
+      <div class="flex flex-col gap-12 lg:flex-row lg:items-end lg:gap-20">
 
         <div class="max-w-160 lg:flex-[1.15] lg:min-w-0">
           <p class="text-eyebrow text-brand-primary m-0">
@@ -29,19 +30,19 @@ const routes = getRoutes(Astro.currentLocale);
           </h2>
 
           <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mt-9 mb-5 max-w-prose">
-            {t['about.who.hero.1']}
-          </p>
-          <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mb-5 max-w-prose">
             {t['about.who.why.2']}
           </p>
           <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 max-w-prose">
             {t['about.who.why.3']}
           </p>
-          <p class="font-sans text-lg font-bold text-ink-primary leading-relaxed m-0 mt-5 max-w-prose">
-            {t['about.who.goal']}
-          </p>
 
-          <div class="mt-9 flex flex-wrap gap-4">
+          <blockquote class="m-0 mt-9 max-w-prose">
+            <p class="font-sans text-base font-medium text-brand-primary leading-relaxed m-0">
+              {t['about.who.quote']}
+            </p>
+          </blockquote>
+
+          <div class="mt-10 flex flex-wrap items-center gap-4">
             <a
               href={routes.contact}
               class="inline-flex items-center justify-center px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-all duration-200 hover:-translate-y-0.5 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover"
@@ -52,37 +53,27 @@ const routes = getRoutes(Astro.currentLocale);
               href={EXTERNAL.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-all duration-200 hover:-translate-y-0.5 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary hover:text-brand-primary-foreground"
+              class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-all duration-200 hover:-translate-y-0.5 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary hover:text-brand-primary-foreground"
             >
+              <Icon name="linkedin" class="w-5 h-5" />
               {t['about.linkedin.cta']}
             </a>
           </div>
         </div>
 
-        <div class="order-first lg:order-none lg:flex-[0.85] lg:min-w-0 flex justify-center lg:justify-end">
-          <div class="w-full max-w-96 lg:h-full flex flex-col bg-surface-soft border border-ink-primary/13 rounded-lg overflow-hidden">
-            <div class="relative aspect-[2/3] lg:aspect-auto lg:flex-1 lg:min-h-0">
-              <Image
-                src={profileImage}
-                alt={t['about.portrait.alt']}
-                class="absolute inset-0 w-full h-full object-cover object-top"
-                loading="lazy"
-                decoding="async"
-                width={360}
-                height={540}
-                widths={[280, 360, 480, 800]}
-                sizes="384px"
-                transition:name="profile-portrait"
-              />
-            </div>
-            <div class="p-5 sm:p-6 border-t border-ink-primary/13 flex-none">
-              <blockquote class="m-0">
-                <p class="font-sans text-base font-medium leading-relaxed text-ink-primary m-0">
-                  "{t['about.who.quote']}"
-                </p>
-              </blockquote>
-            </div>
-          </div>
+        <div class="order-first lg:order-none lg:flex-[0.85] lg:min-w-0 flex justify-center lg:justify-end lg:items-end">
+          <Image
+            src={profileImage}
+            alt={t['about.portrait.alt']}
+            class="w-full max-w-72 sm:max-w-80 lg:max-w-96 h-auto"
+            loading="lazy"
+            decoding="async"
+            width={360}
+            height={541}
+            widths={[280, 360, 480, 800]}
+            sizes="384px"
+            transition:name="profile-portrait"
+          />
         </div>
 
       </div>

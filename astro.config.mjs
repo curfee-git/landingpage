@@ -19,6 +19,10 @@ export default defineConfig({
   prefetch: { defaultStrategy: 'hover' },
   integrations: [
     sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: { en: 'en', de: 'de' },
+      },
       changefreq: 'monthly',
       priority: 0.7,
       filter: (page) => !/\/404\/?$/.test(page),

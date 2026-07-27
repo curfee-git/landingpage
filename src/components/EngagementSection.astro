@@ -1,4 +1,5 @@
 ---
+import Icon from '@/components/shared/Icon.astro';
 import type { Translations } from '@/i18n/translations';
 
 interface Props {
@@ -6,57 +7,35 @@ interface Props {
 }
 const { translations: t } = Astro.props;
 
-const labels = {
-  do: t['engagement.label.do'],
-  expect: t['engagement.label.expect'],
-  expectNot: t['engagement.label.expect.not'],
-  how: t['engagement.label.how'],
-};
+type Column = { label: string; items: string[]; icon: string; tone: string };
 
-const modules = [
-  {
-    mark: '01',
-    title: t['engagement.1.title'],
-    blocks: [
-      { label: labels.do, text: t['engagement.1.do'] },
-      { label: labels.expect, text: t['engagement.1.expect'] },
-      { label: labels.expectNot, text: t['engagement.1.expect.not'] },
-      { label: labels.how, text: t['engagement.1.how'] },
-    ],
-    facts: [
-      { label: t['engagement.1.fact.1.label'], value: t['engagement.1.fact.1.value'] },
-      { label: t['engagement.1.fact.2.label'], value: t['engagement.1.fact.2.value'] },
-      { label: t['engagement.1.fact.3.label'], value: t['engagement.1.fact.3.value'] },
-    ],
-  },
-  {
-    mark: '02',
-    title: t['engagement.2.title'],
-    blocks: [
-      { label: labels.do, text: t['engagement.2.do'] },
-      { label: labels.expect, text: t['engagement.2.expect'] },
-      { label: labels.expectNot, text: t['engagement.2.expect.not'] },
-      { label: labels.how, text: t['engagement.2.how'] },
-    ],
-    facts: [
-      { label: t['engagement.2.fact.1.label'], value: t['engagement.2.fact.1.value'] },
-    ],
-  },
-  {
-    mark: '03',
-    title: t['engagement.3.title'],
-    blocks: [
-      { label: labels.do, text: t['engagement.3.do'] },
-      { label: labels.expect, text: t['engagement.3.expect'] },
-      { label: labels.expectNot, text: t['engagement.3.expect.not'] },
-      { label: labels.how, text: t['engagement.3.how'] },
-    ],
-    facts: [
-      { label: t['engagement.3.fact.1.label'], value: t['engagement.3.fact.1.value'] },
-      { label: t['engagement.3.fact.2.label'], value: t['engagement.3.fact.2.value'] },
-    ],
-  },
+const list = (n: number, kind: string) =>
+  [1, 2, 3].map((i) => t[`engagement.${n}.${kind}.${i}` as keyof Translations] as string);
+
+const columnsFor = (n: number): Column[] => [
+  { label: t['engagement.label.deliver'], items: list(n, 'deliver'), icon: 'description', tone: 'text-brand-primary' },
+  { label: t['engagement.label.expect'], items: list(n, 'expect'), icon: 'check', tone: 'text-brand-primary' },
 ];
+
+const facts = (n: number) =>
+  [1, 2, 3]
+    .map((i) => ({
+      label: t[`engagement.${n}.fact.${i}.label` as keyof Translations] as string | undefined,
+      value: t[`engagement.${n}.fact.${i}.value` as keyof Translations] as string | undefined,
+    }))
+    .filter((f): f is { label: string; value: string } => Boolean(f.label && f.value));
+
+const modules = [1, 2, 3].map((n) => ({
+  mark: `0${n}`,
+  title: t[`engagement.${n}.title` as keyof Translations] as string,
+  outcome: t[`engagement.${n}.outcome` as keyof Translations] as string,
+  how: t[`engagement.${n}.how` as keyof Translations] as string,
+  blocks: columnsFor(n),
+  facts: facts(n),
+}));
+
+const metaLabel =
+  'font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-brand-primary m-0';
 ---
 
 <section
@@ -65,7 +44,7 @@ const modules = [
   aria-labelledby="engagement-heading"
 >
   <div class="max-w-300 mx-auto px-gutter xl:px-0">
-    <header class="max-w-184 mb-14 lg:mb-18">
+    <header class="max-w-184 mb-12 lg:mb-14">
       <p class="text-eyebrow text-brand-primary m-0">
         {t['engagement.eyebrow']}
       </p>
@@ -76,33 +55,31 @@ const modules = [
       >
         {t['engagement.heading']}
       </h2>
+      {/* The arithmetic of the status quo, so the price below is read against something. */}
+      <p data-speakable class="text-body-x-large text-ink-muted leading-relaxed m-0 mt-6 max-w-[62ch]">
+        {t['engagement.math']}
+      </p>
     </header>
 
-    {/* One card per offer. Subgrid puts the same block on the same line in both cards, so they compare. */}
-    <div class="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-[auto_repeat(4,auto)_auto] gap-6 lg:gap-6 lg:gap-y-0">
+    {/* Three offers side by side. Subgrid puts the same block on the same line in every card. */}
+    {/* Each card: flat head (title, outcome, terms so the price reads early), then the two list blocks as bordered mini-cards, then flat "How it works" prose. The subgrid stretches each mini-card row to equal height across cards. */}
+    <div class="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-[auto_auto_repeat(3,auto)_auto] gap-5 lg:gap-y-0">
       {modules.map((p) => (
-        <article class="bg-white border border-ink-primary/13 rounded-lg p-7 sm:p-9 lg:p-8 shadow-[0_1px_3px_rgb(var(--ink-primary)/0.06),0_12px_32px_rgb(var(--ink-primary)/0.06)] lg:grid lg:grid-rows-subgrid lg:row-span-6">
-          <div>
-            <p class="font-mono text-sm font-bold text-brand-primary m-0" aria-hidden="true">
-              {p.mark}
-            </p>
-            <h3 class="font-sans text-xl lg:text-2xl font-bold text-ink-primary m-0 mt-4 leading-tight tracking-tight">
-              {p.title}
-            </h3>
-          </div>
+        <article class="bg-white border border-ink-primary/13 rounded-lg p-6 shadow-[0_1px_3px_rgb(var(--ink-primary)/0.06),0_12px_32px_rgb(var(--ink-primary)/0.06)] transition-all duration-300 ease-standard hover:-translate-y-1.5 hover:border-brand-primary/30 hover:shadow-[0_2px_6px_rgb(var(--ink-primary)/0.08),0_22px_48px_rgb(var(--brand-primary)/0.14)] lg:grid lg:grid-rows-subgrid lg:row-span-6">
 
-          {p.blocks.map((b) => (
-            <div class="mt-7">
-              <p class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-brand-primary m-0">
-                {b.label}
-              </p>
-              <p class="text-body-medium text-ink-muted leading-relaxed m-0 mt-2 max-w-[52ch]">
-                {b.text}
-              </p>
-            </div>
-          ))}
+          <h3 class="flex items-baseline gap-4 font-sans text-xl xl:text-2xl font-bold text-ink-primary m-0 leading-tight tracking-tight">
+            <span
+              class="font-mono text-2xl xl:text-3xl text-brand-primary leading-none tracking-tight shrink-0"
+              aria-hidden="true"
+            >{p.mark}</span>
+            {p.title}
+          </h3>
 
-          <dl class="m-0 mt-9 self-start grid grid-cols-[minmax(4.5rem,auto)_1fr] items-baseline gap-x-4 gap-y-2.5">
+          <p data-speakable class="font-sans text-base font-bold text-brand-primary leading-normal m-0 mt-3">
+            {p.outcome}
+          </p>
+
+          <dl class="m-0 mt-4 grid grid-cols-[minmax(4rem,auto)_1fr] content-start items-baseline gap-x-4 gap-y-1.5">
             {p.facts.map((f) => (
               <Fragment>
                 <dt class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta m-0">
@@ -114,6 +91,27 @@ const modules = [
               </Fragment>
             ))}
           </dl>
+
+          {p.blocks.map((b, blockIndex) => (
+            <div class={blockIndex === 0
+              ? 'mt-4 border border-brand-primary/15 bg-brand-primary/4 rounded-md p-4'
+              : 'mt-4 border border-ink-primary/13 rounded-md p-4'}>
+              <p class={metaLabel}>{b.label}</p>
+              <ul class="m-0 mt-1.5 p-0 list-none flex flex-col gap-1.5">
+                {b.items.map((item) => (
+                  <li class="flex items-start gap-2.5 font-sans text-base text-ink-muted leading-normal">
+                    <Icon name={b.icon} class={`w-4 h-4 shrink-0 mt-[0.22em] ${b.tone}`} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <p class="font-sans text-base text-ink-muted leading-normal m-0 mt-5 [text-wrap:auto]">
+            <strong class="font-bold text-ink-primary">{t['engagement.label.how']}.</strong>
+            {' '}{p.how}
+          </p>
         </article>
       ))}
     </div>

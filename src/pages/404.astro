@@ -6,6 +6,7 @@ import { getTranslations } from '@/i18n/translations';
 const t = getTranslations(Astro.currentLocale);
 const tDe = getTranslations('de');
 const notFoundDe = {
+  title: tDe['meta.404.title'],
   heading: tDe['404.heading'],
   description: tDe['404.description'],
   cta: tDe['404.cta'],
@@ -54,6 +55,7 @@ const routes = getRoutes(Astro.currentLocale);
         localStorage.getItem('curfee-lang') === 'de';
       if (!isDe) return;
       document.documentElement.lang = 'de';
+      document.title = notFoundDe.title;
       var heading = document.querySelector('[data-notfound-heading]');
       var description = document.querySelector('[data-notfound-description]');
       var cta = document.querySelector('[data-notfound-cta]');

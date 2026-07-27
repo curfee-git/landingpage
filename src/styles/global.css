@@ -130,24 +130,6 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
-@utility text-title-large {
-  font-family: var(--font-sans);
-  font-size: 1.25rem;
-  line-height: 1.4;
-  font-weight: 700;
-}
-@utility text-title-medium {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.5;
-  font-weight: 600;
-}
-@utility text-title-small {
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-  line-height: 1.4;
-  font-weight: 600;
-}
 @utility text-body-x-large {
   font-family: var(--font-sans);
   font-size: 1.125rem;
@@ -178,27 +160,6 @@
   line-height: 1.25rem;
   font-weight: 600;
 }
-@utility text-label-medium {
-  font-family: var(--font-sans);
-  font-size: 0.8125rem;
-  line-height: 1rem;
-  letter-spacing: 0.06em;
-  font-weight: 600;
-}
-@utility text-label-small {
-  font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  line-height: 1rem;
-  letter-spacing: 0.06em;
-  font-weight: 600;
-}
-@utility text-caption {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  line-height: 1.4;
-  font-weight: 400;
-}
-
 ::view-transition,
 ::view-transition-group(*),
 ::view-transition-image-pair(*),
@@ -255,17 +216,12 @@
 
 @media (prefers-contrast: more) {
   :root {
-    --ink-muted: var(--ink-primary);
+    --color-ink-muted: rgb(var(--ink-primary));
+    --color-ink-soft: rgb(var(--ink-primary));
+    --color-ink-meta: rgb(var(--ink-primary) / 0.75);
   }
   a {
     text-decoration: underline;
-  }
-}
-
-@media (prefers-reduced-data: reduce) {
-
-  [class*="overlay"] {
-    display: none;
   }
 }
 

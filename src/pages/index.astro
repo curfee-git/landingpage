@@ -11,21 +11,24 @@ import ManifestSection from '@/components/ManifestSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
 import FaqSection from '@/components/FaqSection.astro';
 import { getTranslations } from '@/i18n/translations';
+import { getRoutes } from '@/configurations/routes';
 
 const t = getTranslations(Astro.currentLocale);
 const locale = Astro.currentLocale === 'de' ? 'de' : 'en';
+const routes = getRoutes(Astro.currentLocale);
+const siteUrl = 'https://curfee.com';
 
 const buildDate = new Date().toISOString().slice(0, 10);
 
 const serviceLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": "https://curfee.com/#services",
+  "@id": `${siteUrl}/#services`,
   "name": t['schema.service.name'],
   "alternateName": t['schema.service.alternate.name'],
   "description": t['schema.service.description'],
-  "provider": { "@id": "https://curfee.com/#organization" },
-  "brand": { "@id": "https://curfee.com/#organization" },
+  "provider": { "@id": `${siteUrl}/#organization` },
+  "brand": { "@id": `${siteUrl}/#organization` },
   "serviceType": t['schema.service.type'],
   "category": t['schema.service.category'],
   "areaServed": [
@@ -39,15 +42,45 @@ const serviceLd = {
     "audienceType": t['schema.audience.type']
   },
   "serviceOutput": t['schema.service.output'],
-  "termsOfService": "https://curfee.com/imprint/",
-  "isRelatedTo": { "@id": "https://curfee.com/#decisions-that-enforce-themselves" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "@id": `${siteUrl}/#engagement`,
+    "name": t['engagement.heading'],
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": t['engagement.1.title'],
+        "description": t['engagement.1.outcome'],
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 15000,
+          "priceCurrency": "EUR"
+        },
+        "itemOffered": { "@id": `${siteUrl}/#services` }
+      },
+      {
+        "@type": "Offer",
+        "name": t['engagement.2.title'],
+        "description": t['engagement.2.outcome'],
+        "itemOffered": { "@id": `${siteUrl}/#services` }
+      },
+      {
+        "@type": "Offer",
+        "name": t['engagement.3.title'],
+        "description": t['engagement.3.outcome'],
+        "itemOffered": { "@id": `${siteUrl}/#services` }
+      }
+    ]
+  },
+  "termsOfService": `${siteUrl}${routes.imprint}`,
+  "isRelatedTo": { "@id": `${siteUrl}/#decisions-that-enforce-themselves` },
   "availableLanguage": ["en", "de"]
 };
 
 const mechanismLd = {
   "@context": "https://schema.org",
   "@type": "DefinedTerm",
-  "@id": "https://curfee.com/#decisions-that-enforce-themselves",
+  "@id": `${siteUrl}/#decisions-that-enforce-themselves`,
   "name": t['schema.mechanism.name'],
   "alternateName": [
     "Machine-checked decisions",
@@ -55,27 +88,27 @@ const mechanismLd = {
   ],
   "description": t['schema.mechanism.description'],
   "termCode": "decisions-that-enforce-themselves",
-  "url": "https://curfee.com/#decisions-that-enforce-themselves",
+  "url": `${siteUrl}/#decisions-that-enforce-themselves`,
   "inDefinedTermSet": {
     "@type": "DefinedTermSet",
-    "@id": "https://curfee.com/#glossary",
+    "@id": `${siteUrl}/#glossary`,
     "name": t['schema.glossary.name'],
-    "url": "https://curfee.com/llms.txt",
+    "url": `${siteUrl}/llms.txt`,
     "inLanguage": "en",
-    "publisher": { "@id": "https://curfee.com/#organization" }
+    "publisher": { "@id": `${siteUrl}/#organization` }
   },
-  "subjectOf": { "@id": "https://curfee.com/#organization" },
-  "author": { "@id": "https://curfee.com/#founder" },
-  "creator": { "@id": "https://curfee.com/#founder" }
+  "subjectOf": { "@id": `${siteUrl}/#organization` },
+  "author": { "@id": `${siteUrl}/#founder` },
+  "creator": { "@id": `${siteUrl}/#founder` }
 };
 
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "@id": "https://curfee.com/#faq",
-  "isPartOf": { "@id": "https://curfee.com/#website" },
-  "about": { "@id": "https://curfee.com/#organization" },
-  "author": { "@id": "https://curfee.com/#founder" },
+  "@id": `${siteUrl}/#faq`,
+  "isPartOf": { "@id": `${siteUrl}/#website` },
+  "about": { "@id": `${siteUrl}/#organization` },
+  "author": { "@id": `${siteUrl}/#founder` },
   "inLanguage": locale,
   "mainEntity": [
     { "q": t['faq.1.question'], "a": t['faq.1.answer'] },
@@ -84,6 +117,7 @@ const faqLd = {
     { "q": t['faq.4.question'], "a": t['faq.4.answer'] },
     { "q": t['faq.5.question'], "a": t['faq.5.answer'] },
     { "q": t['faq.6.question'], "a": t['faq.6.answer'] },
+    { "q": t['faq.7.question'], "a": t['faq.7.answer'] },
   ].map(({ q, a }) => ({
     "@type": "Question",
     "name": q,

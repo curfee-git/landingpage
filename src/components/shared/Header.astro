@@ -12,6 +12,7 @@ const navItems = [
   { id: 'selected-engagements', label: t['nav.engagements'] },
   { id: 'method', label: t['nav.method'] },
   { id: 'about', label: t['nav.about'] },
+  { id: 'faq', label: t['nav.faq'] },
 ].map((item) => ({ ...item, href: `${routes.home}#${item.id}` }));
 
 const navClass = "px-4 py-3 text-label-large font-semibold whitespace-nowrap text-ink-primary hover:text-brand-primary transition-colors duration-200 ease-standard";
@@ -60,7 +61,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
 </header>
 
 <style>
-  /* Adaptive foreground colors — flip to light over dark sections */
+  /* Adaptive foreground colours: flip to light over dark sections */
   [data-header] {
     --header-fg: var(--ink-primary);
     --header-logo: var(--brand-primary);
@@ -124,7 +125,7 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
                 max-width var(--header-duration) var(--header-ease),
                 padding var(--header-duration) var(--header-ease);
   }
-  /* Collapse into the floating pill on desktop only — mobile stays full width */
+  /* Collapse into the floating pill on desktop only; mobile stays full width */
   @media (min-width: 1024px) {
     [data-header][data-scrolled] {
       top: 0.75rem;
