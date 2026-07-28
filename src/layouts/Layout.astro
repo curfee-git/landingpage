@@ -62,7 +62,6 @@ const personLd = {
     "width": 1024,
     "height": 1536
   },
-  "sameAs": [EXTERNAL.linkedin],
   "nationality": { "@type": "Country", "name": t['schema.country.austria'] },
   "knowsAbout": t['schema.knows.about.person'],
   "hasOccupation": {
@@ -209,10 +208,7 @@ const organizationLd = {
     "alternateName": "WKO",
     "url": "https://www.wko.at"
   },
-  "keywords": t['schema.org.keywords'],
-  "sameAs": [
-    EXTERNAL.linkedin
-  ]
+  "keywords": t['schema.org.keywords']
 };
 
 const webSiteLd = {
@@ -357,9 +353,6 @@ const speakableLd = {
     <link rel="apple-touch-icon" href="/assets/favicons/apple_touch_icon.png" sizes="180x180" />
     <link rel="manifest" href="/assets/favicons/site.webmanifest" />
     <meta name="theme-color" content="#003366" />
-
-
-    <link rel="me" href={EXTERNAL.linkedin} />
 
 
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
