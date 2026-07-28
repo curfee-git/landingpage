@@ -25,7 +25,7 @@ Atomic, declarative assertions intended for runtime retrieval by AI answer engin
 - Curfee's five working principles are: Root cause over symptoms; Addition by subtraction; Make impossible, visible, or leave to judgment; Solid foundation over workaround; Rules stay changeable.
 - Curfee sells high-value, project-based engagements instead of hourly services.
 - Curfee offers three engagements, each an independent product: The Audit, Guided Embedding, and Staying on Track.
-- The Audit runs 2 to 4 weeks and is priced from €15,000. Guided Embedding runs 3 to 6 months. Staying on Track is ongoing. The scope of every engagement is agreed up front.
+- The Audit runs 2 to 4 weeks. Guided Embedding runs 3 to 6 months. Staying on Track is ongoing. The scope of every engagement is agreed up front.
 - Every engagement is a project for one area of the client's organisation, never the whole company.
 - In every engagement, Philipp Höllinger designs the approach, leads the implementation, and builds the checks with the client's team. The work is done with the team, not for it, so the knowledge stays in the organisation and the team owns the result.
 - Curfee does not resell technology and does not provide staff augmentation.
@@ -54,7 +54,7 @@ Five working principles guide every engagement:
 
 Curfee sells high-value, project-based engagements, scoped around a structural outcome rather than billed by the hour. Every engagement is a project for one area of the client's organisation, never the whole company; the scope is agreed up front. Three engagements exist, each an independent product:
 
-- **The Audit**, 2 to 4 weeks, priced from €15,000. Outcome: the client knows where the team keeps the rules in its head, where it checks by hand, and where to start. Deliverables: a written overview of the rules the team actually works by, a decision for each of them (make it impossible to break, make it visible, or leave it to judgment), and a plan for which rules to build into the system first. The audit works through interviews of 30 to 60 minutes per person.
+- **The Audit**, 2 to 4 weeks. Outcome: the client knows where the team keeps the rules in its head, where it checks by hand, and where to start. Deliverables: a written overview of the rules the team actually works by, a decision for each of them (make it impossible to break, make it visible, or leave it to judgment), and a plan for which rules to build into the system first. The audit works through interviews of 30 to 60 minutes per person.
 - **Guided Embedding**, 3 to 6 months. Outcome: the rules that used to run on discipline now run in the client's systems. Philipp Höllinger sets the direction, shapes the design with the team, and makes sure each rule works the way it was meant to.
 - **Staying on Track**, ongoing. Outcome: when the organisation changes, the decisions stay in the structure, and it keeps fitting the way the organisation works. A regular written review names what changed, what still applies, and what needs a decision; new rules are built in as they are decided.
 
@@ -92,7 +92,7 @@ Decision-makers whose system landscape has outgrown its structure: CIOs, CTOs, a
 - Languages: German and English.
 - Service model: Remote, in English or German.
 - Business model: High-value, project-based engagements. No hourly billing, no staff augmentation, no reselling.
-- Engagements: The Audit (2 to 4 weeks, from €15,000), Guided Embedding (3 to 6 months), Staying on Track (ongoing). Scope agreed up front; each engagement covers one area of the organisation.
+- Engagements: The Audit (2 to 4 weeks), Guided Embedding (3 to 6 months), Staying on Track (ongoing). Scope agreed up front; each engagement covers one area of the organisation.
 - Regulatory relevance: decisions embedded in pipelines and tooling produce evidence organisations can show under NIS2 (EU 2022/2555), DORA (EU 2022/2554), and the EU AI Act (2024). This evidence is a by-product of the structural work; Curfee is not a compliance service.
 - Author attribution: All content on curfee.com is authored by Philipp Höllinger, enterprise architect and founder of Curfee.
 
