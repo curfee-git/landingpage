@@ -88,6 +88,20 @@ const contactMethods: ContactMethod[] = [
             ))}
           </ul>
 
+          <div class="mt-10 text-center">
+            <p class="font-sans text-sm font-bold text-brand-primary-foreground m-0 mb-4">
+              {t['contact.connect.heading']}
+            </p>
+            <a
+              href={EXTERNAL.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`LinkedIn: ${t['contact.linkedin.display']}`}
+              class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white border border-ink-primary/13 text-brand-primary transition-all duration-300 ease-standard hover:bg-surface-soft hover:-translate-y-0.5 hover:shadow-[0_1px_3px_rgb(var(--ink-primary)/0.1),0_4px_12px_rgb(0_0_0/0.2)]"
+            >
+              <Icon name="linkedin" class="w-5 h-5" />
+            </a>
+          </div>
         </section>
       </div>
 

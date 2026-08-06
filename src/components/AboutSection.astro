@@ -2,7 +2,8 @@
 import { Image } from 'astro:assets';
 import type { Translations } from '@/i18n/translations';
 import profileImage from '@/assets/images/profile-transparent.png';
-import { getRoutes } from '@/configurations/routes';
+import { EXTERNAL, getRoutes } from '@/configurations/routes';
+import Icon from '@/components/shared/Icon.astro';
 
 interface Props {
   translations: Translations;
@@ -47,6 +48,15 @@ const routes = getRoutes(Astro.currentLocale);
               class="inline-flex items-center justify-center px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-all duration-200 hover:-translate-y-0.5 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover"
             >
               {t['hero.cta']}
+            </a>
+            <a
+              href={EXTERNAL.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-all duration-200 hover:-translate-y-0.5 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary hover:text-brand-primary-foreground"
+            >
+              <Icon name="linkedin" class="w-5 h-5" />
+              {t['about.linkedin.cta']}
             </a>
           </div>
         </div>

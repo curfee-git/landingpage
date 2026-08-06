@@ -24,4 +24,5 @@ export const EXTERNAL = {
   mailto: 'mailto:philipp.hoellinger@curfee.com',
   phone: '+43 677 630 242 28',
   tel: 'tel:+4367763024228',
+  linkedin: 'https://www.linkedin.com/in/phoellinger',
 } as const satisfies Record<string, string>;

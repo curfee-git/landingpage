@@ -1,5 +1,5 @@
 ---
-import { getRoutes } from '@/configurations/routes';
+import { getRoutes, EXTERNAL } from '@/configurations/routes';
 import { BRAND } from '@/configurations/brand';
 import { getTranslations } from '@/i18n/translations';
 import logoTextRaw from '@/assets/logos/logo_text.svg?raw';
@@ -28,12 +28,20 @@ const linkClass = "text-body-medium text-ink-muted hover:text-brand-primary tran
       </a>
 
 
-      <div>
-        <p class="text-label-large text-ink-primary mb-4">{t['footer.column.legal']}</p>
-        <nav class="flex flex-col gap-3" aria-label={t['footer.aria.legal']}>
-          <a href={routes.imprint} class={linkClass}>{t['footer.legal.notice']}</a>
-          <a href={routes.privacy} class={linkClass}>{t['footer.legal.privacy']}</a>
-        </nav>
+      <div class="col-span-1 md:contents grid grid-cols-2 md:grid-cols-none gap-10">
+        <div>
+          <p class="text-label-large text-ink-primary mb-4">{t['footer.column.socials']}</p>
+          <nav class="flex flex-col gap-3" aria-label={t['footer.aria.socials']}>
+            <a href={EXTERNAL.linkedin} target="_blank" rel="noopener noreferrer" class={linkClass}>{t['footer.social.linkedin']}</a>
+          </nav>
+        </div>
+        <div>
+          <p class="text-label-large text-ink-primary mb-4">{t['footer.column.legal']}</p>
+          <nav class="flex flex-col gap-3" aria-label={t['footer.aria.legal']}>
+            <a href={routes.imprint} class={linkClass}>{t['footer.legal.notice']}</a>
+            <a href={routes.privacy} class={linkClass}>{t['footer.legal.privacy']}</a>
+          </nav>
+        </div>
       </div>
 
     </div>
