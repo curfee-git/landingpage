@@ -27,15 +27,16 @@ const CORE_R = 10.5;
 const EDGE = HEX_R * 0.866; // distance from centre to the flat top/bottom edge
 const STEP = 84; // vertical distance between stacked modules
 
-// Six domains with two to three modules each, three domains per side of the bus.
-// The three-module domains sit diagonally opposite, so both columns end level.
+// Six domains with two modules each, three domains per side of the bus.
 // Inside a domain the modules are wired directly and in both directions (high
 // cohesion); outward they talk to the bus only (low coupling).
 const groups = [
-  { x: 28, y: 40, side: 'left', label: t['hero.visual.group.1'], modules: [t['hero.visual.module.1'], t['hero.visual.module.2'], t['hero.visual.module.3']] },
-  { x: 276, y: 40, side: 'right', label: t['hero.visual.group.2'], modules: [t['hero.visual.module.4'], t['hero.visual.module.5']] },
-  { x: 28, y: 344, side: 'left', label: t['hero.visual.group.3'], modules: [t['hero.visual.module.6'], t['hero.visual.module.7']] },
-  { x: 276, y: 260, side: 'right', label: t['hero.visual.group.4'], modules: [t['hero.visual.module.8'], t['hero.visual.module.9'], t['hero.visual.module.10']] },
+  { x: 28, y: 40, side: 'left', label: t['hero.visual.group.1'], modules: [t['hero.visual.module.1'], t['hero.visual.module.2']] },
+  { x: 276, y: 40, side: 'right', label: t['hero.visual.group.2'], modules: [t['hero.visual.module.3'], t['hero.visual.module.4']] },
+  { x: 28, y: 260, side: 'left', label: t['hero.visual.group.3'], modules: [t['hero.visual.module.5'], t['hero.visual.module.6']] },
+  { x: 276, y: 260, side: 'right', label: t['hero.visual.group.4'], modules: [t['hero.visual.module.7'], t['hero.visual.module.8']] },
+  { x: 28, y: 480, side: 'left', label: t['hero.visual.group.5'], modules: [t['hero.visual.module.9'], t['hero.visual.module.10']] },
+  { x: 276, y: 480, side: 'right', label: t['hero.visual.group.6'], modules: [t['hero.visual.module.11'], t['hero.visual.module.12']] },
 ];
 const groupHeight = (g: (typeof groups)[number]) => 112 + (g.modules.length - 1) * STEP;
 const hexX = (g: (typeof groups)[number]) => (g.side === 'left' ? g.x + 124 : g.x + 52);
@@ -68,7 +69,7 @@ const links = groups.flatMap((g) =>
 <div class="hero-visual w-full max-w-125" role="img" aria-label={t['hero.visual.aria']}>
   <div aria-hidden="true">
 
-    <svg viewBox="20 16 440 544" class="block w-full h-auto">
+    <svg viewBox="20 16 440 676" class="block w-full h-auto">
       <defs>
         <marker id="ah-round" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
           <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/45 stroke-brand-primary/45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
@@ -76,7 +77,7 @@ const links = groups.flatMap((g) =>
       </defs>
 
       {/* The vertical event bus, the only road between the domains */}
-      <line x1={BUS_X} y1="44" x2={BUS_X} y2="552" class="stroke-ink-primary/20" stroke-width="1.5" stroke-linecap="round" />
+      <line x1={BUS_X} y1="44" x2={BUS_X} y2="688" class="stroke-ink-primary/20" stroke-width="1.5" stroke-linecap="round" />
       <text x={BUS_X} y="32" text-anchor="middle" class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/40">{t['hero.visual.bus']}</text>
 
       {/* Domains */}
@@ -149,10 +150,10 @@ const links = groups.flatMap((g) =>
       {/* Events travelling over the bus; hidden when reduced motion is preferred */}
       <g class="motion-reduce:hidden">
         <circle r="2.5" class="fill-brand-primary/55">
-          <animateMotion dur="5s" repeatCount="indefinite" path="M297 183 L240 183 L240 417 L183 417" />
+          <animateMotion dur="5s" repeatCount="indefinite" path="M297 183 L240 183 L240 333 L183 333" />
         </circle>
         <circle r="2.5" class="fill-brand-primary/55">
-          <animateMotion dur="4.5s" begin="1.6s" repeatCount="indefinite" path="M183 487 L240 487 L240 333 L297 333" />
+          <animateMotion dur="4.5s" begin="1.6s" repeatCount="indefinite" path="M297 403 L240 403 L240 637 L183 637" />
         </circle>
         <circle r="2.5" class="fill-brand-primary/55">
           <animateMotion dur="3.5s" begin="3s" repeatCount="indefinite" path="M183 99 L240 99 L240 113 L297 113" />
