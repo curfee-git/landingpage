@@ -190,12 +190,12 @@ const links = groups.flatMap((g) =>
       <circle cx="328" cy="301.8" r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
       <text x="336" y="250" class="font-mono text-[8px] font-bold uppercase tracking-[0.1em] fill-brand-primary/60">{t['hero.visual.contract']}</text>
 
-      {/* Violation: the same cart-to-pricing call, but past the declared contract,
-          straight into the core. It dies at the module boundary. */}
-      <path d="M138 314C118 290 116 248 132 212" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" stroke-linecap="round" />
+      {/* Violation: invoices reaching past the ports straight into the accounts core,
+          while the declared payments-to-accounts contract runs right beside it. */}
+      <path d="M308 122C288 170 286 260 304 306" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" stroke-linecap="round" />
       <g class="stroke-brand-error" stroke-width="2" stroke-linecap="round">
-        <line x1="127" y1="200" x2="137" y2="210" />
-        <line x1="137" y1="200" x2="127" y2="210" />
+        <line x1="301" y1="305" x2="311" y2="315" />
+        <line x1="311" y1="305" x2="301" y2="315" />
       </g>
     </svg>
 
