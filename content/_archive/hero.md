@@ -1,5 +1,10 @@
 # Hero (Texte ersetzt am 2026-08-08, Branch technical-positioning)
 
+## Zwischenstand v5: Build-bricht-Subtitle (ersetzt durch die Hero-Zeile aus dem Leistungs-Interview)
+
+- `hero.subtitle` de: Ich entwerfe Backend-Architektur für Java und das Spring-Ökosystem. Was entschieden ist, wandert in Architekturtests, Constraints und CI-Gates. Ein Verstoß bricht den Build, statt in einem Dokument zu verstauben.
+- `hero.subtitle` en: I design backend architecture for Java and the Spring ecosystem. What has been decided goes into architecture tests, constraints and CI gates. A violation breaks the build instead of gathering dust in a document.
+
 ## Zwischenstand v4: Rahmen-Zeile und Deployable-Annotation (gleicher Tag ersatzlos entfernt)
 
 - `hero.fit` de: Für CTOs, Engineering-Leads und technische Bereichsleiter. Bestand und Neuentwurf, Entwurf und Begleitung, remote im DACH-Raum.

@@ -2,7 +2,7 @@
   "a11y.skip.to.content": "Zum Inhalt springen",
   "hero.heading": "Was eine <span class=\"text-brand-primary\">Maschine</span> prüfen kann, sollte nie ein <span class=\"text-brand-primary\">Mensch</span> prüfen müssen.",
   "hero.eyebrow": "Struktur statt Disziplin",
-  "hero.subtitle": "Ich entwerfe Backend-Architektur für Java und das Spring-Ökosystem. Was entschieden ist, wandert in Architekturtests, Constraints und CI-Gates. Ein Verstoß bricht den Build, statt in einem Dokument zu verstauben.",
+  "hero.subtitle": "Backend-Architektur für Java und das Spring-Ökosystem, mit Grenzen, die dein Build verteidigt.",
   "hero.anchor": "Erst wenn eine Entscheidung in der Struktur lebt, wird der vereinbarte Weg zum einzigen Weg.",
   "decide.eyebrow": "Wie ich entscheide",
   "decide.heading": "Unmöglich machen, sichtbar machen oder dem Urteil überlassen.",

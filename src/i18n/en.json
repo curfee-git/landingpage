@@ -2,7 +2,7 @@
   "a11y.skip.to.content": "Skip to main content",
   "hero.heading": "Anything a <span class=\"text-brand-primary\">machine</span> can check, a <span class=\"text-brand-primary\">human</span> should never have to check.",
   "hero.eyebrow": "Structure over discipline",
-  "hero.subtitle": "I design backend architecture for Java and the Spring ecosystem. What has been decided goes into architecture tests, constraints and CI gates. A violation breaks the build instead of gathering dust in a document.",
+  "hero.subtitle": "Backend architecture for Java and the Spring ecosystem, with boundaries your build defends.",
   "hero.anchor": "Once a decision lives in the structure, the agreed way becomes the only way.",
   "decide.eyebrow": "How I decide",
   "decide.heading": "Make it impossible, make it visible or leave it to judgment.",
