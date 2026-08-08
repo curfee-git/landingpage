@@ -29,7 +29,7 @@
   "decide.diagram.axis.left": "Die Struktur setzt durch",
   "decide.diagram.axis.right": "Der Mensch entscheidet",
   "hero.cta": "Kontakt aufnehmen",
-  "hero.visual.aria": "Diagramm: sechs Domänen mit je zwei hexagonalen Modulen: Vertrieb mit Katalog und Preisen, Bestellung mit Warenkorb und Bestellungen, Finanzen mit Rechnungen und Zahlungen, Logistik mit Lager und Versand, Kunden mit Konten und Nachrichten, Einkauf mit Lieferanten und Beschaffung. Innerhalb jeder Domäne sind die Module direkt und in beide Richtungen verbunden und konsumieren keine Events voneinander: hohe Kohäsion innen, lose Kopplung außen. Nach außen hängt jedes Modul ausnahmslos über zwei Leitungen am vertikalen Event-Bus, eine publiziert, eine abonniert. Drei deklarierte Contract-Interfaces verbinden Module über Domänengrenzen hinweg, von Port zu Port: Warenkorb fragt Preise, Bestellungen fragt Lager, Zahlungen fragt Konten. Ein Zugriff vom Warenkorb am Contract vorbei, direkt in den Kern der Preise, wird an der Modulgrenze gestoppt",
+  "hero.visual.aria": "Diagramm: sechs Domänen mit je zwei hexagonalen Modulen: Vertrieb mit Katalog und Preisen, Bestellung mit Warenkorb und Bestellungen, Finanzen mit Rechnungen und Zahlungen, Logistik mit Lager und Versand, Kunden mit Konten und Nachrichten, Einkauf mit Lieferanten und Beschaffung. Innerhalb jeder Domäne sind die Module direkt und in beide Richtungen verbunden und konsumieren keine Events voneinander: hohe Kohäsion innen, lose Kopplung außen. Nach außen hängt jedes Modul ausnahmslos über zwei Leitungen am vertikalen Event-Bus, eine publiziert, eine abonniert. Drei deklarierte Contract-Interfaces verbinden Module über Domänengrenzen hinweg, von Port zu Port: Warenkorb fragt Preise, Bestellungen fragt Lager, Zahlungen fragt Konten. Zwei Verstöße werden an der Modulgrenze gestoppt: ein Zugriff vom Warenkorb am Contract vorbei direkt in den Kern der Preise, und ein Rückruf von Lager zu Bestellungen, der einen Zyklus schließen würde",
   "hero.visual.group.1": "Vertrieb",
   "hero.visual.group.2": "Bestellung",
   "hero.visual.group.3": "Finanzen",
@@ -354,5 +354,6 @@
     "Abhängigkeitsanalyse",
     "Backend-Architektur DACH"
   ],
-  "hero.visual.contract": "Contract"
+  "hero.visual.contract": "Contract",
+  "hero.visual.cycle": "Zyklus"
 }
