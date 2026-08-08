@@ -10,6 +10,7 @@ const { translations: t } = Astro.props;
 // Sorted from the most current pattern to the least current one.
 const cards = [
   { icon: 'groups', title: t['pattern.7.title'], text: t['pattern.7.reality'] },
+  { icon: 'account_tree', title: t['pattern.2.title'], text: t['pattern.2.reality'] },
   { icon: 'call_split', title: t['pattern.3.title'], text: t['pattern.3.reality'] },
   { icon: 'rule', title: t['pattern.1.title'], text: t['pattern.1.reality'] },
   { icon: 'route', title: t['pattern.5.title'], text: t['pattern.5.reality'] },
@@ -38,7 +39,7 @@ const cards = [
     </header>
 
     <ul
-      class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 m-0 p-0 list-none"
       role="list"
     >
       {cards.map((card) => (

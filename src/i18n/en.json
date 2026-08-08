@@ -356,5 +356,7 @@
   "engagements.1.diagram.new": "New hearing",
   "engagements.1.diagram.refused": "Refused",
   "engagements.1.diagram.confirmed": "Booked",
-  "engagements.1.diagram.free": "Free"
+  "engagements.1.diagram.free": "Free",
+  "pattern.2.title": "Structural Fragility",
+  "pattern.2.reality": "Dependencies have grown beyond what anyone fully understands."
 }

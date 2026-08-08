@@ -356,5 +356,7 @@
   "engagements.1.diagram.new": "Neue Verhandlung",
   "engagements.1.diagram.refused": "Abgelehnt",
   "engagements.1.diagram.confirmed": "Gebucht",
-  "engagements.1.diagram.free": "Frei"
+  "engagements.1.diagram.free": "Frei",
+  "pattern.2.title": "Strukturelle Fragilität",
+  "pattern.2.reality": "Abhängigkeiten sind über das hinausgewachsen, was irgendjemand vollständig versteht."
 }

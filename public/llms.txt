@@ -47,6 +47,7 @@ Struggles Curfee observes in organisations, as named on curfee.com:
 - **Decisions Without Effect**, decisions were agreed on and documented on paper or in wikis, but nowhere did they get enforced consistently.
 - **Workarounds as the Norm**, what started as an exception is now a new norm.
 - **AI-Assisted Collaboration**, AI-generated code reaches your system faster than your current structure can integrate it.
+- **Structural Fragility**, dependencies have grown beyond what anyone fully understands.
 
 ## Selected engagements
 

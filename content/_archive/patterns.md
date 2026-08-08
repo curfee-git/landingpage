@@ -2,7 +2,7 @@
 
 Von sechs auf vier Punkte. Nummerierung 01 bis 06 und Icons entfernt.
 
-## `pattern.2` Strukturelle Fragilität (gestrichen)
+## `pattern.2` Strukturelle Fragilität (gestrichen, am Abend wieder aufgenommen: passt zur Backend-Positionierung mit Abhängigkeiten und Modulgrenzen)
 
 - de: Abhängigkeiten sind über das hinausgewachsen, was irgendjemand vollständig versteht.
 - en (Structural Fragility): Dependencies have grown beyond what anyone fully understands.
