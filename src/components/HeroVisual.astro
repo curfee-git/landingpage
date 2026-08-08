@@ -146,11 +146,12 @@ const nodes: Node[] = groups.flatMap((g) => {
         </circle>
       </g>
 
-      {/* Violation: inventory straight into the invoices core, past the bus and the boundaries */}
-      <path d="M130 330C240 300 440 220 522 176" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" stroke-linecap="round" />
+      {/* Violation: the tempting shortcut. The cart calls pricing next door directly,
+          but that crosses two domains, so it dies at the module boundary. */}
+      <path d="M310 176C280 206 242 206 216 182" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" stroke-linecap="round" />
       <g class="stroke-brand-error" stroke-width="2" stroke-linecap="round">
-        <line x1="521" y1="165" x2="531" y2="175" />
-        <line x1="531" y1="165" x2="521" y2="175" />
+        <line x1="208" y1="169" x2="218" y2="179" />
+        <line x1="218" y1="169" x2="208" y2="179" />
       </g>
     </svg>
 

@@ -29,7 +29,7 @@
   "decide.diagram.axis.left": "Die Struktur setzt durch",
   "decide.diagram.axis.right": "Der Mensch entscheidet",
   "hero.cta": "Kontakt aufnehmen",
-  "hero.visual.aria": "Diagramm: ein Modulith aus sechs Domänen mit je zwei hexagonalen Modulen: Vertrieb mit Katalog und Preisen, Bestellung mit Warenkorb und Bestellungen, Finanzen mit Rechnungen und Zahlungen, Logistik mit Lager und Versand, Kunden mit Konten und Nachrichten, Service mit Retouren und Reklamationen. Innerhalb jeder Domäne sind die beiden Module direkt verbunden und konsumieren keine Events voneinander: hohe Kohäsion innen, lose Kopplung außen. Nach außen hängt jedes Modul ausnahmslos über zwei Leitungen am horizontalen Event-Bus, eine publiziert, eine abonniert. Ein Zugriff von Lager direkt in die Rechnungen, am Bus vorbei, wird an der Modulgrenze gestoppt",
+  "hero.visual.aria": "Diagramm: ein Modulith aus sechs Domänen mit je zwei hexagonalen Modulen: Vertrieb mit Katalog und Preisen, Bestellung mit Warenkorb und Bestellungen, Finanzen mit Rechnungen und Zahlungen, Logistik mit Lager und Versand, Kunden mit Konten und Nachrichten, Service mit Retouren und Reklamationen. Innerhalb jeder Domäne sind die beiden Module direkt verbunden und konsumieren keine Events voneinander: hohe Kohäsion innen, lose Kopplung außen. Nach außen hängt jedes Modul ausnahmslos über zwei Leitungen am horizontalen Event-Bus, eine publiziert, eine abonniert. Ein direkter Zugriff vom Warenkorb auf die Preise, naheliegend, weil sie direkt nebenan liegen, aber quer über die Domänengrenze, wird an der Modulgrenze gestoppt",
   "hero.visual.system": "Modulith",
   "hero.visual.group.1": "Vertrieb",
   "hero.visual.group.2": "Bestellung",
