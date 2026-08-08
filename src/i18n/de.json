@@ -5,7 +5,6 @@
   "hero.subtitle": "Backend-Architektur für Java und das Spring-Ökosystem, mit Grenzen, die dein Build verteidigt. Erst wenn eine Entscheidung in der Struktur lebt, wird der vereinbarte Weg zum einzigen Weg.",
   "decide.eyebrow": "Wie ich entscheide",
   "decide.heading": "Unmöglich machen, sichtbar machen oder dem Urteil überlassen.",
-  "decide.intro": "Jede Regel bekommt genau eine dieser drei Stufen. Die Arbeit liegt darin, zu entscheiden, welche.",
   "decide.1.title": "Unmöglich machen",
   "decide.1.body": "Datenintegrität, Zugriffe, rechtliche Vorgaben. Eine doppelt gebuchte Ressource oder eine Veröffentlichung ohne Übersetzung darf gar nicht erst entstehen können. Solche Regeln wandern in Constraints und Publishing-Gates.",
   "decide.2.title": "Sichtbar machen",

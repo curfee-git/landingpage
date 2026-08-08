@@ -5,7 +5,6 @@
   "hero.subtitle": "Backend architecture for Java and the Spring ecosystem, with boundaries your build defends. Once a decision lives in the structure, the agreed way becomes the only way.",
   "decide.eyebrow": "How I decide",
   "decide.heading": "Make it impossible, make it visible or leave it to judgment.",
-  "decide.intro": "Every rule gets exactly one of these three levels. The work lies in deciding which.",
   "decide.1.title": "Make it impossible",
   "decide.1.body": "Data integrity, access, legal requirements. A double-booked resource or a publication without a translation must never be able to exist in the first place. Rules like these go into constraints and publishing gates.",
   "decide.2.title": "Make it visible",
