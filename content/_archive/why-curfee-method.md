@@ -1,5 +1,13 @@
 # „Warum Curfee?" und „Methode" (ersetzt durch „Wie ich entscheide" am 2026-08-08, Branch technical-positioning)
 
+## Spektrum-SVG entfernt (2026-08-08 abends)
+
+Die Inline-SVG-Grafik der Section (drei Zonen „Hart erzwungen" / „Sichtbar gemacht" /
+„Menschliches Urteil" mit Regeltyp-Punkten und Achse) wurde beim Neubau der Section
+entfernt. Ihr Inhalt lebt vollständig in den drei Spalten weiter: Regeltypen als Listen
+mit abgestuften Punkt-Markern, Achse als schlichte Linie darüber. Zonen-Titel-Keys
+(`decide.diagram.zone.1..3`) und das SVG-Aria entfernt, Markup in der Git-Historie.
+
 Komponenten `WhyCurfeeSection.astro` und `MethodSection.astro` entfernt (Git-Historie).
 Kern „Unmöglich machen, sichtbar machen oder dem Urteil überlassen" lebt als `decide.*` weiter.
 `method.origin.1` (Logistik) wandert nach „Über mich". `method.origin.2` (Dokumentiert und
