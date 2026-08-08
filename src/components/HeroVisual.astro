@@ -21,107 +21,123 @@ function hex(cx: number, cy: number, r: number): string {
     .join(' ');
 }
 
-// Three hexagonal modules inside the modulith, each with a domain core.
-const modules = [
-  { cx: 108, cy: 100, r: 50, core: 18, title: t['hero.visual.module.1'] },
-  { cx: 292, cy: 100, r: 50, core: 18, title: t['hero.visual.module.2'] },
-  { cx: 200, cy: 258, r: 46, core: 16, title: t['hero.visual.module.3'] },
+// Four domain groups, two hexagonal modules each, in SVG viewBox coordinates (480 x 560).
+const groups = [
+  { x: 30, y: 52, label: t['hero.visual.group.1'], modules: [t['hero.visual.module.1'], t['hero.visual.module.2']] },
+  { x: 254, y: 52, label: t['hero.visual.group.2'], modules: [t['hero.visual.module.3'], t['hero.visual.module.4']] },
+  { x: 30, y: 348, label: t['hero.visual.group.3'], modules: [t['hero.visual.module.5'], t['hero.visual.module.6']] },
+  { x: 254, y: 348, label: t['hero.visual.group.4'], modules: [t['hero.visual.module.7'], t['hero.visual.module.8']] },
+];
+const HEX_R = 30;
+const CORE_R = 11;
+const hexCenters = (g: (typeof groups)[number]) => [
+  { cx: g.x + 52, cy: g.y + 74 },
+  { cx: g.x + 144, cy: g.y + 74 },
 ];
 
-// Ports sit on the hexagon boundary: two facing each other for the sync call,
-// three facing the event bus.
+// Ports and adapters: pairs facing each other inside each group, plus the bus-facing ones.
 const ports = [
-  { cx: 158, cy: 100 },
-  { cx: 242, cy: 100 },
-  { cx: 108, cy: 143.3 },
-  { cx: 292, cy: 143.3 },
-  { cx: 200, cy: 218.2 },
+  { cx: 112, cy: 126 }, { cx: 144, cy: 126 },
+  { cx: 336, cy: 126 }, { cx: 368, cy: 126 },
+  { cx: 112, cy: 422 }, { cx: 144, cy: 422 },
+  { cx: 336, cy: 422 }, { cx: 368, cy: 422 },
+  { cx: 174, cy: 152 }, { cx: 398, cy: 152 },
+  { cx: 82, cy: 396 }, { cx: 174, cy: 396 }, { cx: 398, cy: 396 },
 ];
 ---
 
-<div class="hero-visual relative w-full max-w-105" role="img" aria-label={t['hero.visual.aria']}>
+<div class="hero-visual w-full max-w-130" role="img" aria-label={t['hero.visual.aria']}>
+  <div aria-hidden="true">
 
-  <div class="absolute -inset-6 rounded-lg bg-brand-primary/4" aria-hidden="true"></div>
-
-  <div aria-hidden="true" class="relative bg-white border border-ink-primary/13 rounded-lg p-5 sm:p-6 shadow-[0_1px_3px_rgb(var(--ink-primary)/0.08),0_12px_32px_rgb(var(--ink-primary)/0.07)]">
-
-    <p class="m-0 font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta">{t['engagements.design.label']}</p>
-
-    <svg viewBox="0 0 400 352" class="block w-full h-auto mt-3">
+    <svg viewBox="0 0 480 560" class="block w-full h-auto">
       <defs>
         <pattern id="hero-dotgrid" width="16" height="16" patternUnits="userSpaceOnUse">
           <circle cx="1.5" cy="1.5" r="1" class="fill-ink-primary/8" />
         </pattern>
+        <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+          <path d="M0 0L10 5L0 10z" class="fill-brand-primary" />
+        </marker>
+        <marker id="ah-soft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+          <path d="M0 0L10 5L0 10z" class="fill-brand-primary/60" />
+        </marker>
       </defs>
 
       {/* The system boundary: one modulith */}
-      <rect x="8" y="8" width="384" height="316" rx="12" fill="url(#hero-dotgrid)" class="stroke-ink-primary/25" stroke-width="1" />
-      <text x="24" y="34" class="font-mono text-[11px] font-bold uppercase tracking-[0.14em] fill-ink-primary/70">{t['hero.visual.system']}</text>
+      <rect x="10" y="10" width="460" height="540" rx="14" fill="url(#hero-dotgrid)" class="stroke-ink-primary/25" stroke-width="1" />
+      <text x="28" y="38" class="font-mono text-[12px] font-bold uppercase tracking-[0.14em] fill-ink-primary/70">{t['hero.visual.system']}</text>
 
-      {/* Event bus */}
-      <line x1="48" y1="196" x2="352" y2="196" class="stroke-ink-primary/25" stroke-width="1.5" />
-      <text x="48" y="188" class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/45">{t['hero.visual.bus']}</text>
+      {/* Event bus between the groups */}
+      <line x1="40" y1="280" x2="440" y2="280" class="stroke-ink-primary/25" stroke-width="1.5" />
+      <text x="40" y="270" class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/45">{t['hero.visual.bus']}</text>
 
-      {/* Hexagonal modules with domain cores */}
-      {modules.map((m) => (
+      {/* Groups with two hexagonal modules each */}
+      {groups.map((g) => (
         <g>
-          <polygon points={hex(m.cx, m.cy, m.r)} class="fill-white stroke-ink-primary/30" stroke-width="1.25" />
-          <polygon points={hex(m.cx, m.cy + 8, m.core)} class="fill-brand-primary/10 stroke-brand-primary/30" stroke-width="1" />
-          <text x={m.cx} y={m.cy - m.r * 0.44} text-anchor="middle" class="font-mono text-[10px] font-bold fill-ink-primary/85">{m.title}</text>
+          <rect x={g.x} y={g.y} width="196" height="160" rx="10" class="fill-brand-primary/3 stroke-ink-primary/15 [stroke-dasharray:4_3]" stroke-width="1" />
+          <text x={g.x + 12} y={g.y + 20} class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/50">{g.label}</text>
+          {hexCenters(g).map((c, i) => (
+            <g>
+              <polygon points={hex(c.cx, c.cy, HEX_R)} class="fill-white stroke-ink-primary/30" stroke-width="1.25" />
+              <polygon points={hex(c.cx, c.cy + 3, CORE_R)} class="fill-brand-primary/10 stroke-brand-primary/30" stroke-width="1" />
+              <text x={c.cx} y={c.cy + 44} text-anchor="middle" class="font-mono text-[9px] font-bold fill-ink-primary/80">{g.modules[i]}</text>
+            </g>
+          ))}
         </g>
       ))}
 
-      {/* Sync call: port to port */}
-      <line x1="166" y1="100" x2="228" y2="100" class="stroke-brand-primary" stroke-width="1.5" />
-      <path d="M228 96l9 4-9 4z" class="fill-brand-primary" />
+      {/* Sync calls inside each group: port to port */}
+      <line x1="118" y1="126" x2="136" y2="126" class="stroke-brand-primary" stroke-width="1.5" marker-end="url(#ah)" />
+      <line x1="342" y1="126" x2="360" y2="126" class="stroke-brand-primary" stroke-width="1.5" marker-end="url(#ah)" />
+      <line x1="118" y1="422" x2="136" y2="422" class="stroke-brand-primary" stroke-width="1.5" marker-end="url(#ah)" />
+      <line x1="342" y1="422" x2="360" y2="422" class="stroke-brand-primary" stroke-width="1.5" marker-end="url(#ah)" />
 
-      {/* Event flows: publish from orders, deliver to billing and inventory */}
-      <line x1="108" y1="150" x2="108" y2="192" class="stroke-brand-primary/60" stroke-width="1.25" />
-      <path d="M104 188h8l-4 7z" class="fill-brand-primary/60" />
-      <line x1="292" y1="192" x2="292" y2="153" class="stroke-brand-primary/60" stroke-width="1.25" />
-      <path d="M288 155h8l-4-7z" class="fill-brand-primary/60" />
-      <line x1="200" y1="200" x2="200" y2="208" class="stroke-brand-primary/60" stroke-width="1.25" />
-      <path d="M196 207h8l-4 7z" class="fill-brand-primary/60" />
+      {/* Events between the groups: publish onto the bus, deliver from it */}
+      <line x1="174" y1="160" x2="174" y2="274" class="stroke-brand-primary/55" stroke-width="1.25" marker-end="url(#ah-soft)" />
+      <line x1="82" y1="388" x2="82" y2="286" class="stroke-brand-primary/55" stroke-width="1.25" marker-end="url(#ah-soft)" />
+      <line x1="398" y1="278" x2="398" y2="164" class="stroke-brand-primary/55" stroke-width="1.25" marker-end="url(#ah-soft)" />
+      <line x1="174" y1="286" x2="174" y2="386" class="stroke-brand-primary/55" stroke-width="1.25" marker-end="url(#ah-soft)" />
+      <line x1="398" y1="286" x2="398" y2="386" class="stroke-brand-primary/55" stroke-width="1.25" marker-end="url(#ah-soft)" />
 
-      {/* Events travelling over the bus; hidden when reduced motion is preferred */}
+      {/* Events travelling; hidden when reduced motion is preferred */}
       <g class="motion-reduce:hidden">
         <circle r="3" class="fill-brand-primary/70">
-          <animateMotion dur="3s" repeatCount="indefinite" path="M108 150 L108 196 L292 196 L292 153" />
+          <animateMotion dur="4s" repeatCount="indefinite" path="M174 160 L174 280 L398 280 L398 164" />
         </circle>
         <circle r="3" class="fill-brand-primary/70">
-          <animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="M108 150 L108 196 L200 196 L200 212" />
+          <animateMotion dur="3.2s" begin="1.3s" repeatCount="indefinite" path="M174 160 L174 280 L174 386" />
+        </circle>
+        <circle r="3" class="fill-brand-primary/70">
+          <animateMotion dur="5s" begin="2.2s" repeatCount="indefinite" path="M82 388 L82 280 L398 280 L398 386" />
         </circle>
       </g>
 
-      {/* Ports and adapters on the boundaries */}
+      {/* Ports and adapters on the module boundaries */}
       {ports.map((p) => (
         <g>
-          <circle cx={p.cx} cy={p.cy} r="5.5" class="fill-white stroke-brand-primary" stroke-width="1.5" />
-          <circle cx={p.cx} cy={p.cy} r="2" class="fill-brand-primary" />
+          <circle cx={p.cx} cy={p.cy} r="5" class="fill-white stroke-brand-primary" stroke-width="1.4" />
+          <circle cx={p.cx} cy={p.cy} r="1.8" class="fill-brand-primary" />
         </g>
       ))}
 
-      {/* Violation: straight into the core, past ports and boundary, stopped at the edge */}
-      <path d="M228 222C240 190 248 160 258 134" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" />
+      {/* Violation: inventory straight into the billing core, past ports, bus and boundaries */}
+      <path d="M102 400C150 330 240 210 288 152" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" />
       <g class="stroke-brand-error" stroke-width="2" stroke-linecap="round">
-        <line x1="255" y1="125" x2="265" y2="135" />
-        <line x1="265" y1="125" x2="255" y2="135" />
-      </g>
-
-      {/* The consequence, visible in the picture */}
-      <g>
-        <rect x="242" y="296" width="136" height="22" rx="6" class="fill-brand-error/8 stroke-brand-error/25" stroke-width="1" />
-        <g class="stroke-brand-error" stroke-width="1.8" stroke-linecap="round">
-          <line x1="252" y1="303" x2="260" y2="311" />
-          <line x1="260" y1="303" x2="252" y2="311" />
-        </g>
-        <text x="268" y="311" class="font-mono text-[9px] font-bold uppercase tracking-[0.08em] fill-brand-error">{t['hero.visual.failed']}</text>
+        <line x1="285" y1="143" x2="295" y2="153" />
+        <line x1="295" y1="143" x2="285" y2="153" />
       </g>
     </svg>
 
-    <p class="m-0 mt-4 font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta">{t['engagements.mechanism.label']}</p>
+    {/* The consequence: the broken condition fails the build */}
+    <div class="mt-5 rounded-md border border-brand-error/25 bg-brand-error/8 px-4 py-3">
+      <p class="m-0 flex items-center gap-2 font-mono text-[0.72rem] font-bold text-brand-error">
+        <svg viewBox="0 0 16 16" class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+        {t['hero.visual.check']}
+      </p>
+      <p class="m-0 mt-1 pl-5 font-mono text-[0.72rem] text-ink-muted">{t['hero.visual.violation']}</p>
+      <p class="m-0 mt-2 pl-5 font-mono text-[0.72rem] font-bold uppercase tracking-[0.08em] text-brand-error">{t['hero.visual.failed']}</p>
+    </div>
 
-    <ul class="m-0 mt-2.5 p-0 list-none flex flex-col gap-1.5">
+    <ul class="m-0 mt-4 p-0 list-none flex flex-col gap-1.5">
       <li class="flex items-center gap-2">
         <svg viewBox="0 0 16 16" class="w-3.5 h-3.5 shrink-0 text-brand-primary" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
         <span class="font-mono text-[0.72rem] font-medium text-ink-muted">{t['hero.visual.allowed']}</span>
@@ -137,5 +153,4 @@ const ports = [
     </ul>
 
   </div>
-
 </div>
