@@ -1,0 +1,127 @@
+---
+import type { Translations } from '@/i18n/translations';
+
+interface Props {
+  translations: Translations;
+}
+const { translations: t } = Astro.props;
+
+const levels = [
+  { title: t['decide.1.title'], body: t['decide.1.body'] },
+  { title: t['decide.2.title'], body: t['decide.2.body'] },
+  { title: t['decide.3.title'], body: t['decide.3.body'] },
+];
+
+// Spectrum zones with their rule-type dots. Coordinates live in the SVG viewBox (720 x 240).
+const zones = [
+  {
+    x: 8,
+    label: t['decide.diagram.zone.1'],
+    dots: [t['decide.diagram.dot.1'], t['decide.diagram.dot.2'], t['decide.diagram.dot.3']],
+    rect: 'fill-brand-primary/10 stroke-brand-primary/30',
+    dot: 'fill-brand-primary',
+    labelClass: 'fill-brand-primary',
+  },
+  {
+    x: 246,
+    label: t['decide.diagram.zone.2'],
+    dots: [t['decide.diagram.dot.4'], t['decide.diagram.dot.5'], t['decide.diagram.dot.6']],
+    rect: 'fill-brand-primary/4 stroke-brand-primary/20',
+    dot: 'fill-white stroke-brand-primary stroke-[1.5]',
+    labelClass: 'fill-brand-primary',
+  },
+  {
+    x: 484,
+    label: t['decide.diagram.zone.3'],
+    dots: [t['decide.diagram.dot.7'], t['decide.diagram.dot.8']],
+    rect: 'fill-none stroke-ink-primary/25 [stroke-dasharray:5_4]',
+    dot: 'fill-none stroke-ink-primary/60 stroke-[1.5] [stroke-dasharray:2.5_2]',
+    labelClass: 'fill-ink-primary/70',
+  },
+];
+---
+
+<section
+  id="method"
+  class="section-pad bg-surface-base"
+  aria-labelledby="method-heading"
+>
+  {/* Legacy anchors: external links to /#why-curfee keep landing here */}
+  <div id="why-curfee" aria-hidden="true"></div>
+  <div class="max-w-300 mx-auto px-gutter xl:px-0">
+
+    <header class="max-w-184 mb-14 lg:mb-18">
+      <p class="text-eyebrow text-brand-primary m-0">
+        {t['decide.eyebrow']}
+      </p>
+      <h2
+        id="method-heading"
+        data-speakable
+        class="font-sans text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-6"
+      >
+        {t['decide.heading']}
+      </h2>
+      <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mt-6 max-w-[65ch]">
+        {t['decide.intro']}
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-10">
+      {levels.map((level) => (
+        <article class="max-w-[62ch]">
+          <h3 class="font-mono text-sm font-bold uppercase tracking-[0.08em] text-brand-primary m-0">
+            {level.title}
+          </h3>
+          <p class="font-sans text-base text-ink-muted leading-relaxed m-0 mt-3">
+            {level.body}
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-14 lg:mt-18 overflow-x-auto">
+      <svg
+        viewBox="0 0 720 240"
+        class="block w-full min-w-[36rem] h-auto"
+        role="img"
+        aria-label={t['decide.diagram.aria']}
+      >
+        {zones.map((zone) => (
+          <g>
+            <rect x={zone.x} y={8} width={228} height={182} rx={10} class={zone.rect} stroke-width="1" />
+            <text x={zone.x + 18} y={38} class={`font-mono text-[11px] font-bold uppercase tracking-[0.14em] ${zone.labelClass}`}>
+              {zone.label}
+            </text>
+            {zone.dots.map((dot, d) => (
+              <g>
+                <circle cx={zone.x + 26} cy={72 + d * 34} r={4.5} class={zone.dot} />
+                <text x={zone.x + 42} y={77 + d * 34} class="font-sans text-[13px] font-medium fill-ink-primary/80">
+                  {dot}
+                </text>
+              </g>
+            ))}
+          </g>
+        ))}
+
+        <line x1="8" y1="212" x2="704" y2="212" class="stroke-ink-primary/20" stroke-width="1" />
+        <path d="M704 208l8 4-8 4z" class="fill-ink-primary/40" />
+        <text x="8" y="234" class="font-mono text-[10px] font-bold uppercase tracking-[0.14em] fill-ink-primary/50">
+          {t['decide.diagram.axis.left']}
+        </text>
+        <text x="712" y="234" text-anchor="end" class="font-mono text-[10px] font-bold uppercase tracking-[0.14em] fill-ink-primary/50">
+          {t['decide.diagram.axis.right']}
+        </text>
+      </svg>
+    </div>
+
+    <div class="mt-14 lg:mt-18 max-w-184">
+      <p data-speakable class="font-sans text-2xl md:text-3xl font-bold leading-snug tracking-tight text-brand-primary m-0">
+        {t['decide.position']}
+      </p>
+      <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mt-5 max-w-[65ch]">
+        {t['decide.position.support']}
+      </p>
+    </div>
+
+  </div>
+</section>
