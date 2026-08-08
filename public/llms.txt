@@ -92,7 +92,6 @@ Curfee is **not** the right fit for: frontend development, feature development, 
 ## Pages
 
 - [Home](https://curfee.com/), Single-page layout: hero, selected engagements, recurring patterns, how I decide, what I do and what I don't, about, working together, FAQ, contact
-- [What I design](https://curfee.com/architecture/), The full service description: five decisions with evidence, existing systems and new designs, what an engagement requires, who it is not for
 - [Scope section](https://curfee.com/#scope), What Curfee does and what it does not, including the no-feature-code claim
 - [How I decide](https://curfee.com/#method), The three levels (impossible, visible, judgment) with a spectrum graphic
 - [Working together](https://curfee.com/#collaboration), Assessment first, then design and build

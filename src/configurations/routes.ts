@@ -1,7 +1,6 @@
 const ROUTES = {
   home: '/',
   contact: '/#contact',
-  architecture: '/architecture/',
   imprint: '/imprint/',
   privacy: '/privacy/',
 } as const satisfies Record<string, string>;
@@ -13,7 +12,6 @@ export function getRoutes(locale?: string): Routes {
     return {
       home: '/de/',
       contact: '/de/#contact',
-      architecture: '/de/architecture/',
       imprint: '/de/imprint/',
       privacy: '/de/privacy/',
     };
