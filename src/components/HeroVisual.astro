@@ -6,11 +6,13 @@ interface Props {
 }
 const { translations: t } = Astro.props;
 
-// Module boxes inside the modulith, in SVG viewBox coordinates (360 x 264).
+// Module boxes inside the modulith, in SVG viewBox coordinates (400 x 300).
+// Each module is 152 x 100; ports sit on the boundary they belong to.
 const modules = [
-  { x: 28, y: 44, title: t['hero.visual.module.1'] },
-  { x: 204, y: 44, title: t['hero.visual.module.2'] },
-  { x: 28, y: 152, title: t['hero.visual.module.3'] },
+  { x: 28, y: 48, title: t['hero.visual.module.1'] },
+  { x: 220, y: 48, title: t['hero.visual.module.2'] },
+  { x: 28, y: 176, title: t['hero.visual.module.3'] },
+  { x: 220, y: 176, title: t['hero.visual.module.4'] },
 ];
 ---
 
@@ -22,31 +24,58 @@ const modules = [
 
     <p class="m-0 font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta">{t['engagements.design.label']}</p>
 
-    <svg viewBox="0 0 360 264" class="block w-full h-auto mt-3">
-      <rect x="8" y="8" width="344" height="248" rx="10" class="fill-none stroke-ink-primary/20" stroke-width="1" />
-      <text x="22" y="30" class="font-mono text-[10px] font-bold uppercase tracking-[0.14em] fill-ink-meta">{t['hero.visual.system']}</text>
+    <svg viewBox="0 0 400 300" class="block w-full h-auto mt-3">
+      <defs>
+        <pattern id="hero-dotgrid" width="16" height="16" patternUnits="userSpaceOnUse">
+          <circle cx="1.5" cy="1.5" r="1" class="fill-ink-primary/8" />
+        </pattern>
+      </defs>
+
+      {/* The system: one deployable */}
+      <rect x="8" y="8" width="384" height="284" rx="12" fill="url(#hero-dotgrid)" class="stroke-ink-primary/25" stroke-width="1" />
+      <text x="24" y="34" class="font-mono text-[11px] font-bold uppercase tracking-[0.14em] fill-ink-primary/70">{t['hero.visual.system']}</text>
+      <text x="376" y="34" text-anchor="end" class="font-mono text-[9px] font-medium uppercase tracking-[0.1em] fill-ink-primary/40">{t['hero.visual.deployable']}</text>
 
       {modules.map((m) => (
         <g>
-          <rect x={m.x} y={m.y} width="128" height="88" rx="8" class="fill-surface-base stroke-ink-primary/20" stroke-width="1" />
-          <text x={m.x + 12} y={m.y + 24} class="font-mono text-[11px] font-bold fill-ink-primary/80">{m.title}</text>
-          <rect x={m.x + 12} y={m.y + 40} width="76" height="6" rx="3" class="fill-ink-primary/10" />
-          <rect x={m.x + 12} y={m.y + 54} width="56" height="6" rx="3" class="fill-ink-primary/10" />
+          <rect x={m.x} y={m.y} width="152" height="100" rx="8" class="fill-white stroke-ink-primary/25" stroke-width="1" />
+          <text x={m.x + 12} y={m.y + 22} class="font-mono text-[11px] font-bold fill-ink-primary/85">{m.title}</text>
+          <line x1={m.x + 1} y1={m.y + 32} x2={m.x + 151} y2={m.y + 32} class="stroke-ink-primary/10" stroke-width="1" />
+          <rect x={m.x + 12} y={m.y + 44} width="64" height="13" rx="4" class="fill-ink-primary/8" />
+          <rect x={m.x + 84} y={m.y + 44} width="44" height="13" rx="4" class="fill-ink-primary/8" />
+          <rect x={m.x + 12} y={m.y + 66} width="44" height="13" rx="4" class="fill-ink-primary/8" />
+          <circle cx={m.x + 68} cy={m.y + 72.5} r="4" class="fill-brand-primary/25" />
+          <circle cx={m.x + 80} cy={m.y + 72.5} r="4" class="fill-brand-primary/25" />
         </g>
       ))}
 
-      {/* Interface port on the billing module boundary */}
-      <rect x="198" y="80" width="12" height="26" rx="3" class="fill-brand-primary" />
+      {/* Interface ports on the module boundaries */}
+      <rect x="213" y="80" width="14" height="26" rx="3" class="fill-brand-primary" />
+      <text x="231" y="91" class="font-mono text-[8px] font-bold fill-brand-primary">API</text>
+      <rect x="173" y="208" width="14" height="26" rx="3" class="fill-brand-primary" />
+      <text x="169" y="219" text-anchor="end" class="font-mono text-[8px] font-bold fill-brand-primary">API</text>
 
-      {/* Allowed dependency: through the interface */}
-      <line x1="158" y1="93" x2="188" y2="93" class="stroke-brand-primary" stroke-width="1.5" />
-      <path d="M188 89l9 4-9 4z" class="fill-brand-primary" />
+      {/* Allowed dependencies: through the interface */}
+      <line x1="180" y1="93" x2="203" y2="93" class="stroke-brand-primary" stroke-width="1.5" />
+      <path d="M203 89l9 4-9 4z" class="fill-brand-primary" />
+      <line x1="220" y1="221" x2="197" y2="221" class="stroke-brand-primary" stroke-width="1.5" />
+      <path d="M197 217l-9 4 9 4z" class="fill-brand-primary" />
+
+      {/* Traffic dots on the allowed paths; hidden when reduced motion is preferred */}
+      <g class="motion-reduce:hidden">
+        <circle r="2.5" class="fill-brand-primary/70">
+          <animateMotion dur="2.4s" repeatCount="indefinite" path="M180 93 L211 93" />
+        </circle>
+        <circle r="2.5" class="fill-brand-primary/70">
+          <animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M220 221 L189 221" />
+        </circle>
+      </g>
 
       {/* Forbidden dependency: past the boundary, stopped at the module edge */}
-      <path d="M150 160C190 148 216 144 240 135" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" />
+      <path d="M140 176C180 152 250 168 294 151" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" />
       <g class="stroke-brand-error" stroke-width="2" stroke-linecap="round">
-        <line x1="243" y1="127" x2="253" y2="137" />
-        <line x1="253" y1="127" x2="243" y2="137" />
+        <line x1="289" y1="144" x2="299" y2="154" />
+        <line x1="299" y1="144" x2="289" y2="154" />
       </g>
     </svg>
 
