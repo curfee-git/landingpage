@@ -1,0 +1,111 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getRoutes } from '@/configurations/routes';
+import { getTranslations } from '@/i18n/translations';
+
+const t = getTranslations(Astro.currentLocale);
+const routes = getRoutes(Astro.currentLocale);
+
+const decisions = [
+  { title: t['arch.d1.title'], body: t['arch.d1.body'] },
+  { title: t['arch.d2.title'], body: t['arch.d2.body'] },
+  { title: t['arch.d3.title'], body: t['arch.d3.body'] },
+  { title: t['arch.d4.title'], body: t['arch.d4.body'] },
+  { title: t['arch.d5.title'], body: t['arch.d5.body'] },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": t['breadcrumb.home'], "item": `https://curfee.com${routes.home}` },
+    { "@type": "ListItem", "position": 2, "name": t['arch.breadcrumb'], "item": `https://curfee.com${routes.architecture}` }
+  ]
+};
+---
+
+<Layout
+  title={t['meta.arch.title']}
+  description={t['meta.arch.description']}
+  canonicalPath={Astro.url.pathname}
+  jsonLd={jsonLd}
+  dateModified="2026-08-08"
+>
+  <article class="section-pad">
+    <div class="max-w-300 mx-auto px-gutter xl:px-0">
+      <div class="max-w-230 mx-auto">
+
+        <header class="mb-16">
+          <p class="text-eyebrow text-brand-primary m-0">
+            {t['scope.eyebrow']}
+          </p>
+          <h1 class="font-sans text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-4">
+            {t['arch.heading']}
+          </h1>
+          <p class="text-body-x-large text-ink-muted mt-6 m-0 max-w-prose">
+            {t['arch.intro']}
+          </p>
+        </header>
+
+        <div class="flex flex-col gap-14">
+
+          {decisions.map((d, i) => (
+            <section class="border-t border-ink-primary/10 pt-10">
+              <p class="font-mono text-sm font-bold text-brand-primary m-0 mb-3" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </p>
+              <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
+                {d.title}
+              </h2>
+              <p class="text-body-large text-ink-muted m-0 max-w-prose">{d.body}</p>
+            </section>
+          ))}
+
+          <section class="border-t border-ink-primary/10 pt-10">
+            <p class="font-mono text-sm font-bold text-brand-primary m-0 mb-3" aria-hidden="true">06</p>
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
+              {t['arch.stages.heading']}
+            </h2>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['arch.stages.body']}</p>
+          </section>
+
+          <section class="border-t border-ink-primary/10 pt-10">
+            <p class="font-mono text-sm font-bold text-brand-primary m-0 mb-3" aria-hidden="true">07</p>
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
+              {t['arch.against.heading']}
+            </h2>
+            <p class="text-body-large text-ink-muted m-0 mb-4 max-w-prose">{t['arch.against.body']}</p>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['arch.against.judgment']}</p>
+          </section>
+
+          <section class="border-t border-ink-primary/10 pt-10">
+            <p class="font-mono text-sm font-bold text-brand-primary m-0 mb-3" aria-hidden="true">08</p>
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
+              {t['arch.requires.heading']}
+            </h2>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['arch.requires.body']}</p>
+          </section>
+
+          <section class="border-t border-ink-primary/10 pt-10">
+            <p class="font-mono text-sm font-bold text-brand-primary m-0 mb-3" aria-hidden="true">09</p>
+            <h2 class="font-sans text-xl md:text-2xl font-bold leading-tight tracking-normal m-0 mb-5">
+              {t['arch.notfor.heading']}
+            </h2>
+            <p class="text-body-large text-ink-muted m-0 mb-4 max-w-prose">{t['arch.notfor.body']}</p>
+            <p class="text-body-large text-ink-muted m-0 max-w-prose">{t['arch.notfor.spring']}</p>
+          </section>
+
+          <div class="border-t border-ink-primary/10 pt-10">
+            <a
+              href={routes.contact}
+              class="inline-flex items-center justify-center px-8 py-4 font-sans text-base font-bold rounded-md no-underline border-2 transition-all duration-200 hover:-translate-y-0.5 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover"
+            >
+              {t['hero.cta']}
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+</Layout>
