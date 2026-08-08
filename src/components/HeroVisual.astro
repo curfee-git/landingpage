@@ -74,6 +74,9 @@ const links = groups.flatMap((g) =>
         <marker id="ah-round" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
           <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/45 stroke-brand-primary/45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
         </marker>
+        <marker id="ah-round-strong" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/70 stroke-brand-primary/70" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+        </marker>
       </defs>
 
       {/* The vertical event bus, the only road between the domains */}
@@ -159,6 +162,13 @@ const links = groups.flatMap((g) =>
           <animateMotion dur="3.5s" begin="3s" repeatCount="indefinite" path="M183 99 L240 99 L240 113 L297 113" />
         </circle>
       </g>
+
+      {/* The one declared exception: a synchronous query API between two domains.
+          Orders asks inventory for stock, through ports, explicitly. */}
+      <line x1="338" y1="219" x2="338" y2="296" class="stroke-brand-primary/70" stroke-width="1.25" stroke-linecap="round" marker-end="url(#ah-round-strong)" />
+      <circle cx="338" cy="214.2" r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
+      <circle cx="338" cy="301.8" r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
+      <text x="346" y="250" class="font-mono text-[8px] font-bold uppercase tracking-[0.1em] fill-brand-primary/60">{t['hero.visual.query']}</text>
 
       {/* Violation: the tempting shortcut. The cart calls pricing across the bus directly,
           but that crosses two domains, so it dies at the module boundary. */}
