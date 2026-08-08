@@ -6,7 +6,6 @@ import PatternSection from '@/components/PatternSection.astro';
 import SelectedEngagementsSection from '@/components/SelectedEngagementsSection.astro';
 import MethodSection from '@/components/MethodSection.astro';
 import AboutSection from '@/components/AboutSection.astro';
-import ManifestSection from '@/components/ManifestSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
 import FaqSection from '@/components/FaqSection.astro';
 import { getTranslations } from '@/i18n/translations';
@@ -106,11 +105,10 @@ const jsonLd = [serviceLd, mechanismLd, faqLd];
   hasSpeakable={true}
 >
   <HeroSection translations={t} />
-  <PatternSection translations={t} />
   <SelectedEngagementsSection />
+  <PatternSection translations={t} />
   <WhyCurfeeSection translations={t} />
   <MethodSection translations={t} />
-  <ManifestSection text={t['method.closer']} />
   <AboutSection translations={t} />
   <FaqSection translations={t} />
   <ContactSection translations={t} />
