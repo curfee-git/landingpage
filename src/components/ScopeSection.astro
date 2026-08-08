@@ -1,0 +1,61 @@
+---
+import type { Translations } from '@/i18n/translations';
+
+interface Props {
+  translations: Translations;
+}
+const { translations: t } = Astro.props;
+
+const columns = [
+  {
+    label: t['scope.do.label'],
+    items: [t['scope.do.1'], t['scope.do.2'], t['scope.do.3'], t['scope.do.4']],
+  },
+  {
+    label: t['scope.dont.label'],
+    items: [t['scope.dont.1'], t['scope.dont.2'], t['scope.dont.3']],
+  },
+];
+---
+
+<section
+  id="scope"
+  class="section-pad bg-surface-soft"
+  aria-labelledby="scope-heading"
+>
+  <div class="max-w-300 mx-auto px-gutter xl:px-0">
+
+    <header class="max-w-184 mb-12 lg:mb-14">
+      <p class="text-eyebrow text-brand-primary m-0">
+        {t['scope.eyebrow']}
+      </p>
+      <h2
+        id="scope-heading"
+        data-speakable
+        class="font-sans text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight text-balance break-words hyphens-auto m-0 mt-6"
+      >
+        {t['scope.heading']}
+      </h2>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-14 gap-y-10 max-w-184">
+      {columns.map((col) => (
+        <div>
+          <h3 class="font-mono text-sm font-bold uppercase tracking-[0.08em] text-brand-primary m-0">
+            {col.label}
+          </h3>
+          <ul class="m-0 mt-4 p-0 list-none flex flex-col gap-2.5">
+            {col.items.map((item) => (
+              <li class="font-sans text-lg leading-relaxed text-ink-muted">{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <p data-speakable class="font-sans text-xl md:text-2xl font-bold leading-snug tracking-tight text-brand-primary m-0 mt-12 lg:mt-14 max-w-184">
+      {t['scope.highlight']}
+    </p>
+
+  </div>
+</section>
