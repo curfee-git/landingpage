@@ -358,5 +358,7 @@
   "engagements.1.diagram.confirmed": "Gebucht",
   "engagements.1.diagram.free": "Frei",
   "pattern.2.title": "Strukturelle Fragilität",
-  "pattern.2.reality": "Abhängigkeiten sind über das hinausgewachsen, was irgendjemand vollständig versteht."
+  "pattern.2.reality": "Abhängigkeiten sind über das hinausgewachsen, was irgendjemand vollständig versteht.",
+  "pattern.8.title": "Angst vorm Deployment",
+  "pattern.8.reality": "Jede Änderung kann Nebenwirkungen irgendwo anders haben. Releases dauern und brauchen Mut."
 }

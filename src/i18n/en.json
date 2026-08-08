@@ -358,5 +358,7 @@
   "engagements.1.diagram.confirmed": "Booked",
   "engagements.1.diagram.free": "Free",
   "pattern.2.title": "Structural Fragility",
-  "pattern.2.reality": "Dependencies have grown beyond what anyone fully understands."
+  "pattern.2.reality": "Dependencies have grown beyond what anyone fully understands.",
+  "pattern.8.title": "Fear of Deployment",
+  "pattern.8.reality": "Every change can have side effects somewhere else. Releases take long and take courage."
 }
