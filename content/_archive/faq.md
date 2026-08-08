@@ -1,5 +1,19 @@
 # FAQ (umgebaut am 2026-08-08, Branch technical-positioning)
 
+## Zweiter Umbau am selben Tag: von sechs auf fünf, Spring-Frage neu
+
+Auf Philipps Anweisung („mach 5 daraus") gestrichen:
+
+### Mit wem arbeite ich? (Zielgruppe steht jetzt im Hero und in der Scope-Section)
+
+- de: Mit CTOs, Engineering-Leads und technischen Bereichsleitern, deren Systemlandschaft schneller gewachsen ist als ihre Struktur, in Österreich, Deutschland und der Schweiz. Am besten passt eine Organisation, die getroffene Entscheidungen sicher durchgesetzt haben möchte. Ich arbeite remote auf Deutsch oder Englisch.
+- en: With CTOs, engineering leads and technical department heads whose system landscape grew faster than its structure, in Austria, Germany, and Switzerland. The best fit is an organisation that wants the decisions it has made to take effect reliably. I work remotely in English or German.
+
+### Brauchen wir dafür neue Tools?
+
+- de: Meistens nicht. Wir bauen die Konventionen, Standards und Prüfungen in die bestehenden Systeme ein.
+- en: Usually not. We embed the conventions, standards, and checks into the systems already in place.
+
 Von sieben auf sechs Fragen, neu nummeriert. Gestrichen wurden die alten Fragen 2, 3 und 6;
 neu sind „Was passiert, wenn du ausfällst oder das Mandat endet?" und „Warum ein Einzelner
 und keine Agentur?". „Mit wem arbeite ich?" wurde auf die neue Zielgruppe umgeschrieben.
