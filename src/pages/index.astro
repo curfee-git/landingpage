@@ -5,6 +5,7 @@ import PatternSection from '@/components/PatternSection.astro';
 import SelectedEngagementsSection from '@/components/SelectedEngagementsSection.astro';
 import DecisionSection from '@/components/DecisionSection.astro';
 import AboutSection from '@/components/AboutSection.astro';
+import CollaborationSection from '@/components/CollaborationSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
 import FaqSection from '@/components/FaqSection.astro';
 import { getTranslations } from '@/i18n/translations';
@@ -108,6 +109,7 @@ const jsonLd = [serviceLd, mechanismLd, faqLd];
   <PatternSection translations={t} />
   <DecisionSection translations={t} />
   <AboutSection translations={t} />
+  <CollaborationSection translations={t} />
   <FaqSection translations={t} />
   <ContactSection translations={t} />
 </Layout>
