@@ -1,5 +1,11 @@
 # Hero (Texte ersetzt am 2026-08-08, Branch technical-positioning)
 
+## Zwischenstand v2 (Diagramm-Formulierung, gleicher Tag wieder ersetzt durch die Build-bricht-Fassung)
+
+- `hero.subtitle` de: Ich entwerfe Backend-Architektur für Java und das Spring-Ökosystem. Architekturentscheidungen enden bei mir nicht als Diagramm. Sie werden im System verankert, bis ihre Verletzung auffällt oder unmöglich ist.
+- `hero.subtitle` en: I design backend architecture for Java and the Spring ecosystem. Architecture decisions do not end as diagrams here. They are anchored in the system, so violating them is either visible or impossible.
+- `decide.position.support` verlor dabei seinen Schlusssatz an den Hero (`hero.anchor`): Erst wenn eine Entscheidung in der Struktur lebt, ist der vereinbarte Weg der einzige. / Only once a decision lives in the structure is the agreed way the only way.
+
 ## Zwischenstand v1 vom Vormittag (ersetzt am Nachmittag durch die Java/Spring-Fassung, H1 blieb)
 
 - `hero.subtitle` de: Ich baue die Regeln, die heute in Wikis, Guidelines und Köpfen liegen, in deine Systeme ein: als Datenbank-Constraints, Architekturtests und CI-Gates. Am Ende ist der vereinbarte Weg der einzig mögliche.
