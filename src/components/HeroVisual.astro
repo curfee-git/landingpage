@@ -65,16 +65,13 @@ const links = groups.flatMap((g) =>
 );
 ---
 
-<div class="hero-visual w-full max-w-115" role="img" aria-label={t['hero.visual.aria']}>
+<div class="hero-visual w-full max-w-125" role="img" aria-label={t['hero.visual.aria']}>
   <div aria-hidden="true">
 
     <svg viewBox="20 16 440 544" class="block w-full h-auto">
       <defs>
         <marker id="ah-round" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
           <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/45 stroke-brand-primary/45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
-        </marker>
-        <marker id="ah-round-strong" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
-          <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/70 stroke-brand-primary/70" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
         </marker>
       </defs>
 
@@ -90,14 +87,21 @@ const links = groups.flatMap((g) =>
         </g>
       ))}
 
-      {/* High cohesion: the modules of a domain are wired directly, both ways */}
+      {/* High cohesion: the modules of a domain are wired directly, one lane per direction,
+          in the same language as the event lines */}
       {links.map((l) => (
-        <line
-          x1={l.cx} y1={l.y1 + EDGE + 7}
-          x2={l.cx} y2={l.y2 - EDGE - 7}
-          class="stroke-brand-primary/70" stroke-width="1.25" stroke-linecap="round"
-          marker-start="url(#ah-round-strong)" marker-end="url(#ah-round-strong)"
-        />
+        <g>
+          <line
+            x1={l.cx - 7} y1={l.y1 + EDGE + 5}
+            x2={l.cx - 7} y2={l.y2 - EDGE - 5}
+            class="stroke-brand-primary/40" stroke-width="1" stroke-linecap="round" marker-end="url(#ah-round)"
+          />
+          <line
+            x1={l.cx + 7} y1={l.y2 - EDGE - 5}
+            x2={l.cx + 7} y2={l.y1 + EDGE + 6}
+            class="stroke-brand-primary/40" stroke-width="1" stroke-linecap="round" marker-end="url(#ah-round)"
+          />
+        </g>
       ))}
 
       {/* Low coupling: one publish and one subscribe line per module, to the bus and nowhere else */}
@@ -132,11 +136,13 @@ const links = groups.flatMap((g) =>
         </g>
       ))}
 
-      {/* Ports on the domain links */}
+      {/* Ports on the domain links, one pair per lane */}
       {links.map((l) => (
         <g>
-          <circle cx={l.cx} cy={l.y1 + EDGE} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
-          <circle cx={l.cx} cy={l.y2 - EDGE} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
+          <circle cx={l.cx - 7} cy={l.y1 + EDGE} r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
+          <circle cx={l.cx + 7} cy={l.y1 + EDGE} r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
+          <circle cx={l.cx - 7} cy={l.y2 - EDGE} r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
+          <circle cx={l.cx + 7} cy={l.y2 - EDGE} r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
         </g>
       ))}
 
