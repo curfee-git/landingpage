@@ -71,6 +71,7 @@
   "pattern.7.title": "Generated Code Ignores Your Wiki",
   "pattern.7.reality": "When generated code meets conventions that only exist as documentation, they most likely get ignored. Like someone with too much on their plate: they take the shortcut. As long as nobody checks, everything counts, and as long as no error surfaces, nothing happens.",
   "schema.service.description": "Curfee designs backend software architecture for Java and the Spring ecosystem, for existing systems as well as new designs, delivered as project-based engagements rather than hourly services. Architecture decisions are anchored in the system, through architecture tests such as ArchUnit and CI gates, so violating them is either visible or impossible. No feature code is written: the only code in the client repo is the architecture tests that hold the designed boundaries. Available across Austria, Germany, and Switzerland (DACH region).",
+  "manifest.text": "Decisions that enforce themselves",
   "scope.eyebrow": "Scope",
   "scope.heading": "What I do and what I don't.",
   "scope.intro": "I design backend architecture for Java and the Spring ecosystem: the cut into modules, the domain model with its invariants, the transaction boundaries, the integration with the outside. Whether a modulith is enough or separate services are needed, I decide by what operations can carry and which boundaries have proven themselves. Every decision is anchored as an architecture test in your CI, a violation breaks the build.",

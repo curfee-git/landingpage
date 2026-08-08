@@ -71,6 +71,7 @@
   "pattern.7.title": "Generierter Code ignoriert dein Wiki",
   "pattern.7.reality": "Trifft generierter Code auf Konventionen, die nur dokumentiert sind, werden sie mit hoher Wahrscheinlichkeit ignoriert. Wie bei jemandem mit zu viel Arbeit: Er nimmt die Abkürzung. Solange niemand kontrolliert, gilt alles, und solange kein Fehler auffällt, passiert nichts.",
   "schema.service.description": "Curfee entwirft Backend-Softwarearchitektur für Java und das Spring-Ökosystem, für Bestandssysteme wie für Neuentwürfe, in projektbasierten Engagements statt stundenbasierter Leistungen. Architekturentscheidungen werden im System verankert, über Architekturtests wie ArchUnit und CI-Gates, sodass ihre Verletzung auffällt oder unmöglich ist. Es entsteht kein Feature-Code: Der einzige Code im Kundenrepo sind die Architekturtests, die die entworfenen Grenzen halten. Verfügbar in Österreich, Deutschland und der Schweiz (DACH-Region).",
+  "manifest.text": "Entscheidungen, die sich selbst durchsetzen",
   "scope.eyebrow": "Leistung",
   "scope.heading": "Was ich mache und was nicht.",
   "scope.intro": "Ich entwerfe Backend-Architektur für Java und das Spring-Ökosystem: den Schnitt in Module, das Domänenmodell mit seinen Invarianten, die Transaktionsgrenzen, die Integration nach außen. Ob ein Modulith reicht oder getrennte Dienste nötig sind, entscheide ich daran, was der Betrieb trägt und welche Grenzen sich bewiesen haben. Jede Entscheidung wird als Architekturtest in deiner CI verankert, ein Verstoß bricht den Build.",
