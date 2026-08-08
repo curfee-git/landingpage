@@ -25,18 +25,22 @@ const BUS_X = 240;
 const HEX_R = 28;
 const CORE_R = 10.5;
 const EDGE = HEX_R * 0.866; // distance from centre to the flat top/bottom edge
+const STEP = 84; // vertical distance between stacked modules
 
-// Six domains, two hexagonal modules each, three per side of the vertical bus.
-// Inside a domain the modules are wired directly (high cohesion); outward they
-// talk to the bus only (low coupling).
+// Six domains with two to three modules each, three domains per side of the bus.
+// The three-module domains sit diagonally opposite, so both columns end level.
+// Inside a domain the modules are wired directly and in both directions (high
+// cohesion); outward they talk to the bus only (low coupling).
 const groups = [
-  { x: 28, y: 40, side: 'left', label: t['hero.visual.group.1'], modules: [t['hero.visual.module.1'], t['hero.visual.module.2']] },
-  { x: 276, y: 40, side: 'right', label: t['hero.visual.group.2'], modules: [t['hero.visual.module.3'], t['hero.visual.module.4']] },
-  { x: 28, y: 260, side: 'left', label: t['hero.visual.group.3'], modules: [t['hero.visual.module.5'], t['hero.visual.module.6']] },
-  { x: 276, y: 260, side: 'right', label: t['hero.visual.group.4'], modules: [t['hero.visual.module.7'], t['hero.visual.module.8']] },
-  { x: 28, y: 480, side: 'left', label: t['hero.visual.group.5'], modules: [t['hero.visual.module.9'], t['hero.visual.module.10']] },
-  { x: 276, y: 480, side: 'right', label: t['hero.visual.group.6'], modules: [t['hero.visual.module.11'], t['hero.visual.module.12']] },
+  { x: 28, y: 40, side: 'left', label: t['hero.visual.group.1'], modules: [t['hero.visual.module.1'], t['hero.visual.module.2'], t['hero.visual.module.3']] },
+  { x: 276, y: 40, side: 'right', label: t['hero.visual.group.2'], modules: [t['hero.visual.module.4'], t['hero.visual.module.5']] },
+  { x: 28, y: 344, side: 'left', label: t['hero.visual.group.3'], modules: [t['hero.visual.module.6'], t['hero.visual.module.7']] },
+  { x: 276, y: 260, side: 'right', label: t['hero.visual.group.4'], modules: [t['hero.visual.module.8'], t['hero.visual.module.9'], t['hero.visual.module.10']] },
+  { x: 28, y: 564, side: 'left', label: t['hero.visual.group.5'], modules: [t['hero.visual.module.11'], t['hero.visual.module.12']] },
+  { x: 276, y: 564, side: 'right', label: t['hero.visual.group.6'], modules: [t['hero.visual.module.13'], t['hero.visual.module.14']] },
 ];
+const groupHeight = (g: (typeof groups)[number]) => 112 + (g.modules.length - 1) * STEP;
+const hexX = (g: (typeof groups)[number]) => (g.side === 'left' ? g.x + 124 : g.x + 52);
 
 interface Node {
   cx: number;
@@ -44,17 +48,29 @@ interface Node {
   name: string;
   dir: 1 | -1; // 1: bus lies to the right of the module, -1: bus lies to the left
 }
-const nodes: Node[] = groups.flatMap((g) => {
-  const cx = g.side === 'left' ? g.x + 124 : g.x + 52;
-  const dir: 1 | -1 = g.side === 'left' ? 1 : -1;
-  return g.modules.map((name, i) => ({ cx, cy: g.y + 66 + i * 84, name, dir }));
-});
+const nodes: Node[] = groups.flatMap((g) =>
+  g.modules.map((name, i) => ({
+    cx: hexX(g),
+    cy: g.y + 66 + i * STEP,
+    name,
+    dir: g.side === 'left' ? 1 : -1,
+  }))
+);
+
+// Direct, bidirectional links between the stacked modules of a domain.
+const links = groups.flatMap((g) =>
+  g.modules.slice(1).map((_, i) => ({
+    cx: hexX(g),
+    y1: g.y + 66 + i * STEP,
+    y2: g.y + 66 + (i + 1) * STEP,
+  }))
+);
 ---
 
 <div class="hero-visual w-full max-w-130" role="img" aria-label={t['hero.visual.aria']}>
   <div aria-hidden="true">
 
-    <svg viewBox="20 16 440 676" class="block w-full h-auto">
+    <svg viewBox="20 16 440 760" class="block w-full h-auto">
       <defs>
         <marker id="ah-round" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
           <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/45 stroke-brand-primary/45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
@@ -65,24 +81,26 @@ const nodes: Node[] = groups.flatMap((g) => {
       </defs>
 
       {/* The vertical event bus, the only road between the domains */}
-      <line x1={BUS_X} y1="44" x2={BUS_X} y2="688" class="stroke-ink-primary/20" stroke-width="1.5" stroke-linecap="round" />
+      <line x1={BUS_X} y1="44" x2={BUS_X} y2="772" class="stroke-ink-primary/20" stroke-width="1.5" stroke-linecap="round" />
       <text x={BUS_X} y="32" text-anchor="middle" class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/40">{t['hero.visual.bus']}</text>
 
       {/* Domains */}
       {groups.map((g) => (
         <g>
-          <rect x={g.x} y={g.y} width="176" height="196" rx="10" class="fill-brand-primary/3 stroke-ink-primary/15 [stroke-dasharray:4_3]" stroke-width="1" />
+          <rect x={g.x} y={g.y} width="176" height={groupHeight(g)} rx="10" class="fill-brand-primary/3 stroke-ink-primary/15 [stroke-dasharray:4_3]" stroke-width="1" />
           <text x={g.x + 12} y={g.y + 20} class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/50">{g.label}</text>
         </g>
       ))}
 
-      {/* High cohesion: the two modules of a domain are wired directly */}
-      {groups.map((g) => {
-        const cx = g.side === 'left' ? g.x + 124 : g.x + 52;
-        return (
-          <line x1={cx} y1={g.y + 66 + EDGE + 5} x2={cx} y2={g.y + 150 - EDGE - 7} class="stroke-brand-primary/70" stroke-width="1.25" stroke-linecap="round" marker-end="url(#ah-round-strong)" />
-        );
-      })}
+      {/* High cohesion: the modules of a domain are wired directly, both ways */}
+      {links.map((l) => (
+        <line
+          x1={l.cx} y1={l.y1 + EDGE + 7}
+          x2={l.cx} y2={l.y2 - EDGE - 7}
+          class="stroke-brand-primary/70" stroke-width="1.25" stroke-linecap="round"
+          marker-start="url(#ah-round-strong)" marker-end="url(#ah-round-strong)"
+        />
+      ))}
 
       {/* Low coupling: one publish and one subscribe line per module, to the bus and nowhere else */}
       {nodes.map((n) => (
@@ -117,15 +135,12 @@ const nodes: Node[] = groups.flatMap((g) => {
       ))}
 
       {/* Ports on the domain links */}
-      {groups.map((g) => {
-        const cx = g.side === 'left' ? g.x + 124 : g.x + 52;
-        return (
-          <g>
-            <circle cx={cx} cy={g.y + 66 + EDGE} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
-            <circle cx={cx} cy={g.y + 150 - EDGE} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
-          </g>
-        );
-      })}
+      {links.map((l) => (
+        <g>
+          <circle cx={l.cx} cy={l.y1 + EDGE} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
+          <circle cx={l.cx} cy={l.y2 - EDGE} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
+        </g>
+      ))}
 
       {/* Events travelling over the bus; hidden when reduced motion is preferred */}
       <g class="motion-reduce:hidden">
@@ -133,10 +148,10 @@ const nodes: Node[] = groups.flatMap((g) => {
           <animateMotion dur="5s" repeatCount="indefinite" path="M297 183 L240 183 L240 333 L297 333" />
         </circle>
         <circle r="2.5" class="fill-brand-primary/55">
-          <animateMotion dur="4.5s" begin="1.6s" repeatCount="indefinite" path="M183 319 L240 319 L240 637 L183 637" />
+          <animateMotion dur="4.5s" begin="1.6s" repeatCount="indefinite" path="M183 403 L240 403 L240 721 L183 721" />
         </circle>
         <circle r="2.5" class="fill-brand-primary/55">
-          <animateMotion dur="3.5s" begin="3s" repeatCount="indefinite" path="M297 403 L240 403 L240 553 L297 553" />
+          <animateMotion dur="3.5s" begin="3s" repeatCount="indefinite" path="M297 487 L240 487 L240 637 L297 637" />
         </circle>
       </g>
 
