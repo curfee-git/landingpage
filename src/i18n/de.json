@@ -325,12 +325,6 @@
   ],
   "hero.visual.contract": "Contract",
   "hero.visual.cycle": "Zyklus",
-  "engagements.1.diagram.aria": "Beispiel: eine kollidierende Buchung läuft in eine bedingte Prüfung innerhalb der Transaktion und wird mit einer Fehlermeldung abgelehnt",
-  "engagements.1.diagram.room": "Gerichtssaal 1",
-  "engagements.1.diagram.label": "Abgelehnte Buchung",
-  "engagements.1.diagram.comment": "Bedingte Prüfung: überschneidet sich die Buchung?",
-  "engagements.1.diagram.error.1": "ERROR: Buchung abgelehnt,",
-  "engagements.1.diagram.error.2": "Gerichtssaal 1 ist 09:00 bis 11:00 belegt",
   "engagements.2.diagram.aria": "Diagramm: Veranstalter füllen ein Self-Service-Formular aus, Einträge werden täglich importiert, ein Klick veröffentlicht sie",
   "engagements.2.diagram.form.title": "Veranstaltung einreichen",
   "engagements.2.diagram.field.1": "Titel",
@@ -355,5 +349,12 @@
   "engagements.4.diagram.passed": "Bestanden",
   "engagements.4.diagram.failed": "Fehlgeschlagen",
   "engagements.4.diagram.blocked": "Merge blockiert",
-  "hero.visual.example": "Beispiel"
+  "engagements.1.diagram.aria": "Diagramm: ein Gerichtssaal-Kalender, in dem eine zweite Verhandlung in einem belegten Zeitfenster abgelehnt und eine Verhandlung in einem freien Zeitfenster gebucht wird",
+  "engagements.1.diagram.room": "Gerichtssaal 1",
+  "engagements.1.diagram.booked": "Verhandlung",
+  "engagements.1.diagram.conflict": "2. Verhandlung",
+  "engagements.1.diagram.new": "Neue Verhandlung",
+  "engagements.1.diagram.refused": "Abgelehnt",
+  "engagements.1.diagram.confirmed": "Gebucht",
+  "engagements.1.diagram.free": "Frei"
 }
