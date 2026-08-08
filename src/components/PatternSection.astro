@@ -1,4 +1,5 @@
 ---
+import Icon from '@/components/shared/Icon.astro';
 import type { Translations } from '@/i18n/translations';
 
 interface Props {
@@ -6,11 +7,12 @@ interface Props {
 }
 const { translations: t } = Astro.props;
 
+// Sorted from the most current pattern to the least current one.
 const cards = [
-  { title: t['pattern.3.title'], text: t['pattern.3.reality'] },
-  { title: t['pattern.1.title'], text: t['pattern.1.reality'] },
-  { title: t['pattern.5.title'], text: t['pattern.5.reality'] },
-  { title: t['pattern.7.title'], text: t['pattern.7.reality'] },
+  { icon: 'groups', title: t['pattern.7.title'], text: t['pattern.7.reality'] },
+  { icon: 'call_split', title: t['pattern.3.title'], text: t['pattern.3.reality'] },
+  { icon: 'rule', title: t['pattern.1.title'], text: t['pattern.1.reality'] },
+  { icon: 'route', title: t['pattern.5.title'], text: t['pattern.5.reality'] },
 ];
 ---
 
@@ -36,12 +38,13 @@ const cards = [
     </header>
 
     <ul
-      class="grid grid-cols-1 sm:grid-cols-2 gap-x-14 gap-y-10 m-0 p-0 list-none"
+      class="grid grid-cols-1 md:grid-cols-2 gap-6 m-0 p-0 list-none"
       role="list"
     >
       {cards.map((card) => (
-        <li class="border-t border-ink-primary/13 pt-6 max-w-[62ch]">
-          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mb-2">
+        <li class="flex flex-col p-10 bg-white border border-ink-primary/13 rounded-lg">
+          <Icon name={card.icon} class="w-6 h-6 text-brand-primary shrink-0" />
+          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mt-4 mb-2">
             {card.title}
           </h3>
           <p class="text-body-medium text-ink-muted leading-relaxed m-0">{card.text}</p>
