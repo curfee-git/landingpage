@@ -32,6 +32,9 @@ const routes = getRoutes(Astro.currentLocale);
           </h2>
 
           <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mt-9 mb-5 max-w-prose">
+            {t['about.who.logistics']}
+          </p>
+          <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mb-5 max-w-prose">
             {t['about.who.why.2']}
           </p>
           <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 max-w-prose">
@@ -43,6 +46,15 @@ const routes = getRoutes(Astro.currentLocale);
               {t['about.who.quote']}
             </p>
           </blockquote>
+
+          <div class="mt-9 max-w-prose">
+            <p class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-brand-primary m-0">
+              {t['about.notfor.label']}
+            </p>
+            <p class="font-sans text-base text-ink-muted leading-relaxed m-0 mt-3">
+              {t['about.notfor']}
+            </p>
+          </div>
 
           <div class="mt-10 flex flex-wrap items-center gap-4">
             <a
