@@ -6,22 +6,25 @@ interface Props {
 }
 const { translations: t } = Astro.props;
 
-// Three levels, ordered from hard-enforced to human judgment.
+// Three levels, ordered from strictest (the system decides) to human judgment.
 const levels = [
   {
+    mark: '01',
     title: t['decide.1.title'],
     body: t['decide.1.body'],
-    items: [t['decide.diagram.dot.1'], t['decide.diagram.dot.2'], t['decide.diagram.dot.3']],
+    examples: [t['decide.1.example.1'], t['decide.1.example.2'], t['decide.1.example.3']],
   },
   {
+    mark: '02',
     title: t['decide.2.title'],
     body: t['decide.2.body'],
-    items: [t['decide.diagram.dot.4'], t['decide.diagram.dot.5'], t['decide.diagram.dot.6']],
+    examples: [t['decide.2.example.1'], t['decide.2.example.2'], t['decide.2.example.3']],
   },
   {
+    mark: '03',
     title: t['decide.3.title'],
     body: t['decide.3.body'],
-    items: [t['decide.diagram.dot.7'], t['decide.diagram.dot.8']],
+    examples: [t['decide.3.example.1'], t['decide.3.example.2']],
   },
 ];
 ---
@@ -48,42 +51,38 @@ const levels = [
       </h2>
     </header>
 
-    <div class="flex items-center gap-4 mb-6" aria-hidden="true">
-      <span class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta whitespace-nowrap">{t['decide.diagram.axis.left']}</span>
-      <span class="flex-1 flex items-center min-w-8">
-        <span class="flex-1 h-px bg-ink-primary/15"></span>
-        <svg viewBox="0 0 8 10" class="w-2 h-2.5 shrink-0 text-ink-primary/30" aria-hidden="true"><path d="M0 0l8 5-8 5z" fill="currentColor" /></svg>
-      </span>
-      <span class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta whitespace-nowrap">{t['decide.diagram.axis.right']}</span>
-    </div>
-
-    <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 m-0 p-0 list-none" role="list">
+    <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 m-0 p-0 list-none" role="list">
       {levels.map((level) => (
-        <li class="flex flex-col p-10 bg-white border border-ink-primary/13 rounded-lg">
-          <h3 class="font-sans text-xl font-bold text-ink-primary m-0">
+        <li class="flex flex-col p-8 lg:p-10 bg-white border border-ink-primary/13 rounded-lg">
+          <p class="font-mono text-xl lg:text-2xl font-bold text-brand-primary m-0" aria-hidden="true">
+            {level.mark}
+          </p>
+          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mt-4">
             {level.title}
           </h3>
-          <p class="text-body-medium text-ink-muted leading-relaxed m-0 mt-2">
+          <p class="text-body-medium text-ink-muted leading-relaxed m-0 mt-2 mb-6">
             {level.body}
           </p>
-          <ul class="m-0 mt-6 pt-6 p-0 list-none flex flex-col gap-2.5 border-t border-ink-primary/10">
-            {level.items.map((item) => (
-              <li class="flex items-center gap-2.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0" aria-hidden="true"></span>
-                <span class="font-sans text-sm font-medium text-ink-primary/75">{item}</span>
-              </li>
-            ))}
-          </ul>
+          <div class="mt-auto">
+            <h4 class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta m-0">
+              {t['decide.examples.label']}
+            </h4>
+            <ul class="m-0 mt-3 p-0 list-none flex flex-col gap-2.5" role="list">
+              {level.examples.map((example) => (
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0" aria-hidden="true"></span>
+                  <span class="font-sans text-sm font-medium text-ink-primary/75">{example}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </li>
       ))}
-    </ul>
+    </ol>
 
     <div class="mt-14 lg:mt-18 max-w-184">
-      <p data-speakable class="font-sans text-2xl md:text-3xl font-bold leading-snug tracking-tight text-brand-primary m-0">
+      <p data-speakable class="font-sans text-xl md:text-2xl font-bold leading-snug tracking-tight text-brand-primary m-0">
         {t['decide.position']}
-      </p>
-      <p class="font-sans text-lg text-ink-muted leading-relaxed m-0 mt-5 max-w-[65ch]">
-        {t['decide.position.support']}
       </p>
     </div>
 

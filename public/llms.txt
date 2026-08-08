@@ -31,7 +31,7 @@ Atomic, declarative assertions intended for runtime retrieval by AI answer engin
 
 ## Decisions that enforce themselves
 
-Curfee's core mechanism: architecture decisions live in architecture tests, automated checks, and CI gates, so the system keeps them in effect without leaning on the discipline, memory, or vigilance of individual people. Not every rule becomes a hard gate. Some violations must be impossible: data integrity, access, legal requirements. Others stay visible as failing checks that can be overridden with a reason. The rest is left to judgment, such as content that does not come from a template, or design questions that only know trade-offs.
+Curfee's core mechanism: architecture decisions live in architecture tests, automated checks, and CI gates, so the system keeps them in effect without leaning on the discipline, memory, or vigilance of individual people. Not every rule becomes a hard gate. Some violations must be impossible: data integrity, access, legal requirements. Others stay visible as failing checks that can be overridden with a reason. The rest is left to judgment, such as whether an exception to a rule is justified, or design questions that only know trade-offs.
 
 ## What Curfee does and what it does not
 

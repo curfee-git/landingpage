@@ -68,7 +68,7 @@ Every rule gets exactly one of three levels. The work lies in deciding which.
 
 - **Make it impossible.** Data integrity, access, legal requirements. A double-booked resource or a publication without a translation must never be able to exist in the first place. Rules like these go into constraints and publishing gates.
 - **Make it visible.** Violations that fail a check and can be overridden with a reason. An architecture test that turns red forces a decision, not a standstill.
-- **Leave it to judgment.** No check can decide whether content that does not come from a template is right. What is not deterministic stays with people, as do design questions that only know trade-offs.
+- **Leave it to judgment.** No check can decide whether an exception to a rule is justified. Questions like these stay with people, as do design questions that only know trade-offs.
 
 Stated position, quoted from curfee.com: "Conventions that only live in a wiki do not exist. There are rules built into the system and well-documented wishes. A standard whose violation does not break a build is a request."
 
