@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "Curfee, Backend Software Architecture for Java and Spring Systems",
+  "name": "Curfee, Backend Software Architecture for Java and the Spring Framework",
   "short_name": "Curfee",
-  "description": "Curfee designs backend architecture for Java and Spring systems, existing and new, and anchors it in the system: architecture tests instead of diagrams. No feature code.",
+  "description": "Curfee designs backend architecture for Java and the Spring ecosystem, existing and new, and anchors it in the system: architecture tests instead of diagrams. No feature code.",
   "start_url": "/",
   "scope": "/",
   "icons": [
