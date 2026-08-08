@@ -305,7 +305,7 @@
   "schema.service.type": "Software Architecture Consulting",
   "schema.audience.name": "CTOs, engineering leads, technical department heads",
   "schema.audience.type": "CTOs, engineering leads, and technical department heads in organisations with grown Java backends in the Spring ecosystem, primarily in Austria, Germany, and Switzerland",
-  "schema.service.output": "Architecture design for backend systems, decomposition of existing systems, module boundaries and layer rules, architecture tests (ArchUnit) and CI gates that hold the designed boundaries, root cause and dependency analysis, guidance through implementation.",
+  "schema.service.output": "Architecture design for backend systems, module boundaries and layer rules, architecture tests (ArchUnit) and CI gates that hold the designed boundaries, root cause and dependency analysis, guidance through implementation.",
   "schema.mechanism.name": "Decisions that enforce themselves",
   "schema.mechanism.description": "'Decisions that enforce themselves' is Curfee's core mechanism: decisions live in pipelines, automated checks, and tool configuration, so the system keeps them in effect regardless of individual discipline, memory, or vigilance. Developed and applied by Philipp Höllinger at Curfee across IT landscapes and the workflows between their systems, it treats a decision as embedded only when it works without human intervention. It is the core of every Curfee engagement.",
   "schema.glossary.name": "Curfee Software Architecture Glossary",
@@ -341,7 +341,7 @@
     "Software Architecture Consulting",
     "Backend Architecture for Java and Spring",
     "Modernisation of Grown Backend Systems",
-    "Decomposition of Existing Systems"
+    "Backend Architecture in Existing Systems"
   ],
   "schema.knows.about.person": [
     "Backend Software Architecture",
@@ -379,7 +379,7 @@
     "Modular Monolith Modulith",
     "ArchUnit Architecture Tests",
     "Modernise Grown Java Systems",
-    "Decompose Existing Systems",
+    "Draw Boundaries in Existing Systems",
     "Enforce Module Boundaries",
     "Make Architecture Decisions Take Effect",
     "Decisions that enforce themselves",

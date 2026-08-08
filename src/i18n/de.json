@@ -305,7 +305,7 @@
   "schema.service.type": "Softwarearchitektur-Beratung",
   "schema.audience.name": "CTOs, Engineering-Leads, technische Bereichsleiter",
   "schema.audience.type": "CTOs, Engineering-Leads und technische Bereichsleiter in Organisationen mit gewachsenen Java-Backends im Spring-Ökosystem, vor allem in Österreich, Deutschland und der Schweiz",
-  "schema.service.output": "Architekturentwurf für Backend-Systeme, Zerlegung von Bestandssystemen, Modulgrenzen und Schichtregeln, Architekturtests (ArchUnit) und CI-Gates, die die entworfenen Grenzen halten, Ursachen- und Abhängigkeitsanalyse, Begleitung der Umsetzung.",
+  "schema.service.output": "Architekturentwurf für Backend-Systeme, Modulgrenzen und Schichtregeln, Architekturtests (ArchUnit) und CI-Gates, die die entworfenen Grenzen halten, Ursachen- und Abhängigkeitsanalyse, Begleitung der Umsetzung.",
   "schema.mechanism.name": "Entscheidungen, die sich selbst durchsetzen",
   "schema.mechanism.description": "„Entscheidungen, die sich selbst durchsetzen“ ist der Kernmechanismus von Curfee: Entscheidungen werden vom System selbst durchgesetzt, über Pipelines, automatisierte Prüfungen und Tool-Konfiguration, unabhängig von individueller Disziplin, Erinnerung oder Aufmerksamkeit. Entwickelt und angewendet von Philipp Höllinger bei Curfee über IT-Landschaften und die Workflows zwischen ihren Systemen hinweg. Eine Entscheidung gilt erst dann als eingebaut, wenn die Struktur sie ohne menschliches Zutun durchsetzt. Es ist der Kern jedes Curfee-Engagements.",
   "schema.glossary.name": "Curfee-Glossar Softwarearchitektur",
@@ -341,7 +341,7 @@
     "Softwarearchitektur-Beratung",
     "Backend-Architektur für Java und Spring",
     "Modernisierung gewachsener Backend-Systeme",
-    "Zerlegung von Bestandssystemen"
+    "Backend-Architektur im Bestand"
   ],
   "schema.knows.about.person": [
     "Backend-Softwarearchitektur",
@@ -379,7 +379,7 @@
     "Modularer Monolith Modulith",
     "ArchUnit Architekturtests",
     "Gewachsene Java-Systeme modernisieren",
-    "Bestandssysteme zerlegen",
+    "Grenzen ziehen im Bestand",
     "Modulgrenzen durchsetzen",
     "Architekturentscheidungen durchsetzen",
     "Entscheidungen, die sich selbst durchsetzen",
