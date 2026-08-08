@@ -1,5 +1,11 @@
 # Hero (Texte ersetzt am 2026-08-08, Branch technical-positioning)
 
+## Zwischenstand v4: Rahmen-Zeile und Deployable-Annotation (gleicher Tag ersatzlos entfernt)
+
+- `hero.fit` de: Für CTOs, Engineering-Leads und technische Bereichsleiter. Bestand und Neuentwurf, Entwurf und Begleitung, remote im DACH-Raum.
+- `hero.fit` en: For CTOs, engineering leads and technical department heads. Existing systems and new builds, design and guidance through implementation, remote in the DACH region.
+- `hero.visual.deployable` de/en: ein Deployable / one deployable (Annotation oben rechts im Modulith-Diagramm)
+
 ## Zwischenstand v3: ArchUnit-Snippet-Visual (gleicher Tag ersetzt durch das Modulith-Diagramm)
 
 Das Hero-Visual zeigte einen beispielhaften ArchUnit-Test (`domain_stays_clean`, noClasses in
