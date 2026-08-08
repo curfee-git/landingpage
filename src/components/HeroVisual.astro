@@ -54,26 +54,19 @@ const nodes: Node[] = groups.flatMap((g) => {
 <div class="hero-visual w-full max-w-200" role="img" aria-label={t['hero.visual.aria']}>
   <div aria-hidden="true">
 
-    <svg viewBox="0 0 740 504" class="block w-full h-auto">
+    <svg viewBox="30 54 680 400" class="block w-full h-auto">
       <defs>
-        <pattern id="hero-dotgrid" width="16" height="16" patternUnits="userSpaceOnUse">
-          <circle cx="1.5" cy="1.5" r="1" class="fill-ink-primary/8" />
-        </pattern>
-        <marker id="ah-round" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/60 stroke-brand-primary/60" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+        <marker id="ah-round" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/45 stroke-brand-primary/45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
         </marker>
-        <marker id="ah-round-strong" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary stroke-brand-primary" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+        <marker id="ah-round-strong" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/70 stroke-brand-primary/70" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
         </marker>
       </defs>
 
-      {/* The system boundary: one modulith */}
-      <rect x="10" y="10" width="720" height="484" rx="14" fill="url(#hero-dotgrid)" class="stroke-ink-primary/25" stroke-width="1" />
-      <text x="30" y="42" class="font-mono text-[12px] font-bold uppercase tracking-[0.14em] fill-ink-primary/70">{t['hero.visual.system']}</text>
-
       {/* The horizontal event bus, the only road between the domains */}
-      <line x1="40" y1={BUS_Y} x2="700" y2={BUS_Y} class="stroke-ink-primary/30" stroke-width="2" stroke-linecap="round" />
-      <text x="700" y={BUS_Y - 10} text-anchor="end" class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/45">{t['hero.visual.bus']}</text>
+      <line x1="40" y1={BUS_Y} x2="700" y2={BUS_Y} class="stroke-ink-primary/20" stroke-width="1.5" stroke-linecap="round" />
+      <text x="700" y={BUS_Y - 10} text-anchor="end" class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/40">{t['hero.visual.bus']}</text>
 
       {/* Domains */}
       {groups.map((g) => (
@@ -87,7 +80,7 @@ const nodes: Node[] = groups.flatMap((g) => {
       {groups.map((g) => {
         const cy = g.side === 'top' ? g.y + 94 : g.y + 48;
         return (
-          <line x1={g.x + 90} y1={cy} x2={g.x + 105} y2={cy} class="stroke-brand-primary" stroke-width="1.5" stroke-linecap="round" marker-end="url(#ah-round-strong)" />
+          <line x1={g.x + 90} y1={cy} x2={g.x + 105} y2={cy} class="stroke-brand-primary/70" stroke-width="1.25" stroke-linecap="round" marker-end="url(#ah-round-strong)" />
         );
       })}
 
@@ -97,12 +90,12 @@ const nodes: Node[] = groups.flatMap((g) => {
           <line
             x1={n.cx - 7} y1={n.cy + n.dir * (EDGE + 5)}
             x2={n.cx - 7} y2={BUS_Y - n.dir * 5}
-            class="stroke-brand-primary/55" stroke-width="1.25" stroke-linecap="round" marker-end="url(#ah-round)"
+            class="stroke-brand-primary/40" stroke-width="1" stroke-linecap="round" marker-end="url(#ah-round)"
           />
           <line
             x1={n.cx + 7} y1={BUS_Y - n.dir * 5}
             x2={n.cx + 7} y2={n.cy + n.dir * (EDGE + 6)}
-            class="stroke-brand-primary/55" stroke-width="1.25" stroke-linecap="round" marker-end="url(#ah-round)"
+            class="stroke-brand-primary/40" stroke-width="1" stroke-linecap="round" marker-end="url(#ah-round)"
           />
         </g>
       ))}
@@ -112,10 +105,8 @@ const nodes: Node[] = groups.flatMap((g) => {
         <g>
           <polygon points={hex(n.cx, n.cy, HEX_R)} class="fill-white stroke-ink-primary/30" stroke-width="1.25" stroke-linejoin="round" />
           <polygon points={hex(n.cx, n.cy, CORE_R)} class="fill-brand-primary/10 stroke-brand-primary/30" stroke-width="1" stroke-linejoin="round" />
-          <circle cx={n.cx - 7} cy={n.cy + n.dir * EDGE} r="4.5" class="fill-white stroke-brand-primary" stroke-width="1.4" />
-          <circle cx={n.cx - 7} cy={n.cy + n.dir * EDGE} r="1.6" class="fill-brand-primary" />
-          <circle cx={n.cx + 7} cy={n.cy + n.dir * EDGE} r="4.5" class="fill-white stroke-brand-primary" stroke-width="1.4" />
-          <circle cx={n.cx + 7} cy={n.cy + n.dir * EDGE} r="1.6" class="fill-brand-primary" />
+          <circle cx={n.cx - 7} cy={n.cy + n.dir * EDGE} r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
+          <circle cx={n.cx + 7} cy={n.cy + n.dir * EDGE} r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
           <text x={n.cx} y={n.dir === 1 ? n.cy - 46 : n.cy + 54} text-anchor="middle" class="font-mono text-[9px] font-bold fill-ink-primary/80">{n.name}</text>
         </g>
       ))}
@@ -125,23 +116,21 @@ const nodes: Node[] = groups.flatMap((g) => {
         const cy = g.side === 'top' ? g.y + 94 : g.y + 48;
         return (
           <g>
-            <circle cx={g.x + 84} cy={cy} r="4.5" class="fill-white stroke-brand-primary" stroke-width="1.4" />
-            <circle cx={g.x + 84} cy={cy} r="1.6" class="fill-brand-primary" />
-            <circle cx={g.x + 112} cy={cy} r="4.5" class="fill-white stroke-brand-primary" stroke-width="1.4" />
-            <circle cx={g.x + 112} cy={cy} r="1.6" class="fill-brand-primary" />
+            <circle cx={g.x + 84} cy={cy} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
+            <circle cx={g.x + 112} cy={cy} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
           </g>
         );
       })}
 
       {/* Events travelling over the bus; hidden when reduced motion is preferred */}
       <g class="motion-reduce:hidden">
-        <circle r="3" class="fill-brand-primary/70">
+        <circle r="2.5" class="fill-brand-primary/55">
           <animateMotion dur="5s" repeatCount="indefinite" path="M405 187 L405 252 L115 252 L115 318" />
         </circle>
-        <circle r="3" class="fill-brand-primary/70">
+        <circle r="2.5" class="fill-brand-primary/55">
           <animateMotion dur="4s" begin="1.6s" repeatCount="indefinite" path="M541 187 L541 252 L419 252 L419 318" />
         </circle>
-        <circle r="3" class="fill-brand-primary/70">
+        <circle r="2.5" class="fill-brand-primary/55">
           <animateMotion dur="3.5s" begin="3s" repeatCount="indefinite" path="M185 318 L185 252 L335 252 L335 318" />
         </circle>
       </g>
