@@ -1,5 +1,12 @@
 # Hero (Texte ersetzt am 2026-08-08, Branch technical-positioning)
 
+## Zwischenstand v1 vom Vormittag (ersetzt am Nachmittag durch die Java/Spring-Fassung, H1 blieb)
+
+- `hero.subtitle` de: Ich baue die Regeln, die heute in Wikis, Guidelines und Köpfen liegen, in deine Systeme ein: als Datenbank-Constraints, Architekturtests und CI-Gates. Am Ende ist der vereinbarte Weg der einzig mögliche.
+- `hero.subtitle` en: I build the rules that sit in wikis, guidelines and heads today into your systems: as database constraints, architecture tests and CI gates. In the end, the agreed way is the only way left.
+- `hero.fit` de: Für CTOs, Engineering-Leads und technische Bereichsleiter, deren Systemlandschaft schneller gewachsen ist als ihre Struktur.
+- `hero.fit` en: For CTOs, engineering leads and technical department heads whose system landscape grew faster than its structure.
+
 ## `hero.heading` (alte H1)
 
 - de: Wie viel <span>Zeit</span> verbringt dein Team jede Woche mit Arbeit, die <span>deine Systeme</span> erledigen sollten?
