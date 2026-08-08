@@ -1,5 +1,4 @@
 ---
-import Icon from '@/components/shared/Icon.astro';
 import type { Translations } from '@/i18n/translations';
 
 interface Props {
@@ -8,12 +7,10 @@ interface Props {
 const { translations: t } = Astro.props;
 
 const cards = [
-  { icon: 'groups', title: t['pattern.7.title'], text: t['pattern.7.reality'] },
-  { icon: 'account_tree', title: t['pattern.2.title'], text: t['pattern.2.reality'] },
-  { icon: 'call_split', title: t['pattern.3.title'], text: t['pattern.3.reality'] },
-  { icon: 'rule', title: t['pattern.1.title'], text: t['pattern.1.reality'] },
-  { icon: 'route', title: t['pattern.5.title'], text: t['pattern.5.reality'] },
-  { icon: 'autorenew', title: t['pattern.6.title'], text: t['pattern.6.reality'] },
+  { title: t['pattern.3.title'], text: t['pattern.3.reality'] },
+  { title: t['pattern.1.title'], text: t['pattern.1.reality'] },
+  { title: t['pattern.5.title'], text: t['pattern.5.reality'] },
+  { title: t['pattern.7.title'], text: t['pattern.7.reality'] },
 ];
 ---
 
@@ -39,18 +36,12 @@ const cards = [
     </header>
 
     <ul
-      class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6 m-0 p-0 list-none"
+      class="grid grid-cols-1 sm:grid-cols-2 gap-x-14 gap-y-10 m-0 p-0 list-none"
       role="list"
     >
-      {cards.map((card, i) => (
-        <li class="flex flex-col p-10 bg-white border border-ink-primary/13 rounded-lg">
-          <div class="flex items-center justify-between">
-            <p class="font-mono text-sm font-bold uppercase tracking-[0.04em] text-brand-primary m-0">
-              {String(i + 1).padStart(2, '0')}
-            </p>
-            <Icon name={card.icon} class="w-6 h-6 text-brand-primary shrink-0" />
-          </div>
-          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mt-4 mb-2">
+      {cards.map((card) => (
+        <li class="border-t border-ink-primary/13 pt-6 max-w-[62ch]">
+          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mb-2">
             {card.title}
           </h3>
           <p class="text-body-medium text-ink-muted leading-relaxed m-0">{card.text}</p>
