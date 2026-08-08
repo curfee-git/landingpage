@@ -21,40 +21,40 @@ function hex(cx: number, cy: number, r: number): string {
     .join(' ');
 }
 
-const BUS_Y = 252;
+const BUS_X = 240;
 const HEX_R = 28;
 const CORE_R = 10.5;
-const EDGE = HEX_R * 0.866; // vertical distance from centre to the flat top/bottom edge
+const EDGE = HEX_R * 0.866; // distance from centre to the flat top/bottom edge
 
-// Six domains, two hexagonal modules each, three above and three below the bus.
+// Six domains, two hexagonal modules each, three per side of the vertical bus.
 // Inside a domain the modules are wired directly (high cohesion); outward they
 // talk to the bus only (low coupling).
 const groups = [
-  { x: 52, y: 64, side: 'top', label: t['hero.visual.group.1'], modules: [t['hero.visual.module.1'], t['hero.visual.module.2']] },
-  { x: 272, y: 64, side: 'top', label: t['hero.visual.group.2'], modules: [t['hero.visual.module.3'], t['hero.visual.module.4']] },
-  { x: 492, y: 64, side: 'top', label: t['hero.visual.group.3'], modules: [t['hero.visual.module.5'], t['hero.visual.module.6']] },
-  { x: 52, y: 300, side: 'bottom', label: t['hero.visual.group.4'], modules: [t['hero.visual.module.7'], t['hero.visual.module.8']] },
-  { x: 272, y: 300, side: 'bottom', label: t['hero.visual.group.5'], modules: [t['hero.visual.module.9'], t['hero.visual.module.10']] },
-  { x: 492, y: 300, side: 'bottom', label: t['hero.visual.group.6'], modules: [t['hero.visual.module.11'], t['hero.visual.module.12']] },
+  { x: 28, y: 40, side: 'left', label: t['hero.visual.group.1'], modules: [t['hero.visual.module.1'], t['hero.visual.module.2']] },
+  { x: 276, y: 40, side: 'right', label: t['hero.visual.group.2'], modules: [t['hero.visual.module.3'], t['hero.visual.module.4']] },
+  { x: 28, y: 260, side: 'left', label: t['hero.visual.group.3'], modules: [t['hero.visual.module.5'], t['hero.visual.module.6']] },
+  { x: 276, y: 260, side: 'right', label: t['hero.visual.group.4'], modules: [t['hero.visual.module.7'], t['hero.visual.module.8']] },
+  { x: 28, y: 480, side: 'left', label: t['hero.visual.group.5'], modules: [t['hero.visual.module.9'], t['hero.visual.module.10']] },
+  { x: 276, y: 480, side: 'right', label: t['hero.visual.group.6'], modules: [t['hero.visual.module.11'], t['hero.visual.module.12']] },
 ];
 
 interface Node {
   cx: number;
   cy: number;
   name: string;
-  dir: 1 | -1; // 1: bus lies below the module, -1: bus lies above
+  dir: 1 | -1; // 1: bus lies to the right of the module, -1: bus lies to the left
 }
 const nodes: Node[] = groups.flatMap((g) => {
-  const cy = g.side === 'top' ? g.y + 94 : g.y + 48;
-  const dir: 1 | -1 = g.side === 'top' ? 1 : -1;
-  return g.modules.map((name, i) => ({ cx: g.x + 56 + i * 84, cy, name, dir }));
+  const cx = g.side === 'left' ? g.x + 124 : g.x + 52;
+  const dir: 1 | -1 = g.side === 'left' ? 1 : -1;
+  return g.modules.map((name, i) => ({ cx, cy: g.y + 66 + i * 84, name, dir }));
 });
 ---
 
-<div class="hero-visual w-full max-w-200" role="img" aria-label={t['hero.visual.aria']}>
+<div class="hero-visual w-full max-w-130" role="img" aria-label={t['hero.visual.aria']}>
   <div aria-hidden="true">
 
-    <svg viewBox="30 54 680 400" class="block w-full h-auto">
+    <svg viewBox="20 16 440 676" class="block w-full h-auto">
       <defs>
         <marker id="ah-round" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
           <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/45 stroke-brand-primary/45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
@@ -64,23 +64,23 @@ const nodes: Node[] = groups.flatMap((g) => {
         </marker>
       </defs>
 
-      {/* The horizontal event bus, the only road between the domains */}
-      <line x1="40" y1={BUS_Y} x2="700" y2={BUS_Y} class="stroke-ink-primary/20" stroke-width="1.5" stroke-linecap="round" />
-      <text x="700" y={BUS_Y - 10} text-anchor="end" class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/40">{t['hero.visual.bus']}</text>
+      {/* The vertical event bus, the only road between the domains */}
+      <line x1={BUS_X} y1="44" x2={BUS_X} y2="688" class="stroke-ink-primary/20" stroke-width="1.5" stroke-linecap="round" />
+      <text x={BUS_X} y="32" text-anchor="middle" class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/40">{t['hero.visual.bus']}</text>
 
       {/* Domains */}
       {groups.map((g) => (
         <g>
-          <rect x={g.x} y={g.y} width="196" height="140" rx="10" class="fill-brand-primary/3 stroke-ink-primary/15 [stroke-dasharray:4_3]" stroke-width="1" />
-          <text x={g.x + 12} y={g.side === 'top' ? g.y + 24 : g.y + 126} class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/50">{g.label}</text>
+          <rect x={g.x} y={g.y} width="176" height="196" rx="10" class="fill-brand-primary/3 stroke-ink-primary/15 [stroke-dasharray:4_3]" stroke-width="1" />
+          <text x={g.x + 12} y={g.y + 20} class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/50">{g.label}</text>
         </g>
       ))}
 
       {/* High cohesion: the two modules of a domain are wired directly */}
       {groups.map((g) => {
-        const cy = g.side === 'top' ? g.y + 94 : g.y + 48;
+        const cx = g.side === 'left' ? g.x + 124 : g.x + 52;
         return (
-          <line x1={g.x + 90} y1={cy} x2={g.x + 105} y2={cy} class="stroke-brand-primary/70" stroke-width="1.25" stroke-linecap="round" marker-end="url(#ah-round-strong)" />
+          <line x1={cx} y1={g.y + 66 + EDGE + 5} x2={cx} y2={g.y + 150 - EDGE - 7} class="stroke-brand-primary/70" stroke-width="1.25" stroke-linecap="round" marker-end="url(#ah-round-strong)" />
         );
       })}
 
@@ -88,36 +88,41 @@ const nodes: Node[] = groups.flatMap((g) => {
       {nodes.map((n) => (
         <g>
           <line
-            x1={n.cx - 7} y1={n.cy + n.dir * (EDGE + 5)}
-            x2={n.cx - 7} y2={BUS_Y - n.dir * 5}
+            x1={n.cx + n.dir * 31} y1={n.cy - 7}
+            x2={BUS_X - n.dir * 5} y2={n.cy - 7}
             class="stroke-brand-primary/40" stroke-width="1" stroke-linecap="round" marker-end="url(#ah-round)"
           />
           <line
-            x1={n.cx + 7} y1={BUS_Y - n.dir * 5}
-            x2={n.cx + 7} y2={n.cy + n.dir * (EDGE + 6)}
+            x1={BUS_X - n.dir * 5} y1={n.cy + 7}
+            x2={n.cx + n.dir * 32} y2={n.cy + 7}
             class="stroke-brand-primary/40" stroke-width="1" stroke-linecap="round" marker-end="url(#ah-round)"
           />
         </g>
       ))}
 
-      {/* Modules: hexagon, centred domain core, ports, name */}
+      {/* Modules: hexagon, centred domain core, ports, name on the outer side */}
       {nodes.map((n) => (
         <g>
           <polygon points={hex(n.cx, n.cy, HEX_R)} class="fill-white stroke-ink-primary/30" stroke-width="1.25" stroke-linejoin="round" />
           <polygon points={hex(n.cx, n.cy, CORE_R)} class="fill-brand-primary/10 stroke-brand-primary/30" stroke-width="1" stroke-linejoin="round" />
-          <circle cx={n.cx - 7} cy={n.cy + n.dir * EDGE} r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
-          <circle cx={n.cx + 7} cy={n.cy + n.dir * EDGE} r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
-          <text x={n.cx} y={n.dir === 1 ? n.cy - 46 : n.cy + 54} text-anchor="middle" class="font-mono text-[9px] font-bold fill-ink-primary/80">{n.name}</text>
+          <circle cx={n.cx + n.dir * 24} cy={n.cy - 7} r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
+          <circle cx={n.cx + n.dir * 24} cy={n.cy + 7} r="3" class="fill-white stroke-brand-primary/45" stroke-width="1.1" />
+          <text
+            x={n.cx - n.dir * 36}
+            y={n.cy + 3}
+            text-anchor={n.dir === 1 ? 'end' : 'start'}
+            class="font-mono text-[9px] font-bold fill-ink-primary/80"
+          >{n.name}</text>
         </g>
       ))}
 
-      {/* Ports on the domain link */}
+      {/* Ports on the domain links */}
       {groups.map((g) => {
-        const cy = g.side === 'top' ? g.y + 94 : g.y + 48;
+        const cx = g.side === 'left' ? g.x + 124 : g.x + 52;
         return (
           <g>
-            <circle cx={g.x + 84} cy={cy} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
-            <circle cx={g.x + 112} cy={cy} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
+            <circle cx={cx} cy={g.y + 66 + EDGE} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
+            <circle cx={cx} cy={g.y + 150 - EDGE} r="3" class="fill-white stroke-brand-primary/55" stroke-width="1.1" />
           </g>
         );
       })}
@@ -125,22 +130,22 @@ const nodes: Node[] = groups.flatMap((g) => {
       {/* Events travelling over the bus; hidden when reduced motion is preferred */}
       <g class="motion-reduce:hidden">
         <circle r="2.5" class="fill-brand-primary/55">
-          <animateMotion dur="5s" repeatCount="indefinite" path="M405 187 L405 252 L115 252 L115 318" />
+          <animateMotion dur="5s" repeatCount="indefinite" path="M297 183 L240 183 L240 333 L297 333" />
         </circle>
         <circle r="2.5" class="fill-brand-primary/55">
-          <animateMotion dur="4s" begin="1.6s" repeatCount="indefinite" path="M541 187 L541 252 L419 252 L419 318" />
+          <animateMotion dur="4.5s" begin="1.6s" repeatCount="indefinite" path="M183 319 L240 319 L240 637 L183 637" />
         </circle>
         <circle r="2.5" class="fill-brand-primary/55">
-          <animateMotion dur="3.5s" begin="3s" repeatCount="indefinite" path="M185 318 L185 252 L335 252 L335 318" />
+          <animateMotion dur="3.5s" begin="3s" repeatCount="indefinite" path="M297 403 L240 403 L240 553 L297 553" />
         </circle>
       </g>
 
-      {/* Violation: the tempting shortcut. The cart calls pricing next door directly,
+      {/* Violation: the tempting shortcut. The cart calls pricing across the bus directly,
           but that crosses two domains, so it dies at the module boundary. */}
-      <path d="M310 176C280 206 242 206 216 182" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" stroke-linecap="round" />
+      <path d="M306 124C272 146 212 152 182 168" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" stroke-linecap="round" />
       <g class="stroke-brand-error" stroke-width="2" stroke-linecap="round">
-        <line x1="208" y1="169" x2="218" y2="179" />
-        <line x1="218" y1="169" x2="208" y2="179" />
+        <line x1="171" y1="163" x2="181" y2="173" />
+        <line x1="181" y1="163" x2="171" y2="173" />
       </g>
     </svg>
 

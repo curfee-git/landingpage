@@ -29,7 +29,7 @@
   "decide.diagram.axis.left": "The structure enforces",
   "decide.diagram.axis.right": "People decide",
   "hero.cta": "Get in touch",
-  "hero.visual.aria": "Diagram: six domains with two hexagonal modules each: sales with catalogue and pricing, ordering with cart and orders, finance with invoices and payments, logistics with inventory and shipping, customers with accounts and messaging, service with returns and complaints. Inside each domain the two modules are directly connected and consume no events from each other: high cohesion inside, low coupling outside. Outward, every module hangs on the horizontal event bus without exception, through two lines each, one publishing, one subscribing. A direct access from the cart to pricing, tempting because it sits right next door, but across the domain boundary, is stopped at the module boundary",
+  "hero.visual.aria": "Diagram: six domains with two hexagonal modules each: sales with catalogue and pricing, ordering with cart and orders, finance with invoices and payments, logistics with inventory and shipping, customers with accounts and messaging, service with returns and complaints. Inside each domain the two modules are directly connected and consume no events from each other: high cohesion inside, low coupling outside. Outward, every module hangs on the vertical event bus without exception, through two lines each, one publishing, one subscribing. A direct access from the cart to pricing, tempting because it sits right next door, but across the domain boundary, is stopped at the module boundary",
   "hero.visual.group.1": "Sales",
   "hero.visual.group.2": "Ordering",
   "hero.visual.group.3": "Finance",
