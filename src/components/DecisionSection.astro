@@ -6,30 +6,22 @@ interface Props {
 }
 const { translations: t } = Astro.props;
 
-// Three levels, ordered from hard-enforced to human judgment. The visual weight
-// of each column follows the same language as the hero diagram: solid for
-// enforced, softer for visible, dashed for judgment.
+// Three levels, ordered from hard-enforced to human judgment.
 const levels = [
   {
     title: t['decide.1.title'],
     body: t['decide.1.body'],
     items: [t['decide.diagram.dot.1'], t['decide.diagram.dot.2'], t['decide.diagram.dot.3']],
-    edge: 'border-t-2 border-brand-primary',
-    marker: 'bg-brand-primary',
   },
   {
     title: t['decide.2.title'],
     body: t['decide.2.body'],
     items: [t['decide.diagram.dot.4'], t['decide.diagram.dot.5'], t['decide.diagram.dot.6']],
-    edge: 'border-t-2 border-brand-primary/40',
-    marker: 'bg-white border border-brand-primary',
   },
   {
     title: t['decide.3.title'],
     body: t['decide.3.body'],
     items: [t['decide.diagram.dot.7'], t['decide.diagram.dot.8']],
-    edge: 'border-t-2 border-dashed border-ink-primary/30',
-    marker: 'bg-white border border-dashed border-ink-primary/60',
   },
 ];
 ---
@@ -59,35 +51,35 @@ const levels = [
       </p>
     </header>
 
-    <div class="flex items-center gap-4 mb-8" aria-hidden="true">
-      <span class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.12em] text-ink-meta whitespace-nowrap">{t['decide.diagram.axis.left']}</span>
+    <div class="flex items-center gap-4 mb-6" aria-hidden="true">
+      <span class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta whitespace-nowrap">{t['decide.diagram.axis.left']}</span>
       <span class="flex-1 flex items-center min-w-8">
-        <span class="flex-1 h-px bg-ink-primary/20"></span>
-        <svg viewBox="0 0 8 10" class="w-2 h-2.5 shrink-0 text-ink-primary/40" aria-hidden="true"><path d="M0 0l8 5-8 5z" fill="currentColor" /></svg>
+        <span class="flex-1 h-px bg-ink-primary/15"></span>
+        <svg viewBox="0 0 8 10" class="w-2 h-2.5 shrink-0 text-ink-primary/30" aria-hidden="true"><path d="M0 0l8 5-8 5z" fill="currentColor" /></svg>
       </span>
-      <span class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.12em] text-ink-meta whitespace-nowrap">{t['decide.diagram.axis.right']}</span>
+      <span class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta whitespace-nowrap">{t['decide.diagram.axis.right']}</span>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-10">
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 m-0 p-0 list-none" role="list">
       {levels.map((level) => (
-        <article class={`${level.edge} pt-6 max-w-[62ch]`}>
-          <h3 class="font-mono text-sm font-bold uppercase tracking-[0.08em] text-brand-primary m-0">
+        <li class="flex flex-col p-10 bg-white border border-ink-primary/13 rounded-lg">
+          <h3 class="font-sans text-xl font-bold text-ink-primary m-0">
             {level.title}
           </h3>
-          <p class="font-sans text-base text-ink-muted leading-relaxed m-0 mt-3">
+          <p class="text-body-medium text-ink-muted leading-relaxed m-0 mt-2">
             {level.body}
           </p>
-          <ul class="m-0 mt-5 p-0 list-none flex flex-col gap-2">
+          <ul class="m-0 mt-6 pt-6 p-0 list-none flex flex-col gap-2.5 border-t border-ink-primary/10">
             {level.items.map((item) => (
               <li class="flex items-center gap-2.5">
-                <span class={`w-2 h-2 rounded-full shrink-0 ${level.marker}`} aria-hidden="true"></span>
-                <span class="font-mono text-[0.8rem] font-medium text-ink-muted">{item}</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0" aria-hidden="true"></span>
+                <span class="font-sans text-sm font-medium text-ink-primary/75">{item}</span>
               </li>
             ))}
           </ul>
-        </article>
+        </li>
       ))}
-    </div>
+    </ul>
 
     <div class="mt-14 lg:mt-18 max-w-184">
       <p data-speakable class="font-sans text-2xl md:text-3xl font-bold leading-snug tracking-tight text-brand-primary m-0">
