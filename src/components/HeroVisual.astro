@@ -6,13 +6,36 @@ interface Props {
 }
 const { translations: t } = Astro.props;
 
-// Module boxes inside the modulith, in SVG viewBox coordinates (400 x 300).
-// Each module is 152 x 100; ports sit on the boundary they belong to.
+// Flat-top hexagon around (cx, cy) with outer radius r, as an SVG points string.
+function hex(cx: number, cy: number, r: number): string {
+  const h = r * 0.866;
+  return [
+    [cx + r, cy],
+    [cx + r / 2, cy + h],
+    [cx - r / 2, cy + h],
+    [cx - r, cy],
+    [cx - r / 2, cy - h],
+    [cx + r / 2, cy - h],
+  ]
+    .map(([x, y]) => `${x},${Math.round(y * 10) / 10}`)
+    .join(' ');
+}
+
+// Three hexagonal modules inside the modulith, each with a domain core.
 const modules = [
-  { x: 28, y: 48, title: t['hero.visual.module.1'] },
-  { x: 220, y: 48, title: t['hero.visual.module.2'] },
-  { x: 28, y: 176, title: t['hero.visual.module.3'] },
-  { x: 220, y: 176, title: t['hero.visual.module.4'] },
+  { cx: 108, cy: 100, r: 50, core: 18, title: t['hero.visual.module.1'] },
+  { cx: 292, cy: 100, r: 50, core: 18, title: t['hero.visual.module.2'] },
+  { cx: 200, cy: 258, r: 46, core: 16, title: t['hero.visual.module.3'] },
+];
+
+// Ports sit on the hexagon boundary: two facing each other for the sync call,
+// three facing the event bus.
+const ports = [
+  { cx: 158, cy: 100 },
+  { cx: 242, cy: 100 },
+  { cx: 108, cy: 143.3 },
+  { cx: 292, cy: 143.3 },
+  { cx: 200, cy: 218.2 },
 ];
 ---
 
@@ -24,57 +47,75 @@ const modules = [
 
     <p class="m-0 font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta">{t['engagements.design.label']}</p>
 
-    <svg viewBox="0 0 400 300" class="block w-full h-auto mt-3">
+    <svg viewBox="0 0 400 352" class="block w-full h-auto mt-3">
       <defs>
         <pattern id="hero-dotgrid" width="16" height="16" patternUnits="userSpaceOnUse">
           <circle cx="1.5" cy="1.5" r="1" class="fill-ink-primary/8" />
         </pattern>
       </defs>
 
-      {/* The system: one deployable */}
-      <rect x="8" y="8" width="384" height="284" rx="12" fill="url(#hero-dotgrid)" class="stroke-ink-primary/25" stroke-width="1" />
+      {/* The system boundary: one modulith */}
+      <rect x="8" y="8" width="384" height="316" rx="12" fill="url(#hero-dotgrid)" class="stroke-ink-primary/25" stroke-width="1" />
       <text x="24" y="34" class="font-mono text-[11px] font-bold uppercase tracking-[0.14em] fill-ink-primary/70">{t['hero.visual.system']}</text>
 
+      {/* Event bus */}
+      <line x1="48" y1="196" x2="352" y2="196" class="stroke-ink-primary/25" stroke-width="1.5" />
+      <text x="48" y="188" class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/45">{t['hero.visual.bus']}</text>
+
+      {/* Hexagonal modules with domain cores */}
       {modules.map((m) => (
         <g>
-          <rect x={m.x} y={m.y} width="152" height="100" rx="8" class="fill-white stroke-ink-primary/25" stroke-width="1" />
-          <text x={m.x + 12} y={m.y + 22} class="font-mono text-[11px] font-bold fill-ink-primary/85">{m.title}</text>
-          <line x1={m.x + 1} y1={m.y + 32} x2={m.x + 151} y2={m.y + 32} class="stroke-ink-primary/10" stroke-width="1" />
-          <rect x={m.x + 12} y={m.y + 44} width="64" height="13" rx="4" class="fill-ink-primary/8" />
-          <rect x={m.x + 84} y={m.y + 44} width="44" height="13" rx="4" class="fill-ink-primary/8" />
-          <rect x={m.x + 12} y={m.y + 66} width="44" height="13" rx="4" class="fill-ink-primary/8" />
-          <circle cx={m.x + 68} cy={m.y + 72.5} r="4" class="fill-brand-primary/25" />
-          <circle cx={m.x + 80} cy={m.y + 72.5} r="4" class="fill-brand-primary/25" />
+          <polygon points={hex(m.cx, m.cy, m.r)} class="fill-white stroke-ink-primary/30" stroke-width="1.25" />
+          <polygon points={hex(m.cx, m.cy + 8, m.core)} class="fill-brand-primary/10 stroke-brand-primary/30" stroke-width="1" />
+          <text x={m.cx} y={m.cy - m.r * 0.44} text-anchor="middle" class="font-mono text-[10px] font-bold fill-ink-primary/85">{m.title}</text>
         </g>
       ))}
 
-      {/* Interface ports on the module boundaries */}
-      <rect x="213" y="80" width="14" height="26" rx="3" class="fill-brand-primary" />
-      <text x="231" y="91" class="font-mono text-[8px] font-bold fill-brand-primary">API</text>
-      <rect x="173" y="208" width="14" height="26" rx="3" class="fill-brand-primary" />
-      <text x="169" y="219" text-anchor="end" class="font-mono text-[8px] font-bold fill-brand-primary">API</text>
+      {/* Sync call: port to port */}
+      <line x1="166" y1="100" x2="228" y2="100" class="stroke-brand-primary" stroke-width="1.5" />
+      <path d="M228 96l9 4-9 4z" class="fill-brand-primary" />
 
-      {/* Allowed dependencies: through the interface */}
-      <line x1="180" y1="93" x2="203" y2="93" class="stroke-brand-primary" stroke-width="1.5" />
-      <path d="M203 89l9 4-9 4z" class="fill-brand-primary" />
-      <line x1="220" y1="221" x2="197" y2="221" class="stroke-brand-primary" stroke-width="1.5" />
-      <path d="M197 217l-9 4 9 4z" class="fill-brand-primary" />
+      {/* Event flows: publish from orders, deliver to billing and inventory */}
+      <line x1="108" y1="150" x2="108" y2="192" class="stroke-brand-primary/60" stroke-width="1.25" />
+      <path d="M104 188h8l-4 7z" class="fill-brand-primary/60" />
+      <line x1="292" y1="192" x2="292" y2="153" class="stroke-brand-primary/60" stroke-width="1.25" />
+      <path d="M288 155h8l-4-7z" class="fill-brand-primary/60" />
+      <line x1="200" y1="200" x2="200" y2="208" class="stroke-brand-primary/60" stroke-width="1.25" />
+      <path d="M196 207h8l-4 7z" class="fill-brand-primary/60" />
 
-      {/* Traffic dots on the allowed paths; hidden when reduced motion is preferred */}
+      {/* Events travelling over the bus; hidden when reduced motion is preferred */}
       <g class="motion-reduce:hidden">
-        <circle r="2.5" class="fill-brand-primary/70">
-          <animateMotion dur="2.4s" repeatCount="indefinite" path="M180 93 L211 93" />
+        <circle r="3" class="fill-brand-primary/70">
+          <animateMotion dur="3s" repeatCount="indefinite" path="M108 150 L108 196 L292 196 L292 153" />
         </circle>
-        <circle r="2.5" class="fill-brand-primary/70">
-          <animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M220 221 L189 221" />
+        <circle r="3" class="fill-brand-primary/70">
+          <animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="M108 150 L108 196 L200 196 L200 212" />
         </circle>
       </g>
 
-      {/* Forbidden dependency: past the boundary, stopped at the module edge */}
-      <path d="M140 176C180 152 250 168 294 151" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" />
+      {/* Ports and adapters on the boundaries */}
+      {ports.map((p) => (
+        <g>
+          <circle cx={p.cx} cy={p.cy} r="5.5" class="fill-white stroke-brand-primary" stroke-width="1.5" />
+          <circle cx={p.cx} cy={p.cy} r="2" class="fill-brand-primary" />
+        </g>
+      ))}
+
+      {/* Violation: straight into the core, past ports and boundary, stopped at the edge */}
+      <path d="M228 222C240 190 248 160 258 134" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" />
       <g class="stroke-brand-error" stroke-width="2" stroke-linecap="round">
-        <line x1="289" y1="144" x2="299" y2="154" />
-        <line x1="299" y1="144" x2="289" y2="154" />
+        <line x1="255" y1="125" x2="265" y2="135" />
+        <line x1="265" y1="125" x2="255" y2="135" />
+      </g>
+
+      {/* The consequence, visible in the picture */}
+      <g>
+        <rect x="242" y="296" width="136" height="22" rx="6" class="fill-brand-error/8 stroke-brand-error/25" stroke-width="1" />
+        <g class="stroke-brand-error" stroke-width="1.8" stroke-linecap="round">
+          <line x1="252" y1="303" x2="260" y2="311" />
+          <line x1="260" y1="303" x2="252" y2="311" />
+        </g>
+        <text x="268" y="311" class="font-mono text-[9px] font-bold uppercase tracking-[0.08em] fill-brand-error">{t['hero.visual.failed']}</text>
       </g>
     </svg>
 
@@ -84,6 +125,10 @@ const modules = [
       <li class="flex items-center gap-2">
         <svg viewBox="0 0 16 16" class="w-3.5 h-3.5 shrink-0 text-brand-primary" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
         <span class="font-mono text-[0.72rem] font-medium text-ink-muted">{t['hero.visual.allowed']}</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg viewBox="0 0 16 16" class="w-3.5 h-3.5 shrink-0 text-brand-primary" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="4" cy="8" r="2.2" fill="currentColor" stroke="none"/><path d="M8 8h4.5"/><path d="M10.5 5.5L13.5 8l-3 2.5" fill="none"/></svg>
+        <span class="font-mono text-[0.72rem] font-medium text-ink-muted">{t['hero.visual.events']}</span>
       </li>
       <li class="flex items-center gap-2">
         <svg viewBox="0 0 16 16" class="w-3.5 h-3.5 shrink-0 text-brand-error" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
