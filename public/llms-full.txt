@@ -92,7 +92,7 @@ Struggles Curfee observes in organisations, as named on curfee.com. These are th
 - **Discipline Dependency**, conventions and knowledge live in people's heads and work as long as someone is watching or maintaining them.
 - **Decisions Without Effect**, decisions were agreed on and documented on paper or in wikis, but nowhere did they get enforced consistently.
 - **Workarounds as the Norm**, what started as an exception is now a new norm.
-- **Generated Code Ignores Your Wiki**, when generated code meets conventions that only exist as documentation, they most likely get ignored. Like someone with too much on their plate: they take the shortcut. As long as nobody checks, everything counts, and as long as no error surfaces, nothing happens.
+- **AI-Assisted Collaboration**, AI-generated code reaches your system faster than your current structure can integrate it.
 
 ## Working together
 
