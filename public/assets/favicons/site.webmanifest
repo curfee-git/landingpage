@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "Curfee, Enterprise Architecture for Grown IT Landscapes",
+  "name": "Curfee, Backend Software Architecture for Java and Spring Systems",
   "short_name": "Curfee",
-  "description": "Curfee guides organisations to build their documented decisions into their systems: enterprise architecture for IT landscapes that grew faster than designed.",
+  "description": "Curfee designs backend architecture for Java and Spring systems, existing and new, and anchors it in the system: architecture tests instead of diagrams. No feature code.",
   "start_url": "/",
   "scope": "/",
   "icons": [
