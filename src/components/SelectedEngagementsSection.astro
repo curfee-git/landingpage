@@ -9,9 +9,6 @@ interface Engagement {
   stage?: string;
   title: string;
   body: string;
-  design: string;
-  mechanism: string;
-  rejected?: string;
   aria: string;
 }
 
@@ -22,9 +19,6 @@ const engagements: Engagement[] = [
     stage: t['engagements.1.stage'],
     title: t['engagements.1.title'],
     body: t['engagements.1.body'],
-    design: t['engagements.1.design'],
-    mechanism: t['engagements.1.mechanism'],
-    // Bewusst ohne Verworfen-Satz: hier wurde nichts verworfen, sondern neu gebaut.
     aria: t['engagements.1.diagram.aria'],
   },
   {
@@ -33,9 +27,6 @@ const engagements: Engagement[] = [
     stage: t['engagements.2.stage'],
     title: t['engagements.2.title'],
     body: t['engagements.2.body'],
-    design: t['engagements.2.design'],
-    mechanism: t['engagements.2.mechanism'],
-    rejected: t['engagements.2.rejected'],
     aria: t['engagements.2.diagram.aria'],
   },
   {
@@ -44,9 +35,6 @@ const engagements: Engagement[] = [
     stage: t['engagements.3.stage'],
     title: t['engagements.3.title'],
     body: t['engagements.3.body'],
-    design: t['engagements.3.design'],
-    mechanism: t['engagements.3.mechanism'],
-    rejected: t['engagements.3.rejected'],
     aria: t['engagements.3.diagram.aria'],
   },
   {
@@ -56,9 +44,6 @@ const engagements: Engagement[] = [
     // dieser hat noch kein Badge.
     title: t['engagements.4.title'],
     body: t['engagements.4.body'],
-    design: t['engagements.4.design'],
-    mechanism: t['engagements.4.mechanism'],
-    // Bewusst ohne Verworfen-Satz (Entscheidung vom 2026-08-08).
     aria: t['engagements.4.diagram.aria'],
   },
 ];
@@ -109,25 +94,6 @@ const engagements: Engagement[] = [
             <p class="font-sans text-lg leading-relaxed text-ink-muted m-0 mt-5 max-w-[62ch]">
               {e.body}
             </p>
-            <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2.5 m-0 mt-5 max-w-[62ch]">
-              <dt class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta mt-1">
-                {t['engagements.design.label']}
-              </dt>
-              <dd class="font-sans text-base font-medium text-ink-primary leading-relaxed m-0">
-                {e.design}
-              </dd>
-              <dt class="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta mt-1">
-                {t['engagements.mechanism.label']}
-              </dt>
-              <dd class="font-mono text-sm font-bold text-brand-primary m-0">
-                {e.mechanism}
-              </dd>
-            </dl>
-            {e.rejected && (
-              <p class="font-sans text-base text-ink-soft leading-relaxed m-0 mt-3 max-w-[62ch]">
-                {e.rejected}
-              </p>
-            )}
           </div>
 
           <div class={`lg:col-span-5 flex justify-center ${i % 2 === 1 ? 'lg:order-1 lg:justify-start' : 'lg:justify-end'}`}>
