@@ -1,5 +1,10 @@
 # Ausgewählte Engagements (Texte ersetzt am 2026-08-08, Branch technical-positioning)
 
+## Pills (Kategorie-Label und Bestand/Neuentwurf-Badges, am 2026-08-08 abends entfernt)
+
+- Labels de/en: Justiz / Justice system · Veranstaltungsportal / Event platform · Öffentliche Verwaltung / Public administration · Softwareentwicklung / Software development
+- Badges de/en: Neuentwurf / New build (Justiz) · Bestand, erweitert / Existing system, extended (Portal) · Greenfield / Greenfield (SDG); Software-Fall war noch unzugeordnet (offenes TODO damit hinfällig)
+
 ## Entwurf/Durchsetzung-Paare und Verworfen-Zeilen (am 2026-08-08 abends komplett von den Karten entfernt)
 
 Die Badges (Neuentwurf, Bestand erweitert, Greenfield) blieben. Entfernt wurden pro Fall die
