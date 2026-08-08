@@ -29,7 +29,7 @@
   "decide.diagram.axis.left": "The structure enforces",
   "decide.diagram.axis.right": "People decide",
   "hero.cta": "Get in touch",
-  "hero.visual.aria": "Diagram: six domains with two hexagonal modules each: sales with catalogue and pricing, ordering with cart and orders, finance with invoices and payments, logistics with inventory and shipping, customers with accounts and messaging, procurement with suppliers and purchasing. Inside each domain the modules are directly connected in both directions and consume no events from each other: high cohesion inside, low coupling outside. Outward, every module hangs on the vertical event bus without exception, through two lines each, one publishing, one subscribing. There is one declared exception: orders queries inventory synchronously through a query API, port to port. A direct access from the cart to pricing, tempting because it sits right next door, but across the domain boundary, is stopped at the module boundary",
+  "hero.visual.aria": "Diagram: six domains with two hexagonal modules each: sales with catalogue and pricing, ordering with cart and orders, finance with invoices and payments, logistics with inventory and shipping, customers with accounts and messaging, procurement with suppliers and purchasing. Inside each domain the modules are directly connected in both directions and consume no events from each other: high cohesion inside, low coupling outside. Outward, every module hangs on the vertical event bus without exception, through two lines each, one publishing, one subscribing. Three declared contract interfaces connect modules across domain boundaries, port to port: cart asks pricing, orders asks inventory, payments asks accounts. An access from the cart past the contract, straight into the pricing core, is stopped at the module boundary",
   "hero.visual.group.1": "Sales",
   "hero.visual.group.2": "Ordering",
   "hero.visual.group.3": "Finance",
@@ -354,5 +354,5 @@
     "Dependency Analysis",
     "Backend Architecture DACH"
   ],
-  "hero.visual.query": "Query API"
+  "hero.visual.contract": "Contract"
 }
