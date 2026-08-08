@@ -246,7 +246,7 @@
   "contact.subtitle": "Describe what you want to change. We look at what actually slows your organisation down, and by the end of the first call the next step is clear.",
   "contact.form.name": "Name",
   "contact.form.email": "Email",
-  "contact.form.message": "Describe the rule or convention that runs on discipline today.",
+  "contact.form.message": "Briefly describe the system and the architecture question at hand.",
   "contact.form.submit": "Send message",
   "contact.form.success": "Message sent. I will get back to you within 24 to 48 hours.",
   "contact.form.error": "Something went wrong. Please write to me directly at",
