@@ -5,38 +5,63 @@ interface Props {
   translations: Translations;
 }
 const { translations: t } = Astro.props;
+
+// Module boxes inside the modulith, in SVG viewBox coordinates (360 x 264).
+const modules = [
+  { x: 28, y: 44, title: t['hero.visual.module.1'] },
+  { x: 204, y: 44, title: t['hero.visual.module.2'] },
+  { x: 28, y: 152, title: t['hero.visual.module.3'] },
+];
 ---
 
-{/* TODO(philipp): Beispiel-Snippet durch eine echte Regel samt echter CI-Ausgabe aus einem
-    Engagement ersetzen (Tool, Regelname, Meldung). Bis dahin trägt das Artefakt das
-    Beispiel-Badge oben rechts. */}
 <div class="hero-visual relative w-full max-w-105" role="img" aria-label={t['hero.visual.aria']}>
 
   <div class="absolute -inset-6 rounded-lg bg-brand-primary/4" aria-hidden="true"></div>
 
   <div aria-hidden="true" class="relative bg-white border border-ink-primary/13 rounded-lg p-5 sm:p-6 shadow-[0_1px_3px_rgb(var(--ink-primary)/0.08),0_12px_32px_rgb(var(--ink-primary)/0.07)]">
 
-    <div class="flex items-center justify-between gap-3">
-      <p class="m-0 font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta">{t['hero.visual.rule']}</p>
-      <p class="m-0 inline-flex items-center font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-brand-primary border border-brand-primary/25 bg-brand-primary/4 rounded-full px-2.5 py-0.5">{t['hero.visual.example']}</p>
-    </div>
+    <p class="m-0 font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta">{t['engagements.design.label']}</p>
 
-    <pre
-      class="m-0 mt-3 overflow-x-auto font-mono text-[0.7rem] sm:text-[0.76rem] leading-[1.7] text-ink-primary/85"><code><span class="text-brand-primary">@ArchTest</span>
-<span class="text-ink-meta">static final</span> ArchRule domain_stays_clean =
-    noClasses().that()
-        .resideInAPackage(<span class="text-brand-primary">"..domain.."</span>)
-        .should().dependOnClassesThat()
-        .resideInAPackage(<span class="text-brand-primary">"..infrastructure.."</span>);</code></pre>
+    <svg viewBox="0 0 360 264" class="block w-full h-auto mt-3">
+      <rect x="8" y="8" width="344" height="248" rx="10" class="fill-none stroke-ink-primary/20" stroke-width="1" />
+      <text x="22" y="30" class="font-mono text-[10px] font-bold uppercase tracking-[0.14em] fill-ink-meta">{t['hero.visual.system']}</text>
 
-    <p class="m-0 mt-5 font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta">{t['hero.visual.output']}</p>
+      {modules.map((m) => (
+        <g>
+          <rect x={m.x} y={m.y} width="128" height="88" rx="8" class="fill-surface-base stroke-ink-primary/20" stroke-width="1" />
+          <text x={m.x + 12} y={m.y + 24} class="font-mono text-[11px] font-bold fill-ink-primary/80">{m.title}</text>
+          <rect x={m.x + 12} y={m.y + 40} width="76" height="6" rx="3" class="fill-ink-primary/10" />
+          <rect x={m.x + 12} y={m.y + 54} width="56" height="6" rx="3" class="fill-ink-primary/10" />
+        </g>
+      ))}
 
-    <pre
-      class="m-0 mt-3 overflow-x-auto font-mono text-[0.7rem] sm:text-[0.76rem] leading-[1.7] text-ink-primary/85"><code><span class="font-bold text-brand-error">✗ ArchitectureTest » domain_stays_clean</span>
-  Field &lt;OrderService.repo&gt; depends on
-  &lt;JdbcOrderRepository&gt; <span class="text-ink-meta">(OrderService.java:24)</span>
+      {/* Interface port on the billing module boundary */}
+      <rect x="198" y="80" width="12" height="26" rx="3" class="fill-brand-primary" />
 
-<span class="font-bold text-brand-error">1 rule violated · merge blocked</span></code></pre>
+      {/* Allowed dependency: through the interface */}
+      <line x1="158" y1="93" x2="188" y2="93" class="stroke-brand-primary" stroke-width="1.5" />
+      <path d="M188 89l9 4-9 4z" class="fill-brand-primary" />
+
+      {/* Forbidden dependency: past the boundary, stopped at the module edge */}
+      <path d="M150 160C190 148 216 144 240 135" class="stroke-brand-error fill-none [stroke-dasharray:5_4]" stroke-width="1.5" />
+      <g class="stroke-brand-error" stroke-width="2" stroke-linecap="round">
+        <line x1="243" y1="127" x2="253" y2="137" />
+        <line x1="253" y1="127" x2="243" y2="137" />
+      </g>
+    </svg>
+
+    <p class="m-0 mt-4 font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-ink-meta">{t['engagements.mechanism.label']}</p>
+
+    <ul class="m-0 mt-2.5 p-0 list-none flex flex-col gap-1.5">
+      <li class="flex items-center gap-2">
+        <svg viewBox="0 0 16 16" class="w-3.5 h-3.5 shrink-0 text-brand-primary" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+        <span class="font-mono text-[0.72rem] font-medium text-ink-muted">{t['hero.visual.allowed']}</span>
+      </li>
+      <li class="flex items-center gap-2">
+        <svg viewBox="0 0 16 16" class="w-3.5 h-3.5 shrink-0 text-brand-error" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+        <span class="font-mono text-[0.72rem] font-medium text-ink-muted">{t['hero.visual.forbidden']}</span>
+      </li>
+    </ul>
 
   </div>
 

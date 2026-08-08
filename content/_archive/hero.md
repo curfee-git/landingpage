@@ -1,5 +1,13 @@
 # Hero (Texte ersetzt am 2026-08-08, Branch technical-positioning)
 
+## Zwischenstand v3: ArchUnit-Snippet-Visual (gleicher Tag ersetzt durch das Modulith-Diagramm)
+
+Das Hero-Visual zeigte einen beispielhaften ArchUnit-Test (`domain_stays_clean`, noClasses in
+domain hängen von infrastructure ab) plus fehlgeschlagene CI-Ausgabe mit „1 rule violated ·
+merge blocked", markiert mit Beispiel-Badge. Ersetzt durch ein Modulith-Diagramm (drei Module,
+Schnittstellen-Port, gestoppter Grenzverstoß), womit das TODO für ein echtes Hero-Snippet
+entfällt. Keys `hero.visual.rule` und `hero.visual.output` entfernt.
+
 ## Zwischenstand v2 (Diagramm-Formulierung, gleicher Tag wieder ersetzt durch die Build-bricht-Fassung)
 
 - `hero.subtitle` de: Ich entwerfe Backend-Architektur für Java und das Spring-Ökosystem. Architekturentscheidungen enden bei mir nicht als Diagramm. Sie werden im System verankert, bis ihre Verletzung auffällt oder unmöglich ist.
