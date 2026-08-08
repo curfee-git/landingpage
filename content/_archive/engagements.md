@@ -1,5 +1,16 @@
 # Ausgewählte Engagements (Texte ersetzt am 2026-08-08, Branch technical-positioning)
 
+## Visuals auf Hero-Bildsprache umgestellt (2026-08-08 abends)
+
+Alle vier Mini-Mockups (SQL-Transaktions-Snippet mit Beispiel-Badge, Formular-Flow,
+Felder-plus-Zweisprachig-Karten, PR-Checkliste) wurden durch eigenständige Hexagon-Diagramme
+in der Bildsprache des Hero-Visuals ersetzt (Ports, weiche Pfeile, rote gestrichelte Verstöße
+mit ✗). Das TODO für ein echtes Justiz-SQL-Snippet ist damit hinfällig, es gibt kein
+Code-Artefakt mehr. Alte Keys in der Git-Historie (Commit 91ae38d und davor).
+Die Body-Texte wurden gleichzeitig geschärft: In jedem Fall steht jetzt ausdrücklich, dass die
+Architektur entworfen und die Regeln als Constraints verankert wurden; alte Fassungen in der
+Git-Historie.
+
 ## Pills (Kategorie-Label und Bestand/Neuentwurf-Badges, am 2026-08-08 abends entfernt)
 
 - Labels de/en: Justiz / Justice system · Veranstaltungsportal / Event platform · Öffentliche Verwaltung / Public administration · Softwareentwicklung / Software development
