@@ -5,7 +5,6 @@ import WhyCurfeeSection from '@/components/WhyCurfeeSection.astro';
 import PatternSection from '@/components/PatternSection.astro';
 import SelectedEngagementsSection from '@/components/SelectedEngagementsSection.astro';
 import MethodSection from '@/components/MethodSection.astro';
-import EngagementSection from '@/components/EngagementSection.astro';
 import AboutSection from '@/components/AboutSection.astro';
 import ManifestSection from '@/components/ManifestSection.astro';
 import ContactSection from '@/components/ContactSection.astro';
@@ -42,36 +41,6 @@ const serviceLd = {
     "audienceType": t['schema.audience.type']
   },
   "serviceOutput": t['schema.service.output'],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "@id": `${siteUrl}/#engagement`,
-    "name": t['engagement.heading'],
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "name": t['engagement.1.title'],
-        "description": t['engagement.1.outcome'],
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "minPrice": 15000,
-          "priceCurrency": "EUR"
-        },
-        "itemOffered": { "@id": `${siteUrl}/#services` }
-      },
-      {
-        "@type": "Offer",
-        "name": t['engagement.2.title'],
-        "description": t['engagement.2.outcome'],
-        "itemOffered": { "@id": `${siteUrl}/#services` }
-      },
-      {
-        "@type": "Offer",
-        "name": t['engagement.3.title'],
-        "description": t['engagement.3.outcome'],
-        "itemOffered": { "@id": `${siteUrl}/#services` }
-      }
-    ]
-  },
   "termsOfService": `${siteUrl}${routes.imprint}`,
   "isRelatedTo": { "@id": `${siteUrl}/#decisions-that-enforce-themselves` },
   "availableLanguage": ["en", "de"]
@@ -142,7 +111,6 @@ const jsonLd = [serviceLd, mechanismLd, faqLd];
   <WhyCurfeeSection translations={t} />
   <MethodSection translations={t} />
   <ManifestSection text={t['method.closer']} />
-  <EngagementSection translations={t} />
   <AboutSection translations={t} />
   <FaqSection translations={t} />
   <ContactSection translations={t} />
