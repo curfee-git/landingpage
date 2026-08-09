@@ -120,7 +120,20 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
     -webkit-backdrop-filter: blur(12px) saturate(120%);
     transition: left var(--header-duration) var(--header-ease),
                 right var(--header-duration) var(--header-ease),
-                border-radius var(--header-duration) var(--header-ease);
+                border-radius var(--header-duration) var(--header-ease),
+                background-color var(--header-duration) var(--header-ease);
+  }
+  /* Below the desktop pill the bar keeps its full width, so a blur alone stays
+     invisible over flat sections. Tint it once it overlaps content. */
+  @media (max-width: 1023px) {
+    [data-header][data-scrolled]::before,
+    [data-header][data-menu-open]::before {
+      background-color: rgb(var(--surface-base) / 0.82);
+    }
+    [data-header][data-theme="dark"][data-scrolled]::before,
+    [data-header][data-theme="dark"][data-menu-open]::before {
+      background-color: rgb(var(--brand-primary) / 0.82);
+    }
   }
   [data-header-shell],
   [data-mobile-menu] {
