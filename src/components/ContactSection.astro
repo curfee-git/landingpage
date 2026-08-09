@@ -223,6 +223,8 @@ const contactMethods: ContactMethod[] = [
     position: absolute;
     top: 50%;
     left: 10px;
+    /* keeps the white background off the right border when the text wraps */
+    max-width: calc(100% - 20px);
     transform: translateY(-50%);
     padding: 0 4px;
     font-family: var(--font-sans);
@@ -247,6 +249,10 @@ const contactMethods: ContactMethod[] = [
     font-size: 0.75rem;
     font-weight: 600;
     color: rgb(var(--brand-primary));
+    /* on the border line the label must stay one line, or it opens a gap in it */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .contact-form input:user-invalid,
