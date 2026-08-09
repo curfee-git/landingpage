@@ -49,7 +49,7 @@ Struggles Curfee observes in organisations, as named on curfee.com:
 - **Workarounds as the Norm**, what started as an exception is now a new norm.
 - **AI-Assisted Collaboration**, AI-generated code reaches your system faster than your current structure can integrate it.
 - **Structural Fragility**, dependencies have grown beyond what anyone fully understands.
-- **Fear of Deployment**, every change can have side effects somewhere else; releases take long and take courage.
+- **Fear of Deployment**, a change in one place can break something somewhere else entirely; before every release, everything stops.
 
 ## Selected engagements
 

@@ -189,7 +189,7 @@
   "faq.5.question": "Why an individual and not an agency?",
   "faq.5.answer": "Agencies usually have an incentive to sell developer hours. As an individual I do not: I write no feature code, and the only code that lands in your repo is the architecture tests that keep the designed boundaries in place. My work is about designing something, simplifying it and getting it to the point, not about selling extra hours.",
   "contact.heading": "Get in touch",
-  "contact.subtitle": "Describe what you want to change. We look at what actually slows your organisation down, and by the end of the first call the next step is clear.",
+  "contact.subtitle": "Describe what you want to change. We look at what actually slows your team down, and by the end of the first call the next step is clear.",
   "contact.form.name": "Name",
   "contact.form.email": "Email",
   "contact.form.message": "Briefly describe the system and the architecture question at hand.",
@@ -338,5 +338,5 @@
   "pattern.2.title": "Structural Fragility",
   "pattern.2.reality": "Dependencies have grown beyond what anyone fully understands.",
   "pattern.8.title": "Fear of Deployment",
-  "pattern.8.reality": "Every change can have side effects somewhere else. Releases take long and take courage."
+  "pattern.8.reality": "A change in one place can break something somewhere else entirely. Before every release, everything stops."
 }
