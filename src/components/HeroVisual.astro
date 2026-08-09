@@ -69,7 +69,7 @@ const links = groups.flatMap((g) =>
 <div class="hero-visual w-full max-w-125" role="img" aria-label={t['hero.visual.aria']}>
   <div aria-hidden="true">
 
-    <svg viewBox="20 16 440 676" class="block w-full h-auto">
+    <svg viewBox="-4 -20 488 772" class="block w-full h-auto">
       <defs>
         <marker id="ah-round" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
           <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/45 stroke-brand-primary/45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
@@ -78,6 +78,16 @@ const links = groups.flatMap((g) =>
           <path d="M1.5 1.5L8.5 5L1.5 8.5Z" class="fill-brand-primary/70 stroke-brand-primary/70" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
         </marker>
       </defs>
+
+      {/* The infrastructure: one surrounding frame, every domain and module runs inside it */}
+      <rect x="0" y="-16" width="480" height="764" rx="16" class="fill-brand-primary/2 stroke-ink-primary/25" stroke-width="1.25" />
+      <text x="20" y="8" class="font-mono text-[9px] font-bold uppercase tracking-[0.12em] fill-ink-primary/50">{t['hero.visual.infra']}</text>
+      {[404, 426, 448].map((x) => (
+        <g>
+          <rect x={x} y="712" width="14" height="10" rx="2" class="fill-white stroke-ink-primary/30" stroke-width="1" />
+          <circle cx={x + 4} cy="717" r="1.2" class="fill-brand-primary/50" />
+        </g>
+      ))}
 
       {/* The vertical event bus, the only road between the domains */}
       <line x1={BUS_X} y1="44" x2={BUS_X} y2="688" class="stroke-ink-primary/20" stroke-width="1.5" stroke-linecap="round" />
@@ -151,14 +161,19 @@ const links = groups.flatMap((g) =>
       ))}
 
       {/* Events travelling over the bus; hidden when reduced motion is preferred */}
+      {/* The circles have no position of their own and would sit at (0,0), inside
+          the visible frame, until their animation starts; keep them hidden until then. */}
       <g class="motion-reduce:hidden">
-        <circle r="2.5" class="fill-brand-primary/55">
+        <circle r="2.5" class="fill-brand-primary/55" visibility="hidden">
+          <set attributeName="visibility" to="visible" begin="0s" />
           <animateMotion dur="5s" repeatCount="indefinite" path="M183 403 L240 403 L240 113 L297 113" />
         </circle>
-        <circle r="2.5" class="fill-brand-primary/55">
+        <circle r="2.5" class="fill-brand-primary/55" visibility="hidden">
+          <set attributeName="visibility" to="visible" begin="1.6s" />
           <animateMotion dur="4.5s" begin="1.6s" repeatCount="indefinite" path="M183 623 L240 623 L240 417 L297 417" />
         </circle>
-        <circle r="2.5" class="fill-brand-primary/55">
+        <circle r="2.5" class="fill-brand-primary/55" visibility="hidden">
+          <set attributeName="visibility" to="visible" begin="3s" />
           <animateMotion dur="3.5s" begin="3s" repeatCount="indefinite" path="M183 539 L240 539 L240 553 L297 553" />
         </circle>
       </g>
