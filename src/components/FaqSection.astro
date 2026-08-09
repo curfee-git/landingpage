@@ -38,7 +38,6 @@ const items = [
         {items.map((item, i) => (
           <details
             name="faq"
-            open={i === 0}
             class:list={['group', i > 0 && 'border-t border-ink-primary/13']}
           >
             <summary class="grid grid-cols-[auto_1fr_auto] items-baseline gap-x-5 px-6 sm:px-8 py-6 cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden transition-colors hover:bg-surface-soft/60">
