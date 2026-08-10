@@ -44,9 +44,11 @@ const cards = [
       role="list"
     >
       {cards.map((card) => (
-        <li class="flex flex-col p-10 bg-white border border-ink-primary/13 rounded-lg">
-          <Icon name={card.icon} class="w-6 h-6 text-brand-primary shrink-0" />
-          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mt-4 mb-2">
+        <li class="flex flex-col p-10 bg-white rounded-xl">
+          <span class="flex items-center justify-center w-12 h-12 shrink-0 rounded-full bg-brand-primary/8" aria-hidden="true">
+            <Icon name={card.icon} class="w-6 h-6 text-brand-primary shrink-0" />
+          </span>
+          <h3 class="font-sans text-xl font-bold text-ink-primary m-0 mt-5 mb-2">
             {card.title}
           </h3>
           <p class="text-body-medium text-ink-muted leading-relaxed m-0">{card.text}</p>

@@ -66,7 +66,7 @@ const routes = getRoutes(Astro.currentLocale);
           <div class="mt-10 flex flex-wrap items-center gap-4">
             <a
               href={routes.contact}
-              class="inline-flex items-center justify-center px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-all duration-200 hover:-translate-y-0.5 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover"
+              class="inline-flex items-center justify-center px-7 py-3.5 font-sans text-base font-bold rounded-full no-underline transition-all duration-200 hover:-translate-y-0.5 bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary-hover"
             >
               {t['hero.cta']}
             </a>
@@ -74,7 +74,7 @@ const routes = getRoutes(Astro.currentLocale);
               href={EXTERNAL.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline border-2 transition-all duration-200 hover:-translate-y-0.5 bg-transparent text-brand-primary border-brand-primary hover:bg-brand-primary hover:text-brand-primary-foreground"
+              class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 font-sans text-base font-bold rounded-full no-underline border border-brand-primary/35 transition-all duration-200 hover:-translate-y-0.5 bg-transparent text-brand-primary hover:bg-brand-primary/8 hover:border-brand-primary/50"
             >
               <Icon name="linkedin" class="w-5 h-5" />
               {t['about.linkedin.cta']}

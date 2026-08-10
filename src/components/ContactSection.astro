@@ -73,9 +73,9 @@ const contactMethods: ContactMethod[] = [
                   href={method.href}
                   data-copy-value={method.copyValue}
                   data-copied-text={method.copiedText}
-                  class="method-card group flex items-center gap-5 p-5 sm:p-6 no-underline bg-white border border-ink-primary/13 rounded-lg transition-all duration-300 ease-standard hover:translate-x-2 hover:border-brand-primary/25 hover:shadow-[0_1px_3px_rgb(var(--ink-primary)/0.1),0_4px_12px_rgb(var(--brand-primary)/0.1)]"
+                  class="method-card group flex items-center gap-5 p-5 sm:p-6 no-underline bg-white rounded-xl transition-all duration-300 ease-standard hover:translate-x-2 hover:shadow-card"
                 >
-                  <span class="flex items-center justify-center w-12 h-12 shrink-0 rounded-xl bg-brand-primary/8 text-brand-primary transition-colors duration-300 group-hover:bg-surface-soft">
+                  <span class="flex items-center justify-center w-12 h-12 shrink-0 rounded-full bg-brand-primary/8 text-brand-primary transition-colors duration-300 group-hover:bg-surface-soft">
                     <Icon name={method.icon} class="w-5 h-5" />
                   </span>
                   <span class="flex flex-col min-w-0">
@@ -97,7 +97,7 @@ const contactMethods: ContactMethod[] = [
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`LinkedIn: ${t['contact.linkedin.display']}`}
-              class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white border border-ink-primary/13 text-brand-primary transition-all duration-300 ease-standard hover:bg-surface-soft hover:-translate-y-0.5 hover:shadow-[0_1px_3px_rgb(var(--ink-primary)/0.1),0_4px_12px_rgb(0_0_0/0.2)]"
+              class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-brand-primary transition-all duration-300 ease-standard hover:bg-surface-soft hover:-translate-y-0.5 hover:shadow-card"
             >
               <Icon name="linkedin" class="w-5 h-5" />
             </a>
@@ -107,7 +107,7 @@ const contactMethods: ContactMethod[] = [
 
 
       <div class="min-w-0 lg:col-span-5">
-        <div class="contact-form-card relative overflow-hidden rounded-lg bg-white border border-ink-primary/13 p-7 sm:p-10 shadow-[0_1px_3px_rgb(var(--ink-primary)/0.08),0_8px_24px_rgb(var(--ink-primary)/0.06)]">
+        <div class="contact-form-card relative overflow-hidden rounded-2xl bg-white p-7 sm:p-10 shadow-card">
         <header class="text-center mb-9">
           <span class="flex items-center justify-center mx-auto mb-5 text-brand-primary">
             <Icon name="chat" class="w-7 h-7" />
@@ -149,15 +149,15 @@ const contactMethods: ContactMethod[] = [
 
           <button
             type="submit"
-            class="w-full mt-2 inline-flex items-center justify-center gap-2 px-6 py-3.5 font-sans text-base font-bold rounded-md no-underline whitespace-nowrap border-2 cursor-pointer transition-colors duration-200 bg-brand-primary text-brand-primary-foreground border-brand-primary hover:bg-brand-primary-hover hover:border-brand-primary-hover disabled:opacity-60 disabled:cursor-not-allowed"
+            class="w-full mt-2 inline-flex items-center justify-center gap-2 px-6 py-4 font-sans text-base font-bold rounded-full no-underline whitespace-nowrap cursor-pointer transition-colors duration-200 bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary-hover disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {t['contact.form.submit']}
           </button>
 
-          <p role="status" class="contact-form-status m-0 py-3 px-3.5 rounded-xs text-sm leading-normal bg-brand-primary/6 text-brand-primary border border-brand-primary/20" data-status="success" hidden>
+          <p role="status" class="contact-form-status m-0 py-3 px-4 rounded-md text-sm leading-normal bg-brand-primary/8 text-brand-primary" data-status="success" hidden>
             {t['contact.form.success']}
           </p>
-          <p role="alert" class="contact-form-status m-0 py-3 px-3.5 rounded-xs text-sm leading-normal bg-brand-error/6 text-brand-error border border-brand-error/20" data-status="error" hidden>
+          <p role="alert" class="contact-form-status m-0 py-3 px-4 rounded-md text-sm leading-normal bg-brand-error/8 text-brand-error" data-status="error" hidden>
             {t['contact.form.error']} <a href={EXTERNAL.mailto} class="text-inherit underline">{EXTERNAL.email}</a>
           </p>
         </form>
@@ -193,7 +193,7 @@ const contactMethods: ContactMethod[] = [
     color: rgb(var(--ink-primary));
     background: #ffffff;
     border: 1px solid rgb(var(--ink-primary) / 0.25);
-    border-radius: 4px;
+    border-radius: 10px;
     padding: 16px 14px;
     transition: border-color 200ms ease;
     width: 100%;
@@ -222,7 +222,7 @@ const contactMethods: ContactMethod[] = [
   .contact-field-label {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 12px;
     /* keeps the white background off the right border when the text wraps */
     max-width: calc(100% - 20px);
     transform: translateY(-50%);
