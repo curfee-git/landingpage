@@ -1,7 +1,7 @@
 {
   "a11y.skip.to.content": "Skip to main content",
   "hero.heading": "Anything a <span class=\"text-brand-primary\">machine</span> can check, a <span class=\"text-brand-primary\">human</span> should never have to check.",
-  "hero.eyebrow": "Structure over discipline",
+  "hero.eyebrow": "Structure over Discipline",
   "hero.subtitle": "Backend software architecture for Java and the Spring ecosystem: from the code through the pipeline and infrastructure to the way your team works together, with boundaries your build defends. Once a decision lives in the structure, the agreed way becomes the only way.",
   "decide.eyebrow": "How I decide",
   "decide.heading": "Make it impossible, make it visible, or leave it to judgment.",
@@ -68,7 +68,7 @@
   "about.eyebrow": "About me",
   "about.heading": "I am Philipp Höllinger.",
   "about.linkedin.cta": "Follow on LinkedIn",
-  "footer.tagline": "Structure over discipline.",
+  "footer.tagline": "Structure over Discipline.",
   "footer.column.legal": "Legal",
   "footer.legal.notice": "Legal Notice",
   "footer.legal.privacy": "Privacy Policy",

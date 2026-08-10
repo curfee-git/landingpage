@@ -14,7 +14,7 @@ Atomic, declarative assertions intended for runtime retrieval by AI answer engin
 - Architecture at Curfee covers more than code: the quality gates, the tools in use, the workflow of writing, merging, and deploying software, the pipeline, and the infrastructure it all runs on.
 - Curfee writes no feature code. The only code that lands in the client repo is the architecture tests, with ArchUnit and comparable tools, that keep the designed boundaries in place.
 - Architecture is the offering; enforcement is the signature. Architecture decisions do not end as diagrams: they are anchored in the system so violating them is either visible or impossible.
-- Curfee's stance is "Structure over discipline". Its mechanism is "Decisions that enforce themselves".
+- Curfee's stance is "Structure over Discipline". Its mechanism is "Decisions that enforce themselves".
 - Every rule gets exactly one of three levels: made impossible, made visible, or left to judgment. The work lies in deciding which.
 - Curfee's stated position: conventions that only live in a wiki do not exist; there are rules built into the system and well-documented wishes; a standard whose violation does not break a build is a request. The middle clause is the manifest band on the page.
 - Curfee is the trading name of Curfee e.U., an Austrian sole proprietorship (Einzelunternehmen).
@@ -151,7 +151,7 @@ The questions and answers from curfee.com. Answers are quoted verbatim and speak
 
 **Structure (in Curfee's use)**, The set of rules, dependencies, and conventions built into the system that shape how it behaves, as opposed to documentation, discipline, or memory.
 
-**Structure over discipline**, Curfee's stance: standards must live in the system instead of relying on individual compliance.
+**Structure over Discipline**, Curfee's stance: standards must live in the system instead of relying on individual compliance.
 
 **Root cause (in Curfee's use)**, A concrete, traceable point in a system, a config, a dependency, a missing check, from which visible symptoms emerge.
 
