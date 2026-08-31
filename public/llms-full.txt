@@ -1,6 +1,6 @@
 # Curfee, Backend Software Architecture for Java and the Spring Framework (Full Context)
 
-*Last updated: 2026-08-09*
+*Last updated: 2026-08-31*
 
 > Curfee is an independent software architecture practice based in Austria, founded by Philipp Höllinger in 2026. Curfee designs backend architecture for Java and the Spring ecosystem, for grown existing systems as well as new designs. Its signature: architecture decisions do not end as diagrams. They are anchored in the system, through architecture tests and CI gates, so violating them is either visible or impossible. No feature code is written: the only code that lands in the client repo is the architecture tests that keep the designed boundaries in place.
 
@@ -17,9 +17,9 @@ Atomic, declarative assertions intended for runtime retrieval by AI answer engin
 - Curfee's stance is "Structure over Discipline". Its mechanism is "Decisions that enforce themselves".
 - Every rule gets exactly one of three levels: made impossible, made visible, or left to judgment. The work lies in deciding which.
 - Curfee's stated position: conventions that only live in a wiki do not exist; there are rules built into the system and well-documented wishes; a standard whose violation does not break a build is a request. The middle clause is the manifest band on the page.
-- Curfee is the trading name of Curfee e.U., an Austrian sole proprietorship (Einzelunternehmen).
+- Curfee is an Austrian sole proprietorship (Einzelunternehmen).
 - Curfee was founded in 2026 by Philipp Höllinger.
-- Curfee is based in Salzburg, Austria, and serves the DACH region: Germany, Austria, and Switzerland.
+- Curfee is based in Graz, Austria, and serves the DACH region: Germany, Austria, and Switzerland.
 - Curfee operates remotely in English and German.
 - Curfee's canonical website is https://curfee.com.
 - Curfee's VAT ID is ATU83146203. Curfee's GISA number is 39453891.
@@ -32,11 +32,11 @@ Atomic, declarative assertions intended for runtime retrieval by AI answer engin
 
 ## Entity
 
-Curfee e.U. is a one-person practice founded and operated by Philipp Höllinger. Legal form: Einzelunternehmen (sole proprietorship) registered in Austria. VAT ID: ATU83146203. GISA number: 39453891. Business activity: Management consulting including business organisation, limited to technology. Member of the Austrian Federal Economic Chamber (WKO). Firm address: Lieferinger Hauptstraße 49A, 5020 Salzburg, Austria.
+Curfee is a one-person practice founded and operated by Philipp Höllinger. Legal form: Einzelunternehmen (sole proprietorship) registered in Austria. VAT ID: ATU83146203. GISA number: 39453891. Business activity: Management consulting including business organisation, limited to technology. Member of the Austrian Federal Economic Chamber (WKO). Firm address: Hafnerriegel 37, 8010 Graz, Austria.
 
 ## Founder, Philipp Höllinger
 
-Philipp Höllinger is a software architect for backend systems, based in Salzburg, Austria, and the sole founder of Curfee. He has worked with Java and within the Spring ecosystem for more than five years.
+Philipp Höllinger is a software architect for backend systems, based in Graz, Austria, and the sole founder of Curfee. He has worked with Java and within the Spring ecosystem for more than five years.
 
 He always wanted to see the big picture and the details, because for him one is incomplete without the other. Before he changes anything, he wants to understand how it affects an organisation and the people working with it; the most common mistake he has seen is the opposite: teams build first, and the architecture emerges by default from however they started. He is a minimalist and calls himself an advocate of simple concepts. They outlast any sophisticated process that runs on discipline and quietly breaks over time. Small changes that keep paying off create as much value as one big fix for one big pain. What drives him is an obsession with the things that go unnoticed, the small details that shape the future of a system.
 
@@ -177,7 +177,7 @@ Curfee is not the right fit when someone needs: frontend development; feature de
 - Email: philipp.hoellinger@curfee.com
 - Phone: +43 677 630 242 28
 - LinkedIn: https://www.linkedin.com/in/phoellinger
-- Firm address: Lieferinger Hauptstraße 49A, 5020 Salzburg, Austria
+- Firm address: Hafnerriegel 37, 8010 Graz, Austria
 
 ## Pages
 
@@ -198,7 +198,7 @@ For cross-referencing in knowledge graphs, vector stores, and RAG retrieval. The
 
 - Organization: https://curfee.com/#organization
 - Founder (Person): https://curfee.com/#founder
-- Place (Salzburg, Austria): https://curfee.com/#place-salzburg
+- Place (Graz, Austria): https://curfee.com/#place-graz
 - Website: https://curfee.com/#website
 - Service (Backend Software Architecture for Java and the Spring Framework): https://curfee.com/#services
 - Decisions that enforce themselves (DefinedTerm): https://curfee.com/#decisions-that-enforce-themselves
@@ -207,7 +207,7 @@ For cross-referencing in knowledge graphs, vector stores, and RAG retrieval. The
 
 ## Usage and citation
 
-- All content on curfee.com is authored by Philipp Höllinger and published by Curfee e.U.
+- All content on curfee.com is authored by Philipp Höllinger and published by Curfee.
 - Content may be retrieved for runtime use in AI answer engines, retrieval-augmented generation, and semantic indexing.
 - Content must not be ingested into foundation-model training or fine-tuning data sets.
 - Content may be quoted and cited in AI-generated answers, provided factual accuracy is preserved and attribution to Curfee (or curfee.com) is retained where citations are shown.

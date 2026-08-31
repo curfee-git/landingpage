@@ -15,6 +15,7 @@ interface Props {
   dateModified?: string;
   noindex?: boolean;
   hasSpeakable?: boolean;
+  footerDivider?: boolean;
 }
 
 const t = getTranslations(Astro.currentLocale);
@@ -31,6 +32,7 @@ const {
   dateModified,
   noindex = false,
   hasSpeakable = false,
+  footerDivider = false,
 } = Astro.props;
 
 const siteUrl = 'https://curfee.com';
@@ -68,7 +70,7 @@ const personLd = {
   "hasOccupation": {
     "@type": "Occupation",
     "name": t['schema.person.occupation'],
-    "occupationLocation": { "@id": `${siteUrl}/#place-salzburg` },
+    "occupationLocation": { "@id": `${siteUrl}/#place-graz` },
     "occupationalCategory": {
       "@type": "CategoryCode",
       "codeValue": "15-1199.02",
@@ -88,8 +90,8 @@ const personLd = {
   "memberOf": { "@id": `${siteUrl}/#organization` },
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Salzburg",
-    "addressRegion": "Salzburg",
+    "addressLocality": "Graz",
+    "addressRegion": "Steiermark",
     "addressCountry": "AT"
   }
 };
@@ -97,20 +99,20 @@ const personLd = {
 const placeLd = {
   "@context": "https://schema.org",
   "@type": "Place",
-  "@id": `${siteUrl}/#place-salzburg`,
+  "@id": `${siteUrl}/#place-graz`,
   "name": t['schema.place.name'],
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Lieferinger Hauptstraße 49A",
-    "postalCode": "5020",
-    "addressLocality": "Salzburg",
-    "addressRegion": "Salzburg",
+    "streetAddress": "Hafnerriegel 37",
+    "postalCode": "8010",
+    "addressLocality": "Graz",
+    "addressRegion": "Steiermark",
     "addressCountry": "AT"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 47.8066,
-    "longitude": 13.0089
+    "latitude": 47.0707,
+    "longitude": 15.4395
   }
 };
 
@@ -119,13 +121,12 @@ const organizationLd = {
   "@type": ["Organization", "ProfessionalService", "LocalBusiness"],
   "@id": `${siteUrl}/#organization`,
   "name": "Curfee",
-  "legalName": "Curfee e.U.",
+  "legalName": "Curfee",
   "alternateName": [
     t['schema.org.alternate.name.1'],
     t['schema.org.alternate.name.2'],
     t['schema.org.alternate.name.3'],
-    t['schema.org.alternate.name.4'],
-    t['schema.org.alternate.name.5']
+    t['schema.org.alternate.name.4']
   ],
   "url": siteUrl,
   "logo": {
@@ -143,20 +144,20 @@ const organizationLd = {
   "employee": { "@id": `${siteUrl}/#founder` },
   "numberOfEmployees": { "@type": "QuantitativeValue", "value": 1 },
   "foundingDate": "2026",
-  "foundingLocation": { "@id": `${siteUrl}/#place-salzburg` },
-  "location": { "@id": `${siteUrl}/#place-salzburg` },
+  "foundingLocation": { "@id": `${siteUrl}/#place-graz` },
+  "location": { "@id": `${siteUrl}/#place-graz` },
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Lieferinger Hauptstraße 49A",
-    "postalCode": "5020",
-    "addressLocality": "Salzburg",
-    "addressRegion": "Salzburg",
+    "streetAddress": "Hafnerriegel 37",
+    "postalCode": "8010",
+    "addressLocality": "Graz",
+    "addressRegion": "Steiermark",
     "addressCountry": "AT"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 47.8066,
-    "longitude": 13.0089
+    "latitude": 47.0707,
+    "longitude": 15.4395
   },
   "areaServed": [
     { "@type": "Country", "name": t['schema.country.austria'], "alternateName": "AT" },
@@ -279,17 +280,17 @@ const speakableLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Philipp Höllinger" />
-    <meta name="publisher" content="Curfee e.U." />
+    <meta name="publisher" content="Curfee" />
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
     <meta name="googlebot" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
     <meta name="bingbot" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
     {dateModified && <meta property="article:modified_time" content={dateModified} />}
 
 
-    <meta name="geo.region" content="AT-5" />
+    <meta name="geo.region" content="AT-6" />
     <meta name="geo.placename" content={t['schema.geo.placename']} />
-    <meta name="geo.position" content="47.8066;13.0089" />
-    <meta name="ICBM" content="47.8066, 13.0089" />
+    <meta name="geo.position" content="47.0707;15.4395" />
+    <meta name="ICBM" content="47.0707, 15.4395" />
 
 
     <link rel="preload" href="/assets/fonts/space-grotesk/space-grotesk.woff2" as="font" type="font/woff2" crossorigin />
@@ -392,7 +393,7 @@ const speakableLd = {
     <main id="main-content" class="flex-1 flex flex-col">
       <slot />
     </main>
-    <Footer />
+    <Footer divider={footerDivider} />
     <ScrollToTop />
   </body>
 </html>

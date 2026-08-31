@@ -1,3 +1,3 @@
 export const BRAND = {
-  name: 'Curfee e.U.',
+  name: 'Curfee',
 } as const;
