@@ -123,17 +123,19 @@ const menuItemClass = "flex items-center px-4 py-3 text-label-large font-semibol
                 border-radius var(--header-duration) var(--header-ease),
                 background-color var(--header-duration) var(--header-ease);
   }
-  /* Below the desktop pill the bar keeps its full width, so a blur alone stays
-     invisible over flat sections. Tint it once it overlaps content. */
-  @media (max-width: 1023px) {
-    [data-header][data-scrolled]::before,
-    [data-header][data-menu-open]::before {
-      background-color: rgb(var(--surface-base) / 0.82);
-    }
-    [data-header][data-theme="dark"][data-scrolled]::before,
-    [data-header][data-theme="dark"][data-menu-open]::before {
-      background-color: rgb(var(--brand-primary) / 0.82);
-    }
+  /* A blur alone stays invisible over flat sections and smears the text it
+     crosses, so the glass takes a translucent tint once the bar overlaps
+     content: the full-width bar on phones and tablets while scrolled or with
+     the menu open, the floating pill on desktop. The tint fades in over the
+     same duration as the pill narrows, follows the light and dark detection,
+     and the bar stays clear at the top of the page. */
+  [data-header][data-scrolled]::before,
+  [data-header][data-menu-open]::before {
+    background-color: rgb(var(--surface-base) / 0.82);
+  }
+  [data-header][data-theme="dark"][data-scrolled]::before,
+  [data-header][data-theme="dark"][data-menu-open]::before {
+    background-color: rgb(var(--brand-primary) / 0.82);
   }
   [data-header-shell],
   [data-mobile-menu] {
